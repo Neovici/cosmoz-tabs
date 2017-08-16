@@ -1,0 +1,66 @@
+<link rel="import" href="../polymer/polymer.html">
+<script>
+
+/*global CosmozTabs, document, Polymer, window */
+'use strict';
+
+window.CosmozTabs = window.CosmozTabs || {};
+
+/**
+  @polymerBehavior
+ */
+CosmozTabs.BindParentChildBehavior = {
+
+	listeners: {
+		'cosmoz-parent-property-changed': '_parentPropertyChanged'
+	},
+
+	bindParentProperty: function (propertyName) {
+		this._parentBoundProperties = this._parentBoundProperties || [];
+		this._parentBoundProperties.push(propertyName);
+
+		this.fire('cosmoz-bind-parent-property', {
+			element: this,
+			propertyName: propertyName
+		}, {
+			bubbles: true,
+			cancelable: false
+		});
+	},
+
+	detached: function () {
+		var i,
+			propertyName;
+
+		if (!this._parentBoundProperties) {
+			return;
+		}
+
+		for (i = 0; i < this._parentBoundProperties.length; i += 1) {
+			propertyName = this._parentBoundProperties[i];
+			this.fire('cosmoz-unbind-parent-property', {
+				element: this,
+				propertyName: propertyName
+			}, {
+				bubbles: true,
+				cancelable: false
+			});
+		}
+
+		this._parentBoundProperties = null;
+
+	},
+
+	_parentPropertyChanged: function (event) {
+		var
+			propertyName = event.detail.propertyName,
+			setterName = '_set' + propertyName[0].toUpperCase() + propertyName.slice(1),
+			setter = this[setterName];
+
+		if (setter) {
+			setter.call(this, event.detail.value);
+		}
+	}
+};
+
+</script>
