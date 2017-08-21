@@ -29,22 +29,22 @@
 			suite('cosmoz-tabs', function () {
 
 				test('instantiating the element with default properties works', function () {
-					var element = fixture('BasicTestFixture'),
-						elementShadowRoot = element.shadowRoot,
-						elementHeader = elementShadowRoot.querySelector('h2');
+					var element = fixture('BasicTestFixture');
+						//elementShadowRoot = element.shadowRoot;
+						// elementHeader = elementShadowRoot.querySelector('h2');
 
-					assert.equal(element.prop1, 'cosmoz-tabs');
-					assert.equal(elementHeader.innerHTML, 'Hello cosmoz-tabs!');
+					assert.equal(element.is, 'cosmoz-tabs');
+					//assert.equal(elementHeader.innerHTML, 'Hello cosmoz-tabs!');
 				});
 
-				test('setting a property on the element works', function () {
-					var element = fixture('BasicTestFixture'),
-						elementShadowRoot = element.shadowRoot,
-						elementHeader = elementShadowRoot.querySelector('h2');
-
-					assert.equal(element.prop1, 'new-prop1');
-					assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-				});
+				// test('setting a property on the element works', function () {
+				// 	var element = fixture('ChangedPropertyTestFixture');
+				// 		// elementShadowRoot = element.shadowRoot,
+				// 		// elementHeader = elementShadowRoot.querySelector('h2');
+				//
+				// 	assert.equal(element.prop1, 'new-prop1');
+				// 	//assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+				// });
 			});
 		</script>
 
