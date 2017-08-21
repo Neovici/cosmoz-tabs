@@ -174,9 +174,9 @@
 		_getIcon: function (opened) {
 			if (opened && !this.accordion) {
 				return this.selectedIcon;
-			} else {
-				return this.icon;
 			}
+			return this.icon;
+
 		},
 
 		_computeOpenedIcon: function (opened) {
