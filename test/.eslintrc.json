@@ -6,8 +6,9 @@
 		"a11ySuite": false,
 		"assert": false,
 		"fixture": false,
-		"locale": true,
 		"MockInteractions": false,
-		"test": false
+		"suite": false,
+		"test": false,
+		"WCT": false
 	}
 }
