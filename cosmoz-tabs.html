@@ -59,22 +59,22 @@
 				flex-shrink: 0;
 			}
 
-	  		paper-tab.iron-selected h1.heading {
-	  			font-weight: 400;
-	  		}
+			paper-tab.iron-selected h1.heading {
+				font-weight: 400;
+			}
 
 			paper-tab[disabled] {
 				opacity: 0.65;
 			}
 
 			.link {
-		    	@apply --layout-horizontal;
-    			@apply --layout-center-center;
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
 				text-decoration: none;
 				color: inherit;
 				/* TODO(accessibility): focused tab should be outlined */
 				outline: 0;
-  			}
+			}
 
 			.flex-scroll {
 				overflow-y: auto;
@@ -99,7 +99,7 @@
 						<template is="dom-repeat" items="[[ tabs ]]" as="tab" index-as="tabIndex">
 							<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" data-tabid$="[[ tab.tabId ]]">
 								<a href$="[[ _getTabLink(tab, _routeHashParams.*) ]]" tabindex="-1" class="link">
-									<iron-icon hidden class="headingIcon" icon="[[ _getIcon(tab, selectedTab, accordion) ]]"
+									<iron-icon hidden class="headingIcon" icon="[[ _getIcon(tab, selectedTabId, accordion) ]]"
 										style$="[[ _computeTabIconStyle(tab.iconColor) ]]"></iron-icon>
 									<h1 id$="tabHeading[[tabIndex]]" class="heading">[[ tab.heading ]]</h1>
 									<paper-badge for="tabHeading[[tabIndex]]" hidden$="[[ !tab.badge ]]" label="[[ tab.badge ]]"></paper-badge>
