@@ -11,7 +11,7 @@ window.CosmozTabs = window.CosmozTabs || {};
  */
 CosmozTabs.BindParentHostBehavior = {
 	/**
-	 * Fired when a bound children should be notified of property change
+	 * Fired when a bound children should be notified of property change.
 	 *
 	 * @event cosmoz-parent-property-changed
 	 * @param  {Object} event.detail The event detail object
@@ -26,7 +26,7 @@ CosmozTabs.BindParentHostBehavior = {
 
 	/**
 	 * Handles `cosmoz-bind-parent-property` event and
-	 * adds `event.detail.element` to bound children
+	 * adds `event.detail.element` to bound children.
 	 *
 	 * @param  {Event} event The `cosmoz-unbind-parent-property` event
 	 * @param  {Object} event.detail The event detail object
@@ -60,7 +60,7 @@ CosmozTabs.BindParentHostBehavior = {
 
 	/**
 	 * Handles `cosmoz-unbind-parent-property` event and
-	 * removes `event.detail.element` from bound children
+	 * removes `event.detail.element` from bound children.
 	 *
 	 * @param  {Event} event The `cosmoz-unbind-parent-property` event
 	 * @param  {Object} event.detail The event detail object
@@ -92,7 +92,7 @@ CosmozTabs.BindParentHostBehavior = {
 	},
 
 	/**
-	 * Notify all bound children of property changes
+	 * Notify all bound children of property changes.
 	 *
 	 * @param  {String} propertyName Name of the changed property
 	 * @return {void}
@@ -111,7 +111,7 @@ CosmozTabs.BindParentHostBehavior = {
 	},
 
 	/**
-	 * Notifies a child of property changes
+	 * Notifies a child of property changes.
 	 *
 	 * @param  {HTMLElement} child        The child to be notified
 	 * @param  {String} propertyName  Name of the changed property
