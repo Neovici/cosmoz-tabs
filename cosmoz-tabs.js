@@ -1,6 +1,6 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-/*global Cosmoz, CosmozTabs, Polymer, window */
 
+/*global CosmozTabs */
 (function () {
 	'use strict';
 
@@ -22,12 +22,16 @@
 				reflectToAttribute: true
 			},
 
+			/**
+			 * True if the element has class `fit` or `flex`.
+			 */
 			flex: {
 				type: Boolean,
 				computed: '_computeFlex(class)'
 			},
 
 			/**
+			 * The list of tabs from which a selection can be made.
 			 */
 			tabs: {
 				type: Array,
@@ -35,27 +39,44 @@
 				readOnly: true
 			},
 
+			/**
+			 * The currently selected tab's id.
+			 */
 			selectedTabId: {
 				type: String,
 				notify: true,
 				observer: '_selectedTabIdChanged'
 			},
 
+			/**
+			 * The hash parameter to use for selecting a tab.
+			 */
 			hashParam: {
 				type: String,
 				observer: '_hashParamChanged'
 			},
 
+			/**
+			 * The delay (in milliseconds) between when the element is attached
+			 * and when the first tab is automatically selected.
+			 */
 			autoSelectDefaultDelay: {
 				type: Number,
 				value: 20
 			},
 
+			/**
+			 *  The currently selected tab.
+			 */
 			_selectedTab: {
 				type: Object,
 				value: null
 			},
 
+			/**
+			 * The route has parameters extracted by the `cosmoz-page-location`
+			 * element.
+			 */
 			_routeHashParams: {
 				type: Object,
 				notify: true
@@ -70,6 +91,12 @@
 			CosmozTabs.BindParentHostBehavior
 		],
 
+		/**
+		 * Computes the `flex` property.
+		 *
+		 * @param  {String} classesString Space separated list of element's classes
+		 * @return {Boolean} Computed `flex` property
+		 */
 		_computeFlex: function (classesString) {
 			var classes = classesString.split(' ');
 			if (classes.indexOf('fit') > -1) {
@@ -79,6 +106,12 @@
 			return classes.indexOf('flex') > -1;
 		},
 
+		/**
+		 * Observes `_routeHashParams` changes
+		 * and sets `selectedTabId` based on `hashParam`.
+		 *
+		 * @return {void}
+		 */
 		_routeHashParamsChanged: function () {
 			var newSelectedTabId;
 			if (this._routeHashParams && this.hashParam && this.tabs) {
@@ -88,21 +121,44 @@
 				}
 			}
 		},
-
+		/**
+		 * Observes `hashParam` changes
+		 * and sets `selectedTabId` from `_routeHashParams`.
+		 *
+		 * @return {void}
+		 */
 		_hashParamChanged: function () {
 			if (this._routeHashParams) {
 				this.selectedTabId = this._routeHashParams[this.hashParam];
 			}
 		},
 
+		/**
+		 * Computes overflow class
+		 *
+		 * @param  {Boolean} flex True if element is flex
+		 * @return {String}   The overflow class
+		 */
 		_getOverflowClass: function (flex) {
 			return flex ? 'flex-scroll' : '';
 		},
 
+		/**
+		 * Returns the url for a tab.
+		 *
+		 * @param  {HTMLElement} tab The tab to compute link for
+		 * @return {String}   The url of the tab
+		 */
 		_getTabLink: function (tab) {
 			return this.getUrlForTabId(tab.tabId);
 		},
 
+		/**
+		 * Returns the url for a tab by id.
+		 *
+		 * @param  {String} tabId The tab's id
+		 * @return {String} The url
+		 */
 		getUrlForTabId: function (tabId) {
 			if (this.hashParam) {
 				var hashParams = {};
@@ -111,16 +167,31 @@
 			}
 		},
 
+		/**
+		 * Element created lifecycle callback.
+		 * Binds `_updateSelectedTab` as `_delayedUpdateSelectedTab` with `delayed` argument set to `true`.
+		 * @return {void}
+		 */
 		created: function () {
 			this._delayedUpdateSelectedTab = this._updateSelectedTab.bind(this, true);
 		},
 
+		/**
+		 * Element attached lifecycle callback.
+		 * Creates `_tabsObserver` DOM mutation observer that calls `_updateTabs` on change.
+		 * @return {void}
+		 */
 		attached: function () {
 			this._tabsObserver = Polymer.dom(this).observeNodes(function (mutation) {
 				this._updateTabs();
 			}.bind(this));
 		},
 
+		/**
+		 * Element detached lifecycle callback.
+		 * Creates `_tabsObserver` DOM mutation observer and set selected tab to `null`.
+		 * @return {void}
+		 */
 		detached: function () {
 			if (this._tabsObserver) {
 				Polymer.dom(this).unobserveNodes(this._tabsObserver);
@@ -134,7 +205,9 @@
 		},
 
 		/**
+		 * Resets selected tab.
 		 *
+		 * @return {void}
 		 */
 		resetTabs: function () {
 			this.tabs.forEach(function (tab) {
@@ -154,6 +227,13 @@
 			this._updateSelectedTab();
 		},
 
+		/**
+		 * Observes dom-change events from `paper-tabs`
+		 * and updates it's `selectedItem` property to the currently selected tab.
+		 *
+		 * @param  {Event} e `dom-change` event
+		 * @return {void}
+		 */
 		_tabsChanged: function (e) {
 			var paperTabs = this.$$('#paperTabs'),
 				selected;
@@ -167,6 +247,11 @@
 			}
 		},
 
+		/**
+		 * Updates and resets tabs from dom. Adds listener for
+		 * `cosmoz-tab-property-changed`.
+		 * @return {void}
+		 */
 		_updateTabs: function () {
 			var tabs = Polymer.dom(this).queryDistributedElements('cosmoz-tab');
 
@@ -186,6 +271,17 @@
 			}
 		},
 
+		/**
+		 * Handles `cosmoz-tab-property-changed`
+		 * and updates the `event.detail.tab`'s property.
+		 *
+		 * @param  {type} event description
+		 * @param  {Object} event.detail The event detail object
+		 * @param  {HTMLElement} event.detail.tab The tab to update
+		 * @param  {String} event.detail.propertyName The name of the property
+		 * @listens cosmoz-tab-property-changed
+		 * @return {void}
+		 */
 		_onCosmozTabPropertyChanged: function (event) {
 			// This can occur when a child tab is changing after this tabs has been detached
 			if (this.tabs ===  null) {
@@ -203,7 +299,12 @@
 				this.$$('#paperTabs').notifyResize();
 			}
 		},
-
+		/**
+		 * Observes `_selectedTabIdChanged` changes
+		 * and updates select tab and `_routeHashParams`.
+		 *
+		 * @return {void}
+		 */
 		_selectedTabIdChanged: function () {
 			if (!this._ignoreSelectedTabIdChange) {
 				this._updateSelectedTab();
@@ -213,10 +314,22 @@
 			}
 		},
 
+		/**
+		 * Schedules a debouncer for updating the selected tab.
+		 *
+		 * @param  {Number} delay The delay of the debouncer
+		 * @return {void}
+		 */
 		_scheduleUpdateSelectedTab: function (delay) {
 			this.debounce('_scheduleUpdateSelectedTab', this._delayedUpdateSelectedTab, delay);
 		},
 
+		/**
+		 * Updates the selected tab.
+		 *
+		 * @param  {Boolean} delayed True if this is a delayed/debounced call
+		 * @return {void}
+		 */
 		_updateSelectedTab: function (delayed) {
 			var selectedTab,
 				defaultTabId,
@@ -266,6 +379,13 @@
 			}
 		},
 
+		/**
+		 * Opens the passed tab and closes the old one.
+		 *
+		 * @param  {HTMLElement} tab The tab to open
+		 * @param  {HTMLElement|void|null} old The tab to close
+		 * @return {void}
+		 */
 		_openTab: function (tab, old) {
 			if (old) {
 				old.toggleOpened(false);
@@ -274,6 +394,12 @@
 			tab.toggleOpened(true);
 		},
 
+		/**
+		 * Returns a tab by it's id.
+		 *
+		 * @param  {String} tabId The tab's id
+		 * @return {HTMLElement|void|null}  The tab by id if found
+		 */
 		_getTabById: function (tabId) {
 			var returnTab;
 			this.tabs.some(function (tab) {
@@ -285,6 +411,14 @@
 			return returnTab;
 		},
 
+		/**
+		 * Computes icon for a tab.
+		 *
+		 * @param  {HTMLElement} tab       The tab to compute icon for
+		 * @param  {String} selectedTabId  The currently selected tab's id
+		 * @param  {Boolean} accordion     The accordion property of the element
+		 * @return {String}                The icon to be used
+		 */
 		_getIcon: function (tab, selectedTabId, accordion) {
 			if (tab.tabId === selectedTabId && !accordion) {
 				return tab.selectedIcon;
@@ -292,10 +426,24 @@
 			return tab.icon;
 		},
 
+		/**
+		 * Computes CSS style for the color of a tab.
+		 *
+		 * @param  {String} iconColor The hex color
+		 * @return {String}           The CSS style for the color of the tab
+		 */
 		_computeTabIconStyle: function (iconColor) {
 			return 'color: ' + iconColor;
 		},
 
+		/**
+		 * Observes `accordion` property changes
+		 * and updates children.
+		 *
+		 * @param  {Boolean} accordion The current value
+		 * @param  {Boolean} oldValue  The old value
+		 * @return {void}
+		 */
 		_accordionChanged: function (accordion, oldValue) {
 			this.notifyBoundChildren('accordion');
 
@@ -306,6 +454,11 @@
 			}
 		},
 
+		/**
+		 * Closes all unselected tabs.
+		 *
+		 * @return {void}
+		 */
 		_closeAllButSelected: function () {
 			this.tabs.forEach(function (tab) {
 				tab.toggleOpened(tab.tabId === this.selectedTabId);
