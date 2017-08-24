@@ -7,14 +7,40 @@
 window.CosmozTabs = window.CosmozTabs || {};
 
 /**
-  @polymerBehavior
+  @polymerBehavior CosmozTabs.BindParentChildBehavio
  */
 CosmozTabs.BindParentChildBehavior = {
+	/**
+	 * Fired when binding a parent propery
+	 *
+	 * @event cosmoz-bind-parent-property
+	 * @param  {Object} event.detail The event detail object
+	 * @param  {HTMLElement} event.detail.element The element to bind
+	 * @param  {String} event.detail.propertyName The name of the property
+	 */
+
+	/**
+	 * Fired when unbinding a parent propery
+	 *
+	 * @event cosmoz-unbind-parent-property
+	 * @param  {Object} event.detail The event detail object
+	 * @param  {HTMLElement} event.detail.element The element to bind
+	 * @param  {String} event.detail.propertyName The name of the property
+	 */
 
 	listeners: {
 		'cosmoz-parent-property-changed': '_parentPropertyChanged'
 	},
 
+
+	/**
+	 * Binds a parent property by firing a `cosmoz-bind-parent-property` event
+	 * to a CosmozTabs.BindParentHostBehavior instance
+	 *
+	 * @param  {String} propertyName The name of the property
+	 * @fires cosmoz-bind-parent-property
+	 * @return {void}
+	 */
 	bindParentProperty: function (propertyName) {
 		this._parentBoundProperties = this._parentBoundProperties || [];
 		this._parentBoundProperties.push(propertyName);
@@ -28,6 +54,12 @@ CosmozTabs.BindParentChildBehavior = {
 		});
 	},
 
+	/**
+	 * Unbinds all parent properties
+	 *
+	 * @fires cosmoz-unbind-parent-property
+	 * @return {void}
+	 */
 	detached: function () {
 		var i,
 			propertyName;
@@ -51,6 +83,17 @@ CosmozTabs.BindParentChildBehavior = {
 
 	},
 
+	/**
+	 * Handles `cosmoz-parent-property-changed` event and
+	 * sets the updated property
+	 *
+	 * @param  {Event} event The `cosmoz-parent-property-changed` event
+	 * @param  {Object} event.detail The event detail object
+	 * @param  {*} event.detail.value  The value of the property
+	 * @param  {String} event.detail.propertyName The name of the property
+	 * @listens cosmoz-bind-parent-property
+	 * @return {void}
+	 */
 	_parentPropertyChanged: function (event) {
 		var
 			propertyName = event.detail.propertyName,
