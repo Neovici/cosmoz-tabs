@@ -7,7 +7,7 @@
 window.CosmozTabs = window.CosmozTabs || {};
 
 /**
-  @polymerBehavior
+  @polymerBehavior CosmozTabs.BindParentHostBehavior
  */
 CosmozTabs.BindParentHostBehavior = {
 
@@ -16,6 +16,17 @@ CosmozTabs.BindParentHostBehavior = {
 		'cosmoz-unbind-parent-property': '_onUnbindParentProperty'
 	},
 
+	/**
+	 * Handles `cosmoz-bind-parent-property` event and
+	 * Handles `cosmoz-unbind-parent-property` event and
+	 * add `event.detail.element` to `this._boundChildren[event.detail.propertyName]`
+	 *
+	 * @param  {Event} event The `cosmoz-unbind-parent-property` event
+	 * @param  {Object} event.detail The event detail object
+	 * @param  {Element} event.detail.element The element to remove from `_boundChildren`
+	 * @param  {String} event.detail.propertyName Name of the property
+	 * @return {void}
+	 */
 	_onBindParentProperty: function (event) {
 		var
 			element = event.detail.element,
@@ -39,6 +50,16 @@ CosmozTabs.BindParentHostBehavior = {
 		event.stopPropagation();
 	},
 
+	/**
+	 * Handles `cosmoz-unbind-parent-property` event and
+	 * removes `event.detail.element` from `this._boundChildren[event.detail.propertyName]`
+	 *
+	 * @param  {Event} event The `cosmoz-unbind-parent-property` event
+	 * @param  {Object} event.detail The event detail object
+	 * @param  {Element} event.detail.element The element to remove from `_boundChildren`
+	 * @param  {String} event.detail.propertyName Name of the property
+	 * @return {void}
+	 */
 	_onUnbindParentProperty: function (event) {
 		var
 			element = event.detail.element,
@@ -61,6 +82,12 @@ CosmozTabs.BindParentHostBehavior = {
 		event.stopPropagation();
 	},
 
+	/**
+	 * Notify bound children of property changes
+	 *
+	 * @param  {String} propertyName Name of the changed property
+	 * @return {void}
+	 */
 	notifyBoundChildren: function (propertyName) {
 		var propertyBoundChildren,
 			i;
@@ -74,6 +101,13 @@ CosmozTabs.BindParentHostBehavior = {
 		}
 	},
 
+	/**
+	 * Notifies a child of property changes
+	 *
+	 * @param  {Element} child        The child to be notified
+	 * @param  {String} propertyName  Name of the changed property
+	 * @return {void}
+	 */
 	_notifyChild: function (child, propertyName) {
 		this.fire('cosmoz-parent-property-changed',
 			{
