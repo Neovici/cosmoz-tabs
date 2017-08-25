@@ -13,6 +13,12 @@
 		 * @param  {HTMLElement} event.detail.tab The current cosmoz-tab instance
 		 * @param  {String} event.detail.propertyName The name of changed the property
 		 */
+
+
+		/**
+		 * Fired when the element is opened.
+		 * @event cosmoz-tab-opened
+		 */
 		is: 'cosmoz-tab',
 		properties: {
 
@@ -136,7 +142,7 @@
 			},
 
 			/**
-			 * When set the element will contain a `paper-bagde` with the label set to this property.
+			 * When not empty the element will contain a `paper-bagde` with the label set to this property.
 			 */
 			badge: {
 				type: String,
@@ -194,30 +200,65 @@
 			this.fire('cosmoz-tab-property-changed', { tab: this, propertyName: propertyName});
 		},
 
+		/**
+		 * Observes `disabled` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_disabledChanged: function () {
 			this._fireTabPropertyChanged('disabled');
 		},
 
+		/**
+		 * Observes `hidden` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_hiddenChanged: function () {
 			this._fireTabPropertyChanged('hidden');
 		},
 
+		/**
+		 * Observes `heading` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_headingChanged: function () {
 			this._fireTabPropertyChanged('heading');
 		},
 
+		/**
+		 * Observes `icon` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_iconChanged: function () {
 			this._fireTabPropertyChanged('icon');
 		},
 
+		/**
+		 * Observes `selectedIcon` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_selectedIconchanged: function () {
 			this._fireTabPropertyChanged('selectedIcon');
 		},
 
+		/**
+		 * Observes `iconColor` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_iconColorChanged: function () {
 			this._fireTabPropertyChanged('iconColor');
 		},
 
+		/**
+		 * Observes `badge` property changes and calls `_fireTabPropertyChanged`
+		 *
+		 * @return {void}
+		 */
 		_badgeChanged: function () {
 			this._fireTabPropertyChanged('badge');
 		},
@@ -232,6 +273,14 @@
 			return badge !== undefined && badge !== null && badge !== 0 && badge !== '';
 		},
 
+		/**
+		 * `tap` event listener.
+		 * Handles opening/closing of the tab in accordion mode.
+		 *
+		 * @param  {Event} event The `tap` event
+		 * @listens tap
+		 * @return {void}
+		 */
 		_onTap: function (event) {
 			// Handle opening/closing of the tab in accordion mode
 			// Otherwise, cosmoz-tabs will take care of showing/hiding the tab with animations.
@@ -241,12 +290,23 @@
 			}
 		},
 
+		/**
+		 * Finds all `cosmoz-tab-card` elements and updates cards.
+		 *
+		 * @return {void}
+		 */
 		_updateCards: function () {
 			var cards = Polymer.dom(this).queryDistributedElements('cosmoz-tab-card');
 			this._setCards(cards);
 			this._useCards = cards && cards.length;
 		},
 
+		/**
+		 * Computes the element's icon depending on the `opened` property
+		 *
+		 * @param  {Boolean} opened True if tab is opened
+		 * @return {void}
+		 */
 		_getIcon: function (opened) {
 			if (opened && !this.accordion) {
 				return this.selectedIcon;
@@ -255,15 +315,36 @@
 
 		},
 
+		/**
+		 * Computes the element's opened icon depending on the `opened` property
+		 *
+		 * @param  {Boolean} opened True if tab is opened
+		 * @return {void}
+		 */
 		_computeOpenedIcon: function (opened) {
 			return opened
 				? 'expand-less'
 				: 'expand-more';
 		},
+
+		/** Computes CSS style depending on color.
+		 *
+		 * @param  {String} iconColor The hex color
+		 * @return {String}           The CSS style
+		 */
 		_computeIconStyle: function (iconColor) {
 			return 'color: ' + iconColor;
 		},
 
+		/**
+		 * Observes `accordion`, `useCards` and `flex` properties
+		 * and sets up the element.
+		 *
+		 * @param  {Boolean} accordion The `accordion` property
+		 * @param  {Boolean} useCards  The `useCards` property
+		 * @param  {Boolean} flex      The `flex` property
+		 * @return {void}
+		 */
 		_setup: function (accordion, useCards, flex) {
 			var tabContentClass = 'relative cosmoz-tab-content',
 				useFlex = flex && !accordion;
@@ -284,6 +365,14 @@
 
 		},
 
+		/**
+		 * Toggles the opened state of the element.
+		 * Calls`toggleOpened` on all cards that it contains.
+		 *
+		 * @param  {Boolean} opened True if element should be opened
+		 * @fires cosmoz-tab-opened
+		 * @return {void}
+		 */
 		toggleOpened: function (opened) {
 
 			this.toggleClass('cosmoz-tab-opened', opened);
