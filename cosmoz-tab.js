@@ -9,9 +9,9 @@
 		 * properties are changed.
 		 *
 		 * @event cosmoz-tab-property-changed
-		 * @param  {Object} event.detail The event detail object
-		 * @param  {HTMLElement} event.detail.tab The current cosmoz-tab instance
-		 * @param  {String} event.detail.propertyName The name of changed the property
+		 * @param  {Object} detail The event detail object
+		 * @param  {HTMLElement} detail.tab The current cosmoz-tab instance
+		 * @param  {String} detail.propertyName The name of changed the property
 		 */
 
 
@@ -19,6 +19,7 @@
 		 * Fired when the element is opened.
 		 * @event cosmoz-tab-opened
 		 */
+
 		is: 'cosmoz-tab',
 		properties: {
 
