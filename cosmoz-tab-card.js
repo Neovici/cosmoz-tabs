@@ -6,6 +6,22 @@
 
 	Polymer({
 		is: 'cosmoz-tab-card',
+
+		/**
+		 * Fired when the element is opened.
+		 *
+		 * @event cosmoz-tab-card-opened
+		 * @param  {Object} detail The event detail object
+		 * @param  {HTMLElement} detail.card The current `cosmoz-tab-card` instance
+		 */
+
+		/**
+		 * Fired when the element is closed.
+		 *
+		 * @event cosmoz-tab-card-closed
+		 * @param  {Object} detail The event detail object
+		 * @param  {HTMLElement} detail.card The current `cosmoz-tab-card` instance
+		 */
 		properties: {
 			/**
 			 * Indicates wether the parent `cosmoz-tab` should be displayed using an accordion.
