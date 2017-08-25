@@ -444,7 +444,7 @@
 		 * @param  {Boolean} oldValue  The old value
 		 * @return {void}
 		 */
-		_accordionChanged: function (accordion, oldValue) {
+		_accordionChanged: function () {
 			this.notifyBoundChildren('accordion');
 
 			if (this.tabs && this.tabs.length) {

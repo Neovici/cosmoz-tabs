@@ -17,6 +17,7 @@
 
 		/**
 		 * Fired when the element is opened.
+		 *
 		 * @event cosmoz-tab-opened
 		 */
 
@@ -282,7 +283,7 @@
 		 * @listens tap
 		 * @return {void}
 		 */
-		_onTap: function (event) {
+		_onTap: function () {
 			// Handle opening/closing of the tab in accordion mode
 			// Otherwise, cosmoz-tabs will take care of showing/hiding the tab with animations.
 			if (this.accordion) {
