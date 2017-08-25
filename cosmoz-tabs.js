@@ -182,7 +182,12 @@
 		 * @return {void}
 		 */
 		attached: function () {
-			this._tabsObserver = Polymer.dom(this).observeNodes(function (mutation) {
+
+			/**
+			 * @param  {Object} info DOM mutation info object
+			 * @return {void}
+			 */
+			this._tabsObserver = Polymer.dom(this).observeNodes(function () {
 				this._updateTabs();
 			}.bind(this));
 		},
@@ -234,7 +239,7 @@
 		 * @param  {Event} e `dom-change` event
 		 * @return {void}
 		 */
-		_tabsChanged: function (e) {
+		_tabsChanged: function () {
 			var paperTabs = this.$$('#paperTabs'),
 				selected;
 			if (paperTabs && !paperTabs.selectedItem && this._selectedTab) {
