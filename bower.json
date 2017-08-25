@@ -1,7 +1,7 @@
 {
 	"name": "cosmoz-tabs",
 	"description": "Responsive tabbed pages that can render in an accordion",
-	"license": "Apache 2.0",
+	"license": "Apache-2.0",
 	"main": "cosmoz-tabs.html",
 	"dependencies": {
 		"polymer": "Polymer/polymer#^1.0.0",
