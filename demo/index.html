@@ -15,12 +15,15 @@
 
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
+				#container {
+					 max-width: 800px;
+				 }
 			</style>
 		</custom-style>
 	</head>
-	<body>
-		<div class="vertical-section-container">
-			<h3>Basic cosmoz-tabs demo</h3>
+	<body unresolved>
+		<div id="container" class="vertical-section-container centered">
+			<h3>Plain cosmoz-tabs</h3>
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs>
@@ -60,10 +63,8 @@
 					</cosmoz-tabs>
 				</template>
 			</demo-snippet>
-		</div>
 
-		<div class="vertical-section-container">
-			<h3>Basic cosmoz-tabs accordion demo</h3>
+			<h3>The <code>accordion</code> attribute toggles accordion mode</h3>
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs accordion="true">
