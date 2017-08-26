@@ -10,6 +10,7 @@
 ```
 <custom-element-demo>
   <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="cosmoz-tab.html">
     <link rel="import" href="cosmoz-tabs.html">
     <cosmoz-tabs>
