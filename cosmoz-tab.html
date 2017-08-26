@@ -10,7 +10,22 @@
 
 <link rel="import" href="cosmoz-bind-parent-child-behavior.html">
 <link rel="import" href="cosmoz-tab-card.html">
+<!--
+`<cosmoz-tabs>` is the container for a tab. It should be used in conjunction with
+`cosmoz-tabs`.
 
+### Styling
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--cosmoz-tab` | Mixin applied to the tab | `{}`
+`--cosmoz-tab-header` | Mixin applied to the tab header | `{}`
+`--cosmoz-tab-header-selected` | Mixin applied to the header when the tab is selected | `{}`
+`--cosmoz-tab-header-accordion` | Mixin applied to the header when the tab is in accordion mode | `{}`
+`--cosmoz-tab-header-accordion-selected` | Mixin applied to the header when the tab is selected in accordion mode | `{}`
+
+-->
 <dom-module id="cosmoz-tab">
 	<template>
 		<style include="iron-flex iron-positioning">
