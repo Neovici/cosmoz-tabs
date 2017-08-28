@@ -1,28 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>cosmoz-tabs demo</title>
+		<title>cosmoz-tabs demo</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../cosmoz-tabs.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<link rel="import" href="../cosmoz-tab.html" />
+		<link rel="import" href="../cosmoz-tabs.html" />
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container">
-      <h3>Basic cosmoz-tabs demo</h3>
-      <demo-snippet>
-        <template>
-          <cosmoz-tabs style="height: 600px">
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+				#container {
+					 max-width: 800px;
+				 }
+			</style>
+		</custom-style>
+	</head>
+	<body unresolved>
+		<div id="container" class="vertical-section-container centered">
+			<h3>Plain <code>cosmoz-tabs</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs>
 						<cosmoz-tab heading="Tab1" tab-id="tab1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -57,8 +61,35 @@
 							</p>
 						</cosmoz-tab>
 					</cosmoz-tabs>
-        </template>
-      </demo-snippet>
-    </div>
-  </body>
+				</template>
+			</demo-snippet>
+
+			<h3>The <code>accordion</code> attribute toggles accordion mode</h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion>
+						<cosmoz-tab heading="Tab1" tab-id="tab1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" tab-id="tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" tab-id="tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
 </html>

@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-
-<link rel="import" href="../iron-selector/iron-multi-selectable.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-tabs/paper-tab.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../cosmoz-page-router/cosmoz-page-location.html">
@@ -11,7 +10,17 @@
 
 <!--
 `<cosmoz-tabs>` is a multi views (or pages) container element that allow navigation between the views
-	using tabs or an accordion.
+using tabs or an accordion.
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-tabs-selection-bar-color` | Color for the selection bar | `#00b4db`
+
+@demo demo/index.html
 -->
 <dom-module id="cosmoz-tabs">
 	<template>

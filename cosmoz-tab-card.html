@@ -1,10 +1,28 @@
-<link rel="import" href="../iron-collapse/iron-collapse.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../iron-collapse/iron-collapse.html" />
+<link rel="import" href="../iron-icon/iron-icon.html" />
 <link rel="import" href="../iron-icons/iron-icons.html" />
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-material/paper-material.html">
-<link rel="import" href="cosmoz-bind-parent-child-behavior.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html" />
+<link rel="import" href="../paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="../paper-material/paper-material.html" />
+<link rel="import" href="cosmoz-bind-parent-child-behavior.html" />
+<!--
+`<cosmoz-tab-card>` is a container element for a card. It should be used in conjunction with
+`cosmoz-tab` and `cosmoz-tabs`
 
+### Styling
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--cosmoz-tab-card-width` | Card width | `300px`
+`--cosmoz-tab-card` | Mixin applied to the card | `{}`
+`--cosmoz-tab-card-accordion` | Mixin applied to the card in accordion mode | `{}`
+`--cosmoz-tab-card-content` | Mixin applied to the card content | `{}`
+`--cosmoz-tab-card-content-accordion` | Mixin applied to the card content in accordion mode | `{}`
+`--cosmoz-tab-card-header` | Mixin applied to the card header | `{}`
+`--cosmoz-tab-card-header-accordion` | Mixin applied to the card header in accordion mode | `{}`
+-->
 <dom-module id="cosmoz-tab-card">
 	<template>
 		<style>
@@ -37,34 +55,34 @@
 				@apply --cosmoz-tab-card-accordion;
 			}
 
-	  		#tabCardContent {
-	  			@apply --cosmoz-tab-card-content;
-	  		}
+			#tabCardContent {
+				@apply --cosmoz-tab-card-content;
+			}
 
-	  		:host(.cosmoz-tab-card-accordion) #tabCardContent {
-	  			@apply --cosmoz-tab-card-content-accordion;
-	  		}
+			:host(.cosmoz-tab-card-accordion) #tabCardContent {
+				@apply --cosmoz-tab-card-content-accordion;
+			}
 
-	  		#tabCardHeader {
-	  			background-color: #fff;
+			#tabCardHeader {
+				background-color: #fff;
 				cursor: default;
 				-webkit-tap-highlight-color: rgba(0,0,0,0);
 				@apply --layout-horizontal;
 				@apply --layout-center;
-  				@apply --cosmoz-tab-card-header;
-  			}
+				@apply --cosmoz-tab-card-header;
+			}
 
-	  		:host(.cosmoz-tab-card-accordion) #tabCardHeader {
-	  			border-bottom: 1px solid #e2e2e2;
+			:host(.cosmoz-tab-card-accordion) #tabCardHeader {
+				border-bottom: 1px solid #e2e2e2;
 				cursor: pointer;
-	  			@apply --cosmoz-tab-card-header-accordion;
-	  		}
+				@apply --cosmoz-tab-card-header-accordion;
+			}
 
-	  		:host(.cosmoz-tab-card-accordion.cosmoz-tab-card-opened) #tabCardHeader {
-	  			background-color: #efefef;
-	  		}
+			:host(.cosmoz-tab-card-accordion.cosmoz-tab-card-opened) #tabCardHeader {
+				background-color: #efefef;
+			}
 
-	  		#tabCardHeaderIcon {
+			#tabCardHeaderIcon {
 				height: 13px;
 				width: 13px;
 				margin: 0 9px;
