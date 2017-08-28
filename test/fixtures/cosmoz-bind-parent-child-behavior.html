@@ -1,0 +1,19 @@
+<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="../../cosmoz-bind-parent-child-behavior.html">
+
+<dom-module id="test-cosmoz-bind-parent-child-behavior">
+	<template>
+
+	</template>
+</dom-module>
+<script>
+	/*global CosmozTabs*/
+	(function () {
+		Polymer({
+			is: 'test-cosmoz-bind-parent-child-behavior',
+			behaviors: [
+				CosmozTabs.BindParentChildBehavior
+			]
+		});
+	})();
+</script>
