@@ -11,6 +11,9 @@
 	(function () {
 		Polymer({
 			is: 'test-cosmoz-bind-parent-child-behavior',
+			properties: {
+				testPropA: { type: String, readOnly: true, notify: true}
+			},
 			behaviors: [
 				CosmozTabs.BindParentChildBehavior
 			]
