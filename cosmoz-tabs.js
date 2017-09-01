@@ -80,11 +80,30 @@
 			_routeHashParams: {
 				type: Object,
 				notify: true
+			},
+
+			selectable: {
+				type: String,
+				value: 'cosmoz-tab'
+			},
+			activateEvent: {
+				type: String,
+				value: null
+			},
+			selectedClass: {
+				type: String,
+				value: 'cosmoz-selected'
+			},
+			fallbackSelection: {
+				type: String,
+				value: 0
 			}
 		},
 
 		observers: [
-			'_routeHashParamsChanged(_routeHashParams.*)'
+			'_routeHashParamsChanged(_routeHashParams.*)',
+			'_forwardProperty("accordion", accordion, items)',
+			'_forwardProperty("flex", flex, items)'
 		],
 
 		behaviors: [
@@ -469,6 +488,12 @@
 			this.tabs.forEach(function (tab) {
 				tab.toggleOpened(tab.tabId === this.selectedTabId);
 			}, this);
+		},
+
+		_forwardProperty: function (property, value, items) {
+			items.forEach(function (item){
+				item.set(property, value);
+			});
 		}
 	});
 }());
