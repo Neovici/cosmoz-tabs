@@ -188,48 +188,6 @@
 		},
 
 		/**
-		 * Element created lifecycle callback.
-		 * Binds `_updateSelectedTab` as `_delayedUpdateSelectedTab` with `delayed` argument set to `true`.
-		 * @return {void}
-		 */
-		created: function () {
-			this._delayedUpdateSelectedTab = this._updateSelectedTab.bind(this, true);
-		},
-
-		/**
-		 * Element attached lifecycle callback.
-		 * Creates `_tabsObserver` DOM mutation observer that calls `_updateTabs` on change.
-		 * @return {void}
-		 */
-		attached: function () {
-
-			/**
-			 * @param  {Object} info DOM mutation info object
-			 * @return {void}
-			 */
-			this._tabsObserver = Polymer.dom(this).observeNodes(function () {
-				this._updateTabs();
-			}.bind(this));
-		},
-
-		/**
-		 * Element detached lifecycle callback.
-		 * Creates `_tabsObserver` DOM mutation observer and set selected tab to `null`.
-		 * @return {void}
-		 */
-		detached: function () {
-			if (this._tabsObserver) {
-				Polymer.dom(this).unobserveNodes(this._tabsObserver);
-			}
-
-			this.cancelDebouncer('closeAllButSelected');
-
-			this.selectedTabId = null;
-			this._setTabs(null);
-			this._selectedTab = null;
-		},
-
-		/**
 		 * Resets selected tab.
 		 *
 		 * @return {void}
