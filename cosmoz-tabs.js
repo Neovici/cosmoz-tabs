@@ -88,7 +88,8 @@
 		],
 
 		behaviors: [
-			CosmozTabs.BindParentHostBehavior
+			Polymer.IronResizableBehavior,
+			Polymer.IronMultiSelectableBehavior
 		],
 
 		/**
