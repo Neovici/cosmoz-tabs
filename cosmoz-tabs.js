@@ -18,7 +18,6 @@
 				type: Boolean,
 				value: false,
 				notify: true,
-				observer: '_accordionChanged',
 				reflectToAttribute: true
 			},
 
@@ -187,101 +186,7 @@
 			}
 		},
 
-		/**
-		 * Resets selected tab.
-		 *
-		 * @return {void}
-		 */
-		resetTabs: function () {
-			this.tabs.forEach(function (tab) {
-				tab.toggleOpened(false);
-			}, this);
 
-			this._selectedTab = null;
-			this._prevSelectedTabId = null;
-
-			if (this._routeHashParams && this.hashParam) {
-				var newSelectedTabId = this._routeHashParams[this.hashParam];
-				if (newSelectedTabId !== this.selectedTabId) {
-					this.selectedTabId = newSelectedTabId;
-				}
-			}
-
-			this._updateSelectedTab();
-		},
-
-		/**
-		 * Observes dom-change events from `paper-tabs`
-		 * and updates it's `selectedItem` property to the currently selected tab.
-		 *
-		 * @param  {Event} e `dom-change` event
-		 * @return {void}
-		 */
-		_tabsChanged: function () {
-			var paperTabs = this.$$('#paperTabs'),
-				selected;
-			if (paperTabs && !paperTabs.selectedItem && this._selectedTab) {
-				this._ignoreSelectedTabIdChange = true;
-				selected = this.selectedTabId;
-				this.selectedTabId = null;
-				this.selectedTabId = selected;
-				this._ignoreSelectedTabIdChange = false;
-				//paperTabs.fire('iron-items-changed', null, { bubbles: false });
-			}
-		},
-
-		/**
-		 * Updates and resets tabs from dom. Adds listener for
-		 * `cosmoz-tab-property-changed`.
-		 * @return {void}
-		 */
-		_updateTabs: function () {
-			var tabs = Polymer.dom(this).queryDistributedElements('cosmoz-tab');
-
-			tabs.forEach(function (tab) {
-				if (!tab.tabId) {
-					console.error('Required tab-id attribute is missing on cosmoz-tab element.', tab);
-				}
-			}, this);
-
-			this._setTabs(tabs);
-
-			this.resetTabs();
-
-			if (!this._tabPropertyChangedListener) {
-				this.listen(this, 'cosmoz-tab-property-changed', '_onCosmozTabPropertyChanged');
-				this._tabPropertyChangedListener = true;
-			}
-		},
-
-		/**
-		 * Handles `cosmoz-tab-property-changed`
-		 * and updates the `event.detail.tab`'s property.
-		 *
-		 * @param  {type} event description
-		 * @param  {Object} event.detail The event detail object
-		 * @param  {HTMLElement} event.detail.tab The tab to update
-		 * @param  {String} event.detail.propertyName The name of the property
-		 * @listens cosmoz-tab-property-changed
-		 * @return {void}
-		 */
-		_onCosmozTabPropertyChanged: function (event) {
-			// This can occur when a child tab is changing after this tabs has been detached
-			if (this.tabs ===  null) {
-				return;
-			}
-
-			var
-				tab = event.detail.tab,
-				propertyName = event.detail.propertyName,
-				tabIndex = this.tabs.indexOf(tab);
-
-			this.set(['tabs', tabIndex, propertyName], tab.get(propertyName));
-
-			if (propertyName === 'hidden' && !this.accordion) {
-				this.$$('#paperTabs').notifyResize();
-			}
-		},
 		/**
 		 * Observes `_selectedTabIdChanged` changes
 		 * and updates select tab and `_routeHashParams`.
@@ -417,35 +322,6 @@
 		 */
 		_computeTabIconStyle: function (iconColor) {
 			return 'color: ' + iconColor;
-		},
-
-		/**
-		 * Observes `accordion` property changes
-		 * and updates children.
-		 *
-		 * @param  {Boolean} accordion The current value
-		 * @param  {Boolean} oldValue  The old value
-		 * @return {void}
-		 */
-		_accordionChanged: function () {
-			this.notifyBoundChildren('accordion');
-
-			if (this.tabs && this.tabs.length) {
-				// Close all but the selected tab
-				// async, so that the dom-if elements depending on accordion can be re-evaluted
-				this.debounce('closeAllButSelected', this._closeAllButSelected, 30);
-			}
-		},
-
-		/**
-		 * Closes all unselected tabs.
-		 *
-		 * @return {void}
-		 */
-		_closeAllButSelected: function () {
-			this.tabs.forEach(function (tab) {
-				tab.toggleOpened(tab.tabId === this.selectedTabId);
-			}, this);
 		},
 
 		_forwardProperty: function (property, value, items) {
