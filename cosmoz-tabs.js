@@ -21,6 +21,34 @@
 				reflectToAttribute: true
 			},
 
+			activateEvent: {
+				type: String,
+				value: null
+			},
+
+			selectable: {
+				type: String,
+				value: 'cosmoz-tab'
+			},
+
+			selectedClass: {
+				type: String,
+				value: 'cosmoz-selected'
+			},
+			selectedAttribute: {
+				type: String,
+				value: 'selected'
+			},
+			fallbackSelection: {
+				type: String,
+				value: 0
+			},
+
+			multi: {
+				type: String,
+				computed: '_computeMulti(accordion)'
+			},
+
 			/**
 			 * True if the element has class `fit` or `flex`.
 			 */
@@ -79,24 +107,16 @@
 			_routeHashParams: {
 				type: Object,
 				notify: true
-			},
-
-			selectable: {
-				type: String,
-				value: 'cosmoz-tab'
-			},
-			activateEvent: {
-				type: String,
-				value: null
-			},
-			selectedClass: {
-				type: String,
-				value: 'cosmoz-selected'
-			},
-			fallbackSelection: {
-				type: String,
-				value: 0
 			}
+		},
+
+		behaviors: [
+			Polymer.IronResizableBehavior,
+			Polymer.IronMultiSelectableBehavior
+		],
+
+		listeners: {
+			'cosmoz-tab-toggle': '_toggleTab',
 		},
 
 		observers: [
@@ -105,11 +125,9 @@
 			'_forwardProperty("flex", flex, items)'
 		],
 
-		behaviors: [
-			Polymer.IronResizableBehavior,
-			Polymer.IronMultiSelectableBehavior
-		],
-
+		_computeMulti: function (accordion){
+			return !!accordion;
+		},
 		/**
 		 * Computes the `flex` property.
 		 *
@@ -203,71 +221,6 @@
 		},
 
 		/**
-		 * Schedules a debouncer for updating the selected tab.
-		 *
-		 * @param  {Number} delay The delay of the debouncer
-		 * @return {void}
-		 */
-		_scheduleUpdateSelectedTab: function (delay) {
-			this.debounce('_scheduleUpdateSelectedTab', this._delayedUpdateSelectedTab, delay);
-		},
-
-		/**
-		 * Updates the selected tab.
-		 *
-		 * @param  {Boolean} delayed True if this is a delayed/debounced call
-		 * @return {void}
-		 */
-		_updateSelectedTab: function (delayed) {
-			var selectedTab,
-				defaultTabId,
-				prevSelectedTabId,
-				prevSelectedTab;
-
-			if (!this.tabs || !this.tabs.length) {
-				this._selectedTab = null;
-				return;
-			}
-
-			if (!this.selectedTabId) {
-				if (!delayed) {
-					this._scheduleUpdateSelectedTab(this.autoSelectDefaultDelay);
-				} else {
-					defaultTabId = this.tabs[0].tabId;
-					this.selectedTabId = defaultTabId;
-				}
-				return;
-			}
-
-			selectedTab = this._getTabById(this.selectedTabId);
-
-			this._selectedTab = selectedTab;
-
-			if (!selectedTab) {
-				if (!delayed) {
-					this._scheduleUpdateSelectedTab(this.autoSelectDefaultDelay);
-				} else {
-					// tab specified by selected-tab-id does not exists,
-					// select default tab (first)
-					defaultTabId = this.tabs[0].tabId;
-					this._autoSelectDefault = true;
-					this.selectedTabId = defaultTabId;
-					this._autoSelectDefault = false;
-				}
-			} else {
-				this.cancelDebouncer('_scheduleUpdateSelectedTab');
-
-				prevSelectedTabId = this._prevSelectedTabId;
-				this._prevSelectedTabId = this.selectedTabId;
-
-				if (prevSelectedTabId !== this.selectedTabId) {
-					prevSelectedTab = this._getTabById(prevSelectedTabId);
-					this._openTab(selectedTab, prevSelectedTab);
-				}
-			}
-		},
-
-		/**
 		 * Opens the passed tab and closes the old one.
 		 *
 		 * @param  {HTMLElement} tab The tab to open
@@ -328,6 +281,13 @@
 			items.forEach(function (item){
 				item.set(property, value);
 			});
+		},
+
+		_toggleTab: function (e){
+			var item = e.target,
+				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+
+			this.select(value);
 		}
 	});
 }());
