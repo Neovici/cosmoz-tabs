@@ -34,12 +34,6 @@ Custom property | Description | Default
 				margin-bottom: 3px;
 			}
 
-			:host(.flex),
-			:host(.flex) > #standard-layout,
-			:host(.flex) > #standard-layout > iron-pages {
-				@apply --layout-vertical;
-				@apply --layout-flex;
-			}
 
 			#paperTabs {
 				background-color: #fff;
@@ -98,35 +92,43 @@ Custom property | Description | Default
 				--paper-badge-margin-left: 25px;
 			}
 
+
+			:host(.flex),
+			:host(.flex) > #standard-layout,
+			:host(.flex) > #standard-layout > iron-pages {
+				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+
+			:host(:not([accordion])) .pages ::slotted(:not(.cosmoz-selected)) {
+				display: none !important;
+			}
+
 		</style>
 
 		<cosmoz-page-location id="pageLocation" route-hash-params="{{ _routeHashParams }}"></cosmoz-page-location>
+
 		<template is="dom-if" if="[[ !accordion ]]" restamp>
-			<div id="standard-layout">
-				<paper-material elevation="1">
-					<paper-tabs id="paperTabs" selected="{{ selectedTabId }}" attr-for-selected="data-tabid" no-slide on-dom-change="_tabsChanged">
-						<template is="dom-repeat" items="[[ tabs ]]" as="tab" index-as="tabIndex">
-							<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" data-tabid$="[[ tab.tabId ]]">
-								<a href$="[[ _getTabLink(tab, _routeHashParams.*) ]]" tabindex="-1" class="link">
-									<iron-icon hidden class="headingIcon" icon="[[ _getIcon(tab, selectedTabId, accordion) ]]"
-										style$="[[ _computeTabIconStyle(tab.iconColor) ]]"></iron-icon>
-									<h1 id$="tabHeading[[tabIndex]]" class="heading">[[ tab.heading ]]</h1>
-									<paper-badge for="tabHeading[[tabIndex]]" hidden$="[[ !tab.badge ]]" label="[[ tab.badge ]]"></paper-badge>
-								</a>
-							</paper-tab>
-						</template>
-					</paper-tabs>
-				</paper-material>
-				<iron-pages attr-for-selected="tab-id" selected="{{ selectedTabId }}" class$="[[ _getOverflowClass(flex) ]]">
-					<slot></slot>
-				</iron-pages>
-			</div>
+			<paper-material elevation="1">
+				<paper-tabs id="paperTabs" selected="{{ selected }}" attr-for-selected="{{ attrForSelected }}" no-slide>
+					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
+						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" data-tabid$="[[ tab.tabId ]]">
+							<a href$="[[ _getTabLink(tab, _routeHashParams.*) ]]" tabindex="-1" class="link">
+								<iron-icon hidden class="headingIcon" icon="[[ _getIcon(tab, selectedTabId, accordion) ]]"
+									style$="[[ _computeTabIconStyle(tab.iconColor) ]]"></iron-icon>
+								<h1 id$="tabHeading[[tabIndex]]" class="heading">[[ tab.heading ]]</h1>
+								<paper-badge for="tabHeading[[tabIndex]]" hidden$="[[ !tab.badge ]]" label="[[ tab.badge ]]"></paper-badge>
+							</a>
+						</paper-tab>
+					</template>
+				</paper-tabs>
+			</paper-material>
 		</template>
-		<template is="dom-if" if="[[ accordion ]]" restamp>
-			<div id="accordion-layout">
-				<slot></slot>
-			</div>
-		</template>
+
+		<div class="pages">
+			<slot></slot>
+		</div>
+
 	</template>
 	<script type="text/javascript" src="cosmoz-tabs.js"></script>
 </dom-module>
