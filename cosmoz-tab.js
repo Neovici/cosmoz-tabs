@@ -27,12 +27,23 @@
 			/**
 			 * True if the tab is opened.
 			 */
-			opened: {
+			selected: {
 				type: Boolean,
-				readOnly: true,
-				notify: true
+				reflectToAttribute: true,
+				notify: true,
+				value: false
 			},
 
+			/**
+			 * Indicates wether the parent `cosmoz-tabs` should be displayed using an accordion.
+			 * Bound to same  property on parent `cosmoz-tabs`.
+			 */
+			accordion: {
+				type: Boolean,
+				reflectToAttribute: true,
+				value: false,
+				notify: true
+			},
 			/**
 			 * If true, the tab will be hidden
 			 */
@@ -40,7 +51,6 @@
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true,
-				observer: '_hiddenChanged'
 			},
 
 			/**
@@ -50,7 +60,6 @@
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true,
-				observer: '_disabledChanged'
 			},
 
 			/**
@@ -58,16 +67,7 @@
 			 */
 			heading: {
 				type: String,
-				observer: '_headingChanged'
-			},
-
-			/**
-			 * Indicates wether the parent `cosmoz-tabs` should be displayed using an accordion.
-			 * Bound to same  property on parent `cosmoz-tabs`.
-			 */
-			accordion: {
-				type: Boolean,
-				readOnly: true
+				// observer: '_headingChanged'
 			},
 
 			/**
@@ -76,7 +76,7 @@
 			 */
 			flex: {
 				type: Boolean,
-				readOnly: true
+				// readOnly: true
 			},
 			/**
 			 * The icon of the tab.
@@ -84,7 +84,7 @@
 			icon: {
 				type: String,
 				value: 'radio-button-unchecked',
-				observer: '_iconChanged'
+				// observer: '_iconChanged'
 			},
 
 			/**
@@ -93,7 +93,7 @@
 			selectedIcon: {
 				type: String,
 				value: 'radio-button-checked',
-				observer: '_selectedIconchanged'
+				// observer: '_selectedIconchanged'
 			},
 
 			/**
@@ -102,7 +102,7 @@
 			iconColor: {
 				type: String,
 				value: '#15b0d3',
-				observer: '_iconColorChanged'
+				// observer: '_iconColorChanged'
 			},
 
 			/**
@@ -131,7 +131,8 @@
 			 * Used in the template to conditionaly render an iron-collapse.
 			 */
 			_useCollapse: {
-				type: Boolean
+				type: Boolean,
+				value: false,
 			},
 
 			/**
@@ -148,16 +149,8 @@
 			 */
 			badge: {
 				type: String,
-				observer: '_badgeChanged'
-			},
-
-			/**
-			 * True when `badge` propery is set.
-			 */
-			_showBadge: {
-				type: Boolean,
-				value: false,
-				computed: '_computeShowBadge(badge)'
+				value: ''
+				// observer: '_badgeChanged'
 			}
 		},
 
@@ -167,7 +160,6 @@
 
 		behaviors: [
 			Polymer.IronResizableBehavior,
-			CosmozTabs.BindParentChildBehavior
 		],
 
 		/**
@@ -176,8 +168,8 @@
 		 * @return {void}
 		 */
 		attached: function () {
-			this.bindParentProperty('accordion');
-			this.bindParentProperty('flex');
+			// this.bindParentProperty('accordion');
+			// this.bindParentProperty('flex');
 			this._cardsObserver = Polymer.dom(this.$.tabContent).observeNodes(this._updateCards.bind(this));
 		},
 
@@ -193,89 +185,6 @@
 		},
 
 		/**
-		 * Fires `cosmoz-tab-property-change` event
-		 * @param  {String} propertyName The property that changed
-		 * @fires cosmoz-tab-property-change
-		 * @return {void}
-		 */
-		_fireTabPropertyChanged: function (propertyName) {
-			this.fire('cosmoz-tab-property-changed', { tab: this, propertyName: propertyName});
-		},
-
-		/**
-		 * Observes `disabled` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_disabledChanged: function () {
-			this._fireTabPropertyChanged('disabled');
-		},
-
-		/**
-		 * Observes `hidden` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_hiddenChanged: function () {
-			this._fireTabPropertyChanged('hidden');
-		},
-
-		/**
-		 * Observes `heading` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_headingChanged: function () {
-			this._fireTabPropertyChanged('heading');
-		},
-
-		/**
-		 * Observes `icon` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_iconChanged: function () {
-			this._fireTabPropertyChanged('icon');
-		},
-
-		/**
-		 * Observes `selectedIcon` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_selectedIconchanged: function () {
-			this._fireTabPropertyChanged('selectedIcon');
-		},
-
-		/**
-		 * Observes `iconColor` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_iconColorChanged: function () {
-			this._fireTabPropertyChanged('iconColor');
-		},
-
-		/**
-		 * Observes `badge` property changes and calls `_fireTabPropertyChanged`
-		 *
-		 * @return {void}
-		 */
-		_badgeChanged: function () {
-			this._fireTabPropertyChanged('badge');
-		},
-
-		/**
-		 * Computes `_showBadge` property if `badge` propery is set to non-empty value.
-		 *
-		 * @param  {String} badge The badge propery
-		 * @return {Boolean} True if badge should be shown
-		 */
-		_computeShowBadge: function (badge) {
-			return badge !== undefined && badge !== null && badge !== 0 && badge !== '';
-		},
-
-		/**
 		 * `tap` event listener.
 		 * Handles opening/closing of the tab in accordion mode.
 		 *
@@ -284,12 +193,7 @@
 		 * @return {void}
 		 */
 		_onTap: function () {
-			// Handle opening/closing of the tab in accordion mode
-			// Otherwise, cosmoz-tabs will take care of showing/hiding the tab with animations.
-			if (this.accordion) {
-				console.log(this.tabId + ' tap ' + this.opened);
-				this.toggleOpened(!this.opened);
-			}
+			this.fire('cosmoz-tab-toggle');
 		},
 
 		/**
@@ -366,42 +270,8 @@
 			this._useCollapse = accordion && !useCards;
 
 		},
-
-		/**
-		 * Toggles the opened state of the element.
-		 * Calls`toggleOpened` on all cards that it contains.
-		 *
-		 * @param  {Boolean} opened True if element should be opened
-		 * @fires cosmoz-tab-opened
-		 * @return {void}
-		 */
-		toggleOpened: function (opened) {
-
-			this.toggleClass('cosmoz-tab-opened', opened);
-
-			this._setOpened(opened);
-
-			if (opened) {
-				this.fire('cosmoz-tab-opened');
-			}
-
-			if (!this.accordion) {
-				return;
-			}
-
-			if (!this._useCards) {
-				// Just in case there are some resizable elements in this tab
-				this.debounce('notifyResize', this.notifyResize, 30);
-				return;
-			}
-
-			if (opened) {
-				this.cards[0].toggleOpened(true);
-			} else {
-				this.cards.forEach(function (card) {
-					card.toggleOpened(false);
-				});
-			}
+		computeOpened: function (_useCards, selected){
+			return _useCards || selected;
 		}
 	});
 }());

@@ -39,11 +39,6 @@
 				type: String,
 				value: 'selected'
 			},
-			fallbackSelection: {
-				type: String,
-				value: 0
-			},
-
 			multi: {
 				type: String,
 				computed: '_computeMulti(accordion)'
@@ -221,21 +216,6 @@
 		},
 
 		/**
-		 * Opens the passed tab and closes the old one.
-		 *
-		 * @param  {HTMLElement} tab The tab to open
-		 * @param  {HTMLElement|void|null} old The tab to close
-		 * @return {void}
-		 */
-		_openTab: function (tab, old) {
-			if (old) {
-				old.toggleOpened(false);
-			}
-
-			tab.toggleOpened(true);
-		},
-
-		/**
 		 * Returns a tab by it's id.
 		 *
 		 * @param  {String} tabId The tab's id
@@ -288,6 +268,9 @@
 				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
 
 			this.select(value);
+		},
+		_computeTabAttr: function (tab, index, attrForSelected) {
+			return attrForSelected && tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || index;
 		}
 	});
 }());
