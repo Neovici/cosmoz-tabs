@@ -46,7 +46,8 @@ Custom property | Description | Default
 			}
 
 			/* do not display tab header when in accordion mode and using cards */
-			:host([accordion][use-cards]) > #tabHeader {
+			:host(:not([accordion])) > #tabHeader,
+			:host([accordion][has-cards]) > #tabHeader {
 				display: none;
 			}
 
@@ -59,10 +60,6 @@ Custom property | Description | Default
 
 			:host([is-selected]) > #tabHeader {
 				@apply --cosmoz-tab-header-selected;
-			}
-
-			:host(:not([accordion])) > #tabHeader {
-				display: none;
 			}
 
 			:host([accordion]) > #tabHeader {
