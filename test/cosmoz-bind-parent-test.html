@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+	<title>cosmoz-bind-parent-* test</title>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes'>
+	<script src='../../webcomponentsjs/webcomponents-lite.js'></script>
+	<script src='../../web-component-tester/browser.js'></script>
+
+	<link rel='import' href='./fixtures/cosmoz-bind-parent-child-behavior.html'>
+	<link rel='import' href='./fixtures/cosmoz-bind-parent-host-behavior.html'>
+</head>
+<body>
+	<test-fixture id="test-cosmoz-bind-parent">
+		<template>
+			<test-cosmoz-bind-parent-host-behavior>
+				<test-cosmoz-bind-parent-child-behavior></test-cosmoz-bind-parent-child-behavior>
+			</test-cosmoz-bind-parent-host-behavior>
+		</template>
+	</test-fixture>
+
+
+	<script type="text/javascript">
+	(function () {
+		'use strict';
+
+		suite('cosmoz-bind-parent-*', function () {
+			var bindHostHelper,
+				bindChildHelper;
+
+			setup(function (done) {
+				bindHostHelper =  fixture('test-cosmoz-bind-parent');
+				bindChildHelper = bindHostHelper.firstElementChild;
+				flush(done);
+			});
+
+			test('instantiates a cosmoz-bind-parent-host-behavior instance', function () {
+				assert.equal(bindHostHelper.is, 'test-cosmoz-bind-parent-host-behavior');
+				assert.isFunction(bindHostHelper.notifyBoundChildren);
+				assert.isFunction(bindHostHelper._notifyChild);
+				assert.isFunction(bindHostHelper._onBindParentProperty);
+				assert.isFunction(bindHostHelper._onUnbindParentProperty);
+
+			});
+
+			test('instantiates a cosmoz-bind-parent-child-behavior instance', function () {
+				assert.equal(bindChildHelper.is, 'test-cosmoz-bind-parent-child-behavior');
+				assert.isFunction(bindChildHelper.bindParentProperty);
+				assert.isFunction(bindChildHelper._parentPropertyChanged);
+			});
+
+
+			test('binds parent property', function (done) {
+				var testProperty = 'testPropA';
+
+				bindChildHelper.addEventListener('cosmoz-bind-parent-property', function (e){
+					//it fired on child
+					assert.isObject(e.detail);
+					assert.equal(e.detail.propertyName, testProperty);
+					assert.equal(e.detail.element, bindChildHelper);
+
+					bindHostHelper.addEventListener('cosmoz-bind-parent-property', function (e){
+						// it fired on host
+						assert.isObject(e.detail);
+						assert.equal(e.detail.propertyName, testProperty);
+						assert.equal(e.detail.element, bindChildHelper);
+
+						flush(function (){
+							//registers bound child and property
+							assert.isObject(bindHostHelper._boundChildren);
+							assert.isArray(bindHostHelper._boundChildren[testProperty]);
+							assert.include(bindHostHelper._boundChildren[testProperty], bindChildHelper);
+
+							// it set the propery on child calling _notifyChild
+							assert.equal(bindChildHelper[testProperty], bindHostHelper[testProperty]);
+
+							bindChildHelper.addEventListener('cosmoz-parent-property-changed', function (e){
+								assert.isObject(e.detail);
+								assert.equal(e.detail.propertyName, testProperty);
+
+								flush(function (){
+									assert.isObject(e.detail);
+									assert.equal(bindChildHelper[testProperty], 'changedPropA');
+									assert.equal(bindChildHelper[testProperty], bindHostHelper[testProperty]);
+									done();
+								});
+							});
+							//change property on host
+							bindHostHelper.set(testProperty, 'changedPropA');
+						});
+					});
+				});
+
+				bindChildHelper.bindParentProperty(testProperty);
+
+				assert.isArray(bindChildHelper._parentBoundProperties);
+				assert.include(bindChildHelper._parentBoundProperties, testProperty);
+			});
+
+			test('unbinds parent property on detach', function (done) {
+				var testProperty = 'testPropA';
+
+				bindHostHelper.addEventListener('cosmoz-bind-parent-property', function (){
+					flush(function (){
+						assert.isArray(bindHostHelper._boundChildren[testProperty]);
+						assert.include(bindHostHelper._boundChildren[testProperty], bindChildHelper);
+
+						assert.equal(bindChildHelper[testProperty], bindHostHelper[testProperty]);
+
+						//detach the children
+						bindHostHelper.addEventListener('cosmoz-unbind-parent-property', function (e){
+
+							assert.isObject(e.detail);
+							assert.equal(e.detail.propertyName, testProperty);
+							assert.equal(e.detail.element, bindChildHelper);
+
+							flush(function (){
+								assert.notInclude(bindHostHelper._boundChildren[testProperty]);
+								done();
+							});
+						});
+						//remove the children
+						bindHostHelper.remove();
+					});
+				});
+
+				// nothing is bound when instantiated
+				assert.isNotOk(bindChildHelper._parentBoundProperties);
+
+				// bind property
+				bindChildHelper.bindParentProperty(testProperty);
+				assert.include(bindChildHelper._parentBoundProperties, testProperty);
+
+			});
+		});
+	})();
+	</script>
+</body>

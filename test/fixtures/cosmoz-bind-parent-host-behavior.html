@@ -1,0 +1,29 @@
+<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="../../cosmoz-bind-parent-host-behavior.html">
+
+<dom-module id="test-cosmoz-bind-parent-host-behavior">
+	<template>
+		<slot></slot>
+	</template>
+</dom-module>
+<script>
+	/*global CosmozTabs*/
+	(function () {
+		Polymer({
+			is: 'test-cosmoz-bind-parent-host-behavior',
+			properties: {
+				testPropA: {
+					type: String,
+					value: 'initial',
+					observer: '_testPropAChanged'
+				}
+			},
+			behaviors: [
+				CosmozTabs.BindParentHostBehavior
+			],
+			_testPropAChanged: function (){
+				this.notifyBoundChildren('testPropA');
+			}
+		});
+	})();
+</script>
