@@ -128,14 +128,13 @@ Custom property | Description | Default
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
 		<div id="tabHeader" on-tap="_onTap">
-			<iron-icon id="tabHeaderIcon" icon="[[ _getIcon(selected, icon, selectedIcon, accordion) ]]"
-				style$="[[ _computeIconStyle(iconColor) ]]"></iron-icon>
+			<iron-icon id="tabHeaderIcon" icon="[[ getIcon(selected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading"><span id="tabHeading">[[ heading ]]</span></h1>
 			<paper-badge for="tabHeading" hidden$="[[ !badge ]]" label="[[ badge ]]"></paper-badge>
 			<paper-icon-button icon="[[ _computeOpenedIcon(selected) ]]"></paper-icon-button>
 		</div>
 
-		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ computeOpened(_useCards, selected) ]]">
+		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(_useCards, selected) ]]">
 			<div class$="[[ _tabContentClass ]]">
 				<slot id="tabContent"></slot>
 			</div>

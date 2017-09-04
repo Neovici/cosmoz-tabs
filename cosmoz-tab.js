@@ -67,7 +67,6 @@
 			 */
 			heading: {
 				type: String,
-				// observer: '_headingChanged'
 			},
 
 			/**
@@ -78,13 +77,13 @@
 				type: Boolean,
 				// readOnly: true
 			},
+
 			/**
 			 * The icon of the tab.
 			 */
 			icon: {
 				type: String,
 				value: 'radio-button-unchecked',
-				// observer: '_iconChanged'
 			},
 
 			/**
@@ -93,7 +92,6 @@
 			selectedIcon: {
 				type: String,
 				value: 'radio-button-checked',
-				// observer: '_selectedIconchanged'
 			},
 
 			/**
@@ -102,7 +100,6 @@
 			iconColor: {
 				type: String,
 				value: '#15b0d3',
-				// observer: '_iconColorChanged'
 			},
 
 			/**
@@ -127,15 +124,6 @@
 			},
 
 			/**
-			 * Equivalent to (accordion && !useCards)
-			 * Used in the template to conditionaly render an iron-collapse.
-			 */
-			_useCollapse: {
-				type: Boolean,
-				value: false,
-			},
-
-			/**
 			 * The array of `cosmoz-tab-card` that this element contains.
 			 */
 			cards: {
@@ -150,7 +138,6 @@
 			badge: {
 				type: String,
 				value: ''
-				// observer: '_badgeChanged'
 			}
 		},
 
@@ -207,18 +194,13 @@
 			this._useCards = cards && cards.length;
 		},
 
-		/**
-		 * Computes the element's icon depending on the `opened` property
+		/** Computes CSS style depending on color.
 		 *
-		 * @param  {Boolean} opened True if tab is opened
-		 * @return {void}
+		 * @param  {String} iconColor The hex color
+		 * @return {String}           The CSS style
 		 */
-		_getIcon: function (opened) {
-			if (opened && !this.accordion) {
-				return this.selectedIcon;
-			}
-			return this.icon;
-
+		_computeIconStyle: function (iconColor) {
+			return 'color: ' + iconColor;
 		},
 
 		/**
@@ -233,13 +215,14 @@
 				: 'expand-more';
 		},
 
-		/** Computes CSS style depending on color.
-		 *
-		 * @param  {String} iconColor The hex color
-		 * @return {String}           The CSS style
-		 */
-		_computeIconStyle: function (iconColor) {
-			return 'color: ' + iconColor;
+		getIcon: function () {
+			return this.selected && !this.accordion ? this.selectedIcon : this.icon;
+		},
+
+		getIconStyle: function (){
+			if (this.iconColor) {
+				return 'color: ' + this.iconColor;
+			}
 		},
 
 		/**
@@ -263,14 +246,11 @@
 
 			this._tabContentClass = tabContentClass;
 
-			this.toggleClass('cosmoz-tab-accordion', accordion);
 			this.toggleClass('cosmoz-tab-use-cards', useCards);
 			this.toggleClass('flex', useFlex);
-
-			this._useCollapse = accordion && !useCards;
-
 		},
-		computeOpened: function (_useCards, selected){
+
+		_computeOpened: function (_useCards, selected){
 			return _useCards || selected;
 		}
 	});
