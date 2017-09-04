@@ -40,6 +40,10 @@
 			}
 		},
 
+		listeners: {
+			'cosmoz-tab-toggle': '_onToggleTab',
+		},
+
 		observers: [
 			'forwardProperty("accordion", accordion, items)',
 			'forwardProperty("flex", flex, items)'
@@ -52,9 +56,11 @@
 
 		_onToggleTab: function (e){
 			var item = e.target,
-				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+				index = this.items.indexOf(item);
 
-			this.select(value);
+			if (index > -1) {
+				this.select(this.attrForSelected ? this._valueForItem(item) : index);
+			}
 		},
 
 		forwardProperty: function (property, value, items) {

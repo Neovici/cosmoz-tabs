@@ -52,18 +52,6 @@
 		},
 		_computeOpened: function (hasCards, isSelected){
 			return hasCards || isSelected;
-		},
-
-		/**
-		 * `tap` event listener.
-		 * Handles opening/closing of the tab in accordion mode.
-		 *
-		 * @param  {Event} event The `tap` event
-		 * @listens tap
-		 * @return {void}
-		 */
-		_onTap: function () {
-			this.fire('cosmoz-tab-toggle');
 		}
 
 

@@ -109,7 +109,7 @@ Custom property | Description | Default
 		</style>
 
 		<paper-material id="tabCard" elevation="[[ elevation ]]">
-			<div id="tabCardHeader" on-tap="_onCardActivate">
+			<div id="tabCardHeader" on-tap="_onToggleTap">
 				<iron-icon id="tabCardHeaderIcon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
 					style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
 				<h1 class="heading">[[ heading ]]</h1>

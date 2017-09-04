@@ -129,7 +129,7 @@ Custom property | Description | Default
 			tabHeader will displayed only in accordion mode.
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
-		<div id="tabHeader" on-tap="_onTap">
+		<div id="tabHeader" on-tap="_onToggleTap">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading"><span id="tabHeading">[[ heading ]]</span></h1>
 			<paper-badge for="tabHeading" hidden$="[[ !badge ]]" label="[[ badge ]]"></paper-badge>

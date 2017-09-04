@@ -28,20 +28,8 @@
 		_computeElevation: function (accordion) {
 			return accordion ? 0 : 1;
 		},
-
-		/**
-		 * `tap` event listener.
-		 * Calls `toggleOpened` to toggle the opened state.
-		 *
-		 * @param  {Event} event The `tap` event
-		 * @listens tap
-		 * @return {void}
-		 */
-		_onCardActivate: function () {
-			this.toggleOpened(!this.opened);
-		},
 		_computeOpened: function (accordion, isSelected){
-			return accordion || isSelected;
+			return !accordion || isSelected;
 		},
 	});
 }());

@@ -96,6 +96,10 @@
 			if (this.iconColor) {
 				return 'color: ' + this.iconColor;
 			}
+		},
+
+		_onToggleTap: function () {
+			this.fire('cosmoz-tab-toggle');
 		}
 	};
 })();

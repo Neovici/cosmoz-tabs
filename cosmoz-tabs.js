@@ -58,10 +58,6 @@
 			Cosmoz.TabsBehavior
 		],
 
-		listeners: {
-			'cosmoz-tab-toggle': '_onToggleTab',
-		},
-
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*)'
 		],
