@@ -40,6 +40,11 @@
 			}
 		},
 
+		observers: [
+			'forwardProperty("accordion", accordion, items)',
+			'forwardProperty("flex", flex, items)'
+		],
+
 		_computeMulti: function (accordion){
 			return !!accordion;
 		},

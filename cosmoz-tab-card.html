@@ -111,8 +111,7 @@ Custom property | Description | Default
 
 		<paper-material id="tabCard" elevation="[[ elevation ]]">
 			<div id="tabCardHeader" on-tap="_onCardActivate">
-				<iron-icon id="tabCardHeaderIcon" hidden$="[[ !accordion ]]"
-					icon="{{ icon }}" style$="{{ _computeIconStyle(iconColor)}}"></iron-icon>
+				<iron-icon id="tabCardHeaderIcon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 				<h1 class="heading">[[ heading ]]</h1>
 				<slot name="card-actions"></slot>
 				<paper-icon-button hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>

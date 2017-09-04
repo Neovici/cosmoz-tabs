@@ -63,9 +63,7 @@
 		},
 
 		observers: [
-			'_routeHashParamsChanged(_routeHashParams.*)',
-			'forwardProperty("accordion", accordion, items)',
-			'forwardProperty("flex", flex, items)'
+			'_routeHashParamsChanged(_routeHashParams.*)'
 		],
 
 		/**
