@@ -14,6 +14,11 @@
 				type: Boolean,
 				computed: '_computeFlex(class)'
 			},
+
+			selectable: {
+				type: String,
+				value: 'cosmoz-tab'
+			},
 			/**
 			 * The currently selected tab's id.
 			 */

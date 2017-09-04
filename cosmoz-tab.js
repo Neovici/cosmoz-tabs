@@ -20,6 +20,11 @@
 				reflectToAttribute: true,
 			},
 
+			selectable: {
+				type: String,
+				value: 'cosmoz-tab-card'
+			},
+
 			/**
 			 *  If true, the tab will be disabled
 			 */
