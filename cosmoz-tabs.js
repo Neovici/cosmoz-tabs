@@ -7,49 +7,13 @@
 		is: 'cosmoz-tabs',
 
 		properties: {
-
-			/**
-			 * Indicates wether the tabs should be displayed using an accordion.
-			 * You can bind this property to a value that changes based on the
-			 * available witdth.
-			 */
-			accordion: {
-				type: Boolean,
-				value: false,
-				notify: true,
-				reflectToAttribute: true
-			},
-
-			activateEvent: {
-				type: String,
-				value: null
-			},
-
-			selectable: {
-				type: String,
-				value: 'cosmoz-tab'
-			},
-			selectedClass: {
-				type: String,
-				value: 'cosmoz-selected'
-			},
-			selectedAttribute: {
-				type: String,
-				value: 'selected'
-			},
-			multi: {
-				type: String,
-				computed: '_computeMulti(accordion)'
-			},
-
 			/**
 			 * True if the element has class `fit` or `flex`.
-			 */
+			*/
 			flex: {
 				type: Boolean,
 				computed: '_computeFlex(class)'
 			},
-
 			/**
 			 * The currently selected tab's id.
 			 */
@@ -86,8 +50,7 @@
 		},
 
 		behaviors: [
-			Polymer.IronResizableBehavior,
-			Polymer.IronMultiSelectableBehavior
+			Cosmoz.TabsBehavior
 		],
 
 		listeners: {
@@ -96,13 +59,10 @@
 
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*)',
-			'_forwardProperty("accordion", accordion, items)',
-			'_forwardProperty("flex", flex, items)'
+			'forwardProperty("accordion", accordion, items)',
+			'forwardProperty("flex", flex, items)'
 		],
 
-		_computeMulti: function (accordion){
-			return !!accordion;
-		},
 		/**
 		 * Computes the `flex` property.
 		 *
@@ -185,22 +145,7 @@
 			}
 		},
 
-		_forwardProperty: function (property, value, items) {
-			items.forEach(function (item){
-				item.set(property, value);
-			});
-		},
 
-		_onToggleTab: function (e){
-			var item = e.target,
-				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-
-			this.select(value);
-		},
-
-		_computeTabAttr: function (tab, index, attrForSelected) {
-			return attrForSelected && tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || index;
-		},
 
 		/**
 		 * Computes icon for a tab.
@@ -222,6 +167,8 @@
 			return tab.getIconStyle();
 		},
 
-
+		_computeTabAttr: function (tab, index, attrForSelected) {
+			return attrForSelected && (tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || tab.getAttribute(attrForSelected)) || index;
+		}
 	});
 }());

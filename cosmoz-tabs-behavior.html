@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-selector/iron-multi-selectable.html">
+
+<script>
+(function () {
+	'use strict';
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	 * @polymerBehavior Cosmoz.TabsBehavior
+	*/
+	Cosmoz.TabsBehaviorImpl = {
+		properties: {
+			accordion: {
+				type: Boolean,
+				value: false,
+				notify: true,
+				reflectToAttribute: true
+			},
+
+			activateEvent: {
+				type: String,
+				value: null
+			},
+
+			selectable: {
+				type: String,
+				value: 'cosmoz-tab'
+			},
+
+			selectedClass: {
+				type: String,
+				value: 'cosmoz-selected'
+			},
+
+			selectedAttribute: {
+				type: String,
+				value: 'is-selected'
+			},
+
+			multi: {
+				type: String,
+				computed: '_computeMulti(accordion)'
+			}
+		},
+
+		_computeMulti: function (accordion){
+			return !!accordion;
+		},
+
+
+		_onToggleTab: function (e){
+			var item = e.target,
+				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+
+			this.select(value);
+		},
+
+		forwardProperty: function (property, value, items) {
+			items.forEach(function (item){
+				item.set(property, value);
+			});
+		}
+	};
+
+	/** @polymerBehavior */
+	Cosmoz.TabsBehavior = [
+		Polymer.IronResizableBehavior,
+		Polymer.IronMultiSelectableBehavior,
+		Cosmoz.TabsBehaviorImpl
+	];
+})();
+</script>

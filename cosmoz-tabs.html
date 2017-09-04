@@ -2,10 +2,9 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../paper-tabs/paper-tab.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../iron-selector/iron-multi-selectable.html">
 <link rel="import" href="../cosmoz-page-router/cosmoz-page-location.html">
 
+<link rel="import" href="cosmoz-tabs-behavior.html">
 <link rel="import" href="cosmoz-tab.html">
 
 <!--
@@ -89,7 +88,7 @@ Custom property | Description | Default
 				will-change: transform;
 			}
 
-			:host(:not([accordion])) .pages ::slotted(:not(.cosmoz-selected)) {
+			:host(:not([accordion])) .pages ::slotted(:not([is-selected])) {
 				display: none !important;
 			}
 
@@ -99,11 +98,11 @@ Custom property | Description | Default
 
 		<template is="dom-if" if="[[ !accordion ]]" restamp>
 			<paper-material elevation="1">
-				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attr" no-slide>
+				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide>
 					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" tab-attr="[[ _computeTabAttr(tab, tabIndex, attrForSelected) ]]">
+						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" tab-attribute$="[[ _computeTabAttr(tab, tabIndex, attrForSelected) ]]">
 							<a href$="[[ _getTabLink(tab, _routeHashParams.*) ]]" tabindex="-1" class="link">
-								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.selected) ]]" style$="[[ _computeIconStyle(tab, selectedItem.selected) ]]"></iron-icon>
+								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]" style$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
 								<h1 id$="tabHeading[[ tabIndex ]]" class="heading">[[ tab.heading ]]</h1>
 								<paper-badge for="tabHeading[[ tabIndex ]]" hidden$="[[ !tab.badge ]]" label="[[ tab.badge ]]"></paper-badge>
 							</a>
