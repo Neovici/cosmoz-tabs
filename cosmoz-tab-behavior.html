@@ -1,0 +1,101 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+(function () {
+	'use strict';
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	 * @polymerBehavior Cosmoz.TabBehavior
+	*/
+	Cosmoz.TabBehavior = {
+		properties: {
+			/**
+			 * If true, the tab will be hidden
+			 */
+			isSelected: {
+				type: Boolean,
+				value: false,
+				reflectToAttribute: true,
+				notify: true
+			},
+
+			accordion: {
+				type: Boolean,
+				value: false,
+				notify: true,
+				reflectToAttribute: true
+			},
+			/**
+			 * True if the parent `cosmoz-tabs` has class `fit` or `flex`.
+			 * Bound to same  property on parent `cosmoz-tabs`.
+			 */
+			flex: {
+				type: Boolean,
+				value: false,
+				reflectToAttribute: true,
+			},
+			/**
+			 * The tab's heading text.
+			 */
+			heading: {
+				type: String,
+			},
+
+			/**
+			 * The icon of the tab.
+			 */
+			icon: {
+				type: String,
+				value: 'radio-button-unchecked',
+			},
+
+			/**
+			 * The icon of the tab when it is selected.
+			 */
+			selectedIcon: {
+				type: String,
+				value: 'radio-button-checked',
+			},
+
+			/**
+			 *  The color of the tab's icon.
+			 */
+			iconColor: {
+				type: String,
+				value: '#15b0d3',
+			},
+
+			/**
+			 * When not empty the element will contain a `paper-bagde` with the label set to this property.
+			 */
+			badge: {
+				type: String,
+				value: ''
+			},
+		},
+
+		/**
+		 * Computes the element's opened icon depending on the `opened` property
+		 *
+		 * @param  {Boolean} isSelected True if tab is opened
+		 * @return {void}
+		 */
+		_computeOpenedIcon: function (isSelected) {
+			return isSelected
+				? 'expand-less'
+				: 'expand-more';
+		},
+
+		getIcon: function () {
+			return this.isSelected && !this.accordion ? this.selectedIcon : this.icon;
+		},
+
+		getIconStyle: function (){
+			if (this.iconColor) {
+				return 'color: ' + this.iconColor;
+			}
+		}
+	};
+})();
+</script>
