@@ -30,7 +30,6 @@
 				type: String,
 				value: 'cosmoz-tab'
 			},
-
 			selectedClass: {
 				type: String,
 				value: 'cosmoz-selected'
@@ -111,7 +110,7 @@
 		],
 
 		listeners: {
-			'cosmoz-tab-toggle': '_toggleTab',
+			'cosmoz-tab-toggle': '_onToggleTab',
 		},
 
 		observers: [
@@ -263,7 +262,7 @@
 			});
 		},
 
-		_toggleTab: function (e){
+		_onToggleTab: function (e){
 			var item = e.target,
 				value = this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
 
