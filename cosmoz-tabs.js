@@ -1,6 +1,5 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 
-/*global CosmozTabs */
 (function () {
 	'use strict';
 
@@ -52,15 +51,6 @@
 			},
 
 			/**
-			 * The list of tabs from which a selection can be made.
-			 */
-			tabs: {
-				type: Array,
-				notify: true,
-				readOnly: true
-			},
-
-			/**
 			 * The currently selected tab's id.
 			 */
 			selectedTabId: {
@@ -75,15 +65,6 @@
 			hashParam: {
 				type: String,
 				observer: '_hashParamChanged'
-			},
-
-			/**
-			 * The delay (in milliseconds) between when the element is attached
-			 * and when the first tab is automatically selected.
-			 */
-			autoSelectDefaultDelay: {
-				type: Number,
-				value: 20
 			},
 
 			/**
@@ -165,16 +146,6 @@
 		},
 
 		/**
-		 * Computes overflow class
-		 *
-		 * @param  {Boolean} flex True if element is flex
-		 * @return {String}   The overflow class
-		 */
-		_getOverflowClass: function (flex) {
-			return flex ? 'flex-scroll' : '';
-		},
-
-		/**
 		 * Returns the url for a tab.
 		 *
 		 * @param  {HTMLElement} tab The tab to compute link for
@@ -214,48 +185,6 @@
 			}
 		},
 
-		/**
-		 * Returns a tab by it's id.
-		 *
-		 * @param  {String} tabId The tab's id
-		 * @return {HTMLElement|void|null}  The tab by id if found
-		 */
-		_getTabById: function (tabId) {
-			var returnTab;
-			this.tabs.some(function (tab) {
-				if (tab.tabId === tabId && !tab.hidden && !tab.disabled) {
-					returnTab = tab;
-					return true;
-				}
-			});
-			return returnTab;
-		},
-
-		/**
-		 * Computes icon for a tab.
-		 *
-		 * @param  {HTMLElement} tab       The tab to compute icon for
-		 * @param  {String} selectedTabId  The currently selected tab's id
-		 * @param  {Boolean} accordion     The accordion property of the element
-		 * @return {String}                The icon to be used
-		 */
-		_getIcon: function (tab, selectedTabId, accordion) {
-			if (tab.tabId === selectedTabId && !accordion) {
-				return tab.selectedIcon;
-			}
-			return tab.icon;
-		},
-
-		/**
-		 * Computes CSS style for the color of a tab.
-		 *
-		 * @param  {String} iconColor The hex color
-		 * @return {String}           The CSS style for the color of the tab
-		 */
-		_computeTabIconStyle: function (iconColor) {
-			return 'color: ' + iconColor;
-		},
-
 		_forwardProperty: function (property, value, items) {
 			items.forEach(function (item){
 				item.set(property, value);
@@ -268,8 +197,31 @@
 
 			this.select(value);
 		},
+
 		_computeTabAttr: function (tab, index, attrForSelected) {
 			return attrForSelected && tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || index;
-		}
+		},
+
+		/**
+		 * Computes icon for a tab.
+		 *
+		 * @param  {HTMLElement} tab       The tab to compute icon for
+		 * @return {String}                The icon to be used
+		 */
+		_computeIcon: function (tab) {
+			return tab.getIcon();
+		},
+
+		/**
+		 * Computes CSS style for the color of a tab.
+		 *
+		 * @param  {HTMLElement} tab	The tab to compute icon style for
+		 * @return {String}           The CSS style for the color of the tab
+		 */
+		_computeIconStyle: function (tab) {
+			return tab.getIconStyle();
+		},
+
+
 	});
 }());
