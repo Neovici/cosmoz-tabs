@@ -10,6 +10,9 @@
 
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+
+		<link rel="import" href="../../paper-input/paper-input.html" />
+
 		<link rel="import" href="../cosmoz-tab.html" />
 		<link rel="import" href="../cosmoz-tabs.html" />
 
@@ -68,6 +71,34 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs accordion selected-values='[0]'>
+						<cosmoz-tab heading="Tab1" tab-id="tab1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" tab-id="tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" tab-id="tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>The <code>hasParam</code> attribute binds selected tab to url</h3>
+			<demo-snippet>
+				<template is="dom-bind" id="hashParam">
+					<paper-input value="{{ hash }}" label="Hash"></paper-input>
+					<cosmoz-tabs selected="tab3" hash-param="tab" attr-for-selected="tab-id" attr-for-hash-param="tab-id" _route-hash="{{ hash }}">
 						<cosmoz-tab heading="Tab1" tab-id="tab1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,

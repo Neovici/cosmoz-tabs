@@ -15,33 +15,24 @@
 				computed: '_computeFlex(class)'
 			},
 
+			/**
+			 * This is a CSS selector string.  If this is set, only items that match the CSS selector
+			 * are selectable.
+			 */
 			selectable: {
 				type: String,
 				value: 'cosmoz-tab'
-			},
-			/**
-			 * The currently selected tab's id.
-			 */
-			selectedTabId: {
-				type: String,
-				notify: true,
-				observer: '_selectedTabIdChanged'
 			},
 
 			/**
 			 * The hash parameter to use for selecting a tab.
 			 */
 			hashParam: {
-				type: String,
-				observer: '_hashParamChanged'
+				type: String
 			},
 
-			/**
-			 *  The currently selected tab.
-			 */
-			_selectedTab: {
-				type: Object,
-				value: null
+			attrForHashParam: {
+				type: String,
 			},
 
 			/**
@@ -51,6 +42,10 @@
 			_routeHashParams: {
 				type: Object,
 				notify: true
+			},
+			_routeHash: {
+				type: String,
+				notify: true
 			}
 		},
 
@@ -59,7 +54,8 @@
 		],
 
 		observers: [
-			'_routeHashParamsChanged(_routeHashParams.*)'
+			'_routeHashParamsChanged(_routeHashParams.*, hashParam)',
+			'_selectedItemChanged(selectedItem, hashParam)'
 		],
 
 		/**
@@ -76,75 +72,6 @@
 			}
 			return classes.indexOf('flex') > -1;
 		},
-
-		/**
-		 * Observes `_routeHashParams` changes
-		 * and sets `selectedTabId` based on `hashParam`.
-		 *
-		 * @return {void}
-		 */
-		_routeHashParamsChanged: function () {
-			var newSelectedTabId;
-			if (this._routeHashParams && this.hashParam && this.tabs) {
-				newSelectedTabId = this._routeHashParams[this.hashParam];
-				if (newSelectedTabId !== this.selectedTabId) {
-					this.selectedTabId = newSelectedTabId;
-				}
-			}
-		},
-		/**
-		 * Observes `hashParam` changes
-		 * and sets `selectedTabId` from `_routeHashParams`.
-		 *
-		 * @return {void}
-		 */
-		_hashParamChanged: function () {
-			if (this._routeHashParams) {
-				this.selectedTabId = this._routeHashParams[this.hashParam];
-			}
-		},
-
-		/**
-		 * Returns the url for a tab.
-		 *
-		 * @param  {HTMLElement} tab The tab to compute link for
-		 * @return {String}   The url of the tab
-		 */
-		_getTabLink: function (tab) {
-			return this.getUrlForTabId(tab.tabId);
-		},
-
-		/**
-		 * Returns the url for a tab by id.
-		 *
-		 * @param  {String} tabId The tab's id
-		 * @return {String} The url
-		 */
-		getUrlForTabId: function (tabId) {
-			if (this.hashParam) {
-				var hashParams = {};
-				hashParams[this.hashParam] = tabId;
-				return this.$.pageLocation.getRouteUrl({}, hashParams);
-			}
-		},
-
-
-		/**
-		 * Observes `_selectedTabIdChanged` changes
-		 * and updates select tab and `_routeHashParams`.
-		 *
-		 * @return {void}
-		 */
-		_selectedTabIdChanged: function () {
-			if (!this._ignoreSelectedTabIdChange) {
-				this._updateSelectedTab();
-				if (this._selectedTab && !this._autoSelectDefault && this.hashParam) {
-					this.set(['_routeHashParams', this.hashParam], this.selectedTabId);
-				}
-			}
-		},
-
-
 
 		/**
 		 * Computes icon for a tab.
@@ -168,6 +95,52 @@
 
 		_computeTabAttr: function (tab, index, attrForSelected) {
 			return attrForSelected && (tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || tab.getAttribute(attrForSelected)) || index;
+		},
+
+		_computeTabLink: function (tab, hashParam = this.hashParam) {
+			// if (hashParam) {
+			// 	var params = {};
+			// 	params[hashParam] = this.attrForHashParam ? this._valueForItem(tab, this.attrForHashParam) : this.items.indexOf(tab);
+			// 	return this.$.location.getRouteUrl({}, params);
+			// }
+		},
+
+		/**
+		 * Observes `_routeHashParams` changes
+		 * and sets `selectedTabId` based on `hashParam`.
+		 *
+		 * @return {void}
+		 */
+		_routeHashParamsChanged: function (changes, hashParam = this.hashParam) {
+			if (hashParam) {
+				var path = ['_routeHashParams', hashParam],
+					value = this.get(path),
+					selection = this.items.filter(function (item, i){
+						return  (this.attrForHashParam ? this._valueForItem(item, this.attrForHashParam) : i.toString()) === value;
+					}, this).map(function (item){
+						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+					}, this)[0];
+				console.log('route change', value);
+				if (selection !== undefined) {
+					this.select(selection);
+				}
+
+			}
+		},
+
+		_selectedItemChanged: function (item = this.selected, hashParam = this.hashParam){
+			if (hashParam) {
+				var path = ['_routeHashParams', hashParam],
+					current = this.get(path),
+					value = item
+						? this.attrForHashParam ? this._valueForItem(item, this.attrForHashParam) : this.items.indexOf(item)
+						: null;
+
+				if (current !== value) {
+					console.log('selected changed SET', current, value);
+					this.set(path, !isNaN(value) ? value.toString() : value);
+				}
+			}
 		}
 	});
 }());

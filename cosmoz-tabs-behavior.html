@@ -67,7 +67,15 @@
 			items.forEach(function (item){
 				item.set(property, value);
 			});
-		}
+		},
+
+		_valueForItem: function (item, attr = this.attrForSelected) {
+			if (!item) {
+				return;
+			}
+			var propValue = item[Polymer.CaseMap.dashToCamelCase(attr)];
+			return propValue !== undefined ? propValue : item.getAttribute(attr);
+		},
 	};
 
 	/** @polymerBehavior */
