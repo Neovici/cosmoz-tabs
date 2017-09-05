@@ -46,28 +46,28 @@ Custom property | Description | Default
 			}
 
 			/* do not display tab header when in accordion mode and using cards */
-			:host(:not([accordion])) > #tabHeader,
-			:host([accordion][has-cards]) > #tabHeader {
+			:host(:not([accordion])) > #header,
+			:host([accordion][has-cards]) > #header {
 				display: none;
 			}
 
-			:host > #tabHeader {
+			:host > #header {
 				cursor: pointer;
 				@apply --layout-horizontal;
 				@apply --layout-center;
 				@apply --cosmoz-tab-header;
 			}
 
-			:host([is-selected]) > #tabHeader {
+			:host([is-selected]) > #header {
 				@apply --cosmoz-tab-header-selected;
 			}
 
-			:host([accordion]) > #tabHeader {
+			:host([accordion]) > #header {
 				border-bottom: 1px solid #e2e2e2;
 				@apply --cosmoz-tab-header-accordion;
 			}
 
-			:host([is-selected][accordion]) > #tabHeader {
+			:host([is-selected][accordion]) > #header {
 				@apply --cosmoz-tab-header-accordion-selected;
 			}
 
@@ -103,19 +103,19 @@ Custom property | Description | Default
 			}
 
 
-			#tabContent {
+			#content {
 				position: relative;
 			}
 
-			:host([flex]:not([accordion])) #tabContent {
+			:host([flex]:not([accordion])) #content {
 				@apply --layout-vertical;
 			}
 
-			:host([has-cards]:not([accordion])) #tabContent {
+			:host([has-cards]:not([accordion])) #content {
 				@apply --layout-horizontal;
 				@apply --layout-wrap;
 			}
-			:host([has-cards][accordion])  #tabContent {
+			:host([has-cards][accordion])  #content {
 				display: block;
 			}
 
@@ -126,10 +126,10 @@ Custom property | Description | Default
 		</style>
 
 		<!--
-			tabHeader will displayed only in accordion mode.
+			header will displayed only in accordion mode.
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
-		<div id="tabHeader" on-tap="_onToggleTap">
+		<div id="header" on-tap="_onToggleTap">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading"><span id="tabHeading">[[ heading ]]</span></h1>
 			<paper-badge for="tabHeading" hidden$="[[ !badge ]]" label="[[ badge ]]"></paper-badge>
@@ -137,7 +137,7 @@ Custom property | Description | Default
 		</div>
 
 		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(hasCards, isSelected) ]]">
-			<div id="tabContent">
+			<div id="content">
 				<slot></slot>
 			</div>
 		</iron-collapse>
