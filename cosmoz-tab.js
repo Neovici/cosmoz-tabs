@@ -12,7 +12,7 @@
 		is: 'cosmoz-tab',
 		properties: {
 			/**
-			 * If true, the tab will be hidden.
+			 * If true, the item will be hidden.
 			 */
 			hidden: {
 				type: Boolean,
@@ -21,8 +21,7 @@
 			},
 
 			/**
-			 * This is a CSS selector string.  If this is set, only items that match the CSS selector
-			 * are selectable.
+			 * Only items that match this CSS selector are selectable.
 			 */
 			selectable: {
 				type: String,
@@ -30,7 +29,7 @@
 			},
 
 			/**
-			 *  If true, the tab will be disabled.
+			 *  If true, the item will be disabled.
 			 */
 			disabled: {
 				type: Boolean,
@@ -39,7 +38,7 @@
 			},
 
 			/**
-			 * True if the tab contains cards.
+			 * True if the item contains cards.
 			 */
 			hasCards: {
 				type: Boolean,
@@ -57,7 +56,7 @@
 		],
 
 		/**
-		 * Computes `hasCards` depending on `items`
+		 * Computes `hasCards` depending on `items`.
 		 *
 		 * @param  {Array} items Array of selectable items
 		 * @returns {Boolean} True if items is not empty
@@ -67,7 +66,7 @@
 		},
 
 		/**
-		 * Computes opened property of the included ``iron-collapse
+		 * Computes opened property of the included `iron-collapse`.
 		 *
 		 * @param  {Boolean} hasCards   The hasCards property
 		 * @param  {Boolean} isSelected The isSelected property
@@ -76,7 +75,6 @@
 		_computeOpened: function (hasCards = this.hasCards, isSelected = this.isSelected){
 			return hasCards || isSelected;
 		}
-
 
 	});
 }());
