@@ -100,18 +100,37 @@
 			return tab.getIconStyle();
 		},
 
-		_computeTabAttr: function (tab, index, attrForSelected) {
-			return attrForSelected && (tab[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || tab.getAttribute(attrForSelected)) || index;
+		/**
+		 * Computes the attribute used by paper-tabs to select an item.
+		 *
+		 * @param  {HTMLElement} item The item to compute attribute for
+		 * @param  {Number} index  The item's index
+		 * @param  {type} attrForSelected The `attrForSelected` value
+		 * @return {String} The computed attribute
+		 */
+		_computeItemTabAttribute: function (item, index, attrForSelected) {
+			return attrForSelected && (item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected)) || index;
 		},
 
-		_computeTabLink: function (tab, hashParam = this.hashParam) {
-			if (hashParam) {
-				var params = {};
-				params[hashParam] = this._hashParamForItem(tab);
-				return this.$.location.getRouteUrl({}, params);
-			}
+		/**
+		 * Computes link for a item.
+		 *
+		 * @param  {HTMLElement} item  The item to compute link for
+		 * @param  {Object} hashParam The `hashParam` property
+		 * @return {String}  The computed link
+		 */
+		_computeItemLink: function (item, hashParam = this.hashParam) {
+			var params = {};
+			params[hashParam] = this._hashParamForItem(item);
+			return this.$.location.getRouteUrl({}, params);
 		},
 
+		/**
+		 *  Computes hash parameter value for a item.
+		 *
+		 * @param  {HTMLElement} item The item to compute value for
+		 * @return {String}  The hash parameter value
+		 */
 		_hashParamForItem(item) {
 			if (this.attrForHashParam) {
 				return this._valueForItem(item, this.attrForHashParam);
@@ -125,37 +144,39 @@
 		 * Observes `_routeHashParams` changes
 		 * and sets selection based on `hashParam`.
 		 *
-		 * @param {Object} changes _routeHashParams changes
-		 * @param {String} hashParam The `hasParam` property
+		 * @param {Object} changes  changes to `_routeHashParams` property
+		 * @param {String} hashParam The `hashParam` property
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam = this.hashParam) {
-			if (hashParam) {
-				var path = ['_routeHashParams', hashParam],
-					value = this.get(path),
-					selection = this.items.filter(function (item){
-						return this._hashParamForItem(item) === value;
-					}, this).map(function (item){
-						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-					}, this)[0];
+			var path = ['_routeHashParams', hashParam],
+				value = this.get(path),
+				selection = this.items.filter(function (item){
+					return this._hashParamForItem(item) === value;
+				}, this).map(function (item){
+					return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+				}, this)[0];
 
-
-				if (selection !== undefined) {
-					this.select(selection);
-				}
-
+			if (selection !== undefined) {
+				this.select(selection);
 			}
 		},
 
-		_selectedItemChanged: function (item = this.selected, hashParam = this.hashParam){
-			if (hashParam) {
-				var path = ['_routeHashParams', hashParam],
-					current = this.get(path),
-					value = item ? this._hashParamForItem(item) : null;
+		/**
+		 * Observers 'selectedItem' changes and updates
+		 *  location hash depending on 'hashParam'.
+		 *
+		 * @param  {HTMLElement} item      The selected item
+		 * @param  {Object} hashParam The hash param
+		 * @return {void}
+		 */
+		_selectedItemChanged: function (item = this.selectedItem, hashParam = this.hashParam){
+			var path = ['_routeHashParams', hashParam],
+				current = this.get(path),
+				value = item ? this._hashParamForItem(item) : null;
 
-				if (current !== value) {
-					this.set(path, value);
-				}
+			if (current !== value) {
+				this.set(path, value);
 			}
 		}
 	});
