@@ -18,7 +18,7 @@
 ```
 -->
 ```html
-<cosmoz-tabs>
+<cosmoz-tabs selected="0">
   <cosmoz-tab heading="First tab">
     <p>
      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
