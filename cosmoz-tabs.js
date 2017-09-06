@@ -98,29 +98,41 @@
 		},
 
 		_computeTabLink: function (tab, hashParam = this.hashParam) {
-			// if (hashParam) {
-			// 	var params = {};
-			// 	params[hashParam] = this.attrForHashParam ? this._valueForItem(tab, this.attrForHashParam) : this.items.indexOf(tab);
-			// 	return this.$.location.getRouteUrl({}, params);
-			// }
+			if (hashParam) {
+				var params = {};
+				params[hashParam] = this._hashParamForItem(tab);
+				return this.$.location.getRouteUrl({}, params);
+			}
+		},
+
+		_hashParamForItem(item) {
+			if (this.attrForHashParam) {
+				return this._valueForItem(item, this.attrForHashParam);
+			}
+			var value =  this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+			return isNaN(value) ? value : value.toString();
+
 		},
 
 		/**
 		 * Observes `_routeHashParams` changes
-		 * and sets `selectedTabId` based on `hashParam`.
+		 * and sets selection based on `hashParam`.
 		 *
+		 * @param {Object} changes _routeHashParams changes
+		 * @param {String} hashParam The `hasParam` property
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam = this.hashParam) {
 			if (hashParam) {
 				var path = ['_routeHashParams', hashParam],
 					value = this.get(path),
-					selection = this.items.filter(function (item, i){
-						return  (this.attrForHashParam ? this._valueForItem(item, this.attrForHashParam) : i.toString()) === value;
+					selection = this.items.filter(function (item){
+						return this._hashParamForItem(item) === value;
 					}, this).map(function (item){
 						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
 					}, this)[0];
-				console.log('route change', value);
+
+
 				if (selection !== undefined) {
 					this.select(selection);
 				}
@@ -132,13 +144,10 @@
 			if (hashParam) {
 				var path = ['_routeHashParams', hashParam],
 					current = this.get(path),
-					value = item
-						? this.attrForHashParam ? this._valueForItem(item, this.attrForHashParam) : this.items.indexOf(item)
-						: null;
+					value = item ? this._hashParamForItem(item) : null;
 
 				if (current !== value) {
-					console.log('selected changed SET', current, value);
-					this.set(path, !isNaN(value) ? value.toString() : value);
+					this.set(path, value);
 				}
 			}
 		}
