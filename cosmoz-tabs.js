@@ -57,7 +57,7 @@
 		},
 
 		behaviors: [
-			Cosmoz.TabsBehavior
+			Cosmoz.TabbableBehavior
 		],
 
 		observers: [

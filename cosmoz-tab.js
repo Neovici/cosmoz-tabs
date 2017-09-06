@@ -52,8 +52,8 @@
 		},
 
 		behaviors: [
-			Cosmoz.TabsBehavior,
-			Cosmoz.TabBehavior
+			Cosmoz.TabbableBehavior,
+			Cosmoz.TabbedBehavior
 		],
 
 		/**

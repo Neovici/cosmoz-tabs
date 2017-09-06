@@ -6,12 +6,12 @@
 	window.Cosmoz = window.Cosmoz || {};
 
 	/**
-	 * @polymerBehavior Cosmoz.TabBehavior
+	 * @polymerBehavior Cosmoz.TabbedBehavior
 	*/
-	Cosmoz.TabBehavior = {
+	Cosmoz.TabbedBehavior = {
 		properties: {
 			/**
-			 * If true, the tab will be hidden
+			 * True if the item is selected.
 			 */
 			isSelected: {
 				type: Boolean,
@@ -37,14 +37,14 @@
 				reflectToAttribute: true,
 			},
 			/**
-			 * The tab's heading text.
+			 * The items's heading text.
 			 */
 			heading: {
 				type: String,
 			},
 
 			/**
-			 * The icon of the tab.
+			 * The icon of the item.
 			 */
 			icon: {
 				type: String,
@@ -52,7 +52,7 @@
 			},
 
 			/**
-			 * The icon of the tab when it is selected.
+			 * The icon of the item when it is selected.
 			 */
 			selectedIcon: {
 				type: String,
@@ -60,7 +60,7 @@
 			},
 
 			/**
-			 *  The color of the tab's icon.
+			 *  The color of the items's icon.
 			 */
 			iconColor: {
 				type: String,

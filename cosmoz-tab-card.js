@@ -7,7 +7,7 @@
 		properties: {
 			/**
 			 * The z-depth of this element, from 0-5.
-			 * Compute to 0 or 1 depending on `accordion` property.
+			 * Computed to 0 or 1 depending on `accordion` property.
 			 */
 			elevation: {
 				type: Number,
@@ -17,7 +17,7 @@
 
 		behaviors: [
 			Polymer.IronResizableBehavior,
-			Cosmoz.TabBehavior
+			Cosmoz.TabbedBehavior
 		],
 
 		/** Computes `elevation` depending on the `according` property.

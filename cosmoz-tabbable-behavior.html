@@ -5,12 +5,13 @@
 <script>
 (function () {
 	'use strict';
+
 	window.Cosmoz = window.Cosmoz || {};
 
 	/**
-	 * @polymerBehavior Cosmoz.TabsBehavior
+	 * @polymerBehavior Cosmoz.TabbableBehavior
 	*/
-	Cosmoz.TabsBehaviorImpl = {
+	Cosmoz.TabbableBehaviorImpl = {
 		properties: {
 
 			accordion: {
@@ -80,10 +81,10 @@
 	};
 
 	/** @polymerBehavior */
-	Cosmoz.TabsBehavior = [
+	Cosmoz.TabbableBehavior = [
 		Polymer.IronResizableBehavior,
 		Polymer.IronMultiSelectableBehavior,
-		Cosmoz.TabsBehaviorImpl
+		Cosmoz.TabbableBehaviorImpl
 	];
 })();
 </script>
