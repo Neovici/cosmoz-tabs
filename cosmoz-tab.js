@@ -62,7 +62,7 @@
 		 * @param  {Array} items Array of selectable items
 		 * @returns {Boolean} True if items is not empty
 		 */
-		_computeHasCards: function (items){
+		_computeHasCards: function (items = this.items){
 			return items && items.length > 0;
 		},
 

@@ -31,18 +31,25 @@
 				type: String
 			},
 
+			/**
+			 * The attribute used to select a tab from hashParam.
+			 */
 			attrForHashParam: {
 				type: String,
 			},
 
 			/**
-			 * The route has parameters extracted by the `cosmoz-page-location`
+			 * The route hash parameters extracted by the `cosmoz-page-location`
 			 * element.
 			 */
 			_routeHashParams: {
 				type: Object,
 				notify: true
 			},
+			/**
+			 * The route hash extracted by the `cosmoz-page-location`
+			 * element.
+			 */
 			_routeHash: {
 				type: String,
 				notify: true
