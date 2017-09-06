@@ -16,8 +16,7 @@
 			},
 
 			/**
-			 * This is a CSS selector string.  If this is set, only items that match the CSS selector
-			 * are selectable.
+			 * Only items that match this CSS selector are selectable.
 			 */
 			selectable: {
 				type: String,
@@ -25,14 +24,14 @@
 			},
 
 			/**
-			 * The hash parameter to use for selecting a tab.
+			 * The hash parameter to use for selecting an item.
 			 */
 			hashParam: {
 				type: String
 			},
 
 			/**
-			 * The attribute used to select a tab from hashParam.
+			 * The attribute used for selecting an item by `hashParam`.
 			 */
 			attrForHashParam: {
 				type: String,
@@ -47,7 +46,7 @@
 				notify: true
 			},
 			/**
-			 * The route hash extracted by the `cosmoz-page-location`
+			 * The route hash string extracted by the `cosmoz-page-location`
 			 * element.
 			 */
 			_routeHash: {

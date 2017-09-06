@@ -7,7 +7,6 @@
 		properties: {
 			/**
 			 * The z-depth of this element, from 0-5.
-			 * Computed to 0 or 1 depending on `accordion` property.
 			 */
 			elevation: {
 				type: Number,
@@ -28,6 +27,14 @@
 		_computeElevation: function (accordion) {
 			return accordion ? 0 : 1;
 		},
+
+		/**
+		 * Computes opened property of the included `iron-collapse`.
+		 *
+		 * @param  {Boolean} accordion   The accordion property
+		 * @param  {Boolean} isSelected The isSelected property
+		 * @returns {Boolean} True if not `accordion` or if `isSelected`
+		 */
 		_computeOpened: function (accordion, isSelected){
 			return !accordion || isSelected;
 		},
