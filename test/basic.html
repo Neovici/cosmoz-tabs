@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-basic</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="defaults">
+			<template>
+				<cosmoz-tabs>
+					<cosmoz-tab>1</cosmoz-tab>
+					<cosmoz-tab>2</cosmoz-tab>
+					<cosmoz-tab>3</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+		<script>
+			suite('defaults', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('defaults');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('nothing selected', function () {
+					assert.equal(tabs.selected, null);
+				});
+
+				test('cosmoz-selected as selectedClass', function () {
+					assert.equal(tabs.selectedClass, 'cosmoz-selected');
+				});
+
+				test('is-selected as selectedAttribute', function () {
+					assert.equal(tabs.selectedAttribute, 'is-selected');
+				});
+
+				test('not accordion', function () {
+					assert.isFalse(tabs.accordion);
+				});
+
+				test('not multi', function () {
+					assert.isFalse(tabs.multi);
+				});
+
+				test('activateEvent is null', function () {
+					assert.isNull(tabs.activateEvent);
+				});
+
+				test('not flex', function () {
+					assert.isFalse(tabs.flex);
+				});
+
+				test('cosmoz-tab as selectable', function () {
+					assert.equal(tabs.selectable, 'cosmoz-tab');
+				});
+
+				test('undefined hashParam', function () {
+					assert.isUndefined(tabs.hashParam);
+				});
+
+				test('undefined attrForHashParam', function () {
+					assert.isUndefined(tabs.attrForHashParam);
+				});
+			});
+		</script>
+	</body>
+</html>
