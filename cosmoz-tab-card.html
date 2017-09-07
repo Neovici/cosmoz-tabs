@@ -2,10 +2,10 @@
 <link rel="import" href="../iron-collapse/iron-collapse.html" />
 <link rel="import" href="../iron-icon/iron-icon.html" />
 <link rel="import" href="../iron-icons/iron-icons.html" />
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html" />
 <link rel="import" href="../paper-icon-button/paper-icon-button.html" />
 <link rel="import" href="../paper-material/paper-material.html" />
-<link rel="import" href="cosmoz-bind-parent-child-behavior.html" />
+
+<link rel="import" href="cosmoz-tabbed-behavior.html">
 <!--
 `<cosmoz-tab-card>` is a container element for a card. It should be used in conjunction with
 `cosmoz-tab` and `cosmoz-tabs`
@@ -33,39 +33,39 @@ Custom property | Description | Default
 				display: block;
 			}
 
-			:host(:not(.cosmoz-tab-card-accordion)) {
+			:host(:not([accordion])) {
 				width: var(--cosmoz-tab-card-width, 300px);
 				border-radius: 3px;
 				margin: 15px;
 			}
 
-			:host(:not(.cosmoz-tab-card-accordion)) h1.heading {
+			:host(:not([accordion])) .heading {
 				margin: 0.67em 0 0;
 			}
 
-			:host(.cosmoz-tab-card-accordion) {
+			:host([accordion]) {
 				width: 100%;
 			}
 
-			#tabCard {
+			#card {
 				background-color: #fff;
 				@apply --cosmoz-tab-card;
 			}
 
-			:host(.cosmoz-tab-card-accordion) #tabCard {
+			:host([accordion]) #card {
 				background-color: #fafafa;
 				@apply --cosmoz-tab-card-accordion;
 			}
 
-			#tabCardContent {
+			#content {
 				@apply --cosmoz-tab-card-content;
 			}
 
-			:host(.cosmoz-tab-card-accordion) #tabCardContent {
+			:host([accordion]) #content {
 				@apply --cosmoz-tab-card-content-accordion;
 			}
 
-			#tabCardHeader {
+			#header {
 				background-color: #fff;
 				cursor: default;
 				-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -74,50 +74,46 @@ Custom property | Description | Default
 				@apply --cosmoz-tab-card-header;
 			}
 
-			:host(.cosmoz-tab-card-accordion) #tabCardHeader {
+			:host([accordion]) #header {
 				border-bottom: 1px solid #e2e2e2;
 				cursor: pointer;
 				@apply --cosmoz-tab-card-header-accordion;
 			}
 
-			:host(.cosmoz-tab-card-accordion.cosmoz-tab-card-opened) #tabCardHeader {
+			:host([accordion][is-selected]) #header {
 				background-color: #efefef;
 			}
 
-			#tabCardHeaderIcon {
+			.icon {
 				height: 13px;
 				width: 13px;
 				margin: 0 9px;
 			}
 
-			#tabCardHeader paper-icon-button {
+			.button {
 				--iron-icon-width: 24px;
 				--iron-icon-height: 24px;
 			}
 
-			h1.heading {
+			.heading {
 				font-family: sans-serif;
 				font-size: 17px;
 				font-weight: 400;
 				@apply --layout-flex;
 			}
 
-			[hidden] {
-				display: none;
-			}
-
 		</style>
 
-		<paper-material id="tabCard" elevation="[[ elevation ]]">
-			<div id="tabCardHeader" on-tap="_onCardActivate">
-				<iron-icon id="tabCardHeaderIcon" hidden$="[[ !accordion ]]"
-					icon="{{ icon }}" style$="{{ _computeIconStyle(iconColor)}}"></iron-icon>
+		<paper-material id="card" elevation="[[ elevation ]]">
+			<div id="header" on-tap="_onToggleTap">
+				<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
+					style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
 				<h1 class="heading">[[ heading ]]</h1>
 				<slot name="card-actions"></slot>
-				<paper-icon-button hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(opened) }}"></paper-icon-button>
+				<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
 			</div>
-			<iron-collapse id="collapse">
-				<div id="tabCardContent">
+			<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(accordion, isSelected) ]]">
+				<div id="content">
 					<slot></slot>
 				</div>
 			</iron-collapse>

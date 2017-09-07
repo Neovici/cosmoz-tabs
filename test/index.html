@@ -9,9 +9,17 @@
 </head>
 <body>
 	<script>
-		WCT.loadSuites([
-			'cosmoz-tabs_test.html?dom=shadow',
-		]);
+		var pages = [
+				// 'basic.html'
+			],
+			suites = [],
+			i;
+
+		for (i = 0; i < pages.length; i++) {
+			suites.push(pages[i] + '?dom=shadow');
+			suites.push(pages[i] + '?wc-shadydom=true&wc-ce=true');
+		}
+		WCT.loadSuites(suites);
 	</script>
 </body>
 </html>

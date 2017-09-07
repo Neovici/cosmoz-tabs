@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-selector/iron-multi-selectable.html">
+
+<script>
+(function () {
+	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	 * @polymerBehavior Cosmoz.TabbableBehavior
+	*/
+	Cosmoz.TabbableBehaviorImpl = {
+		properties: {
+
+			accordion: {
+				type: Boolean,
+				value: false,
+				notify: true,
+				reflectToAttribute: true
+			},
+
+			activateEvent: {
+				type: String,
+				value: null
+			},
+
+			selectedClass: {
+				type: String,
+				value: 'cosmoz-selected'
+			},
+
+			selectedAttribute: {
+				type: String,
+				value: 'is-selected'
+			},
+
+			multi: {
+				type: String,
+				computed: '_computeMulti(accordion)'
+			}
+		},
+
+		listeners: {
+			'cosmoz-tab-toggle': '_onToggleTab',
+		},
+
+		observers: [
+			'forwardProperty("accordion", accordion, items)',
+			'forwardProperty("flex", flex, items)'
+		],
+
+		_computeMulti: function (accordion){
+			return !!accordion;
+		},
+
+
+		_onToggleTab: function (e){
+			var item = e.target,
+				index = this.items.indexOf(item);
+
+			if (index > -1) {
+				this.select(this.attrForSelected ? this._valueForItem(item) : index);
+			}
+		},
+
+		forwardProperty: function (property, value, items) {
+			items.forEach(function (item){
+				item.set(property, value);
+			});
+		},
+
+		_valueForItem: function (item, attr = this.attrForSelected) {
+			if (!item) {
+				return;
+			}
+			var propValue = item[Polymer.CaseMap.dashToCamelCase(attr)];
+			return propValue !== undefined ? propValue : item.getAttribute(attr);
+		},
+	};
+
+	/** @polymerBehavior */
+	Cosmoz.TabbableBehavior = [
+		Polymer.IronResizableBehavior,
+		Polymer.IronMultiSelectableBehavior,
+		Cosmoz.TabbableBehaviorImpl
+	];
+})();
+</script>

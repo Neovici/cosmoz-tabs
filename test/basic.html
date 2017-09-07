@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-basic</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="defaults">
+			<template>
+				<cosmoz-tabs>
+					<cosmoz-tab>1</cosmoz-tab>
+					<cosmoz-tab>2</cosmoz-tab>
+					<cosmoz-tab>3</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-tabs selected="1">
+					<cosmoz-tab heading="Tab1">1</cosmoz-tab>
+					<cosmoz-tab heading="Tab2" badge="2">2</cosmoz-tab>
+					<cosmoz-tab hidden>3</cosmoz-tab>
+					<cosmoz-tab heading="Tab4" disabled>3</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script>
+			suite('defaults', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('defaults');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('nothing selected', function () {
+					assert.equal(tabs.selected, null);
+				});
+
+				test('cosmoz-selected as selectedClass', function () {
+					assert.equal(tabs.selectedClass, 'cosmoz-selected');
+				});
+
+				test('is-selected as selectedAttribute', function () {
+					assert.equal(tabs.selectedAttribute, 'is-selected');
+				});
+
+				test('not accordion', function () {
+					assert.isFalse(tabs.accordion);
+				});
+
+				test('not multi', function () {
+					assert.isFalse(tabs.multi);
+				});
+
+				test('activateEvent is null', function () {
+					assert.isNull(tabs.activateEvent);
+				});
+
+				test('not flex', function () {
+					assert.isFalse(tabs.flex);
+				});
+
+				test('cosmoz-tab as selectable', function () {
+					assert.equal(tabs.selectable, 'cosmoz-tab');
+				});
+
+				test('undefined hashParam', function () {
+					assert.isUndefined(tabs.hashParam);
+				});
+
+				test('undefined attrForHashParam', function () {
+					assert.isUndefined(tabs.attrForHashParam);
+				});
+			});
+
+			suite('basic', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('basic');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('instantiates a cosmoz-tabs', function (){
+					assert.equal(tabs.is, 'cosmoz-tabs');
+				});
+
+				test('collects cosmoz-tab elements as items', function (){
+					assert.isArray(tabs.items);
+					assert.lengthOf(tabs.items, 4);
+					assert.isTrue(tabs.items.every(function (item){
+						return item.is === 'cosmoz-tab';
+					}));
+				});
+
+				test('selects an item', function (){
+					assert.equal(tabs.selected, 1);
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+
+					tabs.selected = 0;
+					assert.equal(tabs.selectedItem, tabs.items[0]);
+				});
+
+				test('selected item has selectedClass and selectedAttribute', function (){
+					assert.equal(tabs.selectedItem.getAttribute(tabs.selectedAttribute), '');
+					assert.isTrue(tabs.selectedItem.classList.contains(tabs.selectedClass));
+				});
+
+				test('contains a paper-tabs with same number of paper-tab elements', function (){
+					var paperTabs = tabs.$$('paper-tabs');
+					assert.isNotNull(paperTabs);
+				});
+
+			});
+		</script>
+	</body>
+</html>

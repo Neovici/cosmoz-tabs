@@ -17,8 +17,10 @@
 		"iron-icons": "PolymerElements/iron-icons#^1.2.1"
 	},
 	"devDependencies": {
+		"paper-input":"PolymerElements/paper-input#^1.1.24",
 		"iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.6",
 		"iron-component-page": "PolymerElements/iron-component-page#^1.1.9",
+		"iron-test-helpers": "polymerelements/iron-test-helpers#^1.0.0",
 		"web-component-tester": "Polymer/web-component-tester#^6.0.0"
 	}
 }

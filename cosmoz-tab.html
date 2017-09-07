@@ -4,11 +4,11 @@
 <link rel="import" href="../iron-collapse/iron-collapse.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-badge/paper-badge.html">
 
-<link rel="import" href="cosmoz-bind-parent-child-behavior.html">
+<link rel="import" href="cosmoz-tabbable-behavior.html">
+<link rel="import" href="cosmoz-tabbed-behavior.html">
 <link rel="import" href="cosmoz-tab-card.html">
 <!--
 `<cosmoz-tab>` is the container for a tab. It should be used in conjunction with
@@ -36,7 +36,7 @@ Custom property | Description | Default
 				@apply --cosmoz-tab;
 			}
 
-			:host(:not(.cosmoz-tab-accordion)) {
+			:host(:not([accordion])) {
 				@apply --layout-vertical;
 			}
 
@@ -46,38 +46,32 @@ Custom property | Description | Default
 			}
 
 			/* do not display tab header when in accordion mode and using cards */
-			:host(.cosmoz-tab-accordion.cosmoz-tab-use-cards) > #tabHeader {
+			:host(:not([accordion])) > #header,
+			:host([accordion][has-cards]) > #header {
 				display: none;
 			}
 
-			:host > #tabHeader {
+			:host > #header {
 				cursor: pointer;
 				@apply --layout-horizontal;
 				@apply --layout-center;
-			}
-
-			:host > #tabHeader {
 				@apply --cosmoz-tab-header;
 			}
 
-			:host(.cosmoz-tab-opened) > #tabHeader {
+			:host([is-selected]) > #header {
 				@apply --cosmoz-tab-header-selected;
 			}
 
-			:host(:not(.cosmoz-tab-accordion)) > #tabHeader {
-				display: none;
-			}
-
-			:host(.cosmoz-tab-accordion) > #tabHeader {
+			:host([accordion]) > #header {
 				border-bottom: 1px solid #e2e2e2;
 				@apply --cosmoz-tab-header-accordion;
 			}
 
-			:host(.cosmoz-tab-opened.cosmoz-tab-accordion) > #tabHeader {
+			:host([is-selected][accordion]) > #header {
 				@apply --cosmoz-tab-header-accordion-selected;
 			}
 
-			h1.heading {
+			.heading {
 				font-family: sans-serif;
 				font-size: 17px;
 				font-weight: 300;
@@ -89,31 +83,39 @@ Custom property | Description | Default
 				@apply --layout-flex;
 			}
 
-			:host(.cosmoz-tab-accordion) h1.heading {
+			:host([accordion]) .heading {
 				font-weight: 400;
 			}
 
-			:host(:not(.cosmoz-tab-accordion).cosmoz-tab-opened) h1.heading {
+			:host(:not([accordion])[is-selected]) .heading {
 				font-weight: 500;
 			}
 
-			#tabHeaderIcon {
+			.icon {
 				height: 13px;
 				width: 13px;
 				margin: 0 10px 0 20px;
 				flex-shrink: 0;
 			}
 
-			:host(.cosmoz-tab-accordion) > #tabHeader > #tabHeaderIcon {
+			:host([accordion]) .icon {
 				margin: 0 9px;
 			}
 
-			.cosmoz-tab-content-cards-no-accordion {
+
+			#content {
+				position: relative;
+			}
+
+			:host([flex]:not([accordion])) #content {
+				@apply --layout-vertical;
+			}
+
+			:host([has-cards]:not([accordion])) #content {
 				@apply --layout-horizontal;
 				@apply --layout-wrap;
 			}
-
-			.cosmoz-tab-content-cards-accordion {
+			:host([has-cards][accordion])  #content {
 				display: block;
 			}
 
@@ -124,31 +126,21 @@ Custom property | Description | Default
 		</style>
 
 		<!--
-			tabHeader will displayed only in accordion mode.
+			header will displayed only in accordion mode.
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
-		<div id="tabHeader" on-tap="_onTap">
-			<iron-icon id="tabHeaderIcon" icon="[[ _getIcon(opened, icon, selectedIcon, accordion) ]]"
-				style$="[[ _computeIconStyle(iconColor) ]]"></iron-icon>
+		<div id="header" on-tap="_onToggleTap">
+			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading"><span id="tabHeading">[[ heading ]]</span></h1>
-			<paper-badge for="tabHeading" hidden$="[[ !_showBadge ]]" label="[[ badge ]]"></paper-badge>
-			<paper-icon-button icon="[[ _computeOpenedIcon(opened) ]]"></paper-icon-button>
+			<paper-badge for="tabHeading" hidden$="[[ !badge ]]" label="[[ badge ]]"></paper-badge>
+			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
 		</div>
 
-		<template is="dom-if" if="[[ !_useCollapse ]]" restamp>
-			<div class$="[[ _tabContentClass ]]">
-				<slot id="tabContent"></slot>
+		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(hasCards, isSelected) ]]">
+			<div id="content">
+				<slot></slot>
 			</div>
-		</template>
-
-		<template is="dom-if" if="[[ _useCollapse ]]" restamp>
-			<iron-collapse id="collapse" opened="[[ opened ]]">
-				<div class$="[[ _tabContentClass ]]">
-					<slot id="tabContent"></slot>
-				</div>
-			</iron-collapse>
-		</template>
-
+		</iron-collapse>
 
 	</template>
 	<script type="text/javascript" src="cosmoz-tab.js"></script>

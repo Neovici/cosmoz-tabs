@@ -10,6 +10,9 @@
 
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+
+		<link rel="import" href="../../paper-input/paper-input.html" />
+
 		<link rel="import" href="../cosmoz-tab.html" />
 		<link rel="import" href="../cosmoz-tabs.html" />
 
@@ -26,8 +29,8 @@
 			<h3>Plain <code>cosmoz-tabs</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs>
-						<cosmoz-tab heading="Tab1" tab-id="tab1">
+					<cosmoz-tabs selected="0">
+						<cosmoz-tab heading="Tab1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -39,7 +42,7 @@
 							</p>
 
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" tab-id="tab2">
+						<cosmoz-tab heading="Tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
@@ -51,7 +54,7 @@
 								rutrum ac mauris.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" tab-id="tab3">
+						<cosmoz-tab heading="Tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -67,13 +70,39 @@
 			<h3>The <code>accordion</code> attribute toggles accordion mode</h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion>
-						<cosmoz-tab heading="Tab1" tab-id="tab1">
+					<cosmoz-tabs accordion selected-values='[0]'>
+						<cosmoz-tab heading="Tab1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>The <code>attr-for-selected</code> attribute sets the attribute used to make a selection</h3>
+			<demo-snippet>
+				<template is="dom-bind" id="hashParam">
+					<cosmoz-tabs attr-for-selected="tab-id" selected="tab3">
+						<cosmoz-tab heading="Tab1" tab-id="tab1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
 						</cosmoz-tab>
 						<cosmoz-tab heading="Tab2" tab-id="tab2">
 							<p>
@@ -82,6 +111,60 @@
 							</p>
 						</cosmoz-tab>
 						<cosmoz-tab heading="Tab3" tab-id="tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>The <code>hashParam</code> attribute binds selected tab to a location hash param</h3>
+			<demo-snippet>
+				<template is="dom-bind" id="hashParam">
+					<paper-input value="{{ hash }}" label="Hash"></paper-input>
+					<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab" selected="1">
+						<cosmoz-tab heading="Tab1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3><code>hashParam</code> and <code>attr-for-hash-param</code> can be used in combination to bind location hash param to a attribute</h3>
+			<demo-snippet>
+				<template is="dom-bind" id="hashParamAttr">
+					<paper-input value="{{ hash }}" label="Hash"></paper-input>
+					<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash" selected="1">
+						<cosmoz-tab heading="Tab1" tab-hash="first-tab">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" tab-hash="second-tab">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" tab-hash="third-tab">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
