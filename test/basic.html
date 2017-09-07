@@ -42,7 +42,7 @@
 					tabs = fixture('defaults');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-						done();
+						flush(done);
 					});
 				});
 
@@ -153,18 +153,48 @@
 
 				test('sets badge', function (done) {
 					Polymer.Base.async(function () {
-						var heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
-							heading1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('h1.heading'),
-							heading2 = Polymer.dom(tabs.$$('paper-tabs').items[2]).querySelector('h1.heading');
+						var badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('paper-badge'),
+							badge1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('paper-badge');
 
-						assert.isNotNull(heading0);
-						assert.isNotNull(heading1);
-						assert.isNotNull(heading2);
+						assert.isNotNull(badge0);
+						assert.isNotNull(badge1);
 
-						assert.equal(heading0.innerText, tabs.items[0].heading);
-						assert.equal(heading1.innerText, tabs.items[1].heading);
-						assert.equal(heading2.innerText, '');
+						assert.isTrue(badge0.hidden);
+						assert.equal(badge0.getAttribute('hidden'), '');
+						assert.equal(badge0.label, '');
 
+						assert.isFalse(badge1.hidden);
+						assert.equal(badge1.getAttribute('hidden'), undefined);
+						assert.equal(badge1.label, '2');
+
+						done();
+					}, 90);
+				});
+
+				test('sets hidden', function (done) {
+					Polymer.Base.async(function () {
+						var tabVisible = tabs.$$('paper-tabs').items[0],
+							tabHidden = tabs.$$('paper-tabs').items[2];
+
+						assert.isFalse(tabVisible.hidden);
+						assert.isNull(tabVisible.getAttribute('hidden'));
+
+						assert.isTrue(tabHidden.hidden);
+						assert.equal(tabHidden.getAttribute('hidden'), '');
+						done();
+					}, 90);
+				});
+
+				test('sets disabled', function (done) {
+					Polymer.Base.async(function () {
+						var tabNormal = tabs.$$('paper-tabs').items[0],
+							tabDisabled = tabs.$$('paper-tabs').items[3];
+
+						assert.isFalse(tabNormal.disabled);
+						assert.isNull(tabNormal.getAttribute('disabled'));
+
+						assert.isTrue(tabDisabled.disabled);
+						assert.equal(tabDisabled.getAttribute('disabled'), '');
 						done();
 					}, 90);
 				});
