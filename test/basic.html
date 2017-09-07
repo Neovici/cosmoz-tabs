@@ -26,10 +26,10 @@
 		<test-fixture id="basic">
 			<template>
 				<cosmoz-tabs selected="1">
-					<cosmoz-tab heading="Tab1">1</cosmoz-tab>
-					<cosmoz-tab heading="Tab2" badge="2">2</cosmoz-tab>
+					<cosmoz-tab heading="Tab0">1</cosmoz-tab>
+					<cosmoz-tab heading="Tab1" badge="2">2</cosmoz-tab>
 					<cosmoz-tab hidden>3</cosmoz-tab>
-					<cosmoz-tab heading="Tab4" disabled>3</cosmoz-tab>
+					<cosmoz-tab heading="Tab3" disabled>3</cosmoz-tab>
 				</cosmoz-tabs>
 			</template>
 		</test-fixture>
@@ -123,11 +123,51 @@
 					assert.isTrue(tabs.selectedItem.classList.contains(tabs.selectedClass));
 				});
 
-				test('contains a paper-tabs with same number of paper-tab elements', function (){
-					var paperTabs = tabs.$$('paper-tabs');
-					assert.isNotNull(paperTabs);
+				test('contains a paper-tabs with same number of paper-tab elements', function (done){
+					Polymer.Base.async(function () {
+						var paperTabs = tabs.$$('paper-tabs');
+						assert.isNotNull(paperTabs);
+						assert.equal(paperTabs.is, 'paper-tabs');
+						assert.equal(paperTabs.items.length, tabs.items.length);
+						done();
+					}, 90);
 				});
 
+				test('sets heading', function (done) {
+					Polymer.Base.async(function () {
+						var heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
+							heading1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('h1.heading'),
+							heading2 = Polymer.dom(tabs.$$('paper-tabs').items[2]).querySelector('h1.heading');
+
+						assert.isNotNull(heading0);
+						assert.isNotNull(heading1);
+						assert.isNotNull(heading2);
+
+						assert.equal(heading0.innerText, tabs.items[0].heading);
+						assert.equal(heading1.innerText, tabs.items[1].heading);
+						assert.equal(heading2.innerText, '');
+
+						done();
+					}, 90);
+				});
+
+				test('sets badge', function (done) {
+					Polymer.Base.async(function () {
+						var heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
+							heading1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('h1.heading'),
+							heading2 = Polymer.dom(tabs.$$('paper-tabs').items[2]).querySelector('h1.heading');
+
+						assert.isNotNull(heading0);
+						assert.isNotNull(heading1);
+						assert.isNotNull(heading2);
+
+						assert.equal(heading0.innerText, tabs.items[0].heading);
+						assert.equal(heading1.innerText, tabs.items[1].heading);
+						assert.equal(heading2.innerText, '');
+
+						done();
+					}, 90);
+				});
 			});
 		</script>
 	</body>
