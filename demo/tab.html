@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>cosmoz-tab demo</title>
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+
+		<link rel="import" href="../cosmoz-tab-card.html" />
+		<link rel="import" href="../cosmoz-tab.html" />
+		<link rel="import" href="../cosmoz-tabs.html" />
+
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+				#container {
+					 max-width: 800px;
+				 }
+			</style>
+		</custom-style>
+	</head>
+	<body unresolved>
+		<div id="container" class="vertical-section-container centered">
+			<h3>normal mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs selected="1">
+						<cosmoz-tab heading="Tab1" disabled>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>normal mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs selected="1">
+						<cosmoz-tab heading="Tab1" hidden>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>normal mode <code>cosmoz-tab</code> with <code>badge</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs selected="2">
+						<cosmoz-tab heading="Tab1" badge="1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" badge="2" icon-color="red">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" badge="3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+
+			<h3>accordion mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0,1,2]">
+						<cosmoz-tab heading="Tab1" disabled>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected="1">
+						<cosmoz-tab heading="Tab1" hidden>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode <code>cosmoz-tab</code> with <code>badge</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0]">
+						<cosmoz-tab heading="Tab1" badge="1">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" badge="2">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" badge="3">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon-color</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0,2]">
+						<cosmoz-tab heading="Tab1" icon-color="red">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" icon-color="purple">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" icon-color="blue">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0,2]">
+						<cosmoz-tab heading="Tab1" icon="icons:check-box-outline-blank">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab2" icon="icons:check-circle">
+							<p>
+								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+								Phasellus et purus id dolor venenatis mollis.
+							</p>
+						</cosmoz-tab>
+						<cosmoz-tab heading="Tab3" icon="icons:check-box">
+							<p>
+								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+								Nunc bibendum elit turpis.
+							</p>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
+</html>
