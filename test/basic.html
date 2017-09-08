@@ -134,7 +134,7 @@
 					}, 90);
 				});
 
-				test('sets heading', function (done) {
+				test('sets heading inside paper-tab', function (done) {
 					Polymer.Base.async(function () {
 						var heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
 							heading1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('h1.heading'),
@@ -152,7 +152,21 @@
 					}, 90);
 				});
 
-				test('sets badge', function (done) {
+				test('tabs contain heading', function (done){
+					Polymer.Base.async(function () {
+						var withHeading = tabs.items.filter(function (item) {
+							return item.heading;
+						});
+						assert.lengthOf(withHeading, 3);
+						withHeading.forEach(function (item){
+							var heading = item.$$('.heading');
+							assert.equal(heading.innerText, item.heading);
+						});
+						done();
+					});
+				});
+
+				test('sets badge inside paper-tab', function (done) {
 					Polymer.Base.async(function () {
 						var badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('paper-badge'),
 							badge1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('paper-badge');
@@ -172,7 +186,7 @@
 					}, 90);
 				});
 
-				test('sets hidden', function (done) {
+				test('sets hidden on paper-tab', function (done) {
 					Polymer.Base.async(function () {
 						var tabVisible = tabs.$$('paper-tabs').items[0],
 							tabHidden = tabs.$$('paper-tabs').items[2];
@@ -186,7 +200,7 @@
 					}, 90);
 				});
 
-				test('sets disabled', function (done) {
+				test('sets disabled on paper-tab', function (done) {
 					Polymer.Base.async(function () {
 						var tabNormal = tabs.$$('paper-tabs').items[0],
 							tabDisabled = tabs.$$('paper-tabs').items[3];
@@ -196,6 +210,18 @@
 
 						assert.isTrue(tabDisabled.disabled);
 						assert.equal(tabDisabled.getAttribute('disabled'), '');
+						done();
+					}, 90);
+				});
+
+				test('#header is not visible', function (done) {
+					Polymer.Base.async(function () {
+						tabs.items.forEach(function (item){
+							assert.isNotNull(item.$.header);
+							var style = window.getComputedStyle(item.$.header),
+								display = style.getPropertyValue('display');
+							assert.equal(display, 'none');
+						});
 						done();
 					}, 90);
 				});

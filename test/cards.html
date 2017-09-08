@@ -55,6 +55,46 @@
 					});
 				});
 
+				test('cards have elevation 1', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							var material = item.$$('paper-material');
+							assert.equal(material.elevation, 1);
+						});
+
+						done();
+					});
+				});
+
+				test('cards are opened', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							assert.isTrue(item.$.collapse.opened);
+						});
+
+						done();
+					});
+				});
+
+				test('cards have heading', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							var heading = item.$$('.heading');
+							assert.equal(heading.innerText, item.heading);
+						});
+
+						done();
+					});
+				});
 			});
 		</script>
 	</body>
