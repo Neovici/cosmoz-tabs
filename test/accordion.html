@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-accordion</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-tabs accordion selected-values="[1,2]">
+					<cosmoz-tab>Tab text 1</cosmoz-tab>
+					<cosmoz-tab>Tab text 1</cosmoz-tab>
+					<cosmoz-tab>Tab text 1</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script type="text/javascript">
+			suite('basic', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('basic');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('in accordion mode multi is true', function (done) {
+					Polymer.Base.async(function () {
+						assert.isTrue(tabs.accordion);
+						assert.isTrue(tabs.multi);
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode multiple items can be selected', function (done) {
+					Polymer.Base.async(function () {
+						assert.lengthOf(tabs.selectedItems, 2);
+						assert.include(tabs.selectedItems, tabs.items[1]);
+						assert.include(tabs.selectedItems, tabs.items[2]);
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode unselected items are closed', function (done) {
+					Polymer.Base.async(function () {
+						var item = tabs.items[0];
+						assert.isNotNull(item.$.collapse);
+						assert.isFalse(item.$.collapse.opened);
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode selected items are opened', function (done) {
+					Polymer.Base.async(function () {
+						assert.lengthOf(tabs.selectedItems, 2);
+						assert.isTrue(tabs.selectedItems.every(function (item){
+							assert.isNotNull(item.$.collapse);
+							assert.isTrue(item.$.collapse.opened);
+							return item.$.collapse.opened;
+						}));
+						done();
+					}, 90);
+				});
+
+				test('accordion property is forwarded to children', function (done) {
+					Polymer.Base.async(function (){
+						assert.isArray(tabs.items);
+						assert.lengthOf(tabs.items, 3);
+						assert.isTrue(tabs.items.every(function (item){
+							assert.equal(item.is, 'cosmoz-tab');
+							assert.isTrue(item.accordion);
+							return item.accordion;
+						}));
+						done();
+					}, 60);
+				});
+
+				test('in accordion mode it does not contain a paper-tabs element', function (done) {
+					Polymer.Base.async(function () {
+						var paperTabs = tabs.$$('paper-tabs');
+						assert.isNull(paperTabs);
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode cosmoz-tab #header is visible', function (done) {
+					Polymer.Base.async(function () {
+						assert.isTrue(tabs.items.every(function (item){
+							assert.isNotNull(item.$.header);
+							var style = window.getComputedStyle(item.$.header),
+								display = style.getPropertyValue('display');
+							assert.notEqual(display, 'none');
+							return display !== 'none';
+						}));
+						done();
+					}, 90);
+				});
+			});
+		</script>
+	</body>
+</html>
