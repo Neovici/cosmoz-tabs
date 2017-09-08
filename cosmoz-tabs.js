@@ -12,7 +12,8 @@
 			*/
 			flex: {
 				type: Boolean,
-				computed: '_computeFlex(class)'
+				computed: '_computeFlex(class)',
+				value: false
 			},
 
 			/**
