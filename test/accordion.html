@@ -10,6 +10,7 @@
 		<script src="../../test-fixture/test-fixture-mocha.js"></script>
 
 		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 		<link rel="import" href="../cosmoz-tabs.html">
 	</head>
 	<body>
@@ -104,6 +105,36 @@
 							return display !== 'none';
 						}));
 						done();
+					}, 90);
+				});
+
+				test('in accordion mode tapping the header of a unselected item selects it', function (done){
+					Polymer.Base.async(function () {
+						var item = tabs.items[0];
+						assert.isNotNull(item.$.header);
+						assert.notInclude(tabs.selectedItems, item);
+
+						MockInteractions.tap(item.$.header);
+
+						Polymer.Base.async(function () {
+							assert.include(tabs.selectedItems, item);
+							done();
+						}, 90);
+					}, 90);
+				});
+
+				test('in accordion mode tapping the header of a selected item unselects it', function (done){
+					Polymer.Base.async(function () {
+						var item = tabs.items[1];
+						assert.isNotNull(item.$.header);
+						assert.include(tabs.selectedItems, item);
+
+						MockInteractions.tap(item.$.header);
+
+						Polymer.Base.async(function () {
+							assert.notInclude(tabs.selectedItems, item);
+							done();
+						}, 90);
 					}, 90);
 				});
 			});
