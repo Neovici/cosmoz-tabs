@@ -38,13 +38,35 @@
 
 				test('items have links', function (done) {
 					Polymer.Base.async(function () {
-						tabs.$$('paper-tabs').items.every(function (tab, index){
-							var link =  Polymer.dom(tab).querySelector('.link'),
-								href = link.getAttribute('href');
-
-							assert.equal(href, '##tab=' + index);
+						tabs.$$('paper-tabs').items.forEach(function (tab, index){
+							var link =  Polymer.dom(tab).querySelector('.link');
+							assert.equal(link.getAttribute('href'), '##tab=' + index);
 						});
 						done();
+					}, 90);
+				});
+
+				test('updates selected item from location hash', function (done){
+					Polymer.Base.async(function () {
+						tabs._routeHash = 'tab=0';
+						Polymer.Base.async(function () {
+							assert.equal(tabs._routeHashParams[tabs.hashParam], '0');
+							assert.equal(tabs.selected, 0);
+							assert.equal(tabs.selectedItem, tabs.items[0]);
+							done();
+						}, 90);
+					}, 90);
+				});
+
+				test('updates location hash from selected item', function (done){
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selectedItem, tabs.items[2]);
+						tabs.selected = '2';
+						Polymer.Base.async(function () {
+							assert.equal(tabs._routeHashParams[tabs.hashParam], '2');
+							assert.equal(tabs._routeHash, 'tab=2');
+							done();
+						}, 90);
 					}, 90);
 				});
 			});
