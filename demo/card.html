@@ -28,7 +28,7 @@
 			<h3>Plain <code>cosmoz-tabs</code> with <code>cosmoz-tab-card</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs>
+					<cosmoz-tabs selected="tab2" attr-for-selected="tab-id">
 						<cosmoz-tab heading="Tab1" tab-id="tab1">
 							<cosmoz-tab-card heading="Card1">
 								<p>
@@ -98,7 +98,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs accordion>
-						<cosmoz-tab heading="Tab1" tab-id="tab1">
+						<cosmoz-tab heading="Tab1" tab-id="tab1" selected-values="[0]">
 							<cosmoz-tab-card heading="Card1">
 								<p>
 									Duis suscipit commodo commodo. Fusce hendrerit gravida urna. Pellentesque facilisis lacinia felis ut auctor.
@@ -108,7 +108,7 @@
 								</p>
 							</cosmoz-tab-card>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" tab-id="tab2">
+						<cosmoz-tab heading="Tab2" tab-id="tab2" selected-values="[1]">
 							<cosmoz-tab-card heading="Card2">
 								<p>
 									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce non libero eget lorem interdum lacinia.
