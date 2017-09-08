@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-card</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-tabs selected="0">
+					<cosmoz-tab heading="Tab 1">
+						<cosmoz-tab-card heading="card 1 heading">card 1</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 2 heading">card 2</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 3 heading">card 3</cosmoz-tab-card>
+					</cosmoz-tab>
+					<cosmoz-tab heading="Tab2">Tab 2 text</cosmoz-tab>
+					<cosmoz-tab heading="Tab3">Tab 3 text</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script type="text/javascript">
+			suite('basic', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('basic');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('collects cosmoz-tab-card elements as items', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+						assert.isArray(tab.items);
+						assert.lengthOf(tab.items, 3);
+
+						tab.items.forEach(function (item){
+							assert.equal(item.is, 'cosmoz-tab-card');
+						});
+
+						done();
+					});
+				});
+
+			});
+		</script>
+	</body>
+</html>
