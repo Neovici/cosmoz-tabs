@@ -65,11 +65,12 @@
 				test('in accordion mode selected items are opened', function (done) {
 					Polymer.Base.async(function () {
 						assert.lengthOf(tabs.selectedItems, 2);
-						assert.isTrue(tabs.selectedItems.every(function (item){
+
+						tabs.selectedItems.forEach(function (item){
 							assert.isNotNull(item.$.collapse);
 							assert.isTrue(item.$.collapse.opened);
-							return item.$.collapse.opened;
-						}));
+						});
+
 						done();
 					}, 90);
 				});
@@ -78,11 +79,12 @@
 					Polymer.Base.async(function (){
 						assert.isArray(tabs.items);
 						assert.lengthOf(tabs.items, 3);
-						assert.isTrue(tabs.items.every(function (item){
+
+						tabs.items.forEach(function (item){
 							assert.equal(item.is, 'cosmoz-tab');
 							assert.isTrue(item.accordion);
-							return item.accordion;
-						}));
+						});
+
 						done();
 					}, 60);
 				});
@@ -97,13 +99,14 @@
 
 				test('in accordion mode cosmoz-tab #header is visible', function (done) {
 					Polymer.Base.async(function () {
-						assert.isTrue(tabs.items.every(function (item){
+
+						tabs.items.forEach(function (item){
 							assert.isNotNull(item.$.header);
 							var style = window.getComputedStyle(item.$.header),
 								display = style.getPropertyValue('display');
 							assert.notEqual(display, 'none');
-							return display !== 'none';
-						}));
+						});
+
 						done();
 					}, 90);
 				});

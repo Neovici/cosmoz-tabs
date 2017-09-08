@@ -106,9 +106,9 @@
 				test('collects cosmoz-tab elements as items', function (){
 					assert.isArray(tabs.items);
 					assert.lengthOf(tabs.items, 4);
-					assert.isTrue(tabs.items.every(function (item){
-						return item.is === 'cosmoz-tab';
-					}));
+					tabs.items.forEach(function (item){
+						assert.equal(item.is, 'cosmoz-tab');
+					});
 				});
 
 				test('selects an item', function (){
