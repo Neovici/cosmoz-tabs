@@ -3,12 +3,6 @@
 	'use strict';
 	Polymer({
 
-		/**
-		 * Fired when the element is opened.
-		 *
-		 * @event cosmoz-tab-opened
-		 */
-
 		is: 'cosmoz-tab',
 		properties: {
 			/**

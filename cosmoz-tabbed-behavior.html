@@ -9,6 +9,12 @@
 	 * @polymerBehavior Cosmoz.TabbedBehavior
 	*/
 	Cosmoz.TabbedBehavior = {
+		/**
+		 * Fired when the element should have it's selection state toggled.
+		 *
+		 * @event cosmoz-tab-toggle
+		 */
+
 		properties: {
 			/**
 			 * True if the item is selected.
@@ -20,6 +26,10 @@
 				notify: true
 			},
 
+			/**
+			 * True if item is in accordion mode.
+			 * This property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.
+			 */
 			accordion: {
 				type: Boolean,
 				value: false,
@@ -29,13 +39,14 @@
 
 			/**
 			 * True if the parent `cosmoz-tabs` has class `fit` or `flex`.
-			 * Bound to same  property on parent `cosmoz-tabs`.
+			 * This property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.
 			 */
 			flex: {
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true,
 			},
+
 			/**
 			 * The items's heading text.
 			 */
@@ -86,16 +97,32 @@
 			return isSelected ? 'expand-less' : 'expand-more';
 		},
 
+		/**
+		 * Returns the element's icon.
+		 *
+		 * @returns {void}
+		 */
 		getIcon: function () {
 			return this.isSelected && !this.accordion ? this.selectedIcon : this.icon;
 		},
 
+		/**
+		 * Returns the element's icon style.
+		 *
+		 * @returns {void}
+		 */
 		getIconStyle: function (){
 			if (this.iconColor) {
 				return 'color: ' + this.iconColor;
 			}
 		},
 
+		/**
+		 * Triggers a `cosmoz-tab-toggle` event.
+		 *
+		 * @returns {void}
+		 * @fires cosmoz-tab-toggle
+		 */
 		_onToggleTap: function () {
 			this.fire('cosmoz-tab-toggle');
 		}
