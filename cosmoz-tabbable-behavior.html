@@ -14,6 +14,11 @@
 	Cosmoz.TabbableBehaviorImpl = {
 		properties: {
 
+			/**
+			 * Toggles the accordion mode for the element.
+			 * If true the element allows multiple selections.
+			 *
+			 */
 			accordion: {
 				type: Boolean,
 				value: false,
@@ -21,21 +26,35 @@
 				reflectToAttribute: true
 			},
 
+			/**
+			 * The event that fires from items when they are selected. Selectable
+			 * will listen for this event from items and update the selection state.
+			 * Set to empty string to listen to no events.
+			 */
 			activateEvent: {
 				type: String,
 				value: null
 			},
 
+			/**
+			 * The class to set on elements when selected.
+			 */
 			selectedClass: {
 				type: String,
 				value: 'cosmoz-selected'
 			},
 
+			/**
+			 * The attribute to set on elements when selected.
+			 */
 			selectedAttribute: {
 				type: String,
 				value: 'is-selected'
 			},
 
+			/**
+			 * If true, multiple selections are allowed.
+			 */
 			multi: {
 				type: String,
 				computed: '_computeMulti(accordion)'
@@ -47,15 +66,29 @@
 		},
 
 		observers: [
-			'forwardProperty("accordion", accordion, items)',
-			'forwardProperty("flex", flex, items)'
+			'_forwardProperty("accordion", accordion, items)',
+			'_forwardProperty("flex", flex, items)'
 		],
 
+		/**
+		 * Computes the `multi` property depending on
+		 * `accordion` value
+		 *
+		 * @param  {Boolean} accordion The `accordion` property
+		 * @returns {Boolean} True if accordion is true
+		 */
 		_computeMulti: function (accordion){
 			return !!accordion;
 		},
 
 
+		/**
+		 * Handles the `cosmoz-tab-toggle` fired from an item
+		 * and toggles selection on that item.
+		 *
+		 * @param  {Event} e The `cosmoz-tab-toggle` event
+		 * @returns {void}
+		 */
 		_onToggleTab: function (e){
 			var item = e.target,
 				index = this.items.indexOf(item);
@@ -65,12 +98,27 @@
 			}
 		},
 
-		forwardProperty: function (property, value, items) {
+		/**
+		 * Forwards a property to all items.
+		 *
+		 * @param  {String} property The name of the property
+		 * @param  {*} value The value of the property
+		 * @param  {Array} items The items to forward property to
+		 * @returns {void}
+		 */
+		_forwardProperty: function (property, value, items) {
 			items.forEach(function (item){
 				item.set(property, value);
 			});
 		},
 
+		/**
+		 * Computes the value for item depending on a attribute.
+		 *
+		 * @param  {HTMLElement} item The item to compute value for
+		 * @param  {type} attr The attribute used to compute the value
+		 * @returns {String|Number|void} The compute value
+		 */
 		_valueForItem: function (item, attr = this.attrForSelected) {
 			if (!item) {
 				return;
