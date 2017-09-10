@@ -43,7 +43,7 @@
 					tabs = fixture('defaults');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-						flush(done);
+						done();
 					});
 				});
 
@@ -163,7 +163,7 @@
 							assert.equal(heading.innerText, item.heading);
 						});
 						done();
-					});
+					}, 90);
 				});
 
 				test('sets badge inside paper-tab', function (done) {
