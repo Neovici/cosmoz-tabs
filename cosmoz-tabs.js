@@ -148,17 +148,19 @@
 		 * @param {String} hashParam The `hashParam` property
 		 * @return {void}
 		 */
-		_routeHashParamsChanged: function (changes, hashParam = this.hashParam) {
-			var path = ['_routeHashParams', hashParam],
-				value = this.get(path),
-				selection = this.items.filter(function (item){
-					return this._hashParamForItem(item) === value;
-				}, this).map(function (item){
-					return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-				}, this)[0];
+		_routeHashParamsChanged: function (changes, hashParam) {
+			if (! (changes === undefined || hashParam === undefined)){
+				var path = ['_routeHashParams', hashParam],
+					value = this.get(path),
+					selection = this.items.filter(function (item){
+						return this._hashParamForItem(item) === value;
+					}, this).map(function (item){
+						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+					}, this)[0];
 
-			if (selection !== undefined) {
-				this.select(selection);
+				if (selection !== undefined) {
+					this.select(selection);
+				}
 			}
 		},
 
@@ -170,13 +172,15 @@
 		 * @param  {Object} hashParam The hash param
 		 * @return {void}
 		 */
-		_selectedItemChanged: function (item = this.selectedItem, hashParam = this.hashParam){
-			var path = ['_routeHashParams', hashParam],
-				current = this.get(path),
-				value = item ? this._hashParamForItem(item) : null;
+		_selectedItemChanged: function (item = this.selectedItem, hashParam){
+			if (! (item === undefined || hashParam === undefined)){
+				var path = ['_routeHashParams', hashParam],
+					current = this.get(path),
+					value = item ? this._hashParamForItem(item) : null;
 
-			if (current !== value) {
-				this.set(path, value);
+				if (current !== value) {
+					this.set(path, value);
+				}
 			}
 		}
 	});
