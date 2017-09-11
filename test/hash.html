@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-hash</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-tabs selected="2" hash-param="tab">
+					<cosmoz-tab>Tab text 1</cosmoz-tab>
+					<cosmoz-tab>Tab text 2</cosmoz-tab>
+					<cosmoz-tab>Tab text 3</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script type="text/javascript">
+			suite('basic', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('basic');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('items have links', function (done) {
+					Polymer.Base.async(function () {
+						tabs.$$('paper-tabs').items.forEach(function (tab, index){
+							var link =  Polymer.dom(tab).querySelector('.link');
+							assert.equal(link.getAttribute('href'), '##tab=' + index);
+						});
+						done();
+					}, 90);
+				});
+
+				test('updates selected item from location hash', function (done){
+					Polymer.Base.async(function () {
+						tabs._routeHash = 'tab=0';
+						Polymer.Base.async(function () {
+							assert.equal(tabs._routeHashParams[tabs.hashParam], '0');
+							assert.equal(tabs.selected, 0);
+							assert.equal(tabs.selectedItem, tabs.items[0]);
+							done();
+						}, 90);
+					}, 90);
+				});
+
+				test('updates location hash from selected item', function (done){
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selectedItem, tabs.items[2]);
+						tabs.selected = '2';
+						Polymer.Base.async(function () {
+							assert.equal(tabs._routeHashParams[tabs.hashParam], '2');
+							assert.equal(tabs._routeHash, 'tab=2');
+							done();
+						}, 90);
+					}, 90);
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-card</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-tabs selected="0">
+					<cosmoz-tab heading="Tab 1">
+						<cosmoz-tab-card heading="card 1 heading">card 1</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 2 heading">card 2</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 3 heading">card 3</cosmoz-tab-card>
+					</cosmoz-tab>
+					<cosmoz-tab heading="Tab2">Tab 2 text</cosmoz-tab>
+					<cosmoz-tab heading="Tab3">Tab 3 text</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="accordion">
+			<template>
+				<cosmoz-tabs accordion>
+					<cosmoz-tab heading="Tab 1" selected-values="[0]">
+						<cosmoz-tab-card heading="card 1 heading">card 1</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 2 heading">card 2</cosmoz-tab-card>
+						<cosmoz-tab-card heading="card 3 heading">card 3</cosmoz-tab-card>
+					</cosmoz-tab>
+					<cosmoz-tab heading="Tab2">Tab 2 text</cosmoz-tab>
+					<cosmoz-tab heading="Tab3">Tab 3 text</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script type="text/javascript">
+			suite('cards basic', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('basic');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('collects cosmoz-tab-card elements as items', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+						assert.isArray(tab.items);
+						assert.lengthOf(tab.items, 3);
+
+						tab.items.forEach(function (item){
+							assert.equal(item.is, 'cosmoz-tab-card');
+						});
+
+						done();
+					}, 90);
+				});
+
+				test('cards have elevation 1', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							var material = item.$$('paper-material');
+							assert.equal(material.elevation, 1);
+						});
+
+						done();
+					}, 90);
+				});
+
+				test('cards are opened', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							assert.isTrue(item.$.collapse.opened);
+						});
+
+						done();
+					}, 90);
+				});
+
+				test('cards have headings', function (done){
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function () {
+
+						tab.items.forEach(function (item){
+							var heading = item.$$('.heading');
+							assert.equal(heading.innerText, item.heading);
+						});
+
+						done();
+					}, 90);
+				});
+			});
+
+			suite('cards accordion', function () {
+				var tabs;
+
+				setup(function (done){
+					tabs = fixture('accordion');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('properties are forwarded to cards', function (done){
+					Polymer.Base.async(function (){
+						var tab = tabs.items[0];
+						assert.equal(tab.accordion, tabs.accordion);
+						assert.equal(tab.flex, tabs.flex);
+
+						tab.items.forEach(function (item){
+							assert.equal(item.accordion, tabs.accordion);
+							assert.equal(item.flex, tabs.flex);
+						});
+						done();
+
+					}, 90);
+				});
+
+				test('tab containing cards has hidden header', function (done){
+					Polymer.Base.async(function () {
+						var tab = tabs.items[0],
+							style = window.getComputedStyle(tab.$.header),
+							display = style.getPropertyValue('display');
+						assert.equal(display, 'none');
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode selected cards are opened', function (done){
+					Polymer.Base.async(function () {
+						var tab = tabs.items[0];
+
+						assert.lengthOf(tab.selectedItems, 1);
+						tab.selectedItems.forEach(function (item){
+							assert.isTrue(item.$.collapse.opened);
+						});
+						done();
+					}, 90);
+				});
+
+				test('in accordion mode unselected cards are closed', function (done){
+					Polymer.Base.async(function () {
+						var tab = tabs.items[0],
+							unselected = tab.items.filter(function (item){
+								return tab.selectedItems.indexOf(item) < 0;
+							});
+
+						assert.lengthOf(unselected, 2);
+						unselected.forEach(function (item){
+							assert.isFalse(item.$.collapse.opened);
+						});
+						done();
+					}, 90);
+				});
+
+			});
+		</script>
+	</body>
+</html>
