@@ -55,11 +55,6 @@
 		}
 	},
 	"resolutions": {
-		"polymer": "^2.0.0",
-		"iron-selector": "^2.0.0",
-		"iron-location": "^2.0.1",
-		"webcomponentsjs": "^1.0.0",
-		"iron-resizable-behavior": "^2.0.0",
-		"neon-animation": "^2.0.0"
+		"webcomponentsjs": "^1.0.0"
 	}
 }

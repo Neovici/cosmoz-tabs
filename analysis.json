@@ -283,7 +283,7 @@
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 64,
               "column": 5
             }
           },
@@ -298,11 +298,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 75,
+              "line": 66,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 74,
               "column": 5
             }
           },
@@ -317,11 +317,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 89,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 92,
               "column": 5
             }
           },
@@ -336,11 +336,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 107,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 100,
               "column": 5
             }
           },
@@ -359,11 +359,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 115,
+              "line": 106,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 113,
               "column": 5
             }
           },
@@ -382,11 +382,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 133,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 124,
               "column": 59
             }
           },
@@ -411,11 +411,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 135,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 138,
               "column": 5
             }
           },
@@ -434,11 +434,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 149,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 145,
               "column": 5
             }
           },
@@ -453,11 +453,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 156,
+              "line": 147,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 162,
               "column": 5
             }
           },
@@ -476,11 +476,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 174,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 168,
               "column": 5
             }
           },
@@ -499,11 +499,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 180,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 181,
               "column": 5
             }
           },
@@ -513,6 +513,25 @@
               "name": "descendant"
             }
           ],
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_requestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 211,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
           "inheritedFrom": "Polymer.IronResizableBehavior"
         },
         {
@@ -970,11 +989,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },
@@ -992,11 +1011,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 7
             }
           },
@@ -1015,11 +1034,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 7
             }
           },
@@ -1125,11 +1144,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 120,
+              "line": 121,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 124,
               "column": 7
             }
           },
@@ -1147,11 +1166,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 128,
+              "line": 129,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 136,
               "column": 7
             }
           },
@@ -1172,18 +1191,18 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 143,
+              "line": 144,
               "column": 6
             },
             "end": {
-              "line": 150,
+              "line": 154,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "{\"template\":1}",
+          "defaultValue": "{\"template\":1,\"dom-bind\":1,\"dom-if\":1,\"dom-repeat\":1}",
           "inheritedFrom": "Polymer.IronSelectableBehavior"
         },
         {
@@ -1217,11 +1236,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 31,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 34,
+              "line": 39,
               "column": 7
             }
           },
@@ -1230,6 +1249,7 @@
               "notify": true
             }
           },
+          "defaultValue": "[]",
           "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
         },
         {
@@ -1240,11 +1260,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 51,
               "column": 7
             }
           },
@@ -1254,6 +1274,7 @@
               "readOnly": true
             }
           },
+          "defaultValue": "[]",
           "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
         },
         {
@@ -1507,11 +1528,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 159,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 166,
               "column": 5
             }
           },
@@ -1526,7 +1547,7 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 164,
+              "line": 168,
               "column": 4
             },
             "end": {
@@ -1564,11 +1585,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 89,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 92,
               "column": 5
             }
           },
@@ -1583,11 +1604,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 107,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 100,
               "column": 5
             }
           },
@@ -1606,11 +1627,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 115,
+              "line": 106,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 113,
               "column": 5
             }
           },
@@ -1629,11 +1650,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 133,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 124,
               "column": 59
             }
           },
@@ -1658,11 +1679,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 135,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 138,
               "column": 5
             }
           },
@@ -1681,11 +1702,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 149,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 145,
               "column": 5
             }
           },
@@ -1700,11 +1721,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 156,
+              "line": 147,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 162,
               "column": 5
             }
           },
@@ -1723,11 +1744,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 174,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 168,
               "column": 5
             }
           },
@@ -1746,11 +1767,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 180,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 181,
               "column": 5
             }
           },
@@ -1760,6 +1781,25 @@
               "name": "descendant"
             }
           ],
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_requestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 211,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
           "inheritedFrom": "Polymer.IronResizableBehavior"
         },
         {
@@ -1796,11 +1836,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 58,
+              "line": 66,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 72,
               "column": 5
             }
           },
@@ -1886,7 +1926,7 @@
               "column": 4
             },
             "end": {
-              "line": 245,
+              "line": 255,
               "column": 5
             }
           },
@@ -1896,16 +1936,16 @@
         },
         {
           "name": "_shouldUpdateSelection",
-          "description": "",
+          "description": "UNUSED, FOR API COMPATIBILITY",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 74,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 83,
               "column": 5
             }
           },
@@ -1920,11 +1960,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 251,
+              "line": 262,
               "column": 4
             },
             "end": {
-              "line": 255,
+              "line": 264,
               "column": 5
             }
           },
@@ -1939,11 +1979,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 257,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 259,
+              "line": 268,
               "column": 5
             }
           },
@@ -1962,11 +2002,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 261,
+              "line": 270,
               "column": 4
             },
             "end": {
-              "line": 263,
+              "line": 272,
               "column": 5
             }
           },
@@ -1985,11 +2025,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 265,
+              "line": 274,
               "column": 4
             },
             "end": {
-              "line": 268,
+              "line": 277,
               "column": 5
             }
           },
@@ -2011,11 +2051,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 270,
+              "line": 279,
               "column": 4
             },
             "end": {
-              "line": 274,
+              "line": 283,
               "column": 5
             }
           },
@@ -2030,11 +2070,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 79,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 95,
               "column": 5
             }
           },
@@ -2049,11 +2089,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 91,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 103,
               "column": 5
             }
           },
@@ -2068,11 +2108,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 286,
+              "line": 295,
               "column": 4
             },
             "end": {
-              "line": 293,
+              "line": 311,
               "column": 5
             }
           },
@@ -2091,11 +2131,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 295,
+              "line": 313,
               "column": 4
             },
             "end": {
-              "line": 297,
+              "line": 315,
               "column": 5
             }
           },
@@ -2114,11 +2154,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 299,
+              "line": 317,
               "column": 4
             },
             "end": {
-              "line": 301,
+              "line": 319,
               "column": 5
             }
           },
@@ -2137,11 +2177,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 303,
+              "line": 321,
               "column": 4
             },
             "end": {
-              "line": 313,
+              "line": 331,
               "column": 5
             }
           },
@@ -2160,11 +2200,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 315,
+              "line": 333,
               "column": 4
             },
             "end": {
-              "line": 324,
+              "line": 342,
               "column": 5
             }
           },
@@ -2215,11 +2255,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 331,
+              "line": 353,
               "column": 4
             },
             "end": {
-              "line": 340,
+              "line": 362,
               "column": 5
             }
           },
@@ -2241,11 +2281,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 120,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 128,
+              "line": 143,
               "column": 5
             }
           },
@@ -2260,11 +2300,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 347,
+              "line": 369,
               "column": 4
             },
             "end": {
-              "line": 362,
+              "line": 381,
               "column": 5
             }
           },
@@ -2283,11 +2323,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 364,
+              "line": 383,
               "column": 4
             },
             "end": {
-              "line": 376,
+              "line": 395,
               "column": 5
             }
           },
@@ -2306,11 +2346,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 378,
+              "line": 397,
               "column": 4
             },
             "end": {
-              "line": 383,
+              "line": 402,
               "column": 5
             }
           },
@@ -2332,11 +2372,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 70,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 77,
               "column": 5
             }
           },
@@ -2355,11 +2395,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 99,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 127,
               "column": 5
             }
           },
@@ -2378,11 +2418,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 130,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 153,
               "column": 5
             }
           },
@@ -2401,11 +2441,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 159,
               "column": 5
             }
           },
@@ -2687,11 +2727,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },
@@ -2705,11 +2745,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 7
             }
           },
@@ -2723,11 +2763,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 7
             }
           },
@@ -2811,11 +2851,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 120,
+              "line": 121,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 124,
               "column": 7
             }
           },
@@ -2829,11 +2869,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 128,
+              "line": 129,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 136,
               "column": 7
             }
           },
@@ -2865,11 +2905,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 31,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 34,
+              "line": 39,
               "column": 7
             }
           },
@@ -2883,11 +2923,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 51,
               "column": 7
             }
           },
@@ -3191,11 +3231,11 @@
           "range": {
             "file": "cosmoz-tab.html",
             "start": {
-              "line": 140,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 140,
+              "line": 141,
               "column": 17
             }
           }
@@ -3261,11 +3301,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },
@@ -3283,11 +3323,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 7
             }
           },
@@ -3306,11 +3346,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 7
             }
           },
@@ -3416,11 +3456,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 120,
+              "line": 121,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 124,
               "column": 7
             }
           },
@@ -3438,11 +3478,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 128,
+              "line": 129,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 136,
               "column": 7
             }
           },
@@ -3463,18 +3503,18 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 143,
+              "line": 144,
               "column": 6
             },
             "end": {
-              "line": 150,
+              "line": 154,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "{\"template\":1}",
+          "defaultValue": "{\"template\":1,\"dom-bind\":1,\"dom-if\":1,\"dom-repeat\":1}",
           "inheritedFrom": "Polymer.IronSelectableBehavior"
         },
         {
@@ -3508,11 +3548,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 31,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 34,
+              "line": 39,
               "column": 7
             }
           },
@@ -3521,6 +3561,7 @@
               "notify": true
             }
           },
+          "defaultValue": "[]",
           "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
         },
         {
@@ -3531,11 +3572,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 51,
               "column": 7
             }
           },
@@ -3545,6 +3586,7 @@
               "readOnly": true
             }
           },
+          "defaultValue": "[]",
           "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
         },
         {
@@ -3682,11 +3724,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 159,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 166,
               "column": 5
             }
           },
@@ -3701,7 +3743,7 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 164,
+              "line": 168,
               "column": 4
             },
             "end": {
@@ -3739,11 +3781,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 89,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 92,
               "column": 5
             }
           },
@@ -3758,11 +3800,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 107,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 100,
               "column": 5
             }
           },
@@ -3781,11 +3823,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 115,
+              "line": 106,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 113,
               "column": 5
             }
           },
@@ -3804,11 +3846,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 133,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 124,
               "column": 59
             }
           },
@@ -3833,11 +3875,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 135,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 138,
               "column": 5
             }
           },
@@ -3856,11 +3898,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 149,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 145,
               "column": 5
             }
           },
@@ -3875,11 +3917,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 156,
+              "line": 147,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 162,
               "column": 5
             }
           },
@@ -3898,11 +3940,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 174,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 168,
               "column": 5
             }
           },
@@ -3921,11 +3963,11 @@
           "sourceRange": {
             "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
             "start": {
-              "line": 180,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 181,
               "column": 5
             }
           },
@@ -3935,6 +3977,25 @@
               "name": "descendant"
             }
           ],
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_requestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 211,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
           "inheritedFrom": "Polymer.IronResizableBehavior"
         },
         {
@@ -3971,11 +4032,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 58,
+              "line": 66,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 72,
               "column": 5
             }
           },
@@ -4061,7 +4122,7 @@
               "column": 4
             },
             "end": {
-              "line": 245,
+              "line": 255,
               "column": 5
             }
           },
@@ -4071,16 +4132,16 @@
         },
         {
           "name": "_shouldUpdateSelection",
-          "description": "",
+          "description": "UNUSED, FOR API COMPATIBILITY",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 74,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 83,
               "column": 5
             }
           },
@@ -4095,11 +4156,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 251,
+              "line": 262,
               "column": 4
             },
             "end": {
-              "line": 255,
+              "line": 264,
               "column": 5
             }
           },
@@ -4114,11 +4175,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 257,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 259,
+              "line": 268,
               "column": 5
             }
           },
@@ -4137,11 +4198,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 261,
+              "line": 270,
               "column": 4
             },
             "end": {
-              "line": 263,
+              "line": 272,
               "column": 5
             }
           },
@@ -4160,11 +4221,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 265,
+              "line": 274,
               "column": 4
             },
             "end": {
-              "line": 268,
+              "line": 277,
               "column": 5
             }
           },
@@ -4186,11 +4247,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 270,
+              "line": 279,
               "column": 4
             },
             "end": {
-              "line": 274,
+              "line": 283,
               "column": 5
             }
           },
@@ -4205,11 +4266,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 79,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 95,
               "column": 5
             }
           },
@@ -4224,11 +4285,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 91,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 103,
               "column": 5
             }
           },
@@ -4243,11 +4304,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 286,
+              "line": 295,
               "column": 4
             },
             "end": {
-              "line": 293,
+              "line": 311,
               "column": 5
             }
           },
@@ -4266,11 +4327,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 295,
+              "line": 313,
               "column": 4
             },
             "end": {
-              "line": 297,
+              "line": 315,
               "column": 5
             }
           },
@@ -4289,11 +4350,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 299,
+              "line": 317,
               "column": 4
             },
             "end": {
-              "line": 301,
+              "line": 319,
               "column": 5
             }
           },
@@ -4312,11 +4373,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 303,
+              "line": 321,
               "column": 4
             },
             "end": {
-              "line": 313,
+              "line": 331,
               "column": 5
             }
           },
@@ -4335,11 +4396,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 315,
+              "line": 333,
               "column": 4
             },
             "end": {
-              "line": 324,
+              "line": 342,
               "column": 5
             }
           },
@@ -4390,11 +4451,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 331,
+              "line": 353,
               "column": 4
             },
             "end": {
-              "line": 340,
+              "line": 362,
               "column": 5
             }
           },
@@ -4416,11 +4477,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 120,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 128,
+              "line": 143,
               "column": 5
             }
           },
@@ -4435,11 +4496,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 347,
+              "line": 369,
               "column": 4
             },
             "end": {
-              "line": 362,
+              "line": 381,
               "column": 5
             }
           },
@@ -4458,11 +4519,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 364,
+              "line": 383,
               "column": 4
             },
             "end": {
-              "line": 376,
+              "line": 395,
               "column": 5
             }
           },
@@ -4481,11 +4542,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 378,
+              "line": 397,
               "column": 4
             },
             "end": {
-              "line": 383,
+              "line": 402,
               "column": 5
             }
           },
@@ -4507,11 +4568,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 70,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 77,
               "column": 5
             }
           },
@@ -4530,11 +4591,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 99,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 127,
               "column": 5
             }
           },
@@ -4553,11 +4614,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 130,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 153,
               "column": 5
             }
           },
@@ -4576,11 +4637,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 159,
               "column": 5
             }
           },
@@ -4872,7 +4933,7 @@
               "column": 2
             },
             "end": {
-              "line": 162,
+              "line": 164,
               "column": 3
             }
           },
@@ -4884,7 +4945,9 @@
               "description": "changes to `_routeHashParams` property"
             },
             {
-              "name": "hashParam = this.hashParam"
+              "name": "hashParam",
+              "type": "String",
+              "description": "The `hashParam` property"
             }
           ],
           "return": {
@@ -4897,11 +4960,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 174,
               "column": 2
             },
             "end": {
-              "line": 180,
+              "line": 184,
               "column": 3
             }
           },
@@ -4911,7 +4974,9 @@
               "name": "item = this.selectedItem"
             },
             {
-              "name": "hashParam = this.hashParam"
+              "name": "hashParam",
+              "type": "Object",
+              "description": "The hash param"
             }
           ],
           "return": {
@@ -4933,7 +4998,7 @@
           "column": 9
         },
         "end": {
-          "line": 181,
+          "line": 185,
           "column": 2
         }
       },
@@ -4946,11 +5011,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },
@@ -4964,11 +5029,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 67,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 70,
+              "line": 71,
               "column": 7
             }
           },
@@ -4982,11 +5047,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 7
             }
           },
@@ -5070,11 +5135,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 120,
+              "line": 121,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 124,
               "column": 7
             }
           },
@@ -5088,11 +5153,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-selectable.html",
             "start": {
-              "line": 128,
+              "line": 129,
               "column": 6
             },
             "end": {
-              "line": 135,
+              "line": 136,
               "column": 7
             }
           },
@@ -5124,11 +5189,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 31,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 34,
+              "line": 39,
               "column": 7
             }
           },
@@ -5142,11 +5207,11 @@
           "sourceRange": {
             "file": "bower_components/iron-selector/iron-multi-selectable.html",
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 51,
               "column": 7
             }
           },
@@ -5806,11 +5871,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 58,
+                  "line": 59,
                   "column": 6
                 },
                 "end": {
-                  "line": 61,
+                  "line": 62,
                   "column": 7
                 }
               },
@@ -5828,11 +5893,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 67,
+                  "line": 68,
                   "column": 6
                 },
                 "end": {
-                  "line": 70,
+                  "line": 71,
                   "column": 7
                 }
               },
@@ -5851,11 +5916,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 77,
+                  "line": 78,
                   "column": 6
                 },
                 "end": {
-                  "line": 81,
+                  "line": 82,
                   "column": 7
                 }
               },
@@ -5895,11 +5960,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 98,
+                  "line": 99,
                   "column": 6
                 },
                 "end": {
-                  "line": 98,
+                  "line": 99,
                   "column": 24
                 }
               },
@@ -5956,11 +6021,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 120,
+                  "line": 121,
                   "column": 6
                 },
                 "end": {
-                  "line": 123,
+                  "line": 124,
                   "column": 7
                 }
               },
@@ -5978,11 +6043,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 128,
+                  "line": 129,
                   "column": 6
                 },
                 "end": {
-                  "line": 135,
+                  "line": 136,
                   "column": 7
                 }
               },
@@ -6003,18 +6068,18 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 143,
+                  "line": 144,
                   "column": 6
                 },
                 "end": {
-                  "line": 150,
+                  "line": 154,
                   "column": 7
                 }
               },
               "metadata": {
                 "polymer": {}
               },
-              "defaultValue": "{\"template\":1}",
+              "defaultValue": "{\"template\":1,\"dom-bind\":1,\"dom-if\":1,\"dom-repeat\":1}",
               "inheritedFrom": "Polymer.IronSelectableBehavior"
             },
             {
@@ -6046,11 +6111,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 31,
+                  "line": 33,
                   "column": 6
                 },
                 "end": {
-                  "line": 34,
+                  "line": 39,
                   "column": 7
                 }
               },
@@ -6059,6 +6124,7 @@
                   "notify": true
                 }
               },
+              "defaultValue": "[]",
               "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
             },
             {
@@ -6069,11 +6135,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 39,
+                  "line": 44,
                   "column": 6
                 },
                 "end": {
-                  "line": 43,
+                  "line": 51,
                   "column": 7
                 }
               },
@@ -6083,6 +6149,7 @@
                   "readOnly": true
                 }
               },
+              "defaultValue": "[]",
               "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
             },
             {
@@ -6116,11 +6183,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 159,
+                  "line": 163,
                   "column": 4
                 },
                 "end": {
-                  "line": 162,
+                  "line": 166,
                   "column": 5
                 }
               },
@@ -6135,7 +6202,7 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 164,
+                  "line": 168,
                   "column": 4
                 },
                 "end": {
@@ -6173,11 +6240,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 89,
+                  "line": 80,
                   "column": 4
                 },
                 "end": {
-                  "line": 101,
+                  "line": 92,
                   "column": 5
                 }
               },
@@ -6192,11 +6259,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 107,
+                  "line": 98,
                   "column": 4
                 },
                 "end": {
-                  "line": 109,
+                  "line": 100,
                   "column": 5
                 }
               },
@@ -6215,11 +6282,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 115,
+                  "line": 106,
                   "column": 4
                 },
                 "end": {
-                  "line": 122,
+                  "line": 113,
                   "column": 5
                 }
               },
@@ -6238,11 +6305,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 133,
+                  "line": 124,
                   "column": 4
                 },
                 "end": {
-                  "line": 133,
+                  "line": 124,
                   "column": 59
                 }
               },
@@ -6267,11 +6334,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 135,
+                  "line": 126,
                   "column": 4
                 },
                 "end": {
-                  "line": 147,
+                  "line": 138,
                   "column": 5
                 }
               },
@@ -6290,11 +6357,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 149,
+                  "line": 140,
                   "column": 4
                 },
                 "end": {
-                  "line": 154,
+                  "line": 145,
                   "column": 5
                 }
               },
@@ -6309,11 +6376,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 156,
+                  "line": 147,
                   "column": 4
                 },
                 "end": {
-                  "line": 172,
+                  "line": 162,
                   "column": 5
                 }
               },
@@ -6332,11 +6399,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 174,
+                  "line": 164,
                   "column": 4
                 },
                 "end": {
-                  "line": 178,
+                  "line": 168,
                   "column": 5
                 }
               },
@@ -6355,11 +6422,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
                 "start": {
-                  "line": 180,
+                  "line": 170,
                   "column": 4
                 },
                 "end": {
-                  "line": 191,
+                  "line": 181,
                   "column": 5
                 }
               },
@@ -6369,6 +6436,25 @@
                   "name": "descendant"
                 }
               ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_requestResizeNotifications",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 183,
+                  "column": 4
+                },
+                "end": {
+                  "line": 211,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
               "inheritedFrom": "Polymer.IronResizableBehavior"
             },
             {
@@ -6405,11 +6491,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 58,
+                  "line": 66,
                   "column": 4
                 },
                 "end": {
-                  "line": 68,
+                  "line": 72,
                   "column": 5
                 }
               },
@@ -6495,7 +6581,7 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 245,
+                  "line": 255,
                   "column": 5
                 }
               },
@@ -6505,16 +6591,16 @@
             },
             {
               "name": "_shouldUpdateSelection",
-              "description": "",
+              "description": "UNUSED, FOR API COMPATIBILITY",
               "privacy": "protected",
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 74,
+                  "line": 80,
                   "column": 4
                 },
                 "end": {
-                  "line": 77,
+                  "line": 83,
                   "column": 5
                 }
               },
@@ -6529,11 +6615,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 251,
+                  "line": 262,
                   "column": 4
                 },
                 "end": {
-                  "line": 255,
+                  "line": 264,
                   "column": 5
                 }
               },
@@ -6548,11 +6634,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 257,
+                  "line": 266,
                   "column": 4
                 },
                 "end": {
-                  "line": 259,
+                  "line": 268,
                   "column": 5
                 }
               },
@@ -6571,11 +6657,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 261,
+                  "line": 270,
                   "column": 4
                 },
                 "end": {
-                  "line": 263,
+                  "line": 272,
                   "column": 5
                 }
               },
@@ -6594,11 +6680,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 265,
+                  "line": 274,
                   "column": 4
                 },
                 "end": {
-                  "line": 268,
+                  "line": 277,
                   "column": 5
                 }
               },
@@ -6620,11 +6706,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 270,
+                  "line": 279,
                   "column": 4
                 },
                 "end": {
-                  "line": 274,
+                  "line": 283,
                   "column": 5
                 }
               },
@@ -6639,11 +6725,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 79,
+                  "line": 85,
                   "column": 4
                 },
                 "end": {
-                  "line": 89,
+                  "line": 95,
                   "column": 5
                 }
               },
@@ -6658,11 +6744,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 91,
+                  "line": 97,
                   "column": 4
                 },
                 "end": {
-                  "line": 97,
+                  "line": 103,
                   "column": 5
                 }
               },
@@ -6677,11 +6763,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 286,
+                  "line": 295,
                   "column": 4
                 },
                 "end": {
-                  "line": 293,
+                  "line": 311,
                   "column": 5
                 }
               },
@@ -6700,11 +6786,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 295,
+                  "line": 313,
                   "column": 4
                 },
                 "end": {
-                  "line": 297,
+                  "line": 315,
                   "column": 5
                 }
               },
@@ -6723,11 +6809,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 299,
+                  "line": 317,
                   "column": 4
                 },
                 "end": {
-                  "line": 301,
+                  "line": 319,
                   "column": 5
                 }
               },
@@ -6746,11 +6832,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 303,
+                  "line": 321,
                   "column": 4
                 },
                 "end": {
-                  "line": 313,
+                  "line": 331,
                   "column": 5
                 }
               },
@@ -6769,11 +6855,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 315,
+                  "line": 333,
                   "column": 4
                 },
                 "end": {
-                  "line": 324,
+                  "line": 342,
                   "column": 5
                 }
               },
@@ -6822,11 +6908,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 331,
+                  "line": 353,
                   "column": 4
                 },
                 "end": {
-                  "line": 340,
+                  "line": 362,
                   "column": 5
                 }
               },
@@ -6848,11 +6934,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 120,
+                  "line": 129,
                   "column": 4
                 },
                 "end": {
-                  "line": 128,
+                  "line": 143,
                   "column": 5
                 }
               },
@@ -6867,11 +6953,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 347,
+                  "line": 369,
                   "column": 4
                 },
                 "end": {
-                  "line": 362,
+                  "line": 381,
                   "column": 5
                 }
               },
@@ -6890,11 +6976,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 364,
+                  "line": 383,
                   "column": 4
                 },
                 "end": {
-                  "line": 376,
+                  "line": 395,
                   "column": 5
                 }
               },
@@ -6913,11 +6999,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 378,
+                  "line": 397,
                   "column": 4
                 },
                 "end": {
-                  "line": 383,
+                  "line": 402,
                   "column": 5
                 }
               },
@@ -6939,11 +7025,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 70,
+                  "line": 74,
                   "column": 4
                 },
                 "end": {
-                  "line": 72,
+                  "line": 77,
                   "column": 5
                 }
               },
@@ -6962,11 +7048,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 99,
+                  "line": 105,
                   "column": 4
                 },
                 "end": {
-                  "line": 118,
+                  "line": 127,
                   "column": 5
                 }
               },
@@ -6985,11 +7071,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 130,
+                  "line": 145,
                   "column": 4
                 },
                 "end": {
-                  "line": 138,
+                  "line": 153,
                   "column": 5
                 }
               },
@@ -7008,11 +7094,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 140,
+                  "line": 155,
                   "column": 4
                 },
                 "end": {
-                  "line": 144,
+                  "line": 159,
                   "column": 5
                 }
               },
@@ -7136,11 +7222,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 58,
+                  "line": 59,
                   "column": 6
                 },
                 "end": {
-                  "line": 61,
+                  "line": 62,
                   "column": 7
                 }
               },
@@ -7154,11 +7240,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 67,
+                  "line": 68,
                   "column": 6
                 },
                 "end": {
-                  "line": 70,
+                  "line": 71,
                   "column": 7
                 }
               },
@@ -7172,11 +7258,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 77,
+                  "line": 78,
                   "column": 6
                 },
                 "end": {
-                  "line": 81,
+                  "line": 82,
                   "column": 7
                 }
               },
@@ -7206,11 +7292,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 98,
+                  "line": 99,
                   "column": 6
                 },
                 "end": {
-                  "line": 98,
+                  "line": 99,
                   "column": 24
                 }
               },
@@ -7256,11 +7342,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 120,
+                  "line": 121,
                   "column": 6
                 },
                 "end": {
-                  "line": 123,
+                  "line": 124,
                   "column": 7
                 }
               },
@@ -7274,11 +7360,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-selectable.html",
                 "start": {
-                  "line": 128,
+                  "line": 129,
                   "column": 6
                 },
                 "end": {
-                  "line": 135,
+                  "line": 136,
                   "column": 7
                 }
               },
@@ -7308,11 +7394,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 31,
+                  "line": 33,
                   "column": 6
                 },
                 "end": {
-                  "line": 34,
+                  "line": 39,
                   "column": 7
                 }
               },
@@ -7326,11 +7412,11 @@
               "sourceRange": {
                 "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 39,
+                  "line": 44,
                   "column": 6
                 },
                 "end": {
-                  "line": 43,
+                  "line": 51,
                   "column": 7
                 }
               },
