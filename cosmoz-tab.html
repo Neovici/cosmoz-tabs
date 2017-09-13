@@ -36,8 +36,11 @@ Custom property | Description | Default
 				@apply --cosmoz-tab;
 			}
 
-			:host(:not([accordion])) {
+			:host(:not([accordion])),
+			:host(:not([accordion])) #collapse,
+			:host(:not([accordion])) #content {
 				@apply --layout-vertical;
+				@apply --layout-flex-auto;
 			}
 
 			:host([flex]:not([accordion])) {
@@ -115,12 +118,7 @@ Custom property | Description | Default
 				position: relative;
 			}
 
-			:host([flex]:not([accordion])) #collapse,
-			:host([flex]:not([accordion])) #content {
-				@apply --layout-vertical;
-				@apply --layout-flex;
-			}
-			:host([flex]:not([accordion])) #content {
+			:host(:not([accordion])) #content {
 				overflow-y: auto;
 				will-change: transform;
 			}
