@@ -63,6 +63,7 @@
 
 		listeners: {
 			'cosmoz-tab-toggle': '_onToggleTab',
+			'iron-select': '_onIronSelect'
 		},
 
 		observers: [
@@ -126,6 +127,33 @@
 			var propValue = item[Polymer.CaseMap.dashToCamelCase(attr)];
 			return propValue !== undefined ? propValue : item.getAttribute(attr);
 		},
+
+		/**
+		 * Listens to `iron-select` event and fires
+		 * `tab-first-select` and `tab-select` on the selected item.
+		 *
+		 * @param  {Event} e  The event object
+		 * @param  {Object} detail The detail object
+		 * @param  {HTMLElement} detail.item The item being selected.
+		 * @fires 'tab-first-select'
+		 * @fires 'tab-select'
+		 * @return {void}        description
+		 */
+		_onIronSelect: function (e, detail){
+			var item = detail.item,
+				index = this.items.indexOf(item),
+				opts = {node: item, bubbles: false };
+
+			if (index > -1) {
+
+				if (!item._previouslySelected) {
+					this.fire('tab-first-select', {}, opts);
+					item._previouslySelected = true;
+				}
+				this.fire('tab-select', {}, opts);
+			}
+
+		}
 	};
 
 	/** @polymerBehavior */
