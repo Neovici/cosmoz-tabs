@@ -10,7 +10,7 @@
 
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
-
+		<link rel="import" href="../../iron-list/iron-list.html" />
 		<link rel="import" href="../cosmoz-tab-card.html" />
 		<link rel="import" href="../cosmoz-tab.html" />
 		<link rel="import" href="../cosmoz-tabs.html" />
@@ -250,6 +250,64 @@
 					</cosmoz-tabs>
 				</template>
 			</demo-snippet>
+
+			<h3>`tab-select` and `tab-first-select` events</h3>
+			<demo-snippet>
+				<template>
+					<dom-bind id="events">
+						<template is="dom-bind">
+							<iron-list items="[[items]]" as="item" style="margin-bottom: 30px;">
+								<template>
+									<div style$="[[ item.style]]">event: <b>{{ item.event }}</b> on: <i>{{item.heading}}</i></div>
+								</template>
+							</iron-list>
+							<cosmoz-tabs>
+								<cosmoz-tab heading="Tab1" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab2" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+									<p>
+										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+										Phasellus et purus id dolor venenatis mollis.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab3" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+									<p>
+										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+										Nunc bibendum elit turpis.
+									</p>
+								</cosmoz-tab>
+							</cosmoz-tabs>
+						</template>
+					</dom-bind>
+				</template>
+			</demo-snippet>
 		</div>
+
+		<script type="text/javascript">
+			(function () {
+				window.addEventListener('WebComponentsReady', function () {
+					var events = document.getElementById('events');
+					events = !events.set ? events.firstElementChild : events;
+
+					events.set('items', []);
+
+					events._onTabSelect = function (e){
+						events.push('items', {event: 'tab-select', heading: e.target.heading, style: 'color: red'});
+			// eventsLog.innerHTML += '<div>on tab-select <<' + e.target.heading + '>></div>';
+					};
+
+					events._onTabFirstSelect = function (e){
+						events.push('items', {event: 'tab-first-select', heading: e.target.heading, style: 'color: green'});
+						//eventsLog.innerHTML += '<div>on tab-first-selected <<' + e.target.heading + '>></div>';
+					};
+				});
+			})();
+		</script>
 	</body>
 </html>
