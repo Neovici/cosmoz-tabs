@@ -40,6 +40,10 @@ Custom property | Description | Default
 				@apply --layout-vertical;
 			}
 
+			:host([flex]:not([accordion])) {
+				@apply --layout-flex;
+			}
+
 			:host(:not([accordion])[disabled]),
 			:host([hidden]) {
 				display: none !important;
@@ -107,19 +111,25 @@ Custom property | Description | Default
 				margin: 0 9px;
 			}
 
-
 			#content {
 				position: relative;
 			}
 
+			:host([flex]:not([accordion])) #collapse,
 			:host([flex]:not([accordion])) #content {
 				@apply --layout-vertical;
+				@apply --layout-flex;
+			}
+			:host([flex]:not([accordion])) #content {
+				overflow-y: auto;
+				will-change: transform;
 			}
 
 			:host([has-cards]:not([accordion])) #content {
 				@apply --layout-horizontal;
 				@apply --layout-wrap;
 			}
+
 			:host([has-cards][accordion])  #content {
 				display: block;
 			}

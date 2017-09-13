@@ -83,9 +83,9 @@ Custom property | Description | Default
 				@apply --layout-flex;
 			}
 
-			:host(.flex) #pages {
-				overflow-y: auto;
-				will-change: transform;
+			:host(.flex:not([accordion])) #pages {
+				@apply --layout-vertical;
+				@apply --layout-flex;
 			}
 
 			:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
