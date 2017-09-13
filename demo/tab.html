@@ -251,7 +251,7 @@
 				</template>
 			</demo-snippet>
 
-			<h3>`tab-select` and `tab-first-select` events</h3>
+			<h3><code>tab-select</code> and <code>tab-first-select</code> events</h3>
 			<demo-snippet>
 				<template>
 					<dom-bind id="events">
@@ -299,12 +299,10 @@
 
 					events._onTabSelect = function (e){
 						events.push('items', {event: 'tab-select', heading: e.target.heading, style: 'color: red'});
-			// eventsLog.innerHTML += '<div>on tab-select <<' + e.target.heading + '>></div>';
 					};
 
 					events._onTabFirstSelect = function (e){
 						events.push('items', {event: 'tab-first-select', heading: e.target.heading, style: 'color: green'});
-						//eventsLog.innerHTML += '<div>on tab-first-selected <<' + e.target.heading + '>></div>';
 					};
 				});
 			})();
