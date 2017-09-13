@@ -28,7 +28,7 @@
 			<h3>Plain <code>cosmoz-tabs</code> with <code>cosmoz-tab-card</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs>
+					<cosmoz-tabs selected="tab2" attr-for-selected="tab-id">
 						<cosmoz-tab heading="Tab1" tab-id="tab1">
 							<cosmoz-tab-card heading="Card1">
 								<p>
@@ -98,7 +98,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs accordion>
-						<cosmoz-tab heading="Tab1" tab-id="tab1">
+						<cosmoz-tab heading="Tab1" tab-id="tab1" selected-values="[0]">
 							<cosmoz-tab-card heading="Card1">
 								<p>
 									Duis suscipit commodo commodo. Fusce hendrerit gravida urna. Pellentesque facilisis lacinia felis ut auctor.
@@ -108,7 +108,7 @@
 								</p>
 							</cosmoz-tab-card>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" tab-id="tab2">
+						<cosmoz-tab heading="Tab2" tab-id="tab2" selected-values="[1]">
 							<cosmoz-tab-card heading="Card2">
 								<p>
 									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce non libero eget lorem interdum lacinia.
@@ -156,6 +156,66 @@
 									Nunc bibendum elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper mattis enim
 									quis luctus. Vivamus libero urna, dictum non lacus a, porta consequat lacus. Etiam eu nisi diam.
 									Nam varius non ex vitae scelerisque.
+								</p>
+							</cosmoz-tab-card>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode <code>cosmoz-tab-card</code> with <code>icon-color</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0]">
+						<cosmoz-tab selected-values="[1]">
+							<cosmoz-tab-card heading="Card1" icon-color="red">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+									maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+								</p>
+							</cosmoz-tab-card>
+							<cosmoz-tab-card heading="Card2" icon-color="purple">
+								<p>
+									Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+									vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+									Phasellus et purus id dolor venenatis mollis.
+								</p>
+							</cosmoz-tab-card>
+							<cosmoz-tab-card heading="Card3" icon-color="blue">
+								<p>
+									Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+									sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+									Nunc bibendum elit turpis.
+								</p>
+							</cosmoz-tab-card>
+						</cosmoz-tab>
+					</cosmoz-tabs>
+				</template>
+			</demo-snippet>
+
+			<h3>accordion mode <code>cosmoz-tab-card</code> with <code>icon</code></h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-tabs accordion selected-values="[0]">
+						<cosmoz-tab selected-values="[0,2]">
+							<cosmoz-tab-card heading="Card1" icon="icons:check-box-outline-blank">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+									maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+								</p>
+							</cosmoz-tab-card>
+							<cosmoz-tab-card heading="Card2" icon="icons:check-circle">
+								<p>
+									Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+									vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+									Phasellus et purus id dolor venenatis mollis.
+								</p>
+							</cosmoz-tab-card>
+							<cosmoz-tab-card heading="Card3" icon="icons:check-box">
+								<p>
+									Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+									sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+									Nunc bibendum elit turpis.
 								</p>
 							</cosmoz-tab-card>
 						</cosmoz-tab>

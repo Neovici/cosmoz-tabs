@@ -2703,7 +2703,7 @@
       "staticMethods": [],
       "demos": [
         {
-          "url": "demo/index.html",
+          "url": "demo/tab.html",
           "description": ""
         }
       ],
@@ -3231,11 +3231,11 @@
           "range": {
             "file": "cosmoz-tab.html",
             "start": {
-              "line": 141,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 145,
               "column": 17
             }
           }

@@ -105,7 +105,7 @@
 
 			<h3>The <code>attr-for-selected</code> attribute sets the attribute used to make a selection</h3>
 			<demo-snippet>
-				<template is="dom-bind" id="hashParam">
+				<template>
 					<cosmoz-tabs attr-for-selected="tab-id" selected="tab3">
 						<cosmoz-tab heading="Tab1" tab-id="tab1">
 							<p>
@@ -131,96 +131,108 @@
 
 			<h3>The <code>hashParam</code> attribute binds selected tab to a location hash param</h3>
 			<demo-snippet>
-				<template is="dom-bind" id="hashParam">
-					<paper-input value="{{ hash }}" label="Hash"></paper-input>
-					<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab">
-						<cosmoz-tab heading="Tab1">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
-							<p>
-								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
-							<p>
-								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-							</p>
-						</cosmoz-tab>
-					</cosmoz-tabs>
+				<template>
+					<dom-bind>
+						<template is="dom-bind" id="hashParam">
+							<paper-input value="{{ hash }}" label="Hash"></paper-input>
+							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab">
+								<cosmoz-tab heading="Tab1">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab2">
+									<p>
+										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab3">
+									<p>
+										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+									</p>
+								</cosmoz-tab>
+							</cosmoz-tabs>
+						</template>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 
 			<h3><code>hashParam</code> and <code>attr-for-hash-param</code> can be used in combination to bind location hash param to a attribute</h3>
 			<demo-snippet>
-				<template is="dom-bind" id="hashParamAttr">
-					<paper-input value="{{ hash }}" label="Hash"></paper-input>
-					<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash" selected="1">
-						<cosmoz-tab heading="Tab1" tab-hash="first-tab">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" tab-hash="second-tab">
-							<p>
-								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" tab-hash="third-tab">
-							<p>
-								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-							</p>
-						</cosmoz-tab>
-					</cosmoz-tabs>
+				<template>
+					<dom-bind>
+						<template is="dom-bind" id="attrForhashParam">
+							<paper-input value="{{ hash }}" label="Hash"></paper-input>
+							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash" selected="1">
+								<cosmoz-tab heading="Tab1" tab-hash="first-tab">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab2" tab-hash="second-tab">
+									<p>
+										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab3" tab-hash="third-tab">
+									<p>
+										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+									</p>
+								</cosmoz-tab>
+							</cosmoz-tabs>
+						</template>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 
 			<h3>cosmoz-tabs using flex layout to hold content that need to be explicitely sized (iron-list)</code></h3>
 			<demo-snippet class="fixed-size-snippet">
-				<template is="dom-bind">
-					<div class="fixed-size-vertical-layout">
-						<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{items}}" auto></iron-ajax>
-						<cosmoz-tabs class="flex" selected="0">
-							<cosmoz-tab heading="Tab1">
-								<iron-list style="flex: 1 1 auto;" items="[[items]]" as="item">
-									<template>
-										<div class="item">
-											<b>#[[index]] - [[item.index]] - [[item.name]]</b>
-											<p>[[item.longText]]</p>
-										</div>
-									</template>
-								</iron-list>
-							</cosmoz-tab>
-							<cosmoz-tab heading="Tab2">
-								<!-- fixed size set in pixel, to show how iron-list behaves whe correctly sized -->
-								<iron-list style="height: 300px;" items="[[items]]" as="item">
-									<template>
-										<div class="item">
-											<b>#[[index]] - [[item.index]] - [[item.name]]</b>
-											<p>[[item.longText]]</p>
-										</div>
-									</template>
-								</iron-list>
-							</cosmoz-tab>
-							<cosmoz-tab heading="Tab3">
-								<p>
-									Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-									sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-									Nunc bibendum elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper mattis enim
-									quis luctus. Vivamus libero urna, dictum non lacus a, porta consequat lacus. Etiam eu nisi diam.
-									Nam varius non ex vitae scelerisque.
-								</p>
-							</cosmoz-tab>
-						</cosmoz-tabs>
-					</div>
+				<template>
+					<dom-bind>
+						<template is="dom-bind">
+							<div class="fixed-size-vertical-layout">
+								<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{items}}" auto></iron-ajax>
+								<cosmoz-tabs class="flex" selected="0">
+									<cosmoz-tab heading="Tab1">
+										<iron-list style="flex: 1 1 auto;" items="[[items]]" as="item">
+											<template>
+												<div class="item">
+													<b>#[[index]] - [[item.index]] - [[item.name]]</b>
+													<p>[[item.longText]]</p>
+												</div>
+											</template>
+										</iron-list>
+									</cosmoz-tab>
+									<cosmoz-tab heading="Tab2">
+										<!-- fixed size set in pixel, to show how iron-list behaves whe correctly sized -->
+										<iron-list style="height: 300px;" items="[[items]]" as="item">
+											<template>
+												<div class="item">
+													<b>#[[index]] - [[item.index]] - [[item.name]]</b>
+													<p>[[item.longText]]</p>
+												</div>
+											</template>
+										</iron-list>
+									</cosmoz-tab>
+									<cosmoz-tab heading="Tab3">
+										<p>
+											Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+											sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+											Nunc bibendum elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper mattis enim
+											quis luctus. Vivamus libero urna, dictum non lacus a, porta consequat lacus. Etiam eu nisi diam.
+											Nam varius non ex vitae scelerisque.
+										</p>
+									</cosmoz-tab>
+								</cosmoz-tabs>
+							</div>
+						</template>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 		</div>
