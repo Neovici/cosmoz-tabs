@@ -149,7 +149,7 @@ Custom property | Description | Default
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
 		</div>
 
-		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(hasCards, isSelected) ]]">
+		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(accordion, hasCards, isSelected) ]]">
 			<div id="content">
 				<slot></slot>
 			</div>
