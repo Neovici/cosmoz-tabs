@@ -158,24 +158,6 @@
 					this.set(path, value);
 				}
 			}
-		},
-
-		/**
-		 * Computes the max-height style of content in accordion mode.
-		 *
-		 * @param  {Boolean} accordion The accordion property
-		 * @return {void}
-		 */
-		_computeContentHeight: function (accordion) {
-			if (!(accordion === undefined)) {
-				var ph = !accordion && this.$$('paper-tabs');
-				ph = ph && ph.getBoundingClientRect();
-				ph = ph && ph.height();
-
-				if (ph){
-					return 'max-height: calc(100% - ' + ph + 'px)';
-				}
-			}
 		}
 	});
 }());

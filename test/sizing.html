@@ -192,7 +192,7 @@
 						PolymerFlush();
 
 						Polymer.Base.async(function (){
-							assert.isBelow(list.getBoundingClientRect().height, 401);
+							assert.equal(list.getBoundingClientRect().height, 349);
 							assert.equal(list.queryAllEffectiveChildren('.item').length, 100);
 							assert.calledOnce(onResize);
 							done();
@@ -228,7 +228,6 @@
 				test('explicitly sized tabs and flex list updates size and renders only a few items upon selection', function (done){
 					tabs = fixture('basic-explicit-flex-unselected');
 					list = document.getElementById('x-list');
-
 
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
