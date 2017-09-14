@@ -82,6 +82,7 @@ Custom property | Description | Default
 			:host(:not([accordion])) #pages {
 				@apply --layout-vertical;
 				@apply --layout-flex-auto;
+				max-height: 100%;
 			}
 
 			:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
@@ -108,7 +109,7 @@ Custom property | Description | Default
 			</paper-material>
 		</template>
 
-		<div id="pages">
+		<div id="pages" style$="[[ _computeContentHeight(accordion) ]]">
 			<slot></slot>
 		</div>
 
