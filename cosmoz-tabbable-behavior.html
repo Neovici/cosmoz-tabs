@@ -145,6 +145,7 @@
 				opts = {node: item, bubbles: false };
 
 			if (index > -1) {
+				this.async(this.notifyResize);
 
 				if (!item._previouslySelected) {
 					this.fire('tab-first-select', {}, opts);
@@ -152,7 +153,6 @@
 				}
 				this.fire('tab-select', {}, opts);
 			}
-
 		}
 	};
 
