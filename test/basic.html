@@ -46,8 +46,6 @@
 		</test-fixture>
 
 		<script>
-			sinon.assert.expose(chai.assert, { prefix: '' });
-
 			suite('defaults', function () {
 				var tabs;
 
@@ -232,58 +230,6 @@
 						});
 						done();
 					}, 90);
-				});
-			});
-
-			suite('events', function (){
-				var tabs;
-
-				setup(function (done){
-					tabs = fixture('events');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
-						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-						done();
-					});
-				});
-
-				test('fires tab-select event', function (){
-					var onSelect = sinon.spy();
-
-					assert.isUndefined(tabs.selected);
-
-					tabs.items[2].addEventListener('tab-select', onSelect);
-					tabs.selected = 2;
-
-					assert.calledOnce(onSelect);
-				});
-
-				test('fires tab-first-select event only once before tab-select', function (){
-					var onFirstSelect = sinon.spy(),
-						onSelect = sinon.spy();
-
-					assert.isUndefined(tabs.selected);
-
-					tabs.items[2].addEventListener('tab-first-select', onFirstSelect);
-					tabs.items[2].addEventListener('tab-select', onSelect);
-
-					tabs.selected = 2;
-					assert.calledOnce(onFirstSelect);
-					assert.calledOnce(onSelect);
-					assert.callOrder(onFirstSelect, onSelect);
-
-					onSelect.reset();
-					onFirstSelect.reset();
-					tabs.selected = 1;
-					assert.notCalled(onFirstSelect);
-					assert.notCalled(onSelect);
-
-					onSelect.reset();
-					onFirstSelect.reset();
-
-					tabs.selected = 2;
-					assert.notCalled(onFirstSelect);
-					assert.calledOnce(onSelect);
-
 				});
 			});
 		</script>
