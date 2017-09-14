@@ -8,15 +8,6 @@
 
 		properties: {
 			/**
-			 * True if the element has class `fit` or `flex`.
-			*/
-			flex: {
-				type: Boolean,
-				computed: '_computeFlex(class)',
-				value: false
-			},
-
-			/**
 			 * Only items that match this CSS selector are selectable.
 			 */
 			selectable: {
@@ -64,21 +55,6 @@
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam)',
 			'_selectedItemChanged(selectedItem, hashParam)'
 		],
-
-		/**
-		 * Computes the `flex` property.
-		 *
-		 * @param  {String} classesString Space separated list of element's classes
-		 * @return {Boolean} Computed `flex` property
-		 */
-		_computeFlex: function (classesString) {
-			var classes = classesString.split(' ');
-			if (classes.indexOf('fit') > -1) {
-				this.toggleClass('flex', true);
-				return true;
-			}
-			return classes.indexOf('flex') > -1;
-		},
 
 		/**
 		 * Computes icon for a tab.
