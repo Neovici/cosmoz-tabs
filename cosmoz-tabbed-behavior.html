@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <script>
 (function () {
@@ -8,7 +9,7 @@
 	/**
 	 * @polymerBehavior Cosmoz.TabbedBehavior
 	*/
-	Cosmoz.TabbedBehavior = {
+	Cosmoz.TabbedBehaviorImpl = {
 		/**
 		 * Fired when the element should have it's selection state toggled.
 		 *
@@ -139,5 +140,11 @@
 			this.fire('cosmoz-tab-toggle');
 		}
 	};
+
+	/** @polymerBehavior */
+	Cosmoz.TabbedBehavior = [
+		Polymer.IronResizableBehavior,
+		Cosmoz.TabbedBehaviorImpl
+	];
 })();
 </script>
