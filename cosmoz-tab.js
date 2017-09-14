@@ -62,6 +62,7 @@
 		/**
 		 * Computes opened property of the included `iron-collapse`.
 		 *
+		 * @param  {Boolean} accordion   The accordion property
 		 * @param  {Boolean} hasCards   The hasCards property
 		 * @param  {Boolean} isSelected The isSelected property
 		 * @returns {Boolean} True if `hasCards` or `isSelected`
