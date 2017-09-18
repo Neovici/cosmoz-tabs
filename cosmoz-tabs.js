@@ -52,7 +52,7 @@
 		],
 
 		observers: [
-			'_routeHashParamsChanged(_routeHashParams.*, hashParam)',
+			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selectedItem, hashParam)'
 		],
 
@@ -122,10 +122,11 @@
 		 *
 		 * @param {Object} changes  changes to `_routeHashParams` property
 		 * @param {String} hashParam The `hashParam` property
+		 * @param {String} items The `items` property
 		 * @return {void}
 		 */
-		_routeHashParamsChanged: function (changes, hashParam) {
-			if (! (changes === undefined || hashParam === undefined)){
+		_routeHashParamsChanged: function (changes, hashParam, items) {
+			if (! (changes === undefined || hashParam === undefined || items === undefined)){
 				var path = ['_routeHashParams', hashParam],
 					value = this.get(path),
 					selection = this.items.filter(function (item){
