@@ -62,12 +62,13 @@
 		/**
 		 * Computes opened property of the included `iron-collapse`.
 		 *
+		 * @param  {Boolean} accordion   The accordion property
 		 * @param  {Boolean} hasCards   The hasCards property
 		 * @param  {Boolean} isSelected The isSelected property
 		 * @returns {Boolean} True if `hasCards` or `isSelected`
 		 */
-		_computeOpened: function (hasCards = this.hasCards, isSelected = this.isSelected){
-			return hasCards || isSelected;
+		_computeOpened: function (accordion, hasCards = this.hasCards, isSelected = this.isSelected){
+			return !accordion || hasCards || isSelected;
 		}
 
 	});

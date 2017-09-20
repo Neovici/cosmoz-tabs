@@ -122,18 +122,14 @@
 					});
 				});
 
-				test('properties are forwarded to cards', function (done){
+				test('accordion property is forwarded to cards', function (done){
 					Polymer.Base.async(function (){
 						var tab = tabs.items[0];
 						assert.equal(tab.accordion, tabs.accordion);
-						assert.equal(tab.flex, tabs.flex);
-
 						tab.items.forEach(function (item){
 							assert.equal(item.accordion, tabs.accordion);
-							assert.equal(item.flex, tabs.flex);
 						});
 						done();
-
 					}, 90);
 				});
 

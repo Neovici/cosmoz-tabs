@@ -15,7 +15,6 @@
 		},
 
 		behaviors: [
-			Polymer.IronResizableBehavior,
 			Cosmoz.TabbedBehavior
 		],
 

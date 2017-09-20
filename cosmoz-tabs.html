@@ -79,13 +79,11 @@ Custom property | Description | Default
 				--paper-badge-margin-left: 25px;
 			}
 
-			:host(.flex) {
-				@apply --layout-flex;
-			}
-
-			:host(.flex) #pages {
-				overflow-y: auto;
-				will-change: transform;
+			:host(:not([accordion])) #pages {
+				@apply --layout-vertical;
+				@apply --layout-flex-auto;
+				max-height: 100%;
+				max-height: calc(100% - 51px);
 			}
 
 			:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
