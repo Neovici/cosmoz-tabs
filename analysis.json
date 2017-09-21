@@ -4901,11 +4901,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 127,
               "column": 2
             },
             "end": {
-              "line": 140,
+              "line": 141,
               "column": 3
             }
           },
@@ -4920,6 +4920,11 @@
               "name": "hashParam",
               "type": "String",
               "description": "The `hashParam` property"
+            },
+            {
+              "name": "items",
+              "type": "String",
+              "description": "The `items` property"
             }
           ],
           "return": {
@@ -4932,11 +4937,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 151,
               "column": 2
             },
             "end": {
-              "line": 160,
+              "line": 161,
               "column": 3
             }
           },
@@ -4970,7 +4975,7 @@
           "column": 9
         },
         "end": {
-          "line": 161,
+          "line": 162,
           "column": 2
         }
       },
