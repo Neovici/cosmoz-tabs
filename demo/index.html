@@ -33,8 +33,8 @@
 			<h3>Plain <code>cosmoz-tabs</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs selected="0">
-						<cosmoz-tab heading="Tab1">
+					<cosmoz-tabs>
+						<cosmoz-tab heading="Tab1" name="tab1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -45,7 +45,7 @@
 								Cras eget imperdiet libero.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
+						<cosmoz-tab heading="Tab2" name="tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
@@ -57,7 +57,7 @@
 								rutrum ac mauris.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
+						<cosmoz-tab heading="Tab3" name="tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -160,7 +160,7 @@
 					<dom-bind>
 						<template is="dom-bind" id="attrForhashParam">
 							<paper-input value="{{ hash }}" label="Hash"></paper-input>
-							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash" selected="0">
+							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash">
 								<cosmoz-tab heading="Tab1" tab-hash="first-tab">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -191,7 +191,7 @@
 					<dom-bind>
 						<template is="dom-bind">
 							<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
-							<cosmoz-tabs selected="0" style="height: 400px">
+							<cosmoz-tabs style="height: 400px">
 								<cosmoz-tab heading="Flex List">
 									<iron-list class="flex" items="[[items]]" as="item">
 										<template>
@@ -234,7 +234,7 @@
 						<template is="dom-bind">
 							<div style="height: 400px" class="layout vertical">
 								<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
-								<cosmoz-tabs selected="0" class="flex">
+								<cosmoz-tabs class="flex">
 									<cosmoz-tab heading="Flex List">
 										<iron-list class="flex" items="[[items]]" as="item">
 											<template>
@@ -276,7 +276,7 @@
 				<template>
 					<dom-bind>
 						<template is="dom-bind">
-							<cosmoz-tabs selected="0" style="height: 300px">
+							<cosmoz-tabs style="height: 300px">
 								<cosmoz-tab heading="Tab 1">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,

@@ -57,10 +57,6 @@
 					});
 				});
 
-				test('nothing selected', function () {
-					assert.equal(tabs.selected, null);
-				});
-
 				test('cosmoz-selected as selectedClass', function () {
 					assert.equal(tabs.selectedClass, 'cosmoz-selected');
 				});
@@ -91,6 +87,11 @@
 
 				test('undefined attrForHashParam', function () {
 					assert.isUndefined(tabs.attrForHashParam);
+				});
+
+				test('fallbackSelection is 0', function () {
+					assert.equal(tabs.fallbackSelection, 0);
+					assert.equal(tabs.selected, 0);
 				});
 			});
 

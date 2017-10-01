@@ -16,7 +16,7 @@
 <body>
 	<test-fixture id="basic">
 		<template>
-			<cosmoz-tabs selected="1">
+			<cosmoz-tabs>
 				<cosmoz-tab heading="Tab0">1</cosmoz-tab>
 				<cosmoz-tab heading="Tab1" badge="2">2</cosmoz-tab>
 				<cosmoz-tab hidden>3</cosmoz-tab>
@@ -39,7 +39,7 @@
 
 			test('fallback-selection is 0 ', function (done){
 				assert.isNotNull(tabs.fallbackSelection);
-				assert.equal(tabs.fallbackSelection, 0);
+				assert.equal(tabs.fallbackSelection, '0');
 				assert.equal(tabs.selected, 0);
 				assert.equal(tabs.selectedItem, tabs.items[0]);
 				done();

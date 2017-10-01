@@ -63,7 +63,8 @@
 
 		listeners: {
 			'cosmoz-tab-toggle': '_onToggleTab',
-			'iron-select': '_onIronSelect'
+			'iron-select': '_onIronSelect',
+			'tab-activate': '_onTabActivate'
 		},
 
 		observers: [
@@ -91,10 +92,14 @@
 		 */
 		_onToggleTab: function (e){
 			var item = e.target,
-				index = this.items.indexOf(item);
+				index = this.items.indexOf(item),
+				value;
 
 			if (index > -1) {
-				this.select(this.attrForSelected ? this._valueForItem(item) : index);
+				value = this._indexToValue(index);
+				if (!this.fire('tab-activate', {selected: value, item: item}, {cancelable: true}).defaultPrevented) {
+					this.select(value);
+				}
 			}
 		},
 
@@ -151,6 +156,18 @@
 					item._previouslySelected = true;
 				}
 				this.fire('tab-select', {}, opts);
+			}
+		},
+
+		_toggleSelected: function (value) {
+			// Normalize value to be a Number when selection is index based
+			var normalized = this.attrForSelected ? value : isNaN(value) ? value : Number(value);
+			Polymer.IronMultiSelectableBehaviorImpl._toggleSelected.call(this, normalized);
+		},
+
+		_onTabActivate: function (e) {
+			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item){
+				e.preventDefault();
 			}
 		}
 	};
