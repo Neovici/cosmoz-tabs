@@ -12,9 +12,14 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
 
 		<link rel="import" href="../../paper-input/paper-input.html" />
+		<link rel="import" href="../../paper-toggle-button/paper-toggle-button.html" />
 		<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html" />
 		<link rel="import" href="../../iron-ajax/iron-ajax.html" />
 		<link rel="import" href="../../iron-list/iron-list.html" />
+		<link rel="import" href="../../neon-animation/web-animations.html">
+		<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu-light.html">
+		<link rel="import" href="../../paper-item/paper-item.html">
+		<link rel="import" href="../../paper-listbox/paper-listbox.html">
 
 		<link rel="import" href="../cosmoz-tab.html" />
 		<link rel="import" href="../cosmoz-tabs.html" />
@@ -30,96 +35,58 @@
 	</head>
 	<body unresolved>
 		<div id="container" class="vertical-section-container centered">
-			<h3>Plain <code>cosmoz-tabs</code></h3>
+			<h3>Basic <code>cosmoz-tabs</code>.</h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs>
-						<cosmoz-tab heading="Tab1" name="tab1">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-								Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-								Integer tempor, lorem eget porta maximus, lectus ligula varius eros, non pharetra magna magna
-								vel mauris. Mauris et nunc ligula. Donec quis cursus eros. Nam fermentum dictum erat,
-								quis suscipit dui. Etiam nec velit tellus. Pellentesque sed porttitor orci.
-								Cras eget imperdiet libero.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" name="tab2">
-							<p>
-								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-								Phasellus et purus id dolor venenatis mollis. Vivamus malesuada risus lorem,
-								vitae iaculis mauris viverra non. Integer quam sapien, pulvinar ut porta ac,
-								semper in velit. Donec consectetur, odio a efficitur maximus, nisl felis egestas sapien,
-								eu ullamcorper elit arcu eget urna. Sed ullamcorper felis nibh, in mattis diam iaculis id.
-								Aenean consequat nulla justo, ac commodo nulla congue non. Nam et dui in nunc mattis gravida
-								rutrum ac mauris.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" name="tab3">
-							<p>
-								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-								Nunc bibendum elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper mattis enim
-								quis luctus. Vivamus libero urna, dictum non lacus a, porta consequat lacus. Etiam eu nisi diam.
-								Nam varius non ex vitae scelerisque.
-							</p>
-						</cosmoz-tab>
-					</cosmoz-tabs>
-				</template>
-			</demo-snippet>
-
-			<h3>The <code>accordion</code> attribute toggles accordion mode</h3>
-			<demo-snippet>
-				<template>
-					<cosmoz-tabs accordion selected-values='[0]'>
-						<cosmoz-tab heading="Tab1">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-							</p>
-
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
-							<p>
-								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
-							<p>
-								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-							</p>
-						</cosmoz-tab>
-					</cosmoz-tabs>
-				</template>
-			</demo-snippet>
-
-			<h3>The <code>attr-for-selected</code> attribute sets the attribute used to make a selection</h3>
-			<demo-snippet>
-				<template>
-					<cosmoz-tabs attr-for-selected="tab-id" selected="tab3">
-						<cosmoz-tab heading="Tab1" tab-id="tab1">
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" tab-id="tab2">
-							<p>
-								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-							</p>
-						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" tab-id="tab3">
-							<p>
-								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-							</p>
-						</cosmoz-tab>
-					</cosmoz-tabs>
+					<dom-bind id="basic">
+						<template is="dom-bind">
+							<div class="layout horizontal">
+								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
+								<paper-input style="margin-left: 15px" value="{{ selected }}" label="selected" readonly></paper-input>
+								<paper-input style="margin-left: 15px" value="{{ join(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
+								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
+									<paper-listbox slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute">
+										<paper-item attribute>null</paper-item>
+										<paper-item attribute="name">name</paper-item>
+									</paper-listbox>
+								</paper-dropdown-menu-light>
+							</div>
+							<cosmoz-tabs accordion="{{ accordion }}" selected="{{ selected }}" selected-values="{{ selectedValues }}" attr-for-selected="{{ attrForSelected }}">
+								<cosmoz-tab heading="Tab1" name="tab1">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+										Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+										Integer tempor, lorem eget porta maximus, lectus ligula varius eros, non pharetra magna magna
+										vel mauris. Mauris et nunc ligula. Donec quis cursus eros. Nam fermentum dictum erat,
+										quis suscipit dui. Etiam nec velit tellus. Pellentesque sed porttitor orci.
+										Cras eget imperdiet libero.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab2" name="tab2">
+									<p>
+										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+										Phasellus et purus id dolor venenatis mollis. Vivamus malesuada risus lorem,
+										vitae iaculis mauris viverra non. Integer quam sapien, pulvinar ut porta ac,
+										semper in velit. Donec consectetur, odio a efficitur maximus, nisl felis egestas sapien,
+										eu ullamcorper elit arcu eget urna. Sed ullamcorper felis nibh, in mattis diam iaculis id.
+										Aenean consequat nulla justo, ac commodo nulla congue non. Nam et dui in nunc mattis gravida
+										rutrum ac mauris.
+									</p>
+								</cosmoz-tab>
+								<cosmoz-tab heading="Tab3" name="tab3">
+									<p>
+										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+										Nunc bibendum elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper mattis enim
+										quis luctus. Vivamus libero urna, dictum non lacus a, porta consequat lacus. Etiam eu nisi diam.
+										Nam varius non ex vitae scelerisque.
+									</p>
+								</cosmoz-tab>
+							</cosmoz-tabs>
+						</template>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 
@@ -335,9 +302,17 @@
 			</demo-snippet>
 		</div>
 		<script type="text/javascript">
-			(function () {
-				//
-			})();
+		(function () {
+			window.addEventListener('WebComponentsReady', function () {
+				var basic = document.getElementById('basic');
+				basic = !basic.set ? basic.firstElementChild : basic;
+				basic.join = function (values){
+					if (values && values.length) {
+						return values.join(',');
+					}
+				};
+			});
+		})();
 		</script>
 	</body>
 </html>
