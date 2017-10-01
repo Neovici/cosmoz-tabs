@@ -54,7 +54,7 @@
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selectedItem, hashParam)',
-			'_updateFallbackSelection(attrForSelected, items)'
+			'_updateFallbackSelection(attrForSelected, items, multi)'
 		],
 
 		/**
@@ -96,10 +96,12 @@
 		 * @param  {Object} hashParam The `hashParam` property
 		 * @return {String}  The computed link
 		 */
-		_computeItemLink: function (item, hashParam = this.hashParam) {
-			var params = {};
-			params[hashParam] = this._hashParamForItem(item);
-			return this.$.location.getRouteUrl({}, params);
+		_computeItemLink: function (item, hashParam) {
+			if (hashParam) {
+				var params = {};
+				params[hashParam] = this._hashParamForItem(item);
+				return this.$.location.getRouteUrl({}, params);
+			}
 		},
 
 		/**
