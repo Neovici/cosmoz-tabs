@@ -166,15 +166,18 @@
 		 * Observe changes to `attrForSelected` and `items`
 		 * and update `fallback` to point to the first item.
 		 *
-		 * @param  {String} attrForSelected The attrForSelected property
+		 * @param  {String} attr The attrForSelected property
 		 * @param  {Array} items           The items property
 		 * @returns {void}
 		 */
-		_updateFallbackSelection: function (attrForSelected, items){
-			var selection = this._selection.get();
+		_updateFallbackSelection: function (attr, items){
+			var selection = this._selection.get(),
+				fallback = this.fallbackSelection;
 
-			if (this.fallbackSelection === null && items.length && !(selection && selection.length)) {
-				this.fallbackSelection = attrForSelected ? this._valueForItem(items[0]) : '0';
+			selection = selection && selection.length;
+
+			if (items.length && !selection && (fallback === null || attr && !isNaN(fallback) || !attr && isNaN(fallback) && fallback !== '')) {
+				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
 			}
 		}
 	});
