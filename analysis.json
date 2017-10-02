@@ -2175,11 +2175,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 121,
+              "line": 126,
               "column": 2
             },
             "end": {
-              "line": 127,
+              "line": 132,
               "column": 3
             }
           },
@@ -2368,14 +2368,14 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 145,
-              "column": 4
+              "line": 161,
+              "column": 2
             },
             "end": {
-              "line": 153,
-              "column": 5
+              "line": 165,
+              "column": 3
             }
           },
           "metadata": {},
@@ -2384,7 +2384,7 @@
               "name": "value"
             }
           ],
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "_valuesToItems",
@@ -2416,11 +2416,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 79,
+              "line": 80,
               "column": 2
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 3
             }
           },
@@ -2445,11 +2445,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 98,
+              "line": 103,
               "column": 3
             }
           },
@@ -2473,11 +2473,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 108,
+              "line": 113,
               "column": 2
             },
             "end": {
-              "line": 112,
+              "line": 117,
               "column": 3
             }
           },
@@ -2511,11 +2511,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 140,
+              "line": 145,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 159,
               "column": 3
             }
           },
@@ -2536,6 +2536,29 @@
             "type": "void",
             "desc": "description"
           },
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
+        },
+        {
+          "name": "_onTabActivate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-tabbable-behavior.html",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 171,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
           "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
@@ -4384,11 +4407,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 121,
+              "line": 126,
               "column": 2
             },
             "end": {
-              "line": 127,
+              "line": 132,
               "column": 3
             }
           },
@@ -4577,14 +4600,14 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 145,
-              "column": 4
+              "line": 161,
+              "column": 2
             },
             "end": {
-              "line": 153,
-              "column": 5
+              "line": 165,
+              "column": 3
             }
           },
           "metadata": {},
@@ -4593,7 +4616,7 @@
               "name": "value"
             }
           ],
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "_valuesToItems",
@@ -4625,11 +4648,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 79,
+              "line": 80,
               "column": 2
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 3
             }
           },
@@ -4654,11 +4677,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 98,
+              "line": 103,
               "column": 3
             }
           },
@@ -4682,11 +4705,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 108,
+              "line": 113,
               "column": 2
             },
             "end": {
-              "line": 112,
+              "line": 117,
               "column": 3
             }
           },
@@ -4720,11 +4743,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 140,
+              "line": 145,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 159,
               "column": 3
             }
           },
@@ -4748,16 +4771,39 @@
           "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
+          "name": "_onTabActivate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-tabbable-behavior.html",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 171,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
+        },
+        {
           "name": "_computeIcon",
           "description": "Computes icon for a tab.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 2
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 3
             }
           },
@@ -4780,11 +4826,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 75,
               "column": 2
             },
             "end": {
-              "line": 76,
+              "line": 77,
               "column": 3
             }
           },
@@ -4807,11 +4853,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 89,
               "column": 3
             }
           },
@@ -4844,11 +4890,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 98,
               "column": 2
             },
             "end": {
-              "line": 101,
+              "line": 104,
               "column": 3
             }
           },
@@ -4860,7 +4906,9 @@
               "description": "The item to compute link for"
             },
             {
-              "name": "hashParam = this.hashParam"
+              "name": "hashParam",
+              "type": "Object",
+              "description": "The `hashParam` property"
             }
           ],
           "return": {
@@ -4874,11 +4922,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 116,
+              "line": 119,
               "column": 3
             }
           },
@@ -4901,11 +4949,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 141,
+              "line": 144,
               "column": 3
             }
           },
@@ -4937,11 +4985,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 154,
               "column": 2
             },
             "end": {
-              "line": 161,
+              "line": 164,
               "column": 3
             }
           },
@@ -4954,6 +5002,37 @@
               "name": "hashParam",
               "type": "Object",
               "description": "The hash param"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_updateFallbackSelection",
+          "description": "Observe changes to `attrForSelected` and `items`\nand update `fallback` to point to the first item.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 174,
+              "column": 2
+            },
+            "end": {
+              "line": 183,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "attr",
+              "type": "String",
+              "description": "The attrForSelected property"
+            },
+            {
+              "name": "items",
+              "type": "Array",
+              "description": "The items property"
             }
           ],
           "return": {
@@ -4975,7 +5054,7 @@
           "column": 9
         },
         "end": {
-          "line": 162,
+          "line": 184,
           "column": 2
         }
       },
@@ -5346,736 +5425,6 @@
   "metadata": {
     "polymer": {
       "behaviors": [
-        {
-          "description": "",
-          "summary": "",
-          "path": "cosmoz-tabbed-behavior.html",
-          "properties": [
-            {
-              "name": "_parentResizable",
-              "type": "Object",
-              "description": "The closest ancestor element that implements `IronResizableBehavior`.",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 36,
-                  "column": 6
-                },
-                "end": {
-                  "line": 39,
-                  "column": 7
-                }
-              },
-              "metadata": {
-                "polymer": {
-                  "observer": "\"_parentResizableChanged\""
-                }
-              },
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_notifyingDescendant",
-              "type": "boolean",
-              "description": "True if this element is currently notifying its descendant elements of\nresize.",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 45,
-                  "column": 6
-                },
-                "end": {
-                  "line": 48,
-                  "column": 7
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "false",
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "isSelected",
-              "type": "boolean",
-              "description": "True if the item is selected.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 34,
-                  "column": 3
-                },
-                "end": {
-                  "line": 39,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {
-                  "notify": true
-                }
-              },
-              "defaultValue": "false"
-            },
-            {
-              "name": "accordion",
-              "type": "boolean",
-              "description": "True if item is in accordion mode.\nThis property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 45,
-                  "column": 3
-                },
-                "end": {
-                  "line": 50,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {
-                  "notify": true
-                }
-              },
-              "defaultValue": "false"
-            },
-            {
-              "name": "heading",
-              "type": "string",
-              "description": "The items's heading text.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 55,
-                  "column": 3
-                },
-                "end": {
-                  "line": 57,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "icon",
-              "type": "string",
-              "description": "The icon of the item.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 62,
-                  "column": 3
-                },
-                "end": {
-                  "line": 65,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "\"radio-button-unchecked\""
-            },
-            {
-              "name": "selectedIcon",
-              "type": "string",
-              "description": "The icon of the item when it is selected.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 70,
-                  "column": 3
-                },
-                "end": {
-                  "line": 73,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "\"radio-button-checked\""
-            },
-            {
-              "name": "iconColor",
-              "type": "string",
-              "description": "The color of the items's icon.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 78,
-                  "column": 3
-                },
-                "end": {
-                  "line": 81,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "\"#15b0d3\""
-            },
-            {
-              "name": "badge",
-              "type": "string",
-              "description": "When not empty the element will contain a `paper-bagde` with the label set to this property.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 86,
-                  "column": 3
-                },
-                "end": {
-                  "line": 89,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "\"\""
-            }
-          ],
-          "methods": [
-            {
-              "name": "created",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 55,
-                  "column": 4
-                },
-                "end": {
-                  "line": 60,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "attached",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 62,
-                  "column": 4
-                },
-                "end": {
-                  "line": 64,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "detached",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 66,
-                  "column": 4
-                },
-                "end": {
-                  "line": 74,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "notifyResize",
-              "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 80,
-                  "column": 4
-                },
-                "end": {
-                  "line": 92,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "assignParentResizable",
-              "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 98,
-                  "column": 4
-                },
-                "end": {
-                  "line": 100,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "parentResizable"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "stopResizeNotificationsFor",
-              "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 106,
-                  "column": 4
-                },
-                "end": {
-                  "line": 113,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "target"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "resizerShouldNotify",
-              "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 124,
-                  "column": 4
-                },
-                "end": {
-                  "line": 124,
-                  "column": 59
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "element",
-                  "type": "HTMLElement",
-                  "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
-                }
-              ],
-              "return": {
-                "type": "boolean",
-                "desc": "True if the `element` should be notified of resize."
-              },
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_onDescendantIronResize",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 126,
-                  "column": 4
-                },
-                "end": {
-                  "line": 138,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_fireResize",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 140,
-                  "column": 4
-                },
-                "end": {
-                  "line": 145,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_onIronRequestResizeNotifications",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 147,
-                  "column": 4
-                },
-                "end": {
-                  "line": 162,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_parentResizableChanged",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 164,
-                  "column": 4
-                },
-                "end": {
-                  "line": 168,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "parentResizable"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_notifyDescendant",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 170,
-                  "column": 4
-                },
-                "end": {
-                  "line": 181,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "descendant"
-                }
-              ],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_requestResizeNotifications",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
-                "start": {
-                  "line": 183,
-                  "column": 4
-                },
-                "end": {
-                  "line": 211,
-                  "column": 5
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "inheritedFrom": "Polymer.IronResizableBehavior"
-            },
-            {
-              "name": "_computeOpenedIcon",
-              "description": "Computes the element's opened icon depending on the `opened` property",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 98,
-                  "column": 2
-                },
-                "end": {
-                  "line": 100,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "isSelected",
-                  "type": "Boolean",
-                  "description": "True if tab is opened"
-                }
-              ],
-              "return": {
-                "type": "void"
-              }
-            },
-            {
-              "name": "getIcon",
-              "description": "Returns the element's icon.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 107,
-                  "column": 2
-                },
-                "end": {
-                  "line": 109,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "return": {
-                "type": "void"
-              }
-            },
-            {
-              "name": "getIconStyle",
-              "description": "Returns the element's icon style.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 116,
-                  "column": 2
-                },
-                "end": {
-                  "line": 120,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "return": {
-                "type": "void"
-              }
-            },
-            {
-              "name": "_onToggleTap",
-              "description": "Triggers a `cosmoz-tab-toggle` event.",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 128,
-                  "column": 2
-                },
-                "end": {
-                  "line": 130,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [],
-              "return": {
-                "type": "void"
-              }
-            }
-          ],
-          "staticMethods": [],
-          "demos": [],
-          "metadata": {},
-          "sourceRange": {
-            "start": {
-              "line": 11,
-              "column": 1
-            },
-            "end": {
-              "line": 131,
-              "column": 3
-            }
-          },
-          "privacy": "public",
-          "name": "Cosmoz.TabbedBehavior",
-          "attributes": [
-            {
-              "name": "is-selected",
-              "description": "True if the item is selected.",
-              "sourceRange": {
-                "start": {
-                  "line": 34,
-                  "column": 3
-                },
-                "end": {
-                  "line": 39,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
-            },
-            {
-              "name": "accordion",
-              "description": "True if item is in accordion mode.\nThis property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.",
-              "sourceRange": {
-                "start": {
-                  "line": 45,
-                  "column": 3
-                },
-                "end": {
-                  "line": 50,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
-            },
-            {
-              "name": "heading",
-              "description": "The items's heading text.",
-              "sourceRange": {
-                "start": {
-                  "line": 55,
-                  "column": 3
-                },
-                "end": {
-                  "line": 57,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "string"
-            },
-            {
-              "name": "icon",
-              "description": "The icon of the item.",
-              "sourceRange": {
-                "start": {
-                  "line": 62,
-                  "column": 3
-                },
-                "end": {
-                  "line": 65,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "string"
-            },
-            {
-              "name": "selected-icon",
-              "description": "The icon of the item when it is selected.",
-              "sourceRange": {
-                "start": {
-                  "line": 70,
-                  "column": 3
-                },
-                "end": {
-                  "line": 73,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "string"
-            },
-            {
-              "name": "icon-color",
-              "description": "The color of the items's icon.",
-              "sourceRange": {
-                "start": {
-                  "line": 78,
-                  "column": 3
-                },
-                "end": {
-                  "line": 81,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "string"
-            },
-            {
-              "name": "badge",
-              "description": "When not empty the element will contain a `paper-bagde` with the label set to this property.",
-              "sourceRange": {
-                "start": {
-                  "line": 86,
-                  "column": 3
-                },
-                "end": {
-                  "line": 89,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "string"
-            }
-          ],
-          "events": [
-            {
-              "type": "CustomEvent",
-              "name": "cosmoz-tab-toggle",
-              "description": "cosmoz-tab-toggle",
-              "metadata": {}
-            },
-            {
-              "type": "CustomEvent",
-              "name": "tab-first-select",
-              "description": "tab-first-select",
-              "metadata": {}
-            },
-            {
-              "type": "CustomEvent",
-              "name": "tab-select",
-              "description": "tab-select",
-              "metadata": {}
-            },
-            {
-              "type": "CustomEvent",
-              "name": "is-selected-changed",
-              "description": "Fired when the `isSelected` property changes.",
-              "metadata": {}
-            },
-            {
-              "type": "CustomEvent",
-              "name": "accordion-changed",
-              "description": "Fired when the `accordion` property changes.",
-              "metadata": {}
-            }
-          ],
-          "styling": {
-            "cssVariables": [],
-            "selectors": []
-          },
-          "slots": []
-        },
         {
           "description": "",
           "summary": "",
@@ -7140,11 +6489,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 121,
+                  "line": 126,
                   "column": 2
                 },
                 "end": {
-                  "line": 127,
+                  "line": 132,
                   "column": 3
                 }
               },
@@ -7332,14 +6681,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 145,
-                  "column": 4
+                  "line": 161,
+                  "column": 2
                 },
                 "end": {
-                  "line": 153,
-                  "column": 5
+                  "line": 165,
+                  "column": 3
                 }
               },
               "metadata": {},
@@ -7347,8 +6695,7 @@
                 {
                   "name": "value"
                 }
-              ],
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              ]
             },
             {
               "name": "_valuesToItems",
@@ -7379,11 +6726,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 79,
+                  "line": 80,
                   "column": 2
                 },
                 "end": {
-                  "line": 81,
+                  "line": 82,
                   "column": 3
                 }
               },
@@ -7406,11 +6753,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 91,
+                  "line": 92,
                   "column": 2
                 },
                 "end": {
-                  "line": 98,
+                  "line": 103,
                   "column": 3
                 }
               },
@@ -7432,11 +6779,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 108,
+                  "line": 113,
                   "column": 2
                 },
                 "end": {
-                  "line": 112,
+                  "line": 117,
                   "column": 3
                 }
               },
@@ -7468,11 +6815,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 140,
+                  "line": 145,
                   "column": 2
                 },
                 "end": {
-                  "line": 154,
+                  "line": 159,
                   "column": 3
                 }
               },
@@ -7493,6 +6840,27 @@
                 "type": "void",
                 "desc": "description"
               }
+            },
+            {
+              "name": "_onTabActivate",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 167,
+                  "column": 2
+                },
+                "end": {
+                  "line": 171,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "e"
+                }
+              ]
             }
           ],
           "staticMethods": [],
@@ -7504,7 +6872,7 @@
               "column": 1
             },
             "end": {
-              "line": 155,
+              "line": 172,
               "column": 3
             }
           },
@@ -7799,6 +7167,736 @@
               "description": "Fired when the `selectedItems` property changes.",
               "metadata": {},
               "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+            },
+            {
+              "type": "CustomEvent",
+              "name": "accordion-changed",
+              "description": "Fired when the `accordion` property changes.",
+              "metadata": {}
+            }
+          ],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        },
+        {
+          "description": "",
+          "summary": "",
+          "path": "cosmoz-tabbed-behavior.html",
+          "properties": [
+            {
+              "name": "_parentResizable",
+              "type": "Object",
+              "description": "The closest ancestor element that implements `IronResizableBehavior`.",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 36,
+                  "column": 6
+                },
+                "end": {
+                  "line": 39,
+                  "column": 7
+                }
+              },
+              "metadata": {
+                "polymer": {
+                  "observer": "\"_parentResizableChanged\""
+                }
+              },
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_notifyingDescendant",
+              "type": "boolean",
+              "description": "True if this element is currently notifying its descendant elements of\nresize.",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 45,
+                  "column": 6
+                },
+                "end": {
+                  "line": 48,
+                  "column": 7
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              },
+              "defaultValue": "false",
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "isSelected",
+              "type": "boolean",
+              "description": "True if the item is selected.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 34,
+                  "column": 3
+                },
+                "end": {
+                  "line": 39,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {
+                  "notify": true
+                }
+              },
+              "defaultValue": "false"
+            },
+            {
+              "name": "accordion",
+              "type": "boolean",
+              "description": "True if item is in accordion mode.\nThis property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 45,
+                  "column": 3
+                },
+                "end": {
+                  "line": 50,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {
+                  "notify": true
+                }
+              },
+              "defaultValue": "false"
+            },
+            {
+              "name": "heading",
+              "type": "string",
+              "description": "The items's heading text.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 55,
+                  "column": 3
+                },
+                "end": {
+                  "line": 57,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              }
+            },
+            {
+              "name": "icon",
+              "type": "string",
+              "description": "The icon of the item.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 62,
+                  "column": 3
+                },
+                "end": {
+                  "line": 65,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              },
+              "defaultValue": "\"radio-button-unchecked\""
+            },
+            {
+              "name": "selectedIcon",
+              "type": "string",
+              "description": "The icon of the item when it is selected.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 70,
+                  "column": 3
+                },
+                "end": {
+                  "line": 73,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              },
+              "defaultValue": "\"radio-button-checked\""
+            },
+            {
+              "name": "iconColor",
+              "type": "string",
+              "description": "The color of the items's icon.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 78,
+                  "column": 3
+                },
+                "end": {
+                  "line": 81,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              },
+              "defaultValue": "\"#15b0d3\""
+            },
+            {
+              "name": "badge",
+              "type": "string",
+              "description": "When not empty the element will contain a `paper-bagde` with the label set to this property.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 86,
+                  "column": 3
+                },
+                "end": {
+                  "line": 89,
+                  "column": 4
+                }
+              },
+              "metadata": {
+                "polymer": {}
+              },
+              "defaultValue": "\"\""
+            }
+          ],
+          "methods": [
+            {
+              "name": "created",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 55,
+                  "column": 4
+                },
+                "end": {
+                  "line": 60,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "attached",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 62,
+                  "column": 4
+                },
+                "end": {
+                  "line": 64,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "detached",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 66,
+                  "column": 4
+                },
+                "end": {
+                  "line": 74,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "notifyResize",
+              "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
+              "privacy": "public",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 80,
+                  "column": 4
+                },
+                "end": {
+                  "line": 92,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "assignParentResizable",
+              "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
+              "privacy": "public",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 98,
+                  "column": 4
+                },
+                "end": {
+                  "line": 100,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "parentResizable"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "stopResizeNotificationsFor",
+              "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
+              "privacy": "public",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 106,
+                  "column": 4
+                },
+                "end": {
+                  "line": 113,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "target"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "resizerShouldNotify",
+              "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
+              "privacy": "public",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 124,
+                  "column": 4
+                },
+                "end": {
+                  "line": 124,
+                  "column": 59
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "element",
+                  "type": "HTMLElement",
+                  "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
+                }
+              ],
+              "return": {
+                "type": "boolean",
+                "desc": "True if the `element` should be notified of resize."
+              },
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_onDescendantIronResize",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 126,
+                  "column": 4
+                },
+                "end": {
+                  "line": 138,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_fireResize",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 140,
+                  "column": 4
+                },
+                "end": {
+                  "line": 145,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_onIronRequestResizeNotifications",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 147,
+                  "column": 4
+                },
+                "end": {
+                  "line": 162,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_parentResizableChanged",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 164,
+                  "column": 4
+                },
+                "end": {
+                  "line": 168,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "parentResizable"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_notifyDescendant",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 170,
+                  "column": 4
+                },
+                "end": {
+                  "line": 181,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "descendant"
+                }
+              ],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_requestResizeNotifications",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "bower_components/iron-resizable-behavior/iron-resizable-behavior.html",
+                "start": {
+                  "line": 183,
+                  "column": 4
+                },
+                "end": {
+                  "line": 211,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "inheritedFrom": "Polymer.IronResizableBehavior"
+            },
+            {
+              "name": "_computeOpenedIcon",
+              "description": "Computes the element's opened icon depending on the `opened` property",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 98,
+                  "column": 2
+                },
+                "end": {
+                  "line": 100,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "isSelected",
+                  "type": "Boolean",
+                  "description": "True if tab is opened"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "getIcon",
+              "description": "Returns the element's icon.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 107,
+                  "column": 2
+                },
+                "end": {
+                  "line": 109,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "getIconStyle",
+              "description": "Returns the element's icon style.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 116,
+                  "column": 2
+                },
+                "end": {
+                  "line": 120,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_onToggleTap",
+              "description": "Triggers a `cosmoz-tab-toggle` event.",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 128,
+                  "column": 2
+                },
+                "end": {
+                  "line": 130,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 131,
+              "column": 3
+            }
+          },
+          "privacy": "public",
+          "name": "Cosmoz.TabbedBehavior",
+          "attributes": [
+            {
+              "name": "is-selected",
+              "description": "True if the item is selected.",
+              "sourceRange": {
+                "start": {
+                  "line": 34,
+                  "column": 3
+                },
+                "end": {
+                  "line": 39,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "boolean"
+            },
+            {
+              "name": "accordion",
+              "description": "True if item is in accordion mode.\nThis property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.",
+              "sourceRange": {
+                "start": {
+                  "line": 45,
+                  "column": 3
+                },
+                "end": {
+                  "line": 50,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "boolean"
+            },
+            {
+              "name": "heading",
+              "description": "The items's heading text.",
+              "sourceRange": {
+                "start": {
+                  "line": 55,
+                  "column": 3
+                },
+                "end": {
+                  "line": 57,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "string"
+            },
+            {
+              "name": "icon",
+              "description": "The icon of the item.",
+              "sourceRange": {
+                "start": {
+                  "line": 62,
+                  "column": 3
+                },
+                "end": {
+                  "line": 65,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "string"
+            },
+            {
+              "name": "selected-icon",
+              "description": "The icon of the item when it is selected.",
+              "sourceRange": {
+                "start": {
+                  "line": 70,
+                  "column": 3
+                },
+                "end": {
+                  "line": 73,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "string"
+            },
+            {
+              "name": "icon-color",
+              "description": "The color of the items's icon.",
+              "sourceRange": {
+                "start": {
+                  "line": 78,
+                  "column": 3
+                },
+                "end": {
+                  "line": 81,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "string"
+            },
+            {
+              "name": "badge",
+              "description": "When not empty the element will contain a `paper-bagde` with the label set to this property.",
+              "sourceRange": {
+                "start": {
+                  "line": 86,
+                  "column": 3
+                },
+                "end": {
+                  "line": 89,
+                  "column": 4
+                }
+              },
+              "metadata": {},
+              "type": "string"
+            }
+          ],
+          "events": [
+            {
+              "type": "CustomEvent",
+              "name": "cosmoz-tab-toggle",
+              "description": "cosmoz-tab-toggle",
+              "metadata": {}
+            },
+            {
+              "type": "CustomEvent",
+              "name": "tab-first-select",
+              "description": "tab-first-select",
+              "metadata": {}
+            },
+            {
+              "type": "CustomEvent",
+              "name": "tab-select",
+              "description": "tab-select",
+              "metadata": {}
+            },
+            {
+              "type": "CustomEvent",
+              "name": "is-selected-changed",
+              "description": "Fired when the `isSelected` property changes.",
+              "metadata": {}
             },
             {
               "type": "CustomEvent",

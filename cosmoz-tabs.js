@@ -53,7 +53,8 @@
 
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
-			'_selectedItemChanged(selectedItem, hashParam)'
+			'_selectedItemChanged(selectedItem, hashParam)',
+			'_updateFallbackSelection(attrForSelected, items, multi)'
 		],
 
 		/**
@@ -95,10 +96,12 @@
 		 * @param  {Object} hashParam The `hashParam` property
 		 * @return {String}  The computed link
 		 */
-		_computeItemLink: function (item, hashParam = this.hashParam) {
-			var params = {};
-			params[hashParam] = this._hashParamForItem(item);
-			return this.$.location.getRouteUrl({}, params);
+		_computeItemLink: function (item, hashParam) {
+			if (hashParam) {
+				var params = {};
+				params[hashParam] = this._hashParamForItem(item);
+				return this.$.location.getRouteUrl({}, params);
+			}
 		},
 
 		/**
@@ -112,7 +115,7 @@
 				return this._valueForItem(item, this.attrForHashParam);
 			}
 			var value =  this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-			return isNaN(value) ? value : value.toString();
+			return isNaN(value) ? value : String(value);
 
 		},
 
@@ -126,11 +129,11 @@
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam, items) {
-			if (! (changes === undefined || hashParam === undefined || items === undefined)){
+			if (! (changes === undefined || hashParam === undefined) && items.length){
 				var path = ['_routeHashParams', hashParam],
 					value = this.get(path),
 					selection = this.items.filter(function (item){
-						return this._hashParamForItem(item) === value;
+						return this._hashParamForItem(item) === String(value);
 					}, this).map(function (item){
 						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
 					}, this)[0];
@@ -158,6 +161,24 @@
 				if (current !== value) {
 					this.set(path, value);
 				}
+			}
+		},
+
+		/**
+		 * Observe changes to `attrForSelected` and `items`
+		 * and update `fallback` to point to the first item.
+		 *
+		 * @param  {String} attr The attrForSelected property
+		 * @param  {Array} items           The items property
+		 * @returns {void}
+		 */
+		_updateFallbackSelection: function (attr, items){
+			var selection = this._selection.get();
+
+			selection = selection && selection.length;
+
+			if (items.length && !selection && this.fallbackSelection === null) {
+				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
 			}
 		}
 	});

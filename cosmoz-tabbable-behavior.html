@@ -58,12 +58,36 @@
 			multi: {
 				type: String,
 				computed: '_computeMulti(accordion)'
+			},
+
+			/**
+			 * Gets or sets the selected elements. This is used instead of `selected` when `multi`
+			 * is true.
+			 */
+			selectedValues: {
+				type: Array,
+				notify: true,
+				value: function () {
+					return [];
+				}
+			},
+			/**
+			 * Returns an array of currently selected items.
+			 */
+			selectedItems: {
+				type: Array,
+				readOnly: true,
+				notify: true,
+				value: function () {
+					return [];
+				}
 			}
 		},
 
 		listeners: {
 			'cosmoz-tab-toggle': '_onToggleTab',
-			'iron-select': '_onIronSelect'
+			'iron-select': '_onIronSelect',
+			'tab-activate': '_onTabActivate'
 		},
 
 		observers: [
@@ -91,10 +115,14 @@
 		 */
 		_onToggleTab: function (e){
 			var item = e.target,
-				index = this.items.indexOf(item);
+				index = this.items.indexOf(item),
+				value;
 
 			if (index > -1) {
-				this.select(this.attrForSelected ? this._valueForItem(item) : index);
+				value = this._indexToValue(index);
+				if (!this.fire('tab-activate', {selected: value, item: item}, {cancelable: true}).defaultPrevented) {
+					this.select(value);
+				}
 			}
 		},
 
@@ -152,6 +180,31 @@
 				}
 				this.fire('tab-select', {}, opts);
 			}
+		},
+
+		_toggleSelected: function (value) {
+			Polymer.IronMultiSelectableBehaviorImpl._toggleSelected.call(this, this._normalizeValue(value));
+		},
+
+		_onTabActivate: function (e) {
+			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item){
+				e.preventDefault();
+			}
+		},
+
+		multiChanged: function (multi, old){
+			this._selection.multi = multi;
+
+			if (multi === true && old === false && this.selected !== null && this.selected !== undefined) {
+				this.set('selectedValues', [this._normalizeValue(this.selected)]);
+			} else if (multi === false && old === true && this.selectedValues[0] !== undefined) {
+				this.selected = this.selectedValues[0];
+			}
+			this._updateSelected();
+		},
+
+		_normalizeValue: function (value) {
+			return this.attrForSelected ? value : isNaN(value) || value === null ? value : Number(value);
 		}
 	};
 
