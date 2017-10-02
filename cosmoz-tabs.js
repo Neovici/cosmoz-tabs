@@ -173,12 +173,11 @@
 		 * @returns {void}
 		 */
 		_updateFallbackSelection: function (attr, items){
-			var selection = this._selection.get(),
-				fallback = this.fallbackSelection;
+			var selection = this._selection.get();
 
 			selection = selection && selection.length;
 
-			if (items.length && !selection && (fallback === null || attr && !isNaN(fallback) || !attr && isNaN(fallback) && fallback !== '')) {
+			if (items.length && !selection && this.fallbackSelection === null) {
 				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
 			}
 		}
