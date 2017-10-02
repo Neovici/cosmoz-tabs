@@ -42,7 +42,7 @@
 						<template is="dom-bind">
 							<div class="layout horizontal">
 								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
-								<paper-input style="margin-left: 15px" value="{{ selected }}" label="selected" readonly></paper-input>
+								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
 								<paper-input style="margin-left: 15px" value="{{ join(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
 									<paper-listbox slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute">
