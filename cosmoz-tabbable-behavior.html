@@ -58,6 +58,29 @@
 			multi: {
 				type: String,
 				computed: '_computeMulti(accordion)'
+			},
+
+			/**
+			 * Gets or sets the selected elements. This is used instead of `selected` when `multi`
+			 * is true.
+			 */
+			selectedValues: {
+				type: Array,
+				notify: true,
+				value: function () {
+					return [];
+				}
+			},
+			/**
+			 * Returns an array of currently selected items.
+			 */
+			selectedItems: {
+				type: Array,
+				readOnly: true,
+				notify: true,
+				value: function () {
+					return [];
+				}
 			}
 		},
 
@@ -160,15 +183,28 @@
 		},
 
 		_toggleSelected: function (value) {
-			// Normalize value to be a Number when selection is index based
-			var normalized = this.attrForSelected ? value : isNaN(value) ? value : Number(value);
-			Polymer.IronMultiSelectableBehaviorImpl._toggleSelected.call(this, normalized);
+			Polymer.IronMultiSelectableBehaviorImpl._toggleSelected.call(this, this._normalizeValue(value));
 		},
 
 		_onTabActivate: function (e) {
 			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item){
 				e.preventDefault();
 			}
+		},
+
+		multiChanged: function (multi, old){
+			this._selection.multi = multi;
+
+			if (multi && !old && this.selected !== null) {
+				this.set('selectedValues', [this._normalizeValue(this.selected)]);
+			} else if (!multi && old && this.selectedValues[0]) {
+				this.selected = this.selectedValues[0];
+			}
+			this._updateSelected();
+		},
+
+		_normalizeValue: function (value) {
+			return  this.attrForSelected ? value : isNaN(value) || value !== null ? value : Number(value);
 		}
 	};
 
