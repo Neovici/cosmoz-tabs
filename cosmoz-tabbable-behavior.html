@@ -204,7 +204,7 @@
 		},
 
 		_normalizeValue: function (value) {
-			return  this.attrForSelected ? value : isNaN(value) || value !== null ? value : Number(value);
+			return this.attrForSelected ? value : isNaN(value) || value === null ? value : Number(value);
 		}
 	};
 
