@@ -195,9 +195,9 @@
 		multiChanged: function (multi, old){
 			this._selection.multi = multi;
 
-			if (multi && !old && this.selected !== null) {
+			if (multi === true && old === false && this.selected !== null && this.selected !== undefined) {
 				this.set('selectedValues', [this._normalizeValue(this.selected)]);
-			} else if (!multi && old && this.selectedValues[0]) {
+			} else if (multi === false && old === true && this.selectedValues[0] !== undefined) {
 				this.selected = this.selectedValues[0];
 			}
 			this._updateSelected();
