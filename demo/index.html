@@ -43,9 +43,9 @@
 							<div class="layout horizontal">
 								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
 								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
-								<paper-input style="margin-left: 15px" value="{{ join(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
+								<paper-input style="margin-left: 15px" value="{{ stringify(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
-									<paper-listbox slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute">
+									<paper-listbox class="dropdown-content" slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute">
 										<paper-item attribute>null</paper-item>
 										<paper-item attribute="name">name</paper-item>
 									</paper-listbox>
@@ -306,10 +306,8 @@
 			window.addEventListener('WebComponentsReady', function () {
 				var basic = document.getElementById('basic');
 				basic = !basic.set ? basic.firstElementChild : basic;
-				basic.join = function (values){
-					if (values && values.length) {
-						return values.join(',');
-					}
+				basic.stringify = function (values){
+					return JSON.stringify(values);
 				};
 			});
 		})();
