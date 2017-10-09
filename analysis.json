@@ -111,12 +111,14 @@
               "column": 3
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "inheritedFrom": "Cosmoz.TabbedBehavior"
         },
@@ -128,11 +130,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 3
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 4
             }
           },
@@ -150,11 +152,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 70,
+              "line": 71,
               "column": 3
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 4
             }
           },
@@ -172,11 +174,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 78,
+              "line": 79,
               "column": 3
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 4
             }
           },
@@ -194,16 +196,18 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 3
             },
             "end": {
-              "line": 89,
+              "line": 91,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "defaultValue": "\"\"",
           "inheritedFrom": "Cosmoz.TabbedBehavior"
@@ -519,11 +523,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 98,
+              "line": 100,
               "column": 2
             },
             "end": {
-              "line": 100,
+              "line": 102,
               "column": 3
             }
           },
@@ -547,11 +551,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 107,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 109,
+              "line": 111,
               "column": 3
             }
           },
@@ -569,11 +573,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 116,
+              "line": 118,
               "column": 2
             },
             "end": {
-              "line": 120,
+              "line": 122,
               "column": 3
             }
           },
@@ -591,11 +595,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 128,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 132,
               "column": 3
             }
           },
@@ -733,7 +737,7 @@
               "column": 3
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 4
             }
           },
@@ -747,11 +751,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 3
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 4
             }
           },
@@ -765,11 +769,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 70,
+              "line": 71,
               "column": 3
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 4
             }
           },
@@ -783,11 +787,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 78,
+              "line": 79,
               "column": 3
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 4
             }
           },
@@ -801,11 +805,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 3
             },
             "end": {
-              "line": 89,
+              "line": 91,
               "column": 4
             }
           },
@@ -863,6 +867,20 @@
           "type": "CustomEvent",
           "name": "accordion-changed",
           "description": "Fired when the `accordion` property changes.",
+          "metadata": {},
+          "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "heading-changed",
+          "description": "Fired when the `heading` property changes.",
+          "metadata": {},
+          "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "badge-changed",
+          "description": "Fired when the `badge` property changes.",
           "metadata": {},
           "inheritedFrom": "Cosmoz.TabbedBehavior"
         }
@@ -1053,11 +1071,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 19,
+              "line": 30,
               "column": 3
             },
             "end": {
-              "line": 22,
+              "line": 33,
               "column": 4
             }
           },
@@ -1208,14 +1226,14 @@
           "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 33,
-              "column": 6
+              "line": 66,
+              "column": 3
             },
             "end": {
-              "line": 39,
-              "column": 7
+              "line": 72,
+              "column": 4
             }
           },
           "metadata": {
@@ -1224,7 +1242,7 @@
             }
           },
           "defaultValue": "[]",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "selectedItems",
@@ -1232,14 +1250,14 @@
           "description": "Returns an array of currently selected items.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 44,
-              "column": 6
+              "line": 76,
+              "column": 3
             },
             "end": {
-              "line": 51,
-              "column": 7
+              "line": 83,
+              "column": 4
             }
           },
           "metadata": {
@@ -1249,7 +1267,7 @@
             }
           },
           "defaultValue": "[]",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "accordion",
@@ -1311,12 +1329,14 @@
               "column": 3
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "inheritedFrom": "Cosmoz.TabbedBehavior"
         },
@@ -1328,11 +1348,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 3
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 4
             }
           },
@@ -1350,11 +1370,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 70,
+              "line": 71,
               "column": 3
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 4
             }
           },
@@ -1372,11 +1392,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 78,
+              "line": 79,
               "column": 3
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 4
             }
           },
@@ -1394,16 +1414,18 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 3
             },
             "end": {
-              "line": 89,
+              "line": 91,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "defaultValue": "\"\"",
           "inheritedFrom": "Cosmoz.TabbedBehavior"
@@ -1419,12 +1441,14 @@
               "column": 3
             },
             "end": {
-              "line": 14,
+              "line": 15,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "defaultValue": "false"
         },
@@ -1435,16 +1459,18 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 20,
               "column": 3
             },
             "end": {
-              "line": 31,
+              "line": 25,
               "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "notify": true
+            }
           },
           "defaultValue": "false"
         },
@@ -1455,11 +1481,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 38,
               "column": 3
             },
             "end": {
-              "line": 43,
+              "line": 45,
               "column": 4
             }
           },
@@ -2175,11 +2201,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 126,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 155,
               "column": 3
             }
           },
@@ -2322,23 +2348,26 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 74,
-              "column": 4
+              "line": 194,
+              "column": 2
             },
             "end": {
-              "line": 77,
-              "column": 5
+              "line": 203,
+              "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
               "name": "multi"
+            },
+            {
+              "name": "old"
             }
           ],
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "_selectMulti",
@@ -2370,11 +2399,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 161,
+              "line": 184,
               "column": 2
             },
             "end": {
-              "line": 165,
+              "line": 186,
               "column": 3
             }
           },
@@ -2416,11 +2445,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 80,
+              "line": 103,
               "column": 2
             },
             "end": {
-              "line": 82,
+              "line": 105,
               "column": 3
             }
           },
@@ -2445,11 +2474,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 92,
+              "line": 115,
               "column": 2
             },
             "end": {
-              "line": 103,
+              "line": 126,
               "column": 3
             }
           },
@@ -2473,11 +2502,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 113,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 140,
               "column": 3
             }
           },
@@ -2511,11 +2540,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 145,
+              "line": 168,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 182,
               "column": 3
             }
           },
@@ -2545,11 +2574,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 167,
+              "line": 188,
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 192,
               "column": 3
             }
           },
@@ -2562,17 +2591,40 @@
           "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
+          "name": "_normalizeValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-tabbable-behavior.html",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 207,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
+        },
+        {
           "name": "_computeOpenedIcon",
           "description": "Computes the element's opened icon depending on the `opened` property",
           "privacy": "protected",
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 98,
+              "line": 100,
               "column": 2
             },
             "end": {
-              "line": 100,
+              "line": 102,
               "column": 3
             }
           },
@@ -2596,11 +2648,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 107,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 109,
+              "line": 111,
               "column": 3
             }
           },
@@ -2618,11 +2670,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 116,
+              "line": 118,
               "column": 2
             },
             "end": {
-              "line": 120,
+              "line": 122,
               "column": 3
             }
           },
@@ -2640,11 +2692,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 128,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 132,
               "column": 3
             }
           },
@@ -2661,11 +2713,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 59,
               "column": 2
             },
             "end": {
-              "line": 59,
+              "line": 61,
               "column": 3
             }
           },
@@ -2686,11 +2738,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 71,
               "column": 2
             },
             "end": {
-              "line": 71,
+              "line": 73,
               "column": 3
             }
           },
@@ -2728,7 +2780,7 @@
           "column": 9
         },
         "end": {
-          "line": 73,
+          "line": 75,
           "column": 2
         }
       },
@@ -2812,11 +2864,11 @@
           "description": "Only items that match this CSS selector are selectable.",
           "sourceRange": {
             "start": {
-              "line": 19,
+              "line": 30,
               "column": 3
             },
             "end": {
-              "line": 22,
+              "line": 33,
               "column": 4
             }
           },
@@ -2917,37 +2969,37 @@
           "name": "selected-values",
           "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 33,
-              "column": 6
+              "line": 66,
+              "column": 3
             },
             "end": {
-              "line": 39,
-              "column": 7
+              "line": 72,
+              "column": 4
             }
           },
           "metadata": {},
           "type": "Array",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "selected-items",
           "description": "Returns an array of currently selected items.",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 44,
-              "column": 6
+              "line": 76,
+              "column": 3
             },
             "end": {
-              "line": 51,
-              "column": 7
+              "line": 83,
+              "column": 4
             }
           },
           "metadata": {},
           "type": "Array",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "accordion",
@@ -2995,7 +3047,7 @@
               "column": 3
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 4
             }
           },
@@ -3009,11 +3061,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 3
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 4
             }
           },
@@ -3027,11 +3079,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 70,
+              "line": 71,
               "column": 3
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 4
             }
           },
@@ -3045,11 +3097,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 78,
+              "line": 79,
               "column": 3
             },
             "end": {
-              "line": 81,
+              "line": 82,
               "column": 4
             }
           },
@@ -3063,11 +3115,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbed-behavior.html",
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 3
             },
             "end": {
-              "line": 89,
+              "line": 91,
               "column": 4
             }
           },
@@ -3084,7 +3136,7 @@
               "column": 3
             },
             "end": {
-              "line": 14,
+              "line": 15,
               "column": 4
             }
           },
@@ -3096,11 +3148,11 @@
           "description": "If true, the item will be disabled.",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 20,
               "column": 3
             },
             "end": {
-              "line": 31,
+              "line": 25,
               "column": 4
             }
           },
@@ -3112,11 +3164,11 @@
           "description": "True if the item contains cards.",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 38,
               "column": 3
             },
             "end": {
-              "line": 43,
+              "line": 45,
               "column": 4
             }
           },
@@ -3179,14 +3231,14 @@
           "name": "selected-values-changed",
           "description": "Fired when the `selectedValues` property changes.",
           "metadata": {},
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "type": "CustomEvent",
           "name": "selected-items-changed",
           "description": "Fired when the `selectedItems` property changes.",
           "metadata": {},
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "type": "CustomEvent",
@@ -3222,6 +3274,32 @@
           "description": "Fired when the `isSelected` property changes.",
           "metadata": {},
           "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "heading-changed",
+          "description": "Fired when the `heading` property changes.",
+          "metadata": {},
+          "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "badge-changed",
+          "description": "Fired when the `badge` property changes.",
+          "metadata": {},
+          "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "hidden-changed",
+          "description": "Fired when the `hidden` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "disabled-changed",
+          "description": "Fired when the `disabled` property changes.",
+          "metadata": {}
         },
         {
           "type": "CustomEvent",
@@ -3401,11 +3479,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 12,
+              "line": 21,
               "column": 3
             },
             "end": {
-              "line": 15,
+              "line": 24,
               "column": 4
             }
           },
@@ -3556,14 +3634,14 @@
           "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 33,
-              "column": 6
+              "line": 66,
+              "column": 3
             },
             "end": {
-              "line": 39,
-              "column": 7
+              "line": 72,
+              "column": 4
             }
           },
           "metadata": {
@@ -3572,7 +3650,7 @@
             }
           },
           "defaultValue": "[]",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "selectedItems",
@@ -3580,14 +3658,14 @@
           "description": "Returns an array of currently selected items.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 44,
-              "column": 6
+              "line": 76,
+              "column": 3
             },
             "end": {
-              "line": 51,
-              "column": 7
+              "line": 83,
+              "column": 4
             }
           },
           "metadata": {
@@ -3597,7 +3675,7 @@
             }
           },
           "defaultValue": "[]",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "accordion",
@@ -3630,11 +3708,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 20,
+              "line": 29,
               "column": 3
             },
             "end": {
-              "line": 22,
+              "line": 31,
               "column": 4
             }
           },
@@ -3649,11 +3727,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 36,
               "column": 3
             },
             "end": {
-              "line": 29,
+              "line": 38,
               "column": 4
             }
           },
@@ -3668,11 +3746,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 44,
               "column": 3
             },
             "end": {
-              "line": 38,
+              "line": 47,
               "column": 4
             }
           },
@@ -3689,11 +3767,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 43,
+              "line": 52,
               "column": 3
             },
             "end": {
-              "line": 46,
+              "line": 55,
               "column": 4
             }
           },
@@ -4407,11 +4485,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 126,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 155,
               "column": 3
             }
           },
@@ -4554,23 +4632,26 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 74,
-              "column": 4
+              "line": 194,
+              "column": 2
             },
             "end": {
-              "line": 77,
-              "column": 5
+              "line": 203,
+              "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
               "name": "multi"
+            },
+            {
+              "name": "old"
             }
           ],
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "_selectMulti",
@@ -4602,11 +4683,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 161,
+              "line": 184,
               "column": 2
             },
             "end": {
-              "line": 165,
+              "line": 186,
               "column": 3
             }
           },
@@ -4648,11 +4729,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 80,
+              "line": 103,
               "column": 2
             },
             "end": {
-              "line": 82,
+              "line": 105,
               "column": 3
             }
           },
@@ -4677,11 +4758,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 92,
+              "line": 115,
               "column": 2
             },
             "end": {
-              "line": 103,
+              "line": 126,
               "column": 3
             }
           },
@@ -4705,11 +4786,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 113,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 140,
               "column": 3
             }
           },
@@ -4743,11 +4824,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 145,
+              "line": 168,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 182,
               "column": 3
             }
           },
@@ -4777,11 +4858,11 @@
           "sourceRange": {
             "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 167,
+              "line": 188,
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 192,
               "column": 3
             }
           },
@@ -4794,16 +4875,39 @@
           "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
+          "name": "_normalizeValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-tabbable-behavior.html",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 207,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
+        },
+        {
           "name": "_computeIcon",
           "description": "Computes icon for a tab.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 76,
               "column": 2
             },
             "end": {
-              "line": 67,
+              "line": 78,
               "column": 3
             }
           },
@@ -4826,11 +4930,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 86,
               "column": 2
             },
             "end": {
-              "line": 77,
+              "line": 88,
               "column": 3
             }
           },
@@ -4853,11 +4957,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 98,
               "column": 2
             },
             "end": {
-              "line": 89,
+              "line": 100,
               "column": 3
             }
           },
@@ -4890,11 +4994,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 115,
               "column": 3
             }
           },
@@ -4922,11 +5026,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 119,
+              "line": 130,
               "column": 3
             }
           },
@@ -4949,11 +5053,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 141,
               "column": 2
             },
             "end": {
-              "line": 144,
+              "line": 155,
               "column": 3
             }
           },
@@ -4985,11 +5089,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 165,
               "column": 2
             },
             "end": {
-              "line": 164,
+              "line": 175,
               "column": 3
             }
           },
@@ -5014,11 +5118,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 185,
               "column": 2
             },
             "end": {
-              "line": 183,
+              "line": 193,
               "column": 3
             }
           },
@@ -5038,6 +5142,58 @@
           "return": {
             "type": "void"
           }
+        },
+        {
+          "name": "_itemsChanged",
+          "description": "Listens to `iron-items-changed` event and\nadds events for property changes on added items.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 203,
+              "column": 2
+            },
+            "end": {
+              "line": 215,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e",
+              "type": "Event",
+              "description": "The `iron-items-changed` event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_tabPropertyChanged",
+          "description": "Listens to property change event on a tab and forwards\nthe change with `notifyPath` to the item in the `items` array.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 225,
+              "column": 2
+            },
+            "end": {
+              "line": 233,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e",
+              "type": "Event",
+              "description": "The property change event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -5050,11 +5206,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 5,
+          "line": 14,
           "column": 9
         },
         "end": {
-          "line": 184,
+          "line": 234,
           "column": 2
         }
       },
@@ -5138,11 +5294,11 @@
           "description": "Only items that match this CSS selector are selectable.",
           "sourceRange": {
             "start": {
-              "line": 12,
+              "line": 21,
               "column": 3
             },
             "end": {
-              "line": 15,
+              "line": 24,
               "column": 4
             }
           },
@@ -5243,37 +5399,37 @@
           "name": "selected-values",
           "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 33,
-              "column": 6
+              "line": 66,
+              "column": 3
             },
             "end": {
-              "line": 39,
-              "column": 7
+              "line": 72,
+              "column": 4
             }
           },
           "metadata": {},
           "type": "Array",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "selected-items",
           "description": "Returns an array of currently selected items.",
           "sourceRange": {
-            "file": "bower_components/iron-selector/iron-multi-selectable.html",
+            "file": "cosmoz-tabbable-behavior.html",
             "start": {
-              "line": 44,
-              "column": 6
+              "line": 76,
+              "column": 3
             },
             "end": {
-              "line": 51,
-              "column": 7
+              "line": 83,
+              "column": 4
             }
           },
           "metadata": {},
           "type": "Array",
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "name": "accordion",
@@ -5298,11 +5454,11 @@
           "description": "The hash parameter to use for selecting an item.",
           "sourceRange": {
             "start": {
-              "line": 20,
+              "line": 29,
               "column": 3
             },
             "end": {
-              "line": 22,
+              "line": 31,
               "column": 4
             }
           },
@@ -5314,11 +5470,11 @@
           "description": "The attribute used for selecting an item by `hashParam`.",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 36,
               "column": 3
             },
             "end": {
-              "line": 29,
+              "line": 38,
               "column": 4
             }
           },
@@ -5381,14 +5537,14 @@
           "name": "selected-values-changed",
           "description": "Fired when the `selectedValues` property changes.",
           "metadata": {},
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "type": "CustomEvent",
           "name": "selected-items-changed",
           "description": "Fired when the `selectedItems` property changes.",
           "metadata": {},
-          "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+          "inheritedFrom": "Cosmoz.TabbableBehavior"
         },
         {
           "type": "CustomEvent",
@@ -5721,14 +5877,13 @@
               "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
               "privacy": "public",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 33,
-                  "column": 6
+                  "line": 66,
+                  "column": 3
                 },
                 "end": {
-                  "line": 39,
-                  "column": 7
+                  "line": 72,
+                  "column": 4
                 }
               },
               "metadata": {
@@ -5736,8 +5891,7 @@
                   "notify": true
                 }
               },
-              "defaultValue": "[]",
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "defaultValue": "[]"
             },
             {
               "name": "selectedItems",
@@ -5745,14 +5899,13 @@
               "description": "Returns an array of currently selected items.",
               "privacy": "public",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 44,
-                  "column": 6
+                  "line": 76,
+                  "column": 3
                 },
                 "end": {
-                  "line": 51,
-                  "column": 7
+                  "line": 83,
+                  "column": 4
                 }
               },
               "metadata": {
@@ -5761,8 +5914,7 @@
                   "readOnly": true
                 }
               },
-              "defaultValue": "[]",
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "defaultValue": "[]"
             },
             {
               "name": "accordion",
@@ -6489,11 +6641,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 126,
+                  "line": 149,
                   "column": 2
                 },
                 "end": {
-                  "line": 132,
+                  "line": 155,
                   "column": 3
                 }
               },
@@ -6635,23 +6787,24 @@
               "description": "",
               "privacy": "public",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 74,
-                  "column": 4
+                  "line": 194,
+                  "column": 2
                 },
                 "end": {
-                  "line": 77,
-                  "column": 5
+                  "line": 203,
+                  "column": 3
                 }
               },
               "metadata": {},
               "params": [
                 {
                   "name": "multi"
+                },
+                {
+                  "name": "old"
                 }
-              ],
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              ]
             },
             {
               "name": "_selectMulti",
@@ -6682,11 +6835,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 161,
+                  "line": 184,
                   "column": 2
                 },
                 "end": {
-                  "line": 165,
+                  "line": 186,
                   "column": 3
                 }
               },
@@ -6726,11 +6879,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 80,
+                  "line": 103,
                   "column": 2
                 },
                 "end": {
-                  "line": 82,
+                  "line": 105,
                   "column": 3
                 }
               },
@@ -6753,11 +6906,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 92,
+                  "line": 115,
                   "column": 2
                 },
                 "end": {
-                  "line": 103,
+                  "line": 126,
                   "column": 3
                 }
               },
@@ -6779,11 +6932,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 113,
+                  "line": 136,
                   "column": 2
                 },
                 "end": {
-                  "line": 117,
+                  "line": 140,
                   "column": 3
                 }
               },
@@ -6815,11 +6968,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 145,
+                  "line": 168,
                   "column": 2
                 },
                 "end": {
-                  "line": 159,
+                  "line": 182,
                   "column": 3
                 }
               },
@@ -6847,11 +7000,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 167,
+                  "line": 188,
                   "column": 2
                 },
                 "end": {
-                  "line": 171,
+                  "line": 192,
                   "column": 3
                 }
               },
@@ -6859,6 +7012,27 @@
               "params": [
                 {
                   "name": "e"
+                }
+              ]
+            },
+            {
+              "name": "_normalizeValue",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 205,
+                  "column": 2
+                },
+                "end": {
+                  "line": 207,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "value"
                 }
               ]
             }
@@ -6872,7 +7046,7 @@
               "column": 1
             },
             "end": {
-              "line": 172,
+              "line": 208,
               "column": 3
             }
           },
@@ -7055,37 +7229,33 @@
               "name": "selected-values",
               "description": "Gets or sets the selected elements. This is used instead of `selected` when `multi`\nis true.",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 33,
-                  "column": 6
+                  "line": 66,
+                  "column": 3
                 },
                 "end": {
-                  "line": 39,
-                  "column": 7
+                  "line": 72,
+                  "column": 4
                 }
               },
               "metadata": {},
-              "type": "Array",
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "type": "Array"
             },
             {
               "name": "selected-items",
               "description": "Returns an array of currently selected items.",
               "sourceRange": {
-                "file": "bower_components/iron-selector/iron-multi-selectable.html",
                 "start": {
-                  "line": 44,
-                  "column": 6
+                  "line": 76,
+                  "column": 3
                 },
                 "end": {
-                  "line": 51,
-                  "column": 7
+                  "line": 83,
+                  "column": 4
                 }
               },
               "metadata": {},
-              "type": "Array",
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "type": "Array"
             },
             {
               "name": "accordion",
@@ -7158,15 +7328,13 @@
               "type": "CustomEvent",
               "name": "selected-values-changed",
               "description": "Fired when the `selectedValues` property changes.",
-              "metadata": {},
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "metadata": {}
             },
             {
               "type": "CustomEvent",
               "name": "selected-items-changed",
               "description": "Fired when the `selectedItems` property changes.",
-              "metadata": {},
-              "inheritedFrom": "Polymer.IronMultiSelectableBehavior"
+              "metadata": {}
             },
             {
               "type": "CustomEvent",
@@ -7286,12 +7454,14 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 57,
+                  "line": 58,
                   "column": 4
                 }
               },
               "metadata": {
-                "polymer": {}
+                "polymer": {
+                  "notify": true
+                }
               }
             },
             {
@@ -7301,11 +7471,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 62,
+                  "line": 63,
                   "column": 3
                 },
                 "end": {
-                  "line": 65,
+                  "line": 66,
                   "column": 4
                 }
               },
@@ -7321,11 +7491,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 70,
+                  "line": 71,
                   "column": 3
                 },
                 "end": {
-                  "line": 73,
+                  "line": 74,
                   "column": 4
                 }
               },
@@ -7341,11 +7511,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 78,
+                  "line": 79,
                   "column": 3
                 },
                 "end": {
-                  "line": 81,
+                  "line": 82,
                   "column": 4
                 }
               },
@@ -7361,16 +7531,18 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 86,
+                  "line": 87,
                   "column": 3
                 },
                 "end": {
-                  "line": 89,
+                  "line": 91,
                   "column": 4
                 }
               },
               "metadata": {
-                "polymer": {}
+                "polymer": {
+                  "notify": true
+                }
               },
               "defaultValue": "\"\""
             }
@@ -7663,11 +7835,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 98,
+                  "line": 100,
                   "column": 2
                 },
                 "end": {
-                  "line": 100,
+                  "line": 102,
                   "column": 3
                 }
               },
@@ -7689,11 +7861,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 107,
+                  "line": 109,
                   "column": 2
                 },
                 "end": {
-                  "line": 109,
+                  "line": 111,
                   "column": 3
                 }
               },
@@ -7709,11 +7881,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 116,
+                  "line": 118,
                   "column": 2
                 },
                 "end": {
-                  "line": 120,
+                  "line": 122,
                   "column": 3
                 }
               },
@@ -7729,11 +7901,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 128,
+                  "line": 130,
                   "column": 2
                 },
                 "end": {
-                  "line": 130,
+                  "line": 132,
                   "column": 3
                 }
               },
@@ -7753,7 +7925,7 @@
               "column": 1
             },
             "end": {
-              "line": 131,
+              "line": 133,
               "column": 3
             }
           },
@@ -7801,7 +7973,7 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 57,
+                  "line": 58,
                   "column": 4
                 }
               },
@@ -7813,11 +7985,11 @@
               "description": "The icon of the item.",
               "sourceRange": {
                 "start": {
-                  "line": 62,
+                  "line": 63,
                   "column": 3
                 },
                 "end": {
-                  "line": 65,
+                  "line": 66,
                   "column": 4
                 }
               },
@@ -7829,11 +8001,11 @@
               "description": "The icon of the item when it is selected.",
               "sourceRange": {
                 "start": {
-                  "line": 70,
+                  "line": 71,
                   "column": 3
                 },
                 "end": {
-                  "line": 73,
+                  "line": 74,
                   "column": 4
                 }
               },
@@ -7845,11 +8017,11 @@
               "description": "The color of the items's icon.",
               "sourceRange": {
                 "start": {
-                  "line": 78,
+                  "line": 79,
                   "column": 3
                 },
                 "end": {
-                  "line": 81,
+                  "line": 82,
                   "column": 4
                 }
               },
@@ -7861,11 +8033,11 @@
               "description": "When not empty the element will contain a `paper-bagde` with the label set to this property.",
               "sourceRange": {
                 "start": {
-                  "line": 86,
+                  "line": 87,
                   "column": 3
                 },
                 "end": {
-                  "line": 89,
+                  "line": 91,
                   "column": 4
                 }
               },
@@ -7902,6 +8074,18 @@
               "type": "CustomEvent",
               "name": "accordion-changed",
               "description": "Fired when the `accordion` property changes.",
+              "metadata": {}
+            },
+            {
+              "type": "CustomEvent",
+              "name": "heading-changed",
+              "description": "Fired when the `heading` property changes.",
+              "metadata": {}
+            },
+            {
+              "type": "CustomEvent",
+              "name": "badge-changed",
+              "description": "Fired when the `badge` property changes.",
               "metadata": {}
             }
           ],

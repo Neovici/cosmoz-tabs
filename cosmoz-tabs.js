@@ -3,6 +3,15 @@
 (function () {
 	'use strict';
 
+	var CHANGE_EVENTS = [
+		'disabled',
+		'hidden',
+		'heading',
+		'badge'
+	].map(function (p){
+		return p + '-changed';
+	});
+
 	Polymer({
 		is: 'cosmoz-tabs',
 
@@ -184,21 +193,36 @@
 			}
 		},
 
+
+		/**
+		 * Listens to `iron-items-changed` event and
+		 * adds events for property changes on added items.
+		 *
+		 * @param  {Event} e The `iron-items-changed` event
+		 * @return {void}
+		 */
 		_itemsChanged: function (e) {
 			var mutation = e.detail,
 				handler = '_tabPropertyChanged';
 
-			mutation.addedNodes.forEach(function (nodes){
-				this.listen(nodes, 'disabled-changed', handler);
-				this.listen(nodes, 'hidden-changed', handler);
-			}, this);
-
-			mutation.removedNodes.forEach(function (nodes){
-				this.unlisten(nodes, 'hidden-changed', handler);
-				this.unlisten(nodes, 'disabled-changed', handler);
+			CHANGE_EVENTS.forEach(function (ev){
+				mutation.addedNodes.forEach(function (node){
+					this.listen(node, ev, handler);
+				}, this);
+				mutation.removedNodes.forEach(function (node){
+					this.unlisten(node, ev, handler);
+				}, this);
 			}, this);
 		},
 
+		/**
+		 * Listens to property change event on a tab and forwards
+		 * the change with `notifyPath` to the item in the `items` array.
+		 *
+		 * @param  {Event} e The property change event
+		 * @param  {Event} e.detail.value The new value of the changed property
+		 * @return {void}
+		 */
 		_tabPropertyChanged: function (e){
 			var item = e.target,
 				index = this.items.indexOf(item),
