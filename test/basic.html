@@ -232,6 +232,31 @@
 						done();
 					}, 90);
 				});
+
+				test('setting hidden on cosmoz-tab updates paper-tab', function (done) {
+					var tab = tabs.items[1];
+
+					Polymer.Base.async(function (){
+						var paperTab = tabs.$$('paper-tabs').items[1];
+
+						tab.hidden = true;
+						assert.isTrue(paperTab.hidden);
+						done();
+					}, 30);
+				});
+
+				test('setting disabled on cosmoz-tab updates paper-tab', function (done) {
+					var tab = tabs.items[1];
+
+					Polymer.Base.async(function (){
+						var paperTab = tabs.$$('paper-tabs').items[1];
+
+						tab.disabled = true;
+						assert.isTrue(paperTab.disabled);
+						done();
+
+					}, 30);
+				});
 			});
 		</script>
 	</body>

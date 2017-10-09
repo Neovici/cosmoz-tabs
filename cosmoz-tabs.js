@@ -50,7 +50,9 @@
 		behaviors: [
 			Cosmoz.TabbableBehavior
 		],
-
+		listeners: {
+			'iron-items-changed': '_itemsChanged'
+		},
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selectedItem, hashParam)',
@@ -179,6 +181,31 @@
 
 			if (items.length && !selection && this.fallbackSelection === null) {
 				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
+			}
+		},
+
+		_itemsChanged: function (e) {
+			var mutation = e.detail,
+				handler = '_tabPropertyChanged';
+
+			mutation.addedNodes.forEach(function (nodes){
+				this.listen(nodes, 'disabled-changed', handler);
+				this.listen(nodes, 'hidden-changed', handler);
+			}, this);
+
+			mutation.removedNodes.forEach(function (nodes){
+				this.unlisten(nodes, 'hidden-changed', handler);
+				this.unlisten(nodes, 'disabled-changed', handler);
+			}, this);
+		},
+
+		_tabPropertyChanged: function (e){
+			var item = e.target,
+				index = this.items.indexOf(item),
+				property = e.type.split('-')[0];
+
+			if (index > -1 && property) {
+				this.notifyPath('items.' + index + '.' + property, e.detail.value);
 			}
 		}
 	});

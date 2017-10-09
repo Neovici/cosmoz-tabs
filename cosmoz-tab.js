@@ -11,6 +11,17 @@
 			hidden: {
 				type: Boolean,
 				value: false,
+				notify: true,
+				reflectToAttribute: true,
+			},
+
+			/**
+			 *  If true, the item will be disabled.
+			 */
+			disabled: {
+				type: Boolean,
+				value: false,
+				notify: true,
 				reflectToAttribute: true,
 			},
 
@@ -20,15 +31,6 @@
 			selectable: {
 				type: String,
 				value: 'cosmoz-tab-card'
-			},
-
-			/**
-			 *  If true, the item will be disabled.
-			 */
-			disabled: {
-				type: Boolean,
-				value: false,
-				reflectToAttribute: true,
 			},
 
 			/**
