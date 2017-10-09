@@ -257,6 +257,33 @@
 
 					}, 30);
 				});
+
+				test('setting heading on cosmoz-tab updates paper-tab', function (done) {
+					var tab = tabs.items[1];
+
+					Polymer.Base.async(function (){
+						var paperTab = tabs.$$('paper-tabs').items[1];
+
+						tab.heading = 'Another tab';
+						assert.equal(paperTab.querySelector('h1.heading').innerText, 'Another tab');
+						done();
+
+					}, 30);
+				});
+
+				test('setting badge on cosmoz-tab updates paper-tab', function (done) {
+					var tab = tabs.items[0];
+
+					Polymer.Base.async(function (){
+						var paperTab = tabs.$$('paper-tabs').items[0];
+
+						tab.badge = 'Inbox';
+						assert.equal(paperTab.querySelector('paper-badge').label, 'Inbox');
+						done();
+
+					}, 30);
+				});
+
 			});
 		</script>
 	</body>
