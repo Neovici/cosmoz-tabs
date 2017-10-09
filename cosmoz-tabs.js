@@ -185,15 +185,17 @@
 		},
 
 		_itemsChanged: function (e) {
-			var mutation = e.detail;
-			mutation.addedNodes.forEach(function (item){
-				this.listen(item, 'hidden-changed', '_tabPropertyChanged');
-				this.listen(item, 'disabled-changed', '_tabPropertyChanged');
+			var mutation = e.detail,
+				handler = '_tabPropertyChanged';
+
+			mutation.addedNodes.forEach(function (nodes){
+				this.listen(nodes, 'disabled-changed', handler);
+				this.listen(nodes, 'hidden-changed', handler);
 			}, this);
 
-			mutation.removedNodes.forEach(function (item){
-				this.unlisten(item, 'hidden-changed', '_tabPropertyChanged');
-				this.unlisten(item, 'disabled-changed', '_tabPropertyChanged');
+			mutation.removedNodes.forEach(function (nodes){
+				this.unlisten(nodes, 'hidden-changed', handler);
+				this.unlisten(nodes, 'disabled-changed', handler);
 			}, this);
 		},
 
