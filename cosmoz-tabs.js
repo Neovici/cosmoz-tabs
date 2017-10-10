@@ -200,7 +200,7 @@
 
 			if (items.length && !selection){
 				expected = attr ? this._valueForItem(items[0]) : '0';
-				if (fallback === null || fallback !== expected){
+				if (fallback === null || fallback !== expected && fallback !== ''){
 					this.fallbackSelection = expected;
 				}
 			}
