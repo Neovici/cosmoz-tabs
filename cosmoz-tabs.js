@@ -8,6 +8,21 @@
 
 		properties: {
 			/**
+			 * If you want to use an attribute value or property of an element for
+			 * `selected` instead of the index, set this to the name of the attribute
+			 * or property. Hyphenated values are converted to camel case when used to
+			 * look up the property of a selectable element. Camel cased values are
+			 * *not* converted to hyphenated values for attribute lookup. It's
+			 * recommended that you provide the hyphenated form of the name so that
+			 * selection works in both cases. (Use `attr-or-property-name` instead of
+			 * `attrOrPropertyName`.)
+			 */
+			attrForSelected: {
+				type: String,
+				value: 'name'
+			},
+
+			/**
 			 * Only items that match this CSS selector are selectable.
 			 */
 			selectable: {
@@ -58,7 +73,7 @@
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selectedItem, hashParam)',
-			'_updateFallbackSelection(attrForSelected, items, multi)'
+			'_updateFallbackSelection(attrForSelected, items)'
 		],
 
 		/**
@@ -177,12 +192,17 @@
 		 * @returns {void}
 		 */
 		_updateFallbackSelection: function (attr, items){
-			var selection = this._selection.get();
-
+			var selection = this._selection.get(),
+				fallback = this.fallbackSelection,
+				expectedFallback;
 			selection = selection && selection.length;
 
-			if (items.length && !selection && this.fallbackSelection === null) {
-				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
+			console.log('update fallback', this.fallbackSelection);
+			if (items.length && !selection){
+				expectedFallback = this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
+				if (fallback === null || fallback !== expectedFallback){
+					this.fallbackSelection = expectedFallback;
+				}
 			}
 		},
 
