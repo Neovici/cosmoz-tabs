@@ -188,20 +188,20 @@
 		 * and update `fallback` to point to the first item.
 		 *
 		 * @param  {String} attr The attrForSelected property
-		 * @param  {Array} items           The items property
+		 * @param  {Array} items The items property
 		 * @returns {void}
 		 */
 		_updateFallbackSelection: function (attr, items){
 			var selection = this._selection.get(),
 				fallback = this.fallbackSelection,
-				expectedFallback;
+				expected;
+
 			selection = selection && selection.length;
 
-			console.log('update fallback', this.fallbackSelection);
 			if (items.length && !selection){
-				expectedFallback = this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
-				if (fallback === null || fallback !== expectedFallback){
-					this.fallbackSelection = expectedFallback;
+				expected = this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
+				if (fallback === null || fallback !== expected){
+					this.fallbackSelection = expected;
 				}
 			}
 		},
