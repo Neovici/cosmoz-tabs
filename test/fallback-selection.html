@@ -17,10 +17,10 @@
 	<test-fixture id="basic">
 		<template>
 			<cosmoz-tabs>
-				<cosmoz-tab heading="Tab0">1</cosmoz-tab>
-				<cosmoz-tab heading="Tab1" badge="2">2</cosmoz-tab>
-				<cosmoz-tab hidden>3</cosmoz-tab>
-				<cosmoz-tab heading="Tab3" disabled>3</cosmoz-tab>
+				<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
+				<cosmoz-tab name="tab1" heading="Tab1" badge="2">2</cosmoz-tab>
+				<cosmoz-tab name="tab2" hidden>3</cosmoz-tab>
+				<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
 			</cosmoz-tabs>
 		</template>
 	</test-fixture>
@@ -39,8 +39,8 @@
 
 			test('fallback-selection is 0 ', function (done){
 				assert.isNotNull(tabs.fallbackSelection);
-				assert.equal(tabs.fallbackSelection, '0');
-				assert.equal(tabs.selected, 0);
+				assert.equal(tabs.fallbackSelection, 'tab0');
+				assert.equal(tabs.selected, 'tab0');
 				assert.equal(tabs.selectedItem, tabs.items[0]);
 				done();
 			});
