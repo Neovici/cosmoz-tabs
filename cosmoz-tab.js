@@ -2,6 +2,14 @@
 (function () {
 	'use strict';
 	Polymer({
+		/**
+		 * Fired when `hidden`, `disabled`,'heading' or `badge` tab properties change.
+		 *
+		 * @event tab-property-changed
+		 * @param {String} detail.property The property name
+		 * @param {String|Number|Object|*} detail.value The property value
+		 * @param {HTMLElement} detail.item The item that changed.
+		 */
 
 		is: 'cosmoz-tab',
 		properties: {
@@ -51,6 +59,13 @@
 			Cosmoz.TabbedBehavior
 		],
 
+		observers: [
+			'_notifyProperty("hidden", hidden)',
+			'_notifyProperty("disabled", disabled)',
+			'_notifyProperty("heading", heading)',
+			'_notifyProperty("badge", badge)'
+		],
+
 		/**
 		 * Computes `hasCards` depending on `items`.
 		 *
@@ -71,6 +86,24 @@
 		 */
 		_computeOpened: function (accordion, hasCards = this.hasCards, isSelected = this.isSelected){
 			return !accordion || hasCards || isSelected;
+		},
+
+		/**
+		 * Observes changes to a property and fires a bubbling
+		 * `tab-property-changed` event.
+		 *
+		 * @fires tab-property-changed
+		 * @param {String} property The name of the changed property
+		 * @param {String|Number|Object|*} value The value of the changed property.
+		 * @return {void}
+
+		 */
+		_notifyProperty: function (property, value) {
+			this.fire('tab-property-changed', {
+				property: property,
+				value: value,
+				item: this
+			});
 		}
 
 	});

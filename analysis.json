@@ -1071,11 +1071,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 38,
               "column": 3
             },
             "end": {
-              "line": 33,
+              "line": 41,
               "column": 4
             }
           },
@@ -1437,11 +1437,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 10,
+              "line": 18,
               "column": 3
             },
             "end": {
-              "line": 15,
+              "line": 23,
               "column": 4
             }
           },
@@ -1459,11 +1459,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 20,
+              "line": 28,
               "column": 3
             },
             "end": {
-              "line": 25,
+              "line": 33,
               "column": 4
             }
           },
@@ -1481,11 +1481,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 46,
               "column": 3
             },
             "end": {
-              "line": 45,
+              "line": 53,
               "column": 4
             }
           },
@@ -2713,11 +2713,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 74,
               "column": 2
             },
             "end": {
-              "line": 61,
+              "line": 76,
               "column": 3
             }
           },
@@ -2738,11 +2738,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 86,
               "column": 2
             },
             "end": {
-              "line": 73,
+              "line": 88,
               "column": 3
             }
           },
@@ -2764,6 +2764,37 @@
             "type": "Boolean",
             "desc": "True if `hasCards` or `isSelected`"
           }
+        },
+        {
+          "name": "_notifyProperty",
+          "description": "Observes changes to a property and fires a bubbling\n`tab-property-changed` event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 2
+            },
+            "end": {
+              "line": 106,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "property",
+              "type": "String",
+              "description": "The name of the changed property"
+            },
+            {
+              "name": "value",
+              "type": "(String|Number|Object|*)",
+              "description": "The value of the changed property."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -2780,7 +2811,7 @@
           "column": 9
         },
         "end": {
-          "line": 75,
+          "line": 108,
           "column": 2
         }
       },
@@ -2864,11 +2895,11 @@
           "description": "Only items that match this CSS selector are selectable.",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 38,
               "column": 3
             },
             "end": {
-              "line": 33,
+              "line": 41,
               "column": 4
             }
           },
@@ -3132,11 +3163,11 @@
           "description": "If true, the item will be hidden.",
           "sourceRange": {
             "start": {
-              "line": 10,
+              "line": 18,
               "column": 3
             },
             "end": {
-              "line": 15,
+              "line": 23,
               "column": 4
             }
           },
@@ -3148,11 +3179,11 @@
           "description": "If true, the item will be disabled.",
           "sourceRange": {
             "start": {
-              "line": 20,
+              "line": 28,
               "column": 3
             },
             "end": {
-              "line": 25,
+              "line": 33,
               "column": 4
             }
           },
@@ -3164,11 +3195,11 @@
           "description": "True if the item contains cards.",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 46,
               "column": 3
             },
             "end": {
-              "line": 45,
+              "line": 53,
               "column": 4
             }
           },
@@ -3288,6 +3319,12 @@
           "description": "Fired when the `badge` property changes.",
           "metadata": {},
           "inheritedFrom": "Cosmoz.TabbedBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "tab-property-changed",
+          "description": "tab-property-changed",
+          "metadata": {}
         },
         {
           "type": "CustomEvent",
@@ -3479,11 +3516,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 12,
               "column": 3
             },
             "end": {
-              "line": 24,
+              "line": 15,
               "column": 4
             }
           },
@@ -3708,11 +3745,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 29,
+              "line": 20,
               "column": 3
             },
             "end": {
-              "line": 31,
+              "line": 22,
               "column": 4
             }
           },
@@ -3727,11 +3764,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 27,
               "column": 3
             },
             "end": {
-              "line": 38,
+              "line": 29,
               "column": 4
             }
           },
@@ -3746,11 +3783,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 35,
               "column": 3
             },
             "end": {
-              "line": 47,
+              "line": 38,
               "column": 4
             }
           },
@@ -3767,11 +3804,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 43,
               "column": 3
             },
             "end": {
-              "line": 55,
+              "line": 46,
               "column": 4
             }
           },
@@ -4903,11 +4940,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 69,
               "column": 2
             },
             "end": {
-              "line": 78,
+              "line": 71,
               "column": 3
             }
           },
@@ -4930,11 +4967,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 79,
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 81,
               "column": 3
             }
           },
@@ -4957,11 +4994,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 2
             },
             "end": {
-              "line": 100,
+              "line": 93,
               "column": 3
             }
           },
@@ -4994,11 +5031,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 102,
               "column": 2
             },
             "end": {
-              "line": 115,
+              "line": 108,
               "column": 3
             }
           },
@@ -5026,11 +5063,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 123,
               "column": 3
             }
           },
@@ -5053,11 +5090,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 134,
               "column": 2
             },
             "end": {
-              "line": 155,
+              "line": 148,
               "column": 3
             }
           },
@@ -5089,11 +5126,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 175,
+              "line": 168,
               "column": 3
             }
           },
@@ -5118,11 +5155,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 185,
+              "line": 178,
               "column": 2
             },
             "end": {
-              "line": 193,
+              "line": 186,
               "column": 3
             }
           },
@@ -5144,12 +5181,12 @@
           }
         },
         {
-          "name": "_itemsChanged",
-          "description": "Listens to `iron-items-changed` event and\nadds events for property changes on added items.",
+          "name": "_tabPropertyChanged",
+          "description": "Listens to `tab-property-changed` event on a tab and\nnotifies about the change.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 198,
               "column": 2
             },
             "end": {
@@ -5162,33 +5199,7 @@
             {
               "name": "e",
               "type": "Event",
-              "description": "The `iron-items-changed` event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_tabPropertyChanged",
-          "description": "Listens to property change event on a tab and forwards\nthe change with `notifyPath` to the item in the `items` array.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 225,
-              "column": 2
-            },
-            "end": {
-              "line": 233,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e",
-              "type": "Event",
-              "description": "The property change event"
+              "description": "The tab-property-changed event"
             }
           ],
           "return": {
@@ -5206,11 +5217,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 14,
+          "line": 5,
           "column": 9
         },
         "end": {
-          "line": 234,
+          "line": 216,
           "column": 2
         }
       },
@@ -5294,11 +5305,11 @@
           "description": "Only items that match this CSS selector are selectable.",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 12,
               "column": 3
             },
             "end": {
-              "line": 24,
+              "line": 15,
               "column": 4
             }
           },
@@ -5454,11 +5465,11 @@
           "description": "The hash parameter to use for selecting an item.",
           "sourceRange": {
             "start": {
-              "line": 29,
+              "line": 20,
               "column": 3
             },
             "end": {
-              "line": 31,
+              "line": 22,
               "column": 4
             }
           },
@@ -5470,11 +5481,11 @@
           "description": "The attribute used for selecting an item by `hashParam`.",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 27,
               "column": 3
             },
             "end": {
-              "line": 38,
+              "line": 29,
               "column": 4
             }
           },
