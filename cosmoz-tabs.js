@@ -105,7 +105,7 @@
 		 * @return {String} The computed attribute
 		 */
 		_computeItemTabAttribute: function (item, index, attrForSelected) {
-			return attrForSelected && (item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected)) || index;
+			return attrForSelected ? item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected) : index;
 		},
 
 		/**
