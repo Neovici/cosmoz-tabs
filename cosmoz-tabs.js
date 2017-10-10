@@ -197,6 +197,8 @@
 		 * @return {void}
 		 */
 		_tabPropertyChanged: function (e){
+			e.stopPropagation();
+
 			if (!this.accordion && this.items && this.items.length){
 				var detail = e.detail,
 					item = detail.item,
@@ -205,7 +207,6 @@
 					index = this.items.indexOf(item);
 
 				if (index > -1 && property && value !== undefined) {
-					e.stopPropagation();
 					this.notifyPath('items.' + index + '.' + property, value);
 				}
 			}
