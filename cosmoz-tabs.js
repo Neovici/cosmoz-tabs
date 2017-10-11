@@ -3,19 +3,25 @@
 (function () {
 	'use strict';
 
-	var CHANGE_EVENTS = [
-		'disabled',
-		'hidden',
-		'heading',
-		'badge'
-	].map(function (p){
-		return p + '-changed';
-	});
-
 	Polymer({
 		is: 'cosmoz-tabs',
 
 		properties: {
+			/**
+			 * If you want to use an attribute value or property of an element for
+			 * `selected` instead of the index, set this to the name of the attribute
+			 * or property. Hyphenated values are converted to camel case when used to
+			 * look up the property of a selectable element. Camel cased values are
+			 * *not* converted to hyphenated values for attribute lookup. It's
+			 * recommended that you provide the hyphenated form of the name so that
+			 * selection works in both cases. (Use `attr-or-property-name` instead of
+			 * `attrOrPropertyName`.)
+			 */
+			attrForSelected: {
+				type: String,
+				value: 'name'
+			},
+
 			/**
 			 * Only items that match this CSS selector are selectable.
 			 */
@@ -59,13 +65,15 @@
 		behaviors: [
 			Cosmoz.TabbableBehavior
 		],
+
 		listeners: {
-			'iron-items-changed': '_itemsChanged'
+			'tab-property-changed': '_tabPropertyChanged'
 		},
+
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selectedItem, hashParam)',
-			'_updateFallbackSelection(attrForSelected, items, multi)'
+			'_updateFallbackSelection(attrForSelected, items)'
 		],
 
 		/**
@@ -97,7 +105,7 @@
 		 * @return {String} The computed attribute
 		 */
 		_computeItemTabAttribute: function (item, index, attrForSelected) {
-			return attrForSelected && (item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected)) || index;
+			return attrForSelected ? item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected) : index;
 		},
 
 		/**
@@ -180,56 +188,47 @@
 		 * and update `fallback` to point to the first item.
 		 *
 		 * @param  {String} attr The attrForSelected property
-		 * @param  {Array} items           The items property
+		 * @param  {Array} items The items property
 		 * @returns {void}
 		 */
 		_updateFallbackSelection: function (attr, items){
-			var selection = this._selection.get();
+			var selection = this._selection.get(),
+				fallback = this.fallbackSelection,
+				expected;
 
 			selection = selection && selection.length;
 
-			if (items.length && !selection && this.fallbackSelection === null) {
-				this.fallbackSelection = attr ? this._valueForItem(items[0]) : '0';
+			if (items.length && !selection){
+				expected = attr ? this._valueForItem(items[0]) : '0';
+				if (fallback === null || fallback !== expected && fallback !== ''){
+					this.fallbackSelection = expected;
+				}
 			}
 		},
 
-
 		/**
-		 * Listens to `iron-items-changed` event and
-		 * adds events for property changes on added items.
+		 * Listens to `tab-property-changed` event on a tab and
+		 * notifies about the change.
 		 *
-		 * @param  {Event} e The `iron-items-changed` event
-		 * @return {void}
-		 */
-		_itemsChanged: function (e) {
-			var mutation = e.detail,
-				handler = '_tabPropertyChanged';
-
-			CHANGE_EVENTS.forEach(function (ev){
-				mutation.addedNodes.forEach(function (node){
-					this.listen(node, ev, handler);
-				}, this);
-				mutation.removedNodes.forEach(function (node){
-					this.unlisten(node, ev, handler);
-				}, this);
-			}, this);
-		},
-
-		/**
-		 * Listens to property change event on a tab and forwards
-		 * the change with `notifyPath` to the item in the `items` array.
-		 *
-		 * @param  {Event} e The property change event
+		 * @param  {Event} e The tab-property-changed event
+		 * @param  {Event} e.detail.item The item that changed
+		 * @param  {Event} e.detail.property The name of the changed property
 		 * @param  {Event} e.detail.value The new value of the changed property
 		 * @return {void}
 		 */
 		_tabPropertyChanged: function (e){
-			var item = e.target,
-				index = this.items.indexOf(item),
-				property = e.type.split('-')[0];
+			e.stopPropagation();
 
-			if (index > -1 && property) {
-				this.notifyPath('items.' + index + '.' + property, e.detail.value);
+			if (!this.accordion && this.items && this.items.length){
+				var detail = e.detail,
+					item = detail.item,
+					property = detail.property,
+					value = detail.value,
+					index = this.items.indexOf(item);
+
+				if (index > -1 && property && value !== undefined) {
+					this.notifyPath('items.' + index + '.' + property, value);
+				}
 			}
 		}
 	});

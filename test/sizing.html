@@ -33,8 +33,8 @@
 	<body>
 		<test-fixture id="basic-unexplicit">
 			<template>
-				<cosmoz-tabs selected="0">
-					<cosmoz-tab heading="Flex">
+				<cosmoz-tabs selected="tab0">
+					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list">
 							<template>
 								<div class="item">
@@ -43,7 +43,7 @@
 							</template>
 						</iron-list>
 					</cosmoz-tab>
-					<cosmoz-tab heading="Content">
+					<cosmoz-tab name="tab1" heading="Content">
 						<p>
 							Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 							sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -58,8 +58,8 @@
 
 		<test-fixture id="basic-explicit-selected">
 			<template>
-				<cosmoz-tabs selected="0" style="height: 400px">
-					<cosmoz-tab heading="Flex">
+				<cosmoz-tabs selected="tab0" style="height: 400px">
+					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list">
 							<template>
 								<div class="item">
@@ -68,7 +68,7 @@
 							</template>
 						</iron-list>
 					</cosmoz-tab>
-					<cosmoz-tab heading="Content">
+					<cosmoz-tab name="tab1" heading="Content">
 						<p>
 							Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 							sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -84,7 +84,7 @@
 		<test-fixture id="basic-explicit-flex-unselected">
 			<template>
 				<cosmoz-tabs style="height: 400px" fallback-selection>
-					<cosmoz-tab heading="Flex">
+					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list" class="flex">
 							<template>
 								<div class="item">
@@ -93,7 +93,7 @@
 							</template>
 						</iron-list>
 					</cosmoz-tab>
-					<cosmoz-tab heading="Content">
+					<cosmoz-tab name="tab1" heading="Content">
 						<p>
 							Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 							sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -108,8 +108,8 @@
 
 		<test-fixture id="basic-explicit-flex-selected">
 			<template>
-				<cosmoz-tabs selected="0" style="height: 400px">
-					<cosmoz-tab heading="Flex">
+				<cosmoz-tabs selected="tab0" style="height: 400px">
+					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list" class="flex">
 							<template>
 								<div class="item">
@@ -118,7 +118,7 @@
 							</template>
 						</iron-list>
 					</cosmoz-tab>
-					<cosmoz-tab heading="Content">
+					<cosmoz-tab name="tab1" heading="Content">
 						<p>
 							Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 							sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -241,7 +241,7 @@
 							var onResize = sinon.spy();
 							list.addEventListener('iron-resize', onResize);
 
-							tabs.selected = 0;
+							tabs.selected = 'tab0';
 							Polymer.Base.async(function (){
 								assert.equal(list.getBoundingClientRect().height, 349);
 								assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);

@@ -16,10 +16,10 @@
 	<body>
 		<test-fixture id="basic">
 			<template>
-				<cosmoz-tabs selected="2" hash-param="tab">
-					<cosmoz-tab>Tab text 1</cosmoz-tab>
-					<cosmoz-tab>Tab text 2</cosmoz-tab>
-					<cosmoz-tab>Tab text 3</cosmoz-tab>
+				<cosmoz-tabs selected="tab2" hash-param="tab">
+					<cosmoz-tab name="tab0">Tab text 1</cosmoz-tab>
+					<cosmoz-tab name="tab1">Tab text 2</cosmoz-tab>
+					<cosmoz-tab name="tab2">Tab text 3</cosmoz-tab>
 				</cosmoz-tabs>
 			</template>
 		</test-fixture>
@@ -40,7 +40,7 @@
 					Polymer.Base.async(function () {
 						tabs.$$('paper-tabs').items.forEach(function (tab, index){
 							var link =  Polymer.dom(tab).querySelector('.link');
-							assert.equal(link.getAttribute('href'), '##tab=' + index);
+							assert.equal(link.getAttribute('href'), '##tab=' + tabs.items[index].getAttribute('name'));
 						});
 						done();
 					}, 90);
@@ -48,10 +48,10 @@
 
 				test('updates selected item from location hash', function (done){
 					Polymer.Base.async(function () {
-						tabs._routeHash = 'tab=0';
+						tabs._routeHash = 'tab=tab0';
 						Polymer.Base.async(function () {
-							assert.equal(tabs._routeHashParams[tabs.hashParam], '0');
-							assert.equal(tabs.selected, 0);
+							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
+							assert.equal(tabs.selected, 'tab0');
 							assert.equal(tabs.selectedItem, tabs.items[0]);
 							done();
 						}, 90);
@@ -61,10 +61,10 @@
 				test('updates location hash from selected item', function (done){
 					Polymer.Base.async(function () {
 						assert.equal(tabs.selectedItem, tabs.items[2]);
-						tabs.selected = '2';
+						tabs.selected = 'tab1';
 						Polymer.Base.async(function () {
-							assert.equal(tabs._routeHashParams[tabs.hashParam], '2');
-							assert.equal(tabs._routeHash, 'tab=2');
+							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab1');
+							assert.equal(tabs._routeHash, 'tab=tab1');
 							done();
 						}, 90);
 					}, 90);

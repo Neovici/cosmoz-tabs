@@ -45,7 +45,7 @@
 								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
 								<paper-input style="margin-left: 15px" value="{{ stringify(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
-									<paper-listbox class="dropdown-content" slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute">
+									<paper-listbox class="dropdown-content" slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
 										<paper-item attribute>null</paper-item>
 										<paper-item attribute="name">name</paper-item>
 									</paper-listbox>
@@ -97,19 +97,19 @@
 						<template is="dom-bind" id="hashParam">
 							<paper-input value="{{ hash }}" label="Hash"></paper-input>
 							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab">
-								<cosmoz-tab heading="Tab1">
+								<cosmoz-tab heading="Tab1" name="0">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2">
+								<cosmoz-tab heading="Tab2" name="1">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3">
+								<cosmoz-tab heading="Tab3" name="2">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -128,19 +128,19 @@
 						<template is="dom-bind" id="attrForhashParam">
 							<paper-input value="{{ hash }}" label="Hash"></paper-input>
 							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash">
-								<cosmoz-tab heading="Tab1" tab-hash="first-tab">
+								<cosmoz-tab heading="Tab1" tab-hash="first-tab" name="0">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2" tab-hash="second-tab">
+								<cosmoz-tab heading="Tab2" tab-hash="second-tab" name="1">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3" tab-hash="third-tab">
+								<cosmoz-tab heading="Tab3" tab-hash="third-tab" name="2">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -159,7 +159,7 @@
 						<template is="dom-bind">
 							<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 							<cosmoz-tabs style="height: 400px">
-								<cosmoz-tab heading="Flex List">
+								<cosmoz-tab heading="Flex List" name="tab1">
 									<iron-list class="flex" items="[[items]]" as="item">
 										<template>
 											<div class="item">
@@ -169,7 +169,7 @@
 										</template>
 									</iron-list>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Sized List">
+								<cosmoz-tab heading="Sized List" name="tab2">
 									<iron-list style="height: 300px;" items="[[items]]" as="item">
 										<template>
 											<div class="item">
@@ -179,7 +179,7 @@
 										</template>
 									</iron-list>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Content">
+								<cosmoz-tab heading="Content" name="tab3">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -202,7 +202,7 @@
 							<div style="height: 400px" class="layout vertical">
 								<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 								<cosmoz-tabs class="flex">
-									<cosmoz-tab heading="Flex List">
+									<cosmoz-tab heading="Flex List" name="flex">
 										<iron-list class="flex" items="[[items]]" as="item">
 											<template>
 												<div class="item">
@@ -212,7 +212,7 @@
 											</template>
 										</iron-list>
 									</cosmoz-tab>
-									<cosmoz-tab heading="Sized List">
+									<cosmoz-tab heading="Sized List" name="sized">
 										<iron-list style="height: 300px;" items="[[items]]" as="item">
 											<template>
 												<div class="item">
@@ -222,7 +222,7 @@
 											</template>
 										</iron-list>
 									</cosmoz-tab>
-									<cosmoz-tab heading="Content">
+									<cosmoz-tab heading="Content" name="content">
 										<p>
 											Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 											sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -244,7 +244,7 @@
 					<dom-bind>
 						<template is="dom-bind">
 							<cosmoz-tabs style="height: 300px">
-								<cosmoz-tab heading="Tab 1">
+								<cosmoz-tab heading="Tab 1" name="tab1">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -255,7 +255,7 @@
 										Cras eget imperdiet libero.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab 2">
+								<cosmoz-tab heading="Tab 2" name="tab2">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
@@ -267,7 +267,7 @@
 										rutrum ac mauris.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Overflowing Content">
+								<cosmoz-tab heading="Overflowing Content" name="tab3">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.

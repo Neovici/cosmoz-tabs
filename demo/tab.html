@@ -28,22 +28,22 @@
 			<h3>normal mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs selected="1">
-						<cosmoz-tab heading="Tab1" disabled>
+					<cosmoz-tabs selected="tab2">
+						<cosmoz-tab heading="Tab1" name="tab1" disabled>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
+						<cosmoz-tab heading="Tab2" name="tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
+						<cosmoz-tab heading="Tab3" name="tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -57,21 +57,21 @@
 			<h3>normal mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs selected="1">
-						<cosmoz-tab heading="Tab1" hidden>
+					<cosmoz-tabs selected="tab2">
+						<cosmoz-tab heading="Tab1" name="tab1" hidden>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
+						<cosmoz-tab heading="Tab2" name="tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
+						<cosmoz-tab heading="Tab3" name="tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -85,21 +85,21 @@
 			<h3>normal mode <code>cosmoz-tab</code> with <code>badge</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs selected="2">
-						<cosmoz-tab heading="Tab1" badge="1">
+					<cosmoz-tabs selected="tab3">
+						<cosmoz-tab heading="Tab1" name="tab1" badge="1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" badge="2" icon-color="red">
+						<cosmoz-tab heading="Tab2" name="tab2" badge="2" icon-color="red">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" badge="3">
+						<cosmoz-tab heading="Tab3" name="tab3" badge="3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -114,21 +114,21 @@
 			<h3>accordion mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values="[0,1,2]">
-						<cosmoz-tab heading="Tab1" disabled>
+					<cosmoz-tabs accordion selected-values='["tab1","tab2","tab3"]'>
+						<cosmoz-tab heading="Tab1" name="tab1" disabled>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
+						<cosmoz-tab heading="Tab2" name="tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
+						<cosmoz-tab heading="Tab3" name="tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -142,21 +142,21 @@
 			<h3>accordion mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected="1">
-						<cosmoz-tab heading="Tab1" hidden>
+					<cosmoz-tabs accordion selected-values='["tab2"]'>
+						<cosmoz-tab heading="Tab1" name="tab1" hidden>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2">
+						<cosmoz-tab heading="Tab2" name="tab2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3">
+						<cosmoz-tab heading="Tab3" name="tab3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -170,21 +170,21 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>badge</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values="[0]">
-						<cosmoz-tab heading="Tab1" badge="1">
+					<cosmoz-tabs accordion selected-values='["tab1"]'>
+						<cosmoz-tab heading="Tab1" name="tab1" badge="1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" badge="2">
+						<cosmoz-tab heading="Tab2" name="tab2" badge="2">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" badge="3">
+						<cosmoz-tab heading="Tab3" name="tab3" badge="3">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -198,21 +198,21 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon-color</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values="[0,2]">
-						<cosmoz-tab heading="Tab1" icon-color="red">
+					<cosmoz-tabs accordion selected-values='["tab0","tab2"]'>
+						<cosmoz-tab heading="Tab1" name="tab0" icon-color="red">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" icon-color="purple">
+						<cosmoz-tab heading="Tab2" name="tab1" icon-color="purple">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" icon-color="blue">
+						<cosmoz-tab heading="Tab3" name="tab2" icon-color="blue">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -226,21 +226,21 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values="[0,2]">
-						<cosmoz-tab heading="Tab1" icon="icons:check-box-outline-blank">
+					<cosmoz-tabs accordion selected-values='["tab1","tab3"]'>
+						<cosmoz-tab heading="Tab1" name="tab1" icon="icons:check-box-outline-blank">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab2" icon="icons:check-circle">
+						<cosmoz-tab heading="Tab2" name="tab2" icon="icons:check-circle">
 							<p>
 								Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 								vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 								Phasellus et purus id dolor venenatis mollis.
 							</p>
 						</cosmoz-tab>
-						<cosmoz-tab heading="Tab3" icon="icons:check-box">
+						<cosmoz-tab heading="Tab3" name="tab3" icon="icons:check-box">
 							<p>
 								Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 								sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -262,20 +262,20 @@
 								</template>
 							</iron-list>
 							<cosmoz-tabs>
-								<cosmoz-tab heading="Tab1" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab1" name="tab0" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab2" name="tab1" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 										Phasellus et purus id dolor venenatis mollis.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab3" name="tab2" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -299,20 +299,20 @@
 								</template>
 							</iron-list>
 							<cosmoz-tabs accordion>
-								<cosmoz-tab heading="Tab1" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab1" name="tab0" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab2" name="tab1" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 										Phasellus et purus id dolor venenatis mollis.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
+								<cosmoz-tab heading="Tab3" name="tab2" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
