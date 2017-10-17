@@ -148,18 +148,20 @@
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam, items) {
-			if (! (changes === undefined || hashParam === undefined) && items.length) {
-				var path = ['_routeHashParams', hashParam],
-					value = this.get(path),
-					selection = this.items.filter(function (item) {
-						return this._hashParamForItem(item) === String(value);
-					}, this).map(function (item) {
-						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-					}, this)[0];
+			if (!(changes && hashParam && items.length)) {
+				return;
+			}
 
-				if (selection !== undefined) {
-					this.select(selection);
-				}
+			var path = ['_routeHashParams', hashParam],
+				value = this.get(path),
+				selection = this.items.filter(function (item) {
+					return this._hashParamForItem(item) === String(value);
+				}, this).map(function (item) {
+					return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
+				}, this)[0];
+
+			if (selection !== undefined) {
+				this.select(selection);
 			}
 		},
 
@@ -172,14 +174,15 @@
 		 * @return {void}
 		 */
 		_selectedItemChanged: function (item = this.selectedItem, hashParam) {
-			if (! (item === undefined || hashParam === undefined)) {
-				var path = ['_routeHashParams', hashParam],
-					current = this.get(path),
-					value = item ? this._hashParamForItem(item) : null;
+			if (!(item && hashParam)) {
+				return;
+			}
+			var path = ['_routeHashParams', hashParam],
+				current = this.get(path),
+				value = item ? this._hashParamForItem(item) : null;
 
-				if (current !== value) {
-					this.set(path, value);
-				}
+			if (current !== value) {
+				this.set(path, value);
 			}
 		},
 
