@@ -28,7 +28,7 @@
 			suite('basic', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('basic');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -38,7 +38,7 @@
 
 				test('items have links', function (done) {
 					Polymer.Base.async(function () {
-						tabs.$$('paper-tabs').items.forEach(function (tab, index){
+						tabs.$$('paper-tabs').items.forEach(function (tab, index) {
 							var link =  Polymer.dom(tab).querySelector('.link');
 							assert.equal(link.getAttribute('href'), '##tab=' + tabs.items[index].getAttribute('name'));
 						});
@@ -46,7 +46,7 @@
 					}, 90);
 				});
 
-				test('updates selected item from location hash', function (done){
+				test('updates selected item from location hash', function (done) {
 					Polymer.Base.async(function () {
 						tabs._routeHash = 'tab=tab0';
 						Polymer.Base.async(function () {
@@ -58,7 +58,7 @@
 					}, 90);
 				});
 
-				test('updates location hash from selected item', function (done){
+				test('updates location hash from selected item', function (done) {
 					Polymer.Base.async(function () {
 						assert.equal(tabs.selectedItem, tabs.items[2]);
 						tabs.selected = 'tab1';

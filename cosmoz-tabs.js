@@ -148,12 +148,12 @@
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam, items) {
-			if (! (changes === undefined || hashParam === undefined) && items.length){
+			if (! (changes === undefined || hashParam === undefined) && items.length) {
 				var path = ['_routeHashParams', hashParam],
 					value = this.get(path),
-					selection = this.items.filter(function (item){
+					selection = this.items.filter(function (item) {
 						return this._hashParamForItem(item) === String(value);
-					}, this).map(function (item){
+					}, this).map(function (item) {
 						return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
 					}, this)[0];
 
@@ -171,8 +171,8 @@
 		 * @param  {Object} hashParam The hash param
 		 * @return {void}
 		 */
-		_selectedItemChanged: function (item = this.selectedItem, hashParam){
-			if (! (item === undefined || hashParam === undefined)){
+		_selectedItemChanged: function (item = this.selectedItem, hashParam) {
+			if (! (item === undefined || hashParam === undefined)) {
 				var path = ['_routeHashParams', hashParam],
 					current = this.get(path),
 					value = item ? this._hashParamForItem(item) : null;
@@ -191,16 +191,16 @@
 		 * @param  {Array} items The items property
 		 * @returns {void}
 		 */
-		_updateFallbackSelection: function (attr, items){
+		_updateFallbackSelection: function (attr, items) {
 			var selection = this._selection.get(),
 				fallback = this.fallbackSelection,
 				expected;
 
 			selection = selection && selection.length;
 
-			if (items.length && !selection){
+			if (items.length && !selection) {
 				expected = attr ? this._valueForItem(items[0]) : '0';
-				if (fallback === null || fallback !== expected && fallback !== ''){
+				if (fallback === null || fallback !== expected && fallback !== '') {
 					this.fallbackSelection = expected;
 				}
 			}
@@ -216,10 +216,10 @@
 		 * @param  {Event} e.detail.value The new value of the changed property
 		 * @return {void}
 		 */
-		_tabPropertyChanged: function (e){
+		_tabPropertyChanged: function (e) {
 			e.stopPropagation();
 
-			if (!this.accordion && this.items && this.items.length){
+			if (!this.accordion && this.items && this.items.length) {
 				var detail = e.detail,
 					item = detail.item,
 					property = detail.property,

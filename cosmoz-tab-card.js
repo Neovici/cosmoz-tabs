@@ -34,7 +34,7 @@
 		 * @param  {Boolean} isSelected The isSelected property
 		 * @returns {Boolean} True if not `accordion` or if `isSelected`
 		 */
-		_computeOpened: function (accordion, isSelected){
+		_computeOpened: function (accordion, isSelected) {
 			return !accordion || isSelected;
 		},
 	});

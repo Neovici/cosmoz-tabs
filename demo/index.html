@@ -306,7 +306,7 @@
 			window.addEventListener('WebComponentsReady', function () {
 				var basic = document.getElementById('basic');
 				basic = !basic.set ? basic.firstElementChild : basic;
-				basic.stringify = function (values){
+				basic.stringify = function (values) {
 					return JSON.stringify(values);
 				};
 			});
