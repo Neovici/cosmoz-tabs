@@ -38,13 +38,6 @@
 			},
 
 			/**
-			 * The attribute used for selecting an item by `hashParam`.
-			 */
-			attrForHashParam: {
-				type: String,
-			},
-
-			/**
 			 * The route hash parameters extracted by the `cosmoz-page-location`
 			 * element.
 			 */
@@ -72,7 +65,7 @@
 
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
-			'_selectedItemChanged(selectedItem, hashParam)',
+			'_selectedItemChanged(selected, hashParam)',
 			'_updateFallbackSelection(attrForSelected, items)'
 		],
 
@@ -116,26 +109,15 @@
 		 * @return {String}  The computed link
 		 */
 		_computeItemLink: function (item, hashParam) {
-			if (hashParam) {
-				var params = {};
-				params[hashParam] = this._hashParamForItem(item);
-				return this.$.location.getRouteUrl({}, params);
+			if (!hashParam) {
+				return;
 			}
-		},
 
-		/**
-		 *  Computes hash parameter value for a item.
-		 *
-		 * @param  {HTMLElement} item The item to compute value for
-		 * @return {String}  The hash parameter value
-		 */
-		_hashParamForItem(item) {
-			if (this.attrForHashParam) {
-				return this._valueForItem(item, this.attrForHashParam);
-			}
-			var value =  this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-			return isNaN(value) ? value : String(value);
+			var params = {},
+				param = this._valueForItem(item);
 
+			params[hashParam] = param === 0 ? String(param) : param;
+			return this.$.location.getRouteUrl({}, params);
 		},
 
 		/**
@@ -153,37 +135,39 @@
 			}
 
 			var path = ['_routeHashParams', hashParam],
-				value = this.get(path),
-				selection = this.items.filter(function (item) {
-					return this._hashParamForItem(item) === String(value);
-				}, this).map(function (item) {
-					return this.attrForSelected ? this._valueForItem(item) : this.items.indexOf(item);
-				}, this)[0];
+				hashValue = this.get(path),
+				normalized = this._normalizeValue(hashValue),
+				invalid = this._valueToItem(normalized) == null;
 
-			if (selection !== undefined) {
-				this.select(selection);
+			if (invalid || this._normalizeValue(this.selected) === normalized) {
+				return;
 			}
+
+			this.select(normalized);
 		},
 
 		/**
 		 * Observers 'selectedItem' changes and updates
 		 *  location hash depending on 'hashParam'.
 		 *
-		 * @param  {HTMLElement} item      The selected item
+		 * @param  {String|Number} selected   The selected item
 		 * @param  {Object} hashParam The hash param
 		 * @return {void}
 		 */
-		_selectedItemChanged: function (item = this.selectedItem, hashParam) {
-			if (!(item && hashParam)) {
+		_selectedItemChanged: function (selected, hashParam) {
+			if (selected === undefined || selected != null && this._valueToItem(selected) == null || !(hashParam && this._routeHashParams)) {
 				return;
 			}
-			var path = ['_routeHashParams', hashParam],
-				current = this.get(path),
-				value = item ? this._hashParamForItem(item) : null;
 
-			if (current !== value) {
-				this.set(path, value);
+			var path = ['_routeHashParams', hashParam],
+				hashValue = this._normalizeValue(this.get(path), Object),
+				value = this._normalizeValue(selected);
+
+			if (hashValue === value) {
+				return;
 			}
+
+			this.set(path, value === undefined ? null : value === 0 ? String(value) : value);
 		},
 
 		/**
