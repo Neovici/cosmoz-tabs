@@ -151,6 +151,11 @@
 			if (!item) {
 				return;
 			}
+
+			if(!attr){
+				return this.items.indexOf(item);
+			}
+
 			var propValue = item[Polymer.CaseMap.dashToCamelCase(attr)];
 			return propValue !== undefined ? propValue : item.getAttribute(attr);
 		},
