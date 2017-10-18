@@ -183,13 +183,14 @@
 				fallback = this.fallbackSelection,
 				expected;
 
-			selection = selection && selection.length;
+			if (selection && selection.length || !items.length) {
+				return;
+			}
 
-			if (items.length && !selection) {
-				expected = attr ? this._valueForItem(items[0]) : '0';
-				if (fallback === null || fallback !== expected && fallback !== '') {
-					this.fallbackSelection = expected;
-				}
+			expected = attr ? this._valueForItem(items[0]) : '0';
+
+			if (fallback == null || fallback !== expected && fallback !== '') {
+				this.fallbackSelection = expected;
 			}
 		},
 
@@ -206,17 +207,21 @@
 		_tabPropertyChanged: function (e) {
 			e.stopPropagation();
 
-			if (!this.accordion && this.items && this.items.length) {
-				var detail = e.detail,
-					item = detail.item,
-					property = detail.property,
-					value = detail.value,
-					index = this.items.indexOf(item);
-
-				if (index > -1 && property && value !== undefined) {
-					this.notifyPath('items.' + index + '.' + property, value);
-				}
+			if (this.accordion || !(this.items && this.items.length)) {
+				return;
 			}
+
+			var detail = e.detail,
+				item = detail.item,
+				property = detail.property,
+				value = detail.value,
+				index = this.items.indexOf(item);
+
+			if (index < 0 || !property || value === undefined) {
+				return;
+			}
+
+			this.notifyPath('items.' + index + '.' + property, value);
 		}
 	});
 }());
