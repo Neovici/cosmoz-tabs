@@ -1,0 +1,34 @@
+<link rel="import" href="../../cosmoz-tab.html" />
+<link rel="import" href="../../cosmoz-tabs.html" />
+<dom-bind id="home">
+<template is="dom-bind">
+	<cosmoz-tabs hash-param="tab">
+		<cosmoz-tab heading="Tab1" name="tab0">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
+				maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
+			</p>
+		</cosmoz-tab>
+		<cosmoz-tab heading="Tab2" name="tab1">
+			<p>
+				Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
+				vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
+			</p>
+		</cosmoz-tab>
+		<cosmoz-tab heading="Tab3" name="tab2">
+			<p>
+				Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
+				sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
+			</p>
+		</cosmoz-tab>
+	</cosmoz-tabs>
+</template>
+</dom-bind>
+<script>
+	(function () {
+		'use strict';
+
+		Cosmoz.TemplateView['home'] = {
+		};
+	}());
+</script>
