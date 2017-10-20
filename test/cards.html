@@ -46,7 +46,7 @@
 			suite('cards basic', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('basic');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -54,14 +54,14 @@
 					});
 				});
 
-				test('collects cosmoz-tab-card elements as items', function (done){
+				test('collects cosmoz-tab-card elements as items', function (done) {
 					var tab = tabs.items[0];
 
 					Polymer.Base.async(function () {
 						assert.isArray(tab.items);
 						assert.lengthOf(tab.items, 3);
 
-						tab.items.forEach(function (item){
+						tab.items.forEach(function (item) {
 							assert.equal(item.is, 'cosmoz-tab-card');
 						});
 
@@ -69,12 +69,12 @@
 					}, 90);
 				});
 
-				test('cards have elevation 1', function (done){
+				test('cards have elevation 1', function (done) {
 					var tab = tabs.items[0];
 
 					Polymer.Base.async(function () {
 
-						tab.items.forEach(function (item){
+						tab.items.forEach(function (item) {
 							var material = item.$$('paper-material');
 							assert.equal(material.elevation, 1);
 						});
@@ -83,12 +83,12 @@
 					}, 90);
 				});
 
-				test('cards are opened', function (done){
+				test('cards are opened', function (done) {
 					var tab = tabs.items[0];
 
 					Polymer.Base.async(function () {
 
-						tab.items.forEach(function (item){
+						tab.items.forEach(function (item) {
 							assert.isTrue(item.$.collapse.opened);
 						});
 
@@ -96,12 +96,12 @@
 					}, 90);
 				});
 
-				test('cards have headings', function (done){
+				test('cards have headings', function (done) {
 					var tab = tabs.items[0];
 
 					Polymer.Base.async(function () {
 
-						tab.items.forEach(function (item){
+						tab.items.forEach(function (item) {
 							var heading = item.$$('.heading');
 							assert.equal(heading.innerText, item.heading);
 						});
@@ -114,7 +114,7 @@
 			suite('cards accordion', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('accordion');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -122,18 +122,18 @@
 					});
 				});
 
-				test('accordion property is forwarded to cards', function (done){
-					Polymer.Base.async(function (){
+				test('accordion property is forwarded to cards', function (done) {
+					Polymer.Base.async(function () {
 						var tab = tabs.items[0];
 						assert.equal(tab.accordion, tabs.accordion);
-						tab.items.forEach(function (item){
+						tab.items.forEach(function (item) {
 							assert.equal(item.accordion, tabs.accordion);
 						});
 						done();
 					}, 90);
 				});
 
-				test('tab containing cards has hidden header', function (done){
+				test('tab containing cards has hidden header', function (done) {
 					Polymer.Base.async(function () {
 						var tab = tabs.items[0],
 							style = window.getComputedStyle(tab.$.header),
@@ -143,27 +143,27 @@
 					}, 90);
 				});
 
-				test('in accordion mode selected cards are opened', function (done){
+				test('in accordion mode selected cards are opened', function (done) {
 					Polymer.Base.async(function () {
 						var tab = tabs.items[0];
 
 						assert.lengthOf(tab.selectedItems, 1);
-						tab.selectedItems.forEach(function (item){
+						tab.selectedItems.forEach(function (item) {
 							assert.isTrue(item.$.collapse.opened);
 						});
 						done();
 					}, 90);
 				});
 
-				test('in accordion mode unselected cards are closed', function (done){
+				test('in accordion mode unselected cards are closed', function (done) {
 					Polymer.Base.async(function () {
 						var tab = tabs.items[0],
-							unselected = tab.items.filter(function (item){
+							unselected = tab.items.filter(function (item) {
 								return tab.selectedItems.indexOf(item) < 0;
 							});
 
 						assert.lengthOf(unselected, 2);
-						unselected.forEach(function (item){
+						unselected.forEach(function (item) {
 							assert.isFalse(item.$.collapse.opened);
 						});
 						done();

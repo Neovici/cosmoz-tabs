@@ -20,6 +20,7 @@ Custom property | Description | Default
 `--paper-tabs-selection-bar-color` | Color for the selection bar | `#00b4db`
 
 @demo demo/index.html
+@demo demo/router.html#/#tab=tab1 Router Demo
 -->
 <dom-module id="cosmoz-tabs">
 	<template>
@@ -98,7 +99,7 @@ Custom property | Description | Default
 			<paper-material elevation="1">
 				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide>
 					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+						<paper-tab link hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
 							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link">
 								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]" style$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
 								<h1 id$="tabHeading[[ tabIndex ]]" class="heading">[[ tab.heading ]]</h1>

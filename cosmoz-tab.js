@@ -72,7 +72,7 @@
 		 * @param  {Array} items Array of selectable items
 		 * @returns {Boolean} True if items is not empty
 		 */
-		_computeHasCards: function (items = this.items){
+		_computeHasCards: function (items = this.items) {
 			return items && items.length > 0;
 		},
 
@@ -84,7 +84,7 @@
 		 * @param  {Boolean} isSelected The isSelected property
 		 * @returns {Boolean} True if `hasCards` or `isSelected`
 		 */
-		_computeOpened: function (accordion, hasCards = this.hasCards, isSelected = this.isSelected){
+		_computeOpened: function (accordion, hasCards = this.hasCards, isSelected = this.isSelected) {
 			return !accordion || hasCards || isSelected;
 		},
 

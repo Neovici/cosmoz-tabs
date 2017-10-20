@@ -101,7 +101,7 @@
 		 * @param  {Boolean} accordion The `accordion` property
 		 * @returns {Boolean} True if accordion is true
 		 */
-		_computeMulti: function (accordion){
+		_computeMulti: function (accordion) {
 			return !!accordion;
 		},
 
@@ -113,7 +113,7 @@
 		 * @param  {Event} e The `cosmoz-tab-toggle` event
 		 * @returns {void}
 		 */
-		_onToggleTab: function (e){
+		_onToggleTab: function (e) {
 			var item = e.target,
 				index = this.items.indexOf(item),
 				value;
@@ -135,7 +135,7 @@
 		 * @returns {void}
 		 */
 		_forwardProperty: function (property, value, items) {
-			items.forEach(function (item){
+			items.forEach(function (item) {
 				item.set(property, value);
 			});
 		},
@@ -151,6 +151,11 @@
 			if (!item) {
 				return;
 			}
+
+			if (!attr) {
+				return this.items.indexOf(item);
+			}
+
 			var propValue = item[Polymer.CaseMap.dashToCamelCase(attr)];
 			return propValue !== undefined ? propValue : item.getAttribute(attr);
 		},
@@ -166,7 +171,7 @@
 		 * @fires 'tab-select'
 		 * @return {void}        description
 		 */
-		_onIronSelect: function (e, detail){
+		_onIronSelect: function (e, detail) {
 			var item = detail.item,
 				index = this.items.indexOf(item),
 				opts = {node: item, bubbles: false };
@@ -187,12 +192,12 @@
 		},
 
 		_onTabActivate: function (e) {
-			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item){
+			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item) {
 				e.preventDefault();
 			}
 		},
 
-		multiChanged: function (multi, old){
+		multiChanged: function (multi, old) {
 			this._selection.multi = multi;
 
 			if (multi === true && old === false && this.selected !== null && this.selected !== undefined) {

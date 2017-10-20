@@ -39,7 +39,7 @@
 			suite('defaults', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('defaults');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -75,11 +75,8 @@
 					assert.isUndefined(tabs.hashParam);
 				});
 
-				test('undefined attrForHashParam', function () {
-					assert.isUndefined(tabs.attrForHashParam);
-				});
 
-				test('undefined attrForHashParam', function () {
+				test('attrForSelected defaults to name', function () {
 					assert.equal(tabs.attrForSelected, 'name');
 				});
 
@@ -92,7 +89,7 @@
 			suite('basic', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('basic');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -100,19 +97,19 @@
 					});
 				});
 
-				test('instantiates a cosmoz-tabs', function (){
+				test('instantiates a cosmoz-tabs', function () {
 					assert.equal(tabs.is, 'cosmoz-tabs');
 				});
 
-				test('collects cosmoz-tab elements as items', function (){
+				test('collects cosmoz-tab elements as items', function () {
 					assert.isArray(tabs.items);
 					assert.lengthOf(tabs.items, 4);
-					tabs.items.forEach(function (item){
+					tabs.items.forEach(function (item) {
 						assert.equal(item.is, 'cosmoz-tab');
 					});
 				});
 
-				test('selects an item', function (){
+				test('selects an item', function () {
 					assert.equal(tabs.selected, 'tab0');
 					assert.equal(tabs.selectedItem, tabs.items[0]);
 
@@ -120,12 +117,12 @@
 					assert.equal(tabs.selectedItem, tabs.items[1]);
 				});
 
-				test('selected item has selectedClass and selectedAttribute', function (){
+				test('selected item has selectedClass and selectedAttribute', function () {
 					assert.equal(tabs.selectedItem.getAttribute(tabs.selectedAttribute), '');
 					assert.isTrue(tabs.selectedItem.classList.contains(tabs.selectedClass));
 				});
 
-				test('contains a paper-tabs with same number of paper-tab elements', function (done){
+				test('contains a paper-tabs with same number of paper-tab elements', function (done) {
 					Polymer.Base.async(function () {
 						var paperTabs = tabs.$$('paper-tabs');
 						assert.isNotNull(paperTabs);
@@ -153,13 +150,13 @@
 					}, 90);
 				});
 
-				test('tabs contain heading', function (done){
+				test('tabs contain heading', function (done) {
 					Polymer.Base.async(function () {
 						var withHeading = tabs.items.filter(function (item) {
 							return item.heading;
 						});
 						assert.lengthOf(withHeading, 3);
-						withHeading.forEach(function (item){
+						withHeading.forEach(function (item) {
 							var heading = item.$$('.heading');
 							assert.equal(heading.innerText, item.heading);
 						});
@@ -217,7 +214,7 @@
 
 				test('#header is not visible', function (done) {
 					Polymer.Base.async(function () {
-						tabs.items.forEach(function (item){
+						tabs.items.forEach(function (item) {
 							assert.isNotNull(item.$.header);
 							var style = window.getComputedStyle(item.$.header),
 								display = style.getPropertyValue('display');
@@ -230,7 +227,7 @@
 				test('setting hidden on cosmoz-tab updates paper-tab', function (done) {
 					var tab = tabs.items[1];
 
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						var paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.hidden = true;
@@ -242,7 +239,7 @@
 				test('setting disabled on cosmoz-tab updates paper-tab', function (done) {
 					var tab = tabs.items[1];
 
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						var paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.disabled = true;
@@ -255,7 +252,7 @@
 				test('setting heading on cosmoz-tab updates paper-tab', function (done) {
 					var tab = tabs.items[1];
 
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						var paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.heading = 'Another tab';
@@ -268,7 +265,7 @@
 				test('setting badge on cosmoz-tab updates paper-tab', function (done) {
 					var tab = tabs.items[0];
 
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						var paperTab = tabs.$$('paper-tabs').items[0];
 
 						tab.badge = 'Inbox';

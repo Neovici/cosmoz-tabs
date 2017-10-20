@@ -29,7 +29,7 @@
 		suite('basic', function () {
 			var tabs;
 
-			setup(function (done){
+			setup(function (done) {
 				tabs = fixture('basic');
 				tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -37,7 +37,7 @@
 				});
 			});
 
-			test('fallback-selection is 0 ', function (done){
+			test('fallback-selection is 0 ', function (done) {
 				assert.isNotNull(tabs.fallbackSelection);
 				assert.equal(tabs.fallbackSelection, 'tab0');
 				assert.equal(tabs.selected, 'tab0');

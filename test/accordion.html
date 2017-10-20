@@ -28,7 +28,7 @@
 			suite('basic', function () {
 				var tabs;
 
-				setup(function (done){
+				setup(function (done) {
 					tabs = fixture('basic');
 					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
@@ -66,7 +66,7 @@
 					Polymer.Base.async(function () {
 						assert.lengthOf(tabs.selectedItems, 2);
 
-						tabs.selectedItems.forEach(function (item){
+						tabs.selectedItems.forEach(function (item) {
 							assert.isNotNull(item.$.collapse);
 							assert.isTrue(item.$.collapse.opened);
 						});
@@ -76,11 +76,11 @@
 				});
 
 				test('accordion property is forwarded to children', function (done) {
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						assert.isArray(tabs.items);
 						assert.lengthOf(tabs.items, 3);
 
-						tabs.items.forEach(function (item){
+						tabs.items.forEach(function (item) {
 							assert.equal(item.is, 'cosmoz-tab');
 							assert.isTrue(item.accordion);
 						});
@@ -100,7 +100,7 @@
 				test('in accordion mode cosmoz-tab #header is visible', function (done) {
 					Polymer.Base.async(function () {
 
-						tabs.items.forEach(function (item){
+						tabs.items.forEach(function (item) {
 							assert.isNotNull(item.$.header);
 							var style = window.getComputedStyle(item.$.header),
 								display = style.getPropertyValue('display');
@@ -111,7 +111,7 @@
 					}, 90);
 				});
 
-				test('in accordion mode tapping the header of a unselected item selects it', function (done){
+				test('in accordion mode tapping the header of a unselected item selects it', function (done) {
 					Polymer.Base.async(function () {
 						var item = tabs.items[0];
 						assert.isNotNull(item.$.header);
@@ -126,7 +126,7 @@
 					}, 90);
 				});
 
-				test('in accordion mode tapping the header of a selected item unselects it', function (done){
+				test('in accordion mode tapping the header of a selected item unselects it', function (done) {
 					Polymer.Base.async(function () {
 						var item = tabs.items[1];
 						assert.isNotNull(item.$.header);

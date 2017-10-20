@@ -329,14 +329,14 @@
 
 		<script type="text/javascript">
 			(function () {
-				var onSelect = function (e){
+				var onSelect = function (e) {
 					this.push('items', {event: e.type, heading: e.target.heading, style: e.type === 'tab-select' ? 'color: red' : 'color: green'});
 				};
 				window.addEventListener('WebComponentsReady', function () {
 					[
 						'events',
 						'events-accordion'
-					].forEach(function (id){
+					].forEach(function (id) {
 						var events = document.getElementById(id);
 						events = !events.set ? events.firstElementChild : events;
 

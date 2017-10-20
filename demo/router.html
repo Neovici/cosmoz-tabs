@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+	<title>cosmoz-tabs router-demo</title>
+
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+	<link rel="import" href="../../iron-demo-helpers/url-bar.html" />
+
+	<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../../cosmoz-page-router/cosmoz-page-router.html">
+	<link rel="import" href="../../cosmoz-page-router/cosmoz-page-route.html">
+
+	<custom-style>
+		<style is="custom-style" include="demo-pages-shared-styles iron-flex iron-flex-alignment iron-positioning">
+			cosmoz-page-router {
+				position: relative;
+			}
+		</style>
+	</custom-style>
+</head>
+<body unresolved class="fullbleed">
+	<div class="layout vertical fit">
+		<url-bar></url-bar>
+		<cosmoz-page-router class="flex" mode="hash" url-prefix="/">
+			<cosmoz-page-route path="/" import="helpers/router-template.html" template-id="home"></cosmoz-page-route>
+		</cosmoz-page-router>
+	</div>
+</body></html>

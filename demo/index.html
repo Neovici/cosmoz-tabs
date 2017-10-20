@@ -97,50 +97,19 @@
 						<template is="dom-bind" id="hashParam">
 							<paper-input value="{{ hash }}" label="Hash"></paper-input>
 							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab">
-								<cosmoz-tab heading="Tab1" name="0">
+								<cosmoz-tab heading="Tab1" name="tab0">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2" name="1">
+								<cosmoz-tab heading="Tab2" name="tab1">
 									<p>
 										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
 										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
 									</p>
 								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3" name="2">
-									<p>
-										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
-										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
-									</p>
-								</cosmoz-tab>
-							</cosmoz-tabs>
-						</template>
-					</dom-bind>
-				</template>
-			</demo-snippet>
-
-			<h3><code>hashParam</code> and <code>attr-for-hash-param</code> can be used in combination to bind location hash param to a attribute</h3>
-			<demo-snippet>
-				<template>
-					<dom-bind>
-						<template is="dom-bind" id="attrForhashParam">
-							<paper-input value="{{ hash }}" label="Hash"></paper-input>
-							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="selected-tab" attr-for-hash-param="tab-hash">
-								<cosmoz-tab heading="Tab1" tab-hash="first-tab" name="0">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
-										maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
-									</p>
-								</cosmoz-tab>
-								<cosmoz-tab heading="Tab2" tab-hash="second-tab" name="1">
-									<p>
-										Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum pharetra sem,
-										vitae tincidunt est mattis tristique. Donec blandit nulla non tellus tincidunt pretium.
-									</p>
-								</cosmoz-tab>
-								<cosmoz-tab heading="Tab3" tab-hash="third-tab" name="2">
+								<cosmoz-tab heading="Tab3" name="tab2">
 									<p>
 										Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc. Vestibulum accumsan,
 										sapien eu gravida consectetur, purus felis lobortis massa, id consequat eros lacus sit amet quam.
@@ -306,7 +275,7 @@
 			window.addEventListener('WebComponentsReady', function () {
 				var basic = document.getElementById('basic');
 				basic = !basic.set ? basic.firstElementChild : basic;
-				basic.stringify = function (values){
+				basic.stringify = function (values) {
 					return JSON.stringify(values);
 				};
 			});
