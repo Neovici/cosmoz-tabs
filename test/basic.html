@@ -277,6 +277,17 @@
 					}, 30);
 				});
 
+				test('hidden tab cannot be the selected tab', function (done) {
+					tabs.selected = 'tab1';
+					var selectedTab = tabs.selectedItem;
+					selectedTab.hidden = true;
+					Polymer.Base.async(function () {
+						var paperTab = tabs.$$('paper-tabs').items[1];
+						assert.isTrue(paperTab.hidden);
+						assert.notEqual(selectedTab, tabs.selectedItem);
+						done();
+					}, 30);
+				});
 			});
 		</script>
 	</body>
