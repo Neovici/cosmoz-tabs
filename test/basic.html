@@ -277,14 +277,62 @@
 					}, 30);
 				});
 
-				test('hidden tab cannot be the selected tab', function (done) {
+				test('hiding selected tab changes selection to fallbackSelection', function (done) {
 					tabs.selected = 'tab1';
-					var selectedTab = tabs.selectedItem;
-					selectedTab.hidden = true;
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					tabs.selectedItem.hidden = true;
+
+
 					Polymer.Base.async(function () {
 						var paperTab = tabs.$$('paper-tabs').items[1];
 						assert.isTrue(paperTab.hidden);
-						assert.notEqual(selectedTab, tabs.selectedItem);
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('selecting a hidden tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					assert.isTrue(tabs.items[2].hidden);
+
+					tabs.selected = 'tab2';
+
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('disabling selected tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					tabs.selectedItem.disabled = true;
+
+					Polymer.Base.async(function () {
+						var paperTab = tabs.$$('paper-tabs').items[1];
+						assert.isTrue(paperTab.disabled);
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('selecting a disabled tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					assert.isTrue(tabs.items[3].disabled);
+
+					tabs.selected = 'tab3';
+
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
 						done();
 					}, 30);
 				});
