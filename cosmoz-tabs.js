@@ -137,7 +137,8 @@
 			var path = ['_routeHashParams', hashParam],
 				hashValue = this.get(path),
 				normalized = this._normalizeValue(hashValue),
-				invalid = this._valueToItem(normalized) == null;
+				item = this._valueToItem(normalized),
+				invalid = item == null || item.disabled || item.hidden;
 
 			if (invalid || this._normalizeValue(this.selected) === normalized) {
 				return;
