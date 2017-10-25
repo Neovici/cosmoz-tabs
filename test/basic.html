@@ -191,9 +191,11 @@
 
 						assert.isFalse(tabVisible.hidden);
 						assert.isNull(tabVisible.getAttribute('hidden'));
+						assert.notEqual(window.getComputedStyle(tabVisible).getPropertyValue('display'), 'none');
 
 						assert.isTrue(tabHidden.hidden);
 						assert.equal(tabHidden.getAttribute('hidden'), '');
+						assert.equal(window.getComputedStyle(tabHidden).getPropertyValue('display'), 'none');
 						done();
 					}, 90);
 				});
