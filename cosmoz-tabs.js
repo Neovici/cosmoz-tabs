@@ -66,7 +66,8 @@
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
 			'_selectedItemChanged(selected, hashParam)',
-			'_updateFallbackSelection(attrForSelected, items)'
+			'_updateFallbackSelection(attrForSelected, items)',
+			'_updateInvalidSelection(selectedItem)'
 		],
 
 		/**
@@ -223,6 +224,11 @@
 			}
 
 			this.notifyPath('items.' + index + '.' + property, value);
+		_updateInvalidSelection: function (selectedItem = this.selectedItem) {
+			if (!selectedItem || !selectedItem.hidden && !selectedItem.disabled || !this.fallbackSelection) {
+				return;
+			}
+			this.select(this.fallbackSelection);
 		}
 	});
 }());
