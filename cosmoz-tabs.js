@@ -224,6 +224,13 @@
 			}
 
 			this.notifyPath('items.' + index + '.' + property, value);
+
+			if (['hidden', 'disabled'].indexOf(property) < 0 || value !== true || this.selectedItem !== item) {
+				return;
+			}
+			this._updateInvalidSelection(item);
+		},
+
 		_updateInvalidSelection: function (selectedItem = this.selectedItem) {
 			if (!selectedItem || !selectedItem.hidden && !selectedItem.disabled || !this.fallbackSelection) {
 				return;
