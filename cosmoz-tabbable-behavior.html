@@ -177,7 +177,7 @@
 				opts = {node: item, bubbles: false };
 
 			if (index > -1) {
-				this.async(this.notifyResize);
+				this.async(this._notifyTabResize);
 
 				if (!item._previouslySelected) {
 					this.fire('tab-first-select', {}, opts);
@@ -210,7 +210,56 @@
 
 		_normalizeValue: function (value) {
 			return this.attrForSelected ? value : isNaN(value) || value === null ? value : Number(value);
+		},
+
+		/**
+		* True if the current element is visible.
+		*/
+		get _isVisible() {
+			return Boolean(this.offsetWidth || this.offsetHeight);
+		},
+
+		_onDescendantIronResize(event) {
+			if (this._notifyingDescendant || !this.isVisible) {
+				event.stopPropagation();
+				return;
+			}
+			const ev = Polymer.dom(event),
+				item =  ev.localTarget,
+				index = this.items.indexOf(item);
+
+			if (index < 0 || !item.isSelected) {
+				event.stopPropagation();
+				return;
+			}
+
+			if (!Polymer.Settings.useShadow) {
+				this._fireResize();
+			}
+		},
+
+		resizerShouldNotify(resizable) {
+			return resizable.is === 'paper-tabs' || resizable.isSelected;
+		},
+
+		_notifyTabResize() {
+			if (!this.isAttached) {
+				return;
+			}
+
+			this._interestedResizables.forEach(resizable => {
+				if (this.resizerShouldNotify(resizable)) {
+					this._notifyDescendant(resizable);
+				}
+			});
+
+			if (!this.isVisible) {
+				// Fire resize on tab change only if this element is visible
+				return;
+			}
+			this._fireResize();
 		}
+
 	};
 
 	/** @polymerBehavior */
