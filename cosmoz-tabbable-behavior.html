@@ -219,45 +219,28 @@
 			return Boolean(this.offsetWidth || this.offsetHeight);
 		},
 
+		resizerShouldBeNotified() {
+			return true;
+		},
+
 		_onDescendantIronResize(event) {
-			if (this._notifyingDescendant || !this._isVisible) {
-				event.stopPropagation();
-				return;
-			}
-			const ev = Polymer.dom(event),
-				item =  ev.localTarget,
-				index = this.items.indexOf(item);
-
-			if (index < 0 || !item.isSelected) {
+			if (this._notifyingDescendant || !this._isVisible || !this.resizerShouldBeNotified(event.target)) {
 				event.stopPropagation();
 				return;
 			}
 
-			if (!Polymer.Settings.useShadow) {
-				this._fireResize();
-			}
-		},
-
-		resizerShouldNotify(resizable) {
-			return resizable.is === 'paper-tabs' || resizable.isSelected;
-		},
-
-		_notifyTabResize() {
-			if (!this.isAttached) {
+			if (Polymer.Settings.useShadow && event.target.domHost === this) {
 				return;
 			}
 
-			this._interestedResizables.forEach(resizable => {
-				if (this.resizerShouldNotify(resizable)) {
-					this._notifyDescendant(resizable);
-				}
-			});
-
-			if (!this._isVisible) {
-				// Fire resize on tab change only if this element is visible
-				return;
-			}
 			this._fireResize();
+		},
+
+		notifyResize() {
+			if (!this.isAttached || !this._isVisible) {
+				return;
+			}
+			Polymer.IronResizableBehavior.notifyResize.call(this);
 		}
 
 	};
