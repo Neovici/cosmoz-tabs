@@ -245,6 +245,14 @@
 			}
 
 			event.preventDefault();
+		},
+
+		resizerShouldNotify(resizable) {
+			return resizable.is === 'paper-tabs' || resizable.isSelected;
+		},
+
+		resizerShouldBeNotified(resizable) {
+			return this.items.indexOf(resizable) > -1 && resizable.isSelected;
 		}
 	});
 }());

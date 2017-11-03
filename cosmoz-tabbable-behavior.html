@@ -177,7 +177,7 @@
 				opts = {node: item, bubbles: false };
 
 			if (index > -1) {
-				this.async(this.notifyResize);
+				this.debounce('select-resize', this.notifyResize);
 
 				if (!item._previouslySelected) {
 					this.fire('tab-first-select', {}, opts);
@@ -210,7 +210,39 @@
 
 		_normalizeValue: function (value) {
 			return this.attrForSelected ? value : isNaN(value) || value === null ? value : Number(value);
+		},
+
+		/**
+		* True if the current element is visible.
+		*/
+		get _isVisible() {
+			return Boolean(this.offsetWidth || this.offsetHeight);
+		},
+
+		resizerShouldBeNotified() {
+			return true;
+		},
+
+		_onDescendantIronResize(event) {
+			if (this._notifyingDescendant || !this._isVisible || !this.resizerShouldBeNotified(event.target)) {
+				event.stopPropagation();
+				return;
+			}
+
+			if (Polymer.Settings.useShadow && event.target.domHost === this) {
+				return;
+			}
+
+			this._fireResize();
+		},
+
+		notifyResize() {
+			if (!this.isAttached || !this._isVisible) {
+				return;
+			}
+			Polymer.IronResizableBehavior.notifyResize.call(this);
 		}
+
 	};
 
 	/** @polymerBehavior */

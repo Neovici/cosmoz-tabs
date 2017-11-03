@@ -55,8 +55,8 @@
 		},
 
 		behaviors: [
-			Cosmoz.TabbableBehavior,
-			Cosmoz.TabbedBehavior
+			Cosmoz.TabbedBehavior,
+			Cosmoz.TabbableBehavior
 		],
 
 		observers: [
@@ -104,6 +104,10 @@
 				value: value,
 				item: this
 			});
+		},
+
+		resizerShouldBeNotified(resizable) {
+			return resizable.parentNode !== this.$.header;
 		}
 
 	});
