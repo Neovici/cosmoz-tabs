@@ -177,7 +177,7 @@
 				opts = {node: item, bubbles: false };
 
 			if (index > -1) {
-				this.async(this._notifyTabResize);
+				this.debounce('select-resize', this.notifyResize);
 
 				if (!item._previouslySelected) {
 					this.fire('tab-first-select', {}, opts);
