@@ -236,6 +236,15 @@
 				return;
 			}
 			this.select(this.fallbackSelection);
+		},
+
+		_onLinkClick(event) {
+			// Ignore right click, click with meta or ctrl key
+			if (event.button !== 0 || event.metaKey || event.ctrlKey) {
+				return null;
+			}
+
+			event.preventDefault();
 		}
 	});
 }());
