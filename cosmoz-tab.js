@@ -66,6 +66,18 @@
 			'_notifyProperty("badge", badge)'
 		],
 
+		listeners: {
+			'iron-resize': '_onResize'
+		},
+
+		_onResize: function () {
+			// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
+			// the tab content is scolled. This hack seems to fix this issue.
+			var scrollTop = this.$.content.scrollTop;
+			this.$.content.scrollTop = 0;
+			this.$.content.scrollTop = scrollTop;
+		},
+
 		/**
 		 * Computes `hasCards` depending on `items`.
 		 *
