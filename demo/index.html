@@ -95,8 +95,8 @@
 				<template>
 					<dom-bind>
 						<template is="dom-bind" id="hashParam">
-							<paper-input value="{{ hash }}" label="Hash"></paper-input>
-							<cosmoz-tabs _route-hash="{{ hash }}" hash-param="tab">
+							<paper-input value="{{ stringify(hash,hash.*) }}" label="Hash"></paper-input>
+							<cosmoz-tabs _route-hash-params="{{ hash }}" hash-param="tab">
 								<cosmoz-tab heading="Tab1" name="tab0">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -273,11 +273,22 @@
 		<script type="text/javascript">
 		(function () {
 			window.addEventListener('WebComponentsReady', function () {
-				var basic = document.getElementById('basic');
-				basic = !basic.set ? basic.firstElementChild : basic;
-				basic.stringify = function (values) {
-					return JSON.stringify(values);
-				};
+				(function () {
+					var basic = document.getElementById('basic');
+					basic = !basic.set ? basic.firstElementChild : basic;
+					basic.stringify = function (values) {
+						return JSON.stringify(values);
+					};
+				})();
+
+				(function () {
+					var hashParam = document.getElementById('hashParam');
+					hashParam = !hashParam.set ? hashParam.firstElementChild : hashParam;
+					hashParam.stringify = function (values) {
+						return JSON.stringify(values);
+					};
+				})();
+
 			});
 		})();
 		</script>
