@@ -93,8 +93,8 @@
 			<h3>The <code>hashParam</code> attribute binds selected tab to a location hash param</h3>
 			<demo-snippet>
 				<template>
-					<dom-bind>
-						<template is="dom-bind" id="hashParam">
+					<dom-bind id="hashParam">
+						<template is="dom-bind">
 							<paper-input value="{{ stringify(hash,hash.*) }}" label="Hash"></paper-input>
 							<cosmoz-tabs _route-hash-params="{{ hash }}" hash-param="tab">
 								<cosmoz-tab heading="Tab1" name="tab0">
