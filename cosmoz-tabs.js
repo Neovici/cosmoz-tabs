@@ -106,7 +106,7 @@
 				return;
 			}
 			let param = this._valueForItem(item),
-				route = this.$.location.route;
+				route = this.$.location.getRoute();
 
 			route.hash[hashParam] = param === 0 ? String(param) : param;
 
