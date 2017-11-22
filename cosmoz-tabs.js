@@ -44,14 +44,6 @@
 			_routeHashParams: {
 				type: Object,
 				notify: true
-			},
-			/**
-			 * The route hash string extracted by the `cosmoz-page-location`
-			 * element.
-			 */
-			_routeHash: {
-				type: String,
-				notify: true
 			}
 		},
 
@@ -113,12 +105,12 @@
 			if (!hashParam) {
 				return;
 			}
+			let param = this._valueForItem(item),
+				route = this.$.location.getRoute();
 
-			var params = {},
-				param = this._valueForItem(item);
+			route.hash[hashParam] = param === 0 ? String(param) : param;
 
-			params[hashParam] = param === 0 ? String(param) : param;
-			return this.$.location.getRouteUrl({}, params);
+			return this.$.location.getRouteUrl(route);
 		},
 
 		/**
@@ -144,7 +136,6 @@
 			if (invalid || this._normalizeValue(this.selected) === normalized) {
 				return;
 			}
-
 			this.select(normalized);
 		},
 
