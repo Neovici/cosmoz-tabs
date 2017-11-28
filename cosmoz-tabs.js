@@ -57,9 +57,9 @@
 
 		observers: [
 			'_routeHashParamsChanged(_routeHashParams.*, hashParam, items)',
-			'_selectedItemChanged(selected, hashParam)',
 			'_updateFallbackSelection(attrForSelected, items)',
-			'_updateInvalidSelection(selectedItem)'
+			'_selectedItemChanged(selected, hashParam)',
+			'_updateInvalidSelection(selectedItem, fallbackSelection)'
 		],
 
 		/**
@@ -126,17 +126,15 @@
 			if (!(changes && hashParam && items.length)) {
 				return;
 			}
+			const value = this._normalizeValue(this.get(['_routeHashParams', hashParam])),
+				item = this._valueToItem(value),
+				invalid = item == null;
 
-			var path = ['_routeHashParams', hashParam],
-				hashValue = this.get(path),
-				normalized = this._normalizeValue(hashValue),
-				item = this._valueToItem(normalized),
-				invalid = item == null || item.disabled || item.hidden;
-
-			if (invalid || this._normalizeValue(this.selected) === normalized) {
+			if (invalid || this._normalizeValue(this.selected) === value) {
 				return;
 			}
-			this.select(normalized);
+
+			this.select(value);
 		},
 
 		/**
@@ -148,18 +146,17 @@
 		 * @return {void}
 		 */
 		_selectedItemChanged: function (selected, hashParam) {
-			if (selected === undefined || selected != null && this._valueToItem(selected) == null || !(hashParam && this._routeHashParams)) {
+			if (!(hashParam && this._routeHashParams)) {
 				return;
 			}
-
-			var path = ['_routeHashParams', hashParam],
+			const item = this._valueToItem(selected),
+				path = ['_routeHashParams', hashParam],
 				hashValue = this._normalizeValue(this.get(path), Object),
 				value = this._normalizeValue(selected);
 
-			if (hashValue === value) {
+			if (hashValue === value || item && item.__invalidFallbackFor) {
 				return;
 			}
-
 			this.set(path, value === undefined ? null : value === 0 ? String(value) : value);
 		},
 
@@ -204,10 +201,7 @@
 				return;
 			}
 
-			var detail = e.detail,
-				item = detail.item,
-				property = detail.property,
-				value = detail.value,
+			const {item, property, value} = e.detail,
 				index = this.items.indexOf(item);
 
 			if (index < 0 || !property || value === undefined) {
@@ -216,17 +210,29 @@
 
 			this.notifyPath('items.' + index + '.' + property, value);
 
-			if (['hidden', 'disabled'].indexOf(property) < 0 || value !== true || this.selectedItem !== item) {
+			if (property !== 'hidden' && property !== 'disabled') {
 				return;
 			}
 			this._updateInvalidSelection(item);
 		},
 
-		_updateInvalidSelection: function (selectedItem = this.selectedItem) {
-			if (!selectedItem || !selectedItem.hidden && !selectedItem.disabled || !this.fallbackSelection) {
+		_updateInvalidSelection: function (item) {
+			if (!item || !this.fallbackSelection) {
 				return;
 			}
-			this.select(this.fallbackSelection);
+			const selected = this.selectedItem;
+			if (item.invalid && item === selected) {
+				const fallback = this._valueToItem(this.fallbackSelection);
+				fallback.__invalidFallbackFor = item;
+				this.select(this.fallbackSelection);
+			} else if (!item.invalid && selected && item === selected.__invalidFallbackFor) {
+				selected.__invalidFallbackFor = null;
+				this.select(this._valueForItem(item));
+			}
+		},
+
+		_resetInvalidFallbacks() {
+			this.items.forEach(item => item.__invalidFallbackFor = null);
 		},
 
 		_onLinkClick(event) {
@@ -234,7 +240,6 @@
 			if (event.button !== 0 || event.metaKey || event.ctrlKey) {
 				return null;
 			}
-
 			event.preventDefault();
 		},
 
