@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<title>cosmoz-tabs-basic</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../cosmoz-tabs.html">
+	</head>
+	<body>
+		<test-fixture id="invalid">
+			<template>
+				<cosmoz-tabs>
+					<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
+					<cosmoz-tab name="tab1" heading="Tab1" badge="2">2</cosmoz-tab>
+					<cosmoz-tab name="tab2" hidden>3</cosmoz-tab>
+					<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
+				</cosmoz-tabs>
+			</template>
+		</test-fixture>
+
+		<script>
+			suite('invalid', function () {
+				var tabs;
+
+				setup(function (done) {
+					tabs = fixture('invalid');
+					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+						done();
+					});
+				});
+
+				test('hiding selected tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					tabs.selectedItem.hidden = true;
+
+
+					Polymer.Base.async(function () {
+						var paperTab = tabs.$$('paper-tabs').items[1];
+						assert.isTrue(paperTab.hidden);
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('selecting a hidden tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					assert.isTrue(tabs.items[2].hidden);
+
+					tabs.selected = 'tab2';
+
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('disabling selected tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					tabs.selectedItem.disabled = true;
+
+					Polymer.Base.async(function () {
+						var paperTab = tabs.$$('paper-tabs').items[1];
+						assert.isTrue(paperTab.disabled);
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('selecting a disabled tab changes selection to fallbackSelection', function (done) {
+					tabs.selected = 'tab1';
+
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					assert.isTrue(tabs.items[3].disabled);
+
+					tabs.selected = 'tab3';
+
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+						done();
+					}, 30);
+				});
+
+				test('showing a fallback hidden tab selects it', function (done) {
+					const hiddenTab = tabs.items[1];
+					tabs.selected = 'tab1';
+					assert.equal(tabs.selectedItem, hiddenTab);
+					hiddenTab.hidden = true;
+
+
+					Polymer.Base.async(function () {
+						var paperTab = tabs.$$('paper-tabs').items[1];
+						assert.isTrue(paperTab.hidden);
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+
+						hiddenTab.hidden = false;
+						assert.equal(tabs.selectedItem, hiddenTab);
+						done();
+					}, 30);
+				});
+
+				test('enabling a fallback disabled tab selects  it', function (done) {
+					const disabledTab = tabs.items[3];
+					tabs.selected = 'tab1';
+					assert.equal(tabs.selectedItem, tabs.items[1]);
+					assert.isTrue(disabledTab.disabled);
+
+					tabs.selected = 'tab3';
+
+					Polymer.Base.async(function () {
+						assert.equal(tabs.selected, tabs.fallbackSelection);
+						assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
+
+						disabledTab.disabled = false;
+						assert.equal(tabs.selectedItem, disabledTab);
+						done();
+					}, 30);
+				});
+
+			});
+		</script>
+	</body>
+</html>

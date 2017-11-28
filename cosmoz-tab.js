@@ -70,6 +70,14 @@
 			'iron-resize': '_onResize'
 		},
 
+		/**
+		 * get invalid - True if the element is `hidden` or `disabled`.
+		 * @returns {Boolean}  True if invalid
+		 */
+		get invalid() {
+			return this.disabled || this.hidden;
+		},
+
 		_onResize: function () {
 			// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
 			// the tab content is scolled. This hack seems to fix this issue.
