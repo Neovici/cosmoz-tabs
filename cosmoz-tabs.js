@@ -146,7 +146,7 @@
 		 * @return {void}
 		 */
 		_selectedItemChanged: function (selected, hashParam) {
-			if (!(hashParam && this._routeHashParams)) {
+			if (!(hashParam && this._routeHashParams && this.items.length)) {
 				return;
 			}
 			const item = this._valueToItem(selected),
