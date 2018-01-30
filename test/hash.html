@@ -48,13 +48,22 @@
 
 				test('updates selected item from location hash', function (done) {
 					Polymer.Base.async(function () {
+						tabs._hashReady = false; // ignore hash read in test setup to test selected update
 						window.location.hash = '##tab=tab0';
 						Polymer.Base.async(function () {
+							assert.isTrue(tabs._hashReady);
 							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
 							assert.equal(tabs.selected, 'tab0');
 							assert.equal(tabs.selectedItem, tabs.items[0]);
-							window.location.hash = '#';
-							done();
+
+							window.location.hash = '##tab=tab1';
+							Polymer.Base.async(function () {
+								assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab1', 'Expected _routeHashParams to be updated from location hash');
+								assert.equal(tabs.selected, 'tab0', 'Expected selected to remain tab0 as selected was already updated once from hash.');
+								assert.equal(tabs.selectedItem, tabs.items[0]);
+								window.location.hash = '#';
+								done();
+							}, 90);
 						}, 90);
 					}, 90);
 				});
@@ -66,7 +75,13 @@
 						Polymer.Base.async(function () {
 							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab1');
 							assert.equal(window.location.hash, '##tab=tab1');
-							done();
+
+							tabs.selected = 'tab0';
+							Polymer.Base.async(function () {
+								assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
+								assert.equal(window.location.hash, '##tab=tab0');
+								done();
+							}, 90);
 						}, 90);
 					}, 90);
 				});

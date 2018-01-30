@@ -123,9 +123,10 @@
 		 * @return {void}
 		 */
 		_routeHashParamsChanged: function (changes, hashParam, items) {
-			if (!(changes && hashParam && items.length)) {
+			if (!(changes && hashParam && items.length) || this._hashReady) {
 				return;
 			}
+			this._hashReady = true;
 			const value = this._normalizeValue(this.get(['_routeHashParams', hashParam])),
 				item = this._valueToItem(value),
 				invalid = item == null;
@@ -146,7 +147,7 @@
 		 * @return {void}
 		 */
 		_selectedItemChanged: function (selected, hashParam) {
-			if (!(hashParam && this._routeHashParams && this.items.length)) {
+			if (!(hashParam && this._routeHashParams && this.items.length) || !this._hashReady) {
 				return;
 			}
 			const item = this._valueToItem(selected),
