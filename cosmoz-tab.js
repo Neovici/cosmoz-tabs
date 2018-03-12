@@ -78,7 +78,7 @@
 			return this.disabled || this.hidden;
 		},
 
-		_onResize: function () {
+		_onResize() {
 			// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
 			// the tab content is scolled. This hack seems to fix this issue.
 			var scrollTop = this.$.content.scrollTop;
@@ -92,7 +92,7 @@
 		 * @param  {Array} items Array of selectable items
 		 * @returns {Boolean} True if items is not empty
 		 */
-		_computeHasCards: function (items = this.items) {
+		_computeHasCards(items = this.items) {
 			return items && items.length > 0;
 		},
 
@@ -104,7 +104,7 @@
 		 * @param  {Boolean} isSelected The isSelected property
 		 * @returns {Boolean} True if `hasCards` or `isSelected`
 		 */
-		_computeOpened: function (accordion, hasCards = this.hasCards, isSelected = this.isSelected) {
+		_computeOpened(accordion, hasCards = this.hasCards, isSelected = this.isSelected) {
 			return !accordion || hasCards || isSelected;
 		},
 
@@ -118,7 +118,7 @@
 		 * @return {void}
 
 		 */
-		_notifyProperty: function (property, value) {
+		_notifyProperty(property, value) {
 			this.fire('tab-property-changed', {
 				property: property,
 				value: value,
