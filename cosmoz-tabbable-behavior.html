@@ -67,7 +67,7 @@
 			selectedValues: {
 				type: Array,
 				notify: true,
-				value: function () {
+				value() {
 					return [];
 				}
 			},
@@ -78,7 +78,7 @@
 				type: Array,
 				readOnly: true,
 				notify: true,
-				value: function () {
+				value() {
 					return [];
 				}
 			}
@@ -101,7 +101,7 @@
 		 * @param  {Boolean} accordion The `accordion` property
 		 * @returns {Boolean} True if accordion is true
 		 */
-		_computeMulti: function (accordion) {
+		_computeMulti(accordion) {
 			return !!accordion;
 		},
 
@@ -113,7 +113,7 @@
 		 * @param  {Event} e The `cosmoz-tab-toggle` event
 		 * @returns {void}
 		 */
-		_onToggleTab: function (e) {
+		_onToggleTab(e) {
 			var item = e.target,
 				index = this.items.indexOf(item),
 				value;
@@ -134,7 +134,7 @@
 		 * @param  {Array} items The items to forward property to
 		 * @returns {void}
 		 */
-		_forwardProperty: function (property, value, items) {
+		_forwardProperty(property, value, items) {
 			items.forEach(function (item) {
 				item.set(property, value);
 			});
@@ -147,7 +147,7 @@
 		 * @param  {type} attr The attribute used to compute the value
 		 * @returns {String|Number|void} The compute value
 		 */
-		_valueForItem: function (item, attr = this.attrForSelected) {
+		_valueForItem(item, attr = this.attrForSelected) {
 			if (!item) {
 				return;
 			}
@@ -171,7 +171,7 @@
 		 * @fires 'tab-select'
 		 * @return {void}        description
 		 */
-		_onIronSelect: function (e, detail) {
+		_onIronSelect(e, detail) {
 			var item = detail.item,
 				index = this.items.indexOf(item),
 				opts = {node: item, bubbles: false };
@@ -187,17 +187,17 @@
 			}
 		},
 
-		_toggleSelected: function (value) {
+		_toggleSelected(value) {
 			Polymer.IronMultiSelectableBehaviorImpl._toggleSelected.call(this, this._normalizeValue(value));
 		},
 
-		_onTabActivate: function (e) {
+		_onTabActivate(e) {
 			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item) {
 				e.preventDefault();
 			}
 		},
 
-		multiChanged: function (multi, old) {
+		multiChanged(multi, old) {
 			this._selection.multi = multi;
 
 			if (multi === true && old === false && this.selected !== null && this.selected !== undefined) {
@@ -208,7 +208,7 @@
 			this._updateSelected();
 		},
 
-		_normalizeValue: function (value) {
+		_normalizeValue(value) {
 			return this.attrForSelected ? value : isNaN(value) || value === null ? value : Number(value);
 		},
 
