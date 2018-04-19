@@ -5,11 +5,11 @@
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-badge/paper-badge.html">
 
 <link rel="import" href="cosmoz-tabbable-behavior.html">
 <link rel="import" href="cosmoz-tabbed-behavior.html">
 <link rel="import" href="cosmoz-tab-card.html">
+<link rel="import" href="cosmoz-tabs-styles.html">
 <!--
 `<cosmoz-tab>` is the container for a tab. It should be used in conjunction with
 `cosmoz-tabs`.
@@ -29,7 +29,7 @@ Custom property | Description | Default
 -->
 <dom-module id="cosmoz-tab">
 	<template>
-		<style include="iron-flex iron-positioning">
+		<style include="iron-flex iron-positioning cosmoz-tabs-styles">
 
 			:host {
 				display: block;
@@ -84,12 +84,11 @@ Custom property | Description | Default
 				font-family: sans-serif;
 				font-size: 17px;
 				font-weight: 300;
-				margin-right: 30px;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				padding: 0;
 				overflow: hidden;
-				@apply --layout-flex;
+				@apply --layout-inline-flex;
 			}
 
 			:host([accordion]) .heading {
@@ -129,10 +128,9 @@ Custom property | Description | Default
 				display: block;
 			}
 
-			paper-badge {
-				--paper-badge-margin-left: 25px;
+			paper-icon-button {
+				margin-left: auto;
 			}
-
 		</style>
 
 		<!--
@@ -141,9 +139,10 @@ Custom property | Description | Default
 			-->
 		<div id="header" on-tap="_onToggleTap">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
-			<h1 class="heading"><span id="tabHeading">[[ heading ]]</span></h1>
-			<paper-badge for="tabHeading" hidden$="[[ !badge ]]" label="[[ badge ]]"></paper-badge>
+			<h1 class="heading">[[ heading ]]</h1>
+			<div class="badge" hidden$="[[ !badge ]]" >[[ badge ]]</div>
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
+			</div>
 		</div>
 
 		<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(accordion, hasCards, isSelected) ]]">
