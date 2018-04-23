@@ -7,11 +7,13 @@
 	window.Cosmoz = window.Cosmoz || {};
 
 	/**
+	 * Behavior for cosmoz-tabs.
+	 *
 	 * @polymerBehavior Cosmoz.TabbedBehavior
 	*/
 	Cosmoz.TabbedBehaviorImpl = {
 		/**
-		 * Fired when the element should have it's selection state toggled.
+		 * Fired when the element should have the selection state toggled.
 		 *
 		 * @event cosmoz-tab-toggle
 		 */
@@ -30,7 +32,7 @@
 
 		properties: {
 			/**
-			 * True if the item is selected.
+			 * Item selection state, true if it is selected.
 			 */
 			isSelected: {
 				type: Boolean,
@@ -40,8 +42,9 @@
 			},
 
 			/**
-			 * True if item is in accordion mode.
-			 * This property should be forwarded by an ancestor `Cosmoz.TabbableBehavior` element.
+			 * Accordion mode element state, true if it is in accordion mode.
+			 * Should be forwarded by a `Cosmoz.TabbableBehavior` ancestor
+			 * element.
 			 */
 			accordion: {
 				type: Boolean,
@@ -51,7 +54,7 @@
 			},
 
 			/**
-			 * The items's heading text.
+			 * Item heading text.
 			 */
 			heading: {
 				type: String,
@@ -59,7 +62,7 @@
 			},
 
 			/**
-			 * The icon of the item.
+			 * Icon name of the item.
 			 */
 			icon: {
 				type: String,
@@ -67,7 +70,7 @@
 			},
 
 			/**
-			 * The icon of the item when it is selected.
+			 * Icon name of the item when it is selected.
 			 */
 			selectedIcon: {
 				type: String,
@@ -75,7 +78,7 @@
 			},
 
 			/**
-			 *  The color of the items's icon.
+			 * Color of the item icon.
 			 */
 			iconColor: {
 				type: String,
@@ -83,7 +86,8 @@
 			},
 
 			/**
-			 * When not empty the element will contain a `paper-bagde` with the label set to this property.
+			 * When not empty the element will contain a `paper-bagde` with the
+			 * label set to this property.
 			 */
 			badge: {
 				type: String,
@@ -93,28 +97,30 @@
 		},
 
 		/**
-		 * Computes the element's opened icon depending on the `opened` property
+		 * Computes the element opened icon name depending on the `opened`
+		 * property.
 		 *
-		 * @param  {Boolean} isSelected True if tab is opened
-		 * @return {void}
+		 * @param  {boolean} isSelected Whether tab is opened or not.
+		 * @return {string}
 		 */
 		_computeOpenedIcon: function (isSelected) {
 			return isSelected ? 'expand-less' : 'expand-more';
 		},
 
 		/**
-		 * Returns the element's icon.
+		 * Gets the element icon name.
 		 *
-		 * @returns {void}
+		 * @returns {string} Name of the element icon.
 		 */
 		getIcon: function () {
 			return this.isSelected && !this.accordion ? this.selectedIcon : this.icon;
 		},
 
 		/**
-		 * Returns the element's icon style.
+		 * Gets the element icon style property and value if icon color is
+		 * set, otherwise return nothing.
 		 *
-		 * @returns {void}
+		 * @returns {string/void} Style color property and value for the icon.
 		 */
 		getIconStyle: function () {
 			if (this.iconColor) {
