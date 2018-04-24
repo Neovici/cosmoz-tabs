@@ -25,17 +25,6 @@
 		 */
 		_computeElevation: function (accordion) {
 			return accordion ? 0 : 1;
-		},
-
-		/**
-		 * Computes opened property of the included `iron-collapse`.
-		 *
-		 * @param  {Boolean} accordion   The accordion property
-		 * @param  {Boolean} isSelected The isSelected property
-		 * @returns {Boolean} True if not `accordion` or if `isSelected`
-		 */
-		_computeOpened: function (accordion, isSelected) {
-			return !accordion || isSelected;
-		},
+		}
 	});
 }());
