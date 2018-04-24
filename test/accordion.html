@@ -53,22 +53,26 @@
 					}, 90);
 				});
 
-				test('in accordion mode unselected items are closed', function (done) {
-					Polymer.Base.async(function () {
-						var item = tabs.items[0];
-						assert.isNotNull(item.$.collapse);
-						assert.isFalse(item.$.collapse.opened);
+				test('in accordion mode unselected items are closed', done => {
+					Polymer.Base.async(() => {
+						const item = tabs.items[0],
+							el = item.$.content,
+							style = getComputedStyle(el);
+
+						assert.equal(style.getPropertyValue('display'), 'none');
 						done();
 					}, 90);
 				});
 
-				test('in accordion mode selected items are opened', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode selected items are opened', done => {
+					Polymer.Base.async(() => {
 						assert.lengthOf(tabs.selectedItems, 2);
 
-						tabs.selectedItems.forEach(function (item) {
-							assert.isNotNull(item.$.collapse);
-							assert.isTrue(item.$.collapse.opened);
+						tabs.selectedItems.forEach(item => {
+							const el = item.$.content,
+								style = getComputedStyle(el);
+
+							assert.equal(style.getPropertyValue('display'), 'block');
 						});
 
 						done();

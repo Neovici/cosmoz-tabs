@@ -83,13 +83,14 @@
 					}, 90);
 				});
 
-				test('cards are opened', function (done) {
-					var tab = tabs.items[0];
+				test('cards are opened', done => {
+					const tab = tabs.items[0];
 
-					Polymer.Base.async(function () {
-
-						tab.items.forEach(function (item) {
-							assert.isTrue(item.$.collapse.opened);
+					Polymer.Base.async(() => {
+						tab.items.forEach(item => {
+							const el = item.$.content,
+								style = getComputedStyle(el);
+							assert.equal(style.getPropertyValue('display'), 'block');
 						});
 
 						done();
@@ -143,13 +144,15 @@
 					}, 90);
 				});
 
-				test('in accordion mode selected cards are opened', function (done) {
-					Polymer.Base.async(function () {
-						var tab = tabs.items[0];
+				test('in accordion mode selected cards are opened', done => {
+					Polymer.Base.async(() => {
+						const tab = tabs.items[0];
 
 						assert.lengthOf(tab.selectedItems, 1);
-						tab.selectedItems.forEach(function (item) {
-							assert.isTrue(item.$.collapse.opened);
+						tab.selectedItems.forEach(item => {
+							const el = item.$.content,
+								style = getComputedStyle(el);
+							assert.equal(style.getPropertyValue('display'), 'block');
 						});
 						done();
 					}, 90);
@@ -164,7 +167,7 @@
 
 						assert.lengthOf(unselected, 2);
 						unselected.forEach(function (item) {
-							assert.isFalse(item.$.collapse.opened);
+							assert.equal(item.$.content.style.display, '');
 						});
 						done();
 					}, 90);
