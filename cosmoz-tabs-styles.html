@@ -2,16 +2,23 @@
 	<template>
 		<style>
 			:host .badge {
+				font-family: Verdana, Arial, sans-serif;
+				@apply --paper-font-common-base;
+
+				font-weight: normal;
+				font-size: 11px;
+				line-height: 1;
+				border-radius: 0.90909em;
+				box-sizing: border-box;
+
 				transform: translateY(-50%);
 				vertical-align: top;
-				margin: 0 0 0 0.4em;
-				min-width: 1.818em;
-				padding: 0.418em 0;
-				border-radius: 50%;
-				background-color: #ff4081;
+				min-width: 1.81818em;
+				padding: 0.40909em 0.36363em;
+
+				background-color: var(--accent-color, #ff4081);
 				color: #ffffff;
 				text-align: center;
-				font: 11px/1 Verdana, Arial, sans-serif;
 			}
 		</style>
 	</template>
