@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
+
+<script>
+/**
+ `Cosmoz.TabbedTemplateBehavior`
+ */
+(function () {
+	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	* @polymerBehavior Cosmoz.TabbedTemplateBehavior
+	*/
+	Cosmoz.TabbedTemplateBehaviorImpl = {
+		properties: {
+
+			/**
+			 * If it is set to true the template will be stamped
+			 */
+			prerender: {
+				type: Boolean,
+				value: false,
+				observer: '_prerenderChanged'
+			}
+		},
+
+		attached() {
+			this._observer = Polymer.dom(this).observeNodes(this._onNodesChanged);
+		},
+
+		detached() {
+			Polymer.dom(this).unobserveNodes(this._observer);
+			this._observer = null;
+			this._templateInstance = null;
+		},
+
+		_onNodesChanged() {
+			if (this._userTemplate) {
+				return;
+			}
+			const template = this.queryEffectiveChildren('template');
+			if (!template) {
+				console.warn('TabbedTemplateBehavior requires template to exist in the tabbed element.');
+				return;
+			}
+			this._userTemplate = template;
+			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+				instanceProps: {},
+				parentModel: true
+				// forwardParentProp: this._forwardHostProp,
+				// forwardParentPath: this._forwardParentPath,
+				// forwardHostProp: this._forwardHostProp,
+			});
+			if (!this.prerender) {
+				return;
+			}
+			this.render();
+		},
+
+		render() {
+			if (!this._userTemplate || this._templateInstance) {
+				return;
+			}
+			this.debounce('_createInstance', this._createInstance, 16);
+		},
+
+		_prerenderChanged(prerender) {
+			if (!prerender) {
+				return;
+			}
+			this.render();
+		},
+
+		_createInstance() {
+			if (this._templateInstance || !this._instanceCtor) {
+				return;
+			}
+			const instance = new this._instanceCtor(this._pendingProps || {});
+			this._templateInstance = instance;
+			Polymer.dom(this).appendChild(instance.root);
+			if (instance._flushProperties) {
+				instance._flushProperties(true);
+			}
+		}
+	};
+	Cosmoz.TabbedTemplateBehavior = [Cosmoz.TabbedTemplateBehaviorImpl];
+})();
+</script>

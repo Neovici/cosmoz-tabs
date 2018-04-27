@@ -56,7 +56,8 @@
 
 		behaviors: [
 			Cosmoz.TabbedBehavior,
-			Cosmoz.TabbableBehavior
+			Cosmoz.TabbableBehavior,
+			Cosmoz.TabbedTemplateBehavior
 		],
 
 		observers: [
@@ -67,7 +68,8 @@
 		],
 
 		listeners: {
-			'iron-resize': '_onResize'
+			'iron-resize': '_onResize',
+			'tab-first-select': 'render'
 		},
 
 		/**
