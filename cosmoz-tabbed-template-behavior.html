@@ -26,6 +26,10 @@
 			}
 		},
 
+		created() {
+			this._pendingProps = {};
+		},
+
 		attached() {
 			this._observer = Polymer.dom(this).observeNodes(this._onNodesChanged);
 		},
@@ -47,18 +51,19 @@
 			this._userTemplate = template;
 			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
 				instanceProps: {},
-				parentModel: true
+				parentModel: true,
 				// forwardParentProp: this._forwardHostProp,
 				// forwardParentPath: this._forwardParentPath,
-				// forwardHostProp: this._forwardHostProp,
+				forwardHostProp: this._forwardHostProp
 			});
-			if (!this.prerender) {
+			if (!this.prerender && !this._shouldRender) {
 				return;
 			}
 			this.render();
 		},
 
 		render() {
+			this._shouldRender = true;
 			if (!this._userTemplate || this._templateInstance) {
 				return;
 			}
@@ -82,6 +87,19 @@
 			if (instance._flushProperties) {
 				instance._flushProperties(true);
 			}
+		},
+
+		_forwardHostProp(prop, value) {
+			const instance = this._templateInstance;
+			if (!instance) {
+				this._pendingProps[prop] = value;
+				return;
+			}
+			if (instance.forwardHostProp) {
+				instance.forwardHostProp(prop, value);
+				return;
+			}
+			instance[prop] = value;
 		}
 	};
 	Cosmoz.TabbedTemplateBehavior = [Cosmoz.TabbedTemplateBehaviorImpl];
