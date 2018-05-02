@@ -13,8 +13,9 @@
 			"cosmoz-tab.js",
 			"cosmoz-tabbable-behavior.html",
 			"cosmoz-tabbed-behavior.html",
+			"cosmoz-tabbed-template-behavior.html",
 			"cosmoz-tabs.html",
-			"cosmoz-tabls.js"
+			"cosmoz-tabs.js"
 		],
 		"exclude": []
 	}
