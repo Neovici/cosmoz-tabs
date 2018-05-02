@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<title>cosmoz-tabs tabbed-template-behavior tests</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+	<link rel="import" href="../../test-fixture/test-fixture.html">
+	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+	<link rel="import" href="./helpers/template-bind-test-helper.html">
+	<link rel="import" href="../cosmoz-tabs.html">
+</head>
+<body>
+	<test-fixture id="basic">
+			<template>
+			<dom-bind>
+				<template is="dom-bind">
+					<template-bind-test-helper test-prop="{{ myTestProp }}">
+						<cosmoz-tabs>
+							<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
+							<cosmoz-tab name="tab1" heading="Tab1">
+								<template>
+									<template-bind-test-helper test-prop="[[ myTestProp ]]"></template-bind-test-helper>
+								</template>
+							</cosmoz-tab>
+						</cosmoz-tabs>
+					</template-bind-test-helper>
+		</template>
+	</dom-bind>
+	</template>
+	</test-fixture>
+
+	<script>
+		suite('basic', () => {
+			let tabs,
+				helper,
+				bind;
+
+			setup(done => {
+				bind = fixture('basic');
+				helper = bind.parentElement.firstElementChild;
+				tabs = helper.querySelector('cosmoz-tabs');
+				let onIronItemsChanged;
+				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
+					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
+					done();
+				});
+			});
+
+			test('test property of basic is forwarded to the template child of tab 1', done => {
+				helper.testProp = 'tested';
+				tabs.selected = 'tab1';
+				Polymer.Base.async(() => {
+					const tab = tabs.selectedItem,
+						childHelper = tab.querySelector('template-bind-test-helper');
+
+					assert.isDefined(childHelper);
+					assert.equal(helper.testProp, childHelper.testProp);
+					done();
+				}, 90);
+			});
+		});
+	</script>
+</body></html>

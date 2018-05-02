@@ -1,0 +1,23 @@
+<link rel="import" href="../../../polymer/polymer.html">
+<dom-module id="template-bind-test-helper">
+	<template>
+		<span id="testContent">[[testProp]]</span>
+		<slot></slot>
+	</template>
+	<script type="text/javascript">
+	(function () {
+		'use strict';
+
+		Polymer({
+			is: 'template-bind-test-helper',
+			properties: {
+				testProp: {
+					type: String,
+					value: '',
+					notify: true
+				}
+			}
+		});
+	})();
+	</script>
+</dom-module>
