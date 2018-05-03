@@ -35,8 +35,10 @@
 		},
 
 		detached() {
-			Polymer.dom(this).unobserveNodes(this._observer);
-			this._observer = null;
+			if (this._observer) {
+				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer = null;
+			}
 			this._templateInstance = null;
 		},
 
