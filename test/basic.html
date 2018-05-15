@@ -105,6 +105,22 @@
 					assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[2]));
 					done();
 				});
+
+				test('_onSelectedTransitionEnd sets animating false', done => {
+					const selected = tabs.selectedItem;
+					selected.animating = true;
+					selected._onSelectedTransitionEnd();
+					assert.isFalse(selected.animating);
+					done();
+				});
+
+				test('_normalizeValue handles null', done => {
+					tabs.attrForSelected = null;
+					assert.isUndefined(tabs._normalizeValue());
+					assert.isNull(tabs._normalizeValue(null));
+					done();
+				});
+
 			});
 
 			suite('basic', function () {
