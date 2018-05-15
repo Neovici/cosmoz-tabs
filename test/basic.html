@@ -118,6 +118,7 @@
 					tabs.attrForSelected = null;
 					assert.isUndefined(tabs._normalizeValue());
 					assert.isNull(tabs._normalizeValue(null));
+					assert.equal(tabs._normalizeValue(1), 1);
 					done();
 				});
 

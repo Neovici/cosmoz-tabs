@@ -80,6 +80,19 @@
 					}, 90);
 				});
 
+				test('in accordion mode selectedItem remains selected', done => {
+					Polymer.Base.async(() => {
+						MockInteractions.tap(tabs.items[1].$.header);
+						assert.equal(tabs.selectedItems.length, 1);
+
+						MockInteractions.tap(tabs.items[2].$.header);
+						assert.equal(tabs.selectedItems.length, 1);
+						assert.equal(tabs.selectedItems[0], tabs.items[2]);
+						done();
+
+					}, 90);
+				});
+
 				test('accordion property is forwarded to children', done => {
 					Polymer.Base.async(() => {
 						assert.isArray(tabs.items);
