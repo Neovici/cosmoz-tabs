@@ -166,19 +166,19 @@
 
 				test('sets badge inside paper-tab', function (done) {
 					Polymer.Base.async(function () {
-						var badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('paper-badge'),
-							badge1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('paper-badge');
+						var badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('.badge'),
+							badge1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('.badge');
 
 						assert.isNotNull(badge0);
 						assert.isNotNull(badge1);
 
 						assert.isTrue(badge0.hidden);
 						assert.equal(badge0.getAttribute('hidden'), '');
-						assert.equal(badge0.label, '');
+						assert.equal(badge0.innerHTML, '');
 
 						assert.isFalse(badge1.hidden);
 						assert.equal(badge1.getAttribute('hidden'), undefined);
-						assert.equal(badge1.label, '2');
+						assert.equal(badge1.innerHTML, '2');
 
 						done();
 					}, 90);
@@ -271,7 +271,7 @@
 						var paperTab = tabs.$$('paper-tabs').items[0];
 
 						tab.badge = 'Inbox';
-						assert.equal(paperTab.querySelector('paper-badge').label, 'Inbox');
+						assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');
 						done();
 
 					}, 30);
