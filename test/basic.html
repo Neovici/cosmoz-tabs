@@ -84,6 +84,44 @@
 					assert.equal(tabs.fallbackSelection, 'tab0');
 					assert.equal(tabs.selected, 'tab0');
 				});
+
+				test('_valueForItem handles null item', () => {
+					assert.isUndefined(tabs._valueForItem());
+					assert.isUndefined(tabs._valueForItem(null));
+				});
+
+				test('_valueForItem handles null attrForSelected', done => {
+					tabs.attrForSelected = null;
+					assert.deepEqual(tabs.selectedItem, tabs.items[0]);
+					assert.equal(tabs._valueForItem(tabs.selectedItem), 0);
+					assert.equal(tabs._valueForItem(tabs.items[1]), 1);
+					assert.equal(tabs._valueForItem(tabs.items[2]), 2);
+					done();
+				});
+
+				test('resizerShouldBeNotified returns true for selectedItem', done => {
+					assert.isTrue(tabs.resizerShouldBeNotified(tabs.selectedItem));
+					assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[1]));
+					assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[2]));
+					done();
+				});
+
+				test('_onSelectedTransitionEnd sets animating false', done => {
+					const selected = tabs.selectedItem;
+					selected.animating = true;
+					selected._onSelectedTransitionEnd();
+					assert.isFalse(selected.animating);
+					done();
+				});
+
+				test('_normalizeValue handles null', done => {
+					tabs.attrForSelected = null;
+					assert.isUndefined(tabs._normalizeValue());
+					assert.isNull(tabs._normalizeValue(null));
+					assert.equal(tabs._normalizeValue(1), 1);
+					done();
+				});
+
 			});
 
 			suite('basic', function () {

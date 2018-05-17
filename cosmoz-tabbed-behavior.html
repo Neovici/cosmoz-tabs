@@ -38,7 +38,8 @@
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true,
-				notify: true
+				notify: true,
+				observer: '_animatedSelectedChanged'
 			},
 
 			/**
@@ -94,6 +95,55 @@
 				value: '',
 				notify: true
 			},
+
+			animating: {
+				type: Boolean,
+				reflectToAttribute: true,
+				value: false
+			}
+		},
+
+		created() {
+			this._onSelectedTransitionEnd = this._onSelectedTransitionEnd.bind(this);
+		},
+
+		get animated() {
+			return this.accordion;
+		},
+
+		_animatedSelectedChanged(isSelected) {
+			if (!this.animated) {
+				return;
+			}
+			const el = this.$.content,
+				style = el.style;
+
+			style.transitionDuration = 0;
+			this.animating = true;
+
+			let height = el.getBoundingClientRect()['height'],
+				from = isSelected ? '0px' : height + 'px',
+				to =  !isSelected ? '0px' : height + 'px';
+
+			el.style.maxHeight = from;
+
+			window.requestAnimationFrame(() => {
+				el.addEventListener('transitionend', this._onSelectedTransitionEnd);
+				style.transitionDuration = '';
+				style.maxHeight = to;
+			});
+		},
+
+		/**
+		 * Listener for `transitionend` event.
+		 *
+		 * @returns {void}
+		 */
+		_onSelectedTransitionEnd() {
+			const el = this.$.content;
+			this.animating = false;
+			el.removeEventListener('transitionend', this._onSelectedTransitionEnd);
+			el.style.maxHeight = '';
 		},
 
 		/**

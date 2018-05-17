@@ -78,6 +78,10 @@
 			return this.disabled || this.hidden;
 		},
 
+		get animated() {
+			return this.accordion && !this.hasCards;
+		},
+
 		_onResize() {
 			// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
 			// the tab content is scolled. This hack seems to fix this issue.
@@ -96,17 +100,6 @@
 			return items && items.length > 0;
 		},
 
-		/**
-		 * Computes opened property of the included `iron-collapse`.
-		 *
-		 * @param  {Boolean} accordion   The accordion property
-		 * @param  {Boolean} hasCards   The hasCards property
-		 * @param  {Boolean} isSelected The isSelected property
-		 * @returns {Boolean} True if `hasCards` or `isSelected`
-		 */
-		_computeOpened(accordion, hasCards = this.hasCards, isSelected = this.isSelected) {
-			return !accordion || hasCards || isSelected;
-		},
 
 		/**
 		 * Observes changes to a property and fires a bubbling

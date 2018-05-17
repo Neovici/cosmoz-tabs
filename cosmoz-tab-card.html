@@ -1,5 +1,4 @@
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="../iron-collapse/iron-collapse.html" />
 <link rel="import" href="../iron-icon/iron-icon.html" />
 <link rel="import" href="../iron-icons/iron-icons.html" />
 <link rel="import" href="../paper-icon-button/paper-icon-button.html" />
@@ -62,6 +61,14 @@ Custom property | Description | Default
 			}
 
 			:host([accordion]) #content {
+				transition-duration: var(--cosmoz-tab-transition-duration, 300ms);
+				overflow: hidden;
+				transform: translate3d(0,0,0);
+				backface-visibility: hidden;
+			}
+
+			:host([accordion]:not([is-selected]):not([animating])) #content {
+				display: none;
 				@apply --cosmoz-tab-card-content-accordion;
 			}
 
@@ -117,11 +124,10 @@ Custom property | Description | Default
 				<slot name="card-actions"></slot>
 				<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
 			</div>
-			<iron-collapse id="collapse" no-animation="[[ !accordion ]]" opened="[[ _computeOpened(accordion, isSelected) ]]">
-				<div id="content">
-					<slot></slot>
-				</div>
-			</iron-collapse>
+
+			<div id="content">
+				<slot></slot>
+			</div>
 		</paper-material>
 	</template>
 	<script type="text/javascript" src="cosmoz-tab-card.js"></script>

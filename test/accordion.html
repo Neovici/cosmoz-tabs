@@ -25,27 +25,28 @@
 		</test-fixture>
 
 		<script type="text/javascript">
-			suite('basic', function () {
-				var tabs;
+			suite('basic', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('basic');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					const onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
-					});
+					};
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged);
 				});
 
-				test('in accordion mode multi is true', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode multi is true', done => {
+					Polymer.Base.async(() => {
 						assert.isTrue(tabs.accordion);
 						assert.isTrue(tabs.multi);
 						done();
 					}, 90);
 				});
 
-				test('in accordion mode multiple items can be selected', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode multiple items can be selected', done => {
+					Polymer.Base.async(() => {
 						assert.lengthOf(tabs.selectedItems, 2);
 						assert.include(tabs.selectedItems, tabs.items[1]);
 						assert.include(tabs.selectedItems, tabs.items[2]);
@@ -53,34 +54,51 @@
 					}, 90);
 				});
 
-				test('in accordion mode unselected items are closed', function (done) {
-					Polymer.Base.async(function () {
-						var item = tabs.items[0];
-						assert.isNotNull(item.$.collapse);
-						assert.isFalse(item.$.collapse.opened);
+				test('in accordion mode unselected items are closed', done => {
+					Polymer.Base.async(() => {
+						const item = tabs.items[0],
+							el = item.$.content,
+							style = getComputedStyle(el);
+
+						assert.equal(style.getPropertyValue('display'), 'none');
 						done();
 					}, 90);
 				});
 
-				test('in accordion mode selected items are opened', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode selected items are opened', done => {
+					Polymer.Base.async(() => {
 						assert.lengthOf(tabs.selectedItems, 2);
 
-						tabs.selectedItems.forEach(function (item) {
-							assert.isNotNull(item.$.collapse);
-							assert.isTrue(item.$.collapse.opened);
+						tabs.selectedItems.forEach(item => {
+							const el = item.$.content,
+								style = getComputedStyle(el);
+
+							assert.equal(style.getPropertyValue('display'), 'block');
 						});
 
 						done();
 					}, 90);
 				});
 
-				test('accordion property is forwarded to children', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode selectedItem remains selected', done => {
+					Polymer.Base.async(() => {
+						MockInteractions.tap(tabs.items[1].$.header);
+						assert.equal(tabs.selectedItems.length, 1);
+
+						MockInteractions.tap(tabs.items[2].$.header);
+						assert.equal(tabs.selectedItems.length, 1);
+						assert.equal(tabs.selectedItems[0], tabs.items[2]);
+						done();
+
+					}, 90);
+				});
+
+				test('accordion property is forwarded to children', done => {
+					Polymer.Base.async(() => {
 						assert.isArray(tabs.items);
 						assert.lengthOf(tabs.items, 3);
 
-						tabs.items.forEach(function (item) {
+						tabs.items.forEach(item => {
 							assert.equal(item.is, 'cosmoz-tab');
 							assert.isTrue(item.accordion);
 						});
@@ -89,20 +107,20 @@
 					}, 60);
 				});
 
-				test('in accordion mode it does not contain a paper-tabs element', function (done) {
-					Polymer.Base.async(function () {
-						var paperTabs = tabs.$$('paper-tabs');
+				test('in accordion mode it does not contain a paper-tabs element', done => {
+					Polymer.Base.async(() => {
+						const paperTabs = tabs.$$('paper-tabs');
 						assert.isNull(paperTabs);
 						done();
 					}, 90);
 				});
 
-				test('in accordion mode cosmoz-tab #header is visible', function (done) {
-					Polymer.Base.async(function () {
+				test('in accordion mode cosmoz-tab #header is visible', done => {
+					Polymer.Base.async(() => {
 
-						tabs.items.forEach(function (item) {
+						tabs.items.forEach(item => {
 							assert.isNotNull(item.$.header);
-							var style = window.getComputedStyle(item.$.header),
+							const style = window.getComputedStyle(item.$.header),
 								display = style.getPropertyValue('display');
 							assert.notEqual(display, 'none');
 						});
@@ -111,30 +129,30 @@
 					}, 90);
 				});
 
-				test('in accordion mode tapping the header of a unselected item selects it', function (done) {
-					Polymer.Base.async(function () {
-						var item = tabs.items[0];
+				test('in accordion mode tapping the header of a unselected item selects it', done => {
+					Polymer.Base.async(() => {
+						const item = tabs.items[0];
 						assert.isNotNull(item.$.header);
 						assert.notInclude(tabs.selectedItems, item);
 
 						MockInteractions.tap(item.$.header);
 
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.include(tabs.selectedItems, item);
 							done();
 						}, 90);
 					}, 90);
 				});
 
-				test('in accordion mode tapping the header of a selected item unselects it', function (done) {
-					Polymer.Base.async(function () {
-						var item = tabs.items[1];
+				test('in accordion mode tapping the header of a selected item unselects it', done => {
+					Polymer.Base.async(() => {
+						const item = tabs.items[1];
 						assert.isNotNull(item.$.header);
 						assert.include(tabs.selectedItems, item);
 
 						MockInteractions.tap(item.$.header);
 
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.notInclude(tabs.selectedItems, item);
 							done();
 						}, 90);
