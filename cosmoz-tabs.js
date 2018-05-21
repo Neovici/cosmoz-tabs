@@ -68,7 +68,7 @@
 		 * @param  {HTMLElement} tab       The tab to compute icon for
 		 * @return {String}                The icon to be used
 		 */
-		_computeIcon: function (tab) {
+		_computeIcon(tab) {
 			return tab.getIcon();
 		},
 
@@ -78,7 +78,7 @@
 		 * @param  {HTMLElement} tab	The tab to compute icon style for
 		 * @return {String}           The CSS style for the color of the tab
 		 */
-		_computeIconStyle: function (tab) {
+		_computeIconStyle(tab) {
 			return tab.getIconStyle();
 		},
 
@@ -90,7 +90,7 @@
 		 * @param  {type} attrForSelected The `attrForSelected` value
 		 * @return {String} The computed attribute
 		 */
-		_computeItemTabAttribute: function (item, index, attrForSelected) {
+		_computeItemTabAttribute(item, index, attrForSelected) {
 			return attrForSelected ? item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected) : index;
 		},
 
@@ -101,7 +101,7 @@
 		 * @param  {Object} hashParam The `hashParam` property
 		 * @return {String}  The computed link
 		 */
-		_computeItemLink: function (item, hashParam) {
+		_computeItemLink(item, hashParam) {
 			if (!hashParam) {
 				return;
 			}
@@ -122,7 +122,7 @@
 		 * @param {String} items The `items` property
 		 * @return {void}
 		 */
-		_routeHashParamsChanged: function (changes, hashParam, items) {
+		_routeHashParamsChanged(changes, hashParam, items) {
 			if (!(changes && hashParam && items.length) || this._hashReady) {
 				return;
 			}
@@ -146,7 +146,7 @@
 		 * @param  {Object} hashParam The hash param
 		 * @return {void}
 		 */
-		_selectedItemChanged: function (selected, hashParam) {
+		_selectedItemChanged(selected, hashParam) {
 			if (!(hashParam && this._routeHashParams && this.items.length) || !this._hashReady) {
 				return;
 			}
@@ -169,17 +169,14 @@
 		 * @param  {Array} items The items property
 		 * @returns {void}
 		 */
-		_updateFallbackSelection: function (attr, items) {
-			var selection = this._selection.get(),
-				fallback = this.fallbackSelection,
-				expected;
-
+		_updateFallbackSelection(attr, items) {
+			const selection = this._selection.get();
 			if (selection && selection.length || !items.length) {
 				return;
 			}
 
-			expected = attr ? this._valueForItem(items[0]) : '0';
-
+			const expected = attr ? this._valueForItem(items[0]) : '0',
+				fallback = this.fallbackSelection;
 			if (fallback == null || fallback !== expected && fallback !== '') {
 				this.fallbackSelection = expected;
 			}
@@ -195,7 +192,7 @@
 		 * @param  {Event} e.detail.value The new value of the changed property
 		 * @return {void}
 		 */
-		_tabPropertyChanged: function (e) {
+		_tabPropertyChanged(e) {
 			e.stopPropagation();
 
 			if (this.accordion || !(this.items && this.items.length)) {
@@ -217,7 +214,7 @@
 			this._updateInvalidSelection(item);
 		},
 
-		_updateInvalidSelection: function (item) {
+		_updateInvalidSelection(item) {
 			if (!item || !this.fallbackSelection) {
 				return;
 			}
