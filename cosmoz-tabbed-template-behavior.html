@@ -17,7 +17,7 @@
 		properties: {
 
 			/**
-			 * If it is set to true the template will be stamped
+			 * Set to true to render the template with a small delay even if the tab has never been selected.
 			 */
 			prerender: {
 				type: Boolean,
@@ -55,7 +55,6 @@
 				instanceProps: {},
 				parentModel: true,
 				forwardParentProp: this._forwardHostProp,
-				// forwardParentPath: this._forwardParentPath,
 				forwardHostProp: this._forwardHostProp
 			});
 			if (!this.prerender && !this._shouldRender) {
