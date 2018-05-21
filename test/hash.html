@@ -25,39 +25,40 @@
 		</test-fixture>
 
 		<script type="text/javascript">
-			suite('basic', function () {
-				var tabs;
+			suite('basic', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('basic');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('items have links', function (done) {
-					Polymer.Base.async(function () {
-						tabs.$$('paper-tabs').items.forEach(function (tab, index) {
-							var link =  Polymer.dom(tab).querySelector('.link');
+				test('items have links', done => {
+					Polymer.Base.async(() => {
+						tabs.$$('paper-tabs').items.forEach((tab, index) => {
+							const link =  Polymer.dom(tab).querySelector('.link');
 							assert.equal(link.getAttribute('href'), '##tab=' + tabs.items[index].getAttribute('name'));
 						});
 						done();
 					}, 90);
 				});
 
-				test('updates selected item from location hash', function (done) {
-					Polymer.Base.async(function () {
+				test('updates selected item from location hash', done => {
+					Polymer.Base.async(() => {
 						tabs._hashReady = false; // ignore hash read in test setup to test selected update
 						window.location.hash = '##tab=tab0';
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.isTrue(tabs._hashReady);
 							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
 							assert.equal(tabs.selected, 'tab0');
 							assert.equal(tabs.selectedItem, tabs.items[0]);
 
 							window.location.hash = '##tab=tab1';
-							Polymer.Base.async(function () {
+							Polymer.Base.async(() => {
 								assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab1', 'Expected _routeHashParams to be updated from location hash');
 								assert.equal(tabs.selected, 'tab0', 'Expected selected to remain tab0 as selected was already updated once from hash.');
 								assert.equal(tabs.selectedItem, tabs.items[0]);
@@ -68,16 +69,16 @@
 					}, 90);
 				});
 
-				test('updates location hash from selected item', function (done) {
-					Polymer.Base.async(function () {
+				test('updates location hash from selected item', done => {
+					Polymer.Base.async(() => {
 						assert.equal(tabs.selectedItem, tabs.items[2]);
 						tabs.selected = 'tab1';
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab1');
 							assert.equal(window.location.hash, '##tab=tab1');
 
 							tabs.selected = 'tab0';
-							Polymer.Base.async(function () {
+							Polymer.Base.async(() => {
 								assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
 								assert.equal(window.location.hash, '##tab=tab0');
 								done();

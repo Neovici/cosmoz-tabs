@@ -36,51 +36,52 @@
 		</test-fixture>
 
 		<script>
-			suite('defaults', function () {
-				var tabs;
+			suite('defaults', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('defaults');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('cosmoz-selected as selectedClass', function () {
+				test('cosmoz-selected as selectedClass', () => {
 					assert.equal(tabs.selectedClass, 'cosmoz-selected');
 				});
 
-				test('is-selected as selectedAttribute', function () {
+				test('is-selected as selectedAttribute', () => {
 					assert.equal(tabs.selectedAttribute, 'is-selected');
 				});
 
-				test('not accordion', function () {
+				test('not accordion', () => {
 					assert.isFalse(tabs.accordion);
 				});
 
-				test('not multi', function () {
+				test('not multi', () => {
 					assert.isFalse(tabs.multi);
 				});
 
-				test('activateEvent is null', function () {
+				test('activateEvent is null', () => {
 					assert.isNull(tabs.activateEvent);
 				});
 
-				test('cosmoz-tab as selectable', function () {
+				test('cosmoz-tab as selectable', () => {
 					assert.equal(tabs.selectable, 'cosmoz-tab');
 				});
 
-				test('undefined hashParam', function () {
+				test('undefined hashParam', () => {
 					assert.isUndefined(tabs.hashParam);
 				});
 
 
-				test('attrForSelected defaults to name', function () {
+				test('attrForSelected defaults to name', () => {
 					assert.equal(tabs.attrForSelected, 'name');
 				});
 
-				test('fallbackSelection is 0', function () {
+				test('fallbackSelection is 0', () => {
 					assert.equal(tabs.fallbackSelection, 'tab0');
 					assert.equal(tabs.selected, 'tab0');
 				});
@@ -124,30 +125,31 @@
 
 			});
 
-			suite('basic', function () {
-				var tabs;
+			suite('basic', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('basic');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('instantiates a cosmoz-tabs', function () {
+				test('instantiates a cosmoz-tabs', () => {
 					assert.equal(tabs.is, 'cosmoz-tabs');
 				});
 
-				test('collects cosmoz-tab elements as items', function () {
+				test('collects cosmoz-tab elements as items', () => {
 					assert.isArray(tabs.items);
 					assert.lengthOf(tabs.items, 4);
-					tabs.items.forEach(function (item) {
+					tabs.items.forEach(item => {
 						assert.equal(item.is, 'cosmoz-tab');
 					});
 				});
 
-				test('selects an item', function () {
+				test('selects an item', () => {
 					assert.equal(tabs.selected, 'tab0');
 					assert.equal(tabs.selectedItem, tabs.items[0]);
 
@@ -155,14 +157,14 @@
 					assert.equal(tabs.selectedItem, tabs.items[1]);
 				});
 
-				test('selected item has selectedClass and selectedAttribute', function () {
+				test('selected item has selectedClass and selectedAttribute', () => {
 					assert.equal(tabs.selectedItem.getAttribute(tabs.selectedAttribute), '');
 					assert.isTrue(tabs.selectedItem.classList.contains(tabs.selectedClass));
 				});
 
-				test('contains a paper-tabs with same number of paper-tab elements', function (done) {
-					Polymer.Base.async(function () {
-						var paperTabs = tabs.$$('paper-tabs');
+				test('contains a paper-tabs with same number of paper-tab elements', done => {
+					Polymer.Base.async(() => {
+						const paperTabs = tabs.$$('paper-tabs');
 						assert.isNotNull(paperTabs);
 						assert.equal(paperTabs.is, 'paper-tabs');
 						assert.equal(paperTabs.items.length, tabs.items.length);
@@ -170,9 +172,9 @@
 					}, 90);
 				});
 
-				test('sets heading inside paper-tab', function (done) {
-					Polymer.Base.async(function () {
-						var heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
+				test('sets heading inside paper-tab', done => {
+					Polymer.Base.async(() => {
+						const heading0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('h1.heading'),
 							heading1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('h1.heading'),
 							heading2 = Polymer.dom(tabs.$$('paper-tabs').items[2]).querySelector('h1.heading');
 
@@ -188,13 +190,13 @@
 					}, 90);
 				});
 
-				test('tabs contain heading', function (done) {
-					Polymer.Base.async(function () {
-						var withHeading = tabs.items.filter(function (item) {
+				test('tabs contain heading', done => {
+					Polymer.Base.async(() => {
+						const withHeading = tabs.items.filter(item => {
 							return item.heading;
 						});
 						assert.lengthOf(withHeading, 3);
-						withHeading.forEach(function (item) {
+						withHeading.forEach(item => {
 							var heading = item.$$('.heading');
 							assert.equal(heading.innerText, item.heading);
 						});
@@ -202,9 +204,9 @@
 					}, 90);
 				});
 
-				test('sets badge inside paper-tab', function (done) {
-					Polymer.Base.async(function () {
-						var badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('.badge'),
+				test('sets badge inside paper-tab', done => {
+					Polymer.Base.async(() => {
+						const badge0 = Polymer.dom(tabs.$$('paper-tabs').items[0]).querySelector('.badge'),
 							badge1 = Polymer.dom(tabs.$$('paper-tabs').items[1]).querySelector('.badge');
 
 						assert.isNotNull(badge0);
@@ -222,9 +224,9 @@
 					}, 90);
 				});
 
-				test('sets hidden on paper-tab', function (done) {
-					Polymer.Base.async(function () {
-						var tabVisible = tabs.$$('paper-tabs').items[0],
+				test('sets hidden on paper-tab', done => {
+					Polymer.Base.async(() => {
+						const tabVisible = tabs.$$('paper-tabs').items[0],
 							tabHidden = tabs.$$('paper-tabs').items[2];
 
 						assert.isFalse(tabVisible.hidden);
@@ -238,9 +240,9 @@
 					}, 90);
 				});
 
-				test('sets disabled on paper-tab', function (done) {
-					Polymer.Base.async(function () {
-						var tabNormal = tabs.$$('paper-tabs').items[0],
+				test('sets disabled on paper-tab', done => {
+					Polymer.Base.async(() => {
+						const tabNormal = tabs.$$('paper-tabs').items[0],
 							tabDisabled = tabs.$$('paper-tabs').items[3];
 
 						assert.isFalse(tabNormal.disabled);
@@ -252,11 +254,11 @@
 					}, 90);
 				});
 
-				test('#header is not visible', function (done) {
-					Polymer.Base.async(function () {
-						tabs.items.forEach(function (item) {
+				test('#header is not visible', done => {
+					Polymer.Base.async(() => {
+						tabs.items.forEach(item => {
 							assert.isNotNull(item.$.header);
-							var style = window.getComputedStyle(item.$.header),
+							const style = window.getComputedStyle(item.$.header),
 								display = style.getPropertyValue('display');
 							assert.equal(display, 'none');
 						});
@@ -264,10 +266,10 @@
 					}, 90);
 				});
 
-				test('setting hidden on cosmoz-tab updates paper-tab', function (done) {
-					var tab = tabs.items[1];
+				test('setting hidden on cosmoz-tab updates paper-tab', done => {
+					const tab = tabs.items[1];
 
-					Polymer.Base.async(function () {
+					Polymer.Base.async(() => {
 						var paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.hidden = true;
@@ -276,11 +278,11 @@
 					}, 30);
 				});
 
-				test('setting disabled on cosmoz-tab updates paper-tab', function (done) {
-					var tab = tabs.items[1];
+				test('setting disabled on cosmoz-tab updates paper-tab', done => {
+					const tab = tabs.items[1];
 
-					Polymer.Base.async(function () {
-						var paperTab = tabs.$$('paper-tabs').items[1];
+					Polymer.Base.async(() => {
+						const paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.disabled = true;
 						assert.isTrue(paperTab.disabled);
@@ -289,11 +291,11 @@
 					}, 30);
 				});
 
-				test('setting heading on cosmoz-tab updates paper-tab', function (done) {
-					var tab = tabs.items[1];
+				test('setting heading on cosmoz-tab updates paper-tab', done => {
+					const tab = tabs.items[1];
 
-					Polymer.Base.async(function () {
-						var paperTab = tabs.$$('paper-tabs').items[1];
+					Polymer.Base.async(() => {
+						const paperTab = tabs.$$('paper-tabs').items[1];
 
 						tab.heading = 'Another tab';
 						assert.equal(paperTab.querySelector('h1.heading').innerText, 'Another tab');
@@ -302,11 +304,11 @@
 					}, 30);
 				});
 
-				test('setting badge on cosmoz-tab updates paper-tab', function (done) {
-					var tab = tabs.items[0];
+				test('setting badge on cosmoz-tab updates paper-tab', done => {
+					const tab = tabs.items[0];
 
-					Polymer.Base.async(function () {
-						var paperTab = tabs.$$('paper-tabs').items[0];
+					Polymer.Base.async(() => {
+						const paperTab = tabs.$$('paper-tabs').items[0];
 
 						tab.badge = 'Inbox';
 						assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<script>
-		var pages = [
+		const pages = [
 				'basic.html',
 				'accordion.html',
 				'hash.html',
@@ -17,10 +17,9 @@
 				'invalid.html',
 				'tabbed-template-behavior.html'
 			],
-			suites = [],
-			i;
+			suites = [];
 
-		for (i = 0; i < pages.length; i++) {
+		for (let i = 0; i < pages.length; i++) {
 			suites.push(pages[i] + '?dom=shadow');
 			suites.push(pages[i] + '?wc-shadydom=true&wc-ce=true');
 		}

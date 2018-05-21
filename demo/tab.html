@@ -363,15 +363,15 @@
 
 		<script type="text/javascript">
 			(function () {
-				var onSelect = function (e) {
+				const onSelect = e => {
 					this.push('items', {event: e.type, heading: e.target.heading, style: e.type === 'tab-select' ? 'color: red' : 'color: green'});
 				};
-				window.addEventListener('WebComponentsReady', function () {
+				window.addEventListener('WebComponentsReady', () => {
 					[
 						'events',
 						'events-accordion'
-					].forEach(function (id) {
-						var events = document.getElementById(id);
+					].forEach(id => {
+						let events = document.getElementById(id);
 						events = !events.set ? events.firstElementChild : events;
 
 						events.set('items', []);
