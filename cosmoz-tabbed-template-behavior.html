@@ -1,0 +1,108 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
+
+<script>
+/**
+ `Cosmoz.TabbedTemplateBehavior`
+ */
+(function () {
+	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	* @polymerBehavior Cosmoz.TabbedTemplateBehavior
+	*/
+	Cosmoz.TabbedTemplateBehaviorImpl = {
+		properties: {
+
+			/**
+			 * Set to true to render the template with a small delay even if the tab has never been selected.
+			 */
+			prerender: {
+				type: Boolean,
+				value: false,
+				observer: '_prerenderChanged'
+			}
+		},
+
+		created() {
+			this._pendingProps = {};
+		},
+
+		attached() {
+			this._observer = Polymer.dom(this).observeNodes(this._onNodesChanged);
+		},
+
+		detached() {
+			if (this._observer) {
+				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer = null;
+			}
+			this._templateInstance = null;
+		},
+
+		_onNodesChanged() {
+			if (this._userTemplate) {
+				return;
+			}
+			const template = this.queryEffectiveChildren('template');
+			if (!template) {
+				return;
+			}
+			this._userTemplate = template;
+			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+				instanceProps: {},
+				parentModel: true,
+				forwardParentProp: this._forwardHostProp,
+				forwardHostProp: this._forwardHostProp
+			});
+			if (!this.prerender && !this._shouldRender) {
+				return;
+			}
+			this.render();
+		},
+
+		render() {
+			this._shouldRender = true;
+			if (!this._userTemplate || this._templateInstance) {
+				return;
+			}
+			this.debounce('_createInstance', this._createInstance, 16);
+		},
+
+		_prerenderChanged(prerender) {
+			if (!prerender) {
+				return;
+			}
+			this.render();
+		},
+
+		_createInstance() {
+			if (this._templateInstance || !this._instanceCtor) {
+				return;
+			}
+			const instance = new this._instanceCtor(this._pendingProps || {});
+			this._templateInstance = instance;
+			Polymer.dom(this).appendChild(instance.root);
+			if (instance._flushProperties) {
+				instance._flushProperties(true);
+			}
+		},
+
+		_forwardHostProp(prop, value) {
+			const instance = this._templateInstance;
+			if (!instance) {
+				this._pendingProps[prop] = value;
+				return;
+			}
+			if (instance.forwardHostProp) {
+				instance.forwardHostProp(prop, value);
+				return;
+			}
+			instance[prop] = value;
+		}
+	};
+	Cosmoz.TabbedTemplateBehavior = [Cosmoz.TabbedTemplateBehaviorImpl];
+})();
+</script>

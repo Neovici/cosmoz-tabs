@@ -26,18 +26,19 @@
 	</test-fixture>
 
 	<script>
-		suite('basic', function () {
-			var tabs;
+		suite('basic', () => {
+			let tabs;
 
-			setup(function (done) {
+			setup(done => {
 				tabs = fixture('basic');
-				tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+				let onIronItemsChanged;
+				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 					done();
 				});
 			});
 
-			test('fallback-selection is 0 ', function (done) {
+			test('fallback-selection is 0 ', done => {
 				assert.isNotNull(tabs.fallbackSelection);
 				assert.equal(tabs.fallbackSelection, 'tab0');
 				assert.equal(tabs.selected, 'tab0');

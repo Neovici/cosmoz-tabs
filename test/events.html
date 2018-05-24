@@ -26,19 +26,20 @@
 
 		<script>
 			sinon.assert.expose(chai.assert, { prefix: '' });
-			suite('events', function () {
-				var tabs;
+			suite('events', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('events');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('fires tab-select event', function () {
-					var onSelect = sinon.spy();
+				test('fires tab-select event', () => {
+					const onSelect = sinon.spy();
 
 					assert.isUndefined(tabs.selected);
 
@@ -48,8 +49,8 @@
 					assert.calledOnce(onSelect);
 				});
 
-				test('fires tab-first-select event only once before tab-select', function () {
-					var onFirstSelect = sinon.spy(),
+				test('fires tab-first-select event only once before tab-select', () => {
+					const onFirstSelect = sinon.spy(),
 						onSelect = sinon.spy();
 
 					assert.isUndefined(tabs.selected);

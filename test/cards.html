@@ -43,25 +43,26 @@
 		</test-fixture>
 
 		<script type="text/javascript">
-			suite('cards basic', function () {
-				var tabs;
+			suite('cards basic', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('basic');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('collects cosmoz-tab-card elements as items', function (done) {
-					var tab = tabs.items[0];
+				test('collects cosmoz-tab-card elements as items', done => {
+					const tab = tabs.items[0];
 
-					Polymer.Base.async(function () {
+					Polymer.Base.async(() => {
 						assert.isArray(tab.items);
 						assert.lengthOf(tab.items, 3);
 
-						tab.items.forEach(function (item) {
+						tab.items.forEach(item => {
 							assert.equal(item.is, 'cosmoz-tab-card');
 						});
 
@@ -69,13 +70,13 @@
 					}, 90);
 				});
 
-				test('cards have elevation 1', function (done) {
-					var tab = tabs.items[0];
+				test('cards have elevation 1', done => {
+					const tab = tabs.items[0];
 
-					Polymer.Base.async(function () {
+					Polymer.Base.async(() => {
 
-						tab.items.forEach(function (item) {
-							var material = item.$$('paper-material');
+						tab.items.forEach(item => {
+							const material = item.$$('paper-material');
 							assert.equal(material.elevation, 1);
 						});
 
@@ -97,13 +98,13 @@
 					}, 90);
 				});
 
-				test('cards have headings', function (done) {
-					var tab = tabs.items[0];
+				test('cards have headings', done => {
+					const tab = tabs.items[0];
 
-					Polymer.Base.async(function () {
+					Polymer.Base.async(() => {
 
-						tab.items.forEach(function (item) {
-							var heading = item.$$('.heading');
+						tab.items.forEach(item => {
+							const heading = item.$$('.heading');
 							assert.equal(heading.innerText, item.heading);
 						});
 
@@ -112,31 +113,32 @@
 				});
 			});
 
-			suite('cards accordion', function () {
-				var tabs;
+			suite('cards accordion', () => {
+				let tabs;
 
-				setup(function (done) {
+				setup(done => {
 					tabs = fixture('accordion');
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 						done();
 					});
 				});
 
-				test('accordion property is forwarded to cards', function (done) {
-					Polymer.Base.async(function () {
-						var tab = tabs.items[0];
+				test('accordion property is forwarded to cards', done => {
+					Polymer.Base.async(() => {
+						const tab = tabs.items[0];
 						assert.equal(tab.accordion, tabs.accordion);
-						tab.items.forEach(function (item) {
+						tab.items.forEach(item => {
 							assert.equal(item.accordion, tabs.accordion);
 						});
 						done();
 					}, 90);
 				});
 
-				test('tab containing cards has hidden header', function (done) {
-					Polymer.Base.async(function () {
-						var tab = tabs.items[0],
+				test('tab containing cards has hidden header', done => {
+					Polymer.Base.async(() => {
+						const tab = tabs.items[0],
 							style = window.getComputedStyle(tab.$.header),
 							display = style.getPropertyValue('display');
 						assert.equal(display, 'none');
@@ -158,15 +160,15 @@
 					}, 90);
 				});
 
-				test('in accordion mode unselected cards are closed', function (done) {
-					Polymer.Base.async(function () {
-						var tab = tabs.items[0],
-							unselected = tab.items.filter(function (item) {
+				test('in accordion mode unselected cards are closed', done => {
+					Polymer.Base.async(() => {
+						const tab = tabs.items[0],
+							unselected = tab.items.filter(item => {
 								return tab.selectedItems.indexOf(item) < 0;
 							});
 
 						assert.lengthOf(unselected, 2);
-						unselected.forEach(function (item) {
+						unselected.forEach(item => {
 							assert.equal(item.$.content.style.display, '');
 						});
 						done();

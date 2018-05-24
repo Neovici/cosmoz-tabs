@@ -134,40 +134,41 @@
 		<script>
 			sinon.assert.expose(chai.assert, { prefix: '' });
 
-			function PolymerFlush() {
-				if (Polymer.flush) {
-					Polymer.flush();
-				} else if (Polymer.dom.flush) {
-					Polymer.dom.flush();
-				}
-			}
+			const PolymerFlush = () => {
+					if (Polymer.flush) {
+						Polymer.flush();
+					} else if (Polymer.dom.flush) {
+						Polymer.dom.flush();
+					}
+				},
 
-			function buildDataSet(size) {
-				var data = [];
-				while (data.length < size) {
-					data.push(data.length);
-				}
-				return data;
-			}
+				buildDataSet = size => {
+					const data = [];
+					while (data.length < size) {
+						data.push(data.length);
+					}
+					return data;
+				};
 
-			suite('sizing', function () {
-				var tabs,
+			suite('sizing', () => {
+				let tabs,
 					list;
 
-				test('non explicitly sized tabs and list without flex renders max items', function (done) {
+				test('non explicitly sized tabs and list without flex renders max items', done => {
 					tabs = fixture('basic-unexplicit');
 					list = document.getElementById('x-list');
 
 
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 
-						var onResize = sinon.spy();
+						const onResize = sinon.spy();
 						list.addEventListener('iron-resize', onResize);
 						list.items = buildDataSet(100);
 						PolymerFlush();
 
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.equal(list.getBoundingClientRect().height, 10000);
 							assert.equal(list.queryAllEffectiveChildren('.item').length, 100);
 							assert.calledOnce(onResize);
@@ -178,20 +179,21 @@
 
 				});
 
-				test('explicitly sized tabs and list without flex correctly update size but renders max items ', function (done) {
+				test('explicitly sized tabs and list without flex correctly update size but renders max items ', done => {
 					tabs = fixture('basic-explicit-selected');
 					list = document.getElementById('x-list');
 
 
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 
-						var onResize = sinon.spy();
+						const onResize = sinon.spy();
 						list.addEventListener('iron-resize', onResize);
 						list.items = buildDataSet(100);
 						PolymerFlush();
 
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.equal(list.getBoundingClientRect().height, 349);
 							assert.equal(list.queryAllEffectiveChildren('.item').length, 100);
 							assert.calledOnce(onResize);
@@ -202,19 +204,20 @@
 
 				});
 
-				test('explicitly sized tabs with element selected and flex list renders only a few items', function (done) {
+				test('explicitly sized tabs with element selected and flex list renders only a few items', done => {
 					tabs = fixture('basic-explicit-flex-selected');
 					list = document.getElementById('x-list');
 
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 
-						var onResize = sinon.spy();
+						const onResize = sinon.spy();
 						list.addEventListener('iron-resize', onResize);
 						list.items = buildDataSet(500);
 						PolymerFlush();
 
-						Polymer.Base.async(function () {
+						Polymer.Base.async(() => {
 							assert.equal(list.getBoundingClientRect().height, 349);
 							assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 							assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
@@ -225,11 +228,12 @@
 
 				});
 
-				test('explicitly sized tabs and flex list updates size and renders only a few items upon selection', function (done) {
+				test('explicitly sized tabs and flex list updates size and renders only a few items upon selection', done => {
 					tabs = fixture('basic-explicit-flex-unselected');
 					list = document.getElementById('x-list');
 
-					tabs.addEventListener('iron-items-changed', function onIronItemsChanged() {
+					let onIronItemsChanged;
+					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
 
 						assert.isUndefined(tabs.selected);
@@ -237,12 +241,12 @@
 
 						PolymerFlush();
 
-						Polymer.Base.async(function () {
-							var onResize = sinon.spy();
+						Polymer.Base.async(() => {
+							const onResize = sinon.spy();
 							list.addEventListener('iron-resize', onResize);
 
 							tabs.selected = 'tab0';
-							Polymer.Base.async(function () {
+							Polymer.Base.async(() => {
 								assert.equal(list.getBoundingClientRect().height, 349);
 								assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 								assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);

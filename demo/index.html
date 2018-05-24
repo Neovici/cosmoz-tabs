@@ -272,19 +272,19 @@
 		</div>
 		<script type="text/javascript">
 		(function () {
-			window.addEventListener('WebComponentsReady', function () {
-				(function () {
-					var basic = document.getElementById('basic');
+			window.addEventListener('WebComponentsReady', () => {
+				(() => {
+					let basic = document.getElementById('basic');
 					basic = !basic.set ? basic.firstElementChild : basic;
-					basic.stringify = function (values) {
+					basic.stringify = values => {
 						return JSON.stringify(values);
 					};
 				})();
 
-				(function () {
+				(() => {
 					var hashParam = document.getElementById('hashParam');
 					hashParam = !hashParam.set ? hashParam.firstElementChild : hashParam;
-					hashParam.stringify = function (values) {
+					hashParam.stringify = values => {
 						return JSON.stringify(values);
 					};
 				})();
