@@ -56,6 +56,10 @@
 					assert.equal(tabs.selectedAttribute, 'is-selected');
 				});
 
+				test('first tab isActive', () => {
+					assert.isTrue(tabs.items[0].isActive);
+				});
+
 				test('not accordion', () => {
 					assert.isFalse(tabs.accordion);
 				});

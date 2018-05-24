@@ -43,6 +43,16 @@
 			},
 
 			/**
+			 * Is true when the item has been selected at least once.
+			 */
+			isActive: {
+				type: Boolean,
+				value: false,
+				reflectToAttribute: true,
+				notify: true
+			},
+
+			/**
 			 * Accordion mode element state, true if it is in accordion mode.
 			 * Should be forwarded by a `Cosmoz.TabbableBehavior` ancestor
 			 * element.
@@ -105,6 +115,10 @@
 
 		created() {
 			this._onSelectedTransitionEnd = this._onSelectedTransitionEnd.bind(this);
+		},
+
+		detached() {
+			this.isActive = false;
 		},
 
 		get animated() {

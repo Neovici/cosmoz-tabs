@@ -179,9 +179,9 @@
 			if (index > -1) {
 				this.debounce('select-resize', this.notifyResize);
 
-				if (!item._previouslySelected) {
+				if (!item.isActive) {
 					this.fire('tab-first-select', {}, opts);
-					item._previouslySelected = true;
+					item.isActive = true;
 				}
 				this.fire('tab-select', {}, opts);
 			}
