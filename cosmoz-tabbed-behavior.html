@@ -139,10 +139,13 @@
 				from = isSelected ? '0px' : height + 'px',
 				to =  !isSelected ? '0px' : height + 'px';
 
-			el.style.maxHeight = from;
+			style.maxHeight = from;
 
 			window.requestAnimationFrame(() => {
+				this._transitionTimeout = this.async(this._onSelectedTransitionEnd, 1000);
+				el.addEventListener('transitioncancel', this._onSelectedTransitionEnd);
 				el.addEventListener('transitionend', this._onSelectedTransitionEnd);
+
 				style.transitionDuration = '';
 				style.maxHeight = to;
 			});
@@ -156,8 +159,13 @@
 		_onSelectedTransitionEnd() {
 			const el = this.$.content;
 			this.animating = false;
+			el.removeEventListener('transitioncancel', this._onSelectedTransitionEnd);
 			el.removeEventListener('transitionend', this._onSelectedTransitionEnd);
 			el.style.maxHeight = '';
+			if (this._transitionTimeout) {
+				this.cancelAsync(this._transitionTimeout);
+				this._transitionTimeout = null;
+			}
 		},
 
 		/**
