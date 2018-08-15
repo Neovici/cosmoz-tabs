@@ -222,7 +222,9 @@
 			if (item.invalid && item === selected) {
 				const fallback = this._valueToItem(this.fallbackSelection);
 				fallback.__invalidFallbackFor = item;
-				this.select(this.fallbackSelection);
+				if (fallback !== item) {
+					this.select(this.fallbackSelection);
+				}
 			} else if (!item.invalid && selected && item === selected.__invalidFallbackFor) {
 				selected.__invalidFallbackFor = null;
 				this.select(this._valueForItem(item));

@@ -64,7 +64,8 @@
 			'_notifyProperty("hidden", hidden)',
 			'_notifyProperty("disabled", disabled)',
 			'_notifyProperty("heading", heading)',
-			'_notifyProperty("badge", badge)'
+			'_notifyProperty("badge", badge)',
+			'_onAccordionChangedRender(accordion)'
 		],
 
 		listeners: {
@@ -123,7 +124,12 @@
 
 		resizerShouldBeNotified(resizable) {
 			return resizable.parentNode !== this.$.header;
-		}
+		},
 
+		_onAccordionChangedRender(accordion) {
+			if (accordion) {
+				this.render();
+			}
+		}
 	});
 }());
