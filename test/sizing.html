@@ -169,8 +169,8 @@
 						PolymerFlush();
 
 						Polymer.Base.async(() => {
-							assert.equal(list.getBoundingClientRect().height, 10000);
-							assert.equal(list.queryAllEffectiveChildren('.item').length, 100);
+							assert.equal(Math.round(list.getBoundingClientRect().height), 10000);
+							assert.equal(Math.round(list.queryAllEffectiveChildren('.item').length), 100);
 							assert.calledOnce(onResize);
 							done();
 
@@ -194,8 +194,8 @@
 						PolymerFlush();
 
 						Polymer.Base.async(() => {
-							assert.equal(list.getBoundingClientRect().height, 349);
-							assert.equal(list.queryAllEffectiveChildren('.item').length, 100);
+							assert.equal(Math.round(list.getBoundingClientRect().height), 349);
+							assert.equal(Math.round(list.queryAllEffectiveChildren('.item').length), 100);
 							assert.calledOnce(onResize);
 							done();
 
@@ -218,7 +218,7 @@
 						PolymerFlush();
 
 						Polymer.Base.async(() => {
-							assert.equal(list.getBoundingClientRect().height, 349);
+							assert.equal(Math.round(list.getBoundingClientRect().height), 349);
 							assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 							assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 							assert.calledOnce(onResize);
@@ -247,7 +247,7 @@
 
 							tabs.selected = 'tab0';
 							Polymer.Base.async(() => {
-								assert.equal(list.getBoundingClientRect().height, 349);
+								assert.equal(Math.round(list.getBoundingClientRect().height), 349);
 								assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 								assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 
