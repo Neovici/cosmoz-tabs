@@ -66,6 +66,7 @@ Custom property | Description | Default
 				overflow: hidden;
 				transform: translate3d(0,0,0);
 				backface-visibility: hidden;
+				border-bottom: 1px solid #e2e2e2;
 			}
 
 			:host([accordion]:not([is-selected]):not([animating])) #content {
@@ -86,6 +87,7 @@ Custom property | Description | Default
 				border-bottom: 1px solid #e2e2e2;
 				cursor: pointer;
 				@apply --cosmoz-tab-card-header-accordion;
+				padding-left: 30px;
 			}
 
 			:host([accordion][is-selected]) #header {
@@ -120,8 +122,6 @@ Custom property | Description | Default
 
 		<paper-material id="card" elevation="[[ elevation ]]">
 			<div id="header" on-tap="_onToggleTap">
-				<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
-					style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
 				<h1 class="heading">[[ heading ]]</h1>
 				<slot name="card-actions"></slot>
 				<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
