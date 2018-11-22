@@ -1,23 +1,56 @@
 {
 	"plugins": {
 		"local": {
-			"browsers": ["chrome", "firefox"]
+			"browsers": ["chrome"],
+			"browserOptions": {
+				"chrome": [
+					"headless",
+					"disable-gpu",
+					"no-sandbox"
+				],
+				"firefox": [
+					"--headless"
+				]
+			}
 		},
 		"istanbul": {
-		"dir": "./coverage",
-		"reporters": ["text-summary", "lcov"],
-		"include": [
-			"cosmoz-tab-card.html",
-			"cosmoz-tab-card.js",
-			"cosmoz-tab.html",
-			"cosmoz-tab.js",
-			"cosmoz-tabbable-behavior.html",
-			"cosmoz-tabbed-behavior.html",
-			"cosmoz-tabbed-template-behavior.html",
-			"cosmoz-tabs.html",
-			"cosmoz-tabs.js"
-		],
-		"exclude": []
-	}
+			"dir": "./coverage",
+			"reporters": ["text-summary", "lcov"],
+			"include": [
+				"cosmoz-tab-card.html",
+				"cosmoz-tab-card.js",
+				"cosmoz-tab.html",
+				"cosmoz-tab.js",
+				"cosmoz-tabbable-behavior.html",
+				"cosmoz-tabbed-behavior.html",
+				"cosmoz-tabbed-template-behavior.html",
+				"cosmoz-tabs.html",
+				"cosmoz-tabs.js"
+			],
+			"exclude": []
+		},
+		"sauce": {
+			"browsers": [{
+				"browserName": "microsoftedge",
+				"platform": "Windows 10",
+				"version": ""
+			}, {
+				"browserName": "chrome",
+				"platform": "Windows 10",
+				"version": "dev"
+			}, {
+				"browserName": "chrome",
+				"platform": "Windows 10",
+				"version": "beta"
+			}, {
+				"browserName": "firefox",
+				"platform": "Windows 10",
+				"version": ""
+			}, {
+				"browserName": "safari",
+				"platform": "macOS 10.13",
+				"version": "11.1"
+			}]
+		}
 	}
 }
