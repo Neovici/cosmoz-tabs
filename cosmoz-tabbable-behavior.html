@@ -1,4 +1,5 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/debounce.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../iron-selector/iron-multi-selectable.html">
 
@@ -114,13 +115,21 @@
 		 * @returns {void}
 		 */
 		_onToggleTab(e) {
-			var item = e.target,
-				index = this.items.indexOf(item),
-				value;
+			const item = e.target,
+				index = this.items.indexOf(item);
 
 			if (index > -1) {
-				value = this._indexToValue(index);
-				if (!this.fire('tab-activate', {selected: value, item: item}, {cancelable: true}).defaultPrevented) {
+				const value = this._indexToValue(index);
+				const options = {
+					bubbles: true,
+					composed: true,
+					cancelable: true,
+					detail: {
+						selected: value,
+						item: item
+					}
+				};
+				if (!this.dispatchEvent(new CustomEvent('tab-activate', options))) {
 					this.select(value);
 				}
 			}
@@ -135,7 +144,7 @@
 		 * @returns {void}
 		 */
 		_forwardProperty(property, value, items) {
-			items.forEach(function (item) {
+			items.forEach(item => {
 				item.set(property, value);
 			});
 		},
@@ -172,18 +181,27 @@
 		 * @return {void}        description
 		 */
 		_onIronSelect(e, detail) {
-			var item = detail.item,
+			const item = detail.item,
 				index = this.items.indexOf(item),
-				opts = {node: item, bubbles: false };
+				opts = {
+					node: item,
+					bubbles: false,
+					composed: true,
+					detail: {}
+				};
 
 			if (index > -1) {
-				this.debounce('select-resize', this.notifyResize);
+				this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+					Polymer.Async.microTask,
+					this.notifyResize
+				);
+				Polymer.enqueueDebouncer(this._debouncer);
 
 				if (!item.isActive) {
-					this.fire('tab-first-select', {}, opts);
+					this.dispatchEvent(new CustomEvent('tab-first-select', opts));
 					item.isActive = true;
 				}
-				this.fire('tab-select', {}, opts);
+				this.dispatchEvent(new CustomEvent('tab-select', opts));
 			}
 		},
 

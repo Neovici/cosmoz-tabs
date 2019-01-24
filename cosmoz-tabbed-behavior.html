@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <script>
@@ -142,7 +142,7 @@
 			style.maxHeight = from;
 
 			window.requestAnimationFrame(() => {
-				this._transitionTimeout = this.async(this._onSelectedTransitionEnd, 1000);
+				this._transitionTimeout = setTimeout(() => this._onSelectedTransitionEnd(), 1000);
 				el.addEventListener('transitioncancel', this._onSelectedTransitionEnd);
 				el.addEventListener('transitionend', this._onSelectedTransitionEnd);
 
@@ -163,7 +163,7 @@
 			el.removeEventListener('transitionend', this._onSelectedTransitionEnd);
 			el.style.maxHeight = '';
 			if (this._transitionTimeout) {
-				this.cancelAsync(this._transitionTimeout);
+				window.clearTimeout(this._transitionTimeout);
 				this._transitionTimeout = null;
 			}
 		},
@@ -207,7 +207,7 @@
 		 * @fires cosmoz-tab-toggle
 		 */
 		_onToggleTap: function () {
-			this.fire('cosmoz-tab-toggle');
+			this.dispatchEvent(new CustomEvent('cosmoz-tab-toggle', { bubbles: true, composed: true }));
 		}
 	};
 

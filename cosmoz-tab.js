@@ -1,18 +1,20 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-(function () {
-	'use strict';
-	Polymer({
-		/**
-		 * Fired when `hidden`, `disabled`,'heading' or `badge` tab properties change.
-		 *
-		 * @event tab-property-changed
-		 * @param {String} detail.property The property name
-		 * @param {String|Number|Object|*} detail.value The property value
-		 * @param {HTMLElement} detail.item The item that changed.
-		 */
 
-		is: 'cosmoz-tab',
-		properties: {
+class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.TabbableBehavior, Cosmoz.TabbedTemplateBehavior], Polymer.Element) {
+	/**
+	 * Fired when `hidden`, `disabled`,'heading' or `badge` tab properties change.
+	 *
+	 * @event tab-property-changed
+	 * @param {String} detail.property The property name
+	 * @param {String|Number|Object|*} detail.value The property value
+	 * @param {HTMLElement} detail.item The item that changed.
+	 */
+
+	static get is() {
+		return 'cosmoz-tab';
+	}
+	static get properties() {
+		return {
 			/**
 			 * If true, the item will be hidden.
 			 */
@@ -52,84 +54,85 @@
 				value: false,
 				computed: '_computeHasCards(items)'
 			}
-		},
+		};
+	}
 
-		behaviors: [
-			Cosmoz.TabbedBehavior,
-			Cosmoz.TabbableBehavior,
-			Cosmoz.TabbedTemplateBehavior
-		],
-
-		observers: [
+	static get observers() {
+		return [
 			'_notifyProperty("hidden", hidden)',
 			'_notifyProperty("disabled", disabled)',
 			'_notifyProperty("heading", heading)',
 			'_notifyProperty("badge", badge)',
 			'_onAccordionChangedRender(accordion)'
-		],
+		];
+	}
 
-		listeners: {
+	static get listeners() {
+		return {
 			'iron-resize': '_onResize',
 			'tab-first-select': 'render'
-		},
+		};
+	}
+	/**
+	 * get invalid - True if the element is `hidden` or `disabled`.
+	 * @returns {Boolean}  True if invalid
+	 */
+	get invalid() {
+		return this.disabled || this.hidden;
+	}
 
-		/**
-		 * get invalid - True if the element is `hidden` or `disabled`.
-		 * @returns {Boolean}  True if invalid
-		 */
-		get invalid() {
-			return this.disabled || this.hidden;
-		},
+	get animated() {
+		return this.accordion && !this.hasCards;
+	}
 
-		get animated() {
-			return this.accordion && !this.hasCards;
-		},
+	_onResize() {
+		// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
+		// the tab content is scolled. This hack seems to fix this issue.
+		var scrollTop = this.$.content.scrollTop;
+		this.$.content.scrollTop = 0;
+		this.$.content.scrollTop = scrollTop;
+	}
 
-		_onResize() {
-			// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
-			// the tab content is scolled. This hack seems to fix this issue.
-			var scrollTop = this.$.content.scrollTop;
-			this.$.content.scrollTop = 0;
-			this.$.content.scrollTop = scrollTop;
-		},
+	/**
+	 * Computes `hasCards` depending on `items`.
+	 *
+	 * @param  {Array} items Array of selectable items
+	 * @returns {Boolean} True if items is not empty
+	 */
+	_computeHasCards(items = this.items) {
+		return items && items.length > 0;
+	}
 
-		/**
-		 * Computes `hasCards` depending on `items`.
-		 *
-		 * @param  {Array} items Array of selectable items
-		 * @returns {Boolean} True if items is not empty
-		 */
-		_computeHasCards(items = this.items) {
-			return items && items.length > 0;
-		},
+	/**
+	 * Observes changes to a property and dispatches a bubbling
+	 * `tab-property-changed` event.
+	 *
+	 * @fires tab-property-changed
+	 * @param {String} property The name of the changed property
+	 * @param {String|Number|Object|*} value The value of the changed property.
+	 * @return {void}
 
-
-		/**
-		 * Observes changes to a property and fires a bubbling
-		 * `tab-property-changed` event.
-		 *
-		 * @fires tab-property-changed
-		 * @param {String} property The name of the changed property
-		 * @param {String|Number|Object|*} value The value of the changed property.
-		 * @return {void}
-
-		 */
-		_notifyProperty(property, value) {
-			this.fire('tab-property-changed', {
-				property: property,
-				value: value,
+	 */
+	_notifyProperty(property, value) {
+		this.dispatchEvent(new CustomEvent('tab-property-changed', {
+			bubbles: true,
+			composed: true,
+			detail: {
+				property,
+				value,
 				item: this
-			});
-		},
-
-		resizerShouldBeNotified(resizable) {
-			return resizable.parentNode !== this.$.header;
-		},
-
-		_onAccordionChangedRender(accordion) {
-			if (accordion) {
-				this.render();
 			}
+		}));
+	}
+
+	resizerShouldBeNotified(resizable) {
+		return resizable.parentNode !== this.$.header;
+	}
+
+	_onAccordionChangedRender(accordion) {
+		if (accordion) {
+			this.render();
 		}
-	});
-}());
+	}
+}
+customElements.define(CosmozTab.is, CosmozTab);

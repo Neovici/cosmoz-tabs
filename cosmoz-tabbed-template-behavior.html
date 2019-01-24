@@ -1,4 +1,6 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/debounce.html">
+<link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">>
 <link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
 
 <script>
@@ -31,12 +33,12 @@
 		},
 
 		attached() {
-			this._observer = Polymer.dom(this).observeNodes(this._onNodesChanged);
+			this._observer = new Polymer.FlattenedNodesObserver(this, this._onNodesChanged);
 		},
 
 		detached() {
 			if (this._observer) {
-				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer.disconnect();
 				this._observer = null;
 			}
 			this._templateInstance = null;
@@ -68,7 +70,11 @@
 			if (!this._userTemplate || this._templateInstance) {
 				return;
 			}
-			this.debounce('_createInstance', this._createInstance, 16);
+			this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+				Polymer.Async.timeOut.after(16),
+				this._createInstance
+			);
+			Polymer.enqueueDebouncer(this._debouncer);
 		},
 
 		_prerenderChanged(prerender) {
@@ -84,7 +90,7 @@
 			}
 			const instance = new this._instanceCtor(this._pendingProps || {});
 			this._templateInstance = instance;
-			Polymer.dom(this).appendChild(instance.root);
+			this.appendChild(instance.root);
 			if (instance._flushProperties) {
 				instance._flushProperties(true);
 			}
