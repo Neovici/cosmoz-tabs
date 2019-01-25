@@ -85,15 +85,27 @@
 			}
 		},
 
-		listeners: {
-			'cosmoz-tab-toggle': '_onToggleTab',
-			'iron-select': '_onIronSelect',
-			'tab-activate': '_onTabActivate'
-		},
-
 		observers: [
 			'_forwardProperty("accordion", accordion, items)'
 		],
+
+		created() {
+			this._onToggleTab = this._onToggleTab.bind(this);
+			this._onIronSelect = this._onIronSelect.bind(this);
+			this._onTabActivate = this._onTabActivate.bind(this);
+		},
+
+		attached() {
+			this.addEventListener('cosmoz-tab-toggle', this._onToggleTab);
+			this.addEventListener('iron-select', this._onIronSelect);
+			this.addEventListener('tab-activate', this._onTabActivate);
+		},
+
+		detached() {
+			this.removeEventListener('cosmoz-tab-toggle', this._onToggleTab);
+			this.removeEventListener('iron-select', this._onIronSelect);
+			this.removeEventListener('tab-activate', this._onTabActivate);
+		},
 
 		/**
 		 * Computes the `multi` property depending on
@@ -180,8 +192,8 @@
 		 * @fires 'tab-select'
 		 * @return {void}        description
 		 */
-		_onIronSelect(e, detail) {
-			const item = detail.item,
+		_onIronSelect(e) {
+			const item = e.detail.item,
 				index = this.items.indexOf(item),
 				opts = {
 					node: item,
