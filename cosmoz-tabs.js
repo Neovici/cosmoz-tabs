@@ -50,17 +50,17 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 
 	constructor() {
 		super();
-		this._tabPropertyChanged = this._tabPropertyChanged.bind(this);
+		this._tabPropertyChangedHandler = this._tabPropertyChanged.bind(this);
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
-		this.addEventListener('tab-property-changed', this._tabPropertyChanged);
+		this.addEventListener('tab-property-changed', this._tabPropertyChangedHandler);
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
-		this.removeEventListener('tab-property-changed', this._tabPropertyChanged);
+		this.removeEventListener('tab-property-changed', this._tabPropertyChangedHandler);
 	}
 
 	static get observers() {

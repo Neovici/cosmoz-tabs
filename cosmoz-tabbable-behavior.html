@@ -90,21 +90,21 @@
 		],
 
 		created() {
-			this._onToggleTab = this._onToggleTab.bind(this);
-			this._onIronSelect = this._onIronSelect.bind(this);
-			this._onTabActivate = this._onTabActivate.bind(this);
+			this._onToggleTabHandler = this._onToggleTab.bind(this);
+			this._onIronSelectHandler = this._onIronSelect.bind(this);
+			this._onTabActivateHandler = this._onTabActivate.bind(this);
 		},
 
 		attached() {
-			this.addEventListener('cosmoz-tab-toggle', this._onToggleTab);
-			this.addEventListener('iron-select', this._onIronSelect);
-			this.addEventListener('tab-activate', this._onTabActivate);
+			this.addEventListener('cosmoz-tab-toggle', this._onToggleTabHandler);
+			this.addEventListener('iron-select', this._onIronSelectHandler);
+			this.addEventListener('tab-activate', this._onTabActivateHandler);
 		},
 
 		detached() {
-			this.removeEventListener('cosmoz-tab-toggle', this._onToggleTab);
-			this.removeEventListener('iron-select', this._onIronSelect);
-			this.removeEventListener('tab-activate', this._onTabActivate);
+			this.removeEventListener('cosmoz-tab-toggle', this._onToggleTabHandler);
+			this.removeEventListener('iron-select', this._onIronSelectHandler);
+			this.removeEventListener('tab-activate', this._onTabActivateHandler);
 		},
 
 		/**
