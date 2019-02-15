@@ -72,7 +72,9 @@
 			}
 			this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
 				Polymer.Async.timeOut.after(16),
-				this._createInstance
+				() => {
+					this._createInstance();
+				}
 			);
 			Polymer.enqueueDebouncer(this._debouncer);
 		},

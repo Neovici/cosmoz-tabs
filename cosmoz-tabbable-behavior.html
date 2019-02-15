@@ -141,7 +141,7 @@
 						item: item
 					}
 				};
-				if (!this.dispatchEvent(new CustomEvent('tab-activate', options))) {
+				if (this.dispatchEvent(new CustomEvent('tab-activate', options))) {
 					this.select(value);
 				}
 			}

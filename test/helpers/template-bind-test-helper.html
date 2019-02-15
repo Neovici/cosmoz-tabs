@@ -1,23 +1,25 @@
-<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="../../../polymer/polymer-element.html">
 <dom-module id="template-bind-test-helper">
 	<template>
 		<span id="testContent">[[ testProp ]]</span>
 		<slot></slot>
 	</template>
 	<script type="text/javascript">
-	(function () {
-		'use strict';
+	class TemplateBindTestHelper extends Polymer.Element {
+		static get is() {
+			return 'template-bind-test-helper';
+		}
 
-		Polymer({
-			is: 'template-bind-test-helper',
-			properties: {
+		static get properties() {
+			return {
 				testProp: {
 					type: String,
 					value: '',
 					notify: true
 				}
-			}
-		});
-	})();
+			};
+		}
+	}
+	customElements.define(TemplateBindTestHelper.is, TemplateBindTestHelper);
 	</script>
 </dom-module>
