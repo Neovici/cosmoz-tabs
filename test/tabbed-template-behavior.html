@@ -9,6 +9,7 @@
 	<script src="../../web-component-tester/browser.js"></script>
 	<script src="../../test-fixture/test-fixture-mocha.js"></script>
 
+	<link rel="import" href="../../polymer/lib/elements/dom-bind.html">
 	<link rel="import" href="../../test-fixture/test-fixture.html">
 	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 	<link rel="import" href="./helpers/template-bind-test-helper.html">
@@ -68,21 +69,17 @@
 				let onIronItemsChanged;
 				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-					done();
+					flush(done);
 				});
 			});
 
-			test('myTestProp from the parentElement of cosmoz-tabs to the children of tab1', done => {
+			test('myTestProp from the parentElement of cosmoz-tabs to the children of tab1', () => {
 				helper.testProp = 'tested';
 				tabs.selected = 'tab1';
-				Polymer.Base.async(() => {
-					const tab = tabs.selectedItem,
-						childHelper = tab.querySelector('template-bind-test-helper');
-
-					assert.isDefined(childHelper);
-					assert.equal(helper.testProp, childHelper.testProp);
-					done();
-				}, 90);
+				const tab = tabs.selectedItem,
+					childHelper = tab.querySelector('template-bind-test-helper');
+				assert.isDefined(childHelper);
+				assert.equal(helper.testProp, childHelper.testProp);
 			});
 		});
 
@@ -99,22 +96,19 @@
 				let onIronItemsChanged;
 				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-					done();
+					flush(done);
 				});
 			});
 
-			test('myTestProp from the children of tab1 up to the parentElement of cosmoz-tabs', done => {
+			test('myTestProp from the children of tab1 up to the parentElement of cosmoz-tabs', () => {
 				tabs.selected = 'tab1';
-				Polymer.Base.async(() => {
-					const tab = tabs.selectedItem,
-						childHelper = tab.querySelector('template-bind-test-helper');
+				const tab = tabs.selectedItem,
+					childHelper = tab.querySelector('template-bind-test-helper');
 
-					assert.isDefined(childHelper);
-					childHelper.testProp = 'tested';
+				assert.isDefined(childHelper);
+				childHelper.testProp = 'tested';
 
-					assert.equal(childHelper.testProp, helper.testProp);
-					done();
-				}, 90);
+				assert.equal(childHelper.testProp, helper.testProp);
 			});
 		});
 	</script>
