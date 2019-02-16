@@ -70,19 +70,19 @@ class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.Ta
 	constructor() {
 		super();
 		this._onResizeHandler = this._onResize.bind(this);
-		this.renderHandler = this.render.bind(this);
+		this._renderHandler = this.render.bind(this);
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
 		this.addEventListener('iron-resize', this._onResizeHandler);
-		this.addEventListener('tab-first-select', this.renderHandler);
+		this.addEventListener('tab-first-select', this._renderHandler);
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		this.removeEventListener('iron-resize', this._onResizeHandler);
-		this.removeEventListener('tab-first-select', this.renderHandler);
+		this.removeEventListener('tab-first-select', this._renderHandler);
 	}
 	/**
 	 * get invalid - True if the element is `hidden` or `disabled`.
