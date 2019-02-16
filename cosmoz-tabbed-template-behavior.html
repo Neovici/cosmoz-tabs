@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../polymer/lib/utils/debounce.html">
 <link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">>
-<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
 
 <script>
 /**
@@ -11,6 +10,12 @@
 	'use strict';
 
 	window.Cosmoz = window.Cosmoz || {};
+	const {
+		FlattenedNodesObserver,
+		Templatize,
+		Debouncer,
+		enqueueDebouncer
+	} = Polymer;
 
 	/**
 	* @polymerBehavior Cosmoz.TabbedTemplateBehavior
@@ -33,7 +38,7 @@
 		},
 
 		attached() {
-			this._observer = new Polymer.FlattenedNodesObserver(this, this._onNodesChanged);
+			this._observer = new FlattenedNodesObserver(this, this._onNodesChanged);
 		},
 
 		detached() {
@@ -42,21 +47,24 @@
 				this._observer = null;
 			}
 			this._templateInstance = null;
+			if (this._debouncer) {
+				this._debouncer.cancel();
+			}
 		},
 
 		_onNodesChanged() {
 			if (this._userTemplate) {
 				return;
 			}
+			console.warn('onNodesChanged', arguments[0]);
 			const template = this.queryEffectiveChildren('template');
 			if (!template) {
 				return;
 			}
 			this._userTemplate = template;
-			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+			this._instanceCtor = Templatize.templatize(template, this, {
 				instanceProps: {},
 				parentModel: true,
-				forwardParentProp: this._forwardHostProp,
 				forwardHostProp: this._forwardHostProp
 			});
 			if (!this.prerender && !this._shouldRender) {
@@ -70,13 +78,11 @@
 			if (!this._userTemplate || this._templateInstance) {
 				return;
 			}
-			this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
-				Polymer.Async.timeOut.after(16),
-				() => {
-					this._createInstance();
-				}
-			);
-			Polymer.enqueueDebouncer(this._debouncer);
+			enqueueDebouncer(
+				this._debouncer = Debouncer.debounce(this._debouncer,
+					Polymer.Async.timeOut.after(16),
+					() => this._createInstance()
+				));
 		},
 
 		_prerenderChanged(prerender) {
@@ -93,9 +99,7 @@
 			const instance = new this._instanceCtor(this._pendingProps || {});
 			this._templateInstance = instance;
 			this.appendChild(instance.root);
-			if (instance._flushProperties) {
-				instance._flushProperties(true);
-			}
+			instance._flushProperties(true);
 		},
 
 		_forwardHostProp(prop, value) {
@@ -104,11 +108,7 @@
 				this._pendingProps[prop] = value;
 				return;
 			}
-			if (instance.forwardHostProp) {
-				instance.forwardHostProp(prop, value);
-				return;
-			}
-			instance[prop] = value;
+			instance.forwardHostProp(prop, value);
 		}
 	};
 	Cosmoz.TabbedTemplateBehavior = [Cosmoz.TabbedTemplateBehaviorImpl];
