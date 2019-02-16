@@ -196,7 +196,6 @@
 			const item = e.detail.item,
 				index = this.items.indexOf(item),
 				opts = {
-					node: item,
 					bubbles: false,
 					composed: true,
 					detail: {}
@@ -210,10 +209,10 @@
 				Polymer.enqueueDebouncer(this._debouncer);
 
 				if (!item.isActive) {
-					this.dispatchEvent(new CustomEvent('tab-first-select', opts));
+					item.dispatchEvent(new CustomEvent('tab-first-select', opts));
 					item.isActive = true;
 				}
-				this.dispatchEvent(new CustomEvent('tab-select', opts));
+				item.dispatchEvent(new CustomEvent('tab-select', opts));
 			}
 		},
 
