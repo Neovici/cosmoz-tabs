@@ -56,7 +56,6 @@
 			if (this._userTemplate) {
 				return;
 			}
-			console.warn('onNodesChanged', arguments[0]);
 			const template = this.queryEffectiveChildren('template');
 			if (!template) {
 				return;
@@ -96,7 +95,7 @@
 			if (this._templateInstance || !this._instanceCtor) {
 				return;
 			}
-			const instance = new this._instanceCtor(this._pendingProps || {});
+			const instance = new this._instanceCtor(this._pendingProps);
 			this._templateInstance = instance;
 			this.appendChild(instance.root);
 			instance._flushProperties(true);
