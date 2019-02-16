@@ -65,17 +65,13 @@
 				bind = fixture('basic');
 				helper = bind.parentElement.firstElementChild;
 				tabs = helper.querySelector('cosmoz-tabs');
-
-				let onIronItemsChanged;
-				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-					flush(done);
-				});
+				flush(done);
 			});
 
 			test('myTestProp from the parentElement of cosmoz-tabs to the children of tab1', () => {
 				helper.testProp = 'tested';
 				tabs.selected = 'tab1';
+				Polymer.flush();
 				const tab = tabs.selectedItem,
 					childHelper = tab.querySelector('template-bind-test-helper');
 				assert.isDefined(childHelper);
@@ -92,16 +88,14 @@
 				bind = fixture('advanced');
 				helper = bind.parentElement.firstElementChild;
 				tabs = helper.querySelector('cosmoz-tabs');
-
-				let onIronItemsChanged;
-				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-					flush(done);
-				});
+				flush(done);
 			});
 
 			test('myTestProp from the children of tab1 up to the parentElement of cosmoz-tabs', () => {
 				tabs.selected = 'tab1';
+
+				Polymer.flush();
+
 				const tab = tabs.selectedItem,
 					childHelper = tab.querySelector('template-bind-test-helper');
 
