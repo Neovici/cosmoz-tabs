@@ -5,7 +5,6 @@
 	"main": "cosmoz-tabs.html",
 	"dependencies": {
 		"polymer": "Polymer/polymer#^2.6.0",
-		"cosmoz-templatize": "Neovici/cosmoz-templatize#^1.0.0",
 		"cosmoz-page-router": "Neovici/cosmoz-page-router#^2.0.0",
 		"iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^2.0.0",
 		"iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
