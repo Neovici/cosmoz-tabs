@@ -13,5 +13,8 @@
 		"MockInteractions": false,
 		"sinon": true,
 		"WCT": false
+	},
+	"rules": {
+		"no-unused-expressions": "off"
 	}
 }
