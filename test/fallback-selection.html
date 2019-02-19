@@ -34,16 +34,15 @@
 				let onIronItemsChanged;
 				tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 					tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-					done();
+					flush(done);
 				});
 			});
 
-			test('fallback-selection is 0 ', done => {
+			test('fallback-selection is 0 ', () => {
 				assert.isNotNull(tabs.fallbackSelection);
 				assert.equal(tabs.fallbackSelection, 'tab0');
 				assert.equal(tabs.selected, 'tab0');
 				assert.equal(tabs.selectedItem, tabs.items[0]);
-				done();
 			});
 		});
 	</script>

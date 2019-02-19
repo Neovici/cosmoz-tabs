@@ -1,5 +1,6 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/debounce.html">
+<link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">>
 
 <script>
 /**
@@ -9,6 +10,12 @@
 	'use strict';
 
 	window.Cosmoz = window.Cosmoz || {};
+	const {
+		FlattenedNodesObserver,
+		Templatize,
+		Debouncer,
+		enqueueDebouncer
+	} = Polymer;
 
 	/**
 	* @polymerBehavior Cosmoz.TabbedTemplateBehavior
@@ -31,15 +38,18 @@
 		},
 
 		attached() {
-			this._observer = Polymer.dom(this).observeNodes(this._onNodesChanged);
+			this._observer = new FlattenedNodesObserver(this, this._onNodesChanged);
 		},
 
 		detached() {
 			if (this._observer) {
-				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer.disconnect();
 				this._observer = null;
 			}
 			this._templateInstance = null;
+			if (this._debouncer) {
+				this._debouncer.cancel();
+			}
 		},
 
 		_onNodesChanged() {
@@ -51,10 +61,9 @@
 				return;
 			}
 			this._userTemplate = template;
-			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+			this._instanceCtor = Templatize.templatize(template, this, {
 				instanceProps: {},
 				parentModel: true,
-				forwardParentProp: this._forwardHostProp,
 				forwardHostProp: this._forwardHostProp
 			});
 			if (!this.prerender && !this._shouldRender) {
@@ -68,7 +77,11 @@
 			if (!this._userTemplate || this._templateInstance) {
 				return;
 			}
-			this.debounce('_createInstance', this._createInstance, 16);
+			enqueueDebouncer(
+				this._debouncer = Debouncer.debounce(this._debouncer,
+					Polymer.Async.timeOut.after(16),
+					() => this._createInstance()
+				));
 		},
 
 		_prerenderChanged(prerender) {
@@ -82,12 +95,10 @@
 			if (this._templateInstance || !this._instanceCtor) {
 				return;
 			}
-			const instance = new this._instanceCtor(this._pendingProps || {});
+			const instance = new this._instanceCtor(this._pendingProps);
 			this._templateInstance = instance;
-			Polymer.dom(this).appendChild(instance.root);
-			if (instance._flushProperties) {
-				instance._flushProperties(true);
-			}
+			this.appendChild(instance.root);
+			instance._flushProperties(true);
 		},
 
 		_forwardHostProp(prop, value) {
@@ -96,11 +107,7 @@
 				this._pendingProps[prop] = value;
 				return;
 			}
-			if (instance.forwardHostProp) {
-				instance.forwardHostProp(prop, value);
-				return;
-			}
-			instance[prop] = value;
+			instance.forwardHostProp(prop, value);
 		}
 	};
 	Cosmoz.TabbedTemplateBehavior = [Cosmoz.TabbedTemplateBehaviorImpl];

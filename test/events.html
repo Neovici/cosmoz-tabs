@@ -34,7 +34,7 @@
 					let onIronItemsChanged;
 					tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
 						tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-						done();
+						flush(done);
 					});
 				});
 
