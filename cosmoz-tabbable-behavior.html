@@ -8,6 +8,11 @@
 	'use strict';
 
 	window.Cosmoz = window.Cosmoz || {};
+	const {
+		Debouncer,
+		Async,
+		enqueueDebouncer
+	} = Polymer;
 
 	/**
 	 * @polymerBehavior Cosmoz.TabbableBehavior
@@ -194,26 +199,27 @@
 		 */
 		_onIronSelect(e) {
 			const item = e.detail.item,
-				index = this.items.indexOf(item),
-				opts = {
-					bubbles: false,
-					composed: true,
-					detail: {}
-				};
+				index = this.items.indexOf(item);
 
-			if (index > -1) {
-				this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
-					Polymer.Async.microTask,
-					this.notifyResize
-				);
-				Polymer.enqueueDebouncer(this._debouncer);
-
-				if (!item.isActive) {
-					item.dispatchEvent(new CustomEvent('tab-first-select', opts));
-					item.isActive = true;
-				}
-				item.dispatchEvent(new CustomEvent('tab-select', opts));
+			if (index < 0) {
+				return;
 			}
+			const eventOpts = {
+				bubbles: false,
+				composed: true,
+				detail: {}
+			};
+
+			enqueueDebouncer(this._debouncer = Debouncer.debounce(this._debouncer,
+				Async.microTask,
+				this.notifyResize.bind(this)
+			));
+
+			if (!item.isActive) {
+				item.dispatchEvent(new CustomEvent('tab-first-select', eventOpts));
+				item.isActive = true;
+			}
+			item.dispatchEvent(new CustomEvent('tab-select', eventOpts));
 		},
 
 		_toggleSelected(value) {
