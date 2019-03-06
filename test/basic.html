@@ -271,6 +271,24 @@
 					tab.badge = 'Inbox';
 					assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');
 				});
+
+				test('setting scrollable on cosmoz-tabs updates paper-tab', () => {
+					const paperTab = tabs.root.querySelector('paper-tabs');
+					assert.isFalse(tabs.scrollable);
+					assert.isFalse(paperTab.scrollable);
+
+					tabs.scrollable = true;
+					assert.isTrue(paperTab.scrollable);
+				});
+
+				test('setting hideScrollButtons on cosmoz-tabs updates paper-tab', () => {
+					const paperTab = tabs.root.querySelector('paper-tabs');
+					assert.isTrue(tabs.hideScrollButtons);
+					assert.isTrue(paperTab.hideScrollButtons);
+
+					tabs.hideScrollButtons = false;
+					assert.isFalse(paperTab.hideScrollButtons);
+				});
 			});
 		</script>
 	</body>

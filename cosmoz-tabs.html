@@ -97,7 +97,7 @@ Custom property | Description | Default
 
 		<template is="dom-if" if="[[ !accordion ]]" restamp>
 			<paper-material elevation="1">
-				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide on-iron-activate="_resetInvalidFallbacks">
+				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide on-iron-activate="_resetInvalidFallbacks" scrollable$="[[ scrollable ]]" hide-scroll-buttons$="[[ hideScrollButtons ]]">
 					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
 						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]" tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
 							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">

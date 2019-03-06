@@ -21,6 +21,13 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 				type: String,
 				value: 'name'
 			},
+			/**
+			 * If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.
+			 */
+			hideScrollButtons: {
+				type: Boolean,
+				value: true
+			},
 
 			/**
 			 * Only items that match this CSS selector are selectable.
@@ -44,6 +51,13 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 			_routeHashParams: {
 				type: Object,
 				notify: true
+			},
+			/**
+			 * If true, tabs are scrollable and the tab width is based on the label width.
+			 */
+			scrollable: {
+				type: Boolean,
+				value: false
 			}
 		};
 	}
