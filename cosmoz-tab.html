@@ -54,8 +54,7 @@ Custom property | Description | Default
 				pointer-events: none;
 			}
 			/* do not display tab header when in accordion mode and using cards */
-			:host(:not([accordion])) > #header,
-			:host([accordion][has-cards]) > #header {
+			:host(:not([accordion])) > #header {
 				display: none;
 			}
 
@@ -94,7 +93,8 @@ Custom property | Description | Default
 			}
 
 			:host([accordion]) .heading {
-				font-weight: 400;
+				font-weight: 500;
+				margin-left: 30px;
 			}
 
 			:host(:not([accordion])[is-selected]) .heading {
@@ -133,7 +133,7 @@ Custom property | Description | Default
 				backface-visibility: hidden;
 			}
 
-			:host(:not([has-cards])[accordion]:not([is-selected]):not([animating])) #content {
+			:host(:not([is-selected]):not([animating])) #content {
 				display: none;
 			}
 
@@ -147,7 +147,6 @@ Custom property | Description | Default
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
 		<div id="header" on-tap="_onToggleTap">
-			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading">[[ heading ]]</h1>
 			<div class="badge" hidden$="[[ !badge ]]" title$="[[ badge ]]">[[ badge ]]</div>
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>

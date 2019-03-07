@@ -115,7 +115,7 @@
 					const tab = tabs.items[0],
 						style = window.getComputedStyle(tab.$.header),
 						display = style.getPropertyValue('display');
-					assert.equal(display, 'none');
+					assert.equal(display, 'flex');
 				});
 
 				test('in accordion mode selected cards are opened', () => {
