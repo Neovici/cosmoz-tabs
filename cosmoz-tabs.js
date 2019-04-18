@@ -51,6 +51,7 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	constructor() {
 		super();
 		this._tabPropertyChangedHandler = this._tabPropertyChanged.bind(this);
+		this._onIronResizeHandler = this._onIronResize.bind(this);
 	}
 
 	connectedCallback() {
@@ -61,6 +62,10 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		this.removeEventListener('tab-property-changed', this._tabPropertyChangedHandler);
+
+		// make sure iron-resize handler is cleaned up
+		// it is not guaranteed to have been added
+		this.removeEventListener('iron-resize', this._onIronResizeHandler);
 	}
 
 	static get observers() {
@@ -133,11 +138,56 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 		 * @return {void}
 		 */
 	_routeHashParamsChanged(changes, hashParam, items) {
-		if (!(changes && hashParam && items.length) || this._hashReady) {
+		if (!changes || !hashParam || !items || !items.length) {
 			return;
 		}
+
+		if (this._hashReady) {
+			return;
+		}
+
+		if (this._isVisible) {
+			this._updateSelectedFromHashParams();
+		} else {
+			// if the element is not visible at creation time,
+			// then defer reading the hash until it becomes visible
+			this._updateSelectedFromHashParamsDeferred();
+		}
+	}
+
+	/**
+	 * Defers the reading of the hash params until the element becomes visible
+	 *
+	 * Visibility change is determined by the element receiving an `iron-resize`
+	 * event.
+	 *
+	 * Can be called multiple times, the hash is read only once.
+	 * @return {[type]} [description]
+	 */
+	_updateSelectedFromHashParamsDeferred() {
+		this.removeEventListener('iron-resize', this._onIronResizeHandler);
+		this.addEventListener('iron-resize', this._onIronResizeHandler);
+	}
+
+	_onIronResize() {
+		// make sure this event is run only once
+		this.removeEventListener('iron-resize', this._onIronResizeHandler);
+
+		// read the selected tab from the hash
+		this._updateSelectedFromHashParams();
+	}
+
+	/**
+	 * Reads the hash params and updates the selected tab.
+	 *
+	 * The hash param can be configured using the `hashParam` property.
+	 * Invalid values are ignored.
+	 * @return {void}
+	 */
+	_updateSelectedFromHashParams() {
 		this._hashReady = true;
-		const value = this._normalizeValue(this.get(['_routeHashParams', hashParam])),
+
+		const value = this._normalizeValue(this.get(['_routeHashParams', this.hashParam])),
 			item = this._valueToItem(value),
 			invalid = item == null;
 
@@ -147,7 +197,6 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 
 		this.select(value);
 	}
-
 	/**
 		 * Observers 'selectedItem' changes and updates
 		 *  location hash depending on 'hashParam'.

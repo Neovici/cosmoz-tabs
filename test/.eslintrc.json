@@ -3,6 +3,9 @@
 		"mocha": true
 	},
 	"plugins": ["mocha"],
+	"parserOptions": {
+		"ecmaVersion": 8
+	},
 	"globals": {
 		"a11ySuite": false,
 		"assert": false,
