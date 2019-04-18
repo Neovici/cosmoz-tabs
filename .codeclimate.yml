@@ -49,3 +49,7 @@ plugins:
         - .html
   fixme:
     enabled: true
+exclude_patterns:
+  - "**/bower_components/"
+  - "**/node_modules/"
+  - "coverage/"
