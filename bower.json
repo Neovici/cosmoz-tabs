@@ -26,6 +26,7 @@
 		"web-component-tester": "^6.5.0",
 		"iron-list": "PolymerElements/iron-list#^2.0.0",
 		"web-animations-js": "web-animations/web-animations-js#^2.2",
-		"webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+		"webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+		"iron-collapse": "PolymerElements/iron-collapse#2.2.1"
 	}
 }
