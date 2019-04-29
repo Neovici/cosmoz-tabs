@@ -50,7 +50,7 @@
 							const container = await createFixture('basic', {hashParam: undefined, visible: true});
 
 							// then the hash is ignored and first tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 0');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 						});
 
 						it('reads the hash when the hash-param property is first set', async () => {
@@ -62,13 +62,13 @@
 							const container = await createFixture('basic', {hashParam: undefined, visible: true});
 
 							// then the hash is ignored and first tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 0');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 
 							// when hash-param is updated
 							window.updateModel(container, {hashParam: 'tab'});
 
 							// then the hash is read and the correct tab is displayed
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 
 						it('ignores further changes to the hash-param property', async () => {
@@ -80,20 +80,20 @@
 							const container = await createFixture('basic', {hashParam: undefined, visible: true});
 
 							// then the hash is ignored and first tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 0');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 
 							// when hash-param is updated
 							window.updateModel(container, {hashParam: 'tab'});
 
 							// then the hash is read and the correct tab is displayed
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							// and further changes are ignored
 							window.updateModel(container, {hashParam: 'tabx'});
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							window.updateModel(container, {hashParam: undefined});
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 					});
 
@@ -106,7 +106,7 @@
 							const container = await createFixture('basic', {hashParam: 'tab', visible: true});
 
 							// then the last tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 
 						it('displays the first tab if the hash param value is not set', async () => {
@@ -117,7 +117,7 @@
 							const container = await createFixture('basic', {hashParam: 'tab', visible: true});
 
 							// then the first tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 0');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 						});
 
 						it('ignores further hash param value changes', async () => {
@@ -128,13 +128,13 @@
 							const container = await createFixture('basic', {hashParam: 'tab', visible: true});
 
 							// then the last tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							// when the hash param is changed to the first tab
 							window.location.hash = '##tab=tab1';
 
 							// then the last tab remains selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 
 						it('ignores changes to the hash-param property', async () => {
@@ -146,13 +146,13 @@
 							const container = await createFixture('basic', {hashParam: 'tab', visible: true});
 
 							// then the correct tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							// when hash-param is changed
 							window.updateModel(container, {hashParam: 'tabx'});
 
 							// then the change is ignored
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 					});
 				});
@@ -169,7 +169,7 @@
 						window.updateModel(container, {visible: true});
 
 						// then the last tab is selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 					});
 
 					it('uses the current hash param value', async () => {
@@ -179,18 +179,18 @@
 						// when the element is created, but is not visible
 						const container = await createFixture('basic', {hashParam: 'tab', visible: false});
 						// then the last tab is selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 						// when the hash param is changed to the second tab
 						window.location.hash = '##tab=tab1';
 						// then the last tab is still selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 						// when the element becomes visible
 						window.updateModel(container, {visible: true});
 
 						// then the second tab is selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 1');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 					});
 
 					it('ignores further hash param value changes', async () => {
@@ -204,7 +204,7 @@
 						window.updateModel(container, {visible: true});
 
 						// then the last tab is selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 						// when the hash param is changed to the first tab
 						window.location.hash = '##tab=tab1';
@@ -214,7 +214,7 @@
 						window.updateModel(container, {visible: true});
 
 						// then the last tab remains selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 						// when the hash param is changed to the first tab
 						window.location.hash = '##tab=tab0';
@@ -224,7 +224,7 @@
 						window.updateModel(container, {visible: true});
 
 						// then the last tab still remains selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 2');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 					});
 
 					it('ignores changes to the hash-param property after it is first set', async () => {
@@ -243,20 +243,20 @@
 						window.updateModel(container, {visible: true});
 
 						// then the value specified by 'tabx' is selected
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 1');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 
 						// when hash-param is changed to 'tab'
 						window.updateModel(container, {hashParam: 'tab'});
 
 						// then the change is ignored
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 1');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 
 						// when the element becomes invisible, then visible again
 						window.updateModel(container, {visible: false});
 						window.updateModel(container, {visible: true});
 
 						// then the change is still ignored
-						expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 1');
+						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 					});
 
 					context('if the hashParam tab is invalid', () => {
@@ -271,7 +271,7 @@
 							window.updateModel(container, {visible: true});
 
 							// then the last tab is selected
-							expect(container.querySelector('.cosmoz-selected').innerText).to.equal('Tab text 0');
+							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 						});
 					});
 				});
