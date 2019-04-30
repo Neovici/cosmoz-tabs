@@ -146,11 +146,11 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 			return;
 		}
 
-		if (this._isVisible) {
-			this._updateSelectedFromHashParams();
-		} else {
-			// if the element is not visible at creation time,
-			// then defer reading the hash until it becomes visible
+		this._updateSelectedFromHashParams();
+
+		// if the element is not visible at creation time,
+		// then read the hash again after it becomes visible
+		if (!this._isVisible) {
 			this._updateSelectedFromHashParamsDeferred();
 		}
 	}
