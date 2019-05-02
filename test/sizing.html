@@ -210,6 +210,7 @@
 
 						tabs.selected = 'tab0';
 						Polymer.flush();
+						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
 						expect(list.getBoundingClientRect().height).to.equal(349);
