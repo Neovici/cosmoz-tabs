@@ -10,8 +10,7 @@
 	window.Cosmoz = window.Cosmoz || {};
 	const {
 		Debouncer,
-		Async,
-		enqueueDebouncer
+		Async
 	} = Polymer;
 
 	/**
@@ -110,6 +109,10 @@
 			this.removeEventListener('cosmoz-tab-toggle', this._onToggleTabHandler);
 			this.removeEventListener('iron-select', this._onIronSelectHandler);
 			this.removeEventListener('tab-activate', this._onTabActivateHandler);
+			if (this._debouncer != null) {
+				this._debouncer.cancel();
+				this._debouncer = null;
+			}
 		},
 
 		/**
@@ -210,10 +213,10 @@
 				detail: {}
 			};
 
-			enqueueDebouncer(this._debouncer = Debouncer.debounce(this._debouncer,
-				Async.microTask,
+			this._debouncer = Debouncer.debounce(this._debouncer,
+				Async.animationFrame,
 				this.notifyResize.bind(this)
-			));
+			);
 
 			if (!item.isActive) {
 				item.dispatchEvent(new CustomEvent('tab-first-select', eventOpts));
