@@ -5,15 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-		<link rel="import" href="../../iron-collapse/iron-collapse.html">
-		<link rel="import" href="../cosmoz-tabs.html">
-		<link rel="import" href="./helpers/upgrade-dom-templates.html">
+		<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+		<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
+		<script type="module" src="/components/@polymer/iron-collapse/iron-collapse.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 	</head>
 	<body>
 		<test-fixture id="basic">
@@ -28,7 +29,8 @@
 			</template>
 		</test-fixture>
 
-		<script type="text/javascript">
+		<script type="module">
+			import { upgradeDomTemplates, updateModel } from './helpers/upgrade-dom-templates';
 			const createFixture = (id, data) => new Promise(resolve => {
 				const el = fixture(id, data);
 				setTimeout(() => resolve(el));
@@ -36,7 +38,7 @@
 
 			describe('hash param behavior spec', () => {
 				before(() => {
-					window.upgradeDomTemplates();
+					upgradeDomTemplates();
 				});
 
 				context('when <cosmoz-tabs> is visible at creation time', () => {
@@ -65,7 +67,7 @@
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 
 							// when hash-param is updated
-							window.updateModel(container, {hashParam: 'tab'});
+							updateModel(container, {hashParam: 'tab'});
 
 							// then the hash is read and the correct tab is displayed
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -83,16 +85,16 @@
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');
 
 							// when hash-param is updated
-							window.updateModel(container, {hashParam: 'tab'});
+							updateModel(container, {hashParam: 'tab'});
 
 							// then the hash is read and the correct tab is displayed
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							// and further changes are ignored
-							window.updateModel(container, {hashParam: 'tabx'});
+							updateModel(container, {hashParam: 'tabx'});
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
-							window.updateModel(container, {hashParam: undefined});
+							updateModel(container, {hashParam: undefined});
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 						});
 					});
@@ -149,7 +151,7 @@
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 							// when hash-param is changed
-							window.updateModel(container, {hashParam: 'tabx'});
+							updateModel(container, {hashParam: 'tabx'});
 
 							// then the change is ignored
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -166,7 +168,7 @@
 						const container = await createFixture('basic', {hashParam: 'tab', visible: false});
 
 						// when the element becomes visible
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: true});
 
 						// then the last tab is selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -187,7 +189,7 @@
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
 
 						// when the element becomes visible
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: true});
 
 						// then the second tab is selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
@@ -201,7 +203,7 @@
 						const container = await createFixture('basic', {hashParam: 'tab', visible: false});
 
 						// when the element becomes visible
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: true});
 
 						// then the last tab is selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -210,8 +212,8 @@
 						window.location.hash = '##tab=tab1';
 
 						// and the element becomes invisible, then visible again
-						window.updateModel(container, {visible: false});
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: false});
+						updateModel(container, {visible: true});
 
 						// then the last tab remains selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -220,8 +222,8 @@
 						window.location.hash = '##tab=tab0';
 
 						// and the element becomes invisible, then visible again
-						window.updateModel(container, {visible: false});
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: false});
+						updateModel(container, {visible: true});
 
 						// then the last tab still remains selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 2');
@@ -237,23 +239,23 @@
 						const container = await createFixture('basic', {hashParam: null, visible: false});
 
 						// when the hash-param is updated to 'tabx'
-						window.updateModel(container, {hashParam: 'tabx'});
+						updateModel(container, {hashParam: 'tabx'});
 
 						// and the element becomes visible
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: true});
 
 						// then the value specified by 'tabx' is selected
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 
 						// when hash-param is changed to 'tab'
-						window.updateModel(container, {hashParam: 'tab'});
+						updateModel(container, {hashParam: 'tab'});
 
 						// then the change is ignored
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
 
 						// when the element becomes invisible, then visible again
-						window.updateModel(container, {visible: false});
-						window.updateModel(container, {visible: true});
+						updateModel(container, {visible: false});
+						updateModel(container, {visible: true});
 
 						// then the change is still ignored
 						expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 1');
@@ -268,7 +270,7 @@
 							const container = await createFixture('basic', {hashParam: 'tab', visible: false});
 
 							// when the element becomes visible
-							window.updateModel(container, {visible: true});
+							updateModel(container, {visible: true});
 
 							// then the last tab is selected
 							expect(container.querySelector('.cosmoz-selected').textContent).to.equal('Tab text 0');

@@ -1,6 +1,174 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 
-class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.TabbableBehavior, Cosmoz.TabbedTemplateBehavior], Polymer.Element) {
+
+import '@webcomponents/shadycss/entrypoints/apply-shim';
+import '@polymer/iron-flex-layout/iron-flex-layout';
+import '@polymer/iron-flex-layout/iron-flex-layout-classes';
+import '@polymer/iron-icon/iron-icon';
+import '@polymer/iron-icons/iron-icons';
+import '@polymer/paper-icon-button/paper-icon-button';
+
+import { TabbableBehavior } from './cosmoz-tabbable-behavior.js';
+import { TabbedBehavior } from './cosmoz-tabbed-behavior.js';
+import { TabbedTemplateBehavior } from './cosmoz-tabbed-template-behavior.js';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
+
+import './cosmoz-tab-card.js';
+import './cosmoz-tabs-styles.js';
+
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { html } from '@polymer/polymer/lib/utils/html-tag';
+
+/**
+`<cosmoz-tab>` is the container for a tab. It should be used in conjunction with
+`cosmoz-tabs`.
+
+### Styling
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--cosmoz-tab` | Mixin applied to the tab | `{}`
+`--cosmoz-tab-header` | Mixin applied to the tab header | `{}`
+`--cosmoz-tab-header-selected` | Mixin applied to the header when the tab is selected | `{}`
+`--cosmoz-tab-header-accordion` | Mixin applied to the header when the tab is in accordion mode | `{}`
+`--cosmoz-tab-header-accordion-selected` | Mixin applied to the header when the tab is selected in accordion mode | `{}`
+
+@demo demo/tab.html
+*/
+class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, TabbedTemplateBehavior], PolymerElement) {
+	/* eslint-disable-next-line max-lines-per-function */
+	static get template() {
+		return html`
+		<style include="iron-flex iron-positioning cosmoz-tabs-styles">
+
+			:host {
+				display: block;
+				@apply --cosmoz-tab;
+			}
+
+			:host(:not([accordion])),
+			:host(:not([accordion])) #content {
+				@apply --layout-vertical;
+				@apply --layout-flex-auto;
+				max-height: 100%;
+			}
+
+			:host(:not([accordion])[disabled]),
+			:host([hidden]) {
+				display: none !important;
+			}
+
+			:host([accordion][disabled]) #header {
+				opacity: 0.65;
+				pointer-events: none;
+			}
+			/* do not display tab header when in accordion mode and using cards */
+			:host(:not([accordion])) > #header,
+			:host([accordion][has-cards]) > #header {
+				display: none;
+			}
+
+			:host > #header {
+				cursor: pointer;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+				@apply --cosmoz-tab-header;
+				position: relative;
+			}
+
+			:host([is-selected]) > #header {
+				@apply --cosmoz-tab-header-selected;
+			}
+
+			:host([accordion]) > #header {
+				border-bottom: 1px solid #e2e2e2;
+				@apply --cosmoz-tab-header-accordion;
+			}
+
+			:host([is-selected][accordion]) > #header {
+				@apply --cosmoz-tab-header-accordion-selected;
+			}
+
+			.heading {
+				font-family: sans-serif;
+				@apply --paper-font-common-base;
+				font-size: 17px;
+				font-weight: 300;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				margin-right: 1px;
+				padding: 0;
+				overflow: hidden;
+				@apply --layout-inline-flex;
+			}
+
+			:host([accordion]) .heading {
+				font-weight: 400;
+			}
+
+			:host(:not([accordion])[is-selected]) .heading {
+				font-weight: 500;
+			}
+
+			.icon {
+				height: 13px;
+				width: 13px;
+				margin: 0 10px 0 20px;
+				flex-shrink: 0;
+			}
+
+			:host([accordion]) .icon {
+				margin: 0 9px;
+			}
+
+			#content {
+				position: relative;
+			}
+
+			:host(:not([accordion])) #content {
+				overflow-y: auto;
+				will-change: transform;
+			}
+
+			:host([has-cards]:not([accordion])) #content {
+				@apply --layout-horizontal;
+				@apply --layout-wrap;
+			}
+
+			:host(:not([has-cards])[accordion]) #content {
+				transition-duration: var(--cosmoz-tab-transition-duration, 300ms);
+				overflow: hidden;
+				transform: translate3d(0,0,0);
+				backface-visibility: hidden;
+			}
+
+			:host(:not([has-cards])[accordion]:not([is-selected]):not([animating])) #content {
+				display: none;
+			}
+
+			paper-icon-button {
+				margin-left: auto;
+			}
+		</style>
+
+		<!--
+			header will displayed only in accordion mode.
+			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
+			-->
+		<div id="header" on-tap="_onToggleTap">
+			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style\$="[[ getIconStyle(iconColor) ]]"></iron-icon>
+			<h1 class="heading">[[ heading ]]</h1>
+			<div class="badge" hidden\$="[[ !badge ]]" title\$="[[ badge ]]">[[ badge ]]</div>
+			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
+		</div>
+
+		<div id="content">
+			<slot></slot>
+		</div>
+`;
+	}
+
 	/**
 	 * Fired when `hidden`, `disabled`,'heading' or `badge` tab properties change.
 	 *
@@ -22,17 +190,17 @@ class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.Ta
 				type: Boolean,
 				value: false,
 				notify: true,
-				reflectToAttribute: true,
+				reflectToAttribute: true
 			},
 
 			/**
-			 *  If true, the item will be disabled.
+			 *	If true, the item will be disabled.
 			 */
 			disabled: {
 				type: Boolean,
 				value: false,
 				notify: true,
-				reflectToAttribute: true,
+				reflectToAttribute: true
 			},
 
 			/**
@@ -86,7 +254,7 @@ class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.Ta
 	}
 	/**
 	 * get invalid - True if the element is `hidden` or `disabled`.
-	 * @returns {Boolean}  True if invalid
+	 * @returns {Boolean}	 True if invalid
 	 */
 	get invalid() {
 		return this.disabled || this.hidden;
@@ -99,7 +267,7 @@ class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.Ta
 	_onResize() {
 		// HACK(pasleq): Can't explain why, but under Chrome 62, we've experienced disappearing content
 		// the tab content is scolled. This hack seems to fix this issue.
-		var scrollTop = this.$.content.scrollTop;
+		const scrollTop = this.$.content.scrollTop;
 		this.$.content.scrollTop = 0;
 		this.$.content.scrollTop = scrollTop;
 	}
@@ -107,7 +275,7 @@ class CosmozTab extends Polymer.mixinBehaviors([Cosmoz.TabbedBehavior, Cosmoz.Ta
 	/**
 	 * Computes `hasCards` depending on `items`.
 	 *
-	 * @param  {Array} items Array of selectable items
+	 * @param	 {Array} items Array of selectable items
 	 * @returns {Boolean} True if items is not empty
 	 */
 	_computeHasCards(items = this.items) {

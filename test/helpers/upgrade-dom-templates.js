@@ -1,20 +1,19 @@
-<link rel="import" href="../../../polymer/lib/utils/templatize.html">
+import { templatize } from '@polymer/polymer/lib/utils/templatize';
 
-<script type="text/javascript">
+
 // @see https://github.com/PolymerElements/test-fixture/issues/47#issuecomment-453212161
 // Helper code to make <template is="dom-template"> stampable by test-fixture
-window.upgradeDomTemplates = () => {
+export const upgradeDomTemplates = () => {
 	document.querySelectorAll('[is="dom-template"]').forEach(t => {
 		t.stamp = function (...args) {
 			if (!this._ctor) {
-				this._ctor =  Polymer.Templatize.templatize(this);
+				this._ctor =	templatize(this);
 			}
 			return new this._ctor(...args);
 		};
 	});
 };
 
-window.updateModel = (fixture, model) => {
+export const updateModel = (fixture, model) => {
 	fixture.__templatizeInstance.setProperties(model);
 };
-</script>

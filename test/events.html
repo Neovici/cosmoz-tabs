@@ -5,13 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/sinon/pkg/sinon.js"></script>
+		<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-		<link rel="import" href="../cosmoz-tabs.html">
+		<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+		<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 	</head>
 	<body>
 		<test-fixture id="events">
@@ -24,7 +27,8 @@
 			</template>
 		</test-fixture>
 
-		<script>
+		<script type="module">
+			/* eslint-disable max-statements */
 			sinon.assert.expose(chai.assert, { prefix: '' });
 			suite('events', () => {
 				let tabs;
