@@ -5,30 +5,40 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/sinon/pkg/sinon.js"></script>
 
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-		<link rel="import" href="../../iron-list/iron-list.html">
-		<link rel="import" href="../cosmoz-tabs.html">
+		<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+		<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
 
-		<custom-style><style is="custom-style" include="iron-flex">
-			.item {
-				color: white;
-				overflow: hidden;
-			}
+		<script type="module" src="/components/@polymer/iron-list/iron-list.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 
-			.item:nth-child(odd) {
-				background-color: green;
-			}
+		<script type="module">
+		const documentContainer = document.createElement('template');
 
-			.item:nth-child(even) {
-				background-color: red;
-			}
-		</style></custom-style>
+		documentContainer.innerHTML = `<custom-style><style is="custom-style" include="iron-flex">
+					.item {
+						color: white;
+						overflow: hidden;
+					}
+
+					.item:nth-child(odd) {
+						background-color: green;
+					}
+
+					.item:nth-child(even) {
+						background-color: red;
+					}
+				</style></custom-style>`;
+
+		document.body.appendChild(documentContainer.content);
+		</script>
 	</head>
 	<body>
 		<test-fixture id="basic-unexplicit">
@@ -83,7 +93,7 @@
 
 		<test-fixture id="basic-explicit-flex-unselected">
 			<template>
-				<cosmoz-tabs style="height: 400px" fallback-selection>
+				<cosmoz-tabs style="height: 400px" fallback-selection="">
 					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list" class="flex">
 							<template>
@@ -129,10 +139,10 @@
 					</cosmoz-tab>
 				</cosmoz-tabs>
 			</template>
-		</test-fixture>
+		</test-fixture>`
 
-		<script>
-		(() => {
+		<script type="module">
+			import { flush as polymerFlush } from '@polymer/polymer/lib/utils/flush';
 			const nthArr = size => [...Array(size).keys()];
 
 			describe('sizing', () => {
@@ -147,7 +157,8 @@
 
 					flush(() => {
 						list.items = nthArr(100);
-						Polymer.flush();
+						polymerFlush();
+						tabs._debouncer.flush();
 						list.removeEventListener('iron-resize', onResize);
 
 						expect(list.getBoundingClientRect().height).to.equal(10000);
@@ -166,7 +177,8 @@
 
 					flush(() => {
 						list.items = nthArr(100);
-						Polymer.flush();
+						polymerFlush();
+						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
 						expect(list.getBoundingClientRect().height).to.equal(349);
@@ -185,7 +197,8 @@
 
 					flush(() => {
 						list.items = nthArr(500);
-						Polymer.flush();
+						polymerFlush();
+						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
 						expect(list.getBoundingClientRect().height).to.equal(349);
@@ -201,7 +214,6 @@
 					list = document.getElementById('x-list');
 
 					flush(() => {
-
 						assert.isUndefined(tabs.selected);
 						list.items = nthArr(500);
 
@@ -209,7 +221,7 @@
 						list.addEventListener('iron-resize', onResize);
 
 						tabs.selected = 'tab0';
-						Polymer.flush();
+						polymerFlush();
 						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
@@ -221,7 +233,6 @@
 					});
 				});
 			});
-		})();
 		</script>
 	</body>
 </html>

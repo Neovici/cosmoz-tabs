@@ -6,22 +6,28 @@
 
 		<title>cosmoz-tab demo</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
-		<link rel="import" href="../../iron-list/iron-list.html" />
-		<link rel="import" href="../cosmoz-tab-card.html" />
-		<link rel="import" href="../cosmoz-tab.html" />
-		<link rel="import" href="../cosmoz-tabs.html" />
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+		<script type="module" src="/components/@polymer/iron-list/iron-list.js"></script>
+		<script type="module" src="../cosmoz-tab-card.js"></script>
+		<script type="module" src="../cosmoz-tab.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 
-		<custom-style>
-			<style is="custom-style" include="demo-pages-shared-styles">
-				#container {
-					 max-width: 800px;
-				 }
-			</style>
-		</custom-style>
+		<script type="module">
+		const documentContainer = document.createElement('template');
+
+		documentContainer.innerHTML = `<custom-style>
+					<style is="custom-style" include="demo-pages-shared-styles">
+						#container {
+							 max-width: 800px;
+						 }
+					</style>
+				</custom-style>`;
+
+		document.body.appendChild(documentContainer.content);
+		</script>
 	</head>
 	<body unresolved>
 		<div id="container" class="vertical-section-container centered">
@@ -29,7 +35,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs selected="tab2">
-						<cosmoz-tab heading="Tab1" name="tab1" disabled>
+						<cosmoz-tab heading="Tab1" name="tab1" disabled="">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -58,7 +64,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs selected="tab2">
-						<cosmoz-tab heading="Tab1" name="tab1" hidden>
+						<cosmoz-tab heading="Tab1" name="tab1" hidden="">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -114,8 +120,8 @@
 			<h3>accordion mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values='["tab1","tab2","tab3"]'>
-						<cosmoz-tab heading="Tab1" name="tab1" disabled>
+					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;,&quot;tab2&quot;,&quot;tab3&quot;]">
+						<cosmoz-tab heading="Tab1" name="tab1" disabled="">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -142,8 +148,8 @@
 			<h3>accordion mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values='["tab2"]'>
-						<cosmoz-tab heading="Tab1" name="tab1" hidden>
+					<cosmoz-tabs accordion="" selected-values="[&quot;tab2&quot;]">
+						<cosmoz-tab heading="Tab1" name="tab1" hidden="">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -170,7 +176,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>badge</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values='["tab1"]'>
+					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab1" badge="1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -198,7 +204,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon-color</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values='["tab0","tab2"]'>
+					<cosmoz-tabs accordion="" selected-values="[&quot;tab0&quot;,&quot;tab2&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab0" icon-color="red">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -226,7 +232,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion selected-values='["tab1","tab3"]'>
+					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;,&quot;tab3&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab1" icon="icons:check-box-outline-blank">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -298,7 +304,7 @@
 									<div style$="[[ item.style]]">event: <b>{{ item.event }}</b> on: <i>{{item.heading}}</i></div>
 								</template>
 							</iron-list>
-							<cosmoz-tabs accordion>
+							<cosmoz-tabs accordion="">
 								<cosmoz-tab heading="Tab1" name="tab0" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -361,24 +367,23 @@
 
 		</div>
 
-		<script type="text/javascript">
-			(function () {
-				const onSelect = e => {
-					this.push('items', {event: e.type, heading: e.target.heading, style: e.type === 'tab-select' ? 'color: red' : 'color: green'});
-				};
-				window.addEventListener('WebComponentsReady', () => {
-					[
-						'events',
-						'events-accordion'
-					].forEach(id => {
-						let events = document.getElementById(id);
-						events = !events.set ? events.firstElementChild : events;
+		<script type="module">
+			const onSelect = function (e) {
+				// eslint-disable-next-line no-invalid-this
+				this.push('items', {event: e.type, heading: e.target.heading, style: e.type === 'tab-select' ? 'color: red' : 'color: green'});
+			};
+			window.addEventListener('WebComponentsReady', () => {
+				[
+					'events',
+					'events-accordion'
+				].forEach(id => {
+					let events = document.getElementById(id);
+					events = !events.set ? events.firstElementChild : events;
 
-						events.set('items', []);
-						events._onTabSelect = events._onTabFirstSelect = onSelect;
-					});
+					events.set('items', []);
+					events._onTabSelect = events._onTabFirstSelect = onSelect;
 				});
-			})();
+			});
 		</script>
 	</body>
 </html>

@@ -6,22 +6,28 @@
 
 		<title>cosmoz-tab-card demo</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-		<link rel="import" href="../cosmoz-tab-card.html" />
-		<link rel="import" href="../cosmoz-tab.html" />
-		<link rel="import" href="../cosmoz-tabs.html" />
+		<script type="module" src="../cosmoz-tab-card.js"></script>
+		<script type="module" src="../cosmoz-tab.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 
-		<custom-style>
-			<style is="custom-style" include="demo-pages-shared-styles">
-				#container {
-					 max-width: 800px;
-				 }
-			</style>
-		</custom-style>
+		<script type="module">
+		const documentContainer = document.createElement('template');
+
+		documentContainer.innerHTML = `<custom-style>
+					<style is="custom-style" include="demo-pages-shared-styles">
+						#container {
+							 max-width: 800px;
+						 }
+					</style>
+				</custom-style>`;
+
+		document.body.appendChild(documentContainer.content);
+		</script>
 	</head>
 	<body unresolved>
 		<div id="container" class="vertical-section-container centered">
@@ -97,7 +103,7 @@
 			<h3>Accordion <code>cosmoz-tabs</code> with <code>cosmoz-tab-card</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion>
+					<cosmoz-tabs accordion="">
 						<cosmoz-tab heading="Tab1" tab-id="tab1" selected-values="[0]">
 							<cosmoz-tab-card heading="Card1">
 								<p>
@@ -166,7 +172,7 @@
 			<h3>accordion mode <code>cosmoz-tab-card</code> with <code>icon-color</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion>
+					<cosmoz-tabs accordion="">
 						<cosmoz-tab selected-values="[1]">
 							<cosmoz-tab-card heading="Card1" icon-color="red">
 								<p>
@@ -196,7 +202,7 @@
 			<h3>accordion mode <code>cosmoz-tab-card</code> with <code>icon</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion>
+					<cosmoz-tabs accordion="">
 						<cosmoz-tab selected-values="[0,2]">
 							<cosmoz-tab-card heading="Card1" icon="icons:check-box-outline-blank">
 								<p>

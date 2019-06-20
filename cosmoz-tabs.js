@@ -1,6 +1,133 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
+import '@webcomponents/shadycss/entrypoints/apply-shim';
 
-class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polymer.Element) {
+import '@polymer/iron-flex-layout/iron-flex-layout';
+import '@polymer/paper-tabs/paper-tab';
+import '@polymer/paper-tabs/paper-tabs';
+import '@neovici/cosmoz-page-router/cosmoz-page-location';
+
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { html } from '@polymer/polymer/lib/utils/html-tag';
+import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map';
+
+import { TabbableBehavior } from './cosmoz-tabbable-behavior.js';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
+
+import './cosmoz-tab.js';
+import './cosmoz-tabs-styles.js';
+
+/**
+`<cosmoz-tabs>` is a multi views (or pages) container element that allow navigation between the views
+using tabs or an accordion.
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-tabs-selection-bar-color` | Color for the selection bar | `#00b4db`
+
+@demo demo/index.html
+@demo demo/router.html#/#tab=tab1 Router Demo
+*/
+class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
+	/* eslint-disable-next-line max-lines-per-function */
+	static get template() {
+		return html`
+		<style include="cosmoz-tabs-styles">
+			:host {
+				position: relative;
+				@apply --layout-vertical;
+			}
+
+			paper-material {
+				margin-bottom: 3px;
+			}
+
+			#tabs {
+				background-color: #fff;
+				--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
+			}
+
+			.heading {
+				font-family: sans-serif;
+				@apply --paper-font-common-base;
+				font-size: 1.14em;
+				font-weight: 300;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				margin-right: 1px;
+				padding: 0;
+				overflow: hidden;
+			}
+
+			.icon {
+				height: 13px;
+				width: 13px;
+				margin: 0 10px 0 10px;
+				flex-shrink: 0;
+				display: none;
+				@apply --cosmoz-tabs-icon;
+			}
+
+			paper-tab.iron-selected .heading {
+				font-weight : 400;
+			}
+
+			paper-tab[disabled] {
+				opacity: 0.65;
+			}
+
+			.link {
+				@apply --layout-horizontal;
+				@apply --layout-center-center;
+				text-decoration: none;
+				color: inherit;
+				/* TODO(accessibility): focused tab should be outlined */
+				outline: 0;
+			}
+
+			:host(:not([accordion])) #pages {
+				@apply --layout-vertical;
+				@apply --layout-flex-auto;
+				max-height: 100%;
+				max-height: calc(100% - 51px);
+			}
+
+			paper-tab[hidden],
+			:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
+				display: none !important;
+			}
+
+		</style>
+
+		<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
+
+		<template is="dom-if" if="[[ !accordion ]]" restamp="">
+			<paper-material elevation="1">
+				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
+					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
+						<paper-tab hidden\$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
+							tab-attribute\$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+							<a href\$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
+								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
+									style\$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
+								<h1 class="heading">[[ tab.heading ]]</h1>
+								<div class="badge" hidden\$="[[ !tab.badge ]]" title\$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+							</a>
+						</paper-tab>
+					</template>
+				</paper-tabs>
+			</paper-material>
+		</template>
+
+		<div id="pages">
+			<slot></slot>
+		</div>
+`;
+	}
+
 	static get is() {
 		return 'cosmoz-tabs';
 	}
@@ -80,8 +207,8 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	/**
 		 * Computes icon for a tab.
 		 *
-		 * @param  {HTMLElement} tab       The tab to compute icon for
-		 * @return {String}                The icon to be used
+		 * @param	 {HTMLElement} tab			 The tab to compute icon for
+		 * @return {String}								 The icon to be used
 		 */
 	_computeIcon(tab) {
 		return tab.getIcon();
@@ -90,8 +217,8 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	/**
 		 * Computes CSS style for the color of a tab.
 		 *
-		 * @param  {HTMLElement} tab	The tab to compute icon style for
-		 * @return {String}           The CSS style for the color of the tab
+		 * @param	 {HTMLElement} tab	The tab to compute icon style for
+		 * @return {String}						The CSS style for the color of the tab
 		 */
 	_computeIconStyle(tab) {
 		return tab.getIconStyle();
@@ -100,27 +227,27 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	/**
 		 * Computes the attribute used by paper-tabs to select an item.
 		 *
-		 * @param  {HTMLElement} item The item to compute attribute for
-		 * @param  {Number} index  The item's index
-		 * @param  {type} attrForSelected The `attrForSelected` value
+		 * @param	 {HTMLElement} item The item to compute attribute for
+		 * @param	 {Number} index	 The item's index
+		 * @param	 {type} attrForSelected The `attrForSelected` value
 		 * @return {String} The computed attribute
 		 */
 	_computeItemTabAttribute(item, index, attrForSelected) {
-		return attrForSelected ? item[Polymer.CaseMap.dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected) : index;
+		return attrForSelected ? item[dashToCamelCase(this.attrForSelected)] || item.getAttribute(attrForSelected) : index;
 	}
 
 	/**
 		 * Computes link for a item.
 		 *
-		 * @param  {HTMLElement} item  The item to compute link for
-		 * @param  {Object} hashParam The `hashParam` property
-		 * @return {String}  The computed link
+		 * @param	 {HTMLElement} item	 The item to compute link for
+		 * @param	 {Object} hashParam The `hashParam` property
+		 * @return {String}	 The computed link
 		 */
 	_computeItemLink(item, hashParam) {
 		if (!hashParam) {
 			return;
 		}
-		let param = this._valueForItem(item),
+		const param = this._valueForItem(item),
 			route = this.$.location.getRoute();
 
 		route.hash[hashParam] = param === 0 ? String(param) : param;
@@ -132,7 +259,7 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 		 * Observes `_routeHashParams` changes
 		 * and sets selection based on `hashParam`.
 		 *
-		 * @param {Object} changes  changes to `_routeHashParams` property
+		 * @param {Object} changes	changes to `_routeHashParams` property
 		 * @param {String} hashParam The `hashParam` property
 		 * @param {String} items The `items` property
 		 * @return {void}
@@ -199,10 +326,10 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	}
 	/**
 		 * Observers 'selectedItem' changes and updates
-		 *  location hash depending on 'hashParam'.
+		 *	location hash depending on 'hashParam'.
 		 *
-		 * @param  {String|Number} selected   The selected item
-		 * @param  {Object} hashParam The hash param
+		 * @param	 {String|Number} selected		The selected item
+		 * @param	 {Object} hashParam The hash param
 		 * @return {void}
 		 */
 	_selectedItemChanged(selected, hashParam) {
@@ -217,6 +344,7 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 		if (hashValue === value || item && item.__invalidFallbackFor) {
 			return;
 		}
+		// eslint-disable-next-line no-nested-ternary
 		this.set(path, value === undefined ? null : value === 0 ? String(value) : value);
 	}
 
@@ -224,19 +352,21 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 		 * Observe changes to `attrForSelected` and `items`
 		 * and update `fallback` to point to the first item.
 		 *
-		 * @param  {String} attr The attrForSelected property
-		 * @param  {Array} items The items property
+		 * @param	 {String} attr The attrForSelected property
+		 * @param	 {Array} items The items property
 		 * @returns {void}
 		 */
 	_updateFallbackSelection(attr, items) {
-		const selection = this._selection.get();
-		if (selection && selection.length || !items.length) {
-			return;
+		if (this._selection) {
+			const selection = this._selection.get();
+			if (selection && selection.length || !items.length) {
+				return;
+			}
 		}
 
 		const expected = attr ? this._valueForItem(items[0]) : '0',
 			fallback = this.fallbackSelection;
-		if (fallback == null || fallback !== expected && fallback !== '') {
+		if (expected != null && (fallback == null || fallback !== expected && fallback !== '')) {
 			this.fallbackSelection = expected;
 		}
 	}
@@ -245,10 +375,10 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 		 * Listens to `tab-property-changed` event on a tab and
 		 * notifies about the change.
 		 *
-		 * @param  {Event} e The tab-property-changed event
-		 * @param  {Event} e.detail.item The item that changed
-		 * @param  {Event} e.detail.property The name of the changed property
-		 * @param  {Event} e.detail.value The new value of the changed property
+		 * @param	 {Event} e The tab-property-changed event
+		 * @param	 {Event} e.detail.item The item that changed
+		 * @param	 {Event} e.detail.property The name of the changed property
+		 * @param	 {Event} e.detail.value The new value of the changed property
 		 * @return {void}
 		 */
 	_tabPropertyChanged(e) {
@@ -291,7 +421,9 @@ class CosmozTabs extends Polymer.mixinBehaviors([Cosmoz.TabbableBehavior], Polym
 	}
 
 	_resetInvalidFallbacks() {
-		this.items.forEach(item => item.__invalidFallbackFor = null);
+		this.items.forEach(item => {
+			item.__invalidFallbackFor = null;
+		});
 	}
 
 	_onLinkClick(event) {

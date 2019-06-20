@@ -6,32 +6,38 @@
 
 		<title>cosmoz-tabs demo</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/web-animations-js/web-animations-next-lite.min.js"></script>
 
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-		<link rel="import" href="../../paper-input/paper-input.html" />
-		<link rel="import" href="../../paper-toggle-button/paper-toggle-button.html" />
-		<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html" />
-		<link rel="import" href="../../iron-ajax/iron-ajax.html" />
-		<link rel="import" href="../../iron-list/iron-list.html" />
-		<link rel="import" href="../../neon-animation/web-animations.html">
-		<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu-light.html">
-		<link rel="import" href="../../paper-item/paper-item.html">
-		<link rel="import" href="../../paper-listbox/paper-listbox.html">
+		<script type="module" src="/components/@polymer/paper-input/paper-input.js"></script>
+		<script type="module" src="/components/@polymer/paper-toggle-button/paper-toggle-button.js"></script>
+		<script type="module" src="/components/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
+		<script type="module" src="/components/@polymer/iron-ajax/iron-ajax.js"></script>
+		<script type="module" src="/components/@polymer/iron-list/iron-list.js"></script>
+		<script type="module" src="/components/@polymer/paper-dropdown-menu/paper-dropdown-menu-light.js"></script>
+		<script type="module" src="/components/@polymer/paper-item/paper-item.js"></script>
+		<script type="module" src="/components/@polymer/paper-listbox/paper-listbox.js"></script>
 
-		<link rel="import" href="../cosmoz-tab.html" />
-		<link rel="import" href="../cosmoz-tabs.html" />
+		<script type="module" src="../cosmoz-tab.js"></script>
+		<script type="module" src="../cosmoz-tabs.js"></script>
 
-		<custom-style>
-			<style is="custom-style" include="demo-pages-shared-styles iron-flex">
-				#container {
-					 max-width: 800px;
-				 }
+		<script type="module">
+		const documentContainer = document.createElement('template');
 
-			</style>
-		</custom-style>
+		documentContainer.innerHTML = `<custom-style>
+				<style is="custom-style" include="demo-pages-shared-styles iron-flex">
+					#container {
+						 max-width: 800px;
+					 }
+
+				</style>
+			</custom-style>`;
+
+		document.body.appendChild(documentContainer.content);
+		</script>
 	</head>
 	<body unresolved>
 		<div id="container" class="vertical-section-container centered">
@@ -42,16 +48,20 @@
 						<template is="dom-bind">
 							<div class="layout horizontal">
 								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
-								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
-								<paper-input style="margin-left: 15px" value="{{ stringify(selectedValues, selectedValues.*) }}" label="selected-values" readonly></paper-input>
+								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly=""></paper-input>
+								<paper-input style="margin-left: 15px"
+									value="{{ stringify(selectedValues, selectedValues.*) }}"
+									label="selected-values" readonly=""></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
-									<paper-listbox class="dropdown-content" slot="dropdown-content" selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
-										<paper-item attribute>null</paper-item>
+									<paper-listbox class="dropdown-content" slot="dropdown-content"
+										selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
+										<paper-item attribute="">null</paper-item>
 										<paper-item attribute="name">name</paper-item>
 									</paper-listbox>
 								</paper-dropdown-menu-light>
 							</div>
-							<cosmoz-tabs accordion="{{ accordion }}" selected="{{ selected }}" selected-values="{{ selectedValues }}" attr-for-selected="{{ attrForSelected }}">
+							<cosmoz-tabs accordion="{{ accordion }}" selected="{{ selected }}"
+								selected-values="{{ selectedValues }}" attr-for-selected="{{ attrForSelected }}">
 								<cosmoz-tab heading="Tab1" name="tab1">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -126,7 +136,7 @@
 				<template>
 					<dom-bind>
 						<template is="dom-bind">
-							<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
+							<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto=""></iron-ajax>
 							<cosmoz-tabs style="height: 400px">
 								<cosmoz-tab heading="Flex List" name="tab1">
 									<iron-list class="flex" items="[[items]]" as="item">
@@ -169,7 +179,7 @@
 					<dom-bind>
 						<template is="dom-bind">
 							<div style="height: 400px" class="layout vertical">
-								<iron-ajax url="../../iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
+								<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto=""></iron-ajax>
 								<cosmoz-tabs class="flex">
 									<cosmoz-tab heading="Flex List" name="flex">
 										<iron-list class="flex" items="[[items]]" as="item">
@@ -270,8 +280,8 @@
 				</template>
 			</demo-snippet>
 		</div>
-		<script type="text/javascript">
-		(function () {
+
+		<script type="module">
 			window.addEventListener('WebComponentsReady', () => {
 				(() => {
 					let basic = document.getElementById('basic');
@@ -282,15 +292,13 @@
 				})();
 
 				(() => {
-					var hashParam = document.getElementById('hashParam');
+					let hashParam = document.getElementById('hashParam');
 					hashParam = !hashParam.set ? hashParam.firstElementChild : hashParam;
 					hashParam.stringify = values => {
 						return JSON.stringify(values);
 					};
 				})();
-
 			});
-		})();
 		</script>
 	</body>
 </html>

@@ -6,30 +6,36 @@
 
 	<title>cosmoz-tabs router-demo</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
-	<link rel="import" href="../../iron-demo-helpers/url-bar.html" />
+	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+	<script type="module" src="/components/@polymer/iron-demo-helpers/url-bar.js"></script>
 
-	<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
-	<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
-	<link rel="import" href="../../cosmoz-page-router/cosmoz-page-router.html">
-	<link rel="import" href="../../cosmoz-page-router/cosmoz-page-route.html">
+	<script type="module" src="/components/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
+	<script type="module" src="/components/@polymer/iron-flex-layout/iron-flex-layout-classes.js"></script>
+	<script type="module" src="/components/@neovici/cosmoz-page-router/cosmoz-page-router.js"></script>
 
-	<custom-style>
-		<style is="custom-style" include="demo-pages-shared-styles iron-flex iron-flex-alignment iron-positioning">
-			cosmoz-page-router {
-				position: relative;
-			}
-		</style>
-	</custom-style>
+	<script type="module">
+		const documentContainer = document.createElement('template');
+
+		documentContainer.innerHTML = `<custom-style>
+				<style is="custom-style" include="demo-pages-shared-styles iron-flex iron-flex-alignment iron-positioning">
+					cosmoz-page-router {
+						position: relative;
+					}
+				</style>
+			</custom-style>`;
+
+		document.body.appendChild(documentContainer.content);
+		</script>
 </head>
 <body unresolved class="fullbleed">
 	<div class="layout vertical fit">
-		<url-bar in-iframe></url-bar>
+		<url-bar in-iframe=""></url-bar>
 		<cosmoz-page-router class="flex" mode="hash" url-prefix="/">
-			<cosmoz-page-route path="/" import="helpers/router-template.html" template-id="home"></cosmoz-page-route>
+			<cosmoz-page-route path="/" import="helpers/router-template.html" template-id="demo-home"></cosmoz-page-route>
 		</cosmoz-page-router>
 	</div>
-</body></html>
+</body>
+</html>

@@ -17,23 +17,15 @@
 			"dir": "./coverage",
 			"reporters": ["text-summary", "lcov"],
 			"include": [
-				"cosmoz-tab-card.html",
-				"cosmoz-tab-card.js",
-				"cosmoz-tab.html",
-				"cosmoz-tab.js",
-				"cosmoz-tabbable-behavior.html",
-				"cosmoz-tabbed-behavior.html",
-				"cosmoz-tabbed-template-behavior.html",
-				"cosmoz-tabs.html",
-				"cosmoz-tabs.js"
+				"**/cosmoz-*.js"
 			],
 			"exclude": []
 		},
 		"sauce": {
 			"browsers": [{
-				"browserName": "microsoftedge",
+				"browserName": "chrome",
 				"platform": "Windows 10",
-				"version": ""
+				"version": "latest"
 			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",

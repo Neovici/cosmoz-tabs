@@ -1,4 +1,6 @@
-<dom-module id="cosmoz-tabs-styles">
+const documentContainer = document.createElement('template');
+
+documentContainer.innerHTML = `<dom-module id="cosmoz-tabs-styles">
 	<template>
 		<style>
 			:host .badge {
@@ -26,4 +28,6 @@
 			}
 		</style>
 	</template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild(documentContainer.content);

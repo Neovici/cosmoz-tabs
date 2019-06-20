@@ -5,15 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
-	<script src="../../test-fixture/test-fixture-mocha.js"></script>
+	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script src="/components/mocha/mocha.js"></script>
+	<script src="/components/wct-mocha/wct-mocha.js"></script>
+	<script src="/components/chai/chai.js"></script>
+	<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-	<link rel="import" href="../../polymer/lib/elements/dom-bind.html">
-	<link rel="import" href="../../test-fixture/test-fixture.html">
-	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-	<link rel="import" href="./helpers/template-bind-test-helper.html">
-	<link rel="import" href="../cosmoz-tabs.html">
+	<script type="module" src="/components/@polymer/polymer/lib/elements/dom-bind.js"></script>
+	<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+	<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
+	<script type="module" src="./helpers/template-bind-test-helper.js"></script>
+	<script type="module" src="../cosmoz-tabs.js"></script>
 </head>
 <body>
 	<test-fixture id="basic">
@@ -67,8 +69,8 @@
 		</template>
 	</test-fixture>
 
-	<script>
-	(() => {
+	<script type="module">
+		import { flush as polymerFlush } from '@polymer/polymer/lib/utils/flush';
 
 		describe('basic', () => {
 			let tabs;
@@ -82,14 +84,14 @@
 				const tab = tabs.items[1];
 				tab.render();
 				expect(tab.querySelector('div')).not.to.be.ok;
-				Polymer.flush();
+				polymerFlush();
 				expect(tab.querySelector('div')).to.be.ok;
 			});
 
 			it('creates instance only once', () => {
 				const tab = tabs.items[1];
 				tab.render();
-				Polymer.flush();
+				polymerFlush();
 				const div = tab.querySelector('div');
 				expect(div).to.be.ok;
 				tab._createInstance();
@@ -112,7 +114,7 @@
 			});
 
 			it('renders tab that has prerender enabled ', () => {
-				Polymer.flush();
+				polymerFlush();
 				const tab = tabs.items[1],
 					childHelper = tab.querySelector('template-bind-test-helper');
 				expect(childHelper).to.be.ok;
@@ -135,7 +137,7 @@
 			it('updates testProp from the parentElement of cosmoz-tabs to the children of tab1', () => {
 				helper.testProp = 'tested';
 				tabs.selected = 'tab1';
-				Polymer.flush();
+				polymerFlush();
 				const tab = tabs.selectedItem,
 					childHelper = tab.querySelector('template-bind-test-helper');
 				expect(childHelper).to.be.ok;
@@ -144,7 +146,7 @@
 
 			it('updates testProp from the children of tab1 up to the parentElement of cosmoz-tabs', () => {
 				tabs.selected = 'tab1';
-				Polymer.flush();
+				polymerFlush();
 
 				const tab = tabs.selectedItem,
 					childHelper = tab.querySelector('template-bind-test-helper');
@@ -155,9 +157,6 @@
 				expect(childHelper.testProp).to.equal(helper.testProp);
 			});
 		});
-
-
-	})();
 	</script>
 </body>
 </html>
