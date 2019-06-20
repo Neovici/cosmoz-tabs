@@ -158,6 +158,7 @@
 					flush(() => {
 						list.items = nthArr(100);
 						polymerFlush();
+						tabs._debouncer.flush();
 						list.removeEventListener('iron-resize', onResize);
 
 						expect(list.getBoundingClientRect().height).to.equal(10000);
@@ -177,6 +178,7 @@
 					flush(() => {
 						list.items = nthArr(100);
 						polymerFlush();
+						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
 						expect(list.getBoundingClientRect().height).to.equal(349);
@@ -196,6 +198,7 @@
 					flush(() => {
 						list.items = nthArr(500);
 						polymerFlush();
+						tabs._debouncer.flush();
 
 						list.removeEventListener('iron-resize', onResize);
 						expect(list.getBoundingClientRect().height).to.equal(349);
