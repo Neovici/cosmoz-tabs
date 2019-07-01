@@ -1,6 +1,6 @@
 {
-	"name": "cosmoz-tabs",
-	"version": "1.0.0",
+	"name": "@neovici/cosmoz-tabs",
+	"version": "3.0.0",
 	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-tabs.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-tabs)",
 	"keywords": [
 		"polymer",
@@ -23,11 +23,13 @@
 	"scripts": {
 		"analyze": "polymer analyze --input cosmoz-*.js  > analysis.json",
 		"lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.js",
+		"preversion": "npm run lint && npm run test -- --skip-plugin sauce",
+		"postversion": "git push && git push --tags",
 		"start": "polymer serve -o",
 		"test": "polymer test"
 	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "neovici/cosmoz-page-router#semver:^3.0.0",
+		"@neovici/cosmoz-page-router": "github:neovici/cosmoz-page-router#semver:^3.0.3",
 		"@polymer/iron-flex-layout": "^3.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
@@ -40,7 +42,7 @@
 		"@webcomponents/shadycss": "^1.9.1"
 	},
 	"devDependencies": {
-		"@neovici/eslint-config": "neovici/eslint-config#semver:^1.0.0",
+		"@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
 		"@polymer/iron-collapse": "^3.0.0",
 		"@polymer/iron-component-page": "^4.0.0",
 		"@polymer/iron-demo-helpers": "^3.0.0",
