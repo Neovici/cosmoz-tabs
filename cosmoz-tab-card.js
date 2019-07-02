@@ -129,10 +129,10 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 		<paper-material id="card" elevation="[[ elevation ]]">
 			<div id="header" on-tap="_onToggleTap">
 				<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
-					style\$="[[ getIconStyle(iconColor) ]]" hidden\$="[[ !accordion ]]"></iron-icon>
+					style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
 				<h1 class="heading">[[ heading ]]</h1>
 				<slot name="card-actions"></slot>
-				<paper-icon-button class="button" hidden\$="[[ !accordion ]]" icon\$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
+				<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
 			</div>
 
 			<div id="content">

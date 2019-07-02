@@ -48,14 +48,14 @@
 						<template is="dom-bind">
 							<div class="layout horizontal">
 								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
-								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly=""></paper-input>
+								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
 								<paper-input style="margin-left: 15px"
 									value="{{ stringify(selectedValues, selectedValues.*) }}"
-									label="selected-values" readonly=""></paper-input>
+									label="selected-values" readonly></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
 									<paper-listbox class="dropdown-content" slot="dropdown-content"
 										selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
-										<paper-item attribute="">null</paper-item>
+										<paper-item attribute>null</paper-item>
 										<paper-item attribute="name">name</paper-item>
 									</paper-listbox>
 								</paper-dropdown-menu-light>
@@ -136,7 +136,7 @@
 				<template>
 					<dom-bind>
 						<template is="dom-bind">
-							<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto=""></iron-ajax>
+							<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 							<cosmoz-tabs style="height: 400px">
 								<cosmoz-tab heading="Flex List" name="tab1">
 									<iron-list class="flex" items="[[items]]" as="item">
@@ -179,7 +179,7 @@
 					<dom-bind>
 						<template is="dom-bind">
 							<div style="height: 400px" class="layout vertical">
-								<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto=""></iron-ajax>
+								<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 								<cosmoz-tabs class="flex">
 									<cosmoz-tab heading="Flex List" name="flex">
 										<iron-list class="flex" items="[[items]]" as="item">

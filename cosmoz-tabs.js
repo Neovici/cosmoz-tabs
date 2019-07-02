@@ -108,13 +108,13 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 			<paper-material elevation="1">
 				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
 					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-						<paper-tab hidden\$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
-							tab-attribute\$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
-							<a href\$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
+						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
+							tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
 								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
-									style\$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
+									style$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
 								<h1 class="heading">[[ tab.heading ]]</h1>
-								<div class="badge" hidden\$="[[ !tab.badge ]]" title\$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
 							</a>
 						</paper-tab>
 					</template>
