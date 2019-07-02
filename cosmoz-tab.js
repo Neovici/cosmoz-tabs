@@ -157,9 +157,9 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
 		<div id="header" on-tap="_onToggleTap">
-			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style\$="[[ getIconStyle(iconColor) ]]"></iron-icon>
+			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading">[[ heading ]]</h1>
-			<div class="badge" hidden\$="[[ !badge ]]" title\$="[[ badge ]]">[[ badge ]]</div>
+			<div class="badge" hidden$="[[ !badge ]]" title$="[[ badge ]]">[[ badge ]]</div>
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
 		</div>
 

@@ -35,7 +35,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs selected="tab2">
-						<cosmoz-tab heading="Tab1" name="tab1" disabled="">
+						<cosmoz-tab heading="Tab1" name="tab1" disabled>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -64,7 +64,7 @@
 			<demo-snippet>
 				<template>
 					<cosmoz-tabs selected="tab2">
-						<cosmoz-tab heading="Tab1" name="tab1" hidden="">
+						<cosmoz-tab heading="Tab1" name="tab1" hidden>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -120,8 +120,8 @@
 			<h3>accordion mode with <code>disabled</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;,&quot;tab2&quot;,&quot;tab3&quot;]">
-						<cosmoz-tab heading="Tab1" name="tab1" disabled="">
+					<cosmoz-tabs accordion selected-values="[&quot;tab1&quot;,&quot;tab2&quot;,&quot;tab3&quot;]">
+						<cosmoz-tab heading="Tab1" name="tab1" disabled>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -148,8 +148,8 @@
 			<h3>accordion mode with <code>hidden</code> <code>cosmoz-tab</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion="" selected-values="[&quot;tab2&quot;]">
-						<cosmoz-tab heading="Tab1" name="tab1" hidden="">
+					<cosmoz-tabs accordion selected-values="[&quot;tab2&quot;]">
+						<cosmoz-tab heading="Tab1" name="tab1" hidden>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
 								maximus in consectetur non, imperdiet ullamcorper risus. Donec vulputate justo nibh.
@@ -176,7 +176,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>badge</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;]">
+					<cosmoz-tabs accordion selected-values="[&quot;tab1&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab1" badge="1">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -204,7 +204,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon-color</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion="" selected-values="[&quot;tab0&quot;,&quot;tab2&quot;]">
+					<cosmoz-tabs accordion selected-values="[&quot;tab0&quot;,&quot;tab2&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab0" icon-color="red">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -232,7 +232,7 @@
 			<h3>accordion mode <code>cosmoz-tab</code> with <code>icon</code></h3>
 			<demo-snippet>
 				<template>
-					<cosmoz-tabs accordion="" selected-values="[&quot;tab1&quot;,&quot;tab3&quot;]">
+					<cosmoz-tabs accordion selected-values="[&quot;tab1&quot;,&quot;tab3&quot;]">
 						<cosmoz-tab heading="Tab1" name="tab1" icon="icons:check-box-outline-blank">
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
@@ -304,7 +304,7 @@
 									<div style$="[[ item.style]]">event: <b>{{ item.event }}</b> on: <i>{{item.heading}}</i></div>
 								</template>
 							</iron-list>
-							<cosmoz-tabs accordion="">
+							<cosmoz-tabs accordion>
 								<cosmoz-tab heading="Tab1" name="tab0" on-tab-select="_onTabSelect" on-tab-first-select="_onTabFirstSelect">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
