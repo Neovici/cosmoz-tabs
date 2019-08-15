@@ -127,7 +127,6 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 			}
 
 			:host(:not([accordion])) #content {
-				overflow-y: auto;
 				will-change: transform;
 			}
 
