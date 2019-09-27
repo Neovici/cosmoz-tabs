@@ -29,7 +29,7 @@
 		"test": "polymer test"
 	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "github:neovici/cosmoz-page-router#semver:^3.0.3",
+		"@neovici/cosmoz-page-router": "github:neovici/cosmoz-page-router#semver:^4.0.0",
 		"@polymer/iron-flex-layout": "^3.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
