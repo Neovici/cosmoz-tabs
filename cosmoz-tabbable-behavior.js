@@ -132,16 +132,16 @@ export const TabbableBehaviorImpl = {
 			index = this.items.indexOf(item);
 
 		if (index > -1) {
-			const value = this._indexToValue(index);
-			const options = {
-				bubbles: true,
-				composed: true,
-				cancelable: true,
-				detail: {
-					selected: value,
-					item
-				}
-			};
+			const value = this._indexToValue(index),
+				options = {
+					bubbles: true,
+					composed: true,
+					cancelable: true,
+					detail: {
+						selected: value,
+						item
+					}
+				};
 			if (this.dispatchEvent(new CustomEvent('tab-activate', options))) {
 				this.select(value);
 			}

@@ -253,8 +253,8 @@
 				});
 
 				test('setting disabled on cosmoz-tab updates paper-tab', () => {
-					const tab = tabs.items[1];
-					const paperTab = tabs.root.querySelector('paper-tabs').items[1];
+					const tab = tabs.items[1],
+						paperTab = tabs.root.querySelector('paper-tabs').items[1];
 					tab.disabled = true;
 					assert.isTrue(paperTab.disabled);
 				});
@@ -267,8 +267,8 @@
 				});
 
 				test('setting badge on cosmoz-tab updates paper-tab', () => {
-					const tab = tabs.items[0];
-					const paperTab = tabs.root.querySelector('paper-tabs').items[0];
+					const tab = tabs.items[0],
+						paperTab = tabs.root.querySelector('paper-tabs').items[0];
 
 					tab.badge = 'Inbox';
 					assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');
