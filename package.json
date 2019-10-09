@@ -1,7 +1,7 @@
 {
 	"name": "@neovici/cosmoz-tabs",
 	"version": "3.0.4",
-	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-tabs.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-tabs)",
+	"description": "A multi views container element that allow navigation between the views using tabs or an accordion.",
 	"keywords": [
 		"polymer",
 		"web-components"
@@ -28,8 +28,32 @@
 		"start": "polymer serve -o",
 		"test": "polymer test"
 	},
+	"release": {
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			"@semantic-release/release-notes-generator",
+			"@semantic-release/changelog",
+			"@semantic-release/github",
+			"@semantic-release/npm",
+			"@semantic-release/git"
+		],
+		"branch": "master"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "github:neovici/cosmoz-page-router#semver:^4.0.0",
+		"@neovici/cosmoz-page-router": "^4.0.1",
 		"@polymer/iron-flex-layout": "^3.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
@@ -42,7 +66,10 @@
 		"@webcomponents/shadycss": "^1.9.1"
 	},
 	"devDependencies": {
-		"@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
+		"@commitlint/cli": "^8.2.0",
+		"@commitlint/config-conventional": "^8.2.0",
+		"@neovici/eslint-config": "^1.1.7",
+		"@neovici/github-actions-eslint-annotator": "^0.2.0",
 		"@polymer/iron-collapse": "^3.0.0",
 		"@polymer/iron-component-page": "^4.0.0",
 		"@polymer/iron-demo-helpers": "^3.0.0",
@@ -54,6 +81,8 @@
 		"@polymer/paper-listbox": "^3.0.0",
 		"@polymer/paper-toggle-button": "^3.0.0",
 		"@polymer/test-fixture": "^4.0.2",
+		"@semantic-release/changelog": "^3.0.4",
+		"@semantic-release/git": "^7.0.16",
 		"@webcomponents/webcomponentsjs": "^2.0.0",
 		"babel-eslint": "^10.0.2",
 		"chai": "^4.2.0",
@@ -61,8 +90,10 @@
 		"eslint-plugin-html": "^5.0.3",
 		"eslint-plugin-import": "^2.17.3",
 		"eslint-plugin-mocha": "^5.3.0",
+		"husky": "^3.0.8",
 		"mocha": "^5.0.0",
 		"polymer-cli": "^1.9.1",
+		"semantic-release": "^16.0.0-beta.25",
 		"sinon": "^7.3.2",
 		"wct-istanbul": "^0.14.3",
 		"wct-mocha": "^1.0.1",
