@@ -33,7 +33,7 @@ jobs:
     - name: Test and report
       env:
         CC_TEST_REPORTER_ID: 9798015be3ef64095a2bacb1046d8c981f8bd35e40fda757c431366e786ef566
-        GIT_BRANCH: ${{ github.ref }}
+        GIT_BRANCH: ${{ github.ref == 'refs/heads/master' && 'master' || github.ref }}
         GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         NEO_CC_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
         NEO_CC: ./cc-test-reporter
