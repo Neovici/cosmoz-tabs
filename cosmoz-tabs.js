@@ -112,7 +112,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 							tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
 							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
 								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
-									style$="[[ _computeIconStyle(tab, selectedItem.isSelected) ]]"></iron-icon>
+									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
 								<h1 class="heading">[[ tab.heading ]]</h1>
 								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
 							</a>
