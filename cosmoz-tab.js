@@ -230,6 +230,7 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 			'_notifyProperty("disabled", disabled)',
 			'_notifyProperty("heading", heading)',
 			'_notifyProperty("badge", badge)',
+			'_notifyProperty("iconStyle", iconStyle)',
 			'_onAccordionChangedRender(accordion)'
 		];
 	}

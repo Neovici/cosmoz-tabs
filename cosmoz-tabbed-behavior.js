@@ -88,6 +88,11 @@ export const TabbedBehaviorImpl = {
 			value: '#15b0d3'
 		},
 
+		iconStyle: {
+			type: String,
+			value: undefined
+		},
+
 		/**
 		 * When not empty the element will contain a `paper-bagde` with the
 		 * label set to this property.
@@ -187,9 +192,9 @@ export const TabbedBehaviorImpl = {
 	 * @returns {string/void} Style color property and value for the icon.
 	 */
 	getIconStyle() {
-		if (this.iconColor) {
-			return 'color: ' + this.iconColor;
-		}
+		return [this.iconColor && 'color: ' + this.iconColor, this.iconStyle]
+			.filter(value => value != null)
+			.join(';');
 	},
 
 	/**
