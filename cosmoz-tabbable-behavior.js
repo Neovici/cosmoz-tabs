@@ -6,7 +6,9 @@ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map';
 import { useShadow } from '@polymer/polymer/lib/utils/settings';
 
 import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior';
-import { IronMultiSelectableBehaviorImpl, IronMultiSelectableBehavior } from '@polymer/iron-selector/iron-multi-selectable';
+import {
+	IronMultiSelectableBehaviorImpl, IronMultiSelectableBehavior
+} from '@polymer/iron-selector/iron-multi-selectable';
 
 /** @polymerBehavior */
 export const TabbableBehaviorImpl = {

@@ -6,11 +6,11 @@
 
 		<title>cosmoz-tab demo</title>
 
-		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
-		<script type="module" src="/components/@polymer/iron-list/iron-list.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-list/iron-list.js"></script>
 		<script type="module" src="../cosmoz-tab-card.js"></script>
 		<script type="module" src="../cosmoz-tab.js"></script>
 		<script type="module" src="../cosmoz-tabs.js"></script>
@@ -370,7 +370,11 @@
 		<script type="module">
 			const onSelect = function (e) {
 				// eslint-disable-next-line no-invalid-this
-				this.push('items', {event: e.type, heading: e.target.heading, style: e.type === 'tab-select' ? 'color: red' : 'color: green'});
+				this.push('items', {
+					event: e.type,
+					heading: e.target.heading,
+					style: e.type === 'tab-select' ? 'color: red' : 'color: green'
+				});
 			};
 			window.addEventListener('WebComponentsReady', () => {
 				[

@@ -35,97 +35,97 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	/* eslint-disable-next-line max-lines-per-function */
 	static get template() {
 		return html`
-		<style include="cosmoz-tabs-styles">
-			:host {
-				position: relative;
-				@apply --layout-vertical;
-			}
+			<style include="cosmoz-tabs-styles">
+				:host {
+					position: relative;
+					@apply --layout-vertical;
+				}
 
-			paper-material {
-				margin-bottom: 3px;
-			}
+				paper-material {
+					margin-bottom: 3px;
+				}
 
-			#tabs {
-				background-color: #fff;
-				--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
-			}
+				#tabs {
+					background-color: #fff;
+					--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
+				}
 
-			.heading {
-				font-family: sans-serif;
-				@apply --paper-font-common-base;
-				font-size: 1.14em;
-				font-weight: 300;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				margin-right: 1px;
-				padding: 0;
-				overflow: hidden;
-			}
+				.heading {
+					font-family: sans-serif;
+					@apply --paper-font-common-base;
+					font-size: 1.14em;
+					font-weight: 300;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					margin-right: 1px;
+					padding: 0;
+					overflow: hidden;
+				}
 
-			.icon {
-				height: 13px;
-				width: 13px;
-				margin: 0 10px 0 10px;
-				flex-shrink: 0;
-				display: none;
-				@apply --cosmoz-tabs-icon;
-			}
+				.icon {
+					height: 13px;
+					width: 13px;
+					margin: 0 10px 0 10px;
+					flex-shrink: 0;
+					display: none;
+					@apply --cosmoz-tabs-icon;
+				}
 
-			paper-tab.iron-selected .heading {
-				font-weight : 400;
-			}
+				paper-tab.iron-selected .heading {
+					font-weight : 400;
+				}
 
-			paper-tab[disabled] {
-				opacity: 0.65;
-			}
+				paper-tab[disabled] {
+					opacity: 0.65;
+				}
 
-			.link {
-				@apply --layout-horizontal;
-				@apply --layout-center-center;
-				text-decoration: none;
-				color: inherit;
-				/* TODO(accessibility): focused tab should be outlined */
-				outline: 0;
-			}
+				.link {
+					@apply --layout-horizontal;
+					@apply --layout-center-center;
+					text-decoration: none;
+					color: inherit;
+					/* TODO(accessibility): focused tab should be outlined */
+					outline: 0;
+				}
 
-			:host(:not([accordion])) #pages {
-				@apply --layout-vertical;
-				@apply --layout-flex-auto;
-				max-height: 100%;
-				max-height: calc(100% - 51px);
-			}
+				:host(:not([accordion])) #pages {
+					@apply --layout-vertical;
+					@apply --layout-flex-auto;
+					max-height: 100%;
+					max-height: calc(100% - 51px);
+				}
 
-			paper-tab[hidden],
-			:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
-				display: none !important;
-			}
+				paper-tab[hidden],
+				:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
+					display: none !important;
+				}
 
-		</style>
+			</style>
 
-		<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
+			<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
 
-		<template is="dom-if" if="[[ !accordion ]]" restamp="">
-			<paper-material elevation="1">
-				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
-					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
-							tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
-							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
-								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
-									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
-								<h1 class="heading">[[ tab.heading ]]</h1>
-								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
-							</a>
-						</paper-tab>
-					</template>
-				</paper-tabs>
-			</paper-material>
-		</template>
+			<template is="dom-if" if="[[ !accordion ]]" restamp="">
+				<paper-material elevation="1">
+					<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
+						<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
+							<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
+								tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+								<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
+									<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
+										style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
+									<h1 class="heading">[[ tab.heading ]]</h1>
+									<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+								</a>
+							</paper-tab>
+						</template>
+					</paper-tabs>
+				</paper-material>
+			</template>
 
-		<div id="pages">
-			<slot></slot>
-		</div>
-`;
+			<div id="pages">
+				<slot></slot>
+			</div>
+		`;
 	}
 
 	static get is() {
@@ -388,7 +388,9 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 			return;
 		}
 
-		const {item, property, value} = e.detail,
+		const {
+				item, property, value
+			} = e.detail,
 			index = this.items.indexOf(item);
 
 		if (index < 0 || !property || value === undefined) {
