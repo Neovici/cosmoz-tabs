@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/neovici/cosmoz-tabs/compare/v3.0.6...v3.1.0) (2020-03-16)
+
+
+### Features
+
+* upgrade to cosmoz-page-router@^6.0.0 ([fe3988a](https://github.com/neovici/cosmoz-tabs/commit/fe3988a))
+
 ## [3.0.6](https://github.com/neovici/cosmoz-tabs/compare/v3.0.5...v3.0.6) (2019-12-13)
 
 
