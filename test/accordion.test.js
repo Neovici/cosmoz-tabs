@@ -3,12 +3,10 @@ import {
 } from '@open-wc/testing';
 import { tap } from '@polymer/iron-test-helpers/mock-interactions.js';
 
+import '../cosmoz-tabs.js';
+
 suite('basic', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = await fixture(html`

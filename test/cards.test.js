@@ -2,12 +2,10 @@ import {
 	assert, html, fixture
 } from '@open-wc/testing';
 
+import '../cosmoz-tabs.js';
+
 suite('cards basic', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = tabs = await fixture(html`
@@ -65,10 +63,6 @@ suite('cards basic', () => {
 
 suite('cards accordion', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = await fixture(html`

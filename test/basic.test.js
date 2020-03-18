@@ -1,28 +1,14 @@
-/*		<test-fixture id="basic">
-			<template>
-				<cosmoz-tabs>
-					<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
-					<cosmoz-tab name="tab1" heading="Tab1" badge="2">2</cosmoz-tab>
-					<cosmoz-tab name="tab2" hidden>3</cosmoz-tab>
-					<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
-				</cosmoz-tabs>
-			</template>
-		</test-fixture>
-*/
-
 import {
 	assert, html, fixture
 } from '@open-wc/testing';
 
+import '../cosmoz-tabs.js';
+
 suite('defaults', () => {
 	let tabs;
 
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
-
 	setup(async () => {
-		tabs = tabs = await fixture(html`
+		tabs = await fixture(html`
 			<cosmoz-tabs>
 				<cosmoz-tab name="tab0">1</cosmoz-tab>
 				<cosmoz-tab name="tab1">2</cosmoz-tab>
@@ -115,12 +101,8 @@ suite('defaults', () => {
 suite('basic', () => {
 	let tabs;
 
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
-
 	setup(async () => {
-		tabs = tabs = await fixture(html`
+		tabs = await fixture(html`
 			<cosmoz-tabs>
 				<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
 				<cosmoz-tab name="tab1" heading="Tab1" badge="2">2</cosmoz-tab>

@@ -1,19 +1,18 @@
 import {
-	// assert,
+	assert,
 	html,
-	fixture
+	fixture,
+	oneEvent
 } from '@open-wc/testing';
-/*import {
+import {
 	assert as sinonAssert,
 	spy
-} from 'sinon';*/
+} from 'sinon';
+
+import '../cosmoz-tabs.js';
 
 suite('events', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = await fixture(html`
@@ -29,17 +28,12 @@ suite('events', () => {
 		});
 	});
 
-	/*
-
-	test('fires tab-select event', () => {
-		const onSelect = spy();
-
+	test('fires tab-select event', async () => {
 		assert.isUndefined(tabs.selected);
-
-		tabs.items[2].addEventListener('tab-select', onSelect);
-		tabs.selected = 2;
-
-		sinonAssert.calledOnce(onSelect);
+		setTimeout(() => {
+			tabs.selected = 2;
+		});
+		await oneEvent(tabs.items[2], 'tab-select');
 	});
 
 	test('fires tab-first-select event only once before tab-select', () => {
@@ -69,5 +63,4 @@ suite('events', () => {
 		assert.notCalled(onFirstSelect);
 		sinonAssert.calledOnce(onSelect);
 	});
-	*/
 });

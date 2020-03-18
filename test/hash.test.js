@@ -4,12 +4,11 @@ import {
 
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom';
 import { flush } from '@polymer/polymer/lib/utils/flush';
+
+import '../cosmoz-tabs.js';
+
 suite('basic', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = await fixture(html`

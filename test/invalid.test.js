@@ -2,12 +2,10 @@ import {
 	assert, html, fixture
 } from '@open-wc/testing';
 
+import '../cosmoz-tabs.js';
+
 suite('invalid', () => {
 	let tabs;
-
-	suiteSetup(async () => {
-		await import('../cosmoz-tabs.js');
-	});
 
 	setup(async () => {
 		tabs = await fixture(html`
