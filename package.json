@@ -20,6 +20,9 @@
 	"directories": {
 		"test": "test"
 	},
+	"files": [
+		"cosmoz-*.js"
+	],
 	"scripts": {
 		"lint": "eslint --cache --ext .js .",
 		"start": "es-dev-server",
