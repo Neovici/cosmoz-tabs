@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/neovici/cosmoz-tabs/compare/v3.1.0...v3.1.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* upgrade repo ([b893be1](https://github.com/neovici/cosmoz-tabs/commit/b893be1ee009345ee1aaaec6e164adb075aaff86))
+
 # [3.1.0](https://github.com/neovici/cosmoz-tabs/compare/v3.0.6...v3.1.0) (2020-03-16)
 
 
