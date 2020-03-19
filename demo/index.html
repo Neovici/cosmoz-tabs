@@ -6,20 +6,20 @@
 
 		<title>cosmoz-tabs demo</title>
 
-		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-		<script src="/components/web-animations-js/web-animations-next-lite.min.js"></script>
+		<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
-		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-		<script type="module" src="/components/@polymer/paper-input/paper-input.js"></script>
-		<script type="module" src="/components/@polymer/paper-toggle-button/paper-toggle-button.js"></script>
-		<script type="module" src="/components/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
-		<script type="module" src="/components/@polymer/iron-ajax/iron-ajax.js"></script>
-		<script type="module" src="/components/@polymer/iron-list/iron-list.js"></script>
-		<script type="module" src="/components/@polymer/paper-dropdown-menu/paper-dropdown-menu-light.js"></script>
-		<script type="module" src="/components/@polymer/paper-item/paper-item.js"></script>
-		<script type="module" src="/components/@polymer/paper-listbox/paper-listbox.js"></script>
+		<script type="module" src="/node_modules/@polymer/paper-input/paper-input.js"></script>
+		<script type="module" src="/node_modules/@polymer/paper-toggle-button/paper-toggle-button.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
+		<script type="module" src="/node_modules/@polymer/iron-list/iron-list.js"></script>
+		<script type="module" src="/node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu-light.js"></script>
+		<script type="module" src="/node_modules/@polymer/paper-item/paper-item.js"></script>
+		<script type="module" src="/node_modules/@polymer/paper-listbox/paper-listbox.js"></script>
 
 		<script type="module" src="../cosmoz-tab.js"></script>
 		<script type="module" src="../cosmoz-tabs.js"></script>
@@ -136,7 +136,7 @@
 				<template>
 					<dom-bind>
 						<template is="dom-bind">
-							<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
+							<iron-ajax url="/node_modules/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 							<cosmoz-tabs style="height: 400px">
 								<cosmoz-tab heading="Flex List" name="tab1">
 									<iron-list class="flex" items="[[items]]" as="item">
@@ -179,7 +179,7 @@
 					<dom-bind>
 						<template is="dom-bind">
 							<div style="height: 400px" class="layout vertical">
-								<iron-ajax url="/components/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
+								<iron-ajax url="/node_modules/@polymer/iron-list/demo/data/contacts.json" last-response="{{ items }}" auto></iron-ajax>
 								<cosmoz-tabs class="flex">
 									<cosmoz-tab heading="Flex List" name="flex">
 										<iron-list class="flex" items="[[items]]" as="item">

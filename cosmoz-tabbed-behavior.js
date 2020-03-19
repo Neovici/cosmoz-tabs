@@ -204,7 +204,10 @@ export const TabbedBehaviorImpl = {
 	 * @fires cosmoz-tab-toggle
 	 */
 	_onToggleTap() {
-		this.dispatchEvent(new CustomEvent('cosmoz-tab-toggle', { bubbles: true, composed: true }));
+		this.dispatchEvent(new CustomEvent('cosmoz-tab-toggle', {
+			bubbles: true,
+			composed: true
+		}));
 	}
 };
 

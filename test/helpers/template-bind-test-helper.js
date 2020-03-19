@@ -4,13 +4,9 @@ import { html } from '@polymer/polymer/lib/utils/html-tag';
 class TemplateBindTestHelper extends PolymerElement {
 	static get template() {
 		return html`
-				<span id="testContent">[[ testProp ]]</span>
-				<slot></slot>
+			<span id="testContent">[[ testProp ]]</span>
+			<slot></slot>
 		`;
-	}
-
-	static get is() {
-		return 'template-bind-test-helper';
 	}
 
 	static get properties() {
@@ -23,4 +19,4 @@ class TemplateBindTestHelper extends PolymerElement {
 		};
 	}
 }
-customElements.define(TemplateBindTestHelper.is, TemplateBindTestHelper);
+customElements.define('template-bind-test-helper', TemplateBindTestHelper);
