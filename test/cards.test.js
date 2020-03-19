@@ -8,7 +8,7 @@ suite('cards basic', () => {
 	let tabs;
 
 	setup(async () => {
-		tabs = tabs = await fixture(html`
+		tabs = await fixture(html`
 			<cosmoz-tabs selected="0">
 				<cosmoz-tab heading="Tab 1">
 					<cosmoz-tab-card heading="card 1 heading">card 1</cosmoz-tab-card>
@@ -19,10 +19,6 @@ suite('cards basic', () => {
 				<cosmoz-tab heading="Tab3">Tab 3 text</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
 	});
 
 	test('collects cosmoz-tab-card elements as items', () => {
@@ -76,10 +72,6 @@ suite('cards accordion', () => {
 				<cosmoz-tab heading="Tab3">Tab 3 text</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
 	});
 
 	test('accordion property is forwarded to cards', () => {

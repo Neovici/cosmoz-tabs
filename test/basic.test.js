@@ -15,10 +15,6 @@ suite('defaults', () => {
 				<cosmoz-tab name="tab2">3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
 	});
 
 	test('cosmoz-selected as selectedClass', () => {
@@ -110,10 +106,6 @@ suite('basic', () => {
 				<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
 	});
 
 	test('instantiates a cosmoz-tabs', () => {

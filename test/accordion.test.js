@@ -1,11 +1,17 @@
 import {
 	assert, html, fixture
 } from '@open-wc/testing';
-import { tap } from '@polymer/iron-test-helpers/mock-interactions.js';
+
+const tap = el =>
+	el.dispatchEvent(new Event('tap', {
+		bubbles: true,
+		cancelable: true,
+		composed: true
+	}));
 
 import '../cosmoz-tabs.js';
 
-suite('basic', () => {
+suite('accordion', () => {
 	let tabs;
 
 	setup(async () => {
@@ -16,10 +22,6 @@ suite('basic', () => {
 				<cosmoz-tab name="tab2">Tab text 3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		const onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		};
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged);
 	});
 
 	test('in accordion mode multi is true', () => {

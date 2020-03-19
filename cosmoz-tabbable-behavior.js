@@ -58,29 +58,6 @@ export const TabbableBehaviorImpl = {
 		multi: {
 			type: String,
 			computed: '_computeMulti(accordion)'
-		},
-
-		/**
-		 * Gets or sets the selected elements. This is used instead of `selected` when `multi`
-		 * is true.
-		 */
-		selectedValues: {
-			type: Array,
-			notify: true,
-			value() {
-				return [];
-			}
-		},
-		/**
-		 * Returns an array of currently selected items.
-		 */
-		selectedItems: {
-			type: Array,
-			readOnly: true,
-			notify: true,
-			value() {
-				return [];
-			}
 		}
 	},
 
@@ -159,9 +136,7 @@ export const TabbableBehaviorImpl = {
 	 * @returns {void}
 	 */
 	_forwardProperty(property, value, items) {
-		items.forEach(item => {
-			item.set(property, value);
-		});
+		items.forEach(item => item.set(property, value));
 	},
 
 	/**

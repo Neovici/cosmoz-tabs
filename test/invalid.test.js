@@ -16,10 +16,6 @@ suite('invalid', () => {
 				<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
 	});
 
 	test('hiding selected tab changes selection to fallbackSelection', () => {

@@ -7,7 +7,7 @@ import { flush } from '@polymer/polymer/lib/utils/flush';
 
 import '../cosmoz-tabs.js';
 
-suite('basic', () => {
+suite('hash', () => {
 	let tabs;
 
 	setup(async () => {
@@ -18,10 +18,9 @@ suite('basic', () => {
 				<cosmoz-tab name="tab2">Tab text 3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
-		let onIronItemsChanged;
-		tabs.addEventListener('iron-items-changed', onIronItemsChanged = () => {
-			tabs.removeEventListener('iron-items-changed', onIronItemsChanged);
-		});
+	});
+	suiteTeardown(() => {
+		window.location.hash = '';
 	});
 
 	test('items have links', () => {
@@ -60,6 +59,5 @@ suite('basic', () => {
 		flush();
 		assert.equal(tabs._routeHashParams[tabs.hashParam], 'tab0');
 		assert.equal(window.location.hash, '##tab=tab0');
-
 	});
 });
