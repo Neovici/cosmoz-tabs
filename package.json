@@ -3,7 +3,6 @@
 	"version": "3.1.1",
 	"description": "A multi views container element that allow navigation between the views using tabs or an accordion.",
 	"keywords": [
-		"polymer",
 		"web-components"
 	],
 	"homepage": "https://github.com/neovici/cosmoz-tabs#readme",
@@ -15,7 +14,7 @@
 		"url": "git+https://github.com/neovici/cosmoz-tabs.git"
 	},
 	"license": "Apache-2.0",
-	"author": "",
+	"author": "Neovici Development <dev@neovici.se>",
 	"main": "cosmoz-tabs.js",
 	"directories": {
 		"test": "test"
@@ -57,7 +56,7 @@
 		}
 	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "^6.0.1",
+		"@neovici/cosmoz-page-router": "^6.0.3",
 		"@polymer/iron-flex-layout": "^3.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
@@ -73,9 +72,8 @@
 		"@commitlint/cli": "^8.3.5",
 		"@commitlint/config-conventional": "^8.3.4",
 		"@neovici/eslint-config": "^1.2.0",
-		"@neovici/github-actions-eslint-annotator": "^0.4.0",
 		"@open-wc/testing": "^2.5.8",
-		"@open-wc/testing-karma": "^3.3.8",
+		"@open-wc/testing-karma": "^3.3.10",
 		"@polymer/iron-collapse": "^3.0.0",
 		"@polymer/iron-component-page": "^4.0.0",
 		"@polymer/iron-demo-helpers": "^3.0.0",
@@ -85,11 +83,13 @@
 		"@polymer/paper-item": "^3.0.0",
 		"@polymer/paper-listbox": "^3.0.0",
 		"@polymer/paper-toggle-button": "^3.0.0",
-		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/changelog": "^5.0.1",
 		"@semantic-release/git": "^9.0.0",
+		"babel-eslint": "^10.1.0",
 		"deepmerge": "^4.2.2",
-		"es-dev-server": "^1.45.2",
+		"es-dev-server": "^1.46.0",
 		"eslint": "^6.8.0",
+		"eslint-plugin-import": "^2.20.1",
 		"husky": "^4.2.3",
 		"karma": "^4.4.1",
 		"karma-firefox-launcher": "^1.3.0",
