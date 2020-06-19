@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/neovici/cosmoz-tabs/compare/v3.1.1...v3.1.2) (2020-06-19)
+
+
+### Bug Fixes
+
+* adding after-title slot ([cc1ee9d](https://github.com/neovici/cosmoz-tabs/commit/cc1ee9d9fe5f631161c4a970c639815f1364ed5d))
+
 ## [3.1.1](https://github.com/neovici/cosmoz-tabs/compare/v3.1.0...v3.1.1) (2020-03-19)
 
 
