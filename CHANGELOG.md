@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/neovici/cosmoz-tabs/compare/v3.1.2...v3.2.0) (2020-07-23)
+
+
+### Features
+
+* **hash-param:** always update selected tab with hashParam ([f6893ca](https://github.com/neovici/cosmoz-tabs/commit/f6893ca7d46c9dbc5d38b63f91746a24fbe8159a))
+
 ## [3.1.2](https://github.com/neovici/cosmoz-tabs/compare/v3.1.1...v3.1.2) (2020-06-19)
 
 
