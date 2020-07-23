@@ -178,7 +178,6 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	constructor() {
 		super();
 		this._tabPropertyChangedHandler = this._tabPropertyChanged.bind(this);
-		this._onIronResizeHandler = this._onIronResize.bind(this);
 	}
 
 	connectedCallback() {
@@ -189,10 +188,6 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		this.removeEventListener('tab-property-changed', this._tabPropertyChangedHandler);
-
-		// make sure iron-resize handler is cleaned up
-		// it is not guaranteed to have been added
-		this.removeEventListener('iron-resize', this._onIronResizeHandler);
 	}
 
 	static get observers() {
@@ -269,38 +264,6 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 			return;
 		}
 
-		if (this._hashReady) {
-			return;
-		}
-
-		this._updateSelectedFromHashParams();
-
-		// if the element is not visible at creation time,
-		// then read the hash again after it becomes visible
-		if (!this._isVisible) {
-			this._updateSelectedFromHashParamsDeferred();
-		}
-	}
-
-	/**
-	 * Defers the reading of the hash params until the element becomes visible
-	 *
-	 * Visibility change is determined by the element receiving an `iron-resize`
-	 * event.
-	 *
-	 * Can be called multiple times, the hash is read only once.
-	 * @return {[type]} [description]
-	 */
-	_updateSelectedFromHashParamsDeferred() {
-		this.removeEventListener('iron-resize', this._onIronResizeHandler);
-		this.addEventListener('iron-resize', this._onIronResizeHandler);
-	}
-
-	_onIronResize() {
-		// make sure this event is run only once
-		this.removeEventListener('iron-resize', this._onIronResizeHandler);
-
-		// read the selected tab from the hash
 		this._updateSelectedFromHashParams();
 	}
 
@@ -312,8 +275,6 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	 * @return {void}
 	 */
 	_updateSelectedFromHashParams() {
-		this._hashReady = true;
-
 		const value = this._normalizeValue(this.get(['_routeHashParams', this.hashParam])),
 			item = this._valueToItem(value),
 			invalid = item == null;
@@ -333,7 +294,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 		 * @return {void}
 		 */
 	_selectedItemChanged(selected, hashParam) {
-		if (!(hashParam && this._routeHashParams && this.items.length) || !this._hashReady) {
+		if (!(hashParam && this._routeHashParams && this.items.length)) {
 			return;
 		}
 		const item = this._valueToItem(selected),
