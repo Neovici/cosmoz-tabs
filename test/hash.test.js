@@ -67,8 +67,8 @@ suite('hash param', () => {
 		hashParam = undefined
 	} = {}) => {
 		const collapse = await fixture(html`
-			<iron-collapse .opened=${opened} no-animation>
-				<cosmoz-tabs id="tabs" .selected=${'tab0'} .hashParam=${hashParam} >
+			<iron-collapse .opened=${ opened } no-animation>
+				<cosmoz-tabs id="tabs" .selected=${ 'tab0' } .hashParam=${ hashParam } >
 					<cosmoz-tab name="tab0">Tab text 0</cosmoz-tab>
 					<cosmoz-tab name="tab1">Tab text 1</cosmoz-tab>
 					<cosmoz-tab name="tab2">Tab text 2</cosmoz-tab>
