@@ -41,13 +41,11 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 					@apply --layout-vertical;
 				}
 
-				paper-material {
-					margin-bottom: 3px;
-				}
-
 				#tabs {
 					background-color: #fff;
 					--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
+					margin-bottom: 3px;
+					box-shadow: var(--cosmoz-shadow-2dp, var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5));
 				}
 
 				.heading {
@@ -105,21 +103,19 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 			<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
 
 			<template is="dom-if" if="[[ !accordion ]]" restamp="">
-				<paper-material elevation="1">
-					<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
-						<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-							<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
-								tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
-								<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
-									<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
-										style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
-									<h1 class="heading">[[ tab.heading ]]</h1>
-									<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
-								</a>
-							</paper-tab>
-						</template>
-					</paper-tabs>
-				</paper-material>
+				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
+					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
+						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
+							tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
+								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
+									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
+								<h1 class="heading">[[ tab.heading ]]</h1>
+								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+							</a>
+						</paper-tab>
+					</template>
+				</paper-tabs>
 			</template>
 
 			<div id="pages">

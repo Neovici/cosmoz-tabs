@@ -31,14 +31,6 @@ suite('cards basic', () => {
 		});
 	});
 
-	test('cards have elevation 1', () => {
-		const tab = tabs.items[0];
-		tab.items.forEach(item => {
-			const material = item.shadowRoot.querySelector('paper-material');
-			assert.equal(material.elevation, 1);
-		});
-	});
-
 	test('cards are opened', () => {
 		const tab = tabs.items[0];
 		tab.items.forEach(item => {

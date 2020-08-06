@@ -4,7 +4,6 @@ import '@webcomponents/shadycss/entrypoints/apply-shim';
 import '@polymer/iron-icon/iron-icon';
 import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
-import '@polymer/paper-material/paper-material';
 
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
@@ -36,15 +35,20 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 	static get template() {
 		return html`
 		<style>
-
 			:host {
 				display: block;
+				position: relative;
+				box-sizing: border-box;
+				background-color: #fff;
+				@apply --cosmoz-tab-card;
 			}
 
 			:host(:not([accordion])) {
 				width: var(--cosmoz-tab-card-width, 300px);
 				border-radius: 3px;
 				margin: 15px;
+				align-self: flex-start;
+				box-shadow: var(--cosmoz-shadow-2dp, var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5));
 			}
 
 			:host(:not([accordion])) .heading {
@@ -53,14 +57,6 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 
 			:host([accordion]) {
 				width: 100%;
-			}
-
-			#card {
-				background-color: #fff;
-				@apply --cosmoz-tab-card;
-			}
-
-			:host([accordion]) #card {
 				background-color: #fafafa;
 				@apply --cosmoz-tab-card-accordion;
 			}
@@ -118,53 +114,24 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 				font-weight: 400;
 				@apply --layout-flex;
 			}
-
-			#card {
-				display: block;
-				position: relative;
-			}
-
 		</style>
 
-		<paper-material id="card" elevation="[[ elevation ]]">
-			<div id="header" on-tap="_onToggleTap">
-				<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
-					style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
-				<h1 class="heading">[[ heading ]]<slot name="after-title"></slot></h1>
-				<slot name="card-actions"></slot>
-				<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
-			</div>
+		<div id="header" on-tap="_onToggleTap" part="header">
+			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
+				style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
+			<h1 class="heading">[[ heading ]]<slot name="after-title"></slot></h1>
+			<slot name="card-actions"></slot>
+			<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
+		</div>
 
-			<div id="content">
-				<slot></slot>
-			</div>
-		</paper-material>
+		<div id="content" part="content">
+			<slot></slot>
+		</div>
 `;
 	}
 
 	static get is() {
 		return 'cosmoz-tab-card';
-	}
-
-	static get properties() {
-		return {
-			/**
-			 * The z-depth of this element, from 0-5.
-			 */
-			elevation: {
-				type: Number,
-				computed: '_computeElevation(accordion)'
-			}
-		};
-	}
-
-	/** Computes `elevation` depending on the `according` property.
-	 *
-	 * @param	 {String} accordion The hex color
-	 * @return {Number}						The CSS style
-	 */
-	_computeElevation(accordion) {
-		return accordion ? 0 : 1;
 	}
 }
 customElements.define(CosmozTabCard.is, CosmozTabCard);
