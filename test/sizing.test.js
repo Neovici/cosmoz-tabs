@@ -13,7 +13,7 @@ suite('sizing', () => {
 	suiteSetup(() => {
 		const documentContainer = document.createElement('template');
 
-		documentContainer.innerHTML = `<custom-style id="sizing-css"><style is="custom-style" include="iron-flex">
+		documentContainer.innerHTML = `<custom-style id="sizing-css"><style is="custom-style">
 		.item {
 			color: white;
 			overflow: hidden;
@@ -119,7 +119,7 @@ suite('sizing', () => {
 		const tabs = await fixture(html`
 			<cosmoz-tabs selected="tab0" style="height: 400px">
 				<cosmoz-tab name="tab0" heading="Flex">
-					<iron-list class="flex">
+					<iron-list style="flex: 1 1 0.00000001px;">
 						<template>
 							<div class="item">
 								<div style="height: 100px;">[[item]]</div>
@@ -160,7 +160,7 @@ suite('sizing', () => {
 		const tabs = await fixture(html`
 				<cosmoz-tabs style="height: 400px" fallback-selection>
 					<cosmoz-tab name="tab0" heading="Flex">
-						<iron-list id="x-list" class="flex">
+						<iron-list id="x-list" style="flex: 1 1 0.00000001px;">
 							<template>
 								<div class="item">
 									<div style="height: 100px;">[[item]]</div>
