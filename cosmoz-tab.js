@@ -1,9 +1,4 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-
-
-import '@webcomponents/shadycss/entrypoints/apply-shim';
-import '@polymer/iron-flex-layout/iron-flex-layout';
-import '@polymer/iron-flex-layout/iron-flex-layout-classes';
 import '@polymer/iron-icon/iron-icon';
 import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
@@ -13,8 +8,8 @@ import { TabbedBehavior } from './cosmoz-tabbed-behavior.js';
 import { TabbedTemplateBehavior } from './cosmoz-tabbed-template-behavior.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
 
+import { badgeStyle } from './cosmoz-tabs-styles.js';
 import './cosmoz-tab-card.js';
-import './cosmoz-tabs-styles.js';
 
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
@@ -40,7 +35,7 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 	/* eslint-disable-next-line max-lines-per-function */
 	static get template() {
 		return html`
-		<style include="iron-flex iron-positioning cosmoz-tabs-styles">
+		<style>
 
 			:host {
 				display: block;
@@ -49,8 +44,9 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 
 			:host(:not([accordion])),
 			:host(:not([accordion])) #content {
-				@apply --layout-vertical;
-				@apply --layout-flex-auto;
+				display: flex;
+				flex-direction: column;
+				flex: 1 1 auto;
 				max-height: 100%;
 			}
 
@@ -71,8 +67,8 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 
 			:host > #header {
 				cursor: pointer;
-				@apply --layout-horizontal;
-				@apply --layout-center;
+				display: flex;
+				align-items: center;
 				@apply --cosmoz-tab-header;
 				position: relative;
 			}
@@ -100,7 +96,6 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 				margin-right: 1px;
 				padding: 0;
 				overflow: hidden;
-				@apply --layout-inline-flex;
 			}
 
 			:host([accordion]) .heading {
@@ -131,8 +126,8 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 			}
 
 			:host([has-cards]:not([accordion])) #content {
-				@apply --layout-horizontal;
-				@apply --layout-wrap;
+				display: flex;
+				flex-flow: row wrap;
 			}
 
 			:host(:not([has-cards])[accordion]) #content {
@@ -149,20 +144,21 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 			paper-icon-button {
 				margin-left: auto;
 			}
+			${ badgeStyle }
 		</style>
 
 		<!--
 			header will displayed only in accordion mode.
 			Otherwise, the tab header is rendered by cosmoz-tabs using paper-tabs
 			-->
-		<div id="header" on-tap="_onToggleTap">
+		<div id="header" on-tap="_onToggleTap" part="header">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading">[[ heading ]]</h1>
-			<div class="badge" hidden$="[[ !badge ]]" title$="[[ badge ]]">[[ badge ]]</div>
+			<div class="badge" title$="[[ badge ]]">[[ badge ]]</div>
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
 		</div>
 
-		<div id="content">
+		<div id="content" part="content">
 			<slot></slot>
 		</div>
 `;
