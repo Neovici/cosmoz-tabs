@@ -1,3 +1,11 @@
+## [3.2.2](https://github.com/neovici/cosmoz-tabs/compare/v3.2.1...v3.2.2) (2020-08-10)
+
+
+### Bug Fixes
+
+* remove iron-flex-layout from cosmoz-tab-card ([181753e](https://github.com/neovici/cosmoz-tabs/commit/181753e5490b09709ab722763e70b91b4c006205))
+* replace iron-flex-layout with css ([22f94e5](https://github.com/neovici/cosmoz-tabs/commit/22f94e54b6f1c96e2a7acd3cfaa93602c61c411e))
+
 ## [3.2.1](https://github.com/neovici/cosmoz-tabs/compare/v3.2.0...v3.2.1) (2020-08-06)
 
 
