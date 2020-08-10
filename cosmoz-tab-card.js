@@ -1,6 +1,4 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-
-import '@webcomponents/shadycss/entrypoints/apply-shim';
 import '@polymer/iron-icon/iron-icon';
 import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
@@ -78,11 +76,11 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 			}
 
 			#header {
+				display: flex;
+				align-items: center;
 				background-color: #fff;
 				cursor: default;
 				-webkit-tap-highlight-color: rgba(0,0,0,0);
-				@apply --layout-horizontal;
-				@apply --layout-center;
 				@apply --cosmoz-tab-card-header;
 			}
 
@@ -107,21 +105,26 @@ class CosmozTabCard extends mixinBehaviors(TabbedBehavior, PolymerElement) {
 				--iron-icon-height: 24px;
 			}
 
+			:host(:not([accordion])) .icon,
+			:host(:not([accordion])) .button {
+				display: none;
+			}
+
 			.heading {
 				font-family: sans-serif;
 				@apply --paper-font-common-base;
 				font-size: 17px;
 				font-weight: 400;
-				@apply --layout-flex;
+				flex: 1;
 			}
 		</style>
 
 		<div id="header" on-tap="_onToggleTap" part="header">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]"
-				style$="[[ getIconStyle(iconColor) ]]" hidden$="[[ !accordion ]]"></iron-icon>
+				style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading">[[ heading ]]<slot name="after-title"></slot></h1>
 			<slot name="card-actions"></slot>
-			<paper-icon-button class="button" hidden$="[[ !accordion ]]" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
+			<paper-icon-button class="button" icon$="{{ _computeOpenedIcon(isSelected) }}"></paper-icon-button>
 		</div>
 
 		<div id="content" part="content">
