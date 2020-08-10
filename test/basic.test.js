@@ -172,12 +172,7 @@ suite('basic', () => {
 		assert.isNotNull(badge0);
 		assert.isNotNull(badge1);
 
-		assert.isTrue(badge0.hidden);
-		assert.equal(badge0.getAttribute('hidden'), '');
 		assert.equal(badge0.innerHTML, '');
-
-		assert.isFalse(badge1.hidden);
-		assert.equal(badge1.getAttribute('hidden'), undefined);
 		assert.equal(badge1.innerHTML, '2');
 	});
 
