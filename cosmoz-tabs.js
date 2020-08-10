@@ -1,7 +1,6 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 import '@webcomponents/shadycss/entrypoints/apply-shim';
 
-import '@polymer/iron-flex-layout/iron-flex-layout';
 import '@polymer/paper-tabs/paper-tab';
 import '@polymer/paper-tabs/paper-tabs';
 import '@neovici/cosmoz-page-router/cosmoz-page-location';
@@ -14,7 +13,7 @@ import { TabbableBehavior } from './cosmoz-tabbable-behavior.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
 
 import './cosmoz-tab.js';
-import './cosmoz-tabs-styles.js';
+import { badgeStyle } from './cosmoz-tabs-styles.js';
 
 /**
 `<cosmoz-tabs>` is a multi views (or pages) container element that allow navigation between the views
@@ -35,10 +34,11 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	/* eslint-disable-next-line max-lines-per-function */
 	static get template() {
 		return html`
-			<style include="cosmoz-tabs-styles">
+			<style>
 				:host {
 					position: relative;
-					@apply --layout-vertical;
+					display: flex;
+					flex-direction: column;
 				}
 
 				#tabs {
@@ -78,8 +78,10 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 				}
 
 				.link {
-					@apply --layout-horizontal;
-					@apply --layout-center-center;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
 					text-decoration: none;
 					color: inherit;
 					/* TODO(accessibility): focused tab should be outlined */
@@ -87,8 +89,9 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 				}
 
 				:host(:not([accordion])) #pages {
-					@apply --layout-vertical;
-					@apply --layout-flex-auto;
+					display: flex;
+					flex-direction: column;
+					flex: 1 1 auto;
 					max-height: 100%;
 					max-height: calc(100% - 51px);
 				}
@@ -97,7 +100,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 				:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
 					display: none !important;
 				}
-
+				${ badgeStyle }
 			</style>
 
 			<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
@@ -111,7 +114,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
 									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
 								<h1 class="heading">[[ tab.heading ]]</h1>
-								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+								<div class="badge" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
 							</a>
 						</paper-tab>
 					</template>
