@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/neovici/cosmoz-tabs/compare/v3.2.2...v3.2.3) (2020-08-14)
+
+
+### Bug Fixes
+
+* restore hide badge on negative value [#24231](https://github.com/neovici/cosmoz-tabs/issues/24231) ([b56dde3](https://github.com/neovici/cosmoz-tabs/commit/b56dde3cab95d009fc3aeb51bc2fdfe719f862c1))
+
 ## [3.2.2](https://github.com/neovici/cosmoz-tabs/compare/v3.2.1...v3.2.2) (2020-08-10)
 
 
