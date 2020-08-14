@@ -114,7 +114,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
 									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
 								<h1 class="heading">[[ tab.heading ]]</h1>
-								<div class="badge" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
 							</a>
 						</paper-tab>
 					</template>
