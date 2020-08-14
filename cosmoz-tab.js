@@ -154,7 +154,7 @@ class CosmozTab extends mixinBehaviors([TabbedBehavior, TabbableBehavior, Tabbed
 		<div id="header" on-tap="_onToggleTap" part="header">
 			<iron-icon class="icon" icon="[[ getIcon(isSelected, accordion, icon, selectedIcon) ]]" style$="[[ getIconStyle(iconColor) ]]"></iron-icon>
 			<h1 class="heading">[[ heading ]]</h1>
-			<div class="badge" title$="[[ badge ]]">[[ badge ]]</div>
+			<div class="badge" hidden$="[[ !badge ]]" title$="[[ badge ]]">[[ badge ]]</div>
 			<paper-icon-button icon="[[ _computeOpenedIcon(isSelected) ]]"></paper-icon-button>
 		</div>
 
