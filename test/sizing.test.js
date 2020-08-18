@@ -75,7 +75,7 @@ suite('sizing', () => {
 		sinonAssert.calledOnce(onResize);
 	});
 
-		test('explicitly sized tabs with element selected and flex list renders only a few items', async () => {
+	test('explicitly sized tabs with element selected and flex list renders only a few items', async () => {
 		const tabs = await fixture(html`
 			<cosmoz-tabs selected="tab0" style="height: 400px">
 				<cosmoz-tab name="tab0" heading="Flex">
