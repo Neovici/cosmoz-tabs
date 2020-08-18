@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/neovici/cosmoz-tabs/compare/v3.2.3...v3.2.4) (2020-08-18)
+
+
+### Bug Fixes
+
+* size tabs correctly when paper-tabs has different size ([93c914f](https://github.com/neovici/cosmoz-tabs/commit/93c914fb943962d0c342ee580e15ac05637cee80))
+
 ## [3.2.3](https://github.com/neovici/cosmoz-tabs/compare/v3.2.2...v3.2.3) (2020-08-14)
 
 
