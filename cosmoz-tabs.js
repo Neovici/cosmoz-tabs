@@ -91,9 +91,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 				:host(:not([accordion])) #pages {
 					display: flex;
 					flex-direction: column;
-					flex: 1 1 auto;
-					max-height: 100%;
-					max-height: calc(100% - 51px);
+					flex: 1 auto;
 				}
 
 				paper-tab[hidden],
