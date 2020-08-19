@@ -1,3 +1,10 @@
+## [3.2.5](https://github.com/neovici/cosmoz-tabs/compare/v3.2.4...v3.2.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* flex none for paper-tabs ([fc574ee](https://github.com/neovici/cosmoz-tabs/commit/fc574ee4029bdae74ffa9b00ffda7b2b187d07d4))
+
 ## [3.2.4](https://github.com/neovici/cosmoz-tabs/compare/v3.2.3...v3.2.4) (2020-08-18)
 
 
