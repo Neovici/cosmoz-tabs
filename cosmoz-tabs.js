@@ -16,7 +16,7 @@ import './cosmoz-tab.js';
 import { badgeStyle } from './cosmoz-tabs-styles.js';
 
 /**
-`<cosmoz-tabs>` is a multi views (or pages) container element that allow navigation between the views
+`<cosmoz-tabs>` is a multi views container element that allow navigation between the views
 using tabs or an accordion.
 
 ### Styling
@@ -46,6 +46,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 					--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
 					margin-bottom: 3px;
 					box-shadow: var(--cosmoz-shadow-2dp, var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5));
+					flex: none;
 				}
 
 				.heading {
@@ -88,16 +89,17 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 					outline: 0;
 				}
 
-				:host(:not([accordion])) #pages {
+				:host(:not([accordion])) #content {
 					display: flex;
 					flex-direction: column;
-					flex: 1 auto;
+					flex: auto;
 				}
 
 				paper-tab[hidden],
-				:host(:not([accordion])) #pages ::slotted(:not([is-selected])) {
+				:host(:not([accordion])) #content ::slotted(:not([is-selected])) {
 					display: none !important;
 				}
+
 				${ badgeStyle }
 			</style>
 
@@ -119,7 +121,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 				</paper-tabs>
 			</template>
 
-			<div id="pages">
+			<div id="content" part="content">
 				<slot></slot>
 			</div>
 		`;
