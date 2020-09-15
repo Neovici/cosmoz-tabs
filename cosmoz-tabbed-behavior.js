@@ -130,19 +130,6 @@ export const
 			return [this.iconColor && 'color: ' + this.iconColor, this.iconStyle]
 				.filter(value => value != null)
 				.join(';');
-		},
-
-		/**
-		 * Triggers a `cosmoz-tab-toggle` event.
-		 *
-		 * @returns {void}
-		 * @fires cosmoz-tab-toggle
-		 */
-		_onToggleTap() {
-			this.dispatchEvent(new CustomEvent('cosmoz-tab-toggle', {
-				bubbles: true,
-				composed: true
-			}));
 		}
 	},
 
