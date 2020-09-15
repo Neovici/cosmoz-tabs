@@ -33,7 +33,6 @@ export const
 				value: false,
 				reflectToAttribute: true,
 				notify: true,
-				observer: '_animatedSelectedChanged'
 			},
 
 			/**
@@ -46,17 +45,6 @@ export const
 				notify: true
 			},
 
-			/**
-			 * Accordion mode element state, true if it is in accordion mode.
-			 * Should be forwarded by a `Cosmoz.TabbableBehavior` ancestor
-			 * element.
-			 */
-			accordion: {
-				type: Boolean,
-				value: false,
-				notify: true,
-				reflectToAttribute: true
-			},
 
 			/**
 			 * Item heading text.
@@ -105,66 +93,11 @@ export const
 				notify: true
 			},
 
-			animating: {
-				type: Boolean,
-				reflectToAttribute: true,
-				value: false
-			}
 		},
 
-		created() {
-			this._onSelectedTransitionEnd = this._onSelectedTransitionEnd.bind(this);
-		},
 
 		detached() {
 			this.isActive = false;
-		},
-
-		get animated() {
-			return this.accordion;
-		},
-
-		_animatedSelectedChanged(isSelected) {
-			if (!this.animated) {
-				return;
-			}
-			const el = this.$.content,
-				style = el.style;
-
-			style.transitionDuration = 0;
-			this.animating = true;
-
-			const height = el.getBoundingClientRect()['height'],
-				from = isSelected ? '0px' : height + 'px',
-				to = !isSelected ? '0px' : height + 'px';
-
-			style.maxHeight = from;
-
-			window.requestAnimationFrame(() => {
-				this._transitionTimeout = setTimeout(() => this._onSelectedTransitionEnd(), 1000);
-				el.addEventListener('transitioncancel', this._onSelectedTransitionEnd);
-				el.addEventListener('transitionend', this._onSelectedTransitionEnd);
-
-				style.transitionDuration = '';
-				style.maxHeight = to;
-			});
-		},
-
-		/**
-		 * Listener for `transitionend` event.
-		 *
-		 * @returns {void}
-		 */
-		_onSelectedTransitionEnd() {
-			const el = this.$.content;
-			this.animating = false;
-			el.removeEventListener('transitioncancel', this._onSelectedTransitionEnd);
-			el.removeEventListener('transitionend', this._onSelectedTransitionEnd);
-			el.style.maxHeight = '';
-			if (this._transitionTimeout) {
-				window.clearTimeout(this._transitionTimeout);
-				this._transitionTimeout = null;
-			}
 		},
 
 		/**
