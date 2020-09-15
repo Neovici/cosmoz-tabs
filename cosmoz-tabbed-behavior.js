@@ -32,7 +32,7 @@ export const
 				type: Boolean,
 				value: false,
 				reflectToAttribute: true,
-				notify: true,
+				notify: true
 			},
 
 			/**
@@ -91,7 +91,7 @@ export const
 				type: String,
 				value: '',
 				notify: true
-			},
+			}
 
 		},
 
