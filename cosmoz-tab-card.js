@@ -68,4 +68,6 @@ const CosmozTabCard = ({ heading }) => html`
 	<slot></slot>
 </div>`;
 
-customElements.define('cosmoz-tab-card', component(CosmozTabCard));
+customElements.define('cosmoz-tab-card', component(CosmozTabCard, {
+	observedAttributes: ['heading']
+}));
