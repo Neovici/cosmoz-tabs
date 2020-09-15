@@ -137,7 +137,7 @@ export const
 		 * @returns {void}
 		 */
 		_forwardProperty(property, value, items) {
-			items.forEach(item => item.set(property, value));
+			items.forEach(item => item.set?.(property, value));
 		},
 
 		/**
