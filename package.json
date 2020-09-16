@@ -61,7 +61,6 @@
 		"@polymer/iron-icons": "^3.0.0",
 		"@polymer/iron-resizable-behavior": "^3.0.0",
 		"@polymer/iron-selector": "^3.0.0",
-		"@polymer/paper-icon-button": "^3.0.2",
 		"@polymer/paper-tabs": "^3.0.0",
 		"@polymer/polymer": "^3.0.0",
 		"@webcomponents/shadycss": "^1.9.5",
