@@ -7,26 +7,13 @@ import { useShadow } from '@polymer/polymer/lib/utils/settings';
 
 import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior';
 import {
-	IronMultiSelectableBehaviorImpl, IronMultiSelectableBehavior
-} from '@polymer/iron-selector/iron-multi-selectable';
+	IronSelectableBehavior
+} from '@polymer/iron-selector/iron-selectable';
 
 export const
 	/** @polymerBehavior */
 	TabbableBehaviorImpl = {
 		properties: {
-
-			/**
-			 * Toggles the accordion mode for the element.
-			 * If true the element allows multiple selections.
-			 *
-			 */
-			accordion: {
-				type: Boolean,
-				value: false,
-				notify: true,
-				reflectToAttribute: true
-			},
-
 			/**
 			 * The event that fires from items when they are selected. Selectable
 			 * will listen for this event from items and update the selection state.
@@ -51,15 +38,8 @@ export const
 			selectedAttribute: {
 				type: String,
 				value: 'is-selected'
-			},
-
-			/**
-			 * If true, multiple selections are allowed.
-			 */
-			multi: {
-				type: String,
-				computed: '_computeMulti(accordion)'
 			}
+
 		},
 
 		observers: [
@@ -67,64 +47,18 @@ export const
 		],
 
 		created() {
-			this._onToggleTabHandler = this._onToggleTab.bind(this);
 			this._onIronSelectHandler = this._onIronSelect.bind(this);
-			this._onTabActivateHandler = this._onTabActivate.bind(this);
 		},
 
 		attached() {
-			this.addEventListener('cosmoz-tab-toggle', this._onToggleTabHandler);
 			this.addEventListener('iron-select', this._onIronSelectHandler);
-			this.addEventListener('tab-activate', this._onTabActivateHandler);
 		},
 
 		detached() {
-			this.removeEventListener('cosmoz-tab-toggle', this._onToggleTabHandler);
 			this.removeEventListener('iron-select', this._onIronSelectHandler);
-			this.removeEventListener('tab-activate', this._onTabActivateHandler);
 			if (this._debouncer != null) {
 				this._debouncer.cancel();
 				this._debouncer = null;
-			}
-		},
-
-		/**
-		 * Computes the `multi` property depending on
-		 * `accordion` value
-		 *
-		 * @param  {Boolean} accordion The `accordion` property
-		 * @returns {Boolean} True if accordion is true
-		 */
-		_computeMulti(accordion) {
-			return !!accordion;
-		},
-
-
-		/**
-		 * Handles the `cosmoz-tab-toggle` fired from an item
-		 * and toggles selection on that item.
-		 *
-		 * @param  {Event} e The `cosmoz-tab-toggle` event
-		 * @returns {void}
-		 */
-		_onToggleTab(e) {
-			const item = e.target,
-				index = this.items.indexOf(item);
-
-			if (index > -1) {
-				const value = this._indexToValue(index),
-					options = {
-						bubbles: true,
-						composed: true,
-						cancelable: true,
-						detail: {
-							selected: value,
-							item
-						}
-					};
-				if (this.dispatchEvent(new CustomEvent('tab-activate', options))) {
-					this.select(value);
-				}
 			}
 		},
 
@@ -137,7 +71,7 @@ export const
 		 * @returns {void}
 		 */
 		_forwardProperty(property, value, items) {
-			items.forEach(item => item.set(property, value));
+			items.forEach(item => item.set?.(property, value));
 		},
 
 		/**
@@ -196,27 +130,6 @@ export const
 			item.dispatchEvent(new CustomEvent('tab-select', eventOpts));
 		},
 
-		_toggleSelected(value) {
-			IronMultiSelectableBehaviorImpl._toggleSelected.call(this, this._normalizeValue(value));
-		},
-
-		_onTabActivate(e) {
-			if (this.multi && this.fallbackSelection !== null && this.selectedItems.length === 1 && this.selectedItems[0] === e.detail.item) {
-				e.preventDefault();
-			}
-		},
-
-		multiChanged(multi, old) {
-			this._selection.multi = multi;
-			if (multi === true && old === false && this.selected != null) {
-				this.set('selectedValues', [this._normalizeValue(this.selected)]);
-			} else if (multi === false && old === true && this.selectedValues[0] !== undefined) {
-				this._selectMulti([this.selectedValues[0]]);
-				this.selected = this.selectedValues[0];
-			}
-			this._updateSelected();
-		},
-
 		_normalizeValue(value) {
 			if (this.attrForSelected) {
 				return value;
@@ -265,6 +178,6 @@ export const
 	/** @polymerBehavior */
 	TabbableBehavior = [
 		IronResizableBehavior,
-		IronMultiSelectableBehavior,
+		IronSelectableBehavior,
 		TabbableBehaviorImpl
 	];

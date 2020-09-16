@@ -43,10 +43,10 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 
 				#tabs {
 					background-color: #fff;
-					--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
 					margin-bottom: 3px;
 					box-shadow: var(--cosmoz-shadow-2dp, var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5));
 					flex: none;
+					--paper-tabs-selection-bar-color: var(--cosmoz-tabs-selection-bar-color, #00b4db);
 				}
 
 				.heading {
@@ -89,14 +89,14 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 					outline: 0;
 				}
 
-				:host(:not([accordion])) #content {
+				#content {
 					display: flex;
 					flex-direction: column;
 					flex: auto;
 				}
 
 				paper-tab[hidden],
-				:host(:not([accordion])) #content ::slotted(:not([is-selected])) {
+				#content ::slotted(:not([is-selected])) {
 					display: none !important;
 				}
 
@@ -105,21 +105,19 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 
 			<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
 
-			<template is="dom-if" if="[[ !accordion ]]" restamp="">
-				<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
-					<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
-						<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
-							tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
-							<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
-								<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
-									style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
-								<h1 class="heading">[[ tab.heading ]]</h1>
-								<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
-							</a>
-						</paper-tab>
-					</template>
-				</paper-tabs>
-			</template>
+			<paper-tabs id="tabs" selected="{{ selected }}" attr-for-selected="tab-attribute" no-slide="" on-iron-activate="_resetInvalidFallbacks">
+				<template is="dom-repeat" items="[[ items ]]" as="tab" index-as="tabIndex">
+					<paper-tab hidden$="[[ tab.hidden ]]" disabled="[[ tab.disabled ]]"
+						tab-attribute$="[[ _computeItemTabAttribute(tab, tabIndex, attrForSelected) ]]">
+						<a href$="[[ _computeItemLink(tab, hashParam, _routeHashParams.*) ]]" tabindex="-1" class="link" on-click="_onLinkClick">
+							<iron-icon class="icon" icon="[[ _computeIcon(tab, selectedItem.isSelected) ]]"
+								style$="[[ _computeIconStyle(tab, tab.iconStyle) ]]"></iron-icon>
+							<h1 class="heading">[[ tab.heading ]]</h1>
+							<div class="badge" hidden$="[[ !tab.badge ]]" title$="[[ tab.badge ]]">[[ tab.badge ]]</div>
+						</a>
+					</paper-tab>
+				</template>
+			</paper-tabs>
 
 			<div id="content" part="content">
 				<slot></slot>
@@ -344,7 +342,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	_tabPropertyChanged(e) {
 		e.stopPropagation();
 
-		if (this.accordion || !(this.items && this.items.length)) {
+		if (!(this.items && this.items.length)) {
 			return;
 		}
 

@@ -29,13 +29,6 @@ suite('defaults', () => {
 		assert.isTrue(tabs.items[0].isActive);
 	});
 
-	test('not accordion', () => {
-		assert.isFalse(tabs.accordion);
-	});
-
-	test('not multi', () => {
-		assert.isFalse(tabs.multi);
-	});
 
 	test('activateEvent is null', () => {
 		assert.isNull(tabs.activateEvent);
@@ -78,12 +71,6 @@ suite('defaults', () => {
 		assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[2]));
 	});
 
-	test('_onSelectedTransitionEnd sets animating false', () => {
-		const selected = tabs.selectedItem;
-		selected.animating = true;
-		selected._onSelectedTransitionEnd();
-		assert.isFalse(selected.animating);
-	});
 
 	test('_normalizeValue handles null', () => {
 		tabs.attrForSelected = null;
@@ -154,17 +141,6 @@ suite('basic', () => {
 		assert.equal(heading2.innerText, '');
 	});
 
-	test('tabs contain heading', () => {
-		const withHeading = tabs.items.filter(item => {
-			return item.heading;
-		});
-		assert.lengthOf(withHeading, 3);
-		withHeading.forEach(item => {
-			const heading = item.shadowRoot.querySelector('.heading');
-			assert.equal(heading.innerText, item.heading);
-		});
-	});
-
 	test('sets badge inside paper-tab', () => {
 		const badge0 = tabs.shadowRoot.querySelector('paper-tabs').items[0].querySelector('.badge'),
 			badge1 = tabs.shadowRoot.querySelector('paper-tabs').items[1].querySelector('.badge');
@@ -200,14 +176,6 @@ suite('basic', () => {
 		assert.equal(tabDisabled.getAttribute('disabled'), '');
 	});
 
-	test('#header is not visible', () => {
-		tabs.items.forEach(item => {
-			assert.isNotNull(item.$.header);
-			const style = window.getComputedStyle(item.$.header),
-				display = style.getPropertyValue('display');
-			assert.equal(display, 'none');
-		});
-	});
 
 	test('setting hidden on cosmoz-tab updates paper-tab', () => {
 		const tab = tabs.items[1];
