@@ -47,10 +47,9 @@ const CosmozTab = host => {
 
 		<slot @slotchange=${ onSlot }></slot>
 `;
-
 };
 
-customElements.define('cosmoz-tab', component(CosmozTab, {
+customElements.define('cosmoz-tab', class extends component(CosmozTab, {
 	observedAttributes: [
 		'hidden',
 		'disabled',
@@ -61,4 +60,13 @@ customElements.define('cosmoz-tab', component(CosmozTab, {
 		'selected-icon',
 		'is-selected'
 	]
-}));
+}) {
+	// TODO: drop this when haunted better handles native properties
+	set hidden(val) {
+		super.hidden = val;
+		this._scheduler.update();
+	}
+	get hidden() {
+		return super.hidden;
+	}
+});
