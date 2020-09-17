@@ -52,6 +52,12 @@ suite('defaults', () => {
 		assert.equal(tabs.selected, 'tab0');
 	});
 
+	test('_valueForItem from attribute and property', () => {
+		assert.equal(tabs._valueForItem(tabs.items[0]), 'tab0');
+		tabs.items[1].name = tabs.items[1].getAttribute('name');
+		assert.equal(tabs._valueForItem(tabs.items[1]), 'tab1');
+	});
+
 	test('_valueForItem handles null item', () => {
 		assert.isUndefined(tabs._valueForItem());
 		assert.isUndefined(tabs._valueForItem(null));
