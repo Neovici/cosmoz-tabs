@@ -7,6 +7,11 @@ import {
 import { useTab } from './lib/use-tab';
 
 /**
+
+@param {HTMLElement} host The host custom element
+@demo demo/tab.html
+@return {TemplateResult}
+
 `<cosmoz-tab>` is the container for a tab. It should be used in conjunction with
 `cosmoz-tabs`.
 
@@ -20,8 +25,6 @@ Custom property | Description | Default
 `--cosmoz-tab-header-selected` | Mixin applied to the header when the tab is selected | `{}`
 `--cosmoz-tab-header-accordion` | Mixin applied to the header when the tab is in accordion mode | `{}`
 `--cosmoz-tab-header-accordion-selected` | Mixin applied to the header when the tab is selected in accordion mode | `{}`
-
-@demo demo/tab.html
 */
 const CosmozTab = host => {
 	const { onSlot } = useTab(host);
