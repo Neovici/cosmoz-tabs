@@ -1,5 +1,5 @@
 import {
-	assert, html, fixture
+	assert, html, fixture, nextFrame
 } from '@open-wc/testing';
 
 import '../cosmoz-tabs.js';
@@ -169,7 +169,7 @@ suite('basic', () => {
 		const tabNormal = tabs.shadowRoot.querySelector('paper-tabs').items[0],
 			tabDisabled = tabs.shadowRoot.querySelector('paper-tabs').items[3];
 
-		assert.isFalse(tabNormal.disabled);
+		assert.isUndefined(tabNormal.disabled);
 		assert.isNull(tabNormal.getAttribute('disabled'));
 
 		assert.isTrue(tabDisabled.disabled);
@@ -177,32 +177,36 @@ suite('basic', () => {
 	});
 
 
-	test('setting hidden on cosmoz-tab updates paper-tab', () => {
+	test('setting hidden on cosmoz-tab updates paper-tab', async () => {
 		const tab = tabs.items[1];
 		tab.hidden = true;
-		const paperTab = tabs.root.querySelector('paper-tabs').items[1];
+		await nextFrame();
+		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		assert.isTrue(paperTab.hidden);
 	});
 
-	test('setting disabled on cosmoz-tab updates paper-tab', () => {
+	test('setting disabled on cosmoz-tab updates paper-tab', async () => {
 		const tab = tabs.items[1],
-			paperTab = tabs.root.querySelector('paper-tabs').items[1];
+			paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		tab.disabled = true;
+		await nextFrame();
 		assert.isTrue(paperTab.disabled);
 	});
 
-	test('setting heading on cosmoz-tab updates paper-tab', () => {
+	test('setting heading on cosmoz-tab updates paper-tab', async () => {
 		const tab = tabs.items[1];
 		tab.heading = 'Another tab';
-		const paperTab = tabs.root.querySelector('paper-tabs').items[1];
+		await nextFrame();
+		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		assert.equal(paperTab.querySelector('h1.heading').innerText, 'Another tab');
 	});
 
-	test('setting badge on cosmoz-tab updates paper-tab', () => {
+	test('setting badge on cosmoz-tab updates paper-tab', async () => {
 		const tab = tabs.items[0],
-			paperTab = tabs.root.querySelector('paper-tabs').items[0];
+			paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[0];
 
 		tab.badge = 'Inbox';
+		await nextFrame();
 		assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');
 	});
 });
