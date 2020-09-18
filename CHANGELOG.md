@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/neovici/cosmoz-tabs/compare/v3.2.5...v4.0.0) (2020-09-18)
+
+
+### Features
+
+* improve release and update deps ([09d8446](https://github.com/neovici/cosmoz-tabs/commit/09d844621e84eb41c4b1ee6e33867392ca4df676))
+
+
+### BREAKING CHANGES
+
+* converted cosmoz-tab to haunted
+
 ## [3.2.5](https://github.com/neovici/cosmoz-tabs/compare/v3.2.4...v3.2.5) (2020-08-19)
 
 
