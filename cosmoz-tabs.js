@@ -12,8 +12,11 @@ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map';
 import { TabbableBehavior } from './cosmoz-tabbable-behavior.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
 
+import {
+	isInvalid, getIcon, getIconStyle, encloses
+} from './lib/utils';
 import './cosmoz-tab.js';
-import { badgeStyle } from './cosmoz-tabs-styles.js';
+import { badge } from './lib/styles.js';
 
 /**
 `<cosmoz-tabs>` is a multi views container element that allow navigation between the views
@@ -100,7 +103,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 					display: none !important;
 				}
 
-				${ badgeStyle }
+				${ badge }
 			</style>
 
 			<cosmoz-page-location id="location" route-hash="{{ _routeHashParams }}"></cosmoz-page-location>
@@ -203,7 +206,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 		 * @return {String}								 The icon to be used
 		 */
 	_computeIcon(tab) {
-		return tab.getIcon();
+		return getIcon(tab);
 	}
 
 	/**
@@ -213,7 +216,7 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 		 * @return {String}						The CSS style for the color of the tab
 		 */
 	_computeIconStyle(tab) {
-		return tab.getIconStyle();
+		return getIconStyle(tab);
 	}
 
 	/**
@@ -368,13 +371,13 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 			return;
 		}
 		const selected = this.selectedItem;
-		if (item.invalid && item === selected) {
+		if (isInvalid(item) && item === selected) {
 			const fallback = this._valueToItem(this.fallbackSelection);
 			fallback.__invalidFallbackFor = item;
 			if (fallback !== item) {
 				this.select(this.fallbackSelection);
 			}
-		} else if (!item.invalid && selected && item === selected.__invalidFallbackFor) {
+		} else if (!isInvalid(item) && selected && item === selected.__invalidFallbackFor) {
 			selected.__invalidFallbackFor = null;
 			this.select(this._valueForItem(item));
 		}
@@ -395,11 +398,11 @@ class CosmozTabs extends mixinBehaviors(TabbableBehavior, PolymerElement) {
 	}
 
 	resizerShouldNotify(resizable) {
-		return resizable.tagName === 'PAPER-TABS' || resizable.isSelected;
+		return resizable.tagName === 'PAPER-TABS' || encloses(this.selectedItem, resizable, [this]);
 	}
 
 	resizerShouldBeNotified(resizable) {
-		return this.items.indexOf(resizable) > -1 && resizable.isSelected;
+		return encloses(this.selectedItem, resizable, [this]);
 	}
 }
 customElements.define(CosmozTabs.is, CosmozTabs);

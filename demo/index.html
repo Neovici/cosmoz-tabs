@@ -13,7 +13,6 @@
 		<script type="module" src="/node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
 		<script type="module" src="/node_modules/@polymer/paper-input/paper-input.js"></script>
-		<script type="module" src="/node_modules/@polymer/paper-toggle-button/paper-toggle-button.js"></script>
 		<script type="module" src="/node_modules/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
 		<script type="module" src="/node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js"></script>
 		<script type="module" src="/node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
@@ -48,11 +47,7 @@
 					<dom-bind id="basic">
 						<template is="dom-bind">
 							<div class="layout horizontal">
-								<paper-toggle-button checked="{{ accordion }}"><code>accordion</code></paper-toggle-button>
 								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
-								<paper-input style="margin-left: 15px"
-									value="{{ stringify(selectedValues, selectedValues.*) }}"
-									label="selected-values" readonly></paper-input>
 								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
 									<paper-listbox class="dropdown-content" slot="dropdown-content"
 										selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
@@ -61,8 +56,7 @@
 									</paper-listbox>
 								</paper-dropdown-menu-light>
 							</div>
-							<cosmoz-tabs accordion="{{ accordion }}" selected="{{ selected }}"
-								selected-values="{{ selectedValues }}" attr-for-selected="{{ attrForSelected }}">
+							<cosmoz-tabs selected="{{ selected }}" attr-for-selected="{{ attrForSelected }}">
 								<cosmoz-tab heading="Tab1" name="tab1">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,

@@ -1,5 +1,5 @@
 import {
-	assert, html, fixture
+	assert, html, fixture, nextFrame
 } from '@open-wc/testing';
 
 import '../cosmoz-tabs.js';
@@ -18,10 +18,13 @@ suite('invalid', () => {
 		`);
 	});
 
-	test('hiding selected tab changes selection to fallbackSelection', () => {
+	test('hiding selected tab changes selection to fallbackSelection', async () => {
 		tabs.selected = 'tab1';
+
 		assert.equal(tabs.selectedItem, tabs.items[1]);
 		tabs.selectedItem.hidden = true;
+
+		await nextFrame();
 
 		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		assert.isTrue(paperTab.hidden);
@@ -41,11 +44,13 @@ suite('invalid', () => {
 		assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
 	});
 
-	test('disabling selected tab changes selection to fallbackSelection', () => {
+	test('disabling selected tab changes selection to fallbackSelection', async () => {
 		tabs.selected = 'tab1';
 
 		assert.equal(tabs.selectedItem, tabs.items[1]);
 		tabs.selectedItem.disabled = true;
+
+		await nextFrame();
 
 		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		assert.isTrue(paperTab.disabled);
@@ -66,11 +71,13 @@ suite('invalid', () => {
 		assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
 	});
 
-	test('showing a fallback hidden tab selects it', () => {
+	test('showing a fallback hidden tab selects it', async () => {
 		const hiddenTab = tabs.items[1];
 		tabs.selected = 'tab1';
 		assert.equal(tabs.selectedItem, hiddenTab);
 		hiddenTab.hidden = true;
+
+		await nextFrame();
 
 		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
 		assert.isTrue(paperTab.hidden);
@@ -78,10 +85,12 @@ suite('invalid', () => {
 		assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
 
 		hiddenTab.hidden = false;
+		await nextFrame();
+
 		assert.equal(tabs.selectedItem, hiddenTab);
 	});
 
-	test('enabling a fallback disabled tab selects	it', () => {
+	test('enabling a fallback disabled tab selects	it', async () => {
 		const disabledTab = tabs.items[3];
 		tabs.selected = 'tab1';
 		assert.equal(tabs.selectedItem, tabs.items[1]);
@@ -93,6 +102,7 @@ suite('invalid', () => {
 		assert.equal(tabs.selectedItem, tabs._valueToItem(tabs.fallbackSelection));
 
 		disabledTab.disabled = false;
+		await nextFrame();
 		assert.equal(tabs.selectedItem, disabledTab);
 	});
 

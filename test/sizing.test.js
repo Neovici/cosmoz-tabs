@@ -69,7 +69,7 @@ suite('sizing', () => {
 
 		list.removeEventListener('iron-resize', onResize);
 
-		assert.equal(list.getBoundingClientRect().height, 10000);
+		assert.closeTo(list.getBoundingClientRect().height, 10000, 0.1);
 		assert.lengthOf(list.queryAllEffectiveChildren('.item'), 100);
 
 		sinonAssert.calledOnce(onResize);
@@ -109,7 +109,7 @@ suite('sizing', () => {
 
 		list.removeEventListener('iron-resize', onResize);
 
-		assert.equal(list.getBoundingClientRect().height, 349);
+		assert.closeTo(list.getBoundingClientRect().height, 349, 0.1);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 
@@ -153,7 +153,7 @@ suite('sizing', () => {
 		tabs._debouncer.flush();
 		list.removeEventListener('iron-resize', onResize);
 
-		assert.equal(list.getBoundingClientRect().height, 349);
+		assert.closeTo(list.getBoundingClientRect().height, 349, 0.1);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 
