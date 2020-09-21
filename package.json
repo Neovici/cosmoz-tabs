@@ -58,13 +58,9 @@
 	},
 	"dependencies": {
 		"@neovici/cosmoz-page-router": "^6.0.3",
+		"@neovici/cosmoz-utils": "^3.13.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
-		"@polymer/iron-resizable-behavior": "^3.0.0",
-		"@polymer/iron-selector": "^3.0.0",
-		"@polymer/paper-tabs": "^3.0.0",
-		"@polymer/polymer": "^3.0.0",
-		"@webcomponents/shadycss": "^1.9.5",
 		"haunted": "^4.7.0"
 	},
 	"devDependencies": {
@@ -80,8 +76,6 @@
 		"@polymer/iron-list": "^3.1.0",
 		"@polymer/paper-dropdown-menu": "^3.1.0",
 		"@polymer/paper-input": "^3.2.1",
-		"@polymer/paper-item": "^3.0.0",
-		"@polymer/paper-listbox": "^3.0.0",
 		"@semantic-release/changelog": "^5.0.1",
 		"@semantic-release/git": "^9.0.0",
 		"babel-eslint": "^10.1.0",
@@ -95,6 +89,6 @@
 		"karma-sauce-launcher": "^4.0.0",
 		"semantic-release": "^17.0.6",
 		"sinon": "^9.0.3",
-		"typescript": "^4.0.2"
+		"typescript": "^4.0.3"
 	}
 }
