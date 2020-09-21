@@ -18,8 +18,6 @@
 		<script type="module" src="/node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
 		<script type="module" src="/node_modules/@polymer/iron-list/iron-list.js"></script>
 		<script type="module" src="/node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu-light.js"></script>
-		<script type="module" src="/node_modules/@polymer/paper-item/paper-item.js"></script>
-		<script type="module" src="/node_modules/@polymer/paper-listbox/paper-listbox.js"></script>
 
 		<script type="module" src="../cosmoz-tab.js"></script>
 		<script type="module" src="../cosmoz-tabs.js"></script>
@@ -48,15 +46,8 @@
 						<template is="dom-bind">
 							<div class="layout horizontal">
 								<paper-input style="margin-left: 15px" value="[[ selected ]]" label="selected" readonly></paper-input>
-								<paper-dropdown-menu-light style="margin-left: 15px" label="attr-for-selected">
-									<paper-listbox class="dropdown-content" slot="dropdown-content"
-										selected="{{ attrForSelected }}" attr-for-selected="attribute" fallback-selection="name">
-										<paper-item attribute>null</paper-item>
-										<paper-item attribute="name">name</paper-item>
-									</paper-listbox>
-								</paper-dropdown-menu-light>
 							</div>
-							<cosmoz-tabs selected="{{ selected }}" attr-for-selected="{{ attrForSelected }}">
+							<cosmoz-tabs selected="{{ selected }}">
 								<cosmoz-tab heading="Tab1" name="tab1">
 									<p>
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa ante,
