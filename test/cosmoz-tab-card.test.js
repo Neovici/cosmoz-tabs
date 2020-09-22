@@ -4,7 +4,7 @@ import {
 
 import '../cosmoz-tabs.js';
 
-suite('cards basic', () => {
+suite('cosmoz-tab-card', () => {
 	let tabs;
 
 	setup(async () => {

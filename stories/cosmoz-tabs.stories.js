@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from 'haunted';
 import '../cosmoz-tabs';
 
 export default {
