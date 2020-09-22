@@ -48,4 +48,4 @@ const Tabs = host => {
 	`;
 };
 
-customElements.define('cosmoz-tabs', component(Tabs));
+customElements.define('cosmoz-tabs', component(Tabs, { observedAttributes: ['selected']}));

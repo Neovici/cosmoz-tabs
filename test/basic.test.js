@@ -4,89 +4,6 @@ import {
 
 import '../cosmoz-tabs.js';
 
-suite('defaults', () => {
-	let tabs;
-
-	setup(async () => {
-		tabs = await fixture(html`
-			<cosmoz-tabs>
-				<cosmoz-tab name="tab0">1</cosmoz-tab>
-				<cosmoz-tab name="tab1">2</cosmoz-tab>
-				<cosmoz-tab name="tab2">3</cosmoz-tab>
-			</cosmoz-tabs>
-		`);
-	});
-
-	test('cosmoz-selected as selectedClass', () => {
-		assert.equal(tabs.selectedClass, 'cosmoz-selected');
-	});
-
-	test('is-selected as selectedAttribute', () => {
-		assert.equal(tabs.selectedAttribute, 'is-selected');
-	});
-
-	test('first tab isActive', () => {
-		assert.isTrue(tabs.items[0].isActive);
-	});
-
-
-	test('activateEvent is null', () => {
-		assert.isNull(tabs.activateEvent);
-	});
-
-	test('cosmoz-tab as selectable', () => {
-		assert.equal(tabs.selectable, 'cosmoz-tab');
-	});
-
-	test('undefined hashParam', () => {
-		assert.isUndefined(tabs.hashParam);
-	});
-
-
-	test('attrForSelected defaults to name', () => {
-		assert.equal(tabs.attrForSelected, 'name');
-	});
-
-	test('fallbackSelection is 0', () => {
-		assert.equal(tabs.fallbackSelection, 'tab0');
-		assert.equal(tabs.selected, 'tab0');
-	});
-
-	test('_valueForItem from attribute and property', () => {
-		assert.equal(tabs._valueForItem(tabs.items[0]), 'tab0');
-		tabs.items[1].name = tabs.items[1].getAttribute('name');
-		assert.equal(tabs._valueForItem(tabs.items[1]), 'tab1');
-	});
-
-	test('_valueForItem handles null item', () => {
-		assert.isUndefined(tabs._valueForItem());
-		assert.isUndefined(tabs._valueForItem(null));
-	});
-
-	test('_valueForItem handles null attrForSelected', () => {
-		tabs.attrForSelected = null;
-		assert.deepEqual(tabs.selectedItem, tabs.items[0]);
-		assert.equal(tabs._valueForItem(tabs.selectedItem), 0);
-		assert.equal(tabs._valueForItem(tabs.items[1]), 1);
-		assert.equal(tabs._valueForItem(tabs.items[2]), 2);
-	});
-
-	test('resizerShouldBeNotified returns true for selectedItem', () => {
-		assert.isTrue(tabs.resizerShouldBeNotified(tabs.selectedItem));
-		assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[1]));
-		assert.isFalse(tabs.resizerShouldBeNotified(tabs.items[2]));
-	});
-
-
-	test('_normalizeValue handles null', () => {
-		tabs.attrForSelected = null;
-		assert.isUndefined(tabs._normalizeValue());
-		assert.isNull(tabs._normalizeValue(null));
-		assert.equal(tabs._normalizeValue(1), 1);
-	});
-
-});
-
 suite('basic', () => {
 	let tabs;
 
@@ -105,114 +22,74 @@ suite('basic', () => {
 		assert.equal(tabs.tagName, 'COSMOZ-TABS');
 	});
 
-	test('collects cosmoz-tab elements as items', () => {
-		assert.isArray(tabs.items);
-		assert.lengthOf(tabs.items, 4);
-		tabs.items.forEach(item => {
-			assert.equal(item.tagName, 'COSMOZ-TAB');
-		});
-	});
-
-	test('selects an item', () => {
-		assert.equal(tabs.selected, 'tab0');
-		assert.equal(tabs.selectedItem, tabs.items[0]);
+	test('selects an item', async () => {
+		assert.equal(tabs.selected, undefined);
+		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab0');
 
 		tabs.selected = 'tab1';
-		assert.equal(tabs.selectedItem, tabs.items[1]);
+		await nextFrame();
+		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab1');
 	});
 
-	test('selected item has selectedClass and selectedAttribute', () => {
-		assert.equal(tabs.selectedItem.getAttribute(tabs.selectedAttribute), '');
-		assert.isTrue(tabs.selectedItem.classList.contains(tabs.selectedClass));
+	test('contains a tablist with the same number of tabs', () => {
+		assert.lengthOf(tabs.shadowRoot.querySelectorAll('[role=tab]'), tabs.querySelectorAll('cosmoz-tab').length);
 	});
 
-	test('contains a paper-tabs with same number of paper-tab elements', () => {
-		const paperTabs = tabs.shadowRoot.querySelector('paper-tabs');
-		assert.isNotNull(paperTabs);
-		assert.equal(paperTabs.is, 'paper-tabs');
-		assert.equal(paperTabs.items.length, tabs.items.length);
+	test('sets heading inside tab', () => {
+		assert.deepEqual(
+			Array.from(tabs.shadowRoot.querySelectorAll('[role=tab]>span')).map(e => e.innerText),
+			Array.from(tabs.querySelectorAll('cosmoz-tab')).map(t => t.heading ?? '')
+		);
 	});
 
-	test('sets heading inside paper-tab', () => {
-		const heading0 = tabs.shadowRoot.querySelector('paper-tabs').items[0].querySelector('h1.heading'),
-			heading1 = tabs.shadowRoot.querySelector('paper-tabs').items[1].querySelector('h1.heading'),
-			heading2 = tabs.shadowRoot.querySelector('paper-tabs').items[2].querySelector('h1.heading');
-
-		assert.isNotNull(heading0);
-		assert.isNotNull(heading1);
-		assert.isNotNull(heading2);
-
-		assert.equal(heading0.innerText, tabs.items[0].heading);
-		assert.equal(heading1.innerText, tabs.items[1].heading);
-		assert.equal(heading2.innerText, '');
+	test('sets badge inside tab', () => {
+		assert.lengthOf(tabs.shadowRoot.querySelectorAll('.badge'), 1);
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role=tab]')[1].querySelector('.badge').innerText, '2');
 	});
 
-	test('sets badge inside paper-tab', () => {
-		const badge0 = tabs.shadowRoot.querySelector('paper-tabs').items[0].querySelector('.badge'),
-			badge1 = tabs.shadowRoot.querySelector('paper-tabs').items[1].querySelector('.badge');
+	test('sets hidden on tab', () => {
+		const _tabs = tabs.shadowRoot.querySelectorAll('[role=tab]'),
+			tabVisible = _tabs[0],
+			tabHidden = _tabs[2];
 
-		assert.isNotNull(badge0);
-		assert.isNotNull(badge1);
-
-		assert.equal(badge0.innerHTML, '');
-		assert.equal(badge1.innerHTML, '2');
-	});
-
-	test('sets hidden on paper-tab', () => {
-		const tabVisible = tabs.shadowRoot.querySelector('paper-tabs').items[0],
-			tabHidden = tabs.shadowRoot.querySelector('paper-tabs').items[2];
-
-		assert.isFalse(tabVisible.hidden);
 		assert.isNull(tabVisible.getAttribute('hidden'));
 		assert.notEqual(window.getComputedStyle(tabVisible).getPropertyValue('display'), 'none');
 
-		assert.isTrue(tabHidden.hidden);
 		assert.equal(tabHidden.getAttribute('hidden'), '');
 		assert.equal(window.getComputedStyle(tabHidden).getPropertyValue('display'), 'none');
 	});
 
-	test('sets disabled on paper-tab', () => {
-		const tabNormal = tabs.shadowRoot.querySelector('paper-tabs').items[0],
-			tabDisabled = tabs.shadowRoot.querySelector('paper-tabs').items[3];
+	test('sets disabled on tab', () => {
+		const _tabs = tabs.shadowRoot.querySelectorAll('[role=tab]'),
+			tabNormal = _tabs[0],
+			tabDisabled = _tabs[3];
 
-		assert.isUndefined(tabNormal.disabled);
 		assert.isNull(tabNormal.getAttribute('disabled'));
-
-		assert.isTrue(tabDisabled.disabled);
 		assert.equal(tabDisabled.getAttribute('disabled'), '');
 	});
 
-
-	test('setting hidden on cosmoz-tab updates paper-tab', async () => {
-		const tab = tabs.items[1];
-		tab.hidden = true;
+	test('setting hidden on cosmoz-tab updates tab', async () => {
+		tabs.querySelectorAll('cosmoz-tab')[1].toggleAttribute('hidden', true);
 		await nextFrame();
-		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
-		assert.isTrue(paperTab.hidden);
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role=tab]')[1].getAttribute('hidden'), '');
 	});
 
-	test('setting disabled on cosmoz-tab updates paper-tab', async () => {
-		const tab = tabs.items[1],
-			paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
-		tab.disabled = true;
+	test('setting disabled on cosmoz-tab updates tab', async () => {
+		tabs.querySelectorAll('cosmoz-tab')[1].toggleAttribute('disabled', true);
 		await nextFrame();
-		assert.isTrue(paperTab.disabled);
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role=tab]')[1].getAttribute('disabled'), '');
 	});
 
 	test('setting heading on cosmoz-tab updates paper-tab', async () => {
-		const tab = tabs.items[1];
-		tab.heading = 'Another tab';
+		tabs.querySelectorAll('cosmoz-tab')[1].setAttribute('heading', 'Another tab');
 		await nextFrame();
-		const paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[1];
-		assert.equal(paperTab.querySelector('h1.heading').innerText, 'Another tab');
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role=tab]')[1].querySelector('span').innerText, 'Another tab');
+
 	});
 
 	test('setting badge on cosmoz-tab updates paper-tab', async () => {
-		const tab = tabs.items[0],
-			paperTab = tabs.shadowRoot.querySelector('paper-tabs').items[0];
-
-		tab.badge = 'Inbox';
+		tabs.querySelectorAll('cosmoz-tab')[0].setAttribute('badge', 'Inbox');
 		await nextFrame();
-		assert.equal(paperTab.querySelector('.badge').innerHTML, 'Inbox');
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role=tab]')[0].querySelector('.badge').innerText, 'Inbox');
 	});
 });
