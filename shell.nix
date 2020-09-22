@@ -9,7 +9,7 @@ with import
   )
 { };
 mkShell {
-  buildInputs = [ nodejs-12_x python3 firefox jre ];
+  buildInputs = [ nodejs-12_x python3 firefox jre nodePackages.prettier ];
   shellHook = ''
     export CHROME_BIN=${google-chrome}/bin/google-chrome-stable
     export PATH=$(npm bin):$PATH
