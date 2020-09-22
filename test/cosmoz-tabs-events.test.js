@@ -2,8 +2,6 @@ import {
 	assert,
 	html,
 	fixtureSync,
-	fixture,
-	nextFrame,
 	oneEvent
 } from '@open-wc/testing';
 import {

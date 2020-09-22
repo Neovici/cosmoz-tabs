@@ -11,7 +11,7 @@ suite('cosmoz-tabs', () => {
 		tabs = await fixture(html`
 			<cosmoz-tabs>
 				<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
-				<cosmoz-tab name="tab1" heading="Tab1" badge="2">2</cosmoz-tab>
+				<cosmoz-tab name="tab1" heading="Tab1" badge="2" icon="radio-button-unchecked" selected-icon="radio-button-checked">2</cosmoz-tab>
 				<cosmoz-tab name="tab2" hidden>3</cosmoz-tab>
 				<cosmoz-tab name="tab3" heading="Tab3" disabled>3</cosmoz-tab>
 			</cosmoz-tabs>
@@ -33,6 +33,14 @@ suite('cosmoz-tabs', () => {
 
 	test('contains a tablist with the same number of tabs', () => {
 		assert.lengthOf(tabs.shadowRoot.querySelectorAll('[role=tab]'), tabs.querySelectorAll('cosmoz-tab').length);
+	});
+
+	test('sets icon inside tab', async () => {
+		const icon = tabs.shadowRoot.querySelectorAll('[role="tab"]')[1].querySelector('iron-icon');
+		assert.equal(icon.getAttribute('icon'), 'radio-button-unchecked');
+		tabs.selected = 'tab1';
+		await nextFrame();
+		assert.equal(tabs.shadowRoot.querySelectorAll('[role="tab"]')[1].querySelector('iron-icon').getAttribute('icon'), 'radio-button-checked');
 	});
 
 	test('sets heading inside tab', () => {
