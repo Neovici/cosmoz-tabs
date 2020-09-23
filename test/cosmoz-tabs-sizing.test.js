@@ -56,7 +56,7 @@ suite('cosmoz-tabs sizing', () => {
 		list.items = Array.from(Array(100).keys());
 		await nextFrame();
 
-		assert.closeTo(list.getBoundingClientRect().height, 10000, 0.1);
+		assert.closeTo(list.getBoundingClientRect().height, 10000, 1);
 		assert.lengthOf(list.queryAllEffectiveChildren('.item'), 100);
 	});
 
@@ -87,7 +87,7 @@ suite('cosmoz-tabs sizing', () => {
 		list.items = Array.from(Array(500).keys());
 		await nextFrame();
 
-		assert.closeTo(list.getBoundingClientRect().height, 349, 0.1);
+		assert.closeTo(list.getBoundingClientRect().height, 349, 1);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 	});
@@ -123,7 +123,7 @@ suite('cosmoz-tabs sizing', () => {
 		tabs.selected = 'tab0';
 		await nextFrame();
 
-		assert.closeTo(list.getBoundingClientRect().height, 349, 0.1);
+		assert.closeTo(list.getBoundingClientRect().height, 349, 1);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 

@@ -188,4 +188,11 @@ suite('cosmoz-tabs', () => {
 		assert.equal(tabs.selected, 'tab1');
 		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab1');
 	});
+
+	test('ctrl + click', async () => {
+		tabs.shadowRoot.querySelectorAll('[role=tab]')[1].dispatchEvent(new MouseEvent('click', { ctrlKey: true }));
+		await nextFrame();
+		assert.notEqual(tabs.selected, 'tab1');
+		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab0');
+	});
 });
