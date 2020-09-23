@@ -7,7 +7,8 @@ import {
 	style, renderTab
 } from './lib/render';
 import './cosmoz-tab.js';
-
+import '@polymer/iron-icon';
+import '@polymer/iron-icons';
 /**
 
 @param {HTMLElement} host The host custom element
