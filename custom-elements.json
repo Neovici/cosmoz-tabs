@@ -36,6 +36,24 @@
 				}
 			],
 			"cssProperties": []
+		},
+		{
+			"name": "cosmoz-tab-card",
+			"properties": [
+				{
+					"name": "heading",
+					"type": "String",
+					"description": "The heading"
+				}
+			],
+			"events": [],
+			"slots": [
+				{
+					"name": "",
+					"description": "Content inside the cosmoz-tab-card"
+				}
+			],
+			"cssProperties": []
 		}
 	]
 }
