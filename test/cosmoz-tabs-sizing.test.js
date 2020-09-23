@@ -5,29 +5,6 @@ import '@polymer/iron-list';
 import '../cosmoz-tabs.js';
 
 suite('cosmoz-tabs sizing', () => {
-	suiteSetup(() => {
-		const customStyle = document.createElement('template');
-		customStyle.innerHTML = `<custom-style id="sizing-css"><style is="custom-style">
-			.item {
-				color: white;
-				overflow: hidden;
-			}
-
-			.item:nth-child(odd) {
-				background-color: green;
-			}
-
-			.item:nth-child(even) {
-				background-color: red;
-			}
-		</style></custom-style>`;
-		document.body.appendChild(customStyle.content);
-	});
-
-	suiteTeardown(() =>
-		document.body.removeChild(document.querySelector('#sizing-css'))
-	);
-
 	test('sizes non explicitly sized tabs and list without flex renders max items', async () => {
 		const tabs = await fixture(html`
 			<cosmoz-tabs selected="tab0">
@@ -54,6 +31,7 @@ suite('cosmoz-tabs sizing', () => {
 			list = tabs.querySelector('iron-list');
 
 		list.items = Array.from(Array(100).keys());
+		await nextFrame();
 		await nextFrame();
 
 		assert.closeTo(list.getBoundingClientRect().height, 10000, 1);
@@ -86,8 +64,9 @@ suite('cosmoz-tabs sizing', () => {
 
 		list.items = Array.from(Array(500).keys());
 		await nextFrame();
+		await nextFrame();
 
-		assert.closeTo(list.getBoundingClientRect().height, 349, 1);
+		assert.closeTo(list.getBoundingClientRect().height, 350, 5);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 	});
@@ -122,8 +101,9 @@ suite('cosmoz-tabs sizing', () => {
 
 		tabs.selected = 'tab0';
 		await nextFrame();
+		await nextFrame();
 
-		assert.closeTo(list.getBoundingClientRect().height, 349, 1);
+		assert.closeTo(list.getBoundingClientRect().height, 350, 5);
 		assert.isAbove(list.queryAllEffectiveChildren('.item').length, 3);
 		assert.isBelow(list.queryAllEffectiveChildren('.item').length, 12);
 
