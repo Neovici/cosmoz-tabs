@@ -28,18 +28,14 @@ Custom property | Description | Default
 const Tabs = host => {
 	const {
 		tabs,
-		elected,
 		onSlot,
-		onElect
+		...opts
 	} = useTabs(host);
 
 	return html`
 		<style>${ style }</style>
 		<div class="tabs" part="tabs" role="tablist">
-			${ tabs.map(renderTab({
-				elected,
-				onElect
-			})) }
+			${ tabs.map(renderTab(opts)) }
 		</div>
 
 		<div id="content" part="content">
@@ -48,4 +44,6 @@ const Tabs = host => {
 	`;
 };
 
-customElements.define('cosmoz-tabs', component(Tabs, { observedAttributes: ['selected']}));
+customElements.define('cosmoz-tabs', component(Tabs, {
+	observedAttributes: ['selected', 'hash-param']
+}));
