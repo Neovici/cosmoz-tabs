@@ -1,3 +1,28 @@
+# [5.0.0](https://github.com/neovici/cosmoz-tabs/compare/v4.0.0...v5.0.0) (2020-09-24)
+
+
+### Bug Fixes
+
+* **review:** improve api ([2cf2fbe](https://github.com/neovici/cosmoz-tabs/commit/2cf2fbe186bc820065d97db0d711b7e1df2992e1))
+* compute href only for valid tabs ([0e797c1](https://github.com/neovici/cosmoz-tabs/commit/0e797c1e9ba373715becb561129aebc6926d1d2a))
+* improves compatibility ([7ed6e0b](https://github.com/neovici/cosmoz-tabs/commit/7ed6e0b2efbed83fdbe2b1c8e45eb468115ca906))
+* tab css sizing ([74dfaae](https://github.com/neovici/cosmoz-tabs/commit/74dfaaec67c250775895ce37e6d91828835696d6))
+* **cosmoz-tab:** correct getIcon ([f9c6448](https://github.com/neovici/cosmoz-tabs/commit/f9c64488d40beb5768ea3500a9c4b7b03ea31541))
+* **cosmoz-tabs:** adds back tab-select and tab-first-select events ([5c38537](https://github.com/neovici/cosmoz-tabs/commit/5c385377d8917fdbe77c714745cc798d7ad659d9))
+* **cosmoz-tabs:** restore hash-param handling ([e15fc93](https://github.com/neovici/cosmoz-tabs/commit/e15fc930dc9a808c3d130fc1730889b1572e396c))
+
+
+### Features
+
+* **cosmoz-tabs:** reimplement hash-param ([1cf7353](https://github.com/neovici/cosmoz-tabs/commit/1cf7353ddef3db3430a78113702cc1ff284826c5))
+* add a basic storybook ([fc4a4f9](https://github.com/neovici/cosmoz-tabs/commit/fc4a4f988fb6b33c79e1e9f7c44d2c68ce90f03c))
+* **cosmoz-tabs:** refactor ([1b29c6a](https://github.com/neovici/cosmoz-tabs/commit/1b29c6a5c04a0c3a6d92ab4d256ba30dd2f08a21))
+
+
+### BREAKING CHANGES
+
+* **cosmoz-tabs:** converted to haunted with api changes
+
 # [4.0.0](https://github.com/neovici/cosmoz-tabs/compare/v3.2.5...v4.0.0) (2020-09-18)
 
 
