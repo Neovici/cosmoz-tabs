@@ -1,3 +1,11 @@
+## [5.0.1](https://github.com/neovici/cosmoz-tabs/compare/v5.0.0...v5.0.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* restore isSelected cosmoz-tab notification ([3905cd7](https://github.com/neovici/cosmoz-tabs/commit/3905cd7f2c0df7f6492b29b2afebadf10d7fae7c))
+* restore selected-item cosmoz-tabs notifications ([d08a992](https://github.com/neovici/cosmoz-tabs/commit/d08a992697f9bbd173f2945995e5ccabcdadfd21))
+
 # [5.0.0](https://github.com/neovici/cosmoz-tabs/compare/v4.0.0...v5.0.0) (2020-09-24)
 
 
