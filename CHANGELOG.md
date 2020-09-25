@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/neovici/cosmoz-tabs/compare/v5.0.1...v5.0.2) (2020-09-25)
+
+
+### Bug Fixes
+
+* **cosmoz-tabs:** delays initial setTabs to microtask ([2d8acd5](https://github.com/neovici/cosmoz-tabs/commit/2d8acd5447943c6861adf20a42001eb0d55e206e))
+
 ## [5.0.1](https://github.com/neovici/cosmoz-tabs/compare/v5.0.0...v5.0.1) (2020-09-24)
 
 
