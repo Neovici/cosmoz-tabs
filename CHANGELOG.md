@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/neovici/cosmoz-tabs/compare/v5.0.2...v5.0.3) (2020-09-30)
+
+
+### Bug Fixes
+
+* initial "selected-changed" event is not fired ([5e7086a](https://github.com/neovici/cosmoz-tabs/commit/5e7086a22996f7eb3f072db3ec3eb5f55a4e965a))
+
 ## [5.0.2](https://github.com/neovici/cosmoz-tabs/compare/v5.0.1...v5.0.2) (2020-09-25)
 
 
