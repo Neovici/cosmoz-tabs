@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/neovici/cosmoz-tabs/compare/v5.0.3...v5.0.4) (2020-10-01)
+
+
+### Bug Fixes
+
+* add no-resize option in cosmoz-tabs ([ecfe1df](https://github.com/neovici/cosmoz-tabs/commit/ecfe1df874d74f66782b2077d87ab6cf573abc2e))
+
 ## [5.0.3](https://github.com/neovici/cosmoz-tabs/compare/v5.0.2...v5.0.3) (2020-09-30)
 
 
