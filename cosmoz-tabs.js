@@ -46,5 +46,5 @@ const Tabs = host => {
 };
 
 customElements.define('cosmoz-tabs', component(Tabs, {
-	observedAttributes: ['selected', 'hash-param']
+	observedAttributes: ['selected', 'hash-param', 'no-resize']
 }));
