@@ -1,6 +1,7 @@
 import {
 	assert, html, fixture, nextFrame
 } from '@open-wc/testing';
+import { spy } from 'sinon';
 
 import '../cosmoz-tabs.js';
 
@@ -29,6 +30,19 @@ suite('cosmoz-tabs', () => {
 		tabs.selected = 'tab1';
 		await nextFrame();
 		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab1');
+	});
+
+	test('does not resize on select', async () => {
+		tabs.toggleAttribute('no-resize', true);
+		await nextFrame();
+
+		const resizeSpy = spy();
+		window.addEventListener('resize', resizeSpy);
+
+		tabs.selected = 'tab1';
+		await nextFrame();
+		window.removeEventListener('resize', resizeSpy);
+		assert.isTrue(resizeSpy.notCalled);
 	});
 
 	test('contains a tablist with the same number of tabs', () => {
