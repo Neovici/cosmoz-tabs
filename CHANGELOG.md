@@ -1,3 +1,10 @@
+## [5.0.5](https://github.com/neovici/cosmoz-tabs/compare/v5.0.4...v5.0.5) (2020-10-06)
+
+
+### Bug Fixes
+
+* adds support for icon-color attribute ([872bea2](https://github.com/neovici/cosmoz-tabs/commit/872bea2d0065a98b34756b766f980ce45fffcdbd))
+
 ## [5.0.4](https://github.com/neovici/cosmoz-tabs/compare/v5.0.3...v5.0.4) (2020-10-01)
 
 
