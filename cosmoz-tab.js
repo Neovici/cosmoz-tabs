@@ -60,6 +60,7 @@ customElements.define('cosmoz-tab', class extends component(CosmozTab, {
 		'badge',
 		'icon',
 		'icon-style',
+		'icon-color',
 		'selected-icon',
 		'is-selected'
 	]
