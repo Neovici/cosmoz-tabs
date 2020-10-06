@@ -54,9 +54,9 @@ suite('cosmoz-tabs', () => {
 		assert.equal(icon.getAttribute('icon'), 'radio-button-unchecked');
 		tabs.selected = 'tab1';
 		await nextFrame();
-		icon = tabs.shadowRoot.querySelectorAll('[role="tab"]')[1].querySelector('iron-icon')
+		icon = tabs.shadowRoot.querySelectorAll('[role="tab"]')[1].querySelector('iron-icon');
 		assert.equal(icon.getAttribute('icon'), 'radio-button-checked');
-		assert.equal(icon.style.color, 'red')
+		assert.equal(icon.style.color, 'red');
 	});
 
 	test('sets heading inside tab', () => {
