@@ -1,3 +1,10 @@
+## [5.0.6](https://github.com/neovici/cosmoz-tabs/compare/v5.0.5...v5.0.6) (2020-10-07)
+
+
+### Bug Fixes
+
+* read params in a animation frame ([240a490](https://github.com/neovici/cosmoz-tabs/commit/240a49023ae24f11342be95a65e82d3fa4947433))
+
 ## [5.0.5](https://github.com/neovici/cosmoz-tabs/compare/v5.0.4...v5.0.5) (2020-10-06)
 
 
