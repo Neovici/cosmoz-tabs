@@ -24,7 +24,7 @@ suite('cosmoz-tabs', () => {
 	});
 
 	test('selects an item', async () => {
-		assert.equal(tabs.selected, undefined);
+		assert.equal(tabs.selected, 'tab0');
 		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab0');
 
 		tabs.selected = 'tab1';
@@ -180,7 +180,7 @@ suite('cosmoz-tabs', () => {
 		hiddenTab.hidden = false;
 		await nextFrame();
 
-		assert.equal(tabs.querySelector('[is-selected]'), hiddenTab);
+		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), hiddenTab.getAttribute('name'));
 	});
 
 	test('enabling a fallback disabled tab selects	it', async () => {
