@@ -19,6 +19,7 @@ suite('cosmoz-tabs hashParam', () => {
 				<cosmoz-tab name="tab2">Tab text 3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
+		await nextFrame();
 	});
 
 	test('items have links', () => {
@@ -58,13 +59,18 @@ suite('cosmoz-tabs hashParam', () => {
 });
 
 suite('cosmoz-tabs hashParam advanced', () => {
-	const createFixture = async (opened = true, hashParam = undefined) => await fixture(html`
+	const createFixture = async (opened = true, hashParam = undefined) => {
+		const el = await fixture(html`
 			<cosmoz-tabs id="tabs" style=${ opened ? '' : 'display: none' } .selected=${ 'tab0' } .hashParam=${ hashParam } >
 				<cosmoz-tab name="tab0">Tab text 0</cosmoz-tab>
 				<cosmoz-tab name="tab1">Tab text 1</cosmoz-tab>
 				<cosmoz-tab name="tab2">Tab text 2</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
+		await nextFrame();
+		return el;
+
+	};
 
 	suite('when <cosmoz-tabs> is visible at creation time', () => {
 		suite('and hash-param is not set', () => {
