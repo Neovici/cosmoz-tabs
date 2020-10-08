@@ -17,6 +17,7 @@ suite('cosmoz-tabs', () => {
 				<cosmoz-tab name="tab3" heading="Tab3" disabled icon="warning">3</cosmoz-tab>
 			</cosmoz-tabs>
 		`);
+		await nextFrame();
 	});
 
 	test('instantiates a cosmoz-tabs', () => {
