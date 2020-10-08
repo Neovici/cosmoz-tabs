@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/neovici/cosmoz-tabs/compare/v5.0.6...v5.0.7) (2020-10-08)
+
+
+### Bug Fixes
+
+* correctly notify `selected` ([086ae7d](https://github.com/neovici/cosmoz-tabs/commit/086ae7dc4b275c8da42e24ee700144774244f317)), closes [#126](https://github.com/neovici/cosmoz-tabs/issues/126)
+
 ## [5.0.6](https://github.com/neovici/cosmoz-tabs/compare/v5.0.5...v5.0.6) (2020-10-07)
 
 
