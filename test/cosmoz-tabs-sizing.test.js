@@ -73,7 +73,7 @@ suite('cosmoz-tabs sizing', () => {
 
 	test('explicitly sized tabs and flex list updates size and renders only a few items upon selection', async () => {
 		const tabs = await fixture(html`
-				<cosmoz-tabs style="height: 400px" fallback-selection>
+				<cosmoz-tabs style="height: 400px">
 					<cosmoz-tab name="tab0" heading="Flex">
 						<iron-list id="x-list" style="flex: 1 1 0.00000001px;">
 							<template>
@@ -96,7 +96,6 @@ suite('cosmoz-tabs sizing', () => {
 			`),
 			list = tabs.querySelector('iron-list');
 
-		assert.isUndefined(tabs.selected);
 		list.items = Array.from(Array(500).keys());
 
 		tabs.selected = 'tab0';
