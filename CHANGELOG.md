@@ -1,3 +1,10 @@
+## [5.0.9](https://github.com/neovici/cosmoz-tabs/compare/v5.0.8...v5.0.9) (2020-10-13)
+
+
+### Bug Fixes
+
+* collect cosmoz-tab element from nested slots ([616fde5](https://github.com/neovici/cosmoz-tabs/commit/616fde5969e5bed32b7154f8d56bd2b10d9e7334))
+
 ## [5.0.8](https://github.com/neovici/cosmoz-tabs/compare/v5.0.7...v5.0.8) (2020-10-08)
 
 
