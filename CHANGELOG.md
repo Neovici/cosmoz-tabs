@@ -1,3 +1,10 @@
+## [5.0.10](https://github.com/neovici/cosmoz-tabs/compare/v5.0.9...v5.0.10) (2020-10-16)
+
+
+### Bug Fixes
+
+* **cosmoz-tab:** notify cosmoz-tabs when tab icon changes ([1448462](https://github.com/neovici/cosmoz-tabs/commit/1448462b47606a4dfd9e11f9893d1f3a7fa71b3a))
+
 ## [5.0.9](https://github.com/neovici/cosmoz-tabs/compare/v5.0.8...v5.0.9) (2020-10-13)
 
 
