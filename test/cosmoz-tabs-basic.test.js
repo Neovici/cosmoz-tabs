@@ -18,6 +18,7 @@ suite('cosmoz-tabs', () => {
 			</cosmoz-tabs>
 		`);
 		await nextFrame();
+		await nextFrame();
 	});
 
 	test('instantiates a cosmoz-tabs', () => {
@@ -174,11 +175,13 @@ suite('cosmoz-tabs', () => {
 
 		hiddenTab.hidden = true;
 		await nextFrame();
+		await nextFrame();
 		assert.isTrue(tabs.shadowRoot.querySelectorAll('[role=tab]')[1].hidden);
 		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), 'tab0');
 		assert.notEqual(tabs.querySelector('[is-selected]'), hiddenTab);
 
 		hiddenTab.hidden = false;
+		await nextFrame();
 		await nextFrame();
 
 		assert.equal(tabs.querySelector('[is-selected]').getAttribute('name'), hiddenTab.getAttribute('name'));
