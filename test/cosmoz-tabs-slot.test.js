@@ -27,6 +27,7 @@ suite('cosmoz-tabs slot', () => {
 		`),
 			tabs = el.shadowRoot.querySelector('cosmoz-tabs');
 		await nextFrame();
+		await nextFrame();
 		tabs.selected = 'tab1';
 		await nextFrame();
 		assert.equal(el.querySelector('cosmoz-tab').getAttribute('is-selected'), '');
