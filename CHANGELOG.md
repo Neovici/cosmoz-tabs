@@ -1,3 +1,10 @@
+## [5.0.12](https://github.com/neovici/cosmoz-tabs/compare/v5.0.11...v5.0.12) (2021-01-22)
+
+
+### Bug Fixes
+
+* **use-tabs:** iron-location interop ([826be13](https://github.com/neovici/cosmoz-tabs/commit/826be13af1250da1838f4935ccbbeaecd528e9c1))
+
 ## [5.0.11](https://github.com/neovici/cosmoz-tabs/compare/v5.0.10...v5.0.11) (2020-10-23)
 
 
