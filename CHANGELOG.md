@@ -1,3 +1,10 @@
+## [5.0.13](https://github.com/neovici/cosmoz-tabs/compare/v5.0.12...v5.0.13) (2021-04-17)
+
+
+### Bug Fixes
+
+* do not hide slotted slots ([c7579ca](https://github.com/neovici/cosmoz-tabs/commit/c7579cacb025a8b70c93250d2e3033e966b1204c))
+
 ## [5.0.12](https://github.com/neovici/cosmoz-tabs/compare/v5.0.11...v5.0.12) (2021-01-22)
 
 
