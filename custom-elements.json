@@ -1,0 +1,59 @@
+{
+	"version": 2,
+	"tags": [
+		{
+			"name": "cosmoz-tabs",
+			"properties": [
+				{
+					"name": "selected",
+					"type": "String",
+					"description": "The name of the selected tab"
+				}
+			],
+			"events": [],
+			"slots": [
+				{
+					"name": "",
+					"description": "cosmoz-tab elements inside cosmoz-tabs get displayed when selected`"
+				}
+			],
+			"cssProperties": []
+		},
+		{
+			"name": "cosmoz-tab",
+			"properties": [
+				{
+					"name": "heading",
+					"type": "String",
+					"description": "The heading"
+				}
+			],
+			"events": [],
+			"slots": [
+				{
+					"name": "",
+					"description": "Content inside the cosmoz-tab"
+				}
+			],
+			"cssProperties": []
+		},
+		{
+			"name": "cosmoz-tab-card",
+			"properties": [
+				{
+					"name": "heading",
+					"type": "String",
+					"description": "The heading"
+				}
+			],
+			"events": [],
+			"slots": [
+				{
+					"name": "",
+					"description": "Content inside the cosmoz-tab-card"
+				}
+			],
+			"cssProperties": []
+		}
+	]
+}
