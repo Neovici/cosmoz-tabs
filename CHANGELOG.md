@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/neovici/cosmoz-tabs/compare/v5.1.0...v5.1.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* **use-tabs:** scroll only horizontally ([4d795ac](https://github.com/neovici/cosmoz-tabs/commit/4d795ac672f58491043b2fc3bd3637ac6314889f))
+
 # [5.1.0](https://github.com/neovici/cosmoz-tabs/compare/v5.0.13...v5.1.0) (2021-09-30)
 
 
