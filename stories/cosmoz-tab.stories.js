@@ -36,6 +36,27 @@ const basics = () => html`
 			Maecenas sit amet finibus diam, eget finibus nisi. Integer eget laoreet metus. Fusce quis molestie massa.
 			</p>
 		</cosmoz-tab>
+		<cosmoz-tab heading="Tab5" name="tab5" badge="4">
+			<p>
+			Sed pretium a felis sed dictum. Vestibulum ornare quam in metus vehicula consectetur.
+			Proin faucibus ac sapien vel bibendum. Quisque molestie cursus lacus.
+			Maecenas sit amet finibus diam, eget finibus nisi. Integer eget laoreet metus. Fusce quis molestie massa.
+			</p>
+		</cosmoz-tab>
+		<cosmoz-tab heading="Tab6" name="tab6">
+			<p>
+			Sed pretium a felis sed dictum. Vestibulum ornare quam in metus vehicula consectetur.
+			Proin faucibus ac sapien vel bibendum. Quisque molestie cursus lacus.
+			Maecenas sit amet finibus diam, eget finibus nisi. Integer eget laoreet metus. Fusce quis molestie massa.
+			</p>
+		</cosmoz-tab>
+		<cosmoz-tab heading="Tab7" name="tab7">
+			<p>
+			Sed pretium a felis sed dictum. Vestibulum ornare quam in metus vehicula consectetur.
+			Proin faucibus ac sapien vel bibendum. Quisque molestie cursus lacus.
+			Maecenas sit amet finibus diam, eget finibus nisi. Integer eget laoreet metus. Fusce quis molestie massa.
+			</p>
+		</cosmoz-tab>
 	</cosmoz-tabs>
 `;
 

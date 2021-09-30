@@ -1,11 +1,7 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import {
-	html, component
-} from 'haunted';
+import { html, component } from 'haunted';
 import { useTabs } from './lib/use-tabs';
-import {
-	style, renderTab
-} from './lib/render';
+import { style, renderTab } from './lib/render';
 import './cosmoz-tab.js';
 import '@polymer/iron-icon';
 import '@polymer/iron-icons';
@@ -27,11 +23,7 @@ Custom property | Description | Default
 
 */
 const Tabs = host => {
-	const {
-		tabs,
-		onSlot,
-		...opts
-	} = useTabs(host);
+	const { tabs, onSlot, ...opts } = useTabs(host);
 
 	return html`
 		<style>${ style }</style>
