@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/neovici/cosmoz-tabs/compare/v5.0.13...v5.1.0) (2021-09-30)
+
+
+### Features
+
+* **cosmoz-tabs:** auto scroll ([9f528b5](https://github.com/neovici/cosmoz-tabs/commit/9f528b5388e197520715ac850a985e63e32054d8)), closes [#146](https://github.com/neovici/cosmoz-tabs/issues/146) [#114](https://github.com/neovici/cosmoz-tabs/issues/114)
+
 ## [5.0.13](https://github.com/neovici/cosmoz-tabs/compare/v5.0.12...v5.0.13) (2021-04-17)
 
 
