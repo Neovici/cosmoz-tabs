@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/neovici/cosmoz-tabs/compare/v5.1.1...v5.1.2) (2021-10-04)
+
+
+### Bug Fixes
+
+* **use-tabs:** uses compute-scroll-into-view ([e72ab43](https://github.com/neovici/cosmoz-tabs/commit/e72ab4327622a29c9316197bf3a2c426bab5f190))
+
 ## [5.1.1](https://github.com/neovici/cosmoz-tabs/compare/v5.1.0...v5.1.1) (2021-09-30)
 
 
