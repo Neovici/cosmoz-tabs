@@ -27,8 +27,8 @@ const Tabs = host => {
 
 	return html`
 		<style>${ style }</style>
-		<slot name="title"></slot>
 		<div class="tabs" part="tabs" role="tablist">
+			<slot name="tabs"></slot>
 			${ tabs.map(renderTab(opts)) }
 		</div>
 
