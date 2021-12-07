@@ -17,8 +17,8 @@ using tabs.
 
 The following custom properties and mixins are available for styling:
 
-Custom property | Description | Default
-----------------|-------------|----------
+Custom property                     | Description                 | Default
+------------------------------------|-----------------------------|----------
 `--cosmoz-tabs-selection-bar-color` | Color for the selection bar | `#00b4db`
 
 */
@@ -27,6 +27,7 @@ const Tabs = host => {
 
 	return html`
 		<style>${ style }</style>
+		<slot name="title"></slot>
 		<div class="tabs" part="tabs" role="tablist">
 			${ tabs.map(renderTab(opts)) }
 		</div>
