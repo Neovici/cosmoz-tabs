@@ -1,3 +1,14 @@
+# [5.2.0](https://github.com/neovici/cosmoz-tabs/compare/v5.1.2...v5.2.0) (2021-12-08)
+
+
+### Features
+
+* **tabs:** add tab part ([02cd28e](https://github.com/neovici/cosmoz-tabs/commit/02cd28e031e00352400ae0488d408f2c3808e96a))
+* **tabs:** first-tab, last-tab parts ([244ed41](https://github.com/neovici/cosmoz-tabs/commit/244ed4194fa0053c7d64bca1a9d0ee151c35fc48))
+* **tabs:** selected-tab part ([fc39d58](https://github.com/neovici/cosmoz-tabs/commit/fc39d58c9c656bdf18adaf2c4b0a96943edcee68))
+* ui tweaks ([65496cf](https://github.com/neovici/cosmoz-tabs/commit/65496cf4133ee4b27afb7951d9f43c6f8d70681a))
+* ui tweaks ([9eb77eb](https://github.com/neovici/cosmoz-tabs/commit/9eb77eba6a614b4428b6072741c183e34c7e1c55))
+
 ## [5.1.2](https://github.com/neovici/cosmoz-tabs/compare/v5.1.1...v5.1.2) (2021-10-04)
 
 
