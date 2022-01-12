@@ -60,7 +60,7 @@ const CosmozTabCard = ({ heading }) => html`
 </style>
 
 <div id="header" part="header">
-	<h1 class="heading">${ heading }<slot name="after-title"></slot></h1>
+	<h1 class="heading" part="heading">${ heading }<slot name="after-title"></slot></h1>
 	<slot name="card-actions"></slot>
 </div>
 
