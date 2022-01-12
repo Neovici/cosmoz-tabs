@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/neovici/cosmoz-tabs/compare/v5.2.0...v5.2.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* add heading part ([349c108](https://github.com/neovici/cosmoz-tabs/commit/349c108c3345d4849b9f32be041c4e8f4e1ba5a9))
+
 # [5.2.0](https://github.com/neovici/cosmoz-tabs/compare/v5.1.2...v5.2.0) (2021-12-08)
 
 
