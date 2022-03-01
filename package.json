@@ -54,7 +54,8 @@
 		]
 	},
 	"dependencies": {
-		"@neovici/cosmoz-utils": "^3.21.0",
+		"@neovici/cosmoz-page-router": "^7.0.0",
+		"@neovici/cosmoz-utils": "^3.25.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
 		"compute-scroll-into-view": "^1.0.17",
@@ -62,9 +63,9 @@
 		"lit-html": "^1.4.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^13.0.0",
-		"@commitlint/config-conventional": "^13.0.0",
-		"@neovici/eslint-config": "^1.3.0",
+		"@commitlint/cli": "^16.0.0",
+		"@commitlint/config-conventional": "^16.0.0",
+		"@neovici/cfg": "^1.11.0",
 		"@open-wc/demoing-storybook": "^2.4.0",
 		"@open-wc/testing": "^2.5.0",
 		"@polymer/iron-list": "^3.1.0",
@@ -72,11 +73,9 @@
 		"@semantic-release/git": "^10.0.0",
 		"@storybook/storybook-deployer": "^2.8.0",
 		"@web/test-runner": "^0.13.18",
-		"@web/test-runner-selenium": "^0.5.2",
-		"eslint": "^7.32.0",
 		"husky": "^7.0.0",
-		"semantic-release": "^18.0.0",
-		"sinon": "^11.1.0",
+		"semantic-release": "^19.0.0",
+		"sinon": "^13.0.0",
 		"typescript": "^4.4.0"
 	}
 }
