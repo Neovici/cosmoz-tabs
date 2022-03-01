@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/neovici/cosmoz-tabs/compare/v5.2.1...v5.3.0) (2022-03-01)
+
+
+### Features
+
+* replace use-hash-param with impl from cosmoz-page-router ([f1e7c90](https://github.com/neovici/cosmoz-tabs/commit/f1e7c9032f1fd516a86bd71d14274e9b81470cfd))
+
 ## [5.2.1](https://github.com/neovici/cosmoz-tabs/compare/v5.2.0...v5.2.1) (2022-01-12)
 
 
