@@ -1,8 +1,8 @@
-import { html, component, useLayoutEffect } from 'haunted';
+import { html, component, useEffect } from 'haunted';
 import style from './cosmoz-tabs.css';
 
 const Tabs = (host) => {
-	useLayoutEffect(() => {
+	useEffect(() => {
 		host.setAttribute('role', 'tablist');
 	}, []);
 

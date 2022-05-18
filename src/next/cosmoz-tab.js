@@ -1,4 +1,4 @@
-import { component, useLayoutEffect } from 'haunted';
+import { component, useEffect, useLayoutEffect } from 'haunted';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import computeScroll from 'compute-scroll-into-view';
@@ -8,7 +8,7 @@ import style from './cosmoz-tab.css';
 const Tab = (host) => {
 	const { active, badge, href } = host;
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (!host.getAttribute('tabindex')) {
 			host.setAttribute('tabindex', '-1');
 		}
