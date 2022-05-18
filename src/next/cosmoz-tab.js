@@ -1,4 +1,5 @@
-import { html, component, useLayoutEffect } from 'haunted';
+import { component, useLayoutEffect } from 'haunted';
+import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import computeScroll from 'compute-scroll-into-view';
 
@@ -37,7 +38,9 @@ const Tab = (host) => {
 		<a part="link" href=${ifDefined(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
-			<span class="badge" part="badge">${badge}</span>
+			${badge
+				? html`<span class="badge" part="badge">${badge}</span>`
+				: nothing}
 		</a>
 	`;
 };

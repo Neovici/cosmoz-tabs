@@ -15,10 +15,7 @@ const basics = () => html`
 		<cosmoz-tab-next badge="4" active href="#123">Tab4</cosmoz-tab-next>
 		${Array(6)
 			.fill()
-			.map(
-				(_, i) =>
-					html`<cosmoz-tab-next badge=${5 + i}>Tab ${5 + i}</cosmoz-tab-next>`
-			)}
+			.map((_, i) => html`<cosmoz-tab-next>Tab ${5 + i}</cosmoz-tab-next>`)}
 	</cosmoz-tabs-next>
 `;
 
