@@ -9,7 +9,7 @@ import {
 	spy
 } from 'sinon';
 
-import '../cosmoz-tabs.js';
+import '../src/cosmoz-tabs.js';
 
 suite('cosmoz-tabs', () => {
 	let tabs;

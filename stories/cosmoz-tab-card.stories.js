@@ -1,6 +1,6 @@
 import { html } from 'haunted';
 
-import '../cosmoz-tabs';
+import '../src/cosmoz-tabs';
 
 export default {
 	title: 'Card',

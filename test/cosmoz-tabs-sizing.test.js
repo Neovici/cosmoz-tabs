@@ -2,7 +2,7 @@ import {
 	assert, html, fixture, nextFrame
 } from '@open-wc/testing';
 import '@polymer/iron-list';
-import '../cosmoz-tabs.js';
+import '../src/cosmoz-tabs.js';
 
 suite('cosmoz-tabs sizing', () => {
 	test('sizes non explicitly sized tabs and list without flex renders max items', async () => {

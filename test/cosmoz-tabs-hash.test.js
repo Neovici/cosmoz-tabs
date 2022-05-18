@@ -2,7 +2,7 @@ import {
 	assert, html, fixture, nextFrame
 } from '@open-wc/testing';
 
-import '../cosmoz-tabs.js';
+import '../src/cosmoz-tabs.js';
 
 teardown(() => {
 	window.location.hash = '';
