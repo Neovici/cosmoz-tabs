@@ -1,8 +1,6 @@
-import {
-	assert, html, fixture
-} from '@open-wc/testing';
+import { assert, html, fixture } from '@open-wc/testing';
 
-import '../cosmoz-tabs.js';
+import '../src/cosmoz-tabs.js';
 
 suite('cosmoz-tab-card', () => {
 	let tabs;
@@ -22,7 +20,7 @@ suite('cosmoz-tab-card', () => {
 	});
 
 	test('cards have headings', () => {
-		Array.from(tabs.querySelectorAll('cosmoz-tab-card')).forEach(item => {
+		Array.from(tabs.querySelectorAll('cosmoz-tab-card')).forEach((item) => {
 			const heading = item.shadowRoot.querySelector('.heading');
 			assert.equal(heading.innerText, item.heading);
 		});
