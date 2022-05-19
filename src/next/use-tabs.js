@@ -22,7 +22,10 @@ export const useTabs = (tabs, { hashParam }) => {
 				if (e.button !== 0 || e.metaKey || e.ctrlKey) {
 					return;
 				}
-				const { name } = e.currentTarget;
+				const name = e.currentTarget?.getAttribute('name');
+				if (!name) {
+					return;
+				}
 				activate(name);
 			},
 			[activate]
