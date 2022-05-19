@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/neovici/cosmoz-tabs/compare/v5.4.0...v5.4.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **use-tabs:** activate tab by name attribute ([c3485a7](https://github.com/neovici/cosmoz-tabs/commit/c3485a7de8c70a1e8b6c56df6260b582e5c718c6))
+
 # [5.4.0](https://github.com/neovici/cosmoz-tabs/compare/v5.3.0...v5.4.0) (2022-05-19)
 
 
