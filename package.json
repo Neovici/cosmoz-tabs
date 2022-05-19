@@ -56,7 +56,8 @@
 		"./cosmoz-tabs": "./src/cosmoz-tabs.js",
 		"./cosmoz-tab": "./src/cosmoz-tab.js",
 		"./cosmoz-tab-card": "./src/cosmoz-tab-card.js",
-		"./cosmoz-tab-card.js": "./src/cosmoz-tab-card.js"
+		"./cosmoz-tab-card.js": "./src/cosmoz-tab-card.js",
+		"./next/*": "./src/next/*"
 	},
 	"dependencies": {
 		"@neovici/cosmoz-page-router": "^8.0.0",
