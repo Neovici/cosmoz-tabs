@@ -51,6 +51,12 @@
 			"@commitlint/config-conventional"
 		]
 	},
+	"exports": {
+		".": "./src/index.js",
+		"./cosmoz-tabs": "./src/cosmoz-tabs.js",
+		"./cosmoz-tab": "./src/cosmoz-tab.js",
+		"./cosmoz-tab-card": "./src/cosmoz-tab-card.js"
+	},
 	"dependencies": {
 		"@neovici/cosmoz-page-router": "^8.0.0",
 		"@neovici/cosmoz-utils": "^3.25.0",
