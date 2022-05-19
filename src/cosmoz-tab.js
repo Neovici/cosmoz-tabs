@@ -4,7 +4,7 @@ import {
 	html,
 	component
 } from 'haunted';
-import { useTab } from './lib/use-tab';
+import { useTab } from './use-tab';
 
 /**
 

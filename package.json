@@ -15,21 +15,19 @@
 	},
 	"license": "Apache-2.0",
 	"author": "Neovici Development <dev@neovici.se>",
-	"main": "cosmoz-tabs.js",
+	"main": "src/index.js",
 	"directories": {
 		"test": "test"
 	},
 	"files": [
-		"cosmoz-*.js",
-		"lib/**/*.js"
+		"src/**/*.js"
 	],
 	"scripts": {
 		"lint": "eslint --cache --ext .js .",
 		"lint-tsc": "tsc",
-		"start": "npm run storybook",
+		"start": "wds",
 		"test": "wtr --coverage",
 		"test:watch": "wtr --watch",
-		"storybook": "start-storybook --node-resolve --watch --open",
 		"storybook:build": "build-storybook",
 		"storybook:deploy": "storybook-to-ghpages",
 		"prepare": "husky install"
@@ -53,8 +51,16 @@
 			"@commitlint/config-conventional"
 		]
 	},
+	"exports": {
+		".": "./src/index.js",
+		"./cosmoz-tabs": "./src/cosmoz-tabs.js",
+		"./cosmoz-tab": "./src/cosmoz-tab.js",
+		"./cosmoz-tab-card": "./src/cosmoz-tab-card.js",
+		"./cosmoz-tab-card.js": "./src/cosmoz-tab-card.js",
+		"./next/*": "./src/next/*"
+	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "^7.0.0",
+		"@neovici/cosmoz-page-router": "^8.0.0",
 		"@neovici/cosmoz-utils": "^3.25.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
@@ -63,19 +69,19 @@
 		"lit-html": "^1.4.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^16.0.0",
-		"@commitlint/config-conventional": "^16.0.0",
+		"@commitlint/cli": "^17.0.0",
+		"@commitlint/config-conventional": "^17.0.0",
 		"@neovici/cfg": "^1.11.0",
-		"@open-wc/demoing-storybook": "^2.4.0",
 		"@open-wc/testing": "^2.5.0",
 		"@polymer/iron-list": "^3.1.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
 		"@storybook/storybook-deployer": "^2.8.0",
+		"@web/dev-server-storybook": "^0.5.0",
 		"@web/test-runner": "^0.13.18",
-		"husky": "^7.0.0",
+		"husky": "^8.0.0",
 		"semantic-release": "^19.0.0",
-		"sinon": "^13.0.0",
+		"sinon": "^14.0.0",
 		"typescript": "^4.4.0"
 	}
 }

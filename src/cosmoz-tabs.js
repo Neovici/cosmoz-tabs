@@ -1,7 +1,7 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 import { html, component } from 'haunted';
-import { useTabs } from './lib/use-tabs';
-import { style, renderTab } from './lib/render';
+import { useTabs } from './use-tabs';
+import { style, renderTab } from './render';
 import './cosmoz-tab.js';
 import '@polymer/iron-icon';
 import '@polymer/iron-icons';

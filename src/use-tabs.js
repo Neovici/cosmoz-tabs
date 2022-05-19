@@ -48,7 +48,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 				selected, hashParam
 			} = host,
 			[tabs, setTabs] = useState([]),
-			param = useHashParam(hashParam),
+			[param] = useHashParam(hashParam),
 			selection = hashParam == null || param == null && selected != null ? selected : param,
 			selectedTab = useMemo(() => choose(tabs, selection), [tabs, selection]);
 

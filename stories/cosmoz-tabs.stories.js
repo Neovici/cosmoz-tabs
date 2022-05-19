@@ -1,7 +1,7 @@
 import { html } from 'haunted';
 import { until } from 'lit-html/directives/until.js';
 
-import '../cosmoz-tabs';
+import '../src/cosmoz-tabs';
 import '@polymer/iron-list';
 
 export default {
