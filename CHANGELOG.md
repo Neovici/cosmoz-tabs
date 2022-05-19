@@ -1,3 +1,19 @@
+# [5.4.0](https://github.com/neovici/cosmoz-tabs/compare/v5.3.0...v5.4.0) (2022-05-19)
+
+
+### Bug Fixes
+
+* **tab:** optional badge ([0c0ce5f](https://github.com/neovici/cosmoz-tabs/commit/0c0ce5f5b54e58f5e61cc09d937cd0f567c72620))
+* use useEffect ([e19407d](https://github.com/neovici/cosmoz-tabs/commit/e19407d9af476092f628bbc1b3da2fb5b6fba630))
+
+
+### Features
+
+* implement useTabs,renderTabs ([b614dd8](https://github.com/neovici/cosmoz-tabs/commit/b614dd8b4b75f77e249ae74617d1af6087e2c2be))
+* initialize cosmoz-tabs-next ([816992e](https://github.com/neovici/cosmoz-tabs/commit/816992eb579b2194bcbdea75caa72babe38e2a28))
+* reorganize repo ([afb9d52](https://github.com/neovici/cosmoz-tabs/commit/afb9d520eb24bbc499896e3ef56e3746c2f56cce))
+* update cosmoz-page-router ([d0f19d0](https://github.com/neovici/cosmoz-tabs/commit/d0f19d0a6f00295c8c72398ff383acfc43ef15aa))
+
 # [5.3.0](https://github.com/neovici/cosmoz-tabs/compare/v5.2.1...v5.3.0) (2022-03-01)
 
 
