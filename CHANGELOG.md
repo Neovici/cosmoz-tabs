@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/neovici/cosmoz-tabs/compare/v5.4.1...v5.4.2) (2022-05-27)
+
+
+### Bug Fixes
+
+* **use-tabs:** add support for separate title and content ([fb9b1de](https://github.com/neovici/cosmoz-tabs/commit/fb9b1de0d194b398ba0a9d91ebc53b4677d5927f))
+
 ## [5.4.1](https://github.com/neovici/cosmoz-tabs/compare/v5.4.0...v5.4.1) (2022-05-19)
 
 
