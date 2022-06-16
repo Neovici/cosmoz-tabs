@@ -1,6 +1,6 @@
 import { component, useEffect, useLayoutEffect } from 'haunted';
 import { html, nothing } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import computeScroll from 'compute-scroll-into-view';
 
 import style from './cosmoz-tab.css';
