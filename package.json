@@ -60,19 +60,19 @@
 		"./next/*": "./src/next/*"
 	},
 	"dependencies": {
-		"@neovici/cosmoz-page-router": "^8.0.0",
-		"@neovici/cosmoz-utils": "^3.25.0",
+		"@neovici/cosmoz-page-router": "^9.0.0-beta.3",
+		"@neovici/cosmoz-utils": "^4.0.0-beta.2",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
 		"compute-scroll-into-view": "^1.0.17",
-		"haunted": "^4.8.0",
-		"lit-html": "^1.4.0"
+		"haunted": "^5.0.0",
+		"lit-html": "^2.0.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.0",
 		"@commitlint/config-conventional": "^17.0.0",
 		"@neovici/cfg": "^1.11.0",
-		"@open-wc/testing": "^2.5.0",
+		"@open-wc/testing": "^3.0.0",
 		"@polymer/iron-list": "^3.1.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'haunted';
 import { notifyProperty } from '@neovici/cosmoz-utils/lib/hooks/use-notify-property';
-import { useHashParam, link } from '@neovici/cosmoz-page-router/lib/use-hash-param';
+/* eslint-disable-next-line import/no-unresolved */
+import { useHashParam, link } from '@neovici/cosmoz-page-router/use-hash-param';
 import { choose, collect, getName, isValid } from './utils';
 import computeScroll from 'compute-scroll-into-view';
 
