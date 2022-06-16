@@ -1,6 +1,6 @@
 /* eslint-disable import/group-exports */
 import { html, useMemo, useCallback, useRef } from 'haunted';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { useHashParam } from '@neovici/cosmoz-page-router/lib/use-hash-param';
 
 const isValid = (tab) => !tab.hidden && !tab.disabled,
