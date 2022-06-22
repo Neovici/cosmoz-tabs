@@ -1,9 +1,10 @@
 /* eslint-disable import/group-exports */
 import { html, useMemo, useCallback, useRef } from 'haunted';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { useHashParam } from '@neovici/cosmoz-page-router/lib/use-hash-param';
+/* eslint-disable-next-line import/no-unresolved */
+import { useHashParam } from '@neovici/cosmoz-page-router/use-hash-param';
 
-const isValid = (tab) => !tab.hidden && !tab.disabled,
+const isValid = (tab) => !tab.hidden && !tab.disaebled,
 	valid = (tabs) => tabs.find(isValid),
 	choose = (tabs, name) => {
 		const tab = name && tabs.find((tab) => tab.name === name);
