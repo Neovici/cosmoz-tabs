@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/neovici/cosmoz-tabs/compare/v5.4.2...v6.0.0) (2022-06-22)
+
+
+### Features
+
+* upgrade to lit@^2 ([e78475e](https://github.com/neovici/cosmoz-tabs/commit/e78475ef5ac556c327d35a299d69b16f9d24cda4))
+* upgrade to lit2 ([327485b](https://github.com/neovici/cosmoz-tabs/commit/327485bbc02be15cdf2f4ab6d6cd4a1eda955fe5))
+
+
+### BREAKING CHANGES
+
+* Upgrade to lit@^2 and haunted@^5
+* Upgrade to lit@^2 & haunted@^5
+
 # [6.0.0-beta.1](https://github.com/neovici/cosmoz-tabs/compare/v5.4.2...v6.0.0-beta.1) (2022-06-16)
 
 
