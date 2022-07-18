@@ -2,7 +2,7 @@
 import { html, useMemo, useCallback, useRef } from 'haunted';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 /* eslint-disable-next-line import/no-unresolved */
-import { useHashParam } from '@neovici/cosmoz-page-router/use-hash-param';
+import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 
 const isValid = (tab) => !tab.hidden && !tab.disaebled,
 	valid = (tabs) => tabs.find(isValid),
