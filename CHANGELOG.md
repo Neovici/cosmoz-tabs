@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/neovici/cosmoz-tabs/compare/v6.1.0...v6.2.0) (2022-07-18)
+
+
+### Features
+
+* correct router import ([a892e86](https://github.com/neovici/cosmoz-tabs/commit/a892e868c4f9872a250a413547f2b63369da2234))
+
 # [6.1.0](https://github.com/neovici/cosmoz-tabs/compare/v6.0.0...v6.1.0) (2022-07-18)
 
 
