@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/neovici/cosmoz-tabs/compare/v6.0.0...v6.1.0) (2022-07-18)
+
+
+### Features
+
+* update @neovici/cosmoz-router ([8d962f4](https://github.com/neovici/cosmoz-tabs/commit/8d962f4d3cb96f67d4eebbe9ba1906d047e02432))
+
 # [6.0.0](https://github.com/neovici/cosmoz-tabs/compare/v5.4.2...v6.0.0) (2022-06-22)
 
 
