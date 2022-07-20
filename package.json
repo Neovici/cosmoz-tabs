@@ -72,6 +72,7 @@
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
 		"compute-scroll-into-view": "^1.0.17",
+		"eslint-import-resolver-typescript": "^3.2.7",
 		"haunted": "^5.0.0",
 		"lit-html": "^2.0.0"
 	},
