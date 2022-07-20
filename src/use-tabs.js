@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'haunted';
-import { notifyProperty } from '@neovici/cosmoz-utils/lib/hooks/use-notify-property';
+import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam, link } from '@neovici/cosmoz-router/use-hash-param';
 import { choose, collect, getName, isValid } from './utils';
@@ -18,7 +18,9 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			selectedTab.toggleAttribute('is-selected', true);
 			const eventOpts = { composed: true };
 			if (!selectedTab._active) {
-				selectedTab.dispatchEvent(new CustomEvent('tab-first-select', eventOpts));
+				selectedTab.dispatchEvent(
+					new CustomEvent('tab-first-select', eventOpts)
+				);
 				selectedTab._active = true;
 			}
 			selectedTab.dispatchEvent(new CustomEvent('tab-select', eventOpts));
@@ -29,41 +31,48 @@ const useTabSelectedEffect = (host, selectedTab) => {
 				selectedTab.toggleAttribute('is-selected', false);
 				selectedTab._fallbackFor = undefined;
 			};
-
 		}, [selectedTab]);
 	},
-
 	useAutoScroll = (host, selectedTab) => {
 		useEffect(() => {
 			const el = host.shadowRoot.querySelector('a[aria-selected]');
 			if (!el) {
 				return;
 			}
-			computeScroll(el, { block: 'nearest', inline: 'center', boundary: el.parentElement })
-				.forEach(({ el, top, left }) => el.scroll({ top, left, behavior: 'smooth' }));
+			computeScroll(el, {
+				block: 'nearest',
+				inline: 'center',
+				boundary: el.parentElement,
+			}).forEach(({ el, top, left }) =>
+				el.scroll({ top, left, behavior: 'smooth' })
+			);
 		}, [selectedTab]);
 	},
-
-	useTabs = host => {
-		const {
-				selected, hashParam
-			} = host,
+	useTabs = (host) => {
+		const { selected, hashParam } = host,
 			[tabs, setTabs] = useState([]),
 			[param] = useHashParam(hashParam),
-			selection = hashParam == null || param == null && selected != null ? selected : param,
+			selection =
+				hashParam == null || (param == null && selected != null)
+					? selected
+					: param,
 			selectedTab = useMemo(() => choose(tabs, selection), [tabs, selection]);
 
 		useTabSelectedEffect(host, selectedTab);
 
 		useEffect(() => {
-			const onTabAlter = e => {
+			const onTabAlter = (e) => {
 				e.stopPropagation();
 				const { target: tab } = e;
-				if (selectedTab != null && selectedTab._fallbackFor === tab && isValid(tab)) {
+				if (
+					selectedTab != null &&
+					selectedTab._fallbackFor === tab &&
+					isValid(tab)
+				) {
 					selectedTab._fallbackFor = undefined;
 					host.selected = getName(tab);
 				}
-				setTabs(prev => prev.slice());
+				setTabs((prev) => prev.slice());
 			};
 			host.addEventListener('cosmoz-tab-alter', onTabAlter);
 			return () => host.removeEventListener('cosmoz-tab-alter', onTabAlter);
@@ -71,13 +80,19 @@ const useTabSelectedEffect = (host, selectedTab) => {
 
 		useAutoScroll(host, selectedTab);
 
-		const href = useCallback(tab => isValid(tab) ? link(hashParam, getName(tab)) : undefined, [hashParam]);
+		const href = useCallback(
+			(tab) => (isValid(tab) ? link(hashParam, getName(tab)) : undefined),
+			[hashParam]
+		);
 
 		return {
 			tabs,
 			selectedTab,
-			onSlot: useCallback(({ target }) => requestAnimationFrame(() => setTabs(collect(target))), []),
-			onSelect: useCallback(e => {
+			onSlot: useCallback(
+				({ target }) => requestAnimationFrame(() => setTabs(collect(target))),
+				[]
+			),
+			onSelect: useCallback((e) => {
 				if (e.button !== 0 || e.metaKey || e.ctrlKey) {
 					return;
 				}
@@ -90,9 +105,11 @@ const useTabSelectedEffect = (host, selectedTab) => {
 
 				e.preventDefault();
 				window.history.pushState({}, '', href(tab));
-				requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('hashchange')));
+				requestAnimationFrame(() =>
+					window.dispatchEvent(new CustomEvent('hashchange'))
+				);
 			}, []),
-			href
+			href,
 		};
 	};
 

@@ -68,7 +68,7 @@
 	},
 	"dependencies": {
 		"@neovici/cosmoz-router": "^10.0.0",
-		"@neovici/cosmoz-utils": "^4.0.0",
+		"@neovici/cosmoz-utils": "^5.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
 		"compute-scroll-into-view": "^1.0.17",
