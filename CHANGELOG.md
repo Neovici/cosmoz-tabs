@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/neovici/cosmoz-tabs/compare/v6.2.0...v7.0.0) (2022-07-20)
+
+
+### Features
+
+* **deps:** upgrade cosmoz-utils ([ba0bc7e](https://github.com/neovici/cosmoz-tabs/commit/ba0bc7e7d8350e39500b0e5fc2de6bb696a94ceb))
+
+
+### BREAKING CHANGES
+
+* **deps:** Upgrade cosmoz-utils@5
+
 # [6.2.0](https://github.com/neovici/cosmoz-tabs/compare/v6.1.0...v6.2.0) (2022-07-18)
 
 
