@@ -25,7 +25,7 @@ const useTab = (host) => {
 			({ target }) =>
 				host.toggleAttribute(
 					'has-cards',
-					target.assignedElements().some((el) => el.matches('cosmoz-tab-card'))
+					target.assignedElements().some((el) => el.matches('cosmoz-tab-card, [has-cards]'))
 				),
 			[]
 		),
