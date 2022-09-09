@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/neovici/cosmoz-tabs/compare/v7.0.0...v7.1.0) (2022-09-09)
+
+
+### Features
+
+* support for cosmoz-tab-cards nested in other elements ([612ec1f](https://github.com/neovici/cosmoz-tabs/commit/612ec1fa8d0e1fbb4d72d12b7fd78b646d8cc0a3))
+
 # [7.0.0](https://github.com/neovici/cosmoz-tabs/compare/v6.2.0...v7.0.0) (2022-07-20)
 
 
