@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/neovici/cosmoz-tabs/compare/v7.1.0...v7.2.0) (2022-11-10)
+
+
+### Features
+
+* **stats:** add slot for stats in the tab nav ([1b705eb](https://github.com/neovici/cosmoz-tabs/commit/1b705eb0e7dad6a47de2c8fb78f515deff585659))
+
 # [7.1.0](https://github.com/neovici/cosmoz-tabs/compare/v7.0.0...v7.1.0) (2022-09-09)
 
 
