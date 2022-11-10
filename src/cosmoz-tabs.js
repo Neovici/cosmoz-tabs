@@ -30,6 +30,7 @@ const Tabs = host => {
 		<div class="tabs" part="tabs" role="tablist">
 			<slot name="tabs"></slot>
 			${ tabs.map(renderTab(opts)) }
+			<slot name="stats"></slot>
 		</div>
 
 		<div id="content" part="content">
