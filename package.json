@@ -20,7 +20,8 @@
 		"test": "test"
 	},
 	"files": [
-		"src/**/*.js"
+		"src/**/*.js",
+		"src/**/*.d.ts"
 	],
 	"scripts": {
 		"lint": "eslint --cache --ext .js .",
