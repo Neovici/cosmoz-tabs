@@ -1,3 +1,10 @@
+## [7.3.1](https://github.com/neovici/cosmoz-tabs/compare/v7.3.0...v7.3.1) (2023-02-02)
+
+
+### Bug Fixes
+
+* **ci:** include d.ts ([5744b4c](https://github.com/neovici/cosmoz-tabs/commit/5744b4c1dee96b98f4eddd018916d93a7f0839a1))
+
 # [7.3.0](https://github.com/neovici/cosmoz-tabs/compare/v7.2.1...v7.3.0) (2023-02-02)
 
 
