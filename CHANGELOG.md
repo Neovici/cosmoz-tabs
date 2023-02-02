@@ -1,3 +1,10 @@
+## [7.2.1](https://github.com/neovici/cosmoz-tabs/compare/v7.2.0...v7.2.1) (2023-02-02)
+
+
+### Bug Fixes
+
+* disabled typo ([cfbe566](https://github.com/neovici/cosmoz-tabs/commit/cfbe56659abc7b2a453eb69e30f76a54f1ff85dc))
+
 # [7.2.0](https://github.com/neovici/cosmoz-tabs/compare/v7.1.0...v7.2.0) (2022-11-10)
 
 
