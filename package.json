@@ -86,6 +86,7 @@
 		"@storybook/storybook-deployer": "^2.8.0",
 		"@web/dev-server-storybook": "^0.5.0",
 		"@web/test-runner": "^0.15.0",
+		"eslint-import-resolver-typescript": "^3.2.7",
 		"husky": "^8.0.0",
 		"semantic-release": "^20.0.0",
 		"sinon": "^15.0.0",
