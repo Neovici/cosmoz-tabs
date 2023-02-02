@@ -1,3 +1,11 @@
+# [7.3.0](https://github.com/neovici/cosmoz-tabs/compare/v7.2.1...v7.3.0) (2023-02-02)
+
+
+### Features
+
+* **next/use-tabs:** add fallback support ([7c0ac84](https://github.com/neovici/cosmoz-tabs/commit/7c0ac8438a255a9cdcb5408d31a3403842d6eccf))
+* **use-tabs:** add fallback to type def ([ee42fbb](https://github.com/neovici/cosmoz-tabs/commit/ee42fbb839f3b66c0f0e8ecd4e94945b33f067b5))
+
 ## [7.2.1](https://github.com/neovici/cosmoz-tabs/compare/v7.2.0...v7.2.1) (2023-02-02)
 
 
