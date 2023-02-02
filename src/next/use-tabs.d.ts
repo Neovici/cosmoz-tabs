@@ -1,6 +1,7 @@
 export interface Tab {
 	hidden?: boolean;
 	disable?: boolean;
+	fallback?: boolean;
 }
 
 export interface RenderTab extends Tab {
