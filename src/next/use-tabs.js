@@ -4,7 +4,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 
-const isValid = (tab) => !tab.hidden && !tab.disaebled,
+const isValid = (tab) => !tab.hidden && !tab.disabled,
 	valid = (tabs) => tabs.find(isValid),
 	choose = (tabs, name) => {
 		const tab = name && tabs.find((tab) => tab.name === name);
