@@ -1,3 +1,10 @@
+# [7.5.0](https://github.com/neovici/cosmoz-tabs/compare/v7.4.0...v7.5.0) (2023-03-22)
+
+
+### Features
+
+* **next/use-tabs:** adjust type ([12a0391](https://github.com/neovici/cosmoz-tabs/commit/12a03913f95b50385b2de5d74de163092e44f21f))
+
 # [7.4.0](https://github.com/neovici/cosmoz-tabs/compare/v7.3.1...v7.4.0) (2023-03-22)
 
 
