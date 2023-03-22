@@ -1,11 +1,11 @@
 export interface Tab {
+	name: string;
 	hidden?: boolean;
 	disable?: boolean;
 	fallback?: boolean;
 }
 
 export interface RenderTab extends Tab {
-	name: string;
 	title?: string;
 }
 
@@ -15,16 +15,18 @@ export interface Options {
 
 type Unpacked<T> = T extends (infer U)[] ? U : T;
 
-export declare const useTabs: <T extends Tab, P extends Options>(
-	tabs: T[],
-	opts: P
-) => {
+interface Result<T extends Tab> {
 	tabs: T[];
 	active: T;
 	activated: () => boolean;
-	activate: (tab: T) => void;
+	activate: (tab: T['name']) => void;
 	onActivate: (e: Event) => void;
-};
+}
+
+export declare const useTabs: <T extends Tab, P extends Options>(
+	tabs: T[],
+	opts: P
+) => Result<T>;
 
 export interface RenderOptions<T extends RenderTab> {
 	tabs: T[];
@@ -35,10 +37,4 @@ export interface RenderOptions<T extends RenderTab> {
 export declare const renderTabs: <T extends Tab, P extends Options>(
 	tabs: T[],
 	opts: P
-) => {
-	tabs: T[];
-	active: T;
-	activated: () => boolean;
-	activate: (tab: T) => void;
-	onActivate: (e: Event) => void;
-};
+) => Result<T>;
