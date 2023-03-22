@@ -1,3 +1,10 @@
+# [7.4.0](https://github.com/neovici/cosmoz-tabs/compare/v7.3.1...v7.4.0) (2023-03-22)
+
+
+### Features
+
+* **next/use-tabs:** adjust tabs definition ([7f4aeb9](https://github.com/neovici/cosmoz-tabs/commit/7f4aeb9da2d4391f0811b2dcd7503e40175d136d))
+
 ## [7.3.1](https://github.com/neovici/cosmoz-tabs/compare/v7.3.0...v7.3.1) (2023-02-02)
 
 
