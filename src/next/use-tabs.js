@@ -16,15 +16,21 @@ const isValid = (tab) => !tab.hidden && !tab.disabled,
 		return tab && isValid(tab) ? tab : valid(tabs);
 	};
 
-export const useTabs = (tabs, { hashParam }) => {
+export const useTabs = (tabs, { hashParam, onActivate }) => {
 	const [name, activate] = useHashParam(hashParam),
 		ref = useRef([]),
 		active = useMemo(() => choose(tabs, name), [tabs, name]),
 		activated = useMemo(() => {
 			const name = active.name;
 			return (ref.current = [...ref.current.filter((i) => i !== name), name]);
-		}, [active]),
-		onActivate = useCallback(
+		}, [active]);
+
+	return {
+		tabs,
+		active,
+		activated,
+		activate,
+		onActivate: useCallback(
 			(e) => {
 				if (e.button !== 0 || e.metaKey || e.ctrlKey) {
 					return;
@@ -33,17 +39,11 @@ export const useTabs = (tabs, { hashParam }) => {
 				if (!name) {
 					return;
 				}
+				onActivate?.(name);
 				activate(name);
 			},
-			[activate]
-		);
-
-	return {
-		tabs,
-		active,
-		activated,
-		activate,
-		onActivate,
+			[activate, onActivate]
+		),
 	};
 };
 
