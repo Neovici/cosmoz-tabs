@@ -1,3 +1,10 @@
+# [7.6.0](https://github.com/neovici/cosmoz-tabs/compare/v7.5.0...v7.6.0) (2023-03-24)
+
+
+### Features
+
+* **use-tabs:** add onActivate ([4489dd0](https://github.com/neovici/cosmoz-tabs/commit/4489dd0ae21896b4fa78b4c2e93508b50dba95dc))
+
 # [7.5.0](https://github.com/neovici/cosmoz-tabs/compare/v7.4.0...v7.5.0) (2023-03-22)
 
 
