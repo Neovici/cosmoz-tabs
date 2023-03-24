@@ -11,6 +11,7 @@ export interface RenderTab extends Tab {
 
 export interface Options {
 	hashParam?: string;
+	onActivate?: (name: string) => void;
 }
 
 type Unpacked<T> = T extends (infer U)[] ? U : T;
@@ -30,7 +31,7 @@ export type RenderTabs<T extends Tab> = Pick<
 
 export declare const useTabs: <T extends Tab, P extends Options>(
 	tabs: T[],
-	opts: P
+	opts?: P
 ) => Result<T>;
 
 export interface RenderOptions<T extends RenderTab> {
