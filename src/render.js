@@ -51,7 +51,8 @@ const style = `
 
 .tab[aria-selected] {
 	color: var(--cosmoz-tabs-accent-color, #508aef);
-	box-shadow: inset 0 -3px 0px 0px var(--cosmoz-tabs-accent-color, #508aef);
+	box-shadow: var(--cosmoz-tabs-box-shadow, inset 0 -3px 0px 0px var(--cosmoz-tabs-accent-color, #508aef));
+	background-color: var(--cosmoz-tabs-selected-background, #FFFFFF)
 	font-weight: 700;
 	letter-spacing: 0;
 }
@@ -84,11 +85,10 @@ const style = `
 	font-weight: normal;
 	font-size: 11px;
 	line-height: 1;
-	border-radius: 0.90909em;
+	border-radius:3px;
 	box-sizing: border-box;
-
-	transform: translateY(-50%);
-	vertical-align: top;
+	margin-left: 5px;
+	
 	min-width: 1.81818em;
 	padding: 0.40909em 0.36363em;
 
@@ -123,6 +123,6 @@ const style = `
 	};
 
 export {
-	style,
-	renderTab
+		style,
+		renderTab
 };
