@@ -68,6 +68,7 @@
 		"./next/*": "./src/next/*"
 	},
 	"dependencies": {
+		"@neovici/cosmoz-collapse": "^1.3.0",
 		"@neovici/cosmoz-router": "^10.0.0",
 		"@neovici/cosmoz-utils": "^5.0.0",
 		"@polymer/iron-icon": "^3.0.0",
