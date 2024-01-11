@@ -1,3 +1,15 @@
+# [8.0.0](https://github.com/neovici/cosmoz-tabs/compare/v7.6.0...v8.0.0) (2024-01-11)
+
+
+### Features
+
+* update to pion ([dac4ef2](https://github.com/neovici/cosmoz-tabs/commit/dac4ef2155cffae2c63b0ece4974530a6c5b05e3))
+
+
+### BREAKING CHANGES
+
+* Update to @pionjs/pion
+
 # [7.6.0](https://github.com/neovici/cosmoz-tabs/compare/v7.5.0...v7.6.0) (2023-03-24)
 
 
