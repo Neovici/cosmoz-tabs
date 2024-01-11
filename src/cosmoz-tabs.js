@@ -1,5 +1,5 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import { html, component } from 'haunted';
+import { html, component } from '@pionjs/pion';
 import { useTabs } from './use-tabs';
 import { style, renderTab } from './render';
 import './cosmoz-tab.js';

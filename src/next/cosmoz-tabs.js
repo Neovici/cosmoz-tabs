@@ -1,4 +1,4 @@
-import { html, component, useEffect } from 'haunted';
+import { html, component, useEffect } from '@pionjs/pion';
 import style from './cosmoz-tabs.css';
 
 const Tabs = (host) => {

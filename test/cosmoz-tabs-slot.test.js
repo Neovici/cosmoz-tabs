@@ -1,5 +1,5 @@
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 
 import '../src/cosmoz-tabs.js';
 
@@ -15,8 +15,8 @@ suiteSetup(() => {
 					<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
 					<slot></slot>
 				</cosmoz-tabs>
-			`
-		)
+			`,
+		),
 	);
 });
 
@@ -35,7 +35,7 @@ suite('cosmoz-tabs slot', () => {
 		await nextFrame();
 		assert.equal(
 			el.querySelector('cosmoz-tab').getAttribute('is-selected'),
-			''
+			'',
 		);
 	});
 });

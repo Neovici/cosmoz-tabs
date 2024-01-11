@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'haunted';
+import { useEffect, useCallback } from '@pionjs/pion';
 import { useNotifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
 
 const useTab = (host) => {

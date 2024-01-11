@@ -3,7 +3,7 @@ import './cosmoz-tab-card.js';
 import {
 	html,
 	component
-} from 'haunted';
+} from '@pionjs/pion';
 import { useTab } from './use-tab';
 
 /**

@@ -1,4 +1,4 @@
-import { component, useEffect, useLayoutEffect } from 'haunted';
+import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import computeScroll from 'compute-scroll-into-view';

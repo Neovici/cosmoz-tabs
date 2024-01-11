@@ -1,4 +1,4 @@
-import { html } from 'haunted';
+import { html } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { getIcon, getIconStyle } from './utils';
 
@@ -100,29 +100,42 @@ const style = `
 	color: #ffffff;
 	text-align: center;
 }`,
+	renderTab =
+		({ selectedTab, onSelect, href }) =>
+		(tab, i, tabs) => {
+			const isSelected = selectedTab === tab,
+				icon = getIcon(tab, isSelected);
+			return html`<a
+				class="tab"
+				tabindex="-1"
+				role="tab"
+				part=${[
+					'tab',
+					i === 0 && 'first-tab',
+					i === tabs.length - 1 && 'last-tab',
+					isSelected && 'selected-tab',
+				]
+					.filter(Boolean)
+					.join(' ')}
+				?hidden=${tab.hidden}
+				?disabled=${tab.disabled}
+				?aria-selected=${isSelected}
+				@click=${onSelect}
+				.tab=${tab}
+				href=${ifDefined(href(tab))}
+			>
+				${icon
+					? html`<iron-icon
+							class="icon"
+							icon=${icon}
+							style=${getIconStyle(tab)}
+						></iron-icon>`
+					: ''}
+				<span>${tab.heading}</span>
+				${tab.badge
+					? html`<div class="badge" title=${tab.badge}>${tab.badge}</div>`
+					: ''}
+			</a>`;
+		};
 
-	renderTab = ({
-		selectedTab,
-		onSelect,
-		href
-	}) => (tab, i, tabs) => {
-		const isSelected = selectedTab === tab,
-			icon = getIcon(tab, isSelected);
-		return html`<a class="tab" tabindex="-1" role="tab"
-			part=${ ['tab', i === 0 && 'first-tab', i === tabs.length - 1 && 'last-tab', isSelected && 'selected-tab'].filter(Boolean).join(' ') }
-			?hidden=${ tab.hidden } ?disabled=${ tab.disabled }
-			?aria-selected=${ isSelected }
-			@click=${ onSelect }
-			.tab=${ tab }
-			href=${ ifDefined(href(tab)) }
-		>
-			${ icon ? html `<iron-icon class="icon" icon=${ icon } style=${ getIconStyle(tab) }></iron-icon>` : '' }
-			<span>${ tab.heading }</span>
-			${ tab.badge ? html`<div class="badge" title=${ tab.badge }>${ tab.badge }</div>` : '' }
-		</a>`;
-	};
-
-export {
-	style,
-	renderTab
-};
+export { style, renderTab };
