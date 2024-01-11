@@ -1,5 +1,5 @@
 /* eslint-disable import/group-exports */
-import { html, useMemo, useCallback, useRef } from 'haunted';
+import { html, useMemo, useCallback, useRef } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';

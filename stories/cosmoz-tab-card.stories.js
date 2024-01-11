@@ -1,4 +1,4 @@
-import { html } from 'haunted';
+import { html } from 'lit-html';
 
 import '../src/cosmoz-tabs';
 

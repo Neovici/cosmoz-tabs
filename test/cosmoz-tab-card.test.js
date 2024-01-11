@@ -22,7 +22,7 @@ suite('cosmoz-tab-card', () => {
 	test('cards have headings', () => {
 		Array.from(tabs.querySelectorAll('cosmoz-tab-card')).forEach((item) => {
 			const heading = item.shadowRoot.querySelector('.heading');
-			assert.equal(heading.innerText, item.heading);
+			assert.equal(heading.textContent.trim(), item.heading);
 		});
 	});
 });

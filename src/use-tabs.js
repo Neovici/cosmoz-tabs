@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'haunted';
+import { useState, useEffect, useMemo, useCallback } from '@pionjs/pion';
 import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam, link } from '@neovici/cosmoz-router/use-hash-param';
