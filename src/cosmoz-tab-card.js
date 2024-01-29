@@ -1,5 +1,18 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import { html, component } from '@pionjs/pion';
+import { html, component, useState, useEffect } from '@pionjs/pion';
+import '@neovici/cosmoz-collapse';
+import { when } from 'lit-html/directives/when.js';
+import { css } from './utils';
+
+const collapseIcon = html`<svg
+	width="16"
+	height="16"
+	viewBox="0 0 16 16"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<path d="M5 1L10 8L5 15" stroke="#101010" stroke-width="1.5" />
+</svg>`;
 
 /**
 
@@ -19,60 +32,97 @@ Custom property                         | Description              | Default
 `--cosmoz-tab-card-content-line-height` | Card content line height | `initial`
 `--cosmoz-tab-card-content-padding`     | Card content padding     | `initial`
 */
-const CosmozTabCard = ({ heading }) =>
-	html` <style>
-			:host {
-				display: block;
-				position: relative;
-				box-sizing: border-box;
-				background-color: #fff;
-				border-radius: 3px;
-				margin: 15px;
-				align-self: flex-start;
-				padding: var(--cosmoz-tab-card-padding, 0);
-				width: var(--cosmoz-tab-card-width, 300px);
-				box-shadow: var(
-					--cosmoz-shadow-2dp,
-					var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5)
-				);
-			}
 
-			#content {
-				line-height: var(--cosmoz-tab-card-content-line-height, initial);
-				padding: var(--cosmoz-tab-card-content-padding, initial);
-			}
+const CosmozTabCard = (host) => {
+	const { heading, collapsable, collapsed: isCollapsed } = host,
+		[collapsed, setCollapsed] = useState(Boolean(isCollapsed)),
+		toggleCollapsed = () => {
+			if (!collapsable) return;
+			return setCollapsed((c) => !c);
+		};
 
-			#header {
-				display: flex;
-				align-items: center;
-				background-color: #fff;
-				cursor: default;
-				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-			}
+	useEffect(() => {
+		host.toggleAttribute('collapsed', collapsed);
+	}, [collapsed]);
 
-			.heading {
-				font-family: inherit;
-				font-size: 17px;
-				font-weight: 400;
-				flex: 1;
-				margin: 0.67em 0 0;
-			}
-		</style>
-
-		<div id="header" part="header">
-			<h1 class="heading" part="heading">
+	return html`<div id="header" part="header">
+			${when(
+				collapsable,
+				() => html`
+					<div @click=${toggleCollapsed} part="collapse-icon">
+						<slot name="collapse-icon">${collapseIcon}</slot>
+					</div>
+				`,
+			)}
+			<h1 class="heading" @click=${toggleCollapsed} part="heading">
 				${heading}<slot name="after-title"></slot>
 			</h1>
 			<slot name="card-actions"></slot>
 		</div>
 
 		<div id="content" part="content">
-			<slot></slot>
+			<cosmoz-collapse ?opened=${!collapsed}><slot></slot></cosmoz-collapse>
 		</div>`;
+};
+
+const style = css`
+	:host {
+		display: block;
+		position: relative;
+		box-sizing: border-box;
+		background-color: #fff;
+		border-radius: 3px;
+		margin: 15px;
+		align-self: flex-start;
+		padding: var(--cosmoz-tab-card-padding, 0);
+		width: var(--cosmoz-tab-card-width, 300px);
+		box-shadow: var(
+			--cosmoz-shadow-2dp,
+			var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5)
+		);
+	}
+
+	#content {
+		line-height: var(--cosmoz-tab-card-content-line-height, initial);
+		padding: var(--cosmoz-tab-card-content-padding, initial);
+	}
+
+	#header {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		background-color: #fff;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+
+	.heading {
+		font-family: inherit;
+		font-size: 17px;
+		font-weight: 400;
+		flex: 1;
+	}
+
+	[part='collapse-icon'] {
+		order: var(--cosmoz-tab-card-collapse-icon-order);
+		transition: transform 250ms linear;
+		transform: rotate(90deg);
+	}
+
+	:host([collapsed]) [part='collapse-icon'] {
+		transform: rotate(0deg);
+	}
+
+	:host([collapsable]) [part='collapse-icon'],
+	:host([collapsable]) .heading {
+		cursor: pointer;
+		user-select: none;
+	}
+`;
 
 customElements.define(
 	'cosmoz-tab-card',
 	component(CosmozTabCard, {
-		observedAttributes: ['heading'],
+		observedAttributes: ['heading', 'collapsable', 'collapsed'],
+		styleSheets: [style],
 	}),
 );
