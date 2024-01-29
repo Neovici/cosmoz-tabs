@@ -1,6 +1,6 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 import { html, component } from 'haunted';
-
+import '@neovici/cosmoz-collapse';
 /**
 
 @demo demo/card.html
@@ -19,7 +19,7 @@ Custom property                         | Description              | Default
 `--cosmoz-tab-card-content-line-height` | Card content line height | `initial`
 `--cosmoz-tab-card-content-padding`     | Card content padding     | `initial`
 */
-const CosmozTabCard = ({ heading }) => html` <style>
+const CosmozTabCardNext = ({ heading }) => html` <style>
 		:host {
 			display: block;
 			position: relative;
@@ -70,8 +70,8 @@ const CosmozTabCard = ({ heading }) => html` <style>
 	</div>`;
 
 customElements.define(
-	'cosmoz-tab-card',
-	component(CosmozTabCard, {
+	'cosmoz-tab-card-next',
+	component(CosmozTabCardNext, {
 		observedAttributes: ['heading'],
 	})
 );
