@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/neovici/cosmoz-tabs/compare/v8.0.0...v8.1.0) (2024-02-11)
+
+
+### Features
+
+* collapsible tab card ([82b30b1](https://github.com/neovici/cosmoz-tabs/commit/82b30b123f5cfccbcfe370ba40d57e60986d1c77))
+
 # [8.0.0](https://github.com/neovici/cosmoz-tabs/compare/v7.6.0...v8.0.0) (2024-01-11)
 
 
