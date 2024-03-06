@@ -3,6 +3,7 @@ import { html, useMemo, useCallback, useRef } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
+import { invoke } from '@neovici/cosmoz-utils/function';
 
 const isValid = (tab) => !tab.hidden && !tab.disabled,
 	valid = (tabs) =>
@@ -42,20 +43,21 @@ export const useTabs = (tabs, { hashParam, onActivate }) => {
 				onActivate?.(name);
 				activate(name);
 			},
-			[activate, onActivate]
+			[activate, onActivate],
 		),
 	};
 };
 
 export const renderTabs = ({ tabs, active, onActivate }) =>
-	tabs.map(
-		(tab) => html`<cosmoz-tab-next
+	tabs.map((tab) => {
+		const title = invoke(tab.title);
+		return html`<cosmoz-tab-next
 			name=${tab.name}
 			?active=${active.name === tab.name}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}
-			title=${ifDefined(typeof tab.title === 'string' ? tab.title : undefined)}
+			title=${ifDefined(typeof title === 'string' ? title : undefined)}
 			@click=${onActivate}
-			>${tab.content ?? tab.title}</cosmoz-tab-next
-		>`
-	);
+			>${tab.content ?? title}</cosmoz-tab-next
+		>`;
+	});
