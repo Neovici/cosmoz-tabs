@@ -1,3 +1,10 @@
+# [8.2.0](https://github.com/neovici/cosmoz-tabs/compare/v8.1.0...v8.2.0) (2024-03-06)
+
+
+### Features
+
+* **next/use-tabs:** handle function title ([dab4786](https://github.com/neovici/cosmoz-tabs/commit/dab478630502e1fd00cde6870ce501b5c9a54019))
+
 # [8.1.0](https://github.com/neovici/cosmoz-tabs/compare/v8.0.0...v8.1.0) (2024-02-11)
 
 
