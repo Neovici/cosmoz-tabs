@@ -49,7 +49,11 @@ const CosmozTabCard = (host) => {
 			${when(
 				collapsable,
 				() => html`
-					<div @click=${toggleCollapsed} part="collapse-icon">
+					<div
+						@click=${toggleCollapsed}
+						class="collapse-icon"
+						part="collapse-icon"
+					>
 						<slot name="collapse-icon">${collapseIcon}</slot>
 					</div>
 				`,
@@ -60,9 +64,11 @@ const CosmozTabCard = (host) => {
 			<slot name="card-actions"></slot>
 		</div>
 
-		<div id="content" part="content">
-			<cosmoz-collapse ?opened=${!collapsed}><slot></slot></cosmoz-collapse>
-		</div>`;
+		<cosmoz-collapse ?opened=${!collapsed}>
+			<div id="content" part="content">
+				<slot></slot>
+			</div>
+		</cosmoz-collapse> `;
 };
 
 const style = css`
@@ -102,17 +108,17 @@ const style = css`
 		flex: 1;
 	}
 
-	[part='collapse-icon'] {
+	.collapse-icon {
 		order: var(--cosmoz-tab-card-collapse-icon-order);
 		transition: transform 250ms linear;
 		transform: rotate(90deg);
 	}
 
-	:host([collapsed]) [part='collapse-icon'] {
+	:host([collapsed]) .collapse-icon {
 		transform: rotate(0deg);
 	}
 
-	:host([collapsable]) [part='collapse-icon'],
+	:host([collapsable]) .collapse-icon,
 	:host([collapsable]) .heading {
 		cursor: pointer;
 		user-select: none;
