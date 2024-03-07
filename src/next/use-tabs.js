@@ -61,3 +61,8 @@ export const renderTabs = ({ tabs, active, onActivate }) =>
 			>${tab.content ?? title}</cosmoz-tab-next
 		>`;
 	});
+
+export const renderActivated = ({ tabs, active, activated }, render) =>
+	tabs
+		.filter((t) => activated.includes(t.name))
+		.map((tab) => render({ ...tab, isActive: active.name === tab.name }));
