@@ -1,3 +1,10 @@
+# [8.4.0](https://github.com/neovici/cosmoz-tabs/compare/v8.3.0...v8.4.0) (2024-03-07)
+
+
+### Features
+
+* implement renderActivated helper ([7d74bbf](https://github.com/neovici/cosmoz-tabs/commit/7d74bbf629ed6aa50df9a2e47e319ea7aa2a9a06))
+
 # [8.3.0](https://github.com/neovici/cosmoz-tabs/compare/v8.2.0...v8.3.0) (2024-03-07)
 
 
