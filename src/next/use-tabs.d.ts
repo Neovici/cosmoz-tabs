@@ -31,7 +31,7 @@ export type RenderTabs<T extends Tab> = Pick<
 
 export declare const useTabs: <T extends Tab, P extends Options>(
 	tabs: T[],
-	opts?: P
+	opts?: P,
 ) => Result<T>;
 
 export interface RenderOptions<T extends RenderTab> {
@@ -41,5 +41,10 @@ export interface RenderOptions<T extends RenderTab> {
 }
 
 export declare const renderTabs: <T extends Tab>(
-	opts: RenderTabs<T>
+	opts: RenderTabs<T>,
 ) => unknown;
+
+export declare const renderActivated: <T extends Tab, R>(
+	opts: RenderTabs<T>,
+	render: (t: T & { isActive: boolean }) => R,
+) => R[];
