@@ -1,3 +1,17 @@
+# [8.5.0](https://github.com/neovici/cosmoz-tabs/compare/v8.4.0...v8.5.0) (2024-04-09)
+
+
+### Bug Fixes
+
+* **use-tabs:** correct compute-scroll-into-view import ([d4f0e48](https://github.com/neovici/cosmoz-tabs/commit/d4f0e481aee8a906314feb171105cfb35b234250))
+
+
+### Features
+
+* **cosmoz-tab-card:** flex the collapse ([f58549a](https://github.com/neovici/cosmoz-tabs/commit/f58549a574c265cea81f8476a16f4546e7ed43db))
+* **cosmoz-tab:** update compute-scroll-into-view ([3ee596a](https://github.com/neovici/cosmoz-tabs/commit/3ee596a10de25a5f1480b30f255f9d2e8e4ae3f6))
+* **src/use-tabs:** update compute-scroll-into-view ([54fc425](https://github.com/neovici/cosmoz-tabs/commit/54fc425e9bc5449ae4c7d72e704547633b659897))
+
 # [8.4.0](https://github.com/neovici/cosmoz-tabs/compare/v8.3.0...v8.4.0) (2024-03-07)
 
 
