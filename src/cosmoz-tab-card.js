@@ -45,7 +45,7 @@ const CosmozTabCard = (host) => {
 		host.toggleAttribute('collapsed', collapsed);
 	}, [collapsed]);
 
-	return html`<div id="header" part="header">
+	return html`<div class="header" part="header">
 			${when(
 				collapsable,
 				() => html`
@@ -64,8 +64,8 @@ const CosmozTabCard = (host) => {
 			<slot name="card-actions"></slot>
 		</div>
 
-		<cosmoz-collapse ?opened=${!collapsed}>
-			<div id="content" part="content">
+		<cosmoz-collapse class="collapse" ?opened=${!collapsed}>
+			<div class="content" part="content">
 				<slot></slot>
 			</div>
 		</cosmoz-collapse> `;
@@ -88,12 +88,17 @@ const style = css`
 		);
 	}
 
-	#content {
+	.collapse {
+		display: flex:;
+		flex: auto;
+	}
+
+	.content {
 		line-height: var(--cosmoz-tab-card-content-line-height, initial);
 		padding: var(--cosmoz-tab-card-content-padding, initial);
 	}
 
-	#header {
+	.header {
 		display: flex;
 		align-items: center;
 		gap: 8px;
