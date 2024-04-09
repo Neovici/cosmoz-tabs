@@ -1,7 +1,7 @@
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import computeScroll from 'compute-scroll-into-view';
+import { compute } from 'compute-scroll-into-view';
 
 import style from './cosmoz-tab.css';
 
@@ -22,12 +22,12 @@ const Tab = (host) => {
 		if (!active) {
 			return;
 		}
-		computeScroll(el, {
+		compute(el, {
 			block: 'nearest',
 			inline: 'center',
 			boundary: el.parentElement,
 		}).forEach(({ el, top, left }) =>
-			el.scroll({ top, left, behavior: 'smooth' })
+			el.scroll({ top, left, behavior: 'smooth' }),
 		);
 	}, [active]);
 
@@ -49,5 +49,5 @@ customElements.define(
 	'cosmoz-tab-next',
 	component(Tab, {
 		observedAttributes: ['active', 'badge', 'href'],
-	})
+	}),
 );

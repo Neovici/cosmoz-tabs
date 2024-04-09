@@ -3,7 +3,7 @@ import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property'
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam, link } from '@neovici/cosmoz-router/use-hash-param';
 import { choose, collect, getName, isValid } from './utils';
-import computeScroll from 'compute-scroll-into-view';
+import { compute } from 'compute-scroll-into-view';
 
 const useTabSelectedEffect = (host, selectedTab) => {
 		useEffect(() => {
@@ -19,7 +19,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			const eventOpts = { composed: true };
 			if (!selectedTab._active) {
 				selectedTab.dispatchEvent(
-					new CustomEvent('tab-first-select', eventOpts)
+					new CustomEvent('tab-first-select', eventOpts),
 				);
 				selectedTab._active = true;
 			}
@@ -39,12 +39,12 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			if (!el) {
 				return;
 			}
-			computeScroll(el, {
+			compute(el, {
 				block: 'nearest',
 				inline: 'center',
 				boundary: el.parentElement,
 			}).forEach(({ el, top, left }) =>
-				el.scroll({ top, left, behavior: 'smooth' })
+				el.scroll({ top, left, behavior: 'smooth' }),
 			);
 		}, [selectedTab]);
 	},
@@ -82,7 +82,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 
 		const href = useCallback(
 			(tab) => (isValid(tab) ? link(hashParam, getName(tab)) : undefined),
-			[hashParam]
+			[hashParam],
 		);
 
 		return {
@@ -90,7 +90,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			selectedTab,
 			onSlot: useCallback(
 				({ target }) => requestAnimationFrame(() => setTabs(collect(target))),
-				[]
+				[],
 			),
 			onSelect: useCallback((e) => {
 				if (e.button !== 0 || e.metaKey || e.ctrlKey) {
@@ -106,7 +106,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 				e.preventDefault();
 				window.history.pushState({}, '', href(tab));
 				requestAnimationFrame(() =>
-					window.dispatchEvent(new CustomEvent('hashchange'))
+					window.dispatchEvent(new CustomEvent('hashchange')),
 				);
 			}, []),
 			href,
