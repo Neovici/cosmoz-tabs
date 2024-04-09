@@ -89,7 +89,7 @@ const style = css`
 	}
 
 	.collapse {
-		display: flex:;
+		display: flex;
 		flex: auto;
 	}
 
