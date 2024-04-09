@@ -3,7 +3,7 @@ import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property'
 /* eslint-disable-next-line import/no-unresolved */
 import { useHashParam, link } from '@neovici/cosmoz-router/use-hash-param';
 import { choose, collect, getName, isValid } from './utils';
-import computeScroll from 'compute-scroll-into-view';
+import compute from 'compute-scroll-into-view';
 
 const useTabSelectedEffect = (host, selectedTab) => {
 		useEffect(() => {
@@ -39,7 +39,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			if (!el) {
 				return;
 			}
-			computeScroll(el, {
+			compute(el, {
 				block: 'nearest',
 				inline: 'center',
 				boundary: el.parentElement,
