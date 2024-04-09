@@ -1,3 +1,10 @@
+## [8.5.1](https://github.com/neovici/cosmoz-tabs/compare/v8.5.0...v8.5.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* correct display typo ([532209c](https://github.com/neovici/cosmoz-tabs/commit/532209c9c2815dd75eb2dab14a475dbf2852c039))
+
 # [8.5.0](https://github.com/neovici/cosmoz-tabs/compare/v8.4.0...v8.5.0) (2024-04-09)
 
 
