@@ -31,7 +31,7 @@
 		"test:watch": "wtr --watch",
 		"storybook:build": "build-storybook",
 		"storybook:deploy": "storybook-to-ghpages",
-		"prepare": "husky install"
+		"prepare": "husky"
 	},
 	"release": {
 		"plugins": [
@@ -74,7 +74,7 @@
 		"@pionjs/pion": "^2.0.0",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/iron-icons": "^3.0.0",
-		"compute-scroll-into-view": "^1.0.17",
+		"compute-scroll-into-view": "^3.0.0",
 		"lit-html": "^2.0.0 || ^3.0.0"
 	},
 	"devDependencies": {
@@ -87,7 +87,7 @@
 		"@semantic-release/git": "^10.0.0",
 		"@storybook/storybook-deployer": "^2.8.0",
 		"@web/dev-server-storybook": "^2.0.0",
-		"husky": "^8.0.0",
+		"husky": "^9.0.0",
 		"semantic-release": "^23.0.0",
 		"sinon": "^17.0.0",
 		"typescript": "^5.0.0"
