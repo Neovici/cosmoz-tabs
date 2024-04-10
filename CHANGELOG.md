@@ -1,3 +1,10 @@
+# [8.6.0](https://github.com/neovici/cosmoz-tabs/compare/v8.5.1...v8.6.0) (2024-04-10)
+
+
+### Features
+
+* **cosmoz-tab-card:** flex the .content ([0a61e0f](https://github.com/neovici/cosmoz-tabs/commit/0a61e0f61f6e09d326958f72f45afaf527ff937d))
+
 ## [8.5.1](https://github.com/neovici/cosmoz-tabs/compare/v8.5.0...v8.5.1) (2024-04-09)
 
 
