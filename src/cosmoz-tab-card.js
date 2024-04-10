@@ -96,6 +96,7 @@ const style = css`
 	.content {
 		line-height: var(--cosmoz-tab-card-content-line-height, initial);
 		padding: var(--cosmoz-tab-card-content-padding, initial);
+		flex: auto;
 	}
 
 	.header {
