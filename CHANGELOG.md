@@ -1,3 +1,10 @@
+## [8.6.1](https://github.com/neovici/cosmoz-tabs/compare/v8.6.0...v8.6.1) (2024-04-11)
+
+
+### Bug Fixes
+
+* **cosmoz-tab-card:** fix sizing ([4ae4f6a](https://github.com/neovici/cosmoz-tabs/commit/4ae4f6a5e2ab3da533b0297fe3f7f02478dee517))
+
 # [8.6.0](https://github.com/neovici/cosmoz-tabs/compare/v8.5.1...v8.6.0) (2024-04-10)
 
 
