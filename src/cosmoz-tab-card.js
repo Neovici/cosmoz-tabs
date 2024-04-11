@@ -90,6 +90,7 @@ const style = css`
 
 	.collapse {
 		display: flex;
+		flex-direction: column;
 		flex: auto;
 	}
 
