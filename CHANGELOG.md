@@ -1,3 +1,15 @@
+# [8.7.0](https://github.com/neovici/cosmoz-tabs/compare/v8.6.1...v8.7.0) (2024-04-15)
+
+
+### Bug Fixes
+
+* **bg:** color to be applied everywhere ([47a9af0](https://github.com/neovici/cosmoz-tabs/commit/47a9af0e5aa4160aff84e2a25e887fa5d4df76ce))
+
+
+### Features
+
+* **bg-color:** bg color manageable from the outside via css vars ([3bd8a99](https://github.com/neovici/cosmoz-tabs/commit/3bd8a99278149d0798ee60146b8cfa090efd61d6))
+
 ## [8.6.1](https://github.com/neovici/cosmoz-tabs/compare/v8.6.0...v8.6.1) (2024-04-11)
 
 
