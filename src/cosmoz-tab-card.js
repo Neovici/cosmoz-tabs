@@ -76,7 +76,7 @@ const style = css`
 		display: block;
 		position: relative;
 		box-sizing: border-box;
-		background-color: #fff;
+		background-color: var(--cosmoz-tab-card-bg-color, white);
 		border-radius: 3px;
 		margin: 15px;
 		align-self: flex-start;
