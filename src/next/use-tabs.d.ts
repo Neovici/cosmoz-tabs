@@ -1,7 +1,7 @@
 export interface Tab {
 	name: string;
 	hidden?: boolean;
-	disable?: boolean;
+	disabled?: boolean;
 	fallback?: boolean;
 }
 
