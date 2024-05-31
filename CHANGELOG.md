@@ -1,3 +1,10 @@
+## [8.7.1](https://github.com/neovici/cosmoz-tabs/compare/v8.7.0...v8.7.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* **use-tabs:** correct type ([50b5b3a](https://github.com/neovici/cosmoz-tabs/commit/50b5b3ad710340b5a192b0003126f03d84a121bc))
+
 # [8.7.0](https://github.com/neovici/cosmoz-tabs/compare/v8.6.1...v8.7.0) (2024-04-15)
 
 
