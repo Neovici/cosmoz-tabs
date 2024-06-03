@@ -1,5 +1,6 @@
 node_modules/
 coverage/
+/storybook-static/
 debug.log
 yarn-error.log
 .eslintcache
