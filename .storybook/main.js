@@ -7,6 +7,9 @@ const config = {
 	framework: {
 		name: '@web/storybook-framework-web-components',
 	},
+	docs: {
+		autodocs: true,
+	},
 	/* Try to make the build parse TS files */
 	async rollupFinal(config) {
 		// add extra configuration for rollup
