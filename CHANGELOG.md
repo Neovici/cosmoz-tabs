@@ -1,3 +1,18 @@
+# [8.8.0](https://github.com/neovici/cosmoz-tabs/compare/v8.7.1...v8.8.0) (2024-06-04)
+
+
+### Features
+
+* add `skip_dist` again ([12c7c2a](https://github.com/neovici/cosmoz-tabs/commit/12c7c2a8af898c6e98801d931f750ee5224a73c7))
+* add `skip_dist` input for preview workflow ([fd53112](https://github.com/neovici/cosmoz-tabs/commit/fd5311253ec9679ad9e7041033979cc17e618fdc))
+* add github `preview` workflow ([e613283](https://github.com/neovici/cosmoz-tabs/commit/e6132837a000f4cf40b48826b23f0317c84c89ee))
+* add storybook related packages and scripts ([8e23c59](https://github.com/neovici/cosmoz-tabs/commit/8e23c594de9f80947f7131e57a8a71dbce8525ba))
+* enable autodocs for all stories ([1a10092](https://github.com/neovici/cosmoz-tabs/commit/1a10092f0c372b2fc117cb497ae442a6776ff995))
+* made the storybook script run ([bb656c7](https://github.com/neovici/cosmoz-tabs/commit/bb656c715f739702214cfbac484d3e1832d706a3))
+* remove `@storybook/builder-vite` ([676af9c](https://github.com/neovici/cosmoz-tabs/commit/676af9c011a2eeb4147f10a9fd192facbc25907c))
+* small update to preview workflow ([23454f4](https://github.com/neovici/cosmoz-tabs/commit/23454f45a8f0e70e93d00413a21bec003663642b))
+* update dependencies ([290ccc9](https://github.com/neovici/cosmoz-tabs/commit/290ccc9782d0e2bbdb8ce3fd627f49a213acc157))
+
 ## [8.7.1](https://github.com/neovici/cosmoz-tabs/compare/v8.7.0...v8.7.1) (2024-05-31)
 
 
