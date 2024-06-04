@@ -1,3 +1,11 @@
+# [8.9.0](https://github.com/neovici/cosmoz-tabs/compare/v8.8.0...v8.9.0) (2024-06-04)
+
+
+### Features
+
+* add `skip_dist` to storybook workflow ([de5f0ca](https://github.com/neovici/cosmoz-tabs/commit/de5f0cae010513f5fd2670a1620d6c6d64be13d5))
+* use the `cfg` workflow as base ([4a68b3d](https://github.com/neovici/cosmoz-tabs/commit/4a68b3dbbf814cb833a835ed323a39e5010b5713))
+
 # [8.8.0](https://github.com/neovici/cosmoz-tabs/compare/v8.7.1...v8.8.0) (2024-06-04)
 
 
