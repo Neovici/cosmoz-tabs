@@ -82,7 +82,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
 		"@commitlint/config-conventional": "^19.2.2",
-		"@neovici/cfg": "^1.53.0",
+		"@neovici/cfg": "^1.54.1",
 		"@open-wc/testing": "^4.0.0",
 		"@polymer/iron-list": "^3.1.0",
 		"@semantic-release/changelog": "^6.0.0",
