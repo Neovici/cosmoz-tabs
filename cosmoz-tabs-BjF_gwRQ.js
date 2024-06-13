@@ -287,7 +287,7 @@ const style$2 = `
 }
 
 .badge {
-	font-family: var(--cosmoz-font-base, "Verdana, Arial, sans-serif");
+	font-family: var(--cosmoz-tabs-badge-font-family, var(--cosmoz-font-base, inherit))
 	font-weight: normal;
 	font-size: 11px;
 	line-height: 1;
