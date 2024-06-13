@@ -1,3 +1,10 @@
+## [8.9.1](https://github.com/neovici/cosmoz-tabs/compare/v8.9.0...v8.9.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* badge font-family ([0496cf2](https://github.com/neovici/cosmoz-tabs/commit/0496cf2ddc4323e6eacf698e9ef1bc59f975201b))
+
 # [8.9.0](https://github.com/neovici/cosmoz-tabs/compare/v8.8.0...v8.9.0) (2024-06-04)
 
 
