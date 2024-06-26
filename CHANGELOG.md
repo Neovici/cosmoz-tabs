@@ -1,3 +1,10 @@
+# [8.10.0](https://github.com/neovici/cosmoz-tabs/compare/v8.9.1...v8.10.0) (2024-06-26)
+
+
+### Features
+
+* **next/use-tabs:** support className in renderTabs ([ea76038](https://github.com/neovici/cosmoz-tabs/commit/ea76038d74631dc8a3f3f0a67f5bd669109f3c5e))
+
 ## [8.9.1](https://github.com/neovici/cosmoz-tabs/compare/v8.9.0...v8.9.1) (2024-06-13)
 
 
