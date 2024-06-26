@@ -24,10 +24,10 @@ interface Result<T extends Tab> {
 	onActivate: (e: Event) => void;
 }
 
-export type RenderTabs<T extends Tab> = Pick<
-	Result<T>,
-	'tabs' | 'active' | 'onActivate'
->;
+export interface RenderTabs<T extends Tab>
+	extends Pick<Result<T>, 'tabs' | 'active' | 'onActivate'> {
+	className?: string;
+}
 
 export declare const useTabs: <T extends Tab, P extends Options>(
 	tabs: T[],

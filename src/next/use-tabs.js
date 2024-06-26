@@ -48,15 +48,16 @@ export const useTabs = (tabs, { hashParam, onActivate }) => {
 	};
 };
 
-export const renderTabs = ({ tabs, active, onActivate }) =>
+export const renderTabs = ({ tabs, active, onActivate, className }) =>
 	tabs.map((tab) => {
 		const title = invoke(tab.title);
 		return html`<cosmoz-tab-next
 			name=${tab.name}
+			class=${ifDefined(className)}
+			title=${ifDefined(typeof title === 'string' ? title : undefined)}
 			?active=${active.name === tab.name}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}
-			title=${ifDefined(typeof title === 'string' ? title : undefined)}
 			@click=${onActivate}
 			>${tab.content ?? title}</cosmoz-tab-next
 		>`;
