@@ -1,9 +1,6 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 import './cosmoz-tab-card.js';
-import {
-	html,
-	component
-} from '@pionjs/pion';
+import { html, component } from '@pionjs/pion';
 import { useTab } from './use-tab';
 
 /**
@@ -26,7 +23,7 @@ Custom property | Description | Default
 `--cosmoz-tab-header-accordion` | Mixin applied to the header when the tab is in accordion mode | `{}`
 `--cosmoz-tab-header-accordion-selected` | Mixin applied to the header when the tab is selected in accordion mode | `{}`
 */
-const CosmozTab = host => {
+const CosmozTab = (host) => {
 	const { onSlot } = useTab(host);
 	return html`
 		<style>
@@ -35,6 +32,7 @@ const CosmozTab = host => {
 				position: relative;
 				flex-direction: column;
 				flex: 1 1 auto;
+				padding: 0 5px;
 				max-height: 100%;
 			}
 
@@ -48,29 +46,32 @@ const CosmozTab = host => {
 			}
 		</style>
 
-		<slot @slotchange=${ onSlot }></slot>
-`;
+		<slot @slotchange=${onSlot}></slot>
+	`;
 };
 
-customElements.define('cosmoz-tab', class extends component(CosmozTab, {
-	observedAttributes: [
-		'hidden',
-		'disabled',
-		'heading',
-		'badge',
-		'icon',
-		'icon-style',
-		'icon-color',
-		'selected-icon',
-		'is-selected'
-	]
-}) {
-	// TODO: drop this when haunted better handles native properties
-	set hidden(val) {
-		super.hidden = val;
-		this._scheduler.update();
-	}
-	get hidden() {
-		return super.hidden;
-	}
-});
+customElements.define(
+	'cosmoz-tab',
+	class extends component(CosmozTab, {
+		observedAttributes: [
+			'hidden',
+			'disabled',
+			'heading',
+			'badge',
+			'icon',
+			'icon-style',
+			'icon-color',
+			'selected-icon',
+			'is-selected',
+		],
+	}) {
+		// TODO: drop this when haunted better handles native properties
+		set hidden(val) {
+			super.hidden = val;
+			this._scheduler.update();
+		}
+		get hidden() {
+			return super.hidden;
+		}
+	},
+);

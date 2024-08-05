@@ -56,7 +56,7 @@ const CosmozTabCard = (host) => {
 					>
 						<slot name="collapse-icon">${collapseIcon}</slot>
 					</div>
-				`
+				`,
 			)}
 			<h1 class="heading" @click=${toggleCollapsed} part="heading">
 				${heading}<slot name="after-title"></slot>
@@ -77,15 +77,12 @@ const style = css`
 		position: relative;
 		box-sizing: border-box;
 		background-color: var(--cosmoz-tab-card-bg-color, white);
-		border-radius: 3px;
-		margin: 15px;
+		border-radius: 10px;
+		border: 1px solid rgb(229, 230, 236);
+		margin: 10px 5px 0;
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
 		width: var(--cosmoz-tab-card-width, 300px);
-		box-shadow: var(
-			--cosmoz-shadow-2dp,
-			var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5)
-		);
 	}
 
 	.collapse {
@@ -110,9 +107,10 @@ const style = css`
 
 	.heading {
 		font-family: inherit;
-		font-size: 17px;
+		font-size: 15px;
 		font-weight: 400;
 		flex: 1;
+		color: rgb(0, 0, 0);
 	}
 
 	.collapse-icon {
@@ -137,5 +135,5 @@ customElements.define(
 	component(CosmozTabCard, {
 		observedAttributes: ['heading', 'collapsable', 'collapsed'],
 		styleSheets: [style],
-	})
+	}),
 );
