@@ -441,7 +441,6 @@ const style$1 = css`
 		margin: 10px 5px 0;
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
-		margin: 10px 5px 0 5px;
 		width: var(--cosmoz-tab-card-width, 300px);
 	}
 

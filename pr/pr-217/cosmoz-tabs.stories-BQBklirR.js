@@ -1,7 +1,7 @@
 import { w, x } from './lit-html-diQ3t45r.js';
 import './if-defined-DrC9Z5iS.js';
 import { f as f$1, i as i$2 } from './directive-helpers-CRujXBpd.js';
-import { t as templatize, m as modelForElement, u as useShadow, d as dom, P as Polymer, h as html, O as OptionalMutableDataBehavior, a as animationFrame, b as microTask, i as idlePeriod, f as flush, D as Debouncer, e as enqueueDebouncer, c as matches, g as translate } from './cosmoz-tabs-DrkGDIPp.js';
+import { t as templatize, m as modelForElement, u as useShadow, d as dom, P as Polymer, h as html, O as OptionalMutableDataBehavior, a as animationFrame, b as microTask, i as idlePeriod, f as flush, D as Debouncer, e as enqueueDebouncer, c as matches, g as translate } from './cosmoz-tabs-iKw8h9KL.js';
 
 /**
  * @license
