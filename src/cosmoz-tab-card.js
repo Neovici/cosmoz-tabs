@@ -79,7 +79,7 @@ const style = css`
 		background-color: var(--cosmoz-tab-card-bg-color, white);
 		border-radius: 10px;
 		border: 1px solid rgb(229, 230, 236);
-		margin: 10px 5px 0;
+		margin: 10px;
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
 		width: var(--cosmoz-tab-card-width, 300px);

@@ -32,7 +32,6 @@ const CosmozTab = (host) => {
 				position: relative;
 				flex-direction: column;
 				flex: 1 1 auto;
-				padding: 0 5px;
 				max-height: 100%;
 			}
 
