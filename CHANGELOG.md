@@ -1,3 +1,10 @@
+## [8.10.1](https://github.com/neovici/cosmoz-tabs/compare/v8.10.0...v8.10.1) (2024-08-19)
+
+
+### Bug Fixes
+
+* match new styling changes for tab cards ([d8e3639](https://github.com/neovici/cosmoz-tabs/commit/d8e363908d2446baba1af01a793c96f7292e4175))
+
 # [8.10.0](https://github.com/neovici/cosmoz-tabs/compare/v8.9.1...v8.10.0) (2024-06-26)
 
 
