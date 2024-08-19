@@ -436,15 +436,12 @@ const style$1 = css`
 		position: relative;
 		box-sizing: border-box;
 		background-color: var(--cosmoz-tab-card-bg-color, white);
-		border-radius: 3px;
-		margin: 15px;
+		border-radius: 10px;
+		border: 1px solid rgb(229, 230, 236);
+		margin: 10px 5px 0;
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
 		width: var(--cosmoz-tab-card-width, 300px);
-		box-shadow: var(
-			--cosmoz-shadow-2dp,
-			var(--shadow-elevation-2dp_-_box-shadow, 0 2px 4px 0 #e5e5e5)
-		);
 	}
 
 	.collapse {
@@ -469,9 +466,10 @@ const style$1 = css`
 
 	.heading {
 		font-family: inherit;
-		font-size: 17px;
+		font-size: 15px;
 		font-weight: 400;
 		flex: 1;
+		color: rgb(0, 0, 0);
 	}
 
 	.collapse-icon {
@@ -536,6 +534,7 @@ const CosmozTab = (host) => {
 				position: relative;
 				flex-direction: column;
 				flex: 1 1 auto;
+				padding: 0 5px;
 				max-height: 100%;
 			}
 
@@ -550,30 +549,33 @@ const CosmozTab = (host) => {
 		</style>
 
 		<slot @slotchange=${onSlot}></slot>
-`;
+	`;
 };
-customElements.define("cosmoz-tab", class extends component(CosmozTab, {
-  observedAttributes: [
-    "hidden",
-    "disabled",
-    "heading",
-    "badge",
-    "icon",
-    "icon-style",
-    "icon-color",
-    "selected-icon",
-    "is-selected"
-  ]
-}) {
-  // TODO: drop this when haunted better handles native properties
-  set hidden(val) {
-    super.hidden = val;
-    this._scheduler.update();
+customElements.define(
+  "cosmoz-tab",
+  class extends component(CosmozTab, {
+    observedAttributes: [
+      "hidden",
+      "disabled",
+      "heading",
+      "badge",
+      "icon",
+      "icon-style",
+      "icon-color",
+      "selected-icon",
+      "is-selected"
+    ]
+  }) {
+    // TODO: drop this when haunted better handles native properties
+    set hidden(val) {
+      super.hidden = val;
+      this._scheduler.update();
+    }
+    get hidden() {
+      return super.hidden;
+    }
   }
-  get hidden() {
-    return super.hidden;
-  }
-});
+);
 
 /**
 @license
