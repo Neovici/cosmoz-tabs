@@ -24,7 +24,7 @@ const getProjectAnnotations = async () => {
   const configs = await Promise.all([
     import('./entry-preview-CT1YEuLY.js'),
     import('./entry-preview-docs-XQHugYfQ.js'),
-    import('./preview-Dg_t3Bt_.js'),
+    import('./preview-C5fTX-SD.js'),
     import('./preview-BcJVSA4a.js'),
     import('./preview-Bf0d1tVO.js'),
     import('./preview-CU2JNqMw.js'),
