@@ -1,6 +1,6 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import { html, component, useState, useEffect } from '@pionjs/pion';
 import '@neovici/cosmoz-collapse';
+import { component, html, useEffect, useState } from '@pionjs/pion';
 import { when } from 'lit-html/directives/when.js';
 import { css } from './utils';
 
@@ -95,6 +95,8 @@ const style = css`
 		line-height: var(--cosmoz-tab-card-content-line-height, initial);
 		padding: var(--cosmoz-tab-card-content-padding, initial);
 		flex: auto;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.header {
