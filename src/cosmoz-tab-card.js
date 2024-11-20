@@ -1,5 +1,5 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import { html, component, useState, useEffect } from '@pionjs/pion';
+import { html, component, useState, useEffect, useMemo } from '@pionjs/pion';
 import '@neovici/cosmoz-collapse';
 import { when } from 'lit-html/directives/when.js';
 import { css } from './utils';
@@ -35,6 +35,11 @@ Custom property                         | Description              | Default
 
 const CosmozTabCard = (host) => {
 	const { heading, collapsable, collapsed: isCollapsed } = host,
+		headingAttribute = useMemo(
+			() => host.getAttribute('heading'),
+			[host.heading],
+		),
+		hasSlot = host.querySelector('[slot]'),
 		[collapsed, setCollapsed] = useState(Boolean(isCollapsed)),
 		toggleCollapsed = () => {
 			if (!collapsable) return;
@@ -45,30 +50,42 @@ const CosmozTabCard = (host) => {
 		host.toggleAttribute('collapsed', collapsed);
 	}, [collapsed]);
 
-	return html`<div class="header" part="header">
-			${when(
-				collapsable,
-				() => html`
-					<div
-						@click=${toggleCollapsed}
-						class="collapse-icon"
-						part="collapse-icon"
-					>
-						<slot name="collapse-icon">${collapseIcon}</slot>
-					</div>
-				`,
-			)}
-			<h1 class="heading" @click=${toggleCollapsed} part="heading">
-				${heading}<slot name="after-title"></slot>
-			</h1>
-			<slot name="card-actions"></slot>
-		</div>
+	return html`
+		${when(
+			collapsable || headingAttribute || hasSlot,
+			() =>
+				html`<div class="header" part="header">
+					${when(
+						collapsable,
+						() => html`
+							<div
+								@click=${toggleCollapsed}
+								class="collapse-icon"
+								part="collapse-icon"
+							>
+								<slot name="collapse-icon">${collapseIcon}</slot>
+							</div>
+						`,
+					)}
+					${when(
+						headingAttribute,
+						() => html`
+							<h1 class="heading" @click=${toggleCollapsed} part="heading">
+								${heading}
+								<slot name="after-title"></slot>
+							</h1>
+						`,
+					)}
+					<slot name="card-actions"></slot>
+				</div>`,
+		)}
 
 		<cosmoz-collapse class="collapse" ?opened=${!collapsed}>
 			<div class="content" part="content">
 				<slot></slot>
 			</div>
-		</cosmoz-collapse> `;
+		</cosmoz-collapse>
+	`;
 };
 
 const style = css`
