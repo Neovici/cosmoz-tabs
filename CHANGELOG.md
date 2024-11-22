@@ -1,3 +1,15 @@
+# [9.0.0](https://github.com/neovici/cosmoz-tabs/compare/v8.10.2...v9.0.0) (2024-11-22)
+
+
+### Features
+
+* **cosmoz-tab-card:** add css rules for heading ([5490179](https://github.com/neovici/cosmoz-tabs/commit/54901794777f18a35a8447e1f9b4d474878ac47d))
+
+
+### BREAKING CHANGES
+
+* **cosmoz-tab-card:** `cosmoz-tab-card` heading must be an attribute
+
 ## [8.10.2](https://github.com/neovici/cosmoz-tabs/compare/v8.10.1...v8.10.2) (2024-08-19)
 
 
