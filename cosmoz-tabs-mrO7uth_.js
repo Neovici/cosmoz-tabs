@@ -444,6 +444,14 @@ const style$1 = css`
 		width: var(--cosmoz-tab-card-width, 300px);
 	}
 
+	:host([heading]) h1 {
+		display: block;
+	}
+
+	h1.heading {
+		display: none;
+	}
+
 	.collapse {
 		display: flex;
 		flex-direction: column;
