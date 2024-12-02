@@ -1,6 +1,11 @@
-import { useState, useEffect, useMemo, useCallback } from '@pionjs/pion';
+import {
+	useState,
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useCallback,
+} from '@pionjs/pion';
 import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
-/* eslint-disable-next-line import/no-unresolved */
 import { useHashParam, link } from '@neovici/cosmoz-router/use-hash-param';
 import { choose, collect, getName, isValid } from './utils';
 import { compute } from 'compute-scroll-into-view';
@@ -33,20 +38,24 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			};
 		}, [selectedTab]);
 	},
-	useAutoScroll = (host, selectedTab) => {
-		useEffect(() => {
+	useAutoScroll = (host, selectedTab, tabs) => {
+		useLayoutEffect(() => {
 			const el = host.shadowRoot.querySelector('a[aria-selected]');
 			if (!el) {
 				return;
 			}
-			compute(el, {
-				block: 'nearest',
-				inline: 'center',
-				boundary: el.parentElement,
-			}).forEach(({ el, top, left }) =>
-				el.scroll({ top, left, behavior: 'smooth' }),
+			const rid = requestAnimationFrame(() =>
+				compute(el, {
+					block: 'nearest',
+					inline: 'center',
+					boundary: el.parentElement,
+					scrollMode: 'if-needed',
+				}).forEach(({ el, top, left }) =>
+					el.scroll({ top, left, behavior: 'smooth' }),
+				),
 			);
-		}, [selectedTab]);
+			return () => cancelAnimationFrame(rid);
+		}, [selectedTab, tabs]);
 	},
 	useTabs = (host) => {
 		const { selected, hashParam } = host,
@@ -78,7 +87,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
 			return () => host.removeEventListener('cosmoz-tab-alter', onTabAlter);
 		}, [selectedTab]);
 
-		useAutoScroll(host, selectedTab);
+		useAutoScroll(host, selectedTab, tabs);
 
 		const href = useCallback(
 			(tab) => (isValid(tab) ? link(hashParam, getName(tab)) : undefined),
