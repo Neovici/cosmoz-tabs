@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/neovici/cosmoz-tabs/compare/v9.0.0...v9.1.0) (2024-12-02)
+
+
+### Features
+
+* scroll into view when tabs change ([#226](https://github.com/neovici/cosmoz-tabs/issues/226)) ([9d21e41](https://github.com/neovici/cosmoz-tabs/commit/9d21e4135ecb79eaf5ad908037f36b7e69ff8a57))
+
 # [9.0.0](https://github.com/neovici/cosmoz-tabs/compare/v8.10.2...v9.0.0) (2024-11-22)
 
 
