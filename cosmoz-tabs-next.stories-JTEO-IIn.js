@@ -1,5 +1,5 @@
-import { x, T } from './lit-html-diQ3t45r.js';
-import { t as tagged, c as component, u as useEffect, a as useLayoutEffect, r, o } from './if-defined-DrC9Z5iS.js';
+import { x, E } from './lit-html-CmtJAihu.js';
+import { t as tagged, c as component, u as useEffect, a as useLayoutEffect, r, o } from './if-defined-Bb7yiZFq.js';
 
 var style$1 = tagged`
 	:host {
@@ -131,7 +131,7 @@ const Tab = (host) => {
 		<a part="link" href=${o(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
-			${badge ? x`<span class="badge" part="badge">${badge}</span>` : T}
+			${badge ? x`<span class="badge" part="badge">${badge}</span>` : E}
 		</a>
 	`;
 };

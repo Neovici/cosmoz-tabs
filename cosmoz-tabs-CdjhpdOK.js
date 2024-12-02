@@ -1,5 +1,5 @@
-import { b as useMemo, h as hook, H as Hook, u as useEffect, d as useState, t as tagged, r, o, c as component } from './if-defined-DrC9Z5iS.js';
-import { x } from './lit-html-diQ3t45r.js';
+import { b as useMemo, h as hook, H as Hook, u as useEffect, d as useState, t as tagged, a as useLayoutEffect, r, o, c as component } from './if-defined-Bb7yiZFq.js';
+import { x } from './lit-html-CmtJAihu.js';
 
 /**
  * @function
@@ -148,20 +148,24 @@ const useTabSelectedEffect = (host, selectedTab) => {
       selectedTab._fallbackFor = void 0;
     };
   }, [selectedTab]);
-}, useAutoScroll = (host, selectedTab) => {
-  useEffect(() => {
+}, useAutoScroll = (host, selectedTab, tabs) => {
+  useLayoutEffect(() => {
     const el = host.shadowRoot.querySelector("a[aria-selected]");
     if (!el) {
       return;
     }
-    r(el, {
-      block: "nearest",
-      inline: "center",
-      boundary: el.parentElement
-    }).forEach(
-      ({ el: el2, top, left }) => el2.scroll({ top, left, behavior: "smooth" })
+    const rid = requestAnimationFrame(
+      () => r(el, {
+        block: "nearest",
+        inline: "center",
+        boundary: el.parentElement,
+        scrollMode: "if-needed"
+      }).forEach(
+        ({ el: el2, top, left }) => el2.scroll({ top, left, behavior: "smooth" })
+      )
     );
-  }, [selectedTab]);
+    return () => cancelAnimationFrame(rid);
+  }, [selectedTab, tabs]);
 }, useTabs = (host) => {
   const { selected, hashParam } = host, [tabs, setTabs] = useState([]), [param] = useHashParam(hashParam), selection = hashParam == null || param == null && selected != null ? selected : param, selectedTab = useMemo(() => choose(tabs, selection), [tabs, selection]);
   useTabSelectedEffect(host, selectedTab);
@@ -178,7 +182,7 @@ const useTabSelectedEffect = (host, selectedTab) => {
     host.addEventListener("cosmoz-tab-alter", onTabAlter);
     return () => host.removeEventListener("cosmoz-tab-alter", onTabAlter);
   }, [selectedTab]);
-  useAutoScroll(host, selectedTab);
+  useAutoScroll(host, selectedTab, tabs);
   const href = useCallback(
     (tab) => isValid(tab) ? link(hashParam, getName(tab)) : void 0,
     [hashParam]

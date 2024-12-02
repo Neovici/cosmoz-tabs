@@ -11,10 +11,10 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-CPk67609.js'),
-  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-kp7scG6d.js'),
-  "./stories/cosmoz-tabs-next.stories.js": () => import('./cosmoz-tabs-next.stories-IZLGxsa6.js'),
-  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-Dh1a4I_C.js')
+  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-BvCXuxNf.js'),
+  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-C_G3FYr7.js'),
+  "./stories/cosmoz-tabs-next.stories.js": () => import('./cosmoz-tabs-next.stories-JTEO-IIn.js'),
+  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-BGUHBlxh.js')
 };
 function importFn(path) {
   return importers[path]();
@@ -22,15 +22,15 @@ function importFn(path) {
 
 const getProjectAnnotations = async () => {
   const configs = await Promise.all([
-    import('./entry-preview-CT1YEuLY.js'),
-    import('./entry-preview-docs-XQHugYfQ.js'),
-    import('./preview-C5fTX-SD.js'),
+    import('./entry-preview-BRopiGfa.js'),
+    import('./entry-preview-docs-BpGAFbCw.js'),
+    import('./preview-C8OmhiPB.js'),
     import('./preview-BcJVSA4a.js'),
     import('./preview-Bf0d1tVO.js'),
     import('./preview-CU2JNqMw.js'),
     import('./preview-BT9ta7nr.js'),
     import('./preview-CDagOaLU.js'),
-    import('./preview-DP9noNUd.js')
+    import('./preview-KqRhvb1R.js')
   ]);
   return __STORYBOOK_MODULE_PREVIEW_API__.composeConfigs(configs);
 };
