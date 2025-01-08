@@ -78,7 +78,7 @@ const style = css`
 		box-sizing: border-box;
 		background-color: var(--cosmoz-tab-card-bg-color, white);
 		border-radius: 10px;
-		border: 1px solid rgb(229, 230, 236);
+		border: 1px solid var(--cosmoz-tab-card-border-color, rgb(229, 230, 236));
 		margin: 10px;
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
@@ -118,7 +118,7 @@ const style = css`
 		font-size: 15px;
 		font-weight: 400;
 		flex: 1;
-		color: rgb(0, 0, 0);
+		color: var(--cosmoz-tab-card-heading-color);
 	}
 
 	.collapse-icon {
