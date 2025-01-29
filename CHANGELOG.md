@@ -1,3 +1,10 @@
+## [9.1.1](https://github.com/neovici/cosmoz-tabs/compare/v9.1.0...v9.1.1) (2025-01-29)
+
+
+### Bug Fixes
+
+* **deps:** bump playwright/test from 1.40.0 to 1.50.0 ([dcad56a](https://github.com/neovici/cosmoz-tabs/commit/dcad56a2f86a280e9934f9e56f7f4910553c6c33))
+
 # [9.1.0](https://github.com/neovici/cosmoz-tabs/compare/v9.0.0...v9.1.0) (2024-12-02)
 
 
