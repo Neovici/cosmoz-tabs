@@ -1,3 +1,10 @@
+## [9.2.1](https://github.com/neovici/cosmoz-tabs/compare/v9.2.0...v9.2.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **cosmoz-tab-card:** correct variable ([a0b978d](https://github.com/neovici/cosmoz-tabs/commit/a0b978dd848a557ed5240df0fce51641e45385d4))
+
 # [9.2.0](https://github.com/neovici/cosmoz-tabs/compare/v9.1.2...v9.2.0) (2025-03-11)
 
 
