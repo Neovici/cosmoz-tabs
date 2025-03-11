@@ -1,3 +1,10 @@
+# [9.2.0](https://github.com/neovici/cosmoz-tabs/compare/v9.1.2...v9.2.0) (2025-03-11)
+
+
+### Features
+
+* **cosmoz-tab-card:** add more CSS variables ([7b7f25a](https://github.com/neovici/cosmoz-tabs/commit/7b7f25a4c20df8a8ba972f7a8195b360b4b0b09c))
+
 ## [9.1.2](https://github.com/neovici/cosmoz-tabs/compare/v9.1.1...v9.1.2) (2025-03-11)
 
 
