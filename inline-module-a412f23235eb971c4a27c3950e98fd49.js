@@ -11,10 +11,10 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-CTVZwx4F.js'),
-  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-eqSlqFGk.js'),
+  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-BUYfqMov.js'),
+  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-mGmKx6P_.js'),
   "./stories/cosmoz-tabs-next.stories.js": () => import('./cosmoz-tabs-next.stories-JTEO-IIn.js'),
-  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-CS-_KYvU.js')
+  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-BzasRYiV.js')
 };
 function importFn(path) {
   return importers[path]();

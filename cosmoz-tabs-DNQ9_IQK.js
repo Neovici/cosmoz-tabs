@@ -440,9 +440,9 @@ const style$1 = css`
 		position: relative;
 		box-sizing: border-box;
 		background-color: var(--cosmoz-tab-card-bg-color, white);
-		border-radius: 10px;
+		border-radius: var(cosmoz-tab-card-border-radius, 10px);
 		border: 1px solid var(--cosmoz-tab-card-border-color, rgb(229, 230, 236));
-		margin: 10px;
+		margin: var(--cosmoz-tab-card-margin, 10px);
 		align-self: flex-start;
 		padding: var(--cosmoz-tab-card-padding, 0);
 		width: var(--cosmoz-tab-card-width, 300px);
