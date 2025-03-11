@@ -1,3 +1,11 @@
+## [9.1.2](https://github.com/neovici/cosmoz-tabs/compare/v9.1.1...v9.1.2) (2025-03-11)
+
+
+### Bug Fixes
+
+* **cosmoz-tab-card:** add new colors ([0f7139e](https://github.com/neovici/cosmoz-tabs/commit/0f7139eb533b96896ab4274cb928a4c95f362092))
+* **css-vars:** fallback value for heading ([e7eb3fa](https://github.com/neovici/cosmoz-tabs/commit/e7eb3fa30918de175f3a010ec28977c5c6aa9af7))
+
 ## [9.1.1](https://github.com/neovici/cosmoz-tabs/compare/v9.1.0...v9.1.1) (2025-01-29)
 
 
