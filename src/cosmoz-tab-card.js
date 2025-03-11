@@ -118,7 +118,7 @@ const style = css`
 		font-size: 15px;
 		font-weight: 400;
 		flex: 1;
-		color: var(--cosmoz-tab-card-heading-color, black);
+		color: var(--cosmoz-tab-card-heading-color, rgb(0, 0, 0));
 	}
 
 	.collapse-icon {
