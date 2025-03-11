@@ -1,5 +1,5 @@
 import { x } from './lit-html-CmtJAihu.js';
-import './cosmoz-tabs-CdjhpdOK.js';
+import './cosmoz-tabs-C3XlXKpH.js';
 import './if-defined-Bb7yiZFq.js';
 
 var cosmozTabCard_stories = {
