@@ -1,6 +1,5 @@
 import { b as useMemo, h as hook, H as Hook, u as useEffect, d as useState, t as tagged, a as useLayoutEffect, r, o, c as component } from './if-defined-Bb7yiZFq.js';
 import { x } from './lit-html-CmtJAihu.js';
-import { expandMoreIcon } from '@neovici/core/components/cz-icon/expand-more.ts';
 
 /**
  * @function
@@ -393,6 +392,18 @@ class Collapse extends HTMLElement {
 customElements.define('cosmoz-collapse', Collapse);
 
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
+const expandMoreIcon = () => x`
+	<svg
+		class="expand-more-icon"
+		viewBox="0 0 24 24"
+		preserveAspectRatio="xMidYMid meet"
+		focusable="false"
+		width="24"
+		height="24"
+	>
+		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+	</svg>
+`;
 const CosmozTabCard = (host) => {
   const { heading, collapsable, collapsed: isCollapsed } = host, [collapsed, setCollapsed] = useState(Boolean(isCollapsed)), toggleCollapsed = () => {
     if (!collapsable) return;

@@ -1,7 +1,6 @@
 import { x } from './lit-html-CmtJAihu.js';
-import './cosmoz-tabs-iL_E-SyN.js';
+import './cosmoz-tabs-C-dGoebf.js';
 import './if-defined-Bb7yiZFq.js';
-import '@neovici/core/components/cz-icon/expand-more.ts';
 
 var cosmozTab_stories = {
   title: "Tab",
