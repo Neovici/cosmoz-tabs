@@ -1,3 +1,10 @@
+## [9.2.2](https://github.com/neovici/cosmoz-tabs/compare/v9.2.1...v9.2.2) (2025-03-25)
+
+
+### Bug Fixes
+
+* changes due to invoices overview redesign ([#232](https://github.com/neovici/cosmoz-tabs/issues/232)) ([c549c9a](https://github.com/neovici/cosmoz-tabs/commit/c549c9ad345b72d5902698bb0b7e7ff7e108b6d9))
+
 ## [9.2.1](https://github.com/neovici/cosmoz-tabs/compare/v9.2.0...v9.2.1) (2025-03-11)
 
 
