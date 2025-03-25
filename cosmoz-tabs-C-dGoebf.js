@@ -339,6 +339,13 @@ const style$2 = `
 			</a>`;
 };
 
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+function n(n,r,t){return n?r(n):t?.(n)}
+
 const defaults = { duration: 250 };
 const toggleSize = (prop) => (el, visible, opts) => {
     const maxSizeProp = 'max' + prop.charAt(0).toUpperCase() + prop.slice(1);
@@ -384,23 +391,19 @@ class Collapse extends HTMLElement {
 }
 customElements.define('cosmoz-collapse', Collapse);
 
-/**
- * @license
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-function n(n,r,t){return n?r(n):t?.(n)}
-
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-const collapseIcon = x`<svg
-	width="16"
-	height="16"
-	viewBox="0 0 16 16"
-	fill="none"
-	xmlns="http://www.w3.org/2000/svg"
->
-	<path d="M5 1L10 8L5 15" stroke="#101010" stroke-width="1.5" />
-</svg>`;
+const expandMoreIcon = () => x`
+	<svg
+		class="expand-more-icon"
+		viewBox="0 0 24 24"
+		preserveAspectRatio="xMidYMid meet"
+		focusable="false"
+		width="24"
+		height="24"
+	>
+		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+	</svg>
+`;
 const CosmozTabCard = (host) => {
   const { heading, collapsable, collapsed: isCollapsed } = host, [collapsed, setCollapsed] = useState(Boolean(isCollapsed)), toggleCollapsed = () => {
     if (!collapsable) return;
@@ -409,30 +412,33 @@ const CosmozTabCard = (host) => {
   useEffect(() => {
     host.toggleAttribute("collapsed", collapsed);
   }, [collapsed]);
-  return x`<div class="header" part="header">
-			${n(
-    collapsable,
-    () => x`
-					<div
-						@click=${toggleCollapsed}
-						class="collapse-icon"
-						part="collapse-icon"
-					>
-						<slot name="collapse-icon">${collapseIcon}</slot>
-					</div>
-				`
+  return x`${n(
+    heading,
+    () => x`<div class="header" part="header">
+					${n(
+      collapsable,
+      () => x`
+							<div
+								@click=${toggleCollapsed}
+								class="collapse-icon"
+								part="collapse-icon"
+							>
+								<slot name="collapse-icon">${expandMoreIcon()}</slot>
+							</div>
+						`
+    )}
+					<h1 class="heading" @click=${toggleCollapsed} part="heading">
+						${heading}<slot name="after-title"></slot>
+					</h1>
+					<slot name="card-actions"></slot>
+				</div>`
   )}
-			<h1 class="heading" @click=${toggleCollapsed} part="heading">
-				${heading}<slot name="after-title"></slot>
-			</h1>
-			<slot name="card-actions"></slot>
-		</div>
 
 		<cosmoz-collapse class="collapse" ?opened=${!collapsed}>
 			<div class="content" part="content">
 				<slot></slot>
 			</div>
-		</cosmoz-collapse> `;
+		</cosmoz-collapse>`;
 };
 const style$1 = css`
 	:host {
@@ -469,17 +475,18 @@ const style$1 = css`
 	}
 
 	.header {
+		min-height: 40px;
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 10px;
 		background-color: var(--cosmoz-tab-card-bg-color, white);
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	}
 
 	.heading {
 		font-family: inherit;
-		font-size: 15px;
-		font-weight: 400;
+		font-size: 17px;
+		font-weight: 500;
 		flex: 1;
 		color: var(--cosmoz-tab-card-heading-color, rgb(0, 0, 0));
 	}
@@ -487,11 +494,12 @@ const style$1 = css`
 	.collapse-icon {
 		order: var(--cosmoz-tab-card-collapse-icon-order);
 		transition: transform 250ms linear;
-		transform: rotate(90deg);
+		transform: rotate(0deg);
+		margin: 0 0 0 -5px;
 	}
 
 	:host([collapsed]) .collapse-icon {
-		transform: rotate(0deg);
+		transform: rotate(-90deg);
 	}
 
 	:host([collapsable]) .collapse-icon,
