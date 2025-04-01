@@ -1,3 +1,10 @@
+## [9.2.3](https://github.com/neovici/cosmoz-tabs/compare/v9.2.2...v9.2.3) (2025-04-01)
+
+
+### Bug Fixes
+
+* make sure badge is rendered in cosmoz-tabs-next ([#233](https://github.com/neovici/cosmoz-tabs/issues/233)) ([e49a052](https://github.com/neovici/cosmoz-tabs/commit/e49a052d99df6cd21dd683c5108038c628e734ac))
+
 ## [9.2.2](https://github.com/neovici/cosmoz-tabs/compare/v9.2.1...v9.2.2) (2025-03-25)
 
 
