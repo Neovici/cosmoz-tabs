@@ -1,3 +1,10 @@
+## [9.3.1](https://github.com/neovici/cosmoz-tabs/compare/v9.3.0...v9.3.1) (2025-07-26)
+
+
+### Bug Fixes
+
+* **ci:** add new trigger ([808f32b](https://github.com/neovici/cosmoz-tabs/commit/808f32b6dc9a080b1f88d41d2020171ae952490a))
+
 # [9.3.0](https://github.com/neovici/cosmoz-tabs/compare/v9.2.3...v9.3.0) (2025-07-21)
 
 
