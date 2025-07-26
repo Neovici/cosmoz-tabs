@@ -2,6 +2,9 @@ name: Auto-Approve and Auto-Merge PRs
 
 on:
   workflow_call:
+  check_suite:
+    types:
+      - completed
 
 jobs:
   auto-approve-merge-dependabot:
