@@ -1,3 +1,10 @@
+## [9.3.2](https://github.com/neovici/cosmoz-tabs/compare/v9.3.1...v9.3.2) (2025-08-04)
+
+
+### Bug Fixes
+
+* automerge workflow ([3999bbb](https://github.com/neovici/cosmoz-tabs/commit/3999bbbf05df18075e8595f0d8d42eecf7027469))
+
 ## [9.3.1](https://github.com/neovici/cosmoz-tabs/compare/v9.3.0...v9.3.1) (2025-07-26)
 
 
