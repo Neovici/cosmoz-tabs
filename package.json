@@ -95,12 +95,12 @@
 		"@types/node": "^22.0.0",
 		"@web/storybook-builder": "^0.1.16",
 		"@web/storybook-framework-web-components": "^0.1.2",
-		"storybook": "^7.6.19",
+		"storybook": "^10.2.0",
 		"esbuild": "^0.25.0",
 		"http-server": "^14.1.1",
 		"rollup-plugin-esbuild": "^6.1.1",
 		"husky": "^9.0.0",
-		"semantic-release": "^24.0.0",
+		"semantic-release": "^25.0.2",
 		"sinon": "^18.0.0",
 		"typescript": "^5.4.5"
 	}
