@@ -22,15 +22,15 @@ function importFn(path) {
 
 const getProjectAnnotations = async () => {
   const configs = await Promise.all([
-    import('./entry-preview-BRopiGfa.js'),
-    import('./entry-preview-docs-BpGAFbCw.js'),
-    import('./preview-C8OmhiPB.js'),
-    import('./preview-BcJVSA4a.js'),
-    import('./preview-Bf0d1tVO.js'),
-    import('./preview-CU2JNqMw.js'),
-    import('./preview-BT9ta7nr.js'),
-    import('./preview-CDagOaLU.js'),
-    import('./preview-KqRhvb1R.js')
+    import('./entry-preview-MXgE2NS3.js'),
+    import('./entry-preview-docs-Dmjeaj5r.js'),
+    import('@storybook/addon-essentials/dist/docs/preview.js'),
+    import('@storybook/addon-essentials/dist/actions/preview.js'),
+    import('@storybook/addon-essentials/dist/backgrounds/preview.js'),
+    import('@storybook/addon-essentials/dist/measure/preview.js'),
+    import('@storybook/addon-essentials/dist/outline/preview.js'),
+    import('@storybook/addon-essentials/dist/highlight/preview.js'),
+    import('@storybook/addon-links/dist/preview.js')
   ]);
   return __STORYBOOK_MODULE_PREVIEW_API__.composeConfigs(configs);
 };
