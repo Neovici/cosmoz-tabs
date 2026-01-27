@@ -5,13 +5,13 @@
 	"keywords": [
 		"web-components"
 	],
-	"homepage": "https://github.com/neovici/cosmoz-tabs#readme",
+	"homepage": "https://github.com/Neovici/cosmoz-tabs#readme",
 	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-tabs/issues"
+		"url": "https://github.com/Neovici/cosmoz-tabs/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-tabs.git"
+		"url": "git+https://github.com/Neovici/cosmoz-tabs.git"
 	},
 	"license": "Apache-2.0",
 	"author": "Neovici Development <dev@neovici.se>",
