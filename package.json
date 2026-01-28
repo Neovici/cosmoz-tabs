@@ -25,6 +25,7 @@
 	],
 	"scripts": {
 		"lint": "eslint --cache --ext .js .",
+    "check:duplicates": "check-duplicate-components",
 		"lint-tsc": "tsc",
 		"start": "npm run storybook:start",
 		"test": "wtr --coverage",
@@ -82,7 +83,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
 		"@commitlint/config-conventional": "^19.2.2",
-		"@neovici/cfg": "^1.54.1",
+		"@neovici/cfg": "^2.8.0",
 		"@open-wc/testing": "^4.0.0",
 		"@polymer/iron-list": "^3.1.0",
 		"@semantic-release/changelog": "^6.0.0",
@@ -95,13 +96,14 @@
 		"@types/node": "^22.0.0",
 		"@web/storybook-builder": "^0.1.16",
 		"@web/storybook-framework-web-components": "^0.1.2",
-		"storybook": "^10.2.0",
 		"esbuild": "^0.25.0",
 		"http-server": "^14.1.1",
-		"rollup-plugin-esbuild": "^6.1.1",
 		"husky": "^9.0.0",
+		"lint-staged": "^16.2.7",
+		"rollup-plugin-esbuild": "^6.1.1",
 		"semantic-release": "^25.0.2",
 		"sinon": "^18.0.0",
+		"storybook": "^10.2.0",
 		"typescript": "^5.4.5"
 	}
 }
