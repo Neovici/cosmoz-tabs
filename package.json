@@ -24,8 +24,8 @@
 		"src/**/*.d.ts"
 	],
 	"scripts": {
-		"lint": "eslint --cache --ext .js .",
-    "check:duplicates": "check-duplicate-components",
+		"lint": "eslint --cache .",
+		"check:duplicates": "check-duplicate-components",
 		"lint-tsc": "tsc",
 		"start": "npm run storybook:start",
 		"test": "wtr --coverage",
