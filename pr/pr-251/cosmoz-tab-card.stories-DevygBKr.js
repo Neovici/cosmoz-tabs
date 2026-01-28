@@ -1,12 +1,12 @@
-import { x } from './lit-html-CmtJAihu.js';
-import './cosmoz-tabs-C-dGoebf.js';
-import './if-defined-Bb7yiZFq.js';
+import { b } from './lit-html-CVa9zdN4.js';
+import './cosmoz-tabs-CbxQmpTX.js';
+import './if-defined-UpH3jwEw.js';
 
 var cosmozTabCard_stories = {
   title: "Card",
   component: "cosmoz-tab-card"
 };
-const alternateIcon = x`<svg
+const alternateIcon = b`<svg
 	slot="collapse-icon"
 	width="11"
 	height="11"
@@ -21,7 +21,7 @@ const alternateIcon = x`<svg
 		stroke-linecap="round"
 	/>
 </svg>`;
-const basics = () => x` <style>
+const basics = () => b` <style>
 			body {
 				--cosmoz-tab-card-padding: 1em;
 				font-family: 'Inter' sans-serif;

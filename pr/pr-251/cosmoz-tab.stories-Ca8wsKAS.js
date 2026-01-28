@@ -1,12 +1,12 @@
-import { x } from './lit-html-CmtJAihu.js';
-import './cosmoz-tabs-C-dGoebf.js';
-import './if-defined-Bb7yiZFq.js';
+import { b } from './lit-html-CVa9zdN4.js';
+import './cosmoz-tabs-CbxQmpTX.js';
+import './if-defined-UpH3jwEw.js';
 
 var cosmozTab_stories = {
   title: "Tab",
   component: "cosmoz-tab"
 };
-const basics = () => x`
+const basics = () => b`
 	<cosmoz-tabs selected="tab3">
 		<cosmoz-tab heading="Tab1" name="tab1" disabled>
 			<p>

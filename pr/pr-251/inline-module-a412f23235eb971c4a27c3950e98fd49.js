@@ -11,10 +11,10 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-zOEaeFTL.js'),
-  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-ddXhjBxr.js'),
-  "./stories/cosmoz-tabs-next.stories.js": () => import('./cosmoz-tabs-next.stories-JTEO-IIn.js'),
-  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-0TXIIwJp.js')
+  "./stories/cosmoz-tab-card.stories.js": () => import('./cosmoz-tab-card.stories-DevygBKr.js'),
+  "./stories/cosmoz-tab.stories.js": () => import('./cosmoz-tab.stories-Ca8wsKAS.js'),
+  "./stories/cosmoz-tabs-next.stories.js": () => import('./cosmoz-tabs-next.stories-BHTmimE-.js'),
+  "./stories/cosmoz-tabs.stories.js": () => import('./cosmoz-tabs.stories-BMRqqbSc.js')
 };
 function importFn(path) {
   return importers[path]();
@@ -22,8 +22,8 @@ function importFn(path) {
 
 const getProjectAnnotations = async () => {
   const configs = await Promise.all([
-    import('./entry-preview-MXgE2NS3.js'),
-    import('./entry-preview-docs-Dmjeaj5r.js'),
+    import('./entry-preview-BxCyJgLp.js'),
+    import('./entry-preview-docs-f2hAm5oB.js'),
     import('@storybook/addon-essentials/dist/docs/preview.js'),
     import('@storybook/addon-essentials/dist/actions/preview.js'),
     import('@storybook/addon-essentials/dist/backgrounds/preview.js'),
