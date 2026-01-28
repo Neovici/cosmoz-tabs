@@ -1,3 +1,10 @@
+## [9.3.3](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.2...v9.3.3) (2026-01-28)
+
+
+### Bug Fixes
+
+* repository URL case sensitivity ([6767a33](https://github.com/Neovici/cosmoz-tabs/commit/6767a33efd998b6f22509dab014e3db5fcda4291))
+
 ## [9.3.2](https://github.com/neovici/cosmoz-tabs/compare/v9.3.1...v9.3.2) (2025-08-04)
 
 
