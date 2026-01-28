@@ -1,5 +1,5 @@
-import { x, E } from './lit-html-CmtJAihu.js';
-import { t as tagged, c as component, u as useEffect, a as useLayoutEffect, r, o } from './if-defined-Bb7yiZFq.js';
+import { b, A } from './lit-html-CVa9zdN4.js';
+import { t as tagged, c as component, u as useEffect, a as useLayoutEffect, r, o } from './if-defined-UpH3jwEw.js';
 
 var style$1 = tagged`
 	:host {
@@ -26,7 +26,7 @@ const Tabs = (host) => {
   useEffect(() => {
     host.setAttribute("role", "tablist");
   }, []);
-  return x`
+  return b`
 		<style>
 			${style$1}
 		</style>
@@ -124,14 +124,14 @@ const Tab = (host) => {
       ({ el: el2, top, left }) => el2.scroll({ top, left, behavior: "smooth" })
     );
   }, [active]);
-  return x`
+  return b`
 		<style>
 			${style}
 		</style>
 		<a part="link" href=${o(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
-			${badge ? x`<span class="badge" part="badge">${badge}</span>` : E}
+			${badge ? b`<span class="badge" part="badge">${badge}</span>` : A}
 		</a>
 	`;
 };
@@ -146,13 +146,13 @@ var cosmozTabsNext_stories = {
   title: "Tabs (next)",
   component: "cosmoz-tabs-next"
 };
-const basics = () => x`
+const basics = () => b`
 	<cosmoz-tabs-next>
 		<cosmoz-tab-next disabled>Tab1</cosmoz-tab-next>
 		<cosmoz-tab-next disabled badge="2">Tab2</cosmoz-tab-next>
 		<cosmoz-tab-next hidden badge="3">Tab3</cosmoz-tab-next>
 		<cosmoz-tab-next badge="4" active href="#123">Tab4</cosmoz-tab-next>
-		${Array(6).fill().map((_, i) => x`<cosmoz-tab-next>Tab ${5 + i}</cosmoz-tab-next>`)}
+		${Array(6).fill().map((_, i) => b`<cosmoz-tab-next>Tab ${5 + i}</cosmoz-tab-next>`)}
 	</cosmoz-tabs-next>
 `;
 const __namedExportsOrder = ["basics"];

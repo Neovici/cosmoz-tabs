@@ -1,5 +1,5 @@
-import { b as useMemo, h as hook, H as Hook, u as useEffect, d as useState, t as tagged, a as useLayoutEffect, r, o, c as component } from './if-defined-Bb7yiZFq.js';
-import { x } from './lit-html-CmtJAihu.js';
+import { b as useMemo, h as hook, H as Hook, u as useEffect, d as useState, t as tagged, a as useLayoutEffect, r, o, c as component } from './if-defined-UpH3jwEw.js';
+import { b } from './lit-html-CVa9zdN4.js';
 
 /**
  * @function
@@ -312,7 +312,7 @@ const style$2 = `
 	text-align: center;
 }`, renderTab = ({ selectedTab, onSelect, href }) => (tab, i, tabs) => {
   const isSelected = selectedTab === tab, icon = getIcon(tab, isSelected);
-  return x`<a
+  return b`<a
 				class="tab"
 				tabindex="-1"
 				role="tab"
@@ -329,13 +329,13 @@ const style$2 = `
 				.tab=${tab}
 				href=${o(href(tab))}
 			>
-				${icon ? x`<iron-icon
+				${icon ? b`<iron-icon
 							class="icon"
 							icon=${icon}
 							style=${getIconStyle(tab)}
 						></iron-icon>` : ""}
 				<span>${tab.heading}</span>
-				${tab.badge ? x`<div class="badge" title=${tab.badge}>${tab.badge}</div>` : ""}
+				${tab.badge ? b`<div class="badge" title=${tab.badge}>${tab.badge}</div>` : ""}
 			</a>`;
 };
 
@@ -392,7 +392,7 @@ class Collapse extends HTMLElement {
 customElements.define('cosmoz-collapse', Collapse);
 
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-const expandMoreIcon = () => x`
+const expandMoreIcon = () => b`
 	<svg
 		class="expand-more-icon"
 		viewBox="0 0 24 24"
@@ -412,12 +412,12 @@ const CosmozTabCard = (host) => {
   useEffect(() => {
     host.toggleAttribute("collapsed", collapsed);
   }, [collapsed]);
-  return x`${n(
+  return b`${n(
     heading,
-    () => x`<div class="header" part="header">
+    () => b`<div class="header" part="header">
 					${n(
       collapsable,
-      () => x`
+      () => b`
 							<div
 								@click=${toggleCollapsed}
 								class="collapse-icon"
@@ -547,7 +547,7 @@ const useTab = (host) => {
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 const CosmozTab = (host) => {
   const { onSlot } = useTab(host);
-  return x`
+  return b`
 		<style>
 			:host {
 				display: flex;
@@ -8595,7 +8595,7 @@ const PropertiesMixin = dedupingMixin(superClass => {
  * Current Polymer version in Semver notation.
  * @type {string} Semver notation of the current version of Polymer.
  */
-const version = '3.5.1';
+const version = '3.5.2';
 
 const builtCSS = window.ShadyCSS && window.ShadyCSS['cssBuild'];
 
@@ -11323,14 +11323,17 @@ let FlattenedNodesObserver = class {
       node = /** @type {!HTMLSlotElement} */(node); // eslint-disable-line no-self-assign
       return wrapped.assignedNodes({flatten: true});
     } else {
-      return Array.from(wrapped.childNodes).map((node) => {
+      const results = [];
+      for (let i = 0; i < wrapped.childNodes.length; i++) {
+        const node = wrapped.childNodes[i];
         if (isSlot(node)) {
-          node = /** @type {!HTMLSlotElement} */(node); // eslint-disable-line no-self-assign
-          return wrap(node).assignedNodes({flatten: true});
+          const slotNode = /** @type {!HTMLSlotElement} */ (node);
+          results.push(...wrap(slotNode).assignedNodes({ flatten: true }));
         } else {
-          return [node];
+          results.push(node);
         }
-      }).reduce((a, b) => a.concat(b), []);
+      }
+      return results;
     }
   }
 
@@ -18927,7 +18930,7 @@ document.head.appendChild(template.content);
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 const Tabs = (host) => {
   const { tabs, onSlot, ...opts } = useTabs(host);
-  return x`
+  return b`
 		<style>${style$2}</style>
 		<div class="tabs" part="tabs" role="tablist">
 			<slot name="tabs"></slot>
@@ -18944,4 +18947,4 @@ customElements.define("cosmoz-tabs", component(Tabs, {
   observedAttributes: ["selected", "hash-param", "no-resize"]
 }));
 
-export { Debouncer as D, OptionalMutableDataBehavior as O, Polymer as P, animationFrame as a, microTask as b, matches as c, dom as d, enqueueDebouncer as e, flush as f, translate as g, html as h, idlePeriod as i, modelForElement as m, templatize as t, useShadow as u };
+export { Debouncer as D, OptionalMutableDataBehavior as O, Polymer as P, matches as a, translate as b, animationFrame as c, dom as d, enqueueDebouncer as e, flush as f, microTask as g, html as h, idlePeriod as i, modelForElement as m, templatize as t, useShadow as u };
