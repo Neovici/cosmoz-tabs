@@ -2,6 +2,7 @@ name: CI
 on:
   pull_request:
     branches:
+      - beta
       - master
   push:
     branches:
@@ -14,7 +15,64 @@ permissions:
   pull-requests: write
   id-token: write
 
+# (temp) from Neovici/cfg/.github/workflows/forge.ym w/ only Chromium
+# installing webkit's system deps hangs on the Node 24 / Ubuntu 24.04 runner
 jobs:
   build:
-    uses: Neovici/cfg/.github/workflows/forge.yml@master
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint commits
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+      - name: Lint code
+        run: npm run lint --if-present
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "version=$(npm ls @playwright/test 2>/dev/null | grep @playwright/test | head -1 | sed 's/.*@playwright\/test@//')" >> $GITHUB_OUTPUT
+
+      - name: Cache Playwright Browsers for Playwright's Version
+        id: cache-playwright-browsers
+        if: steps.playwright-version.outputs.version != ''
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-chromium-${{ steps.playwright-version.outputs.version }}
+          restore-keys: ${{ runner.os }}-playwright-chromium-
+
+      - name: Setup Playwright
+        if: steps.playwright-version.outputs.version != '' && steps.cache-playwright-browsers.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Test
+        run: npm test --if-present
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Semantic release
+        run: npx semantic-release
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUSKY: 0

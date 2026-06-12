@@ -1,11 +1,27 @@
+import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
+import { compute } from 'compute-scroll-into-view';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { compute } from 'compute-scroll-into-view';
+import { nextTabStyles } from '../styles';
 
-import style from './cosmoz-tab.css';
+export interface CosmozTabNextElement extends HTMLElement {
+	active?: boolean;
+	badge?: string;
+	href?: string;
+	disabled?: boolean;
+}
 
-const Tab = (host) => {
+/**
+ * @element cosmoz-tab-next
+ * @attr {boolean} active - whether the tab is selected
+ * @attr {string} badge - optional badge text
+ * @attr {string} href - optional link target
+ * @attr {boolean} disabled - disables the tab
+ * @slot tab label
+ * @slot icon
+ */
+const Tab = (host: CosmozTabNextElement) => {
 	const { active, badge, href } = host;
 
 	useEffect(() => {
@@ -16,25 +32,21 @@ const Tab = (host) => {
 	}, []);
 
 	useLayoutEffect(() => {
-		const el = host;
-		el.toggleAttribute('aria-selected', !!active);
+		host.setAttribute('aria-selected', active ? 'true' : 'false');
 
 		if (!active) {
 			return;
 		}
-		compute(el, {
+		compute(host, {
 			block: 'nearest',
 			inline: 'center',
-			boundary: el.parentElement,
+			boundary: host.parentElement,
 		}).forEach(({ el, top, left }) =>
 			el.scroll({ top, left, behavior: 'smooth' }),
 		);
 	}, [active]);
 
 	return html`
-		<style>
-			${style}
-		</style>
 		<a part="link" href=${ifDefined(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
@@ -49,5 +61,6 @@ customElements.define(
 	'cosmoz-tab-next',
 	component(Tab, {
 		observedAttributes: ['active', 'badge', 'href'],
+		styleSheets: [normalize, nextTabStyles],
 	}),
 );
