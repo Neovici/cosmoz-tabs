@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-CfZK1xvX.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-DL49v8JE.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
@@ -22,9 +22,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 	text-decoration: none;
 	white-space: nowrap;
 	cursor: pointer;
-	transition:
-		color 0.1s linear,
-		background-color 0.1s linear,
+	transition: color 0.1s linear, background-color 0.1s linear,
 		box-shadow 0.1s linear;
 	outline: 0;
 `,l=t`
@@ -103,12 +101,12 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 	}
 
 	.tab:hover,
-	.tab[aria-selected='true'] {
+	.tab[aria-selected="true"] {
 		${d}
 	}
 
 	.tab:hover svg,
-	.tab[aria-selected='true'] svg {
+	.tab[aria-selected="true"] svg {
 		${p}
 	}
 
@@ -138,16 +136,16 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		display: none !important;
 	}
 
-	:host([variant='brand']) .tabs {
+	:host([variant="brand"]) .tabs {
 		${m}
 	}
 
-	:host([variant='brand']) .tab {
+	:host([variant="brand"]) .tab {
 		${h}
 	}
 
-	:host([variant='brand']) .tab:hover,
-	:host([variant='brand']) .tab[aria-selected='true'] {
+	:host([variant="brand"]) .tab:hover,
+	:host([variant="brand"]) .tab[aria-selected="true"] {
 		${g}
 	}
 
@@ -155,7 +153,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		${_}
 	}
 
-	:host([full-width]:not([variant='brand'])) .tabs {
+	:host([full-width]:not([variant="brand"])) .tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `,b=t`
@@ -167,11 +165,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		display: none;
 	}
 
-	:host([variant='brand']) {
+	:host([variant="brand"]) {
 		${m}
 	}
 
-	:host([full-width]:not([variant='brand'])) {
+	:host([full-width]:not([variant="brand"])) {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `,x=t`
@@ -223,12 +221,12 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		${v}
 	}
 
-	:host([data-variant='brand']) {
+	:host([data-variant="brand"]) {
 		${h}
 	}
 
-	:host([data-variant='brand']:hover),
-	:host([data-variant='brand'][active]) {
+	:host([data-variant="brand"]:hover),
+	:host([data-variant="brand"][active]) {
 		${g}
 	}
 

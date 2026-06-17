@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-D7cYKCLZ.js";import{t as r}from"./next-DgzBt6E0.js";var i,a,o,s,c,l,u,d,f;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs (next)`},s=(e=`brand`)=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-C83dcdKk.js";import{t as r}from"./next-CgHP8wyN.js";var i,a,o,s,c,l,u,d,f;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs (next)`},s=(e=`brand`)=>t`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
