@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-i6Iwgyig.js";import{t as r}from"./cosmoz-tabs-Bqp1aTsc.js";var i,a,o,s,c;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tab card`},s={render:()=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-Dy5XTPV_.js";import{t as r}from"./cosmoz-tabs-B22zm-qL.js";var i,a,o,s,c;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tab card`},s={render:()=>t`
         <cosmoz-tabs .selected=${`tab1`}>
             <cosmoz-tab heading="Cards" name="tab1">
                 <cosmoz-tab-card heading="Card one">card one</cosmoz-tab-card>
