@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-Dy5XTPV_.js";import{n as i,t as a}from"./if-defined-C4UZ-NYk.js";import{n as o,r as s,t as c}from"./demo-content-BGErsS6q.js";import{t as l}from"./cosmoz-tabs-B22zm-qL.js";var u,d,f,p,m,h,g,_,v,y,b,x;e((()=>{r(),a(),l(),c(),u={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}},selected:{control:`text`,description:"The `name` of the selected tab"}}},d=({variant:e=`underline`,selected:r=`overview`,icons:a=!0})=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-CBDxlwbS.js";import{n as i,t as a}from"./if-defined-BvYPmpwF.js";import{n as o,r as s,t as c}from"./demo-content-ClLq4fg-.js";import{t as l}from"./cosmoz-tabs-B8v4G00u.js";var u,d,f,p,m,h,g,_,v,y,b,x,S,C,w;e((()=>{r(),a(),l(),c(),u={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},d=({variant:e=`underline`,selected:r=`overview`,icons:a=!0})=>t`
     ${s}
     <cosmoz-tabs variant=${e} .selected=${r}>
         ${o.map(e=>t`
@@ -12,7 +12,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}fro
                 </cosmoz-tab>
             `)}
     </cosmoz-tabs>
-`,f={args:{variant:`underline`,selected:`overview`},render:d},p={parameters:{docs:{description:{story:"The two Untitled UI looks side by side: `underline` (default) and `brand` (pill)."}}},render:()=>t`
+`,f={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:d},p={parameters:{docs:{description:{story:"The two Untitled UI looks side by side: `underline` (default) and `brand` (pill)."}}},render:()=>t`
         <div class="story-stack">
             <div>
                 <div class="story-label">variant="underline"</div>
@@ -103,11 +103,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}fro
                 ${o[3].render()}
             </cosmoz-tab>
         </cosmoz-tabs>
-    `},y=e=>t`
+    `},y=(e,n)=>t`
     <cosmoz-tabs
-        variant="underline"
+        variant=${e}
         .selected=${`overview`}
-        ?full-width=${e}
+        full-width=${i(n===!1?`false`:void 0)}
     >
         ${o.slice(0,4).map(e=>t`
                     <cosmoz-tab
@@ -119,22 +119,54 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}fro
                     </cosmoz-tab>
                 `)}
     </cosmoz-tabs>
-`,b={parameters:{docs:{description:{story:"Tabs are content-width by default. The `full-width` attribute spreads them evenly across the available width (the legacy always-spread behavior)."}}},render:()=>t`
+`,b={argTypes:{variant:{control:`select`,options:[`brand`,`underline`]}},args:{variant:`underline`},parameters:{controls:{disable:!1},docs:{description:{story:'Tabs spread evenly across the available width by default (the legacy always-spread behavior). Set `full-width="false"` to size them to their content.'}}},render:({variant:e})=>t`
         ${s}
         <div class="story-stack">
             <div>
-                <div class="story-label">default (content-width)</div>
-                ${y(!1)}
+                <div class="story-label">default (spread)</div>
+                ${y(e,!0)}
             </div>
             <div>
-                <div class="story-label">full-width</div>
-                ${y(!0)}
+                <div class="story-label">variant="brand" (spread)</div>
+                ${y(`brand`,!0)}
             </div>
         </div>
-    `},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+    `},x=e=>t`
+    <cosmoz-tabs variant="brand" .selected=${`overview`} style=${e}>
+        ${o.slice(0,4).map(e=>t`
+                    <cosmoz-tab
+                        name=${e.name}
+                        heading=${e.title}
+                        badge=${i(e.badge)}
+                    >
+                        ${e.render()}
+                    </cosmoz-tab>
+                `)}
+    </cosmoz-tabs>
+`,S={parameters:{docs:{description:{story:"The selected pill **and** the badge both read `--cz-color-bg-brand` / `--cz-color-text-brand`. Override just those two tokens on the `<cosmoz-tabs>` host to recolor them — no `--cosmoz-tabs-*` knobs needed. They share the same tokens, so the pill and badge always stay in sync (you cannot color them independently without new vars)."}}},render:()=>t`
+        ${s}
+        <div class="story-stack">
+            <div>
+                <div class="story-label">brand (default)</div>
+                ${x(``)}
+            </div>
+            <div>
+                <div class="story-label">brand solid</div>
+                ${x(`--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);`)}
+            </div>
+            <div>
+                <div class="story-label">gray</div>
+                ${x(`--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);`)}
+            </div>
+        </div>
+    `},C={parameters:{docs:{description:{story:"Untitled UI’s *button minimal* look — the `brand` pill recolored to a subtle neutral by pointing `--cz-color-bg-brand` at `--cz-color-bg-secondary` (and `--cz-color-text-brand` at `--cz-color-text-secondary`). Achievable with the existing tokens, no new variant. (Untitled’s *button border* / segmented look is **not** reachable via tokens alone — it needs a bordered container + selected shadow, i.e. a dedicated variant.)"}}},render:()=>t`${s}${x(`--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);`)}`},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   args: {
-    variant: 'underline',
-    selected: 'overview'
+    variant: 'underline'
+  },
+  parameters: {
+    controls: {
+      disable: false
+    }
   },
   render: invoice
 }`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
@@ -290,10 +322,45 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}fro
         </cosmoz-tabs>
     \`
 }`,...v.parameters?.docs?.source}}},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['brand', 'underline']
+    }
+  },
+  args: {
+    variant: 'underline'
+  },
+  parameters: {
+    controls: {
+      disable: false
+    },
+    docs: {
+      description: {
+        story: 'Tabs spread evenly across the available width by default (the legacy ' + 'always-spread behavior). Set \`full-width="false"\` to size them to ' + 'their content.'
+      }
+    }
+  },
+  render: ({
+    variant
+  }) => html\`
+        \${panelStyles}
+        <div class="story-stack">
+            <div>
+                <div class="story-label">default (spread)</div>
+                \${spread(variant, true)}
+            </div>
+            <div>
+                <div class="story-label">variant="brand" (spread)</div>
+                \${spread('brand', true)}
+            </div>
+        </div>
+    \`
+}`,...b.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
   parameters: {
     docs: {
       description: {
-        story: 'Tabs are content-width by default. The \`full-width\` attribute spreads ' + 'them evenly across the available width (the legacy always-spread ' + 'behavior).'
+        story: 'The selected pill **and** the badge both read \`--cz-color-bg-brand\` / ' + '\`--cz-color-text-brand\`. Override just those two tokens on the ' + '\`<cosmoz-tabs>\` host to recolor them — no \`--cosmoz-tabs-*\` knobs ' + 'needed. They share the same tokens, so the pill and badge always ' + 'stay in sync (you cannot color them independently without new vars).'
       }
     }
   },
@@ -301,13 +368,17 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}fro
         \${panelStyles}
         <div class="story-stack">
             <div>
-                <div class="story-label">default (content-width)</div>
-                \${spread(false)}
+                <div class="story-label">brand (default)</div>
+                \${colored('')}
             </div>
             <div>
-                <div class="story-label">full-width</div>
-                \${spread(true)}
+                <div class="story-label">brand solid</div>
+                \${colored('--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);')}
+            </div>
+            <div>
+                <div class="story-label">gray</div>
+                \${colored('--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);')}
             </div>
         </div>
     \`
-}`,...b.parameters?.docs?.source}}},x=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`FullWidth`]}))();export{f as Default,h as DisabledAndHidden,b as FullWidth,g as HashRouting,_ as ManyTabs,p as Variants,v as WithTabCards,m as WithoutIcons,x as __namedExportsOrder,u as default};
+}`,...S.parameters?.docs?.source}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:"{\n  parameters: {\n    docs: {\n      description: {\n        story: 'Untitled UI’s *button minimal* look — the `brand` pill recolored to a ' + 'subtle neutral by pointing `--cz-color-bg-brand` at ' + '`--cz-color-bg-secondary` (and `--cz-color-text-brand` at ' + '`--cz-color-text-secondary`). Achievable with the existing tokens, no ' + 'new variant. (Untitled’s *button border* / segmented look is **not** ' + 'reachable via tokens alone — it needs a bordered container + selected ' + 'shadow, i.e. a dedicated variant.)'\n      }\n    }\n  },\n  render: () => html`${panelStyles}${colored('--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);')}`\n}",...C.parameters?.docs?.source}}},w=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`FullWidth`,`SelectedColors`,`Minimal`]}))();export{f as Default,h as DisabledAndHidden,b as FullWidth,g as HashRouting,_ as ManyTabs,C as Minimal,S as SelectedColors,p as Variants,v as WithTabCards,m as WithoutIcons,w as __namedExportsOrder,u as default};
