@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BbtqH6Sy.js";import{t as r}from"./cosmoz-tabs-CeAVPeGD.js";var i,a,o,s,c,l,u,d,f,p,m,h;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BMy_I1KC.js";import{t as r}from"./cosmoz-tabs-CD6ZDPpR.js";var i,a,o,s,c,l,u,d,f,p,m,h;e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
     <cosmoz-tabs hash-param="tab">
         <cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
         <cosmoz-tab name="tab1" heading="Tab1">1</cosmoz-tab>
@@ -52,7 +52,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
     const tabs = getTabs(canvasElement);
     await waitFor(() => expect(selectedName(tabs)).toBe('tab0'));
 
-    // a hash pointing at a non-existent tab → first valid tab stays selected
+    // a hash pointing at a non-existent tab -> first valid tab stays selected
     window.location.hash = barTab(tabs, 0).getAttribute('href')!.replace('tab0', 'nope');
     await waitFor(() => expect(selectedName(tabs)).toBe('tab0'));
     window.location.hash = '';

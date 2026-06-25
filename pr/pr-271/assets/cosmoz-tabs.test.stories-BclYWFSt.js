@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BbtqH6Sy.js";import{t as r,u as i}from"./untitled-jxnpjES-.js";import{t as a}from"./cosmoz-tabs-CeAVPeGD.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BMy_I1KC.js";import{t as r,u as i}from"./untitled-DB7_1gDS.js";import{t as a}from"./cosmoz-tabs-CD6ZDPpR.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
     <cosmoz-tabs variant=${e}>
         <cosmoz-tab name="tab0" heading="Tab0" .icon=${i()}
             >1</cosmoz-tab
@@ -26,7 +26,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 <div style="height: 3000px"></div>
             </cosmoz-tab>
         </cosmoz-tabs>
-    `,play:async({canvasElement:e,step:t})=>{let n=d(e),r=()=>n.shadowRoot.querySelector(`#content`);await t(`a height-constrained host bounds its content panel to the host height`,async()=>{await c(()=>o(n.selected).toBe(`a`)),await c(()=>{let e=r();o(e.clientHeight).toBeGreaterThan(300),o(e.clientHeight).toBeLessThan(420)})}),await t(`stays bounded after switching tabs`,async()=>{n.selected=`b`,await c(()=>o(n.querySelector(`[is-selected]`)?.getAttribute(`name`)).toBe(`b`)),o(r().clientHeight).toBeLessThan(420)})}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+    `,play:async({canvasElement:e,step:t})=>{let n=d(e),r=()=>n.shadowRoot.querySelector(`#content`);await t(`a height-constrained host bounds its content panel to the host height`,async()=>{await c(()=>o(n.selected).toBe(`a`)),await c(()=>{let e=r();o(e.clientHeight).toBeGreaterThan(300),o(e.clientHeight).toBeLessThan(420)})}),await t(`switching tabs dispatches resize and keeps the panel bounded`,async()=>{let e=s();window.addEventListener(`resize`,e),n.selected=`b`,await c(()=>o(n.querySelector(`[is-selected]`)?.getAttribute(`name`)).toBe(`b`)),await c(()=>o(e).toHaveBeenCalled()),window.removeEventListener(`resize`,e),o(r().clientHeight).toBeLessThan(420)})}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
   play: async ({
     canvasElement,
@@ -125,7 +125,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
       await waitFor(() => expect(tabs.selected).toBe('tab0'));
       tabs.selected = 'tab1';
       await waitFor(() => expect(onSelect).toHaveBeenCalled());
-      // already activated once → no second first-select
+      // already activated once -> no second first-select
       expect(onFirst).not.toHaveBeenCalled();
     });
   }
@@ -266,9 +266,13 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
         expect(c.clientHeight).toBeLessThan(420);
       });
     });
-    await step('stays bounded after switching tabs', async () => {
+    await step('switching tabs dispatches resize and keeps the panel bounded', async () => {
+      const onResize = fn();
+      window.addEventListener('resize', onResize);
       tabs.selected = 'b';
       await waitFor(() => expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe('b'));
+      await waitFor(() => expect(onResize).toHaveBeenCalled());
+      window.removeEventListener('resize', onResize);
       expect(content().clientHeight).toBeLessThan(420);
     });
   }

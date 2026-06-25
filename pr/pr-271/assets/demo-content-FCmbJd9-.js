@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BbtqH6Sy.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-jxnpjES-.js";var u,d,f,p,m,h,g,_,v=e((()=>{l(),n(),u=t`<style>
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BMy_I1KC.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-DB7_1gDS.js";var u,d,f,p,m,h,g,_,v=e((()=>{l(),n(),u=t`<style>
 	cosmoz-tabs::part(content) {
 		padding-top: calc(var(--cz-spacing) * 5);
 	}
@@ -72,7 +72,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
 		padding-bottom: 0;
 	}
 	.timeline li::before {
-		content: '';
+		content: "";
 		position: absolute;
 		left: -5px;
 		top: 4px;
@@ -327,4 +327,4 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
 				<span class="meta">XLSX · 41 KB</span>
 			</li>
 		</ul>
-	</div>`,_=[{name:`overview`,title:`Overview`,icon:s,render:d},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:f},{name:`accounting`,title:`Accounting`,icon:o,render:p},{name:`history`,title:`History`,icon:i,render:m},{name:`comments`,title:`Comments`,badge:`2`,icon:c,render:h},{name:`attachments`,title:`Attachments`,badge:`3`,icon:r,render:g}]}));export{_ as n,u as r,v as t};
+	</div>`,_=[{name:`overview`,title:`Overview`,icon:s,render:d},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:f},{name:`accounting`,title:`Accounting`,icon:o,render:p},{name:`history`,title:`History`,icon:i,render:m},{name:`comments`,title:`Comments`,badge:`2`,icon:c,render:h},{name:`attachments`,title:`Attachments`,badge:`3`,icon:r,render:g}]}));export{v as a,u as c,m as i,f as l,g as n,_ as o,h as r,d as s,p as t};
