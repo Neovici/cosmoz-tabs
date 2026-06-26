@@ -71,8 +71,8 @@ const brandItem = css`
 `;
 
 const brandActive = css`
-	color: var(--cz-color-text-brand);
-	background-color: var(--cz-color-bg-brand);
+	color: var(--cz-color-text-on-brand);
+	background-color: var(--cz-color-bg-brand-solid);
 	box-shadow: none;
 `;
 
@@ -94,8 +94,8 @@ const badge = css`
 	max-width: 80px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	background-color: var(--cz-color-bg-brand);
-	color: var(--cz-color-text-brand);
+	background-color: var(--cz-color-bg-brand-solid);
+	color: var(--cz-color-text-on-brand);
 	text-align: center;
 `;
 
@@ -176,6 +176,11 @@ export const legacyStyles = css`
 	:host([variant="brand"]) .tab:hover,
 	:host([variant="brand"]) .tab[aria-selected="true"] {
 		${brandActive}
+	}
+
+	:host([variant="brand"]) .tab:hover svg,
+	:host([variant="brand"]) .tab[aria-selected="true"] svg {
+		color: var(--cz-color-text-on-brand);
 	}
 
 	:host([compact-width="true"]) .tab {
@@ -263,6 +268,11 @@ export const nextTabStyles = css`
 	:host([data-variant="brand"]:hover),
 	:host([data-variant="brand"][active]) {
 		${brandActive}
+	}
+
+	:host([data-variant="brand"]:hover) #iconSlot::slotted(svg),
+	:host([data-variant="brand"][active]) #iconSlot::slotted(svg) {
+		color: var(--cz-color-text-on-brand);
 	}
 
 	:host([data-compact-width="true"]) {

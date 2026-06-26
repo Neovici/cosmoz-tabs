@@ -114,8 +114,8 @@ export const panelStyles = html`<style>
 		place-items: center;
 		font-weight: 600;
 		font-size: var(--cz-text-xs, 12px);
-		color: var(--cz-color-text-brand, #004eeb);
-		background: var(--cz-color-bg-brand, #eff4ff);
+		color: var(--cz-color-text-on-brand);
+		background: var(--cz-color-bg-brand-solid);
 	}
 	.comment .body strong {
 		color: var(--cz-color-text-primary, #101828);
@@ -148,8 +148,8 @@ export const panelStyles = html`<style>
 		border-radius: var(--cz-radius-full, 999px);
 		font-size: var(--cz-text-xs, 12px);
 		font-weight: 500;
-		color: var(--cz-color-text-brand, #004eeb);
-		background: var(--cz-color-bg-brand, #eff4ff);
+		color: var(--cz-color-text-on-brand);
+		background: var(--cz-color-bg-brand-solid);
 	}
 </style>`;
 

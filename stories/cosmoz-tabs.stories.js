@@ -384,11 +384,11 @@ export const SelectedColors = {
 		docs: {
 			description: {
 				story:
-					'The selected pill **and** the badge both read `--cz-color-bg-brand` / ' +
-					'`--cz-color-text-brand`. Override just those two tokens on the ' +
-					'`<cosmoz-tabs>` host to recolor them — no `--cosmoz-tabs-*` knobs ' +
-					'needed. They share the same tokens, so the pill and badge always ' +
-					'stay in sync (you cannot color them independently without new vars).',
+					'The selected pill **and** the badge are a solid brand fill — ' +
+					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
+					'text stays legible in both light and dark themes. Override ' +
+					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor ' +
+					'them (e.g. to a success/error solid); the on-brand text follows.',
 			},
 		},
 	},
@@ -410,11 +410,11 @@ export const SelectedColors = {
 				</cosmoz-tabs>
 			</div>
 			<div>
-				<div class="story-label">brand solid</div>
+				<div class="story-label">success</div>
 				<cosmoz-tabs
 					variant="brand"
 					.selected=${'overview'}
-					style="--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);"
+					style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
 				>
 					<cosmoz-tab name="overview" heading="Overview">
 						${overview()}
@@ -428,11 +428,11 @@ export const SelectedColors = {
 				</cosmoz-tabs>
 			</div>
 			<div>
-				<div class="story-label">gray</div>
+				<div class="story-label">error</div>
 				<cosmoz-tabs
 					variant="brand"
 					.selected=${'overview'}
-					style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+					style="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
 				>
 					<cosmoz-tab name="overview" heading="Overview">
 						${overview()}
@@ -454,13 +454,10 @@ export const Minimal = {
 		docs: {
 			description: {
 				story:
-					'Untitled UI’s *button minimal* look — the `brand` pill recolored to a ' +
-					'subtle neutral by pointing `--cz-color-bg-brand` at ' +
-					'`--cz-color-bg-secondary` (and `--cz-color-text-brand` at ' +
-					'`--cz-color-text-secondary`). Achievable with the existing tokens, no ' +
-					'new variant. (Untitled’s *button border* / segmented look is **not** ' +
-					'reachable via tokens alone — it needs a bordered container + selected ' +
-					'shadow, i.e. a dedicated variant.)',
+					'A subtle neutral pill — point `--cz-color-bg-brand-solid` at ' +
+					'`--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at ' +
+					'`--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair ' +
+					'keeps its contrast in both light and dark themes.',
 			},
 		},
 	},
@@ -469,7 +466,7 @@ export const Minimal = {
 		<cosmoz-tabs
 			variant="brand"
 			.selected=${'overview'}
-			style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+			style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
 		>
 			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
 			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
@@ -479,5 +476,57 @@ export const Minimal = {
 				${accounting()}
 			</cosmoz-tab>
 		</cosmoz-tabs>
+	`,
+};
+
+const themedTabs = (label, vars) => html`
+	<div>
+		<div class="story-label">${label}</div>
+		<cosmoz-tabs variant="brand" .selected=${'overview'} style=${vars}>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+		</cosmoz-tabs>
+	</div>
+`;
+
+export const Theming = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A bench of selected-pill / badge color configurations for checking ' +
+					'light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` ' +
+					'(the neutral one also overrides `--cz-color-text-on-brand`); the ' +
+					'on-brand text follows automatically. Toggle the theme in the toolbar ' +
+					'to verify contrast.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<div class="story-stack">
+			${themedTabs('brand (default)', '')}
+			${themedTabs(
+				'success',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);'
+			)}
+			${themedTabs(
+				'error',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);'
+			)}
+			${themedTabs(
+				'warning',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);'
+			)}
+			${themedTabs(
+				'neutral',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);'
+			)}
+		</div>
 	`,
 };
