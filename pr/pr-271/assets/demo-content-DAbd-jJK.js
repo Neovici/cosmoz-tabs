@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BMy_I1KC.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-DB7_1gDS.js";var u,d,f,p,m,h,g,_,v=e((()=>{l(),n(),u=t`<style>
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-l1zHrOt5.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-Dnh8uL6O.js";var u,d,f,p,m,h,g,_,v=e((()=>{l(),n(),u=t`<style>
 	cosmoz-tabs::part(content) {
 		padding-top: calc(var(--cz-spacing) * 5);
 	}
@@ -104,8 +104,8 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
 		place-items: center;
 		font-weight: 600;
 		font-size: var(--cz-text-xs, 12px);
-		color: var(--cz-color-text-brand, #004eeb);
-		background: var(--cz-color-bg-brand, #eff4ff);
+		color: var(--cz-color-text-on-brand);
+		background: var(--cz-color-bg-brand-solid);
 	}
 	.comment .body strong {
 		color: var(--cz-color-text-primary, #101828);
@@ -138,8 +138,8 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
 		border-radius: var(--cz-radius-full, 999px);
 		font-size: var(--cz-text-xs, 12px);
 		font-weight: 500;
-		color: var(--cz-color-text-brand, #004eeb);
-		background: var(--cz-color-bg-brand, #eff4ff);
+		color: var(--cz-color-text-on-brand);
+		background: var(--cz-color-bg-brand-solid);
 	}
 </style>`,d=()=>t`<div class="panel">
 		<h3>Invoice INV-2026-04417</h3>

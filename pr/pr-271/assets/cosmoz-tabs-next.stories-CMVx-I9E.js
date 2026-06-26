@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-BMy_I1KC.js";import{a as i,d as a,o}from"./if-defined-PWzNkm1l.js";import{l as s,m as c,r as l,t as u}from"./untitled-DB7_1gDS.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-FCmbJd9-.js";import{a as v,i as y,r as b,t as x}from"./next--foJ-9qi.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H;e((()=>{u(),i(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-l1zHrOt5.js";import{a as i,d as a,o}from"./if-defined-CcxirRVb.js";import{l as s,m as c,r as l,t as u}from"./untitled-Dnh8uL6O.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-DAbd-jJK.js";import{a as v,i as y,r as b,t as x}from"./next-BKHnYXiw.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;e((()=>{u(),i(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return t`
         ${f}
         <cosmoz-tabs-next variant=${n}>
             <cosmoz-tab-next
@@ -162,7 +162,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
   <cosmoz-tab-next data-name="history" hidden @click=\${select}>History</cosmoz-tab-next>
 </cosmoz-tabs-next>`},description:{story:"A `disabled` tab cannot be activated (the click handler guards it); a `hidden` tab is removed from the bar."}}},render:()=>t`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>`},M=()=>{let[e,n]=a(`overview`),r=e=>n(e.currentTarget.dataset.name);return t`
         ${f}
-        <cosmoz-tabs-next full-width="false">
+        <cosmoz-tabs-next compact-width="true">
             <cosmoz-tab-next
                 data-name="overview"
                 ?active=${e===`overview`}
@@ -194,11 +194,11 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-nonfullwidth-demo`)||customElements.define(`cosmoz-tabs-next-nonfullwidth-demo`,o(M)),N={name:`Non full width`,parameters:{docs:{source:{code:`
-<cosmoz-tabs-next variant="underline" full-width="false">
+    `},customElements.get(`cosmoz-tabs-next-compactwidth-demo`)||customElements.define(`cosmoz-tabs-next-compactwidth-demo`,o(M)),N={name:`Compact width`,parameters:{docs:{source:{code:`
+<cosmoz-tabs-next variant="underline" compact-width="true">
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:'Tabs spread evenly across the available width by default. Set `full-width="false"` to size them to their content (they hug their labels and align to the start).'}}},render:()=>t`<cosmoz-tabs-next-nonfullwidth-demo></cosmoz-tabs-next-nonfullwidth-demo>`},P=()=>{let e=v(h);return t`
+</cosmoz-tabs-next>`},description:{story:'Tabs spread evenly across the available width by default. Set `compact-width="true"` to size them to their content (they hug their labels and align to the start).'}}},render:()=>t`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`},P=()=>{let e=v(h);return t`
         ${f}
         <cosmoz-tabs-next variant="brand">
             ${y({...e,variant:`brand`})}
@@ -252,27 +252,26 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
     `},customElements.get(`cosmoz-tabs-next-colors-bar`)||customElements.define(`cosmoz-tabs-next-colors-bar`,o(R,{observedAttributes:[`vars`]})),z={parameters:{docs:{source:{code:`
 <cosmoz-tabs-next
   variant="brand"
-  style="--cz-color-bg-brand: var(--cz-color-bg-secondary);
-         --cz-color-text-brand: var(--cz-color-text-secondary);"
+  style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"The selected pill **and** the badge both read `--cz-color-bg-brand` / `--cz-color-text-brand`. Override just those two tokens on the `<cosmoz-tabs-next>` host to recolor them — no `--cosmoz-tabs-*` knobs needed. They share the same tokens, so the pill and badge always stay in sync (you cannot color them independently without new vars)."}}},render:()=>t`
+</cosmoz-tabs-next>`},description:{story:"The selected pill **and** the badge are a solid brand fill — `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>t`
         <div class="story-stack">
             <div>
                 <div class="story-label">brand (default)</div>
                 <cosmoz-tabs-next-colors-bar></cosmoz-tabs-next-colors-bar>
             </div>
             <div>
-                <div class="story-label">brand solid</div>
+                <div class="story-label">success</div>
                 <cosmoz-tabs-next-colors-bar
-                    vars="--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);"
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
                 ></cosmoz-tabs-next-colors-bar>
             </div>
             <div>
-                <div class="story-label">gray</div>
+                <div class="story-label">error</div>
                 <cosmoz-tabs-next-colors-bar
-                    vars="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
                 ></cosmoz-tabs-next-colors-bar>
             </div>
         </div>
@@ -280,7 +279,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
         ${f}
         <cosmoz-tabs-next
             variant="brand"
-            style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+            style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
         >
             <cosmoz-tab-next
                 data-name="overview"
@@ -308,12 +307,43 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
         <div style="padding-top: 20px">${C[e]()}</div>
     `},customElements.get(`cosmoz-tabs-next-minimal-demo`)||customElements.define(`cosmoz-tabs-next-minimal-demo`,o(B)),V={parameters:{docs:{source:{code:`<cosmoz-tabs-next
   variant="brand"
-  style="--cz-color-bg-brand: var(--cz-color-bg-secondary);
-         --cz-color-text-brand: var(--cz-color-text-secondary);"
+  style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary);
+         --cz-color-text-on-brand: var(--cz-color-text-primary);"
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"Untitled UI’s *button minimal* look — the `brand` pill recolored to a subtle neutral by pointing `--cz-color-bg-brand` at `--cz-color-bg-secondary` (and `--cz-color-text-brand` at `--cz-color-text-secondary`). Achievable with the existing tokens, no new variant. (Untitled’s *button border* / segmented look is **not** reachable via tokens alone — it needs a bordered container + selected shadow, i.e. a dedicated variant.)"}}},render:()=>t`<cosmoz-tabs-next-minimal-demo></cosmoz-tabs-next-minimal-demo>`},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
+</cosmoz-tabs-next>`},description:{story:"A subtle neutral pill — point `--cz-color-bg-brand-solid` at `--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at `--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair keeps its contrast in both light and dark themes."}}},render:()=>t`<cosmoz-tabs-next-minimal-demo></cosmoz-tabs-next-minimal-demo>`},H={parameters:{docs:{description:{story:"A bench of selected-pill / badge color configurations for checking light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` (the neutral one also overrides `--cz-color-text-on-brand`); the on-brand text follows automatically. Toggle the theme in the toolbar to verify contrast."}}},render:()=>t`
+        <div class="story-stack">
+            <div>
+                <div class="story-label">brand (default)</div>
+                <cosmoz-tabs-next-colors-bar></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">success</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">error</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">warning</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">neutral</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+        </div>
+    `},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
   args: {
     variant: 'underline'
   },
@@ -415,22 +445,22 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
   },
   render: () => html\`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>\`
 }`,...j.parameters?.docs?.source}}},N.parameters={...N.parameters,docs:{...N.parameters?.docs,source:{originalSource:`{
-  name: 'Non full width',
+  name: 'Compact width',
   parameters: {
     docs: {
       source: {
         code: \`
-<cosmoz-tabs-next variant="underline" full-width="false">
+<cosmoz-tabs-next variant="underline" compact-width="true">
   <cosmoz-tab-next data-name="overview"
     ?active=\\\${active === 'overview'} @click=\\\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>\`
       },
       description: {
-        story: 'Tabs spread evenly across the available width by default. Set ' + '\`full-width="false"\` to size them to their content (they hug their ' + 'labels and align to the start).'
+        story: 'Tabs spread evenly across the available width by default. Set ' + '\`compact-width="true"\` to size them to their content (they hug their ' + 'labels and align to the start).'
       }
     }
   },
-  render: () => html\`<cosmoz-tabs-next-nonfullwidth-demo></cosmoz-tabs-next-nonfullwidth-demo>\`
+  render: () => html\`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>\`
 }`,...N.parameters?.docs?.source}}},F.parameters={...F.parameters,docs:{...F.parameters?.docs,source:{originalSource:`{
   parameters: {
     docs: {
@@ -474,15 +504,14 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
         code: \`
 <cosmoz-tabs-next
   variant="brand"
-  style="--cz-color-bg-brand: var(--cz-color-bg-secondary);
-         --cz-color-text-brand: var(--cz-color-text-secondary);"
+  style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\\\${active === 'overview'} @click=\\\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>\`
       },
       description: {
-        story: 'The selected pill **and** the badge both read \`--cz-color-bg-brand\` / ' + '\`--cz-color-text-brand\`. Override just those two tokens on the ' + '\`<cosmoz-tabs-next>\` host to recolor them — no \`--cosmoz-tabs-*\` knobs ' + 'needed. They share the same tokens, so the pill and badge always ' + 'stay in sync (you cannot color them independently without new vars).'
+        story: 'The selected pill **and** the badge are a solid brand fill — ' + '\`--cz-color-bg-brand-solid\` with \`--cz-color-text-on-brand\` — so the ' + 'text stays legible in both light and dark themes. Override ' + '\`--cz-color-bg-brand-solid\` on the \`<cosmoz-tabs-next>\` host to ' + 'recolor them (e.g. to a success/error solid); the on-brand text ' + 'follows.'
       }
     }
   },
@@ -493,15 +522,15 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 <cosmoz-tabs-next-colors-bar></cosmoz-tabs-next-colors-bar>
             </div>
             <div>
-                <div class="story-label">brand solid</div>
+                <div class="story-label">success</div>
                 <cosmoz-tabs-next-colors-bar
-                    vars="--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);"
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
                 ></cosmoz-tabs-next-colors-bar>
             </div>
             <div>
-                <div class="story-label">gray</div>
+                <div class="story-label">error</div>
                 <cosmoz-tabs-next-colors-bar
-                    vars="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
                 ></cosmoz-tabs-next-colors-bar>
             </div>
         </div>
@@ -512,17 +541,57 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
       source: {
         code: \`<cosmoz-tabs-next
   variant="brand"
-  style="--cz-color-bg-brand: var(--cz-color-bg-secondary);
-         --cz-color-text-brand: var(--cz-color-text-secondary);"
+  style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary);
+         --cz-color-text-on-brand: var(--cz-color-text-primary);"
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\\\${active === 'overview'} @click=\\\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>\`
       },
       description: {
-        story: 'Untitled UI’s *button minimal* look — the \`brand\` pill recolored to a ' + 'subtle neutral by pointing \`--cz-color-bg-brand\` at ' + '\`--cz-color-bg-secondary\` (and \`--cz-color-text-brand\` at ' + '\`--cz-color-text-secondary\`). Achievable with the existing tokens, no ' + 'new variant. (Untitled’s *button border* / segmented look is **not** ' + 'reachable via tokens alone — it needs a bordered container + selected ' + 'shadow, i.e. a dedicated variant.)'
+        story: 'A subtle neutral pill — point \`--cz-color-bg-brand-solid\` at ' + '\`--cz-color-bg-tertiary\` and \`--cz-color-text-on-brand\` at ' + '\`--cz-color-text-primary\`. Unlike a brand *tint*, this neutral pair ' + 'keeps its contrast in both light and dark themes.'
       }
     }
   },
   render: () => html\`<cosmoz-tabs-next-minimal-demo></cosmoz-tabs-next-minimal-demo>\`
-}`,...V.parameters?.docs?.source}}},H=[`Default`,`Variants`,`WithIcons`,`DisabledAndHidden`,`NonFullWidth`,`DataDriven`,`HashRouting`,`SelectedColors`,`Minimal`]}))();export{F as DataDriven,T as Default,j as DisabledAndHidden,L as HashRouting,V as Minimal,N as NonFullWidth,z as SelectedColors,D as Variants,k as WithIcons,H as __namedExportsOrder,S as default};
+}`,...V.parameters?.docs?.source}}},H.parameters={...H.parameters,docs:{...H.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'A bench of selected-pill / badge color configurations for checking ' + 'light **and** dark themes. Each recolors \`--cz-color-bg-brand-solid\` ' + '(the neutral one also overrides \`--cz-color-text-on-brand\`); the ' + 'on-brand text follows automatically. Toggle the theme in the toolbar ' + 'to verify contrast.'
+      }
+    }
+  },
+  render: () => html\`
+        <div class="story-stack">
+            <div>
+                <div class="story-label">brand (default)</div>
+                <cosmoz-tabs-next-colors-bar></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">success</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">error</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">warning</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+            <div>
+                <div class="story-label">neutral</div>
+                <cosmoz-tabs-next-colors-bar
+                    vars="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
+                ></cosmoz-tabs-next-colors-bar>
+            </div>
+        </div>
+    \`
+}`,...H.parameters?.docs?.source}}},U=[`Default`,`Variants`,`WithIcons`,`DisabledAndHidden`,`CompactWidth`,`DataDriven`,`HashRouting`,`SelectedColors`,`Minimal`,`Theming`]}))();export{N as CompactWidth,F as DataDriven,T as Default,j as DisabledAndHidden,L as HashRouting,V as Minimal,z as SelectedColors,H as Theming,D as Variants,k as WithIcons,U as __namedExportsOrder,S as default};

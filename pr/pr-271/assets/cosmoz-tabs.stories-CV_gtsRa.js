@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-BMy_I1KC.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-DB7_1gDS.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-FCmbJd9-.js";import{t as v}from"./cosmoz-tabs-CD6ZDPpR.js";var y,b,x,S,C,w,T,E,D,O,k,A;e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-l1zHrOt5.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-Dnh8uL6O.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-DAbd-jJK.js";import{t as v}from"./cosmoz-tabs-CMI-xgWy.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
         ${d}
         <cosmoz-tabs variant=${e} .selected=${`overview`}>
             <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
@@ -206,9 +206,13 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
             </cosmoz-tab>
             <cosmoz-tab name="history" heading="History">${f()}</cosmoz-tab>
         </cosmoz-tabs>
-    `},D={name:`Non full width`,argTypes:{variant:{control:`select`,options:[`brand`,`underline`]}},args:{variant:`brand`},parameters:{controls:{disable:!1},docs:{description:{story:'Tabs spread evenly across the available width by default (the legacy always-spread behavior). Set `full-width="false"` to size them to their content (they hug their labels and align to the start).'}}},render:({variant:e})=>t`
+    `},D={name:`Compact width`,argTypes:{variant:{control:`select`,options:[`brand`,`underline`]}},args:{variant:`brand`},parameters:{controls:{disable:!1},docs:{description:{story:'Tabs spread evenly across the available width by default (the legacy always-spread behavior). Set `compact-width="true"` to size them to their content (they hug their labels and align to the start).'}}},render:({variant:e})=>t`
         ${d}
-        <cosmoz-tabs variant=${e} .selected=${`overview`} full-width="false">
+        <cosmoz-tabs
+            variant=${e}
+            .selected=${`overview`}
+            compact-width="true"
+        >
             <cosmoz-tab name="overview" heading="Overview">${g()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
                 ${p()}
@@ -218,7 +222,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
             </cosmoz-tab>
             <cosmoz-tab name="history" heading="History">${f()}</cosmoz-tab>
         </cosmoz-tabs>
-    `},O={parameters:{docs:{description:{story:"The selected pill **and** the badge both read `--cz-color-bg-brand` / `--cz-color-text-brand`. Override just those two tokens on the `<cosmoz-tabs>` host to recolor them — no `--cosmoz-tabs-*` knobs needed. They share the same tokens, so the pill and badge always stay in sync (you cannot color them independently without new vars)."}}},render:()=>t`
+    `},O={parameters:{docs:{description:{story:"The selected pill **and** the badge are a solid brand fill — `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>t`
         ${d}
         <div class="story-stack">
             <div>
@@ -236,11 +240,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 </cosmoz-tabs>
             </div>
             <div>
-                <div class="story-label">brand solid</div>
+                <div class="story-label">success</div>
                 <cosmoz-tabs
                     variant="brand"
                     .selected=${`overview`}
-                    style="--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);"
+                    style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
                 >
                     <cosmoz-tab name="overview" heading="Overview">
                         ${g()}
@@ -254,11 +258,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 </cosmoz-tabs>
             </div>
             <div>
-                <div class="story-label">gray</div>
+                <div class="story-label">error</div>
                 <cosmoz-tabs
                     variant="brand"
                     .selected=${`overview`}
-                    style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+                    style="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
                 >
                     <cosmoz-tab name="overview" heading="Overview">
                         ${g()}
@@ -272,12 +276,12 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 </cosmoz-tabs>
             </div>
         </div>
-    `},k={parameters:{docs:{description:{story:"Untitled UI’s *button minimal* look — the `brand` pill recolored to a subtle neutral by pointing `--cz-color-bg-brand` at `--cz-color-bg-secondary` (and `--cz-color-text-brand` at `--cz-color-text-secondary`). Achievable with the existing tokens, no new variant. (Untitled’s *button border* / segmented look is **not** reachable via tokens alone — it needs a bordered container + selected shadow, i.e. a dedicated variant.)"}}},render:()=>t`
+    `},k={parameters:{docs:{description:{story:"A subtle neutral pill — point `--cz-color-bg-brand-solid` at `--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at `--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair keeps its contrast in both light and dark themes."}}},render:()=>t`
         ${d}
         <cosmoz-tabs
             variant="brand"
             .selected=${`overview`}
-            style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+            style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
         >
             <cosmoz-tab name="overview" heading="Overview">${g()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
@@ -287,6 +291,28 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 ${_()}
             </cosmoz-tab>
         </cosmoz-tabs>
+    `},A=(e,n)=>t`
+    <div>
+        <div class="story-label">${e}</div>
+        <cosmoz-tabs variant="brand" .selected=${`overview`} style=${n}>
+            <cosmoz-tab name="overview" heading="Overview">${g()}</cosmoz-tab>
+            <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+                ${p()}
+            </cosmoz-tab>
+            <cosmoz-tab name="accounting" heading="Accounting">
+                ${_()}
+            </cosmoz-tab>
+        </cosmoz-tabs>
+    </div>
+`,j={parameters:{docs:{description:{story:"A bench of selected-pill / badge color configurations for checking light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` (the neutral one also overrides `--cz-color-text-on-brand`); the on-brand text follows automatically. Toggle the theme in the toolbar to verify contrast."}}},render:()=>t`
+        ${d}
+        <div class="story-stack">
+            ${A(`brand (default)`,``)}
+            ${A(`success`,`--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);`)}
+            ${A(`error`,`--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);`)}
+            ${A(`warning`,`--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);`)}
+            ${A(`neutral`,`--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);`)}
+        </div>
     `},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
   args: {
     variant: 'underline'
@@ -562,7 +588,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
         </cosmoz-tabs>
     \`
 }`,...E.parameters?.docs?.source}}},D.parameters={...D.parameters,docs:{...D.parameters?.docs,source:{originalSource:`{
-  name: 'Non full width',
+  name: 'Compact width',
   argTypes: {
     variant: {
       control: 'select',
@@ -578,7 +604,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
     },
     docs: {
       description: {
-        story: 'Tabs spread evenly across the available width by default (the legacy ' + 'always-spread behavior). Set \`full-width="false"\` to size them to ' + 'their content (they hug their labels and align to the start).'
+        story: 'Tabs spread evenly across the available width by default (the legacy ' + 'always-spread behavior). Set \`compact-width="true"\` to size them to ' + 'their content (they hug their labels and align to the start).'
       }
     }
   },
@@ -586,7 +612,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
     variant
   }) => html\`
         \${panelStyles}
-        <cosmoz-tabs variant=\${variant} .selected=\${'overview'} full-width="false">
+        <cosmoz-tabs
+            variant=\${variant}
+            .selected=\${'overview'}
+            compact-width="true"
+        >
             <cosmoz-tab name="overview" heading="Overview">\${overview()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
                 \${rows()}
@@ -601,7 +631,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
   parameters: {
     docs: {
       description: {
-        story: 'The selected pill **and** the badge both read \`--cz-color-bg-brand\` / ' + '\`--cz-color-text-brand\`. Override just those two tokens on the ' + '\`<cosmoz-tabs>\` host to recolor them — no \`--cosmoz-tabs-*\` knobs ' + 'needed. They share the same tokens, so the pill and badge always ' + 'stay in sync (you cannot color them independently without new vars).'
+        story: 'The selected pill **and** the badge are a solid brand fill — ' + '\`--cz-color-bg-brand-solid\` with \`--cz-color-text-on-brand\` — so the ' + 'text stays legible in both light and dark themes. Override ' + '\`--cz-color-bg-brand-solid\` on the \`<cosmoz-tabs>\` host to recolor ' + 'them (e.g. to a success/error solid); the on-brand text follows.'
       }
     }
   },
@@ -623,11 +653,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 </cosmoz-tabs>
             </div>
             <div>
-                <div class="story-label">brand solid</div>
+                <div class="story-label">success</div>
                 <cosmoz-tabs
                     variant="brand"
                     .selected=\${'overview'}
-                    style="--cz-color-bg-brand: var(--cz-color-bg-brand-solid); --cz-color-text-brand: var(--cz-color-text-on-brand);"
+                    style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
                 >
                     <cosmoz-tab name="overview" heading="Overview">
                         \${overview()}
@@ -641,11 +671,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
                 </cosmoz-tabs>
             </div>
             <div>
-                <div class="story-label">gray</div>
+                <div class="story-label">error</div>
                 <cosmoz-tabs
                     variant="brand"
                     .selected=\${'overview'}
-                    style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+                    style="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
                 >
                     <cosmoz-tab name="overview" heading="Overview">
                         \${overview()}
@@ -664,7 +694,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
   parameters: {
     docs: {
       description: {
-        story: 'Untitled UI’s *button minimal* look — the \`brand\` pill recolored to a ' + 'subtle neutral by pointing \`--cz-color-bg-brand\` at ' + '\`--cz-color-bg-secondary\` (and \`--cz-color-text-brand\` at ' + '\`--cz-color-text-secondary\`). Achievable with the existing tokens, no ' + 'new variant. (Untitled’s *button border* / segmented look is **not** ' + 'reachable via tokens alone — it needs a bordered container + selected ' + 'shadow, i.e. a dedicated variant.)'
+        story: 'A subtle neutral pill — point \`--cz-color-bg-brand-solid\` at ' + '\`--cz-color-bg-tertiary\` and \`--cz-color-text-on-brand\` at ' + '\`--cz-color-text-primary\`. Unlike a brand *tint*, this neutral pair ' + 'keeps its contrast in both light and dark themes.'
       }
     }
   },
@@ -673,7 +703,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
         <cosmoz-tabs
             variant="brand"
             .selected=\${'overview'}
-            style="--cz-color-bg-brand: var(--cz-color-bg-secondary); --cz-color-text-brand: var(--cz-color-text-secondary);"
+            style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
         >
             <cosmoz-tab name="overview" heading="Overview">\${overview()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
@@ -684,4 +714,22 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
             </cosmoz-tab>
         </cosmoz-tabs>
     \`
-}`,...k.parameters?.docs?.source}}},A=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`NonFullWidth`,`SelectedColors`,`Minimal`]}))();export{b as Default,C as DisabledAndHidden,w as HashRouting,T as ManyTabs,k as Minimal,D as NonFullWidth,O as SelectedColors,x as Variants,E as WithTabCards,S as WithoutIcons,A as __namedExportsOrder,y as default};
+}`,...k.parameters?.docs?.source}}},j.parameters={...j.parameters,docs:{...j.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'A bench of selected-pill / badge color configurations for checking ' + 'light **and** dark themes. Each recolors \`--cz-color-bg-brand-solid\` ' + '(the neutral one also overrides \`--cz-color-text-on-brand\`); the ' + 'on-brand text follows automatically. Toggle the theme in the toolbar ' + 'to verify contrast.'
+      }
+    }
+  },
+  render: () => html\`
+        \${panelStyles}
+        <div class="story-stack">
+            \${themedTabs('brand (default)', '')}
+            \${themedTabs('success', '--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);')}
+            \${themedTabs('error', '--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);')}
+            \${themedTabs('warning', '--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);')}
+            \${themedTabs('neutral', '--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);')}
+        </div>
+    \`
+}`,...j.parameters?.docs?.source}}},M=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`CompactWidth`,`SelectedColors`,`Minimal`,`Theming`]}))();export{D as CompactWidth,b as Default,C as DisabledAndHidden,w as HashRouting,T as ManyTabs,k as Minimal,O as SelectedColors,j as Theming,x as Variants,E as WithTabCards,S as WithoutIcons,M as __namedExportsOrder,y as default};
