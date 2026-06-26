@@ -334,13 +334,13 @@ export const DisabledAndHidden = {
 		html`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>`,
 };
 
-const NonFullWidthDemo = () => {
+const CompactWidthDemo = () => {
 	const [active, setActive] = useState('overview'),
 		select = (e) => setActive(e.currentTarget.dataset.name);
 
 	return html`
 		${panelStyles}
-		<cosmoz-tabs-next full-width="false">
+		<cosmoz-tabs-next compact-width="true">
 			<cosmoz-tab-next
 				data-name="overview"
 				?active=${active === 'overview'}
@@ -375,20 +375,20 @@ const NonFullWidthDemo = () => {
 	`;
 };
 
-if (!customElements.get('cosmoz-tabs-next-nonfullwidth-demo')) {
+if (!customElements.get('cosmoz-tabs-next-compactwidth-demo')) {
 	customElements.define(
-		'cosmoz-tabs-next-nonfullwidth-demo',
-		component(NonFullWidthDemo)
+		'cosmoz-tabs-next-compactwidth-demo',
+		component(CompactWidthDemo)
 	);
 }
 
-export const NonFullWidth = {
-	name: 'Non full width',
+export const CompactWidth = {
+	name: 'Compact width',
 	parameters: {
 		docs: {
 			source: {
 				code: `
-<cosmoz-tabs-next variant="underline" full-width="false">
+<cosmoz-tabs-next variant="underline" compact-width="true">
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>`,
@@ -396,13 +396,13 @@ export const NonFullWidth = {
 			description: {
 				story:
 					'Tabs spread evenly across the available width by default. Set ' +
-					'`full-width="false"` to size them to their content (they hug their ' +
+					'`compact-width="true"` to size them to their content (they hug their ' +
 					'labels and align to the start).',
 			},
 		},
 	},
 	render: () =>
-		html`<cosmoz-tabs-next-nonfullwidth-demo></cosmoz-tabs-next-nonfullwidth-demo>`,
+		html`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`,
 };
 
 const DataDrivenDemo = () => {

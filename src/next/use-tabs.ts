@@ -38,7 +38,7 @@ export interface RenderTabsOptions<T extends RenderTab> {
 	onActivate: (e: Event) => void;
 	className?: string;
 	variant?: TabsVariant;
-	fullWidth?: boolean;
+	compactWidth?: boolean;
 }
 
 export type RenderTabs<T extends RenderTab> = RenderTabsOptions<T>;
@@ -102,7 +102,7 @@ export const renderTabs = <T extends RenderTab>({
 	onActivate,
 	className,
 	variant,
-	fullWidth,
+	compactWidth,
 }: RenderTabsOptions<T>) =>
 	tabs.map((tab) => {
 		const title = invoke(tab.title);
@@ -110,7 +110,7 @@ export const renderTabs = <T extends RenderTab>({
 			name=${tab.name}
 			class=${ifDefined(className)}
 			data-variant=${ifDefined(variant)}
-			data-full-width=${ifDefined(fullWidth === false ? 'false' : undefined)}
+			data-compact-width=${ifDefined(compactWidth ? 'true' : undefined)}
 			title=${ifDefined(typeof title === 'string' ? title : undefined)}
 			?active=${active?.name === tab.name}
 			?hidden=${tab.hidden}

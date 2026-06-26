@@ -10,7 +10,7 @@ export type { TabsVariant };
 
 export interface CosmozTabsElement extends CosmozTabsHost {
 	variant?: TabsVariant;
-	fullWidth?: boolean;
+	compactWidth?: boolean;
 }
 
 /**
@@ -19,7 +19,7 @@ export interface CosmozTabsElement extends CosmozTabsHost {
  * @attr {string} hash-param - hash parameter to bind selection
  * @attr {boolean} no-resize
  * @attr {('brand'|'underline')} variant
- * @attr {string} full-width
+ * @attr {string} compact-width
  * @csspart tabs - tab bar container
  * @csspart tab - individual tab
  * @csspart content - content container
@@ -52,7 +52,7 @@ customElements.define(
 			'hash-param',
 			'no-resize',
 			'variant',
-			'full-width',
+			'compact-width',
 		],
 		styleSheets: [normalize, legacyStyles],
 	})

@@ -340,8 +340,8 @@ export const WithTabCards = {
 	`,
 };
 
-export const NonFullWidth = {
-	name: 'Non full width',
+export const CompactWidth = {
+	name: 'Compact width',
 	argTypes: {
 		variant: {
 			control: 'select',
@@ -355,14 +355,18 @@ export const NonFullWidth = {
 			description: {
 				story:
 					'Tabs spread evenly across the available width by default (the legacy ' +
-					'always-spread behavior). Set `full-width="false"` to size them to ' +
+					'always-spread behavior). Set `compact-width="true"` to size them to ' +
 					'their content (they hug their labels and align to the start).',
 			},
 		},
 	},
 	render: ({ variant }) => html`
 		${panelStyles}
-		<cosmoz-tabs variant=${variant} .selected=${'overview'} full-width="false">
+		<cosmoz-tabs
+			variant=${variant}
+			.selected=${'overview'}
+			compact-width="true"
+		>
 			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
 			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
 				${rows()}

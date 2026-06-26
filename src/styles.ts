@@ -178,11 +178,11 @@ export const legacyStyles = css`
 		${brandActive}
 	}
 
-	:host([full-width="false"]) .tab {
+	:host([compact-width="true"]) .tab {
 		flex: 0 1 auto;
 	}
 
-	:host(:not([full-width="false"]):not([variant="brand"])) .tabs {
+	:host(:not([compact-width="true"]):not([variant="brand"])) .tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -201,7 +201,7 @@ export const nextTabsStyles = css`
 		${brandBar}
 	}
 
-	:host(:not([full-width="false"]):not([variant="brand"])) {
+	:host(:not([compact-width="true"]):not([variant="brand"])) {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -265,7 +265,7 @@ export const nextTabStyles = css`
 		${brandActive}
 	}
 
-	:host([data-full-width="false"]) {
+	:host([data-compact-width="true"]) {
 		flex: 0 1 auto;
 	}
 `;

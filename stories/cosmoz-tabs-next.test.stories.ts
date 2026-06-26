@@ -118,13 +118,13 @@ export const SpreadByDefault: Story = {
 		const container = getContainer(canvasElement);
 		const tab = container.querySelector('cosmoz-tab-next') as HTMLElement;
 		await waitFor(() => expect(getComputedStyle(tab).flexGrow).toBe('1'));
-		expect(tab.getAttribute('data-full-width')).toBeNull();
+		expect(tab.getAttribute('data-compact-width')).toBeNull();
 	},
 };
 
-export const FullWidthFalseSizesToContent: Story = {
+export const CompactWidthSizesToContent: Story = {
 	render: () => html`
-		<cosmoz-tabs-next variant="brand" full-width="false">
+		<cosmoz-tabs-next variant="brand" compact-width="true">
 			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
 			<cosmoz-tab-next>Activity</cosmoz-tab-next>
 		</cosmoz-tabs-next>
@@ -133,9 +133,9 @@ export const FullWidthFalseSizesToContent: Story = {
 		const container = getContainer(canvasElement);
 		const tab = container.querySelector('cosmoz-tab-next') as HTMLElement;
 
-		await step('container reflects data-full-width="false"', async () => {
+		await step('container reflects data-compact-width="true"', async () => {
 			await waitFor(() =>
-				expect(tab.getAttribute('data-full-width')).toBe('false')
+				expect(tab.getAttribute('data-compact-width')).toBe('true')
 			);
 		});
 

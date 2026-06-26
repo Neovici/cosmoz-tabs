@@ -4,7 +4,7 @@ import { nextTabsStyles, type TabsVariant } from '../styles';
 
 export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
-	fullWidth?: boolean;
+	compactWidth?: boolean;
 }
 
 const reflect = (tab: Element, name: string, value: string | null) => {
@@ -18,7 +18,7 @@ const reflect = (tab: Element, name: string, value: string | null) => {
 /**
  * @element cosmoz-tabs-next
  * @attr {('brand'|'underline')} variant
- * @attr {string} full-width
+ * @attr {string} compact-width
  */
 const Tabs = (host: CosmozTabsNextElement) => {
 	if (!host.getAttribute('variant')) {
@@ -26,13 +26,13 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}
 
 	const variant = host.getAttribute('variant');
-	const fullWidth =
-		host.getAttribute('full-width') === 'false' ? 'false' : null;
+	const compactWidth =
+		host.getAttribute('compact-width') === 'true' ? 'true' : null;
 
 	const apply = () =>
 		host.querySelectorAll('cosmoz-tab-next').forEach((tab) => {
 			reflect(tab, 'data-variant', variant);
-			reflect(tab, 'data-full-width', fullWidth);
+			reflect(tab, 'data-compact-width', compactWidth);
 		});
 
 	useEffect(() => {
@@ -49,7 +49,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
-		observedAttributes: ['variant', 'full-width'],
+		observedAttributes: ['variant', 'compact-width'],
 		styleSheets: [normalize, nextTabsStyles],
 	})
 );
