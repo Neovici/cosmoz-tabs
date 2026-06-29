@@ -34,7 +34,7 @@ npm i @neovici/cosmoz-tabs
 just needs to load it once for the `--cz-*` token values:
 
 ```js
-import '@neovici/cosmoz-tokens';
+import "@neovici/cosmoz-tokens";
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ import '@neovici/cosmoz-tokens';
 ### Legacy family (`cosmoz-tabs`)
 
 ```js
-import '@neovici/cosmoz-tabs';
+import "@neovici/cosmoz-tabs";
 ```
 
 ```html
@@ -64,7 +64,7 @@ Icons are passed as a lit-html template (e.g. from
 [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons)) via the `.icon` property:
 
 ```js
-import { receiptIcon } from '@neovici/cosmoz-icons/untitled';
+import { receiptIcon } from "@neovici/cosmoz-icons/untitled";
 html`<cosmoz-tab heading="Overview" name="overview" .icon=${receiptIcon()}
 	>…</cosmoz-tab
 >`;
@@ -79,19 +79,19 @@ import {
 	useTabs,
 	renderTabs,
 	renderActivated,
-} from '@neovici/cosmoz-tabs/next';
+} from "@neovici/cosmoz-tabs/next";
 
 const tabs = [
-	{ name: 'overview', title: 'Overview', render: renderOverview },
-	{ name: 'rows', title: 'Invoice rows', badge: '5', render: renderRows },
+	{ name: "overview", title: "Overview", render: renderOverview },
+	{ name: "rows", title: "Invoice rows", badge: "5", render: renderRows },
 ];
 
 const Component = () => {
-	const model = useTabs(tabs, { hashParam: 'tab' });
+	const model = useTabs(tabs, { hashParam: "tab" });
 	return html`
 		<cosmoz-tabs-next variant="brand"> ${renderTabs(model)} </cosmoz-tabs-next>
 		${renderActivated(model, (tab) =>
-			tab.isActive ? html`<div>${tab.render()}</div>` : '',
+			tab.isActive ? html`<div>${tab.render()}</div>` : ""
 		)}
 	`;
 };
@@ -131,8 +131,7 @@ npm run lint
 npm run build
 ```
 
-Releases are cut by semantic-release in CI (conventional commits) — there is no manual
-changeset step.
+Releases are managed with changesets in CI.
 
 Stories double as tests: see `stories/*.stories.js` (demos) and `stories/*.test.stories.ts`
 (behavioral tests run by `@storybook/addon-vitest`).
