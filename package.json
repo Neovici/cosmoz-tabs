@@ -86,7 +86,7 @@
 		"@types/node": "^22.0.0",
 		"@web/storybook-builder": "^0.1.16",
 		"@web/storybook-framework-web-components": "^0.1.2",
-		"esbuild": "^0.25.0",
+		"esbuild": "^0.28.1",
 		"http-server": "^14.1.1",
 		"husky": "^9.0.0",
 		"lint-staged": "^16.2.7",
