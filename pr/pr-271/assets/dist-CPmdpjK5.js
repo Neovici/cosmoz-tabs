@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-CcxirRVb.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-dtp5XfF4.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
@@ -155,11 +155,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		color: var(--cz-color-text-on-brand);
 	}
 
-	:host([compact-width="true"]) .tab {
+	:host([compact-width]) .tab {
 		flex: 0 1 auto;
 	}
 
-	:host(:not([compact-width="true"]):not([variant="brand"])) .tabs {
+	:host(:not([compact-width]):not([variant="brand"])) .tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `,b=t`
@@ -176,7 +176,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		${m}
 	}
 
-	:host(:not([compact-width="true"]):not([variant="brand"])) {
+	:host(:not([compact-width]):not([variant="brand"])) {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `,x=t`
@@ -229,21 +229,21 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 		${v}
 	}
 
-	:host([data-variant="brand"]) {
+	:host([variant="brand"]) {
 		${h}
 	}
 
-	:host([data-variant="brand"]:hover),
-	:host([data-variant="brand"][active]) {
+	:host([variant="brand"]:hover),
+	:host([variant="brand"][active]) {
 		${g}
 	}
 
-	:host([data-variant="brand"]:hover) #iconSlot::slotted(svg),
-	:host([data-variant="brand"][active]) #iconSlot::slotted(svg) {
+	:host([variant="brand"]:hover) #iconSlot::slotted(svg),
+	:host([variant="brand"][active]) #iconSlot::slotted(svg) {
 		color: var(--cz-color-text-on-brand);
 	}
 
-	:host([data-compact-width="true"]) {
+	:host([compact-width]) {
 		flex: 0 1 auto;
 	}
 `})),C,w,T,E,D=e((()=>{r(),C=()=>new URL(location.hash.replace(/^#!?/iu,``).replace(`%23`,`#`),location.origin),w=e=>e?()=>new URLSearchParams(C().hash.replace(`#`,``)).get(e):void 0,T=(e,t)=>{if(!e)return;let n=C(),r=new URLSearchParams(n.hash.replace(`#`,``));return t==null?r.delete(e):r.set(e,t),`#!`+Object.assign(n,{hash:r}).href.replace(location.origin,``)},E=e=>{let t=n(()=>w(e),[e]),[r,s]=i(t),c=a(r);return o(()=>void(c.current=r),[r]),o(()=>{if(t==null)return;let e=()=>{let e=t();c.current!==e&&s(e)};return e(),window.addEventListener(`popstate`,e),window.addEventListener(`hashchange`,e),()=>{window.removeEventListener(`popstate`,e),window.removeEventListener(`hashchange`,e)}},[t]),[r,n(()=>e?t=>{s(t),history.pushState({},``,T(e,t))}:s,[e])]}})),O,k,A,j,M,N,P=e((()=>{O=e=>typeof e==`object`&&!!e&&e.nodeType===1,k=(e,t)=>(!t||e!==`hidden`)&&e!==`visible`&&e!==`clip`,A=(e,t)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let n=getComputedStyle(e,null);return k(n.overflowY,t)||k(n.overflowX,t)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch{return null}})(e);return!!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return!1},j=(e,t,n,r,i,a,o,s)=>a<e&&o>t||a>e&&o<t?0:a<=e&&s<=n||o>=t&&s>=n?a-e-r:o>t&&s<n||a<e&&s>n?o-t+i:0,M=e=>e.parentElement??(e.getRootNode().host||null),N=(e,t)=>{if(typeof document>`u`)return[];let{scrollMode:n,block:r,inline:i,boundary:a,skipOverflowHiddenElements:o}=t,s=typeof a==`function`?a:e=>e!==a;if(!O(e))throw TypeError(`Invalid target`);let c=document.scrollingElement||document.documentElement,l=[],u=e;for(;O(u)&&s(u);){if(u=M(u),u===c){l.push(u);break}u!=null&&u===document.body&&A(u)&&!A(document.documentElement)||u!=null&&A(u,o)&&l.push(u)}let d=window.visualViewport?.width??innerWidth,f=window.visualViewport?.height??innerHeight,{scrollX:p,scrollY:m}=window,{height:h,width:g,top:_,right:v,bottom:y,left:b}=e.getBoundingClientRect(),{top:x,right:S,bottom:C,left:w}=(e=>{let t=window.getComputedStyle(e);return{top:parseFloat(t.scrollMarginTop)||0,right:parseFloat(t.scrollMarginRight)||0,bottom:parseFloat(t.scrollMarginBottom)||0,left:parseFloat(t.scrollMarginLeft)||0}})(e),T=r===`start`||r===`nearest`?_-x:r===`end`?y+C:_+h/2-x+C,E=i===`center`?b+g/2-w+S:i===`end`?v+S:b-w,D=[];for(let e=0;e<l.length;e++){let t=l[e],{height:a,width:o,top:s,right:u,bottom:x,left:S}=t.getBoundingClientRect();if(n===`if-needed`&&_>=0&&b>=0&&y<=f&&v<=d&&(t===c&&!A(t)||_>=s&&y<=x&&b>=S&&v<=u))return D;let C=getComputedStyle(t),w=parseInt(C.borderLeftWidth,10),O=parseInt(C.borderTopWidth,10),k=parseInt(C.borderRightWidth,10),M=parseInt(C.borderBottomWidth,10),N=0,P=0,F=`offsetWidth`in t?t.offsetWidth-t.clientWidth-w-k:0,I=`offsetHeight`in t?t.offsetHeight-t.clientHeight-O-M:0,L=`offsetWidth`in t?t.offsetWidth===0?0:o/t.offsetWidth:0,R=`offsetHeight`in t?t.offsetHeight===0?0:a/t.offsetHeight:0;if(c===t)N=r===`start`?T:r===`end`?T-f:r===`nearest`?j(m,m+f,f,O,M,m+T,m+T+h,h):T-f/2,P=i===`start`?E:i===`center`?E-d/2:i===`end`?E-d:j(p,p+d,d,w,k,p+E,p+E+g,g),N=Math.max(0,N+m),P=Math.max(0,P+p);else{N=r===`start`?T-s-O:r===`end`?T-x+M+I:r===`nearest`?j(s,x,a,O,M+I,T,T+h,h):T-(s+a/2)+I/2,P=i===`start`?E-S-w:i===`center`?E-(S+o/2)+F/2:i===`end`?E-u+k+F:j(S,u,o,w,k+F,E,E+g,g);let{scrollLeft:e,scrollTop:n}=t;N=R===0?0:Math.max(0,Math.min(n+N/R,t.scrollHeight-a/R+I)),P=L===0?0:Math.max(0,Math.min(e+P/L,t.scrollWidth-o/L+F)),T+=n-N,E+=e-P}D.push({el:t,top:N,left:P})}return D}}));export{E as a,x as c,T as i,b as l,N as n,S as o,D as r,y as s,P as t};

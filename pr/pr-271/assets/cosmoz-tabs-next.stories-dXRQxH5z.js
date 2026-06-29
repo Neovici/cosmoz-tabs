@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-l1zHrOt5.js";import{a as i,d as a,o}from"./if-defined-CcxirRVb.js";import{l as s,m as c,r as l,t as u}from"./untitled-Dnh8uL6O.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-DAbd-jJK.js";import{a as v,i as y,r as b,t as x}from"./next-BKHnYXiw.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;e((()=>{u(),i(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-j6P15zpX.js";import{a as i,d as a,o}from"./if-defined-dtp5XfF4.js";import{l as s,m as c,r as l,t as u}from"./untitled-uQ4zx_NT.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-CPSggqGR.js";import{a as v,i as y,r as b,t as x}from"./next-BOC7SMG9.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;e((()=>{u(),i(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return t`
         ${f}
         <cosmoz-tabs-next variant=${n}>
             <cosmoz-tab-next
@@ -162,7 +162,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
   <cosmoz-tab-next data-name="history" hidden @click=\${select}>History</cosmoz-tab-next>
 </cosmoz-tabs-next>`},description:{story:"A `disabled` tab cannot be activated (the click handler guards it); a `hidden` tab is removed from the bar."}}},render:()=>t`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>`},M=()=>{let[e,n]=a(`overview`),r=e=>n(e.currentTarget.dataset.name);return t`
         ${f}
-        <cosmoz-tabs-next compact-width="true">
+        <cosmoz-tabs-next compact-width>
             <cosmoz-tab-next
                 data-name="overview"
                 ?active=${e===`overview`}
@@ -195,10 +195,10 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
     `},customElements.get(`cosmoz-tabs-next-compactwidth-demo`)||customElements.define(`cosmoz-tabs-next-compactwidth-demo`,o(M)),N={name:`Compact width`,parameters:{docs:{source:{code:`
-<cosmoz-tabs-next variant="underline" compact-width="true">
+<cosmoz-tabs-next variant="underline" compact-width>
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:'Tabs spread evenly across the available width by default. Set `compact-width="true"` to size them to their content (they hug their labels and align to the start).'}}},render:()=>t`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`},P=()=>{let e=v(h);return t`
+</cosmoz-tabs-next>`},description:{story:"Tabs spread evenly across the available width by default. Add the `compact-width` attribute to size them to their content (they hug their labels and align to the start)."}}},render:()=>t`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`},P=()=>{let e=v(h);return t`
         ${f}
         <cosmoz-tabs-next variant="brand">
             ${y({...e,variant:`brand`})}
@@ -450,13 +450,13 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
     docs: {
       source: {
         code: \`
-<cosmoz-tabs-next variant="underline" compact-width="true">
+<cosmoz-tabs-next variant="underline" compact-width>
   <cosmoz-tab-next data-name="overview"
     ?active=\\\${active === 'overview'} @click=\\\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>\`
       },
       description: {
-        story: 'Tabs spread evenly across the available width by default. Set ' + '\`compact-width="true"\` to size them to their content (they hug their ' + 'labels and align to the start).'
+        story: 'Tabs spread evenly across the available width by default. Add the ' + '\`compact-width\` attribute to size them to their content (they hug ' + 'their labels and align to the start).'
       }
     }
   },

@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-l1zHrOt5.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-Dnh8uL6O.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-DAbd-jJK.js";import{t as v}from"./cosmoz-tabs-CMI-xgWy.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./iframe-j6P15zpX.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-uQ4zx_NT.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-CPSggqGR.js";import{t as v}from"./cosmoz-tabs-zWiCDhwu.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
         ${d}
         <cosmoz-tabs variant=${e} .selected=${`overview`}>
             <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
@@ -206,13 +206,9 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
             </cosmoz-tab>
             <cosmoz-tab name="history" heading="History">${f()}</cosmoz-tab>
         </cosmoz-tabs>
-    `},D={name:`Compact width`,argTypes:{variant:{control:`select`,options:[`brand`,`underline`]}},args:{variant:`brand`},parameters:{controls:{disable:!1},docs:{description:{story:'Tabs spread evenly across the available width by default (the legacy always-spread behavior). Set `compact-width="true"` to size them to their content (they hug their labels and align to the start).'}}},render:({variant:e})=>t`
+    `},D={name:`Compact width`,argTypes:{variant:{control:`select`,options:[`brand`,`underline`]}},args:{variant:`brand`},parameters:{controls:{disable:!1},docs:{description:{story:"Tabs spread evenly across the available width by default (the legacy always-spread behavior). Add the `compact-width` attribute to size them to their content (they hug their labels and align to the start)."}}},render:({variant:e})=>t`
         ${d}
-        <cosmoz-tabs
-            variant=${e}
-            .selected=${`overview`}
-            compact-width="true"
-        >
+        <cosmoz-tabs variant=${e} .selected=${`overview`} compact-width>
             <cosmoz-tab name="overview" heading="Overview">${g()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
                 ${p()}
@@ -604,7 +600,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
     },
     docs: {
       description: {
-        story: 'Tabs spread evenly across the available width by default (the legacy ' + 'always-spread behavior). Set \`compact-width="true"\` to size them to ' + 'their content (they hug their labels and align to the start).'
+        story: 'Tabs spread evenly across the available width by default (the legacy ' + 'always-spread behavior). Add the \`compact-width\` attribute to size ' + 'them to their content (they hug their labels and align to the start).'
       }
     }
   },
@@ -612,11 +608,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,q as n}from"./ifr
     variant
   }) => html\`
         \${panelStyles}
-        <cosmoz-tabs
-            variant=\${variant}
-            .selected=\${'overview'}
-            compact-width="true"
-        >
+        <cosmoz-tabs variant=\${variant} .selected=\${'overview'} compact-width>
             <cosmoz-tab name="overview" heading="Overview">\${overview()}</cosmoz-tab>
             <cosmoz-tab name="rows" heading="Invoice rows" badge="5">
                 \${rows()}
