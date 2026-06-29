@@ -26,9 +26,9 @@
 					"description": "Untitled UI tab style: 'brand' (default) or 'underline'"
 				},
 				{
-					"name": "full-width",
-					"type": "string",
-					"description": "Tabs spread to fill the width by default; set full-width=\"false\" to size them to their content"
+					"name": "compact-width",
+					"type": "Boolean",
+					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
 				}
 			],
 			"events": [],
@@ -94,12 +94,12 @@
 				{
 					"name": "variant",
 					"type": "String",
-					"description": "Untitled UI tab style: 'brand' (default) or 'underline'; reflected onto children as data-variant"
+					"description": "Untitled UI tab style: 'brand' (default) or 'underline'; reflected onto children as variant"
 				},
 				{
-					"name": "full-width",
-					"type": "string",
-					"description": "Tabs spread to fill the width by default; set full-width=\"false\" to size them to their content (reflected onto children as data-full-width)"
+					"name": "compact-width",
+					"type": "Boolean",
+					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content (reflected onto children as compact-width)"
 				}
 			],
 			"events": [],

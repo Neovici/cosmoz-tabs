@@ -355,18 +355,14 @@ export const CompactWidth = {
 			description: {
 				story:
 					'Tabs spread evenly across the available width by default (the legacy ' +
-					'always-spread behavior). Set `compact-width="true"` to size them to ' +
-					'their content (they hug their labels and align to the start).',
+					'always-spread behavior). Add the `compact-width` attribute to size ' +
+					'them to their content (they hug their labels and align to the start).',
 			},
 		},
 	},
 	render: ({ variant }) => html`
 		${panelStyles}
-		<cosmoz-tabs
-			variant=${variant}
-			.selected=${'overview'}
-			compact-width="true"
-		>
+		<cosmoz-tabs variant=${variant} .selected=${'overview'} compact-width>
 			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
 			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
 				${rows()}

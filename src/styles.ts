@@ -183,11 +183,11 @@ export const legacyStyles = css`
 		color: var(--cz-color-text-on-brand);
 	}
 
-	:host([compact-width="true"]) .tab {
+	:host([compact-width]) .tab {
 		flex: 0 1 auto;
 	}
 
-	:host(:not([compact-width="true"]):not([variant="brand"])) .tabs {
+	:host(:not([compact-width]):not([variant="brand"])) .tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -206,7 +206,7 @@ export const nextTabsStyles = css`
 		${brandBar}
 	}
 
-	:host(:not([compact-width="true"]):not([variant="brand"])) {
+	:host(:not([compact-width]):not([variant="brand"])) {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -261,21 +261,21 @@ export const nextTabStyles = css`
 		${badge}
 	}
 
-	:host([data-variant="brand"]) {
+	:host([variant="brand"]) {
 		${brandItem}
 	}
 
-	:host([data-variant="brand"]:hover),
-	:host([data-variant="brand"][active]) {
+	:host([variant="brand"]:hover),
+	:host([variant="brand"][active]) {
 		${brandActive}
 	}
 
-	:host([data-variant="brand"]:hover) #iconSlot::slotted(svg),
-	:host([data-variant="brand"][active]) #iconSlot::slotted(svg) {
+	:host([variant="brand"]:hover) #iconSlot::slotted(svg),
+	:host([variant="brand"][active]) #iconSlot::slotted(svg) {
 		color: var(--cz-color-text-on-brand);
 	}
 
-	:host([data-compact-width="true"]) {
+	:host([compact-width]) {
 		flex: 0 1 auto;
 	}
 `;

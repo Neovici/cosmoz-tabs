@@ -340,7 +340,7 @@ const CompactWidthDemo = () => {
 
 	return html`
 		${panelStyles}
-		<cosmoz-tabs-next compact-width="true">
+		<cosmoz-tabs-next compact-width>
 			<cosmoz-tab-next
 				data-name="overview"
 				?active=${active === 'overview'}
@@ -388,16 +388,16 @@ export const CompactWidth = {
 		docs: {
 			source: {
 				code: `
-<cosmoz-tabs-next variant="underline" compact-width="true">
+<cosmoz-tabs-next variant="underline" compact-width>
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>`,
 			},
 			description: {
 				story:
-					'Tabs spread evenly across the available width by default. Set ' +
-					'`compact-width="true"` to size them to their content (they hug their ' +
-					'labels and align to the start).',
+					'Tabs spread evenly across the available width by default. Add the ' +
+					'`compact-width` attribute to size them to their content (they hug ' +
+					'their labels and align to the start).',
 			},
 		},
 	},

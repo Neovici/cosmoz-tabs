@@ -18,7 +18,7 @@ const reflect = (tab: Element, name: string, value: string | null) => {
 /**
  * @element cosmoz-tabs-next
  * @attr {('brand'|'underline')} variant
- * @attr {string} compact-width
+ * @attr {boolean} compact-width
  */
 const Tabs = (host: CosmozTabsNextElement) => {
 	if (!host.getAttribute('variant')) {
@@ -26,13 +26,12 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}
 
 	const variant = host.getAttribute('variant');
-	const compactWidth =
-		host.getAttribute('compact-width') === 'true' ? 'true' : null;
+	const compactWidth = host.hasAttribute('compact-width') ? '' : null;
 
 	const apply = () =>
 		host.querySelectorAll('cosmoz-tab-next').forEach((tab) => {
-			reflect(tab, 'data-variant', variant);
-			reflect(tab, 'data-compact-width', compactWidth);
+			reflect(tab, 'variant', variant);
+			reflect(tab, 'compact-width', compactWidth);
 		});
 
 	useEffect(() => {

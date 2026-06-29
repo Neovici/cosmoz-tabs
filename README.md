@@ -17,8 +17,8 @@ The package ships **two tab families** plus a card:
 
 Both families share a single styling source of truth (`src/styles.ts`) and support two
 Untitled UI variants via a `variant` attribute on the container: `brand` (default) and
-`underline`. Tabs spread to fill the bar by default (as the legacy tabs did); set
-`full-width="false"` to size them to their content.
+`underline`. Tabs spread to fill the bar by default (as the legacy tabs did); add the
+`compact-width` attribute to size them to their content.
 
 > Styling comes from `@neovici/cosmoz-tokens` (`--cz-*`), with light/dark mode via
 > `:root.dark-mode`. It ships as a dependency — see [Install](#install) for loading it.
@@ -53,10 +53,10 @@ import "@neovici/cosmoz-tabs";
 ```
 
 Bind selection to the URL with `hash-param`. Tabs spread by default; size them to their
-content with `full-width="false"`:
+content with `compact-width`:
 
 ```html
-<cosmoz-tabs hash-param="tab" full-width="false">…</cosmoz-tabs>
+<cosmoz-tabs hash-param="tab" compact-width>…</cosmoz-tabs>
 ```
 
 Icons are passed as a lit-html template (e.g. from
@@ -100,8 +100,8 @@ const Component = () => {
 hook and `renderActivated`/`renderTabs` are generic over your tab shape and carry your extra
 fields through, so `tab.render()` is type-safe.
 
-For the next family the container reflects `variant`/`full-width` onto each
-`cosmoz-tab-next` as `data-variant`/`data-full-width` (CSS cannot cross the shadow
+For the next family the container reflects `variant`/`compact-width` onto each
+`cosmoz-tab-next` as plain `variant`/`compact-width` attributes (CSS cannot cross the shadow
 boundary); when both `renderTabs(...)` and the container set them, the container wins. Slot
 an icon with the icon template's `slot` option: `${receiptIcon({ slot: 'icon' })}`.
 
@@ -111,10 +111,10 @@ The custom-element API (attributes, properties, slots, CSS parts) is described i
 [`custom-elements.json`](./custom-elements.json) and in the JSDoc/Storybook stories.
 Highlights:
 
-- **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `full-width`;
+- **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `compact-width`;
   parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
-- **`cosmoz-tabs-next`** — attrs `variant`, `full-width`.
+- **`cosmoz-tabs-next`** — attrs `variant`, `compact-width`.
 - **`cosmoz-tab-next`** — attrs `active`, `badge`, `href`, `disabled`; `icon` slot.
 - **`cosmoz-tab-card`** — attrs `heading`, `collapsable`, `collapsed`; parts `header`,
   `heading`, `collapse-icon`, `content`. Themable via the `--cosmoz-tab-card-*` custom

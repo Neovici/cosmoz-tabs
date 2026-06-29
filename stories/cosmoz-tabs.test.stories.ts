@@ -285,7 +285,7 @@ export const SpreadByDefault: Story = {
 
 export const CompactWidthSizesToContent: Story = {
 	render: () => html`
-		<cosmoz-tabs variant="underline" compact-width="true">
+		<cosmoz-tabs variant="underline" compact-width>
 			<cosmoz-tab name="tab0" heading="Tab0">1</cosmoz-tab>
 			<cosmoz-tab name="tab1" heading="Tab1">2</cosmoz-tab>
 		</cosmoz-tabs>

@@ -109,9 +109,9 @@ export const renderTabs = <T extends RenderTab>({
 		return html`<cosmoz-tab-next
 			name=${tab.name}
 			class=${ifDefined(className)}
-			data-variant=${ifDefined(variant)}
-			data-compact-width=${ifDefined(compactWidth ? 'true' : undefined)}
-			title=${ifDefined(typeof title === 'string' ? title : undefined)}
+			variant=${ifDefined(variant)}
+			?compact-width=${ifDefined(compactWidth)}
+			title=${ifDefined(title)}
 			?active=${active?.name === tab.name}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}

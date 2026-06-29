@@ -67,12 +67,12 @@ export const ReflectsVariantToChildren: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('each child receives data-variant="brand"', async () => {
+		await step('each child receives variant="brand"', async () => {
 			await waitFor(() => {
 				const children = container.querySelectorAll('cosmoz-tab-next');
 				expect(children.length).toBe(3);
 				children.forEach((c) =>
-					expect(c.getAttribute('data-variant')).toBe('brand')
+					expect(c.getAttribute('variant')).toBe('brand')
 				);
 			});
 		});
@@ -82,9 +82,7 @@ export const ReflectsVariantToChildren: Story = {
 			await waitFor(() =>
 				container
 					.querySelectorAll('cosmoz-tab-next')
-					.forEach((c) =>
-						expect(c.getAttribute('data-variant')).toBe('underline')
-					)
+					.forEach((c) => expect(c.getAttribute('variant')).toBe('underline'))
 			);
 		});
 	},
@@ -101,9 +99,7 @@ export const BrandActiveStyling: Story = {
 			) as HTMLElement;
 			expect(active).not.toBeNull();
 		});
-		await waitFor(() =>
-			expect(active.getAttribute('data-variant')).toBe('brand')
-		);
+		await waitFor(() => expect(active.getAttribute('variant')).toBe('brand'));
 		await waitFor(() =>
 			expect(getComputedStyle(active).backgroundColor).not.toBe(
 				'rgba(0, 0, 0, 0)'
@@ -118,13 +114,13 @@ export const SpreadByDefault: Story = {
 		const container = getContainer(canvasElement);
 		const tab = container.querySelector('cosmoz-tab-next') as HTMLElement;
 		await waitFor(() => expect(getComputedStyle(tab).flexGrow).toBe('1'));
-		expect(tab.getAttribute('data-compact-width')).toBeNull();
+		expect(tab.hasAttribute('compact-width')).toBe(false);
 	},
 };
 
 export const CompactWidthSizesToContent: Story = {
 	render: () => html`
-		<cosmoz-tabs-next variant="brand" compact-width="true">
+		<cosmoz-tabs-next variant="brand" compact-width>
 			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
 			<cosmoz-tab-next>Activity</cosmoz-tab-next>
 		</cosmoz-tabs-next>
@@ -133,10 +129,8 @@ export const CompactWidthSizesToContent: Story = {
 		const container = getContainer(canvasElement);
 		const tab = container.querySelector('cosmoz-tab-next') as HTMLElement;
 
-		await step('container reflects data-compact-width="true"', async () => {
-			await waitFor(() =>
-				expect(tab.getAttribute('data-compact-width')).toBe('true')
-			);
+		await step('container reflects compact-width', async () => {
+			await waitFor(() => expect(tab.hasAttribute('compact-width')).toBe(true));
 		});
 
 		await step('child opts out of spreading (flex: 0 1 auto)', async () => {
