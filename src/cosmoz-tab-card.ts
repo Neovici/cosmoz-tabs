@@ -1,27 +1,14 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
-import { html, component, useState, useEffect } from '@pionjs/pion';
-import { when } from 'lit-html/directives/when.js';
-import { css } from './utils';
 import '@neovici/cosmoz-collapse';
+import { normalize } from '@neovici/cosmoz-tokens/normalize';
+import { component, css, html, useEffect, useState } from '@pionjs/pion';
+import { when } from 'lit-html/directives/when.js';
 
-/**
-
-@demo demo/card.html
-@return {TemplateResult}
-
-`<cosmoz-tab-card>` is a container element for a card. It should be used in conjunction with
-`cosmoz-tab` and `cosmoz-tabs`
-
-### Styling
-The following custom properties and mixins are available for styling:
-
-Custom property                         | Description              | Default
-----------------------------------------|--------------------------|----------
-`--cosmoz-tab-card-width`               | Card width               | `300px`
-`--cosmoz-tab-card-padding`             | Card padding             | `0`
-`--cosmoz-tab-card-content-line-height` | Card content line height | `initial`
-`--cosmoz-tab-card-content-padding`     | Card content padding     | `initial`
-*/
+export interface CosmozTabCardElement extends HTMLElement {
+	heading?: string;
+	collapsable?: boolean;
+	collapsed?: boolean;
+}
 
 const expandMoreIcon = () => html`
 	<svg
@@ -36,11 +23,23 @@ const expandMoreIcon = () => html`
 	</svg>
 `;
 
-const CosmozTabCard = (host) => {
+/**
+ * @element cosmoz-tab-card
+ * @attr {string} heading - card title
+ * @attr {boolean} collapsable
+ * @attr {boolean} collapsed
+ * @csspart header - header row
+ * @csspart heading - title
+ * @csspart collapse-icon - collapse toggle
+ * @csspart content - content container
+ */
+const CosmozTabCard = (host: CosmozTabCardElement) => {
 	const { heading, collapsable, collapsed: isCollapsed } = host,
 		[collapsed, setCollapsed] = useState(Boolean(isCollapsed)),
 		toggleCollapsed = () => {
-			if (!collapsable) return;
+			if (!collapsable) {
+				return;
+			}
 			return setCollapsed((c) => !c);
 		};
 
@@ -62,13 +61,13 @@ const CosmozTabCard = (host) => {
 							>
 								<slot name="collapse-icon">${expandMoreIcon()}</slot>
 							</div>
-						`,
+						`
 					)}
 					<h1 class="heading" @click=${toggleCollapsed} part="heading">
 						${heading}<slot name="after-title"></slot>
 					</h1>
 					<slot name="card-actions"></slot>
-				</div>`,
+				</div>`
 		)}
 
 		<cosmoz-collapse class="collapse" ?opened=${!collapsed}>
@@ -78,18 +77,26 @@ const CosmozTabCard = (host) => {
 		</cosmoz-collapse>`;
 };
 
-const style = css`
+const styles = css`
 	:host {
 		display: block;
 		position: relative;
 		box-sizing: border-box;
-		background-color: var(--cosmoz-tab-card-bg-color, white);
-		border-radius: var(--cosmoz-tab-card-border-radius, 10px);
-		border: 1px solid var(--cosmoz-tab-card-border-color, rgb(229, 230, 236));
-		margin: var(--cosmoz-tab-card-margin, 10px);
 		align-self: flex-start;
+		font-family: var(--cz-font-body, inherit);
+		color: var(--cosmoz-tab-card-heading-color, var(--cz-color-text-primary));
+		background-color: var(
+			--cosmoz-tab-card-bg-color,
+			var(--cz-color-bg-primary)
+		);
+		border: 1px solid
+			var(--cosmoz-tab-card-border-color, var(--cz-color-border-secondary));
+		border-radius: var(--cosmoz-tab-card-border-radius, var(--cz-radius-xl));
+		box-shadow: var(--cosmoz-tab-card-shadow, var(--cz-shadow-xs));
+		margin: var(--cosmoz-tab-card-margin, calc(var(--cz-spacing) * 2));
 		padding: var(--cosmoz-tab-card-padding, 0);
 		width: var(--cosmoz-tab-card-width, 300px);
+		overflow: hidden;
 	}
 
 	:host([heading]) h1 {
@@ -104,36 +111,53 @@ const style = css`
 		display: flex;
 		flex-direction: column;
 		flex: auto;
+		min-width: 0;
 	}
 
 	.content {
-		line-height: var(--cosmoz-tab-card-content-line-height, initial);
-		padding: var(--cosmoz-tab-card-content-padding, initial);
+		line-height: var(
+			--cosmoz-tab-card-content-line-height,
+			var(--cz-text-sm-line-height)
+		);
+		padding: var(
+			--cosmoz-tab-card-content-padding,
+			calc(var(--cz-spacing) * 4)
+		);
 		flex: auto;
+		min-width: 0;
+		overflow-x: auto;
+		overflow-wrap: anywhere;
 	}
 
 	.header {
-		min-height: 40px;
+		min-height: 48px;
 		display: flex;
 		align-items: center;
-		gap: 10px;
-		background-color: var(--cosmoz-tab-card-bg-color, white);
+		gap: calc(var(--cz-spacing) * 2);
+		padding: 0 calc(var(--cz-spacing) * 4);
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	}
 
 	.heading {
-		font-family: inherit;
-		font-size: 17px;
-		font-weight: 500;
+		margin: 0;
+		font-size: var(--cz-text-lg, 18px);
+		line-height: var(--cz-text-lg-line-height, 1.4);
+		font-weight: var(--cz-font-weight-semibold, 600);
 		flex: 1;
-		color: var(--cosmoz-tab-card-heading-color, rgb(0, 0, 0));
+		color: inherit;
 	}
 
 	.collapse-icon {
 		order: var(--cosmoz-tab-card-collapse-icon-order);
+		display: inline-flex;
+		color: var(--cz-color-text-tertiary, #667085);
 		transition: transform 250ms linear;
 		transform: rotate(0deg);
-		margin: 0 0 0 -5px;
+		margin-left: -4px;
+	}
+
+	.expand-more-icon {
+		fill: currentColor;
 	}
 
 	:host([collapsed]) .collapse-icon {
@@ -151,6 +175,6 @@ customElements.define(
 	'cosmoz-tab-card',
 	component(CosmozTabCard, {
 		observedAttributes: ['heading', 'collapsable', 'collapsed'],
-		styleSheets: [style],
-	}),
+		styleSheets: [normalize, styles],
+	})
 );

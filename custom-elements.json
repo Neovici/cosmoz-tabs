@@ -3,57 +3,222 @@
 	"tags": [
 		{
 			"name": "cosmoz-tabs",
+			"description": "DOM-driven tabbed-views container. Renders the tab bar from its <cosmoz-tab> children and switches the active panel.",
 			"properties": [
 				{
 					"name": "selected",
 					"type": "String",
-					"description": "The name of the selected tab"
+					"description": "The `name` of the selected tab"
+				},
+				{
+					"name": "hash-param",
+					"type": "String",
+					"description": "URL hash parameter to bind the selection to"
+				},
+				{
+					"name": "no-resize",
+					"type": "Boolean",
+					"description": "Suppress the window resize event dispatched on selection"
+				},
+				{
+					"name": "variant",
+					"type": "String",
+					"description": "Untitled UI tab style: 'brand' (default) or 'underline'"
+				},
+				{
+					"name": "compact-width",
+					"type": "Boolean",
+					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
 				}
 			],
 			"events": [],
 			"slots": [
 				{
 					"name": "",
-					"description": "cosmoz-tab elements inside cosmoz-tabs get displayed when selected`"
+					"description": "The `cosmoz-tab` elements; the selected one's content is shown"
+				},
+				{
+					"name": "tabs",
+					"description": "Extra content at the start of the tab bar"
+				},
+				{
+					"name": "stats",
+					"description": "Extra content at the end of the tab bar"
 				}
 			],
 			"cssProperties": []
 		},
 		{
 			"name": "cosmoz-tab",
+			"description": "A single view/panel within <cosmoz-tabs>.",
 			"properties": [
 				{
 					"name": "heading",
 					"type": "String",
-					"description": "The heading"
+					"description": "The tab label shown in the tab bar"
+				},
+				{
+					"name": "badge",
+					"type": "String",
+					"description": "Optional badge text shown next to the heading"
+				},
+				{
+					"name": "disabled",
+					"type": "Boolean",
+					"description": "Disables the tab"
+				},
+				{ "name": "hidden", "type": "Boolean", "description": "Hides the tab" },
+				{
+					"name": "icon",
+					"type": "Object",
+					"description": "A lit-html icon template (e.g. from @neovici/cosmoz-icons); set as a property"
+				}
+			],
+			"events": [
+				{
+					"name": "tab-first-select",
+					"description": "Fired once, the first time this tab is ever activated"
+				},
+				{
+					"name": "tab-select",
+					"description": "Fired each time this tab becomes active"
+				}
+			],
+			"slots": [{ "name": "", "description": "The tab panel content" }],
+			"cssProperties": []
+		},
+		{
+			"name": "cosmoz-tabs-next",
+			"description": "Data-driven tablist container. Pairs with <cosmoz-tab-next> and the useTabs/renderTabs/renderActivated hook API.",
+			"properties": [
+				{
+					"name": "variant",
+					"type": "String",
+					"description": "Untitled UI tab style: 'brand' (default) or 'underline'; reflected onto children as variant"
+				},
+				{
+					"name": "compact-width",
+					"type": "Boolean",
+					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content (reflected onto children as compact-width)"
 				}
 			],
 			"events": [],
 			"slots": [
+				{ "name": "", "description": "The `cosmoz-tab-next` header elements" }
+			],
+			"cssProperties": []
+		},
+		{
+			"name": "cosmoz-tab-next",
+			"description": "A single clickable tab header within <cosmoz-tabs-next>. It does not hold panel content — the consumer renders panels (e.g. via renderActivated).",
+			"properties": [
 				{
-					"name": "",
-					"description": "Content inside the cosmoz-tab"
+					"name": "active",
+					"type": "Boolean",
+					"description": "Whether the tab is selected"
+				},
+				{
+					"name": "badge",
+					"type": "String",
+					"description": "Optional badge text"
+				},
+				{
+					"name": "href",
+					"type": "String",
+					"description": "Optional link target"
+				},
+				{
+					"name": "disabled",
+					"type": "Boolean",
+					"description": "Disables the tab"
+				}
+			],
+			"events": [],
+			"slots": [
+				{ "name": "", "description": "The tab label" },
+				{
+					"name": "icon",
+					"description": "A leading icon (e.g. an SVG from @neovici/cosmoz-icons)"
 				}
 			],
 			"cssProperties": []
 		},
 		{
 			"name": "cosmoz-tab-card",
+			"description": "A collapsible card, typically placed inside a <cosmoz-tab>. Styled via @neovici/cosmoz-tokens; the --cosmoz-tab-card-* custom properties override the token defaults.",
 			"properties": [
 				{
 					"name": "heading",
 					"type": "String",
-					"description": "The heading"
+					"description": "Card title; when absent the header is not rendered"
+				},
+				{
+					"name": "collapsable",
+					"type": "Boolean",
+					"description": "Allow the card to collapse on header click"
+				},
+				{
+					"name": "collapsed",
+					"type": "Boolean",
+					"description": "Current/initial collapsed state"
 				}
 			],
 			"events": [],
 			"slots": [
+				{ "name": "", "description": "The card content" },
 				{
-					"name": "",
-					"description": "Content inside the cosmoz-tab-card"
+					"name": "collapse-icon",
+					"description": "Custom collapse toggle icon"
+				},
+				{
+					"name": "after-title",
+					"description": "Content after the heading text"
+				},
+				{
+					"name": "card-actions",
+					"description": "Actions on the right of the header"
 				}
 			],
-			"cssProperties": []
+			"cssProperties": [
+				{
+					"name": "--cosmoz-tab-card-bg-color",
+					"description": "Card background (default: --cz-color-bg-primary)"
+				},
+				{
+					"name": "--cosmoz-tab-card-border-color",
+					"description": "Card border color (default: --cz-color-border-secondary)"
+				},
+				{
+					"name": "--cosmoz-tab-card-border-radius",
+					"description": "Card border radius (default: --cz-radius-xl)"
+				},
+				{
+					"name": "--cosmoz-tab-card-shadow",
+					"description": "Card box-shadow (default: --cz-shadow-xs)"
+				},
+				{ "name": "--cosmoz-tab-card-margin", "description": "Card margin" },
+				{ "name": "--cosmoz-tab-card-padding", "description": "Card padding" },
+				{
+					"name": "--cosmoz-tab-card-width",
+					"description": "Card width (default: 300px)"
+				},
+				{
+					"name": "--cosmoz-tab-card-heading-color",
+					"description": "Heading color (default: --cz-color-text-primary)"
+				},
+				{
+					"name": "--cosmoz-tab-card-content-line-height",
+					"description": "Content line-height"
+				},
+				{
+					"name": "--cosmoz-tab-card-content-padding",
+					"description": "Content padding"
+				},
+				{
+					"name": "--cosmoz-tab-card-collapse-icon-order",
+					"description": "Flex order of the collapse icon"
+				}
+			]
 		}
 	]
 }

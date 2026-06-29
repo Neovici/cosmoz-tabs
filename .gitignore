@@ -1,5 +1,6 @@
 node_modules/
 coverage/
+dist/
 /storybook-static/
 debug.log
 yarn-error.log
