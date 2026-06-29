@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/Neovici/cosmoz-tabs/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-tabs/actions?workflow=Github+CI)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/cosmoz-tabs)
+[![Changesets](https://img.shields.io/badge/Changesets-🦋%20changesets-268ADA.svg)](https://github.com/changesets/changesets)
 
 # &lt;cosmoz-tabs&gt;
 
@@ -33,7 +34,7 @@ npm i @neovici/cosmoz-tabs
 just needs to load it once for the `--cz-*` token values:
 
 ```js
-import "@neovici/cosmoz-tokens";
+import '@neovici/cosmoz-tokens';
 ```
 
 ## Usage
@@ -41,7 +42,7 @@ import "@neovici/cosmoz-tokens";
 ### Legacy family (`cosmoz-tabs`)
 
 ```js
-import "@neovici/cosmoz-tabs";
+import '@neovici/cosmoz-tabs';
 ```
 
 ```html
@@ -63,7 +64,7 @@ Icons are passed as a lit-html template (e.g. from
 [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons)) via the `.icon` property:
 
 ```js
-import { receiptIcon } from "@neovici/cosmoz-icons/untitled";
+import { receiptIcon } from '@neovici/cosmoz-icons/untitled';
 html`<cosmoz-tab heading="Overview" name="overview" .icon=${receiptIcon()}
 	>…</cosmoz-tab
 >`;
@@ -78,19 +79,19 @@ import {
 	useTabs,
 	renderTabs,
 	renderActivated,
-} from "@neovici/cosmoz-tabs/next";
+} from '@neovici/cosmoz-tabs/next';
 
 const tabs = [
-	{ name: "overview", title: "Overview", render: renderOverview },
-	{ name: "rows", title: "Invoice rows", badge: "5", render: renderRows },
+	{ name: 'overview', title: 'Overview', render: renderOverview },
+	{ name: 'rows', title: 'Invoice rows', badge: '5', render: renderRows },
 ];
 
 const Component = () => {
-	const model = useTabs(tabs, { hashParam: "tab" });
+	const model = useTabs(tabs, { hashParam: 'tab' });
 	return html`
 		<cosmoz-tabs-next variant="brand"> ${renderTabs(model)} </cosmoz-tabs-next>
 		${renderActivated(model, (tab) =>
-			tab.isActive ? html`<div>${tab.render()}</div>` : ""
+			tab.isActive ? html`<div>${tab.render()}</div>` : '',
 		)}
 	`;
 };

@@ -37,6 +37,7 @@
 		"storybook:start": "storybook dev -p 8000",
 		"storybook:build": "storybook build",
 		"storybook:preview": "npm run storybook:build && http-server ./storybook-static/ --silent",
+		"changeset": "changeset",
 		"prepare": "husky"
 	},
 	"publishConfig": {
@@ -53,17 +54,6 @@
 				600
 			]
 		}
-	},
-	"release": {
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			"@semantic-release/changelog",
-			"@semantic-release/github",
-			"@semantic-release/npm",
-			"@semantic-release/git"
-		],
-		"preset": "conventionalcommits"
 	},
 	"exports": {
 		".": "./dist/index.js",
@@ -85,14 +75,13 @@
 		"lit-html": "^3.3.3"
 	},
 	"devDependencies": {
+		"@changesets/cli": "^2.28.1",
 		"@commitlint/cli": "^21.0.2",
 		"@commitlint/config-conventional": "^21.0.2",
 		"@neovici/cfg": "^2.13.0",
 		"@neovici/cosmoz-icons": "^1.6.0",
 		"@neovici/testing": "^2.3.0",
 		"@playwright/test": "^1.61.0",
-		"@semantic-release/changelog": "^6.0.0",
-		"@semantic-release/git": "^10.0.0",
 		"@storybook/addon-a11y": "^10.4.6",
 		"@storybook/addon-docs": "^10.4.6",
 		"@storybook/addon-vitest": "^10.4.6",
@@ -105,7 +94,6 @@
 		"husky": "^9.1.7",
 		"jsdom": "^29.1.1",
 		"lint-staged": "^17.0.7",
-		"semantic-release": "^25.0.0",
 		"shadow-dom-testing-library": "^1.14.0",
 		"sinon": "^22.0.0",
 		"storybook": "^10.4.6",
