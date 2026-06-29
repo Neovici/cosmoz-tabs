@@ -1,3 +1,22 @@
+## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
+
+### ⚠ BREAKING CHANGES
+
+* theming moves from --cosmoz-tabs-* to @neovici/cosmoz-tokens; consumers
+must load the tokens. Polymer iron-icons are removed and the icon-color/icon-style/
+selected-icon attributes are gone - pass icons as lit-html templates (.icon) or via the
+`icon` slot.
+
+* feat: rename width opt-out to affirmative compact-width="true"
+
+* fix: use solid brand tokens for badge/active pill so they stay legible in dark mode
+
+* refactor: address CR feedback
+
+### Features
+
+* redesign tabs onto Untitled UI design system (NEO-2296) ([#271](https://github.com/Neovici/cosmoz-tabs/issues/271)) ([4b203a0](https://github.com/Neovici/cosmoz-tabs/commit/4b203a023c2eeb452c21187fc83b60ef986cfc3c))
+
 ## [9.3.3](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.2...v9.3.3) (2026-01-28)
 
 
