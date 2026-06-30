@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/Neovici/cosmoz-tabs/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-tabs/actions?workflow=Github+CI)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/cosmoz-tabs)
+[![Changesets](https://img.shields.io/badge/Changesets-🦋%20changesets-268ADA.svg)](https://github.com/changesets/changesets)
 
 # &lt;cosmoz-tabs&gt;
 
@@ -130,8 +131,7 @@ npm run lint
 npm run build
 ```
 
-Releases are cut by semantic-release in CI (conventional commits) — there is no manual
-changeset step.
+Releases are managed with changesets in CI.
 
 Stories double as tests: see `stories/*.stories.js` (demos) and `stories/*.test.stories.ts`
 (behavioral tests run by `@storybook/addon-vitest`).
