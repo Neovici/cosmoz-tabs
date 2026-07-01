@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-tabs",
-	"version": "10.0.0-beta.1",
+	"version": "10.0.0-beta.2",
 	"description": "A multi views container element that allows navigation between the views using tabs.",
 	"keywords": [
 		"web-components",

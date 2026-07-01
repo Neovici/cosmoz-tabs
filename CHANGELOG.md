@@ -1,5 +1,15 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.2
+
+### Major Changes
+
+- 8cd7e33: Redesign tabs onto the Untitled UI design system.
+
+### Patch Changes
+
+- 31c1ef5: Add padding and gap to bar and tabs
+
 ### ⚠ BREAKING CHANGES
 
 - theming moves from --cosmoz-tabs-\* to @neovici/cosmoz-tokens; consumers
