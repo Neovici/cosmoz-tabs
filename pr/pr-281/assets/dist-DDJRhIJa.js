@@ -1,7 +1,8 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-dtp5XfF4.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d as i,l as a,y as o}from"./if-defined-DkZmfCeb.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S=e((()=>{r(),s=t`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
+	padding-inline: calc(var(--cz-spacing) * 3);
 	font-family: var(--cz-font-body);
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
@@ -17,7 +18,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{C as t,_ as n,a as r,d a
 	align-items: center;
 	justify-content: center;
 	gap: calc(var(--cz-spacing) * 1);
-	padding: 0 calc(var(--cz-spacing) * 0.5) calc(var(--cz-spacing) * 2.5);
+	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
 	color: var(--cz-color-text-quaternary);
 	text-decoration: none;
 	white-space: nowrap;
