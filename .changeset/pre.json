@@ -1,8 +1,11 @@
 {
-	"mode": "pre",
-	"tag": "beta",
-	"initialVersions": {
-		"@neovici/cosmoz-tabs": "10.0.0-beta.1"
-	},
-	"changesets": []
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@neovici/cosmoz-tabs": "10.0.0-beta.1"
+  },
+  "changesets": [
+    "brown-dragons-hug",
+    "redesign-tabs-untitled-ui"
+  ]
 }
