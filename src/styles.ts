@@ -6,6 +6,7 @@ const bar = css`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
+	padding-inline: calc(var(--cz-spacing) * 3);
 	font-family: var(--cz-font-body);
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
@@ -23,7 +24,7 @@ const item = css`
 	align-items: center;
 	justify-content: center;
 	gap: calc(var(--cz-spacing) * 1);
-	padding: 0 calc(var(--cz-spacing) * 0.5) calc(var(--cz-spacing) * 2.5);
+	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
 	color: var(--cz-color-text-quaternary);
 	text-decoration: none;
 	white-space: nowrap;

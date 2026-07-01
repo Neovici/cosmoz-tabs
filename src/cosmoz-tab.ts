@@ -19,6 +19,7 @@ const styles = css`
 		position: relative;
 		flex-direction: column;
 		flex: 1 1 auto;
+		padding: calc(var(--cz-spacing) * 3);
 		max-height: 100%;
 	}
 
