@@ -1,5 +1,11 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.3
+
+### Patch Changes
+
+- c288778: Add gap between tabs and content, and remove block padding
+
 ## 10.0.0-beta.2
 
 ### Major Changes
