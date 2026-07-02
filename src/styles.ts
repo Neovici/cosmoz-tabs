@@ -106,6 +106,7 @@ export const legacyStyles = css`
 		display: flex;
 		flex-direction: column;
 		font-family: var(--cz-font-body);
+		gap: calc(var(--cz-spacing) * 3);
 	}
 
 	:host([hidden]) {
