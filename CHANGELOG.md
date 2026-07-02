@@ -1,5 +1,11 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.4
+
+### Patch Changes
+
+- 8dcff4e: Set tab background to secondary
+
 ## 10.0.0-beta.3
 
 ### Patch Changes
