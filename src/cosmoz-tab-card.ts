@@ -87,7 +87,7 @@ const styles = css`
 		color: var(--cosmoz-tab-card-heading-color, var(--cz-color-text-primary));
 		background-color: var(
 			--cosmoz-tab-card-bg-color,
-			var(--cz-color-bg-primary)
+			var(--cz-color-bg-secondary)
 		);
 		border: 1px solid
 			var(--cosmoz-tab-card-border-color, var(--cz-color-border-secondary));
@@ -150,7 +150,7 @@ const styles = css`
 	.collapse-icon {
 		order: var(--cosmoz-tab-card-collapse-icon-order);
 		display: inline-flex;
-		color: var(--cz-color-text-tertiary, #667085);
+		color: var(--cz-color-text-tertiary);
 		transition: transform 250ms linear;
 		transform: rotate(0deg);
 		margin-left: -4px;
