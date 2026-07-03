@@ -1,5 +1,11 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.5
+
+### Patch Changes
+
+- 928b735: Remove the overflow on the content wrapper
+
 ## 10.0.0-beta.4
 
 ### Patch Changes
