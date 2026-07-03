@@ -125,7 +125,6 @@ const styles = css`
 		);
 		flex: auto;
 		min-width: 0;
-		overflow-x: auto;
 		overflow-wrap: anywhere;
 	}
 
