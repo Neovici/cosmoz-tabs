@@ -87,14 +87,14 @@ const styles = css`
 		color: var(--cosmoz-tab-card-heading-color, var(--cz-color-text-primary));
 		background-color: var(
 			--cosmoz-tab-card-bg-color,
-			var(--cz-color-bg-secondary)
+			var(--cz-color-bg-primary)
 		);
 		border: 1px solid
 			var(--cosmoz-tab-card-border-color, var(--cz-color-border-secondary));
 		border-radius: var(--cosmoz-tab-card-border-radius, var(--cz-radius-xl));
 		box-shadow: var(--cosmoz-tab-card-shadow, var(--cz-shadow-xs));
 		margin: var(--cosmoz-tab-card-margin, calc(var(--cz-spacing) * 2));
-		padding: var(--cosmoz-tab-card-padding, 0);
+		padding: var(--cosmoz-tab-card-padding, 10px 20px);
 		width: var(--cosmoz-tab-card-width, 300px);
 		overflow: hidden;
 	}
@@ -119,10 +119,6 @@ const styles = css`
 			--cosmoz-tab-card-content-line-height,
 			var(--cz-text-sm-line-height)
 		);
-		padding: var(
-			--cosmoz-tab-card-content-padding,
-			calc(var(--cz-spacing) * 4)
-		);
 		flex: auto;
 		min-width: 0;
 		overflow-wrap: anywhere;
@@ -133,7 +129,6 @@ const styles = css`
 		display: flex;
 		align-items: center;
 		gap: calc(var(--cz-spacing) * 2);
-		padding: 0 calc(var(--cz-spacing) * 4);
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	}
 
