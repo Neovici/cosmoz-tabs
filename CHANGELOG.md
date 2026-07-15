@@ -1,5 +1,11 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.6
+
+### Patch Changes
+
+- 213c3c3: Add padding to main wrapper, and set primary background color
+
 ## 10.0.0-beta.5
 
 ### Patch Changes
