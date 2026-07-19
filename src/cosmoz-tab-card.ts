@@ -32,6 +32,11 @@ const expandMoreIcon = () => html`
  * @csspart heading - title
  * @csspart collapse-icon - collapse toggle
  * @csspart content - content container
+ * @cssprop --cosmoz-tab-card-heading-color - heading text color, default `--cz-color-text-primary`
+ * @cssprop --cosmoz-tab-card-heading-font-size - heading font size, default `--cz-text-lg`
+ * @cssprop --cosmoz-tab-card-heading-font-weight - heading font weight, default `--cz-font-weight-semibold`
+ * @cssprop --cosmoz-tab-card-heading-line-height - heading line height, default `--cz-text-lg-line-height`
+ * @cssprop --cosmoz-tab-card-header-min-height - header row min height, default `48px`
  */
 const CosmozTabCard = (host: CosmozTabCardElement) => {
 	const { heading, collapsable, collapsed: isCollapsed } = host,
@@ -125,7 +130,7 @@ const styles = css`
 	}
 
 	.header {
-		min-height: 48px;
+		min-height: var(--cosmoz-tab-card-header-min-height, 48px);
 		display: flex;
 		align-items: center;
 		gap: calc(var(--cz-spacing) * 2);
@@ -134,9 +139,18 @@ const styles = css`
 
 	.heading {
 		margin: 0;
-		font-size: var(--cz-text-lg, 18px);
-		line-height: var(--cz-text-lg-line-height, 1.4);
-		font-weight: var(--cz-font-weight-semibold, 600);
+		font-size: var(
+			--cosmoz-tab-card-heading-font-size,
+			var(--cz-text-lg, 18px)
+		);
+		line-height: var(
+			--cosmoz-tab-card-heading-line-height,
+			var(--cz-text-lg-line-height, 1.4)
+		);
+		font-weight: var(
+			--cosmoz-tab-card-heading-font-weight,
+			var(--cz-font-weight-semibold, 600)
+		);
 		flex: 1;
 		color: inherit;
 	}
