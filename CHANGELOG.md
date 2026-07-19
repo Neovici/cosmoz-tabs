@@ -1,5 +1,12 @@
 ## [10.0.0-beta.1](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.3...v10.0.0-beta.1) (2026-06-29)
 
+## 10.0.0-beta.7
+
+### Minor Changes
+
+- b2bbe89: Tokenize cosmoz-tab-card heading typography (font-size/weight/line-height) and header min-height
+  via additive --cosmoz-tab-card-\* vars; defaults unchanged.
+
 ## 10.0.0-beta.6
 
 ### Patch Changes
