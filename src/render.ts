@@ -1,15 +1,27 @@
 import { html, nothing, type TemplateResult } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { closeMenu } from './overflow-menu';
 import type { TabElement } from './utils';
 
 interface RenderTabOptions {
 	selectedTab?: TabElement;
 	onSelect: (e: MouseEvent) => void;
 	href: (tab: TabElement) => string | undefined;
+	overflowing?: Set<TabElement>;
 }
 
+const content = (tab: TabElement) => html`
+	${(tab.icon as TemplateResult) ?? nothing}
+	<span>${tab.heading}</span>
+	${tab.badge
+		? html`<div class="badge" part="badge" title=${tab.badge}>
+				${tab.badge}
+		  </div>`
+		: nothing}
+`;
+
 const renderTab =
-	({ selectedTab, onSelect, href }: RenderTabOptions) =>
+	({ selectedTab, onSelect, href, overflowing }: RenderTabOptions) =>
 	(tab: TabElement, i: number, tabs: TabElement[]): TemplateResult => {
 		const isSelected = selectedTab === tab;
 		return html`<a
@@ -26,19 +38,36 @@ const renderTab =
 				.join(' ')}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}
+			?overflowing=${overflowing?.has(tab)}
 			aria-selected=${isSelected ? 'true' : 'false'}
 			@click=${onSelect}
 			.tab=${tab}
 			href=${ifDefined(href(tab))}
 		>
-			${(tab.icon as TemplateResult) ?? nothing}
-			<span>${tab.heading}</span>
-			${tab.badge
-				? html`<div class="badge" part="badge" title=${tab.badge}>
-						${tab.badge}
-				  </div>`
-				: nothing}
+			${content(tab)}
 		</a>`;
 	};
 
-export { renderTab };
+const renderMenuItem =
+	({ selectedTab, onSelect, href }: RenderTabOptions) =>
+	(tab: TabElement): TemplateResult => {
+		const isSelected = selectedTab === tab;
+		return html`<a
+			class="menu-item"
+			tabindex="0"
+			role="tab"
+			part=${isSelected ? 'menu-item selected-menu-item' : 'menu-item'}
+			?disabled=${tab.disabled}
+			aria-selected=${isSelected ? 'true' : 'false'}
+			@click=${(e: MouseEvent) => {
+				onSelect(e);
+				closeMenu(e.currentTarget);
+			}}
+			.tab=${tab}
+			href=${ifDefined(href(tab))}
+		>
+			${content(tab)}
+		</a>`;
+	};
+
+export { renderMenuItem, renderTab };

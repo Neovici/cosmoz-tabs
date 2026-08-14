@@ -1,13 +1,6 @@
 import { link, useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
-import {
-	useCallback,
-	useEffect,
-	useLayoutEffect,
-	useMemo,
-	useState,
-} from '@pionjs/pion';
-import { compute } from 'compute-scroll-into-view';
+import { useCallback, useEffect, useMemo, useState } from '@pionjs/pion';
 import { choose, collect, getName, isValid, type TabElement } from './utils';
 
 export interface CosmozTabsHost extends HTMLElement {
@@ -19,7 +12,7 @@ export interface CosmozTabsHost extends HTMLElement {
 
 const useTabSelectedEffect = (
 	host: CosmozTabsHost,
-	selectedTab?: TabElement,
+	selectedTab?: TabElement
 ) => {
 	useEffect(() => {
 		notifyProperty(host, 'selectedItem', selectedTab);
@@ -29,7 +22,7 @@ const useTabSelectedEffect = (
 		const selected = getName(selectedTab);
 		if (selected !== host.selected) {
 			requestAnimationFrame(() =>
-				notifyProperty(host, 'selected', selected ?? undefined),
+				notifyProperty(host, 'selected', selected ?? undefined)
 			);
 		}
 		selectedTab.toggleAttribute('is-selected', true);
@@ -47,30 +40,6 @@ const useTabSelectedEffect = (
 			selectedTab._fallbackFor = undefined;
 		};
 	}, [selectedTab]);
-};
-
-const useAutoScroll = (
-	host: CosmozTabsHost,
-	selectedTab?: TabElement,
-	tabs?: TabElement[],
-) => {
-	useLayoutEffect(() => {
-		const el = host.shadowRoot?.querySelector('a[aria-selected=true]');
-		if (!el) {
-			return;
-		}
-		const rid = requestAnimationFrame(() =>
-			compute(el, {
-				block: 'nearest',
-				inline: 'center',
-				boundary: el.parentElement,
-				scrollMode: 'if-needed',
-			}).forEach(({ el, top, left }) =>
-				el.scroll({ top, left, behavior: 'smooth' }),
-			),
-		);
-		return () => cancelAnimationFrame(rid);
-	}, [selectedTab, tabs]);
 };
 
 const useTabs = (host: CosmozTabsHost) => {
@@ -103,14 +72,12 @@ const useTabs = (host: CosmozTabsHost) => {
 		return () => host.removeEventListener('cosmoz-tab-alter', onTabAlter);
 	}, [selectedTab]);
 
-	useAutoScroll(host, selectedTab, tabs);
-
 	const href = useCallback(
 		(tab: TabElement) =>
 			isValid(tab) && hashParam != null
 				? link(hashParam, getName(tab))
 				: undefined,
-		[hashParam],
+		[hashParam]
 	);
 
 	return {
@@ -119,7 +86,7 @@ const useTabs = (host: CosmozTabsHost) => {
 		onSlot: useCallback(
 			({ target }: { target: HTMLSlotElement }) =>
 				requestAnimationFrame(() => setTabs(collect(target))),
-			[],
+			[]
 		),
 		onSelect: useCallback(
 			(e: MouseEvent) => {
@@ -136,10 +103,10 @@ const useTabs = (host: CosmozTabsHost) => {
 				e.preventDefault();
 				window.history.pushState({}, '', href(tab));
 				requestAnimationFrame(() =>
-					window.dispatchEvent(new CustomEvent('hashchange')),
+					window.dispatchEvent(new CustomEvent('hashchange'))
 				);
 			},
-			[hashParam, href],
+			[hashParam, href]
 		),
 		href,
 	};

@@ -25,7 +25,7 @@ export default {
 			description: {
 				component:
 					'Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable ' +
-					'header** — it does not switch panels by itself. Selection is owned by ' +
+					'header** - it does not switch panels by itself. Selection is owned by ' +
 					'the consumer: either wire `active` + a click handler yourself (the raw ' +
 					'element API, used by most demos below), or use the ' +
 					'`useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*).',
@@ -253,7 +253,7 @@ export const WithIcons = {
 			},
 			description: {
 				story:
-					'Leading icons via the `icon` slot — slot an icon template carrying ' +
+					'Leading icons via the `icon` slot - slot an icon template carrying ' +
 					'`slot="icon"` into each `<cosmoz-tab-next>`.',
 			},
 		},
@@ -488,7 +488,7 @@ export const HashRouting = {
 			description: {
 				story:
 					'Bind selection to the URL by passing `{ hashParam }` to `useTabs` ' +
-					'(here `useTabs(tabs, { hashParam: "ntab" })`) — deep-links and the ' +
+					'(here `useTabs(tabs, { hashParam: "ntab" })`) - deep-links and the ' +
 					'back button work, just like the legacy family. Note: inside Storybook ' +
 					'the visible address bar belongs to the **manager**, while the component ' +
 					'binds to the **preview iframe** URL, so the change is not visible here. ' +
@@ -557,8 +557,8 @@ export const SelectedColors = {
 			},
 			description: {
 				story:
-					'The selected pill **and** the badge are a solid brand fill — ' +
-					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
+					'The selected pill **and** the badge are a solid brand fill - ' +
+					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` - so the ' +
 					'text stays legible in both light and dark themes. Override ' +
 					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to ' +
 					'recolor them (e.g. to a success/error solid); the on-brand text ' +
@@ -647,7 +647,7 @@ export const Minimal = {
 			},
 			description: {
 				story:
-					'A subtle neutral pill — point `--cz-color-bg-brand-solid` at ' +
+					'A subtle neutral pill - point `--cz-color-bg-brand-solid` at ' +
 					'`--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at ' +
 					'`--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair ' +
 					'keeps its contrast in both light and dark themes.',
@@ -703,4 +703,59 @@ export const Theming = {
 			</div>
 		</div>
 	`,
+};
+
+const resizableStyles = html`<style>
+	.resizable {
+		resize: horizontal;
+		overflow: auto;
+		width: 420px;
+		min-width: 90px;
+		max-width: 100%;
+		padding-bottom: 10px;
+	}
+</style>`;
+
+const OverflowDemo = () => {
+	const model = useTabs(invoiceTabs);
+
+	return html`
+		${panelStyles} ${resizableStyles}
+		<div class="resizable">
+			<cosmoz-tabs-next variant="underline">
+				${renderTabs({ ...model, variant: 'underline' })}
+			</cosmoz-tabs-next>
+		</div>
+		${renderActivated(model, (tab) =>
+			tab.isActive
+				? html`<div style="padding-top: 20px">${tab.render()}</div>`
+				: nothing
+		)}
+	`;
+};
+
+if (!customElements.get('cosmoz-tabs-next-overflow-demo')) {
+	customElements.define(
+		'cosmoz-tabs-next-overflow-demo',
+		component(OverflowDemo)
+	);
+}
+
+export const Overflow = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'Tabs that do not fit are collected into an overflow menu at the end ' +
+					'of the bar instead of being reachable only by horizontal scrolling. ' +
+					'An overflowing tab is rendered twice - clipped in the bar and, as a ' +
+					'copy, as a row of the menu - so it keeps its icon, badge and active ' +
+					'state. **Drag the resize handle** in the bottom-right corner of the ' +
+					'box to see tabs move in and out of the menu. When the selected tab ' +
+					'is one of the overflowing ones, the trigger itself is highlighted.',
+			},
+		},
+	},
+	render: () =>
+		html`<cosmoz-tabs-next-overflow-demo></cosmoz-tabs-next-overflow-demo>`,
 };

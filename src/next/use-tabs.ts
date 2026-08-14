@@ -115,7 +115,7 @@ export const renderTabs = <T extends RenderTab>({
 			?active=${active?.name === tab.name}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}
-			.badge=${tab.badge}
+			badge=${ifDefined(tab.badge)}
 			@click=${onActivate}
 			>${tab.content ?? title}</cosmoz-tab-next
 		>`;
