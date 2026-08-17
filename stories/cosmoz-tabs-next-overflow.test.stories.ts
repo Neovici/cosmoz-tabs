@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, settle, sr } from './overflow-helpers';
+import { box, next, retained, settle, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
@@ -126,6 +126,15 @@ export const NextCopiesOverflowingTabsIntoTheMenu: Story = {
 			[...copies()].forEach((copy) =>
 				expect(copy.getAttribute('role')).toBe('tab')
 			);
+			/** each copy mirrors its original badge state. */
+			[...copies()].forEach((copy) => {
+				const original = bar.querySelector(
+					`cosmoz-tab-next[name="${copy.getAttribute('name')}"]`
+				);
+				expect(copy.getAttribute('badge')).toBe(
+					original?.getAttribute('badge') ?? null
+				);
+			});
 		});
 
 		await step('activating a copy forwards to the original tab', async () => {
@@ -133,8 +142,7 @@ export const NextCopiesOverflowingTabsIntoTheMenu: Story = {
 				-1
 			) as HTMLElement;
 			let clicks = 0,
-				// a consumer delegating on an ancestor must not see the copy's own
-				// click on top of the one the original dispatches
+				/** delegated consumers should see only the forwarded click. */
 				delegated = 0;
 			last.addEventListener('click', () => clicks++);
 			(bar.parentElement as HTMLElement).addEventListener(
@@ -148,10 +156,10 @@ export const NextCopiesOverflowingTabsIntoTheMenu: Story = {
 	},
 };
 
-// the tabs are pinned to a fixed width on purpose: a relabel then produces no
-// layout change at all, so the copy can only follow by being observed. Without
-// that, changing the text resizes the tab, which reshuffles the overflow set
-// and rebuilds the copies by accident — and the assertion proves nothing.
+/**
+ * fixed widths keep relabels from reshuffling overflow.
+ * then copy updates can only come from observation.
+ */
 const pinned = 'flex: 0 0 90px; width: 90px; overflow: hidden;';
 
 export const CopiesFollowTheirOriginals: Story = {
@@ -187,9 +195,7 @@ export const CopiesFollowTheirOriginals: Story = {
 
 		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
-		// showing the trigger costs space, so one more tab overflows a beat later.
-		// Mutating before that settles would rebuild the copies as a side effect of
-		// the reshuffle and the assertions below would prove nothing.
+		/** wait out the trigger-induced overflow reshuffle. */
 		await step('wait for the overflow set to stop moving', async () => {
 			let count = -1;
 			await waitFor(async () => {
@@ -201,8 +207,7 @@ export const CopiesFollowTheirOriginals: Story = {
 			expect(count).toBeGreaterThan(0);
 		});
 
-		// the label lives in the tab's light DOM, so an i18n switch or a live
-		// count changes it without any attribute or slot change to notice
+		/** light-dom labels can change without attribute updates. */
 		await step('a relabelled tab relabels its copy', async () => {
 			last().textContent = 'Files';
 			await waitFor(() =>
@@ -226,6 +231,55 @@ export const CopiesFollowTheirOriginals: Story = {
 	},
 };
 
+/**
+ * removed tabs must not be retained by overflow state.
+ * keeping the bar mounted exposes those leaks.
+ */
+export const RemovedTabsAreNotRetained: Story = {
+	render: () => html`
+		<div class="box" style="width: 240px; overflow: hidden;">
+			<cosmoz-tabs-next variant="underline">
+				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
+				<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
+				<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
+				<cosmoz-tab-next name="history">History</cosmoz-tab-next>
+				<cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
+			</cosmoz-tabs-next>
+		</div>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const bar = next(canvasElement),
+			copies = () =>
+				sr(bar).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next');
+
+		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
+
+		/** keep only weak refs from here. */
+		let refs: WeakRef<HTMLElement>[] = [];
+		let cloneRefs: WeakRef<HTMLElement>[] = [];
+
+		await step('drop every tab but the first, bar stays mounted', async () => {
+			const victims = [
+				...bar.querySelectorAll<HTMLElement>('cosmoz-tab-next'),
+			].slice(1);
+			refs = victims.map((tab) => new WeakRef(tab));
+			cloneRefs = [...copies()].map((clone) => new WeakRef(clone));
+			victims.forEach((tab) => tab.remove());
+			expect(refs.length).toBeGreaterThan(0);
+			expect(cloneRefs.length).toBeGreaterThan(0);
+			await settle(20);
+		});
+
+		await step('the removed tabs are collectable', async () =>
+			expect(await retained(refs)).toBe(0)
+		);
+
+		await step('and so are the menu copies of them', async () =>
+			expect(await retained(cloneRefs)).toBe(0)
+		);
+	},
+};
+
 export const OverflowsWhenTheBarIsAFlexItem: Story = {
 	render: () => html`
 		<div
@@ -246,9 +300,10 @@ export const OverflowsWhenTheBarIsAFlexItem: Story = {
 		const bar = next(canvasElement),
 			row = box(canvasElement);
 
-		// a top bar is the common case: a flex row with a logo and the tabs. The
-		// host defaulting to `flex: none` / `min-width: auto` would keep it at its
-		// content width, so it would spill out of the row and never overflow
+		/**
+		 * top bars need the tab host to shrink.
+		 * otherwise it spills instead of overflowing.
+		 */
 		await step('the bar shrinks into the row instead of spilling', async () => {
 			await waitFor(() =>
 				expect(bar.getBoundingClientRect().right).toBeLessThanOrEqual(

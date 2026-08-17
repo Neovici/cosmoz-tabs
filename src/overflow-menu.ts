@@ -1,11 +1,10 @@
 import '@neovici/cosmoz-dropdown/cosmoz-dropdown-next';
 import { chevronDownIcon } from '@neovici/cosmoz-icons/untitled';
 import { useEffect } from '@pionjs/pion';
+import { t } from 'i18next';
 import { html, type TemplateResult } from 'lit-html';
 
-export const DEFAULT_MORE_LABEL = 'More';
-
-// ?hidden takes the trigger out of the layout but leaves the popover itself open
+// hiding the trigger does not close the popover.
 export const useCloseWhenEmpty = (host: HTMLElement, overflows: boolean) =>
 	useEffect(() => {
 		if (overflows) {
@@ -92,7 +91,9 @@ export interface OverflowMenuOptions {
 	items: unknown;
 	overflows: boolean;
 	active: boolean;
-	label: string;
+	// omit this unless overriding the translated default.
+	label?: string;
+	onItemClick?: (e: MouseEvent) => void;
 }
 
 export const renderOverflowMenu = ({
@@ -100,6 +101,7 @@ export const renderOverflowMenu = ({
 	overflows,
 	active,
 	label,
+	onItemClick,
 }: OverflowMenuOptions): TemplateResult => html`
 	<cosmoz-dropdown-next
 		class="more"
@@ -116,7 +118,7 @@ export const renderOverflowMenu = ({
 			type="button"
 			aria-expanded="false"
 		>
-			<span>${label}</span>
+			<span>${label ?? (t('More') || 'More')}</span>
 			<span class="chevron" aria-hidden="true"
 				>${chevronDownIcon({ width: '16', height: '16' })}</span
 			>
@@ -127,6 +129,7 @@ export const renderOverflowMenu = ({
 			role="tablist"
 			aria-orientation="vertical"
 			@keydown=${onMenuKeydown}
+			@click=${onItemClick}
 		>
 			${items}
 		</div>

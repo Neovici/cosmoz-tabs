@@ -20,8 +20,8 @@ const same = (a: Overflow, b: Overflow) =>
 	sameSet(a.overflowing, b.overflowing) &&
 	sameSet(a.hidden, b.hidden);
 
-// a parent may have been hidden while its children were observed, which marks them all as `hidden`
-// once it becomes visible again the observer only reports the children that intersect the root, so the others stay stuck in `hidden`
+// hidden parents report zero-height children.
+// move them back to overflow once they can be measured again.
 const reconcile = ({ overflowing, hidden }: Overflow) =>
 	hidden.forEach((el) => {
 		if (el.getBoundingClientRect().height === 0) {
@@ -31,12 +31,13 @@ const reconcile = ({ overflowing, hidden }: Overflow) =>
 		overflowing.add(el);
 	});
 
-// how much of an item may be cut off before it counts as overflowing, in px.
+// a whole pixel of slack before we call it overflow
+// engines that round these rects instead of clipping would false-positive
 const TOLERANCE = 1;
 
 const observe = (
 	root: HTMLElement,
-	getItems: () => HTMLElement[],
+	select: (root: HTMLElement) => HTMLElement[],
 	report: (next: Overflow) => void
 ) => {
 	const state = empty(),
@@ -77,42 +78,70 @@ const observe = (
 				});
 			}
 		},
-		// the observer only re-reports on a threshold crossing, so these have to be
-		// dense near 1: an item drifting from slightly clipped to barely clipped
-		// stays between two coarse thresholds and keeps a stale classification —
-		// hidden in the bar and listed in the menu while it very nearly fits
+		// dense thresholds keep near-fitting tabs from staying stale.
 		{ root, threshold: [0, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1] }
 	);
 
-	getItems().forEach((el) => {
-		pending.add(el);
-		observer.observe(el);
-	});
+	// re-observing hands back a fresh entry for every item - thus everything is classified again from scratch
+	const start = () => {
+		observer.disconnect();
+		pending.clear();
 
-	return () => observer.disconnect();
+		const items = select(root);
+		items.forEach((el) => {
+			pending.add(el);
+			observer.observe(el);
+		});
+
+		// observing nothing means the callback never fires.
+		// without this the last report sticks around and keeps removed tabs alive.
+		if (items.length === 0) {
+			report(empty());
+		}
+	};
+
+	// thresholds are ratios and tolerance is absolute, so for a wide tab the
+	// whole tolerance sits inside one bucket: a 400px tab going from 2px clipped
+	// to 0.5px crosses nothing and keeps a stale classification. resizing the
+	// root is what moves the clip, so re-measure from that instead.
+	// safe against loops - marking uses visibility, which changes no layout
+	let frame = 0;
+	const resized = new ResizeObserver(() => {
+		cancelAnimationFrame(frame);
+		frame = requestAnimationFrame(start);
+	});
+	resized.observe(root);
+
+	start();
+
+	return () => {
+		cancelAnimationFrame(frame);
+		resized.disconnect();
+		observer.disconnect();
+	};
 };
 
 /**
  * Classifies the items inside a clipping container as visible, overflowing or hidden
  *
- * @param getRoot   resolves the clipping container (available from the first layout effect on)
- * @param getItems  resolves the items to observe
- * @param deps      re-observe when these change (item set, variant, …)
+ * @param root    ref to the clipping container (filled in by the first layout effect)
+ * @param select  picks the items to observe out of that container; keep it at module level
+ * @param deps    re-observe when these change (item set, variant, …)
  */
 export const useOverflow = (
-	getRoot: () => HTMLElement | null | undefined,
-	getItems: () => HTMLElement[],
+	root: { current?: HTMLElement | null },
+	select: (root: HTMLElement) => HTMLElement[],
 	deps: unknown[]
 ): Overflow => {
 	const [state, setState] = useState<Overflow>(empty);
 
 	useLayoutEffect(() => {
-		const root = getRoot();
-		if (!root) {
+		const el = root.current;
+		if (!el) {
 			return;
 		}
 
-		return observe(root, getItems, (next) =>
+		return observe(el, select, (next) =>
 			setState((prev) => (same(prev, next) ? prev : next))
 		);
 	}, deps);

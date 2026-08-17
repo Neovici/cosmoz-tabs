@@ -48,16 +48,24 @@ const renderTab =
 		</a>`;
 	};
 
+// one tab stop for the whole list; the arrows move focus from there
+// the selected row if it is in the menu, otherwise the first one that works
+const roving = (tabs: TabElement[], selectedTab?: TabElement) => {
+	const selected = tabs.findIndex((t) => t === selectedTab && !t.disabled);
+	return selected < 0 ? tabs.findIndex((t) => !t.disabled) : selected;
+};
+
 const renderMenuItem =
 	({ selectedTab, onSelect, href }: RenderTabOptions) =>
-	(tab: TabElement): TemplateResult => {
+	(tab: TabElement, i: number, tabs: TabElement[]): TemplateResult => {
 		const isSelected = selectedTab === tab;
 		return html`<a
 			class="menu-item"
-			tabindex="0"
+			tabindex=${i === roving(tabs, selectedTab) ? '0' : '-1'}
 			role="tab"
 			part=${isSelected ? 'menu-item selected-menu-item' : 'menu-item'}
 			?disabled=${tab.disabled}
+			aria-disabled=${ifDefined(tab.disabled ? 'true' : undefined)}
 			aria-selected=${isSelected ? 'true' : 'false'}
 			@click=${(e: MouseEvent) => {
 				onSelect(e);

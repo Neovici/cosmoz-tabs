@@ -33,7 +33,7 @@
 				{
 					"name": "more-label",
 					"type": "String",
-					"description": "Label of the overflow menu trigger; defaults to 'More'"
+					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],
@@ -109,7 +109,7 @@
 				{
 					"name": "more-label",
 					"type": "String",
-					"description": "Label of the overflow menu trigger; defaults to 'More'"
+					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],

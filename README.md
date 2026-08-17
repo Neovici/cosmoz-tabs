@@ -120,10 +120,16 @@ something actually overflows, and is highlighted while the selected tab is one o
 overflowing ones.
 
 There is nothing to wire up; it is on by default in both families. The trigger reads
-`More` followed by a chevron; the label can be localized per instance:
+`t('More')` followed by a chevron, so it is already translated and no call site has to
+pass anything. Override it per instance only where a different word is wanted — as an
+attribute, or as a property:
 
 ```html
 <cosmoz-tabs more-label="Fler">…</cosmoz-tabs>
+```
+
+```js
+html`<cosmoz-tabs .moreLabel=${t("More tabs")}>…</cosmoz-tabs>`;
 ```
 
 Which tabs fit is measured with an `IntersectionObserver` rooted on the clipping element
@@ -148,6 +154,16 @@ routed to `tabs` or `stats` depending on whether it sits before or after the fir
 existing markup that mixes them into the default slot keeps working. Set `slot` yourself to
 override.
 
+A `<slot>` child is left alone, so a wrapper component can own the bar and project the
+consumer's tabs into it — the projected tabs are measured and overflow like any other:
+
+```js
+html`<cosmoz-tabs-next>
+	<cosmoz-tab-next name="all" active>All</cosmoz-tab-next>
+	<slot></slot>
+</cosmoz-tabs-next>`;
+```
+
 The dropdown comes from [`@neovici/cosmoz-dropdown`](https://github.com/neovici/cosmoz-dropdown)
 and the chevron from [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons); both
 ship as dependencies.
@@ -160,7 +176,7 @@ Highlights:
 
 - **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `compact-width`,
   `more-label`; parts `tabs`, `items`, `tab`, `more`, `more-button`, `menu`, `menu-item`,
-  `content`; events `tab-first-select`, `tab-select`.
+  `selected-menu-item`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
 - **`cosmoz-tabs-next`** — attrs `variant`, `compact-width`, `more-label`; parts `items`,
   `more`, `more-button`, `menu`; slots `tabs`, `stats` (auto-assigned for non-tab children).

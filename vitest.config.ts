@@ -21,7 +21,9 @@ export default defineConfig({
 					name: 'storybook',
 					browser: {
 						enabled: true,
-						provider: playwright({}),
+						provider: playwright({
+							launchOptions: { args: ['--js-flags=--expose-gc'] },
+						}),
 						headless: true,
 						instances: [{ browser: 'chromium' }],
 					},

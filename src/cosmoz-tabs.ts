@@ -3,11 +3,7 @@ import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, html, useCallback, useMemo, useRef } from '@pionjs/pion';
 import { ref } from 'lit-html/directives/ref.js';
 import './cosmoz-tab';
-import {
-	DEFAULT_MORE_LABEL,
-	renderOverflowMenu,
-	useCloseWhenEmpty,
-} from './overflow-menu';
+import { renderOverflowMenu, useCloseWhenEmpty } from './overflow-menu';
 import { renderMenuItem, renderTab } from './render';
 import { legacyStyles, type TabsVariant } from './styles';
 import { useOverflow } from './use-overflow';
@@ -22,6 +18,10 @@ export interface CosmozTabsElement extends CosmozTabsHost {
 	moreLabel?: string;
 }
 
+const anchorsIn = (root: HTMLElement): HTMLElement[] => [
+	...root.querySelectorAll<HTMLElement>('.tab'),
+];
+
 /**
  * @element cosmoz-tabs
  * @attr {string} selected - `name` of the selected tab
@@ -29,7 +29,7 @@ export interface CosmozTabsElement extends CosmozTabsHost {
  * @attr {boolean} no-resize
  * @attr {('brand'|'underline')} variant
  * @attr {boolean} compact-width
- * @attr {string} more-label - label of the overflow menu trigger, defaults to `More`
+ * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
  * @csspart tabs - tab bar container
  * @csspart items - clipping container holding the tabs
  * @csspart tab - individual tab
@@ -51,13 +51,10 @@ const Tabs = (host: CosmozTabsElement) => {
 			items.current = el as HTMLElement | undefined;
 		}, []);
 
-	const { overflowing } = useOverflow(
-		() => items.current,
-		() => [...(items.current?.querySelectorAll<HTMLElement>('.tab') ?? [])],
-		[tabs]
-	);
+	const { overflowing } = useOverflow(items, anchorsIn, [tabs]);
 
-	// the tab data behind each overflowing anchor, in tab order
+	// map overflowing anchors back to their tabs
+	// filter rather than map, so the menu keeps bar order
 	const overflowed = useMemo(() => {
 		const set = new Set(
 			[...overflowing].map((el) => (el as { tab?: TabElement }).tab)
@@ -79,7 +76,8 @@ const Tabs = (host: CosmozTabsElement) => {
 				items: overflowed.map(renderMenuItem(opts)),
 				overflows: overflowed.length > 0,
 				active: selectedTab != null && overflowedSet.has(selectedTab),
-				label: host.getAttribute('more-label') ?? DEFAULT_MORE_LABEL,
+				// read the property so `.moreLabel` works too.
+				label: host.moreLabel,
 			})}
 			<slot name="stats"></slot>
 		</div>

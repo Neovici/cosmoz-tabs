@@ -10,17 +10,18 @@ export const bar = css`
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
 	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-	overflow: hidden;
+	overflow: clip;
 `;
 
-// items that do not fit are clipped here and re-rendered inside the overflow menu instead.
+// clip the tab strip without making it scrollable.
+// focus should not shift the geometry we measure.
 export const items = css`
 	display: flex;
 	align-items: stretch;
 	gap: inherit;
 	flex: 1 1 auto;
 	min-width: 0;
-	overflow: hidden;
+	overflow: clip;
 `;
 
 export const overflowing = css`

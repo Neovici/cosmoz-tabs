@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
+import { html } from "lit-html";
 
 export const box = (root: HTMLElement) =>
-	root.querySelector('.box') as HTMLElement;
+	root.querySelector(".box") as HTMLElement;
 
-/** a few frames, enough for the observer to deliver and the bar to re-render */
+/** wait a few frames for observer reports and rerenders. */
 export const settle = async (frames = 4) => {
 	for (let i = 0; i < frames; i++) {
 		await new Promise(requestAnimationFrame);
@@ -11,34 +11,53 @@ export const settle = async (frames = 4) => {
 };
 
 export const legacy = (root: HTMLElement) =>
-		root.querySelector('cosmoz-tabs') as HTMLElement,
+		root.querySelector("cosmoz-tabs") as HTMLElement,
 	next = (root: HTMLElement) =>
-		root.querySelector('cosmoz-tabs-next') as HTMLElement;
+		root.querySelector("cosmoz-tabs-next") as HTMLElement;
 
 export const sr = (el: HTMLElement) => el.shadowRoot as ShadowRoot;
 
+/**
+ * force gc and count surviving refs.
+ * chromium gets gc from the vitest config.
+ */
+export const retained = async (refs: WeakRef<object>[]) => {
+	const gc = (window as unknown as { gc?: () => void }).gc;
+
+	if (!gc) {
+		throw new Error(
+			"window.gc is unavailable: run with --js-flags=--expose-gc"
+		);
+	}
+
+	/** use real turns so recent microtasks stop holding refs. */
+	for (let i = 0; i < 5; i++) {
+		gc();
+		await new Promise((r) => setTimeout(r, 30));
+	}
+
+	return refs.filter((ref) => ref.deref()).length;
+};
+
 export const clipped = (el: HTMLElement) =>
-	sr(el).querySelectorAll('.items > .tab[overflowing]');
+	sr(el).querySelectorAll(".items > .tab[overflowing]");
 export const rows = (el: HTMLElement) =>
-	sr(el).querySelectorAll('.menu .menu-item');
+	sr(el).querySelectorAll(".menu .menu-item");
 export const more = (el: HTMLElement) =>
-	sr(el).querySelector('.more') as HTMLElement;
+	sr(el).querySelector(".more") as HTMLElement;
 export const trigger = (el: HTMLElement) =>
-	sr(el).querySelector('.more-button') as HTMLElement;
+	sr(el).querySelector(".more-button") as HTMLElement;
 
 /**
- * Every tab has to be reachable: either laid out fully inside the clipping
- * container, or listed in the overflow menu. Counting the bar geometrically
- * rather than by the `overflowing` attribute is what makes this meaningful — a
- * misclassified tab is clipped by the container *and* missing from the menu,
- * which no attribute reports.
+ * count visible geometry, not component state.
+ * this catches clipped tabs missing from the menu.
  */
 export const reachable = (el: HTMLElement) => {
 	const bounds = (
-		sr(el).querySelector('.items') as HTMLElement
+		sr(el).querySelector(".items") as HTMLElement
 	).getBoundingClientRect();
 	const inBar = [
-		...sr(el).querySelectorAll<HTMLElement>('.items > .tab'),
+		...sr(el).querySelectorAll<HTMLElement>(".items > .tab"),
 	].filter((tab) => {
 		const r = tab.getBoundingClientRect();
 		return (
