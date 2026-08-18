@@ -28,9 +28,11 @@ export const RolesAndActive: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('container is a tablist', async () => {
+		await step('tabs are wrapped in a tablist', async () => {
 			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('tablist')
+				expect(
+					container.shadowRoot!.querySelector('.items')?.getAttribute('role')
+				).toBe('tablist')
 			);
 		});
 

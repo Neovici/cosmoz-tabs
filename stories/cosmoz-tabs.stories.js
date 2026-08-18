@@ -245,8 +245,9 @@ export const ManyTabs = {
 		docs: {
 			description: {
 				story:
-					'When the bar overflows its container it scrolls horizontally and the ' +
-					'selected tab is scrolled into view.',
+					'When the bar overflows its container the tabs that do not fit are ' +
+					'collected into the overflow menu at the end of it - here in the ' +
+					'`brand` variant. See *Overflow* for the resizable version.',
 			},
 		},
 	},
@@ -311,7 +312,7 @@ export const WithTabCards = {
 		docs: {
 			description: {
 				story:
-					'A tab panel containing `cosmoz-tab-card` (collapsible cards) — a ' +
+					'A tab panel containing `cosmoz-tab-card` (collapsible cards) - a ' +
 					'common cosmoz-frontend pattern. Cards are sized via ' +
 					'`--cosmoz-tab-card-width` to fit their content.',
 			},
@@ -523,6 +524,78 @@ export const Theming = {
 				'neutral',
 				'--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);'
 			)}
+		</div>
+	`,
+};
+
+export const Overflow = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'Tabs that do not fit are collected into an overflow menu at the end ' +
+					'of the bar instead of being reachable only by horizontal scrolling. ' +
+					'An overflowing tab is rendered twice - clipped in the bar and, as a ' +
+					'row of the menu - from the same data, so selection behaves ' +
+					'identically in both places. **Drag the resize handle** in the ' +
+					'bottom-right corner of the box to see tabs move in and out of the ' +
+					'menu. When the selected tab is one of the overflowing ones, the ' +
+					'trigger itself is highlighted.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<style>
+			.resizable {
+				resize: horizontal;
+				overflow: auto;
+				width: 420px;
+				min-width: 90px;
+				max-width: 100%;
+				padding-bottom: 10px;
+			}
+		</style>
+		<div class="resizable">
+			<cosmoz-tabs variant="underline">
+				<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+					${overview()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="rows"
+					heading="Invoice rows"
+					badge="5"
+					.icon=${listIcon()}
+				>
+					${rows()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="accounting"
+					heading="Accounting"
+					.icon=${calculatorIcon()}
+				>
+					${accounting()}
+				</cosmoz-tab>
+				<cosmoz-tab name="history" heading="History" .icon=${clockRewindIcon()}>
+					${history()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="comments"
+					heading="Comments"
+					badge="2"
+					.icon=${messageChatCircleIcon()}
+				>
+					${comments()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="attachments"
+					heading="Attachments"
+					badge="3"
+					.icon=${paperclipIcon()}
+				>
+					${attachments()}
+				</cosmoz-tab>
+			</cosmoz-tabs>
 		</div>
 	`,
 };

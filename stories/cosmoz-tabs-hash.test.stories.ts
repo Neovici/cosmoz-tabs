@@ -85,7 +85,7 @@ export const InvalidHashFallsBack: Story = {
 		const tabs = getTabs(canvasElement);
 		await waitFor(() => expect(selectedName(tabs)).toBe('tab0'));
 
-		// a hash pointing at a non-existent tab -> first valid tab stays selected
+		/** a bad hash falls back to the first valid tab. */
 		window.location.hash = barTab(tabs, 0)
 			.getAttribute('href')!
 			.replace('tab0', 'nope');

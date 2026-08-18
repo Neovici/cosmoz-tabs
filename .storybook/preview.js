@@ -1,6 +1,11 @@
 import '@neovici/cosmoz-tokens';
+import { init } from 'i18next';
 import { html } from 'lit-html';
 import { within as withinShadow } from 'shadow-dom-testing-library';
+
+// the apps all init i18next before they render anything, so stories should too
+// no backend, so this is synchronous - missing keys echo back, which is English here
+init({ lng: 'en', resources: { en: { translation: {} } } });
 
 export default {
 	parameters: {

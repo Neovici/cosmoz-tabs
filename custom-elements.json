@@ -29,6 +29,11 @@
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
+				},
+				{
+					"name": "more-label",
+					"type": "String",
+					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],
@@ -100,11 +105,24 @@
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content (reflected onto children as compact-width)"
+				},
+				{
+					"name": "more-label",
+					"type": "String",
+					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],
 			"slots": [
-				{ "name": "", "description": "The `cosmoz-tab-next` header elements" }
+				{ "name": "", "description": "The `cosmoz-tab-next` header elements" },
+				{
+					"name": "tabs",
+					"description": "Extra content at the start of the tab bar, outside the overflow area. Non-tab children placed before the first tab are routed here automatically"
+				},
+				{
+					"name": "stats",
+					"description": "Extra content at the end of the tab bar, outside the overflow area. Non-tab children placed after the first tab are routed here automatically"
+				}
 			],
 			"cssProperties": []
 		},
