@@ -1,0 +1,26 @@
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{G as t,J as n,Y as r}from"./iframe-T0BedWGr.js";import{B as i,C as a,H as o,I as s,M as c,R as l,S as u,T as d,W as f,v as p,w as m,y as h}from"./untitled-DD2WTsRj.js";import{a as g,c as _,d as v,f as ee,h as y,i as b,l as x,m as te,o as S,p as ne,r as C,t as w,u as T}from"./use-hash-param-Bn4ObyEf.js";var E,D=e((()=>{u(),m(),r(),p(),S(),E=e=>{let{active:r,badge:i,href:a}=e;return f(()=>{e.getAttribute(`tabindex`)||e.setAttribute(`tabindex`,`-1`),e.setAttribute(`role`,`tab`)},[]),l(()=>{e.setAttribute(`aria-selected`,r?`true`:`false`)},[r]),n`
+		<a part="link" href=${h(a)}>
+			<slot id="iconSlot" name="icon"></slot>
+			<slot id="contentSlot"></slot>
+			${i?n`<span class="badge" part="badge">${i}</span>`:t}
+		</a>
+	`},customElements.define(`cosmoz-tab-next`,d(E,{observedAttributes:[`active`,`badge`,`href`],styleSheets:[a,_]}))})),O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W=e((()=>{u(),m(),te(),v(),S(),b(),O=`cosmoz-tab-next`,k=(e,t,n)=>{n==null?e.removeAttribute(t):e.setAttribute(t,n)},A=new WeakMap,j=e=>{let t=!1;[...e.children].forEach(e=>{if(e.matches(O)){t=!0;return}if(e.localName===`slot`){t=!0;return}let n=e.getAttribute(`slot`);if(n!=null&&A.get(e)!==n)return;let r=t?`stats`:`tabs`;n!==r&&e.setAttribute(`slot`,r),A.set(e,r)})},M=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`].forEach(n=>k(t,n,e.getAttribute(n))),k(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},N=e=>{let t=e.filter(([,e])=>!e.hasAttribute(`disabled`));(t.find(([e])=>e.hasAttribute(`active`))??t[0])?.[1].setAttribute(`tabindex`,`0`)},P=e=>{let t=e.cloneNode(!0);return[`variant`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},F=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),M(e,t)},I=e=>new MouseEvent(`click`,{bubbles:!0,composed:!0,cancelable:!0,button:e.button,buttons:e.buttons,detail:e.detail,altKey:e.altKey,ctrlKey:e.ctrlKey,metaKey:e.metaKey,shiftKey:e.shiftKey}),L=e=>e.button===0&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey,R=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;t.stopPropagation(),i.dispatchEvent(I(t))||t.preventDefault(),L(t)&&T(a)},z=e=>(e.querySelector(`slot`)?.assignedElements({flatten:!0})??[]).filter(e=>e.matches(O)),B={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},V=(e,t)=>{let[n,r]=s(0);return f(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,B)),()=>t.disconnect()},[t]),n},H=(e,t,n)=>{let r=V(e,n),i=c();return i.current??=new Map,o(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??P(e);return n.set(e,t),F(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),N(r),r},[t,n,r])},U=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let t=e.getAttribute(`variant`),r=e.hasAttribute(`compact-width`)?``:null,a=c(),o=i(e=>{a.current=e},[]),[u,d]=s(0),p=i(()=>a.current?z(a.current):[],[]),m=c();m.current??=new Set;let h=()=>{j(e),new Set([...e.querySelectorAll(O),...p()]).forEach(e=>{k(e,`variant`,t),k(e,`compact-width`,r)})},_=()=>{h(),d(e=>e+1)};f(h);let{overflowing:v}=g(a,z,[u,t,r]);l(()=>{let e=m.current,t=new Set;p().forEach(e=>{let n=v.has(e);e.toggleAttribute(`overflowing`,n),n&&t.add(e)}),e.forEach(e=>{t.has(e)||e.removeAttribute(`overflowing`)}),m.current=t},[v,u]);let b=H(p,v,u);return ne(e,b.length>0),n`
+		<slot name="tabs"></slot>
+		<div class="items" part="items" role="tablist" ${y(o)}>
+			<slot @slotchange=${_}></slot>
+		</div>
+		${ee({items:b.map(([,e])=>e),overflows:b.length>0,active:b.some(([e])=>e.hasAttribute(`active`)),label:e.moreLabel,onItemClick:R(b)})}
+		<slot name="stats"></slot>
+	`},customElements.define(`cosmoz-tabs-next`,d(U,{observedAttributes:[`variant`,`compact-width`,`more-label`],styleSheets:[a,x]}))})),G,K=e((()=>{G=(e,...t)=>typeof e==`function`?e(...t):e})),q,J,Y,X,Z,Q,$=e((()=>{w(),K(),m(),p(),q=e=>!e.hidden&&!e.disabled,J=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(q),Y=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&q(n)?n:J(e)},X=(e,{hashParam:t,onActivate:n}={})=>{let[r,a]=C(t),s=c([]),l=o(()=>Y(e,r??void 0),[e,r]);return{tabs:e,active:l,activated:o(()=>{let e=l?.name;return s.current=[...(s.current??[]).filter(t=>t!==e),e].filter(Boolean)},[l]),activate:a,onActivate:i(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),a(r))},[a,n])}},Z=({tabs:e,active:t,onActivate:r,className:i,variant:a,compactWidth:o})=>e.map(e=>{let s=G(e.title),c=e.badge||void 0;return n`<cosmoz-tab-next
+			name=${e.name}
+			class=${h(i)}
+			variant=${h(a)}
+			?compact-width=${h(o)}
+			title=${h(s)}
+			?active=${t?.name===e.name}
+			?hidden=${e.hidden}
+			?disabled=${e.disabled}
+			badge=${h(c)}
+			@click=${r}
+			>${e.content??s}</cosmoz-tab-next
+		>`}),Q=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})),re=e((()=>{D(),W(),$()}));export{X as a,Z as i,$ as n,Q as r,re as t};

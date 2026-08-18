@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-DOneIXTJ.js";import{t as r,u as i}from"./untitled-tiq9wtpx.js";import{t as a}from"./cosmoz-tabs-DL87BdnV.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-T0BedWGr.js";import{t as r,u as i}from"./untitled-DD2WTsRj.js";import{t as a}from"./cosmoz-tabs-B1ZcQA-O.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
     <cosmoz-tabs variant=${e}>
         <cosmoz-tab name="tab0" heading="Tab0" .icon=${i()}
             >1</cosmoz-tab
@@ -33,13 +33,13 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await step('first valid tab is selected by default', async () => {
-      await waitFor(() => expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe('tab0'));
-      await waitFor(() => expect(tabs.selected).toBe('tab0'));
+    await step("first valid tab is selected by default", async () => {
+      await waitFor(() => expect(tabs.querySelector("[is-selected]")?.getAttribute("name")).toBe("tab0"));
+      await waitFor(() => expect(tabs.selected).toBe("tab0"));
     });
-    await step('setting selected switches the active tab', async () => {
-      tabs.selected = 'tab1';
-      await waitFor(() => expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe('tab1'));
+    await step("setting selected switches the active tab", async () => {
+      tabs.selected = "tab1";
+      await waitFor(() => expect(tabs.querySelector("[is-selected]")?.getAttribute("name")).toBe("tab1"));
     });
   }
 }`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
@@ -49,17 +49,17 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await step('tablist mirrors the number of tabs', async () => {
-      await waitFor(() => expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(tabs.querySelectorAll('cosmoz-tab').length));
+    await step("tablist mirrors the number of tabs", async () => {
+      await waitFor(() => expect(tabs.shadowRoot!.querySelectorAll("[role=tab]").length).toBe(tabs.querySelectorAll("cosmoz-tab").length));
     });
-    await step('headings and a badge render in the bar', () => {
-      const headings = Array.from(tabs.shadowRoot!.querySelectorAll('[role=tab] > span')).map(el => el.textContent);
-      expect(headings).toEqual(['Tab0', 'Tab1', 'Tab2', 'Tab3']);
-      expect(tabs.shadowRoot!.querySelectorAll('.badge').length).toBe(1);
+    await step("headings and a badge render in the bar", () => {
+      const headings = Array.from(tabs.shadowRoot!.querySelectorAll("[role=tab] > span")).map(el => el.textContent);
+      expect(headings).toEqual(["Tab0", "Tab1", "Tab2", "Tab3"]);
+      expect(tabs.shadowRoot!.querySelectorAll(".badge").length).toBe(1);
     });
-    await step('a cosmoz-icons svg is rendered for the icon', () => {
-      const firstTab = tabs.shadowRoot!.querySelectorAll('[role=tab]')[0];
-      expect(firstTab.querySelector('svg')).not.toBeNull();
+    await step("a cosmoz-icons svg is rendered for the icon", () => {
+      const firstTab = tabs.shadowRoot!.querySelectorAll("[role=tab]")[0];
+      expect(firstTab.querySelector("svg")).not.toBeNull();
     });
   }
 }`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
@@ -69,15 +69,15 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(4));
-    const barTabs = tabs.shadowRoot!.querySelectorAll('[role=tab]');
-    await step('hidden tab is not displayed', () => {
+    await waitFor(() => expect(tabs.shadowRoot!.querySelectorAll("[role=tab]").length).toBe(4));
+    const barTabs = tabs.shadowRoot!.querySelectorAll("[role=tab]");
+    await step("hidden tab is not displayed", () => {
       const hidden = barTabs[2] as HTMLElement;
-      expect(hidden.getAttribute('hidden')).toBe('');
-      expect(getComputedStyle(hidden).display).toBe('none');
+      expect(hidden.getAttribute("hidden")).toBe("");
+      expect(getComputedStyle(hidden).display).toBe("none");
     });
-    await step('disabled tab carries the disabled attribute', () => {
-      expect(barTabs[3].getAttribute('disabled')).toBe('');
+    await step("disabled tab carries the disabled attribute", () => {
+      expect(barTabs[3].getAttribute("disabled")).toBe("");
     });
   }
 }`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
@@ -87,18 +87,18 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.selected).toBe('tab0'));
-    await step('clicking a tab selects it', async () => {
-      (tabs.shadowRoot!.querySelectorAll('[role=tab]')[1] as HTMLElement).click();
-      await waitFor(() => expect(tabs.selected).toBe('tab1'));
+    await waitFor(() => expect(tabs.selected).toBe("tab0"));
+    await step("clicking a tab selects it", async () => {
+      (tabs.shadowRoot!.querySelectorAll("[role=tab]")[1] as HTMLElement).click();
+      await waitFor(() => expect(tabs.selected).toBe("tab1"));
     });
-    await step('ctrl+click does not select', async () => {
-      (tabs.shadowRoot!.querySelectorAll('[role=tab]')[0] as HTMLElement).dispatchEvent(new MouseEvent('click', {
+    await step("ctrl+click does not select", async () => {
+      (tabs.shadowRoot!.querySelectorAll("[role=tab]")[0] as HTMLElement).dispatchEvent(new MouseEvent("click", {
         ctrlKey: true,
         bubbles: true
       }));
       await new Promise(r => requestAnimationFrame(r));
-      expect(tabs.selected).toBe('tab1');
+      expect(tabs.selected).toBe("tab1");
     });
   }
 }`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
@@ -108,24 +108,24 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.selected).toBe('tab0'));
-    await step('tab-first-select fires once, before tab-select', async () => {
-      const tab = tabs.querySelector('[name=tab1]')!;
+    await waitFor(() => expect(tabs.selected).toBe("tab0"));
+    await step("tab-first-select fires once, before tab-select", async () => {
+      const tab = tabs.querySelector("[name=tab1]")!;
       const onFirst = fn();
       const onSelect = fn();
-      tab.addEventListener('tab-first-select', onFirst);
-      tab.addEventListener('tab-select', onSelect);
-      tabs.selected = 'tab1';
+      tab.addEventListener("tab-first-select", onFirst);
+      tab.addEventListener("tab-select", onSelect);
+      tabs.selected = "tab1";
       await waitFor(() => expect(onSelect).toHaveBeenCalledTimes(1));
       expect(onFirst).toHaveBeenCalledTimes(1);
       onFirst.mockClear?.();
       onSelect.mockClear?.();
-      // move away and let it settle, otherwise the two sync sets batch to a no-op
-      tabs.selected = 'tab0';
-      await waitFor(() => expect(tabs.selected).toBe('tab0'));
-      tabs.selected = 'tab1';
+      /** move away first so the two sync sets do not batch away. */
+      tabs.selected = "tab0";
+      await waitFor(() => expect(tabs.selected).toBe("tab0"));
+      tabs.selected = "tab1";
       await waitFor(() => expect(onSelect).toHaveBeenCalled());
-      // already activated once -> no second first-select
+      /** already activated once, so no second first-select. */
       expect(onFirst).not.toHaveBeenCalled();
     });
   }
@@ -136,13 +136,13 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.selected).toBe('tab0'));
-    await step('selecting a tab dispatches a window resize', async () => {
+    await waitFor(() => expect(tabs.selected).toBe("tab0"));
+    await step("selecting a tab dispatches a window resize", async () => {
       const onResize = fn();
-      window.addEventListener('resize', onResize);
-      tabs.selected = 'tab1';
+      window.addEventListener("resize", onResize);
+      tabs.selected = "tab1";
       await waitFor(() => expect(onResize).toHaveBeenCalled());
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener("resize", onResize);
     });
   }
 }`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
@@ -155,42 +155,42 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       selected?: string;
       noResize?: boolean;
     };
-    await waitFor(() => expect(tabs.selected).toBe('tab0'));
-    await step('no-resize suppresses the window resize', async () => {
+    await waitFor(() => expect(tabs.selected).toBe("tab0"));
+    await step("no-resize suppresses the window resize", async () => {
       tabs.noResize = true;
       const onResize = fn();
-      window.addEventListener('resize', onResize);
-      tabs.selected = 'tab1';
-      await waitFor(() => expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe('tab1'));
-      // let the (suppressed) resize rAF window pass
+      window.addEventListener("resize", onResize);
+      tabs.selected = "tab1";
+      await waitFor(() => expect(tabs.querySelector("[is-selected]")?.getAttribute("name")).toBe("tab1"));
+      /** let the suppressed resize frame pass. */
       await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
       expect(onResize).not.toHaveBeenCalled();
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener("resize", onResize);
     });
   }
 }`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
-  render: () => fixture('brand'),
+  render: () => fixture("brand"),
   play: async ({
     canvasElement
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.shadowRoot!.querySelector('a[aria-selected=true]')).not.toBeNull());
-    const active = tabs.shadowRoot!.querySelector('a[aria-selected=true]')!;
-    // brand active tab has a (non-transparent) brand-tinted background
-    expect(getComputedStyle(active).backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
+    await waitFor(() => expect(tabs.shadowRoot!.querySelector("a[aria-selected=true]")).not.toBeNull());
+    const active = tabs.shadowRoot!.querySelector("a[aria-selected=true]")!;
+    /** brand active tab has a brand-tinted background. */
+    expect(getComputedStyle(active).backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
   }
 }`,...y.parameters?.docs?.source}}},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
-  render: () => fixture('underline'),
+  render: () => fixture("underline"),
   play: async ({
     canvasElement
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.shadowRoot!.querySelector('a[aria-selected=true]')).not.toBeNull());
-    const active = tabs.shadowRoot!.querySelector('a[aria-selected=true]')!;
+    await waitFor(() => expect(tabs.shadowRoot!.querySelector("a[aria-selected=true]")).not.toBeNull());
+    const active = tabs.shadowRoot!.querySelector("a[aria-selected=true]")!;
     const shadow = getComputedStyle(active).boxShadow;
-    // underline active tab has an inset bottom border via box-shadow
-    expect(shadow).not.toBe('none');
-    expect(shadow).toContain('inset');
+    /** underline active tab has an inset border shadow. */
+    expect(shadow).not.toBe("none");
+    expect(shadow).toContain("inset");
   }
 }`,...b.parameters?.docs?.source}}},x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
@@ -200,14 +200,14 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
   }) => {
     const tabs = getTabs(canvasElement);
     const sr = tabs.shadowRoot!;
-    await waitFor(() => expect(sr.querySelector('a[aria-selected=true]')).not.toBeNull());
-    await step('selected tab is focusable (0), the rest are -1', () => {
-      expect(sr.querySelector('a[aria-selected=true]')!.getAttribute('tabindex')).toBe('0');
-      sr.querySelectorAll('a[aria-selected=false]').forEach(a => expect(a.getAttribute('tabindex')).toBe('-1'));
+    await waitFor(() => expect(sr.querySelector("a[aria-selected=true]")).not.toBeNull());
+    await step("selected tab is focusable (0), the rest are -1", () => {
+      expect(sr.querySelector("a[aria-selected=true]")!.getAttribute("tabindex")).toBe("0");
+      sr.querySelectorAll("a[aria-selected=false]").forEach(a => expect(a.getAttribute("tabindex")).toBe("-1"));
     });
-    await step('focusable tab follows selection', async () => {
-      tabs.selected = 'tab1';
-      await waitFor(() => expect(sr.querySelector('a[aria-selected=true]')?.getAttribute('tabindex')).toBe('0'));
+    await step("focusable tab follows selection", async () => {
+      tabs.selected = "tab1";
+      await waitFor(() => expect(sr.querySelector("a[aria-selected=true]")?.getAttribute("tabindex")).toBe("0"));
       expect(sr.querySelectorAll('a[tabindex="0"]').length).toBe(1);
     });
   }
@@ -217,9 +217,9 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     canvasElement
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull());
-    const tab = tabs.shadowRoot!.querySelector('.tab:not([hidden])') as HTMLElement;
-    expect(getComputedStyle(tab).flexGrow).toBe('1');
+    await waitFor(() => expect(tabs.shadowRoot!.querySelector(".tab")).not.toBeNull());
+    const tab = tabs.shadowRoot!.querySelector(".tab:not([hidden])") as HTMLElement;
+    expect(getComputedStyle(tab).flexGrow).toBe("1");
   }
 }`,...S.parameters?.docs?.source}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
   render: () => html\`
@@ -232,9 +232,9 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     canvasElement
   }) => {
     const tabs = getTabs(canvasElement);
-    await waitFor(() => expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull());
-    const tab = tabs.shadowRoot!.querySelector('.tab:not([hidden])') as HTMLElement;
-    expect(getComputedStyle(tab).flexGrow).toBe('0');
+    await waitFor(() => expect(tabs.shadowRoot!.querySelector(".tab")).not.toBeNull());
+    const tab = tabs.shadowRoot!.querySelector(".tab:not([hidden])") as HTMLElement;
+    expect(getComputedStyle(tab).flexGrow).toBe("0");
   }
 }`,...C.parameters?.docs?.source}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
   render: () => html\`
@@ -257,22 +257,22 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = getTabs(canvasElement);
-    const content = () => tabs.shadowRoot!.querySelector('#content') as HTMLElement;
-    await step('a height-constrained host bounds its content panel to the host height', async () => {
-      await waitFor(() => expect(tabs.selected).toBe('a'));
+    const content = () => tabs.shadowRoot!.querySelector("#content") as HTMLElement;
+    await step("a height-constrained host bounds its content panel to the host height", async () => {
+      await waitFor(() => expect(tabs.selected).toBe("a"));
       await waitFor(() => {
         const c = content();
         expect(c.clientHeight).toBeGreaterThan(300);
         expect(c.clientHeight).toBeLessThan(420);
       });
     });
-    await step('switching tabs dispatches resize and keeps the panel bounded', async () => {
+    await step("switching tabs dispatches resize and keeps the panel bounded", async () => {
       const onResize = fn();
-      window.addEventListener('resize', onResize);
-      tabs.selected = 'b';
-      await waitFor(() => expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe('b'));
+      window.addEventListener("resize", onResize);
+      tabs.selected = "b";
+      await waitFor(() => expect(tabs.querySelector("[is-selected]")?.getAttribute("name")).toBe("b"));
       await waitFor(() => expect(onResize).toHaveBeenCalled());
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener("resize", onResize);
       expect(content().clientHeight).toBeLessThan(420);
     });
   }

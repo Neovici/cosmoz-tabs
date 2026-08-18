@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-DOneIXTJ.js";import{t as r}from"./next-Da4QcpH0.js";import{d as i,f as a,i as o,l as s,s as c,t as l}from"./overflow-helpers-Ch4Fn9Sv.js";var u,d,f,p,m,h,g,_,v,y,b;e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-T0BedWGr.js";import{t as r}from"./next-B0L137RR.js";import{d as i,f as a,i as o,l as s,s as c,t as l}from"./overflow-helpers-CwlYrfFd.js";var u,d,f,p,m,h,g,_,v,y,b;e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading">Orders</div>
@@ -167,7 +167,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       expect(menu.getAttribute('role')).toBe('tablist');
       expect(menu.getAttribute('aria-orientation')).toBe('vertical');
       [...copies()].forEach(copy => expect(copy.getAttribute('role')).toBe('tab'));
-      // each copy mirrors its original badge state.
+      /** each copy mirrors its original badge state. */
       [...copies()].forEach(copy => {
         const original = bar.querySelector(\`cosmoz-tab-next[name="\${copy.getAttribute('name')}"]\`);
         expect(copy.getAttribute('badge')).toBe(original?.getAttribute('badge') ?? null);
@@ -176,7 +176,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     await step('activating a copy forwards to the original tab', async () => {
       const last = [...bar.querySelectorAll('cosmoz-tab-next')].at(-1) as HTMLElement;
       let clicks = 0,
-        // delegated consumers should see only the forwarded click.
+        /** delegated consumers should see only the forwarded click. */
         delegated = 0;
       last.addEventListener('click', () => clicks++);
       (bar.parentElement as HTMLElement).addEventListener('click', () => delegated++);
@@ -216,7 +216,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       last = () => [...bar.querySelectorAll<HTMLElement>('cosmoz-tab-next')].at(-1) as HTMLElement;
     await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
-    // wait out the trigger-induced overflow reshuffle.
+    /** wait out the trigger-induced overflow reshuffle. */
     await step('wait for the overflow set to stop moving', async () => {
       let count = -1;
       await waitFor(async () => {
@@ -228,7 +228,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       expect(count).toBeGreaterThan(0);
     });
 
-    // light-dom labels can change without attribute updates.
+    /** light-dom labels can change without attribute updates. */
     await step('a relabelled tab relabels its copy', async () => {
       last().textContent = 'Files';
       await waitFor(() => expect([...copies()].at(-1)?.textContent?.trim()).toBe('Files'));
@@ -262,7 +262,7 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       copies = () => sr(bar).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next');
     await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
-    // keep only weak refs from here.
+    /** keep only weak refs from here. */
     let refs: WeakRef<HTMLElement>[] = [];
     let cloneRefs: WeakRef<HTMLElement>[] = [];
     await step('drop every tab but the first, bar stays mounted', async () => {
@@ -277,7 +277,8 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     await step('the removed tabs are collectable', async () => expect(await retained(refs)).toBe(0));
     await step('and so are the menu copies of them', async () => expect(await retained(cloneRefs)).toBe(0));
   }
-}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
+}`,...v.parameters?.docs?.source},description:{story:`removed tabs must not be retained by overflow state.
+keeping the bar mounted exposes those leaks.`,...v.parameters?.docs?.description}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div
             class="box"
@@ -300,8 +301,10 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     const bar = next(canvasElement),
       row = box(canvasElement);
 
-    // top bars need the tab host to shrink.
-    // otherwise it spills instead of overflowing.
+    /**
+     * top bars need the tab host to shrink.
+     * otherwise it spills instead of overflowing.
+     */
     await step('the bar shrinks into the row instead of spilling', async () => {
       await waitFor(() => expect(bar.getBoundingClientRect().right).toBeLessThanOrEqual(row.getBoundingClientRect().right + 1));
     });
