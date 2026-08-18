@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-U3urd1-C.js";import{t as r}from"./next-B1lK1ZRs.js";import{d as i,f as a,i as o,p as s,s as c}from"./overflow-helpers-Bv637ivw.js";var l,u,d,f,p,m,h,g,_,v,y,b,x;e((()=>{n(),r(),o(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Overflow menu`},f=()=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-DOneIXTJ.js";import{t as r}from"./next-Da4QcpH0.js";import{d as i,f as a,i as o,p as s,s as c}from"./overflow-helpers-Ch4Fn9Sv.js";var l,u,d,f,p,m,h,g,_,v,y,b,x;e((()=>{n(),r(),o(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Overflow menu`},f=()=>t`
     <div class="box" style="width: 240px; overflow: hidden;">
         <cosmoz-tabs-next variant="underline">
             <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
@@ -29,22 +29,22 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     await open(tabs);
 
     // the last tab can change without reshuffling overflow.
-    const last = [...tabs.querySelectorAll<HTMLElement>("cosmoz-tab-next")].pop() as HTMLElement;
+    const last = [...tabs.querySelectorAll<HTMLElement>('cosmoz-tab-next')].pop() as HTMLElement;
     const row = copies(tabs).at(-1) as HTMLElement;
-    await step("focus the last menu row", async () => {
+    await step('focus the last menu row', async () => {
       row.focus();
       expect(sr(tabs).activeElement).toBe(row);
     });
-    await step("a badge lands on the copy without replacing it", async () => {
-      last.setAttribute("badge", "9");
-      await waitFor(() => expect(copies(tabs).at(-1)?.getAttribute("badge")).toBe("9"));
+    await step('a badge lands on the copy without replacing it', async () => {
+      last.setAttribute('badge', '9');
+      await waitFor(() => expect(copies(tabs).at(-1)?.getAttribute('badge')).toBe('9'));
       expect(copies(tabs).at(-1)).toBe(row);
       expect(row.isConnected).toBe(true);
     });
-    await step("and the row still has focus", async () => expect(sr(tabs).activeElement).toBe(row));
-    await step("a relabel also lands in place", async () => {
-      last.textContent = "Files";
-      await waitFor(() => expect(copies(tabs).at(-1)?.textContent?.trim()).toBe("Files"));
+    await step('and the row still has focus', async () => expect(sr(tabs).activeElement).toBe(row));
+    await step('a relabel also lands in place', async () => {
+      last.textContent = 'Files';
+      await waitFor(() => expect(copies(tabs).at(-1)?.textContent?.trim()).toBe('Files'));
       expect(copies(tabs).at(-1)).toBe(row);
       expect(sr(tabs).activeElement).toBe(row);
     });
@@ -58,20 +58,20 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     const tabs = next(canvasElement),
       label = () => trigger(tabs).textContent?.trim();
     await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
-    await step("defaults to a label without the call site asking", async () => {
-      expect(label()).toBe("More");
+    await step('defaults to a label without the call site asking', async () => {
+      expect(label()).toBe('More');
     });
-    await step("the attribute overrides it", async () => {
-      tabs.setAttribute("more-label", "Mer");
-      await waitFor(() => expect(label()).toBe("Mer"));
+    await step('the attribute overrides it', async () => {
+      tabs.setAttribute('more-label', 'Mer');
+      await waitFor(() => expect(label()).toBe('Mer'));
     });
-    await step("and so does the property", async () => {
-      tabs.removeAttribute("more-label");
+    await step('and so does the property', async () => {
+      tabs.removeAttribute('more-label');
       (tabs as HTMLElement & {
         moreLabel?: string;
-      }).moreLabel = "Fler";
+      }).moreLabel = 'Fler';
       await settle();
-      expect(label()).toBe("Fler");
+      expect(label()).toBe('Fler');
     });
   }
 }`,...g.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
@@ -82,20 +82,20 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
   }) => {
     const tabs = next(canvasElement);
     await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
-    const off = () => copies(tabs).find(c => c.hasAttribute("disabled"));
-    const on = () => copies(tabs).find(c => !c.hasAttribute("disabled"));
-    await step("a disabled copy is skipped and announced", async () => {
-      expect(off()?.getAttribute("tabindex")).toBe("-1");
-      expect(off()?.getAttribute("aria-disabled")).toBe("true");
+    const off = () => copies(tabs).find(c => c.hasAttribute('disabled'));
+    const on = () => copies(tabs).find(c => !c.hasAttribute('disabled'));
+    await step('a disabled copy is skipped and announced', async () => {
+      expect(off()?.getAttribute('tabindex')).toBe('-1');
+      expect(off()?.getAttribute('aria-disabled')).toBe('true');
     });
-    await step("an enabled copy is not", async () => {
-      expect(on()?.getAttribute("tabindex")).toBe("0");
-      expect(on()?.hasAttribute("aria-disabled")).toBe(false);
+    await step('an enabled copy is not', async () => {
+      expect(on()?.getAttribute('tabindex')).toBe('0');
+      expect(on()?.hasAttribute('aria-disabled')).toBe(false);
     });
-    await step("and it follows the tab, not just the first copy", async () => {
-      const attachments = tabs.querySelector("[name=attachments]") as HTMLElement;
-      attachments.removeAttribute("disabled");
-      await waitFor(() => expect(copies(tabs).find(c => c.getAttribute("name") === "attachments")?.getAttribute("tabindex")).toBe("0"));
+    await step('and it follows the tab, not just the first copy', async () => {
+      const attachments = tabs.querySelector('[name=attachments]') as HTMLElement;
+      attachments.removeAttribute('disabled');
+      await waitFor(() => expect(copies(tabs).find(c => c.getAttribute('name') === 'attachments')?.getAttribute('tabindex')).toBe('0'));
     });
   }
 }`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
@@ -107,11 +107,11 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     const tabs = next(canvasElement);
     await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
     const row = copies(tabs).at(-1) as HTMLElement;
-    const original = tabs.querySelector(\`[name=\${row.getAttribute("name")}]\`) as HTMLElement;
+    const original = tabs.querySelector(\`[name=\${row.getAttribute('name')}]\`) as HTMLElement;
     let seen: MouseEvent | undefined;
-    original.addEventListener("click", e => seen = e as MouseEvent);
-    await step("a modified click stays modified", async () => {
-      row.dispatchEvent(new MouseEvent("click", {
+    original.addEventListener('click', e => seen = e as MouseEvent);
+    await step('a modified click stays modified', async () => {
+      row.dispatchEvent(new MouseEvent('click', {
         bubbles: true,
         composed: true,
         ctrlKey: true
@@ -119,17 +119,17 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
       await settle(4);
       expect(seen?.ctrlKey).toBe(true);
     });
-    await step("and leaves the menu open, having selected nothing", async () => expect(sr(tabs).querySelector(".more")?.hasAttribute("opened")).toBe(false));
-    await step("a plain click arrives plain", async () => {
+    await step('and leaves the menu open, having selected nothing', async () => expect(sr(tabs).querySelector('.more')?.hasAttribute('opened')).toBe(false));
+    await step('a plain click arrives plain', async () => {
       seen = undefined;
       row.click();
       await waitFor(() => expect(seen).toBeTruthy());
       expect(seen?.ctrlKey).toBe(false);
       expect(seen?.button).toBe(0);
     });
-    await step("cancelling the forward cancels the copy too", async () => {
-      original.addEventListener("click", e => e.preventDefault());
-      const own = new MouseEvent("click", {
+    await step('cancelling the forward cancels the copy too', async () => {
+      original.addEventListener('click', e => e.preventDefault());
+      const own = new MouseEvent('click', {
         bubbles: true,
         composed: true,
         cancelable: true
@@ -146,17 +146,17 @@ import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./ifr
     step
   }) => {
     const tabs = next(canvasElement);
-    await waitFor(() => expect(tabs.querySelectorAll("cosmoz-tab-next[overflowing]").length).toBeGreaterThan(0));
-    const victim = tabs.querySelector("cosmoz-tab-next[overflowing]") as HTMLElement;
-    await step("re-slotting it out of the bar clears the mark", async () => {
-      victim.setAttribute("slot", "stats");
-      await waitFor(() => expect(victim.hasAttribute("overflowing")).toBe(false));
-      expect(getComputedStyle(victim).visibility).not.toBe("hidden");
+    await waitFor(() => expect(tabs.querySelectorAll('cosmoz-tab-next[overflowing]').length).toBeGreaterThan(0));
+    const victim = tabs.querySelector('cosmoz-tab-next[overflowing]') as HTMLElement;
+    await step('re-slotting it out of the bar clears the mark', async () => {
+      victim.setAttribute('slot', 'stats');
+      await waitFor(() => expect(victim.hasAttribute('overflowing')).toBe(false));
+      expect(getComputedStyle(victim).visibility).not.toBe('hidden');
     });
-    await step("removing one from the DOM clears it too", async () => {
-      const next2 = tabs.querySelector("cosmoz-tab-next[overflowing]") as HTMLElement;
+    await step('removing one from the DOM clears it too', async () => {
+      const next2 = tabs.querySelector('cosmoz-tab-next[overflowing]') as HTMLElement;
       next2.remove();
-      await waitFor(() => expect(next2.hasAttribute("overflowing")).toBe(false));
+      await waitFor(() => expect(next2.hasAttribute('overflowing')).toBe(false));
     });
   }
 }`,...b.parameters?.docs?.source}}},x=[`AnOpenMenuKeepsFocusWhenATabChanges`,`TheMoreLabelIsTranslatedAndOverridable`,`DisabledRowsAreOutOfTheTabOrder`,`ForwardedClicksKeepTheirMouseSemantics`,`AMarkIsRemovedWhenATabLeavesTheBar`]}))();export{b as AMarkIsRemovedWhenATabLeavesTheBar,h as AnOpenMenuKeepsFocusWhenATabChanges,v as DisabledRowsAreOutOfTheTabOrder,y as ForwardedClicksKeepTheirMouseSemantics,g as TheMoreLabelIsTranslatedAndOverridable,x as __namedExportsOrder,d as default};

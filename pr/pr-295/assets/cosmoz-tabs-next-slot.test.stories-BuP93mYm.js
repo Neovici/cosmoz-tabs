@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-U3urd1-C.js";import{T as r,w as i}from"./untitled-CvpMlQeV.js";import{t as a}from"./next-B1lK1ZRs.js";import{d as o,f as s,i as c}from"./overflow-helpers-Bv637ivw.js";var l,u,d,f,p;e((()=>{i(),n(),a(),c(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-next-slot-wrapper`)||customElements.define(`cosmoz-tabs-next-slot-wrapper`,r(()=>t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{J as t,Y as n}from"./iframe-DOneIXTJ.js";import{T as r,w as i}from"./untitled-tiq9wtpx.js";import{t as a}from"./next-Da4QcpH0.js";import{d as o,f as s,i as c}from"./overflow-helpers-Ch4Fn9Sv.js";var l,u,d,f,p;e((()=>{i(),n(),a(),c(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-next-slot-wrapper`)||customElements.define(`cosmoz-tabs-next-slot-wrapper`,r(()=>t`
                 <cosmoz-tabs-next variant="underline">
                     <cosmoz-tab-next name="tab0" active>Tab0</cosmoz-tab-next>
                     <slot></slot>
