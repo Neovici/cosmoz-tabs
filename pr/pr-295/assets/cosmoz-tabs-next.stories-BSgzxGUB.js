@@ -1,6 +1,6 @@
-import{i as e}from"./preload-helper-usAeo7Bx.js";import{K as t,U as n,q as r}from"./iframe-Bk-WGUUu.js";import{I as i,T as a,g as o,l as s,r as c,t as l,w as u}from"./untitled-BRe1fzFe.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-CEWDFTOw.js";import{a as v,i as y,r as b,t as x}from"./next-cnuKS5JJ.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W,G,K;e((()=>{l(),u(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** - it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return t`
+import{i as e}from"./preload-helper-usAeo7Bx.js";import{G as t,J as n,Y as r}from"./iframe-U3urd1-C.js";import{I as i,T as a,g as o,l as s,r as c,t as l,w as u}from"./untitled-CvpMlQeV.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-DlmRQM_f.js";import{a as v,i as y,r as b,t as x}from"./next-B1lK1ZRs.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W,G,K;e((()=>{l(),u(),r(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** - it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let t=e.getAttribute(`variant`)||`underline`,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return n`
         ${f}
-        <cosmoz-tabs-next variant=${n}>
+        <cosmoz-tabs-next variant=${t}>
             <cosmoz-tab-next
                 data-name="overview"
                 ?active=${r===`overview`}
@@ -42,11 +42,11 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
     ?active=\${active === 'rows'} @click=\${select}>Invoice rows</cosmoz-tab-next>
   <!-- … -->
 </cosmoz-tabs-next>
-<div>\${panels[active]()}</div>`}}},render:({variant:e})=>t`<cosmoz-tabs-next-default-demo
+<div>\${panels[active]()}</div>`}}},render:({variant:e})=>n`<cosmoz-tabs-next-default-demo
             variant=${e}
-        ></cosmoz-tabs-next-default-demo>`},E=e=>{let n=e.getAttribute(`variant`)||`underline`,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return t`
+        ></cosmoz-tabs-next-default-demo>`},E=e=>{let t=e.getAttribute(`variant`)||`underline`,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return n`
         ${f}
-        <cosmoz-tabs-next variant=${n}>
+        <cosmoz-tabs-next variant=${t}>
             <cosmoz-tab-next
                 data-name="overview"
                 ?active=${r===`overview`}
@@ -77,7 +77,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>
-<div>\${panels[active]()}</div>`},description:{story:"The two Untitled UI looks: `underline` (default) and `brand` (pill). Each bar is independently interactive."}}},render:()=>t`
+<div>\${panels[active]()}</div>`},description:{story:"The two Untitled UI looks: `underline` (default) and `brand` (pill). Each bar is independently interactive."}}},render:()=>n`
         <div class="story-stack">
             <div>
                 <div class="story-label">variant="underline"</div>
@@ -92,7 +92,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 ></cosmoz-tabs-next-variants-bar>
             </div>
         </div>
-    `},O=()=>{let[e,n]=i(`overview`),r=e=>n(e.currentTarget.dataset.name);return t`
+    `},O=()=>{let[e,t]=i(`overview`),r=e=>t(e.currentTarget.dataset.name);return n`
         ${f}
         <cosmoz-tabs-next variant="brand">
             <cosmoz-tab-next
@@ -124,7 +124,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
     ?active=\${active === 'overview'} @click=\${select}>
     \${receiptIcon({ slot: 'icon' })} Overview
   </cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:'Leading icons via the `icon` slot - slot an icon template carrying `slot="icon"` into each `<cosmoz-tab-next>`.'}}},render:()=>t`<cosmoz-tabs-next-icons-demo></cosmoz-tabs-next-icons-demo>`},A=()=>{let[e,n]=i(`overview`),r=e=>{let t=e.currentTarget;t.hasAttribute(`disabled`)||n(t.dataset.name)};return t`
+</cosmoz-tabs-next>`},description:{story:'Leading icons via the `icon` slot - slot an icon template carrying `slot="icon"` into each `<cosmoz-tab-next>`.'}}},render:()=>n`<cosmoz-tabs-next-icons-demo></cosmoz-tabs-next-icons-demo>`},A=()=>{let[e,t]=i(`overview`),r=e=>{let n=e.currentTarget;n.hasAttribute(`disabled`)||t(n.dataset.name)};return n`
         ${f}
         <cosmoz-tabs-next variant="underline">
             <cosmoz-tab-next
@@ -160,7 +160,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
   <cosmoz-tab-next data-name="accounting" disabled @click=\${select}>Accounting</cosmoz-tab-next>
   <cosmoz-tab-next data-name="history" hidden @click=\${select}>History</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"A `disabled` tab cannot be activated (the click handler guards it); a `hidden` tab is removed from the bar."}}},render:()=>t`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>`},M=()=>{let[e,n]=i(`overview`),r=e=>n(e.currentTarget.dataset.name);return t`
+</cosmoz-tabs-next>`},description:{story:"A `disabled` tab cannot be activated (the click handler guards it); a `hidden` tab is removed from the bar."}}},render:()=>n`<cosmoz-tabs-next-states-demo></cosmoz-tabs-next-states-demo>`},M=()=>{let[e,t]=i(`overview`),r=e=>t(e.currentTarget.dataset.name);return n`
         ${f}
         <cosmoz-tabs-next compact-width>
             <cosmoz-tab-next
@@ -198,33 +198,33 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 <cosmoz-tabs-next variant="underline" compact-width>
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"Tabs spread evenly across the available width by default. Add the `compact-width` attribute to size them to their content (they hug their labels and align to the start)."}}},render:()=>t`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`},P=()=>{let e=v(h);return t`
+</cosmoz-tabs-next>`},description:{story:"Tabs spread evenly across the available width by default. Add the `compact-width` attribute to size them to their content (they hug their labels and align to the start)."}}},render:()=>n`<cosmoz-tabs-next-compactwidth-demo></cosmoz-tabs-next-compactwidth-demo>`},P=()=>{let e=v(h);return n`
         ${f}
         <cosmoz-tabs-next variant="brand">
             ${y({...e,variant:`brand`})}
         </cosmoz-tabs-next>
-        ${b(e,e=>e.isActive?t`<div style="padding-top: 20px">${e.render()}</div>`:n)}
+        ${b(e,e=>e.isActive?n`<div style="padding-top: 20px">${e.render()}</div>`:t)}
     `},customElements.get(`cosmoz-tabs-next-data-demo`)||customElements.define(`cosmoz-tabs-next-data-demo`,a(P)),F={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs);
 
 <cosmoz-tabs-next variant="brand">
   \${renderTabs({ ...model, variant: 'brand' })}
 </cosmoz-tabs-next>
 \${renderActivated(model, (tab) =>
-  tab.isActive ? tab.render() : nothing)}`},description:{story:"Driven entirely from a data array with `useTabs(tabs)` -> `renderTabs(model)` for the bar and `renderActivated(model, …)` for the panels (which keeps already-visited panels mounted). Pass `{ hashParam }` to `useTabs` to bind selection to the URL (see *Hash routing*)."}}},render:()=>t`<cosmoz-tabs-next-data-demo></cosmoz-tabs-next-data-demo>`},I=()=>{let e=v(h,{hashParam:`ntab`});return t`
+  tab.isActive ? tab.render() : nothing)}`},description:{story:"Driven entirely from a data array with `useTabs(tabs)` -> `renderTabs(model)` for the bar and `renderActivated(model, …)` for the panels (which keeps already-visited panels mounted). Pass `{ hashParam }` to `useTabs` to bind selection to the URL (see *Hash routing*)."}}},render:()=>n`<cosmoz-tabs-next-data-demo></cosmoz-tabs-next-data-demo>`},I=()=>{let e=v(h,{hashParam:`ntab`});return n`
         ${f}
         <cosmoz-tabs-next variant="brand">
             ${y({...e,variant:`brand`})}
         </cosmoz-tabs-next>
-        ${b(e,e=>e.isActive?t`<div style="padding-top: 20px">${e.render()}</div>`:n)}
+        ${b(e,e=>e.isActive?n`<div style="padding-top: 20px">${e.render()}</div>`:t)}
     `},customElements.get(`cosmoz-tabs-next-hash-demo`)||customElements.define(`cosmoz-tabs-next-hash-demo`,a(I)),L={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs, { hashParam: 'ntab' });
 
 <cosmoz-tabs-next variant="brand">
   \${renderTabs({ ...model, variant: 'brand' })}
 </cosmoz-tabs-next>
 \${renderActivated(model, (tab) =>
-  tab.isActive ? tab.render() : nothing)}`},description:{story:'Bind selection to the URL by passing `{ hashParam }` to `useTabs` (here `useTabs(tabs, { hashParam: "ntab" })`) - deep-links and the back button work, just like the legacy family. Note: inside Storybook the visible address bar belongs to the **manager**, while the component binds to the **preview iframe** URL, so the change is not visible here. Open this story in a new tab / isolation mode to see the real URL change and the back button.'}}},render:()=>t`<cosmoz-tabs-next-hash-demo></cosmoz-tabs-next-hash-demo>`},R=e=>{let n=e.getAttribute(`vars`)||``,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return t`
+  tab.isActive ? tab.render() : nothing)}`},description:{story:'Bind selection to the URL by passing `{ hashParam }` to `useTabs` (here `useTabs(tabs, { hashParam: "ntab" })`) - deep-links and the back button work, just like the legacy family. Note: inside Storybook the visible address bar belongs to the **manager**, while the component binds to the **preview iframe** URL, so the change is not visible here. Open this story in a new tab / isolation mode to see the real URL change and the back button.'}}},render:()=>n`<cosmoz-tabs-next-hash-demo></cosmoz-tabs-next-hash-demo>`},R=e=>{let t=e.getAttribute(`vars`)||``,[r,a]=i(`overview`),o=e=>a(e.currentTarget.dataset.name);return n`
         ${f}
-        <cosmoz-tabs-next variant="brand" style=${n}>
+        <cosmoz-tabs-next variant="brand" style=${t}>
             <cosmoz-tab-next
                 data-name="overview"
                 ?active=${r===`overview`}
@@ -256,7 +256,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"The selected pill **and** the badge are a solid brand fill - `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` - so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>t`
+</cosmoz-tabs-next>`},description:{story:"The selected pill **and** the badge are a solid brand fill - `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` - so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>n`
         <div class="story-stack">
             <div>
                 <div class="story-label">brand (default)</div>
@@ -275,7 +275,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 ></cosmoz-tabs-next-colors-bar>
             </div>
         </div>
-    `},B=()=>{let[e,n]=i(`overview`),r=e=>n(e.currentTarget.dataset.name);return t`
+    `},B=()=>{let[e,t]=i(`overview`),r=e=>t(e.currentTarget.dataset.name);return n`
         ${f}
         <cosmoz-tabs-next
             variant="brand"
@@ -312,7 +312,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"A subtle neutral pill - point `--cz-color-bg-brand-solid` at `--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at `--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair keeps its contrast in both light and dark themes."}}},render:()=>t`<cosmoz-tabs-next-minimal-demo></cosmoz-tabs-next-minimal-demo>`},H={parameters:{docs:{description:{story:"A bench of selected-pill / badge color configurations for checking light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` (the neutral one also overrides `--cz-color-text-on-brand`); the on-brand text follows automatically. Toggle the theme in the toolbar to verify contrast."}}},render:()=>t`
+</cosmoz-tabs-next>`},description:{story:"A subtle neutral pill - point `--cz-color-bg-brand-solid` at `--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at `--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair keeps its contrast in both light and dark themes."}}},render:()=>n`<cosmoz-tabs-next-minimal-demo></cosmoz-tabs-next-minimal-demo>`},H={parameters:{docs:{description:{story:"A bench of selected-pill / badge color configurations for checking light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` (the neutral one also overrides `--cz-color-text-on-brand`); the on-brand text follows automatically. Toggle the theme in the toolbar to verify contrast."}}},render:()=>n`
         <div class="story-stack">
             <div>
                 <div class="story-label">brand (default)</div>
@@ -343,7 +343,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 ></cosmoz-tabs-next-colors-bar>
             </div>
         </div>
-    `},U=t`<style>
+    `},U=n`<style>
     .resizable {
         resize: horizontal;
         overflow: auto;
@@ -352,15 +352,15 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
         max-width: 100%;
         padding-bottom: 10px;
     }
-</style>`,W=()=>{let e=v(h);return t`
+</style>`,W=()=>{let e=v(h);return n`
         ${f} ${U}
         <div class="resizable">
             <cosmoz-tabs-next variant="underline">
                 ${y({...e,variant:`underline`})}
             </cosmoz-tabs-next>
         </div>
-        ${b(e,e=>e.isActive?t`<div style="padding-top: 20px">${e.render()}</div>`:n)}
-    `},customElements.get(`cosmoz-tabs-next-overflow-demo`)||customElements.define(`cosmoz-tabs-next-overflow-demo`,a(W)),G={parameters:{docs:{description:{story:`Tabs that do not fit are collected into an overflow menu at the end of the bar instead of being reachable only by horizontal scrolling. An overflowing tab is rendered twice - clipped in the bar and, as a copy, as a row of the menu - so it keeps its icon, badge and active state. **Drag the resize handle** in the bottom-right corner of the box to see tabs move in and out of the menu. When the selected tab is one of the overflowing ones, the trigger itself is highlighted.`}}},render:()=>t`<cosmoz-tabs-next-overflow-demo></cosmoz-tabs-next-overflow-demo>`},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
+        ${b(e,e=>e.isActive?n`<div style="padding-top: 20px">${e.render()}</div>`:t)}
+    `},customElements.get(`cosmoz-tabs-next-overflow-demo`)||customElements.define(`cosmoz-tabs-next-overflow-demo`,a(W)),G={parameters:{docs:{description:{story:`Tabs that do not fit are collected into an overflow menu at the end of the bar instead of being reachable only by horizontal scrolling. An overflowing tab is rendered twice - clipped in the bar and, as a copy, as a row of the menu - so it keeps its icon, badge and active state. **Drag the resize handle** in the bottom-right corner of the box to see tabs move in and out of the menu. When the selected tab is one of the overflowing ones, the trigger itself is highlighted.`}}},render:()=>n`<cosmoz-tabs-next-overflow-demo></cosmoz-tabs-next-overflow-demo>`},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
   args: {
     variant: 'underline'
   },
