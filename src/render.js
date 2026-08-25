@@ -133,7 +133,7 @@ const style = `
 					: ''}
 				<span>${tab.heading}</span>
 				${tab.badge
-					? html`<div class="badge" title=${tab.badge}>${tab.badge}</div>`
+					? html`<div class="badge" title=${tab.badge} aria-hidden="true">${tab.badge}</div>`
 					: ''}
 			</a>`;
 		};
