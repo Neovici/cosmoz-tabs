@@ -1,16 +1,12 @@
 node_modules/
 coverage/
+dist/
 /storybook-static/
 debug.log
 yarn-error.log
 .eslintcache
 .DS_Store
 .idea
-
-# Codecov uploader artifacts
-codecov
-codecov.SHA256SUM
-codecov.SHA256SUM.sig
 .npmrc
 codecov
 codecov.SHA256SUM

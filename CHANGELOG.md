@@ -1,5 +1,3 @@
-## [9.3.3](https://github.com/Neovici/cosmoz-tabs/compare/v9.3.2...v9.3.3) (2026-01-28)
-
 ## 9.3.4
 
 ### Patch Changes

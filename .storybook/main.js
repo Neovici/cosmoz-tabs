@@ -1,23 +1,15 @@
-import esbuild from 'rollup-plugin-esbuild';
-
-/** @type { import('@web/storybook-framework-web-components').StorybookConfig } */
-const config = {
-	stories: ['../stories/**/*.stories.{js,ts,mdx}'],
-	addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
+export default {
+	stories: ['../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+	addons: [
+		'@storybook/addon-docs',
+		'@storybook/addon-a11y',
+		'@storybook/addon-vitest',
+	],
 	framework: {
-		name: '@web/storybook-framework-web-components',
+		name: '@storybook/web-components-vite',
+		options: {},
 	},
 	docs: {
-		autodocs: true,
-	},
-	/* Try to make the build parse TS files */
-	async rollupFinal(config) {
-		// add extra configuration for rollup
-		// e.g. a new plugin
-		config.plugins.push(esbuild({}));
-
-		return config;
+		autodocs: 'tag',
 	},
 };
-
-export default config;

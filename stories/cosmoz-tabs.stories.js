@@ -1,119 +1,528 @@
-import { html } from '@pionjs/pion';
-import { until } from 'lit-html/directives/until.js';
+import {
+	calculatorIcon,
+	clockRewindIcon,
+	listIcon,
+	messageChatCircleIcon,
+	paperclipIcon,
+	receiptIcon,
+} from '@neovici/cosmoz-icons/untitled';
+import { html } from 'lit-html';
 
 import '../src/cosmoz-tabs';
-import '@polymer/iron-list';
+import {
+	accounting,
+	attachments,
+	comments,
+	history,
+	overview,
+	panelStyles,
+	rows,
+} from './demo-content';
 
 export default {
-	title: 'Tabs',
+	title: 'Tabs/cosmoz-tabs',
 	component: 'cosmoz-tabs',
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component:
+					'Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the ' +
+					'container renders the bar and switches the panels. Selection works ' +
+					'out of the box (no wiring needed).',
+			},
+		},
+		controls: { disable: true },
+	},
+	argTypes: {
+		variant: {
+			control: 'select',
+			options: ['underline', 'brand'],
+			description: 'Untitled UI tab style',
+			table: { defaultValue: { summary: 'underline' } },
+		},
+	},
 };
 
-const basic = () =>
-		html` <cosmoz-tabs .selected=${'tab2'}>
-			<cosmoz-tab heading="Tab1" name="tab1">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-					massa ante, maximus in consectetur non, imperdiet ullamcorper risus.
-					Donec vulputate justo nibh. Pellentesque habitant morbi tristique
-					senectus et netus et malesuada fames ac turpis egestas. Integer
-					tempor, lorem eget porta maximus, lectus ligula varius eros, non
-					pharetra magna magna vel mauris. Mauris et nunc ligula. Donec quis
-					cursus eros. Nam fermentum dictum erat, quis suscipit dui. Etiam nec
-					velit tellus. Pellentesque sed porttitor orci. Cras eget imperdiet
-					libero.
-				</p>
+export const Default = {
+	args: { variant: 'underline' },
+	parameters: { controls: { disable: false } },
+	render: ({ variant }) => html`
+		${panelStyles}
+		<cosmoz-tabs variant=${variant} .selected=${'overview'}>
+			<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+				${overview()}
 			</cosmoz-tab>
-			<cosmoz-tab heading="Tab2" name="tab2">
-				<p>
-					Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum
-					pharetra sem, vitae tincidunt est mattis tristique. Donec blandit
-					nulla non tellus tincidunt pretium. Phasellus et purus id dolor
-					venenatis mollis. Vivamus malesuada risus lorem, vitae iaculis mauris
-					viverra non. Integer quam sapien, pulvinar ut porta ac, semper in
-					velit. Donec consectetur, odio a efficitur maximus, nisl felis egestas
-					sapien, eu ullamcorper elit arcu eget urna. Sed ullamcorper felis
-					nibh, in mattis diam iaculis id. Aenean consequat nulla justo, ac
-					commodo nulla congue non. Nam et dui in nunc mattis gravida rutrum ac
-					mauris.
-				</p>
+			<cosmoz-tab
+				name="rows"
+				heading="Invoice rows"
+				badge="5"
+				.icon=${listIcon()}
+			>
+				${rows()}
 			</cosmoz-tab>
-			<cosmoz-tab heading="Tab3" name="tab3">
-				<p>
-					Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc.
-					Vestibulum accumsan, sapien eu gravida consectetur, purus felis
-					lobortis massa, id consequat eros lacus sit amet quam. Nunc bibendum
-					elit turpis. Ut et convallis quam, ut elementum enim. Aenean semper
-					mattis enim quis luctus. Vivamus libero urna, dictum non lacus a,
-					porta consequat lacus. Etiam eu nisi diam. Nam varius non ex vitae
-					scelerisque.
-				</p>
+			<cosmoz-tab
+				name="accounting"
+				heading="Accounting"
+				.icon=${calculatorIcon()}
+			>
+				${accounting()}
 			</cosmoz-tab>
-		</cosmoz-tabs>`,
-	hash = () =>
-		html` <cosmoz-tabs hash-param="tab">
-			<cosmoz-tab heading="Tab1" name="tab0">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-					massa ante, maximus in consectetur non, imperdiet ullamcorper risus.
-					Donec vulputate justo nibh.
-				</p>
+			<cosmoz-tab name="history" heading="History" .icon=${clockRewindIcon()}>
+				${history()}
 			</cosmoz-tab>
-			<cosmoz-tab heading="Tab2" name="tab1">
-				<p>
-					Fusce consectetur nisi at felis finibus rutrum. Vestibulum fermentum
-					pharetra sem, vitae tincidunt est mattis tristique. Donec blandit
-					nulla non tellus tincidunt pretium.
-				</p>
+			<cosmoz-tab
+				name="comments"
+				heading="Comments"
+				badge="2"
+				.icon=${messageChatCircleIcon()}
+			>
+				${comments()}
 			</cosmoz-tab>
-			<cosmoz-tab heading="Tab3" name="tab2">
-				<p>
-					Etiam ante dolor, commodo non vestibulum vel, malesuada a nunc.
-					Vestibulum accumsan, sapien eu gravida consectetur, purus felis
-					lobortis massa, id consequat eros lacus sit amet quam.
-				</p>
+			<cosmoz-tab
+				name="attachments"
+				heading="Attachments"
+				badge="3"
+				.icon=${paperclipIcon()}
+			>
+				${attachments()}
 			</cosmoz-tab>
-		</cosmoz-tabs>`,
-	sizing = () =>
-		html`${until(
-			fetch('/node_modules/@polymer/iron-list/demo/data/contacts.json')
-				.then((r) => r.json())
-				.then(
-					(items) => html`
-	<cosmoz-tabs style="height: 400px">
-		<cosmoz-tab heading="Flex List" name="tab1">
-			<iron-list style="flex:1 0.000000001px;" .items=${items} as="item">
-				<template>
-					<div class="item">
-						<b>#[[index]] - [[item.index]] - [[item.name]]</b>
-						<p>[[item.longText]]</p>
+		</cosmoz-tabs>
+	`,
+};
+
+export const Variants = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'The two Untitled UI looks side by side: `underline` (default) and ' +
+					'`brand` (pill).',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<div class="story-stack">
+			<div>
+				<div class="story-label">variant="underline"</div>
+				<cosmoz-tabs variant="underline" .selected=${'overview'}>
+					<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="rows"
+						heading="Invoice rows"
+						badge="5"
+						.icon=${listIcon()}
+					>
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="accounting"
+						heading="Accounting"
+						.icon=${calculatorIcon()}
+					>
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+			<div>
+				<div class="story-label">variant="brand"</div>
+				<cosmoz-tabs variant="brand" .selected=${'overview'}>
+					<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="rows"
+						heading="Invoice rows"
+						badge="5"
+						.icon=${listIcon()}
+					>
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="accounting"
+						heading="Accounting"
+						.icon=${calculatorIcon()}
+					>
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+		</div>
+	`,
+};
+
+export const WithoutIcons = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'Headings only — icons are optional (set via the `.icon` property).',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<cosmoz-tabs variant="underline" .selected=${'overview'}>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+			<cosmoz-tab name="history" heading="History">${history()}</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+export const DisabledAndHidden = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A disabled tab is shown but not selectable; a hidden tab is removed ' +
+					'from the bar entirely.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<cosmoz-tabs variant="underline" .selected=${'overview'}>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting" disabled>
+				${accounting()}
+			</cosmoz-tab>
+			<cosmoz-tab name="history" heading="History" hidden>
+				${history()}
+			</cosmoz-tab>
+			<cosmoz-tab name="comments" heading="Comments" badge="2">
+				${comments()}
+			</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+export const HashRouting = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'With `hash-param` the active tab is bound to the URL hash ' +
+					'(e.g. `#tab=accounting`), so deep-links and the back button work. ' +
+					'Note: inside Storybook the visible address bar belongs to the ' +
+					'**manager**, while the component binds to the **preview iframe** URL, ' +
+					'so the change is not visible here. Open this story in a new tab / ' +
+					'isolation mode to see the real URL change and the back button.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<cosmoz-tabs variant="underline" hash-param="tab">
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+			<cosmoz-tab name="history" heading="History">${history()}</cosmoz-tab>
+			<cosmoz-tab name="comments" heading="Comments" badge="2">
+				${comments()}
+			</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+export const ManyTabs = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'When the bar overflows its container it scrolls horizontally and the ' +
+					'selected tab is scrolled into view.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<div style="max-width: 460px">
+			<cosmoz-tabs variant="brand" .selected=${'overview'}>
+				<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+					${overview()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="rows"
+					heading="Invoice rows"
+					badge="5"
+					.icon=${listIcon()}
+				>
+					${rows()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="accounting"
+					heading="Accounting"
+					.icon=${calculatorIcon()}
+				>
+					${accounting()}
+				</cosmoz-tab>
+				<cosmoz-tab name="history" heading="History" .icon=${clockRewindIcon()}>
+					${history()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="comments"
+					heading="Comments"
+					badge="2"
+					.icon=${messageChatCircleIcon()}
+				>
+					${comments()}
+				</cosmoz-tab>
+				<cosmoz-tab
+					name="attachments"
+					heading="Attachments"
+					badge="3"
+					.icon=${paperclipIcon()}
+				>
+					${attachments()}
+				</cosmoz-tab>
+				<cosmoz-tab name="ocr" heading="OCR">
+					<div class="panel">
+						<p>Raw OCR interpretation of the scanned document.</p>
 					</div>
-				</template>
-			</iron-list>
-		</cosmoz-tab>
-		<cosmoz-tab heading="Sized List" name="tab2">
-			<iron-list style="height: 300px;" .items=${items} as="item">
-				<template>
-					<div class="item">
-						<b>#[[index]] - [[item.index]] - [[item.name]]</b>
-						<p>[[item.longText]]</p>
+				</cosmoz-tab>
+				<cosmoz-tab name="matches" heading="Matches">
+					<div class="panel">
+						<p>Order / delivery lines matched to this invoice.</p>
 					</div>
-				</template>
-			</iron-list>
-		</cosmoz-tab>
-		<cosmoz-tab heading="Content" name="tab3">
-			${items.map(
-				(item, index) => html`
-					<div class="item">
-						<b>#${index}- ${item.name}</b>
-						<p>${item.longText}</p>
-					</div>
-				`,
+				</cosmoz-tab>
+			</cosmoz-tabs>
+		</div>
+	`,
+};
+
+export const WithTabCards = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A tab panel containing `cosmoz-tab-card` (collapsible cards) — a ' +
+					'common cosmoz-frontend pattern. Cards are sized via ' +
+					'`--cosmoz-tab-card-width` to fit their content.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<cosmoz-tabs variant="underline" .selected=${'overview'}>
+			<cosmoz-tab
+				name="overview"
+				heading="Overview"
+				style="--cosmoz-tab-card-width: 480px;"
+			>
+				<cosmoz-tab-card heading="Invoice details">
+					${overview()}
+				</cosmoz-tab-card>
+				<cosmoz-tab-card heading="Accounting" collapsable>
+					${accounting()}
+				</cosmoz-tab-card>
+				<cosmoz-tab-card heading="Attachments" collapsable collapsed>
+					${attachments()}
+				</cosmoz-tab-card>
+			</cosmoz-tab>
+			<cosmoz-tab name="history" heading="History">${history()}</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+export const CompactWidth = {
+	name: 'Compact width',
+	argTypes: {
+		variant: {
+			control: 'select',
+			options: ['brand', 'underline'],
+		},
+	},
+	args: { variant: 'brand' },
+	parameters: {
+		controls: { disable: false },
+		docs: {
+			description: {
+				story:
+					'Tabs spread evenly across the available width by default (the legacy ' +
+					'always-spread behavior). Add the `compact-width` attribute to size ' +
+					'them to their content (they hug their labels and align to the start).',
+			},
+		},
+	},
+	render: ({ variant }) => html`
+		${panelStyles}
+		<cosmoz-tabs variant=${variant} .selected=${'overview'} compact-width>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+			<cosmoz-tab name="history" heading="History">${history()}</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+export const SelectedColors = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'The selected pill **and** the badge are a solid brand fill — ' +
+					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
+					'text stays legible in both light and dark themes. Override ' +
+					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor ' +
+					'them (e.g. to a success/error solid); the on-brand text follows.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<div class="story-stack">
+			<div>
+				<div class="story-label">brand (default)</div>
+				<cosmoz-tabs variant="brand" .selected=${'overview'}>
+					<cosmoz-tab name="overview" heading="Overview">
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab name="accounting" heading="Accounting">
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+			<div>
+				<div class="story-label">success</div>
+				<cosmoz-tabs
+					variant="brand"
+					.selected=${'overview'}
+					style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
+				>
+					<cosmoz-tab name="overview" heading="Overview">
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab name="accounting" heading="Accounting">
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+			<div>
+				<div class="story-label">error</div>
+				<cosmoz-tabs
+					variant="brand"
+					.selected=${'overview'}
+					style="--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);"
+				>
+					<cosmoz-tab name="overview" heading="Overview">
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab name="accounting" heading="Accounting">
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+		</div>
+	`,
+};
+
+export const Minimal = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A subtle neutral pill — point `--cz-color-bg-brand-solid` at ' +
+					'`--cz-color-bg-tertiary` and `--cz-color-text-on-brand` at ' +
+					'`--cz-color-text-primary`. Unlike a brand *tint*, this neutral pair ' +
+					'keeps its contrast in both light and dark themes.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<cosmoz-tabs
+			variant="brand"
+			.selected=${'overview'}
+			style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);"
+		>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+		</cosmoz-tabs>
+	`,
+};
+
+const themedTabs = (label, vars) => html`
+	<div>
+		<div class="story-label">${label}</div>
+		<cosmoz-tabs variant="brand" .selected=${'overview'} style=${vars}>
+			<cosmoz-tab name="overview" heading="Overview">${overview()}</cosmoz-tab>
+			<cosmoz-tab name="rows" heading="Invoice rows" badge="5">
+				${rows()}
+			</cosmoz-tab>
+			<cosmoz-tab name="accounting" heading="Accounting">
+				${accounting()}
+			</cosmoz-tab>
+		</cosmoz-tabs>
+	</div>
+`;
+
+export const Theming = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'A bench of selected-pill / badge color configurations for checking ' +
+					'light **and** dark themes. Each recolors `--cz-color-bg-brand-solid` ' +
+					'(the neutral one also overrides `--cz-color-text-on-brand`); the ' +
+					'on-brand text follows automatically. Toggle the theme in the toolbar ' +
+					'to verify contrast.',
+			},
+		},
+	},
+	render: () => html`
+		${panelStyles}
+		<div class="story-stack">
+			${themedTabs('brand (default)', '')}
+			${themedTabs(
+				'success',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);'
 			)}
-			</p>
-		</cosmoz-tab>
-	</cosmoz-tabs>`,
-				),
-			'Loading',
-		)}`;
-export { basic, hash, sizing };
+			${themedTabs(
+				'error',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);'
+			)}
+			${themedTabs(
+				'warning',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);'
+			)}
+			${themedTabs(
+				'neutral',
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);'
+			)}
+		</div>
+	`,
+};
