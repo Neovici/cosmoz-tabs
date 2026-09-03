@@ -1,3 +1,20 @@
+## 10.0.0
+
+### Major Changes
+
+- f644d38: Redesign tabs onto the Untitled UI design system.
+
+### Minor Changes
+
+- f644d38: Tokenize cosmoz-tab-card heading typography (font-size/weight/line-height) and header min-height
+  via additive --cosmoz-tab-card-\* vars; defaults unchanged.
+
+### Patch Changes
+
+- f644d38: Add padding and gap to bar and tabs
+- f644d38: Add padding to main wrapper, and set primary background color
+- f644d38: Add gap between tabs and content, and remove block padding
+
 ## 9.3.4
 
 ### Patch Changes
