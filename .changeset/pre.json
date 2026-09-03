@@ -1,16 +1,4 @@
 {
-  "mode": "pre",
-  "tag": "beta",
-  "initialVersions": {
-    "@neovici/cosmoz-tabs": "10.0.0-beta.1"
-  },
-  "changesets": [
-    "brown-dragons-hug",
-    "floppy-dolls-pick",
-    "pretty-moons-win",
-    "redesign-tabs-untitled-ui",
-    "seven-apples-rhyme",
-    "tokenize-tab-card-heading",
-    "true-trees-tickle"
-  ]
+	"mode": "exit",
+	"tag": "beta"
 }
