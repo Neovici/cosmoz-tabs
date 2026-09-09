@@ -34,10 +34,10 @@ export const TabsHaveLinks: Story = {
 	play: async ({ canvasElement }) => {
 		const tabs = getTabs(canvasElement);
 		await waitFor(() =>
-			expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(3)
+			expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(3),
 		);
 		['tab0', 'tab1', 'tab2'].forEach((name, i) =>
-			expect(barTab(tabs, i).getAttribute('href')).toContain(`tab=${name}`)
+			expect(barTab(tabs, i).getAttribute('href')).toContain(`tab=${name}`),
 		);
 	},
 };

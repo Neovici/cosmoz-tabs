@@ -37,7 +37,7 @@ export default {
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['underline', 'brand'],
+			options: ['underline', 'brand', 'segmented'],
 			description: 'Untitled UI tab style',
 			table: { defaultValue: { summary: 'underline' } },
 		},
@@ -96,8 +96,9 @@ export const Variants = {
 		docs: {
 			description: {
 				story:
-					'The two Untitled UI looks side by side: `underline` (default) and ' +
-					'`brand` (pill).',
+					'The three Untitled UI looks side by side: `underline` (default), ' +
+					'`brand` (solid pill) and `segmented` (a track holding a raised, ' +
+					'selected pill).',
 			},
 		},
 	},
@@ -130,6 +131,29 @@ export const Variants = {
 			<div>
 				<div class="story-label">variant="brand"</div>
 				<cosmoz-tabs variant="brand" .selected=${'overview'}>
+					<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
+						${overview()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="rows"
+						heading="Invoice rows"
+						badge="5"
+						.icon=${listIcon()}
+					>
+						${rows()}
+					</cosmoz-tab>
+					<cosmoz-tab
+						name="accounting"
+						heading="Accounting"
+						.icon=${calculatorIcon()}
+					>
+						${accounting()}
+					</cosmoz-tab>
+				</cosmoz-tabs>
+			</div>
+			<div>
+				<div class="story-label">variant="segmented"</div>
+				<cosmoz-tabs variant="segmented" compact-width .selected=${'overview'}>
 					<cosmoz-tab name="overview" heading="Overview" .icon=${receiptIcon()}>
 						${overview()}
 					</cosmoz-tab>

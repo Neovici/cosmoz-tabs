@@ -14,8 +14,8 @@ if (!customElements.get('cosmoz-tabs-slot-wrapper')) {
 					<cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
 					<slot></slot>
 				</cosmoz-tabs>
-			`
-		)
+			`,
+		),
 	);
 }
 
@@ -37,7 +37,7 @@ export const CollectsTabsThroughNestedSlot: Story = {
 	play: async ({ canvasElement, step }) => {
 		const wrapper = canvasElement.querySelector('cosmoz-tabs-slot-wrapper')!;
 		const tabs = wrapper.shadowRoot!.querySelector(
-			'cosmoz-tabs'
+			'cosmoz-tabs',
 		) as HTMLElement & {
 			selected?: string;
 		};
@@ -46,13 +46,15 @@ export const CollectsTabsThroughNestedSlot: Story = {
 			'the nested-slot tab is collected (non-tabs ignored)',
 			async () => {
 				await waitFor(() =>
-					expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(2)
+					expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(
+						2,
+					),
 				);
 				const headings = Array.from(
-					tabs.shadowRoot!.querySelectorAll('[role=tab] > span')
+					tabs.shadowRoot!.querySelectorAll('[role=tab] > span'),
 				).map((el) => el.textContent);
 				expect(headings).toEqual(['Tab0', 'Tab1']);
-			}
+			},
 		);
 
 		await step('selecting the slotted tab marks it is-selected', async () => {
@@ -61,8 +63,8 @@ export const CollectsTabsThroughNestedSlot: Story = {
 				expect(
 					wrapper
 						.querySelector('cosmoz-tab[name=tab1]')
-						?.getAttribute('is-selected')
-				).toBe('')
+						?.getAttribute('is-selected'),
+				).toBe(''),
 			);
 		});
 	},
