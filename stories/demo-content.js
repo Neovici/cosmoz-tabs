@@ -82,7 +82,7 @@ export const panelStyles = html`<style>
 		padding-bottom: 0;
 	}
 	.timeline li::before {
-		content: "";
+		content: '';
 		position: absolute;
 		left: -5px;
 		top: 4px;

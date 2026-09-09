@@ -107,6 +107,8 @@ const spreadItem = css`
 	flex: 1 1 0;
 `;
 
+// Untitled UI badge, size sm: a "pill color" counter that turns brand while the
+// tab is hot, and their "modern" square-ish one for the button-style tabs.
 const badge = css`
 	display: inline-flex;
 	align-items: center;
@@ -115,15 +117,57 @@ const badge = css`
 	font-size: var(--cz-text-xs);
 	font-weight: var(--cz-font-weight-medium);
 	line-height: var(--cz-text-xs-line-height);
-	border-radius: var(--cz-radius-full);
-	padding: 0 calc(var(--cz-spacing) * 2);
-	min-width: calc(var(--cz-spacing) * 5);
+	padding: 2px calc(var(--cz-spacing) * 2);
 	max-width: 80px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	background-color: var(--cz-color-bg-brand-solid);
-	color: var(--cz-color-text-on-brand);
 	text-align: center;
+	border-radius: var(--cz-radius-full);
+	background-color: var(--cz-color-bg-secondary);
+	color: var(--cz-color-text-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+`;
+
+// cosmoz-tokens has no utility-* colors, so the brand tint is mixed against the
+// surface instead — which also keeps it legible in the dark theme.
+const badgeBrand = css`
+	background-color: color-mix(
+		in oklab,
+		var(--cz-color-bg-brand-solid) 12%,
+		var(--cz-color-bg-primary)
+	);
+	color: var(--cz-color-text-brand);
+	box-shadow: inset 0 0 0 1px
+		color-mix(
+			in oklab,
+			var(--cz-color-bg-brand-solid) 30%,
+			var(--cz-color-bg-primary)
+		);
+`;
+
+// On the solid brand pill the tint has to mix into the pill, not the page.
+const badgeOnBrand = css`
+	background-color: color-mix(
+		in oklab,
+		var(--cz-color-bg-brand-solid) 12%,
+		var(--cz-color-text-on-brand)
+	);
+	box-shadow: inset 0 0 0 1px
+		color-mix(
+			in oklab,
+			var(--cz-color-bg-brand-solid) 30%,
+			var(--cz-color-text-on-brand)
+		);
+`;
+
+const badgeModern = css`
+	padding: 2px calc(var(--cz-spacing) * 1.5);
+	border-radius: var(--cz-radius-sm);
+	background-color: var(--cz-color-bg-primary);
+	color: var(--cz-color-text-secondary);
+	box-shadow:
+		inset 0 0 0 1px var(--cz-color-border-primary),
+		var(--cz-shadow-xs);
 `;
 
 export const legacyStyles = css`
@@ -181,6 +225,20 @@ export const legacyStyles = css`
 
 	.badge {
 		${badge}
+	}
+
+	:host(:not([variant='segmented'])) .tab:hover .badge,
+	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge {
+		${badgeBrand}
+	}
+
+	:host([variant='segmented']) .badge {
+		${badgeModern}
+	}
+
+	:host([variant='brand']) .tab:hover .badge,
+	:host([variant='brand']) .tab[aria-selected='true'] .badge {
+		${badgeOnBrand}
 	}
 
 	#content {
@@ -322,6 +380,20 @@ export const nextTabStyles = css`
 
 	.badge {
 		${badge}
+	}
+
+	:host(:not([variant='segmented']):hover) .badge,
+	:host(:not([variant='segmented'])[active]) .badge {
+		${badgeBrand}
+	}
+
+	:host([variant='segmented']) .badge {
+		${badgeModern}
+	}
+
+	:host([variant='brand']:hover) .badge,
+	:host([variant='brand'][active]) .badge {
+		${badgeOnBrand}
 	}
 
 	:host([variant='brand']) {

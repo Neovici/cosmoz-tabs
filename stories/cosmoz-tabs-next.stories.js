@@ -564,12 +564,11 @@ export const SelectedColors = {
 			},
 			description: {
 				story:
-					'The selected pill **and** the badge are a solid brand fill — ' +
-					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
-					'text stays legible in both light and dark themes. Override ' +
-					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to ' +
-					'recolor them (e.g. to a success/error solid); the on-brand text ' +
-					'follows.',
+					'The selected pill is a solid `--cz-color-bg-brand-solid` fill with ' +
+					'`--cz-color-text-on-brand` text; the counter is the Untitled UI badge ' +
+					'— gray by default, and a tint of the same brand token while the tab is ' +
+					'hot. Override `--cz-color-bg-brand-solid` on the host to recolor both ' +
+					'(e.g. to a success/error solid).',
 			},
 		},
 	},

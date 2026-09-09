@@ -380,11 +380,11 @@ export const SelectedColors = {
 		docs: {
 			description: {
 				story:
-					'The selected pill **and** the badge are a solid brand fill — ' +
-					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
-					'text stays legible in both light and dark themes. Override ' +
-					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor ' +
-					'them (e.g. to a success/error solid); the on-brand text follows.',
+					'The selected pill is a solid `--cz-color-bg-brand-solid` fill with ' +
+					'`--cz-color-text-on-brand` text; the counter is the Untitled UI badge ' +
+					'— gray by default, and a tint of the same brand token while ' +
+					'the tab is hot. Override `--cz-color-bg-brand-solid` on the ' +
+					'`<cosmoz-tabs>` host to recolor both (e.g. to a success/error solid).',
 			},
 		},
 	},
@@ -509,19 +509,19 @@ export const Theming = {
 			${themedTabs('brand (default)', '')}
 			${themedTabs(
 				'success',
-				'--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);'
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);',
 			)}
 			${themedTabs(
 				'error',
-				'--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);'
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-error-solid);',
 			)}
 			${themedTabs(
 				'warning',
-				'--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);'
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);',
 			)}
 			${themedTabs(
 				'neutral',
-				'--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);'
+				'--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);',
 			)}
 		</div>
 	`,
