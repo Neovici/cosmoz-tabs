@@ -18,7 +18,7 @@ export interface CosmozTabsElement extends CosmozTabsHost {
  * @attr {string} selected - `name` of the selected tab
  * @attr {string} hash-param - hash parameter to bind selection
  * @attr {boolean} no-resize
- * @attr {('brand'|'underline')} variant
+ * @attr {('brand'|'underline'|'segmented')} variant
  * @attr {boolean} compact-width
  * @csspart tabs - tab bar container
  * @csspart tab - individual tab

@@ -30,7 +30,7 @@ export const RolesAndActive: Story = {
 
 		await step('container is a tablist', async () => {
 			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('tablist')
+				expect(container.getAttribute('role')).toBe('tablist'),
 			);
 		});
 
@@ -38,16 +38,16 @@ export const RolesAndActive: Story = {
 			const active = container.querySelector('cosmoz-tab-next[active]')!;
 			await waitFor(() => expect(active.getAttribute('role')).toBe('tab'));
 			await waitFor(() =>
-				expect(active.getAttribute('aria-selected')).toBe('true')
+				expect(active.getAttribute('aria-selected')).toBe('true'),
 			);
 		});
 
 		await step('inactive tab has aria-selected=false', async () => {
 			const inactive = container.querySelector(
-				'cosmoz-tab-next:not([active])'
+				'cosmoz-tab-next:not([active])',
 			)!;
 			await waitFor(() =>
-				expect(inactive.getAttribute('aria-selected')).toBe('false')
+				expect(inactive.getAttribute('aria-selected')).toBe('false'),
 			);
 		});
 
@@ -55,8 +55,8 @@ export const RolesAndActive: Story = {
 			const withBadge = container.querySelectorAll('cosmoz-tab-next')[1];
 			await waitFor(() =>
 				expect(withBadge.shadowRoot!.querySelector('.badge')?.textContent).toBe(
-					'2'
-				)
+					'2',
+				),
 			);
 		});
 	},
@@ -72,7 +72,7 @@ export const ReflectsVariantToChildren: Story = {
 				const children = container.querySelectorAll('cosmoz-tab-next');
 				expect(children.length).toBe(3);
 				children.forEach((c) =>
-					expect(c.getAttribute('variant')).toBe('brand')
+					expect(c.getAttribute('variant')).toBe('brand'),
 				);
 			});
 		});
@@ -82,7 +82,7 @@ export const ReflectsVariantToChildren: Story = {
 			await waitFor(() =>
 				container
 					.querySelectorAll('cosmoz-tab-next')
-					.forEach((c) => expect(c.getAttribute('variant')).toBe('underline'))
+					.forEach((c) => expect(c.getAttribute('variant')).toBe('underline')),
 			);
 		});
 	},
@@ -95,16 +95,45 @@ export const BrandActiveStyling: Story = {
 		let active!: HTMLElement;
 		await waitFor(() => {
 			active = container.querySelector(
-				'cosmoz-tab-next[active]'
+				'cosmoz-tab-next[active]',
 			) as HTMLElement;
 			expect(active).not.toBeNull();
 		});
 		await waitFor(() => expect(active.getAttribute('variant')).toBe('brand'));
 		await waitFor(() =>
 			expect(getComputedStyle(active).backgroundColor).not.toBe(
-				'rgba(0, 0, 0, 0)'
-			)
+				'rgba(0, 0, 0, 0)',
+			),
 		);
+	},
+};
+
+export const SegmentedActiveStyling: Story = {
+	render: () => fixture('segmented'),
+	play: async ({ canvasElement, step }) => {
+		const container = getContainer(canvasElement);
+		let active!: HTMLElement;
+
+		await step('the variant reaches the children', async () => {
+			await waitFor(() => {
+				active = container.querySelector(
+					'cosmoz-tab-next[active]',
+				) as HTMLElement;
+				expect(active?.getAttribute('variant')).toBe('segmented');
+			});
+		});
+
+		await step('the track is filled and the active tab is raised', async () => {
+			await waitFor(() => {
+				expect(getComputedStyle(container).backgroundColor).not.toBe(
+					'rgba(0, 0, 0, 0)',
+				);
+				expect(getComputedStyle(active).backgroundColor).not.toBe(
+					'rgba(0, 0, 0, 0)',
+				);
+				expect(getComputedStyle(active).boxShadow).not.toBe('none');
+			});
+		});
 	},
 };
 
