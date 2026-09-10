@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-5rgowz92.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-CSE_wquV.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-D0aPFfl1.js";import{t as v}from"./cosmoz-tabs-B2Bbgk58.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;function N(){return(N=e((()=>{l(),t(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>n`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-CQBc8Wa3.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-D_CMk9ii.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-tqi0GhV-.js";import{t as v}from"./cosmoz-tabs-DbAqiPgA.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;function N(){return(N=e((()=>{l(),t(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>n`
         ${d}
         <cosmoz-tabs variant=${e} .selected=${`overview`}>
             <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
@@ -39,7 +39,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
                 ${m()}
             </cosmoz-tab>
         </cosmoz-tabs>
-    `},x={parameters:{docs:{description:{story:"The two Untitled UI looks side by side: `underline` (default) and `brand` (pill)."}}},render:()=>n`
+    `},x={parameters:{docs:{description:{story:"The three Untitled UI looks side by side: `underline` (default), `brand` (solid pill) and `segmented` (a track holding a raised, selected pill)."}}},render:()=>n`
         ${d}
         <div class="story-stack">
             <div>
@@ -68,6 +68,29 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
             <div>
                 <div class="story-label">variant="brand"</div>
                 <cosmoz-tabs variant="brand" .selected=${`overview`}>
+                    <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
+                        ${g()}
+                    </cosmoz-tab>
+                    <cosmoz-tab
+                        name="rows"
+                        heading="Invoice rows"
+                        badge="5"
+                        .icon=${a()}
+                    >
+                        ${p()}
+                    </cosmoz-tab>
+                    <cosmoz-tab
+                        name="accounting"
+                        heading="Accounting"
+                        .icon=${o()}
+                    >
+                        ${_()}
+                    </cosmoz-tab>
+                </cosmoz-tabs>
+            </div>
+            <div>
+                <div class="story-label">variant="segmented"</div>
+                <cosmoz-tabs variant="segmented" compact-width .selected=${`overview`}>
                     <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
                         ${g()}
                     </cosmoz-tab>
@@ -218,7 +241,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
             </cosmoz-tab>
             <cosmoz-tab name="history" heading="History">${f()}</cosmoz-tab>
         </cosmoz-tabs>
-    `},O={parameters:{docs:{description:{story:"The selected pill **and** the badge are a solid brand fill — `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>n`
+    `},O={parameters:{docs:{description:{story:"The selected pill is a solid `--cz-color-bg-brand-solid` fill with `--cz-color-text-on-brand` text; the counter is the Untitled UI badge — gray by default, and a tint of the same brand token while the tab is hot. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs>` host to recolor both (e.g. to a success/error solid)."}}},render:()=>n`
         ${d}
         <div class="story-stack">
             <div>
@@ -366,7 +389,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
   parameters: {
     docs: {
       description: {
-        story: 'The two Untitled UI looks side by side: \`underline\` (default) and ' + '\`brand\` (pill).'
+        story: 'The three Untitled UI looks side by side: \`underline\` (default), ' + '\`brand\` (solid pill) and \`segmented\` (a track holding a raised, ' + 'selected pill).'
       }
     }
   },
@@ -399,6 +422,29 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
             <div>
                 <div class="story-label">variant="brand"</div>
                 <cosmoz-tabs variant="brand" .selected=\${'overview'}>
+                    <cosmoz-tab name="overview" heading="Overview" .icon=\${receiptIcon()}>
+                        \${overview()}
+                    </cosmoz-tab>
+                    <cosmoz-tab
+                        name="rows"
+                        heading="Invoice rows"
+                        badge="5"
+                        .icon=\${listIcon()}
+                    >
+                        \${rows()}
+                    </cosmoz-tab>
+                    <cosmoz-tab
+                        name="accounting"
+                        heading="Accounting"
+                        .icon=\${calculatorIcon()}
+                    >
+                        \${accounting()}
+                    </cosmoz-tab>
+                </cosmoz-tabs>
+            </div>
+            <div>
+                <div class="story-label">variant="segmented"</div>
+                <cosmoz-tabs variant="segmented" compact-width .selected=\${'overview'}>
                     <cosmoz-tab name="overview" heading="Overview" .icon=\${receiptIcon()}>
                         \${overview()}
                     </cosmoz-tab>
@@ -623,7 +669,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
   parameters: {
     docs: {
       description: {
-        story: 'The selected pill **and** the badge are a solid brand fill — ' + '\`--cz-color-bg-brand-solid\` with \`--cz-color-text-on-brand\` — so the ' + 'text stays legible in both light and dark themes. Override ' + '\`--cz-color-bg-brand-solid\` on the \`<cosmoz-tabs>\` host to recolor ' + 'them (e.g. to a success/error solid); the on-brand text follows.'
+        story: 'The selected pill is a solid \`--cz-color-bg-brand-solid\` fill with ' + '\`--cz-color-text-on-brand\` text; the counter is the Untitled UI badge ' + '— gray by default, and a tint of the same brand token while ' + 'the tab is hot. Override \`--cz-color-bg-brand-solid\` on the ' + '\`<cosmoz-tabs>\` host to recolor both (e.g. to a success/error solid).'
       }
     }
   },

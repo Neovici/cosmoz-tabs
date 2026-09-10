@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,i as n,s as r}from"./iframe-5rgowz92.js";import{a as i,d as a,o}from"./if-defined-bEa3TY1e.js";import{l as s,m as c,r as l,t as u}from"./untitled-CSE_wquV.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-D0aPFfl1.js";import{a as v,i as y,r as b,t as x}from"./next-nGEydN3X.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{u(),i(),t(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let t=e.getAttribute(`variant`)||`underline`,[n,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return r`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,i as n,s as r}from"./iframe-CQBc8Wa3.js";import{a as i,d as a,o}from"./if-defined-CDStYoJI.js";import{l as s,m as c,r as l,t as u}from"./untitled-D_CMk9ii.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-tqi0GhV-.js";import{a as v,i as y,r as b,t as x}from"./next-CzooKDZV.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{u(),i(),t(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let t=e.getAttribute(`variant`)||`underline`,[n,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return r`
         ${f}
         <cosmoz-tabs-next variant=${t}>
             <cosmoz-tab-next
@@ -77,7 +77,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
 </cosmoz-tabs-next>
-<div>\${panels[active]()}</div>`},description:{story:"The two Untitled UI looks: `underline` (default) and `brand` (pill). Each bar is independently interactive."}}},render:()=>r`
+<div>\${panels[active]()}</div>`},description:{story:'The three Untitled UI looks: `underline` (default), `brand` (solid pill) and `segmented` (Untitled\'s "button border" — a track holding a raised, selected pill). Each bar is independently interactive.'}}},render:()=>r`
         <div class="story-stack">
             <div>
                 <div class="story-label">variant="underline"</div>
@@ -89,6 +89,12 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 <div class="story-label">variant="brand"</div>
                 <cosmoz-tabs-next-variants-bar
                     variant="brand"
+                ></cosmoz-tabs-next-variants-bar>
+            </div>
+            <div>
+                <div class="story-label">variant="segmented"</div>
+                <cosmoz-tabs-next-variants-bar
+                    variant="segmented"
                 ></cosmoz-tabs-next-variants-bar>
             </div>
         </div>
@@ -256,7 +262,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 >
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
-</cosmoz-tabs-next>`},description:{story:"The selected pill **and** the badge are a solid brand fill — `--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the text stays legible in both light and dark themes. Override `--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to recolor them (e.g. to a success/error solid); the on-brand text follows."}}},render:()=>r`
+</cosmoz-tabs-next>`},description:{story:"The selected pill is a solid `--cz-color-bg-brand-solid` fill with `--cz-color-text-on-brand` text; the counter is the Untitled UI badge — gray by default, and a tint of the same brand token while the tab is hot. Override `--cz-color-bg-brand-solid` on the host to recolor both (e.g. to a success/error solid)."}}},render:()=>r`
         <div class="story-stack">
             <div>
                 <div class="story-label">brand (default)</div>
@@ -385,7 +391,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 <div>\\\${panels[active]()}</div>\`
       },
       description: {
-        story: 'The two Untitled UI looks: \`underline\` (default) and \`brand\` (pill). ' + 'Each bar is independently interactive.'
+        story: 'The three Untitled UI looks: \`underline\` (default), \`brand\` (solid ' + 'pill) and \`segmented\` (Untitled\\'s "button border" — a track holding ' + 'a raised, selected pill). Each bar is independently interactive.'
       }
     }
   },
@@ -401,6 +407,12 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
                 <div class="story-label">variant="brand"</div>
                 <cosmoz-tabs-next-variants-bar
                     variant="brand"
+                ></cosmoz-tabs-next-variants-bar>
+            </div>
+            <div>
+                <div class="story-label">variant="segmented"</div>
+                <cosmoz-tabs-next-variants-bar
+                    variant="segmented"
                 ></cosmoz-tabs-next-variants-bar>
             </div>
         </div>
@@ -511,7 +523,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 </cosmoz-tabs-next>\`
       },
       description: {
-        story: 'The selected pill **and** the badge are a solid brand fill — ' + '\`--cz-color-bg-brand-solid\` with \`--cz-color-text-on-brand\` — so the ' + 'text stays legible in both light and dark themes. Override ' + '\`--cz-color-bg-brand-solid\` on the \`<cosmoz-tabs-next>\` host to ' + 'recolor them (e.g. to a success/error solid); the on-brand text ' + 'follows.'
+        story: 'The selected pill is a solid \`--cz-color-bg-brand-solid\` fill with ' + '\`--cz-color-text-on-brand\` text; the counter is the Untitled UI badge ' + '— gray by default, and a tint of the same brand token while the tab is ' + 'hot. Override \`--cz-color-bg-brand-solid\` on the host to recolor both ' + '(e.g. to a success/error solid).'
       }
     }
   },
