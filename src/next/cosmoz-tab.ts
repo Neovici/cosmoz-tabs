@@ -19,6 +19,7 @@ export interface CosmozTabNextElement extends HTMLElement {
  * @attr {string} badge - optional badge text
  * @attr {string} href - optional link target
  * @attr {boolean} disabled - disables the tab
+ * @attr {('sm')} size - reflected by the container; see cosmoz-tabs-next
  * @attr {('tab'|'radio')} role - tab by default; a radiogroup container
  * reflects radio onto its items, and the selected state is then reported as
  * aria-checked rather than aria-selected

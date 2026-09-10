@@ -16,10 +16,15 @@ The package ships **two tab families** plus a card:
 | `cosmoz-tabs-next` + `cosmoz-tab-next` (+ `useTabs`/`renderTabs`/`renderActivated`) | **Data-driven**: drive tabs from a data array; a `cosmoz-tab-next` is only the clickable header — selection is owned by the consumer (hook or your own `active` wiring). |
 | `cosmoz-tab-card`                                                                   | A collapsible card, typically placed inside a `cosmoz-tab`.                                                                                                              |
 
-Both families share a single styling source of truth (`src/styles.ts`) and support two
-Untitled UI variants via a `variant` attribute on the container: `brand` (default) and
-`underline`. Tabs spread to fill the bar by default (as the legacy tabs did); add the
-`compact-width` attribute to size them to their content.
+Both families share a single styling source of truth (`src/styles.ts`) and support three
+Untitled UI variants via a `variant` attribute on the container: `brand` (default),
+`underline` and `segmented`. Tabs spread to fill the bar by default (as the legacy tabs
+did); add the `compact-width` attribute to size them to their content.
+
+`size` picks how much box the tabs carry. Omit it for the default; `size="sm"` trims the
+item's padding on both axes and thins the segmented track's ring to match, which is what
+a control sitting next to a heading usually wants — the type is left alone, so the labels
+stay as readable as they were.
 
 > Styling comes from `@neovici/cosmoz-tokens` (`--cz-*`), with light/dark mode via
 > `:root.dark-mode`. It ships as a dependency — see [Install](#install) for loading it.
@@ -34,7 +39,7 @@ npm i @neovici/cosmoz-tabs
 just needs to load it once for the `--cz-*` token values:
 
 ```js
-import "@neovici/cosmoz-tokens";
+import '@neovici/cosmoz-tokens';
 ```
 
 ## Usage
@@ -42,7 +47,7 @@ import "@neovici/cosmoz-tokens";
 ### Legacy family (`cosmoz-tabs`)
 
 ```js
-import "@neovici/cosmoz-tabs";
+import '@neovici/cosmoz-tabs';
 ```
 
 ```html
@@ -64,7 +69,7 @@ Icons are passed as a lit-html template (e.g. from
 [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons)) via the `.icon` property:
 
 ```js
-import { receiptIcon } from "@neovici/cosmoz-icons/untitled";
+import { receiptIcon } from '@neovici/cosmoz-icons/untitled';
 html`<cosmoz-tab heading="Overview" name="overview" .icon=${receiptIcon()}
 	>…</cosmoz-tab
 >`;
@@ -79,19 +84,19 @@ import {
 	useTabs,
 	renderTabs,
 	renderActivated,
-} from "@neovici/cosmoz-tabs/next";
+} from '@neovici/cosmoz-tabs/next';
 
 const tabs = [
-	{ name: "overview", title: "Overview", render: renderOverview },
-	{ name: "rows", title: "Invoice rows", badge: "5", render: renderRows },
+	{ name: 'overview', title: 'Overview', render: renderOverview },
+	{ name: 'rows', title: 'Invoice rows', badge: '5', render: renderRows },
 ];
 
 const Component = () => {
-	const model = useTabs(tabs, { hashParam: "tab" });
+	const model = useTabs(tabs, { hashParam: 'tab' });
 	return html`
 		<cosmoz-tabs-next variant="brand"> ${renderTabs(model)} </cosmoz-tabs-next>
 		${renderActivated(model, (tab) =>
-			tab.isActive ? html`<div>${tab.render()}</div>` : ""
+			tab.isActive ? html`<div>${tab.render()}</div>` : '',
 		)}
 	`;
 };
@@ -101,8 +106,8 @@ const Component = () => {
 hook and `renderActivated`/`renderTabs` are generic over your tab shape and carry your extra
 fields through, so `tab.render()` is type-safe.
 
-For the next family the container reflects `variant`/`compact-width` onto each
-`cosmoz-tab-next` as plain `variant`/`compact-width` attributes (CSS cannot cross the shadow
+For the next family the container reflects `variant`/`size`/`compact-width` onto each
+`cosmoz-tab-next` as plain attributes of the same names (CSS cannot cross the shadow
 boundary); when both `renderTabs(...)` and the container set them, the container wins. Slot
 an icon with the icon template's `slot` option: `${receiptIcon({ slot: 'icon' })}`.
 
@@ -112,11 +117,11 @@ The custom-element API (attributes, properties, slots, CSS parts) is described i
 [`custom-elements.json`](./custom-elements.json) and in the JSDoc/Storybook stories.
 Highlights:
 
-- **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `compact-width`;
-  parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
+- **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `size`,
+  `compact-width`; parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
-- **`cosmoz-tabs-next`** — attrs `variant`, `compact-width`.
-- **`cosmoz-tab-next`** — attrs `active`, `badge`, `href`, `disabled`; `icon` slot.
+- **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`.
+- **`cosmoz-tab-next`** — attrs `active`, `badge`, `href`, `disabled`, `size`; `icon` slot.
 - **`cosmoz-tab-card`** — attrs `heading`, `collapsable`, `collapsed`; parts `header`,
   `heading`, `collapse-icon`, `content`. Themable via the `--cosmoz-tab-card-*` custom
   properties (which default to `--cz-*` tokens).

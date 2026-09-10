@@ -2,6 +2,14 @@ import { css } from '@pionjs/pion';
 
 export type TabsVariant = 'brand' | 'underline' | 'segmented';
 
+/**
+ * The default size is the unnamed one - omit the attribute to get it. `sm`
+ * trims the item's box on both axes so a control that sits beside a heading
+ * does not out-weigh it; the type is left alone, so the labels stay as
+ * readable as they were.
+ */
+export type TabsSize = 'sm';
+
 const bar = css`
 	display: flex;
 	align-items: stretch;
@@ -101,6 +109,17 @@ const segmentedActive = css`
 
 const segmentedIconActive = css`
 	color: var(--cz-color-fg-secondary-hover);
+`;
+
+const smItem = css`
+	padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
+`;
+
+/* The track's own ring is what stacks onto the item's padding, so the compact
+   size has to thin that too or the height barely moves. */
+const smSegmentedBar = css`
+	padding: calc(var(--cz-spacing) * 0.75);
+	border-radius: var(--cz-radius-md);
 `;
 
 const spreadItem = css`
@@ -300,6 +319,15 @@ export const legacyStyles = css`
 		.tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
+
+	/* Last, so the size wins over whichever variant set the box above. */
+	:host([size='sm']) .tab {
+		${smItem}
+	}
+
+	:host([variant='segmented'][size='sm']) .tabs {
+		${smSegmentedBar}
+	}
 `;
 
 export const nextTabsStyles = css`
@@ -329,6 +357,10 @@ export const nextTabsStyles = css`
 		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
 	) {
 		gap: calc(var(--cz-spacing) * 4);
+	}
+
+	:host([variant='segmented'][size='sm']) {
+		${smSegmentedBar}
 	}
 `;
 
@@ -426,5 +458,10 @@ export const nextTabStyles = css`
 
 	:host([compact-width]) {
 		flex: 0 1 auto;
+	}
+
+	/* Last, so the size wins over whichever variant set the box above. */
+	:host([size='sm']) {
+		${smItem}
 	}
 `;

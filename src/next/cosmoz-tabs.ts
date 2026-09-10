@@ -1,10 +1,11 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, html, useEffect } from '@pionjs/pion';
-import { nextTabsStyles, type TabsVariant } from '../styles';
+import { nextTabsStyles, type TabsSize, type TabsVariant } from '../styles';
 import { otherState, selectedState } from './aria';
 
 export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
+	size?: TabsSize;
 	compactWidth?: boolean;
 }
 
@@ -19,6 +20,8 @@ const reflect = (tab: Element, name: string, value: string | null) => {
 /**
  * @element cosmoz-tabs-next
  * @attr {('brand'|'underline'|'segmented')} variant
+ * @attr {('sm')} size - omit for the default size; sm trims the item's box on
+ * both axes, and thins the segmented track's ring to match
  * @attr {boolean} compact-width
  * @attr {('tablist'|'radiogroup')} role - tablist by default. A segmented
  * control that picks a value rather than a view is a radiogroup: set it here
@@ -36,12 +39,14 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}
 
 	const variant = host.getAttribute('variant');
+	const size = host.getAttribute('size');
 	const compactWidth = host.hasAttribute('compact-width') ? '' : null;
 	const itemRole = host.getAttribute('role') === 'radiogroup' ? 'radio' : 'tab';
 
 	const apply = () =>
 		host.querySelectorAll('cosmoz-tab-next').forEach((tab) => {
 			reflect(tab, 'variant', variant);
+			reflect(tab, 'size', size);
 			reflect(tab, 'compact-width', compactWidth);
 			reflect(tab, 'role', itemRole);
 			// The item writes its own state on every active change, but a role
@@ -65,7 +70,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
-		observedAttributes: ['variant', 'compact-width'],
+		observedAttributes: ['variant', 'size', 'compact-width'],
 		styleSheets: [normalize, nextTabsStyles],
-	})
+	}),
 );
