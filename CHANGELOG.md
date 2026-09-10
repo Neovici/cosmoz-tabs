@@ -1,3 +1,10 @@
+## 10.1.0
+
+### Minor Changes
+
+- 85231e4: Add a `segmented` tab variant — Untitled UI's "button border" style: a filled track with a 1px ring holding a raised, selected pill. Works on both `cosmoz-tabs` and `cosmoz-tabs-next`, and the track hugs its tabs when combined with `compact-width`.
+- 85231e4: Restyle the tab counter as Untitled UI's badge: a gray pill that tints brand while the tab is hot (`underline`, `brand`), and their squarer "modern" badge in the `segmented` variant. It still follows `--cz-color-bg-brand-solid`, so recoloring the selected pill recolors the counter with it.
+
 ## 10.0.0
 
 ### Major Changes
