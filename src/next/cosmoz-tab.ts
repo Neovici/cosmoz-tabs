@@ -4,6 +4,7 @@ import { compute } from 'compute-scroll-into-view';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nextTabStyles } from '../styles';
+import { selectedState } from './aria';
 
 export interface CosmozTabNextElement extends HTMLElement {
 	active?: boolean;
@@ -18,6 +19,9 @@ export interface CosmozTabNextElement extends HTMLElement {
  * @attr {string} badge - optional badge text
  * @attr {string} href - optional link target
  * @attr {boolean} disabled - disables the tab
+ * @attr {('tab'|'radio')} role - tab by default; a radiogroup container
+ * reflects radio onto its items, and the selected state is then reported as
+ * aria-checked rather than aria-selected
  * @slot tab label
  * @slot icon
  */
@@ -28,11 +32,15 @@ const Tab = (host: CosmozTabNextElement) => {
 		if (!host.getAttribute('tabindex')) {
 			host.setAttribute('tabindex', '-1');
 		}
-		host.setAttribute('role', 'tab');
+		if (!host.getAttribute('role')) {
+			host.setAttribute('role', 'tab');
+		}
 	}, []);
 
 	useLayoutEffect(() => {
-		host.setAttribute('aria-selected', active ? 'true' : 'false');
+		// Read the role live rather than observing it: `role` is reflected by
+		// the platform, so it is not ours to take over as a property.
+		host.setAttribute(selectedState(host), active ? 'true' : 'false');
 
 		if (!active) {
 			return;
