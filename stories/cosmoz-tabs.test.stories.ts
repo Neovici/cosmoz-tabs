@@ -37,8 +37,8 @@ export const SelectsFirstAndSwitches: Story = {
 		await step('first valid tab is selected by default', async () => {
 			await waitFor(() =>
 				expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe(
-					'tab0'
-				)
+					'tab0',
+				),
 			);
 			await waitFor(() => expect(tabs.selected).toBe('tab0'));
 		});
@@ -47,8 +47,8 @@ export const SelectsFirstAndSwitches: Story = {
 			tabs.selected = 'tab1';
 			await waitFor(() =>
 				expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe(
-					'tab1'
-				)
+					'tab1',
+				),
 			);
 		});
 	},
@@ -62,14 +62,14 @@ export const RendersBarFromChildren: Story = {
 		await step('tablist mirrors the number of tabs', async () => {
 			await waitFor(() =>
 				expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(
-					tabs.querySelectorAll('cosmoz-tab').length
-				)
+					tabs.querySelectorAll('cosmoz-tab').length,
+				),
 			);
 		});
 
 		await step('headings and a badge render in the bar', () => {
 			const headings = Array.from(
-				tabs.shadowRoot!.querySelectorAll('[role=tab] > span')
+				tabs.shadowRoot!.querySelectorAll('[role=tab] > span'),
 			).map((el) => el.textContent);
 			expect(headings).toEqual(['Tab0', 'Tab1', 'Tab2', 'Tab3']);
 			expect(tabs.shadowRoot!.querySelectorAll('.badge').length).toBe(1);
@@ -87,7 +87,7 @@ export const HiddenAndDisabled: Story = {
 	play: async ({ canvasElement, step }) => {
 		const tabs = getTabs(canvasElement);
 		await waitFor(() =>
-			expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(4)
+			expect(tabs.shadowRoot!.querySelectorAll('[role=tab]').length).toBe(4),
 		);
 		const barTabs = tabs.shadowRoot!.querySelectorAll('[role=tab]');
 
@@ -120,7 +120,7 @@ export const ClickSelects: Story = {
 			(
 				tabs.shadowRoot!.querySelectorAll('[role=tab]')[0] as HTMLElement
 			).dispatchEvent(
-				new MouseEvent('click', { ctrlKey: true, bubbles: true })
+				new MouseEvent('click', { ctrlKey: true, bubbles: true }),
 			);
 			await new Promise((r) => requestAnimationFrame(r));
 			expect(tabs.selected).toBe('tab1');
@@ -190,12 +190,12 @@ export const NoResizeSuppressesResize: Story = {
 			tabs.selected = 'tab1';
 			await waitFor(() =>
 				expect(tabs.querySelector('[is-selected]')?.getAttribute('name')).toBe(
-					'tab1'
-				)
+					'tab1',
+				),
 			);
 			// let the (suppressed) resize rAF window pass
 			await new Promise((r) =>
-				requestAnimationFrame(() => requestAnimationFrame(r))
+				requestAnimationFrame(() => requestAnimationFrame(r)),
 			);
 			expect(onResize).not.toHaveBeenCalled();
 			window.removeEventListener('resize', onResize);
@@ -209,13 +209,13 @@ export const VariantBrandActiveStyling: Story = {
 		const tabs = getTabs(canvasElement);
 		await waitFor(() =>
 			expect(
-				tabs.shadowRoot!.querySelector('a[aria-selected=true]')
-			).not.toBeNull()
+				tabs.shadowRoot!.querySelector('a[aria-selected=true]'),
+			).not.toBeNull(),
 		);
 		const active = tabs.shadowRoot!.querySelector('a[aria-selected=true]')!;
 		// brand active tab has a (non-transparent) brand-tinted background
 		expect(getComputedStyle(active).backgroundColor).not.toBe(
-			'rgba(0, 0, 0, 0)'
+			'rgba(0, 0, 0, 0)',
 		);
 	},
 };
@@ -226,8 +226,8 @@ export const VariantUnderlineActiveStyling: Story = {
 		const tabs = getTabs(canvasElement);
 		await waitFor(() =>
 			expect(
-				tabs.shadowRoot!.querySelector('a[aria-selected=true]')
-			).not.toBeNull()
+				tabs.shadowRoot!.querySelector('a[aria-selected=true]'),
+			).not.toBeNull(),
 		);
 		const active = tabs.shadowRoot!.querySelector('a[aria-selected=true]')!;
 		const shadow = getComputedStyle(active).boxShadow;
@@ -237,21 +237,52 @@ export const VariantUnderlineActiveStyling: Story = {
 	},
 };
 
+export const VariantSegmentedActiveStyling: Story = {
+	render: () => fixture('segmented'),
+	play: async ({ canvasElement, step }) => {
+		const tabs = getTabs(canvasElement);
+		await waitFor(() =>
+			expect(
+				tabs.shadowRoot!.querySelector('a[aria-selected=true]'),
+			).not.toBeNull(),
+		);
+		const bar = tabs.shadowRoot!.querySelector('.tabs') as HTMLElement;
+		const active = tabs.shadowRoot!.querySelector(
+			'a[aria-selected=true]',
+		) as HTMLElement;
+
+		await step('the track is filled and ringed', () => {
+			expect(getComputedStyle(bar).backgroundColor).not.toBe(
+				'rgba(0, 0, 0, 0)',
+			);
+			expect(getComputedStyle(bar).boxShadow).toContain('inset');
+		});
+
+		await step('the active tab is a raised pill', () => {
+			expect(getComputedStyle(active).backgroundColor).not.toBe(
+				'rgba(0, 0, 0, 0)',
+			);
+			// a drop shadow, not the underline's inset one
+			expect(getComputedStyle(active).boxShadow).not.toContain('inset');
+		});
+	},
+};
+
 export const RovingTabindex: Story = {
 	render: () => fixture(),
 	play: async ({ canvasElement, step }) => {
 		const tabs = getTabs(canvasElement);
 		const sr = tabs.shadowRoot!;
 		await waitFor(() =>
-			expect(sr.querySelector('a[aria-selected=true]')).not.toBeNull()
+			expect(sr.querySelector('a[aria-selected=true]')).not.toBeNull(),
 		);
 
 		await step('selected tab is focusable (0), the rest are -1', () => {
 			expect(
-				sr.querySelector('a[aria-selected=true]')!.getAttribute('tabindex')
+				sr.querySelector('a[aria-selected=true]')!.getAttribute('tabindex'),
 			).toBe('0');
 			sr.querySelectorAll('a[aria-selected=false]').forEach((a) =>
-				expect(a.getAttribute('tabindex')).toBe('-1')
+				expect(a.getAttribute('tabindex')).toBe('-1'),
 			);
 		});
 
@@ -259,8 +290,8 @@ export const RovingTabindex: Story = {
 			tabs.selected = 'tab1';
 			await waitFor(() =>
 				expect(
-					sr.querySelector('a[aria-selected=true]')?.getAttribute('tabindex')
-				).toBe('0')
+					sr.querySelector('a[aria-selected=true]')?.getAttribute('tabindex'),
+				).toBe('0'),
 			);
 			expect(sr.querySelectorAll('a[tabindex="0"]').length).toBe(1);
 		});
@@ -273,11 +304,11 @@ export const SpreadByDefault: Story = {
 		const tabs = getTabs(canvasElement);
 
 		await waitFor(() =>
-			expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull()
+			expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull(),
 		);
 
 		const tab = tabs.shadowRoot!.querySelector(
-			'.tab:not([hidden])'
+			'.tab:not([hidden])',
 		) as HTMLElement;
 		expect(getComputedStyle(tab).flexGrow).toBe('1');
 	},
@@ -294,11 +325,11 @@ export const CompactWidthSizesToContent: Story = {
 		const tabs = getTabs(canvasElement);
 
 		await waitFor(() =>
-			expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull()
+			expect(tabs.shadowRoot!.querySelector('.tab')).not.toBeNull(),
 		);
 
 		const tab = tabs.shadowRoot!.querySelector(
-			'.tab:not([hidden])'
+			'.tab:not([hidden])',
 		) as HTMLElement;
 		expect(getComputedStyle(tab).flexGrow).toBe('0');
 	},
@@ -334,7 +365,7 @@ export const ConstrainsContentHeight: Story = {
 					expect(c.clientHeight).toBeGreaterThan(300);
 					expect(c.clientHeight).toBeLessThan(420);
 				});
-			}
+			},
 		);
 
 		await step(
@@ -345,14 +376,14 @@ export const ConstrainsContentHeight: Story = {
 				tabs.selected = 'b';
 				await waitFor(() =>
 					expect(
-						tabs.querySelector('[is-selected]')?.getAttribute('name')
-					).toBe('b')
+						tabs.querySelector('[is-selected]')?.getAttribute('name'),
+					).toBe('b'),
 				);
 
 				await waitFor(() => expect(onResize).toHaveBeenCalled());
 				window.removeEventListener('resize', onResize);
 				expect(content().clientHeight).toBeLessThan(420);
-			}
+			},
 		);
 	},
 };

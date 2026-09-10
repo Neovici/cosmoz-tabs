@@ -23,7 +23,7 @@
 				{
 					"name": "variant",
 					"type": "String",
-					"description": "Untitled UI tab style: 'brand' (default) or 'underline'"
+					"description": "Untitled UI tab style: 'brand' (default), 'underline' or 'segmented'"
 				},
 				{
 					"name": "compact-width",
@@ -94,7 +94,7 @@
 				{
 					"name": "variant",
 					"type": "String",
-					"description": "Untitled UI tab style: 'brand' (default) or 'underline'; reflected onto children as variant"
+					"description": "Untitled UI tab style: 'brand' (default), 'underline' or 'segmented'; reflected onto children as variant"
 				},
 				{
 					"name": "compact-width",

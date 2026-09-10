@@ -1,6 +1,6 @@
 import { css } from '@pionjs/pion';
 
-export type TabsVariant = 'brand' | 'underline';
+export type TabsVariant = 'brand' | 'underline' | 'segmented';
 
 const bar = css`
 	display: flex;
@@ -29,7 +29,9 @@ const item = css`
 	text-decoration: none;
 	white-space: nowrap;
 	cursor: pointer;
-	transition: color 0.1s linear, background-color 0.1s linear,
+	transition:
+		color 0.1s linear,
+		background-color 0.1s linear,
 		box-shadow 0.1s linear;
 	outline: 0;
 `;
@@ -77,10 +79,36 @@ const brandActive = css`
 	box-shadow: none;
 `;
 
+// Untitled UI's "button border" tabs: a track holding a raised, selected pill.
+const segmentedBar = css`
+	gap: calc(var(--cz-spacing) * 1);
+	padding: calc(var(--cz-spacing) * 1);
+	border-radius: var(--cz-radius-lg);
+	background-color: var(--cz-color-bg-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+`;
+
+const segmentedItem = css`
+	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+	border-radius: var(--cz-radius-sm);
+`;
+
+const segmentedActive = css`
+	color: var(--cz-color-text-secondary);
+	background-color: var(--cz-color-bg-primary);
+	box-shadow: var(--cz-shadow-sm);
+`;
+
+const segmentedIconActive = css`
+	color: var(--cz-color-fg-secondary-hover);
+`;
+
 const spreadItem = css`
 	flex: 1 1 0;
 `;
 
+// Untitled UI badge, size sm: a "pill color" counter that turns brand while the
+// tab is hot, and their "modern" square-ish one for the button-style tabs.
 const badge = css`
 	display: inline-flex;
 	align-items: center;
@@ -89,15 +117,57 @@ const badge = css`
 	font-size: var(--cz-text-xs);
 	font-weight: var(--cz-font-weight-medium);
 	line-height: var(--cz-text-xs-line-height);
-	border-radius: var(--cz-radius-full);
-	padding: 0 calc(var(--cz-spacing) * 2);
-	min-width: calc(var(--cz-spacing) * 5);
+	padding: 2px calc(var(--cz-spacing) * 2);
 	max-width: 80px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	background-color: var(--cz-color-bg-brand-solid);
-	color: var(--cz-color-text-on-brand);
 	text-align: center;
+	border-radius: var(--cz-radius-full);
+	background-color: var(--cz-color-bg-secondary);
+	color: var(--cz-color-text-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+`;
+
+// cosmoz-tokens has no utility-* colors, so the brand tint is mixed against the
+// surface instead — which also keeps it legible in the dark theme.
+const badgeBrand = css`
+	background-color: color-mix(
+		in oklab,
+		var(--cz-color-bg-brand-solid) 12%,
+		var(--cz-color-bg-primary)
+	);
+	color: var(--cz-color-text-brand);
+	box-shadow: inset 0 0 0 1px
+		color-mix(
+			in oklab,
+			var(--cz-color-bg-brand-solid) 30%,
+			var(--cz-color-bg-primary)
+		);
+`;
+
+// On the solid brand pill the tint has to mix into the pill, not the page.
+const badgeOnBrand = css`
+	background-color: color-mix(
+		in oklab,
+		var(--cz-color-bg-brand-solid) 12%,
+		var(--cz-color-text-on-brand)
+	);
+	box-shadow: inset 0 0 0 1px
+		color-mix(
+			in oklab,
+			var(--cz-color-bg-brand-solid) 30%,
+			var(--cz-color-text-on-brand)
+		);
+`;
+
+const badgeModern = css`
+	padding: 2px calc(var(--cz-spacing) * 1.5);
+	border-radius: var(--cz-radius-sm);
+	background-color: var(--cz-color-bg-primary);
+	color: var(--cz-color-text-secondary);
+	box-shadow:
+		inset 0 0 0 1px var(--cz-color-border-primary),
+		var(--cz-shadow-xs);
 `;
 
 export const legacyStyles = css`
@@ -132,12 +202,12 @@ export const legacyStyles = css`
 	}
 
 	.tab:hover,
-	.tab[aria-selected="true"] {
+	.tab[aria-selected='true'] {
 		${activeUnderline}
 	}
 
 	.tab:hover svg,
-	.tab[aria-selected="true"] svg {
+	.tab[aria-selected='true'] svg {
 		${iconActive}
 	}
 
@@ -157,6 +227,20 @@ export const legacyStyles = css`
 		${badge}
 	}
 
+	:host(:not([variant='segmented'])) .tab:hover .badge,
+	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge {
+		${badgeBrand}
+	}
+
+	:host([variant='segmented']) .badge {
+		${badgeModern}
+	}
+
+	:host([variant='brand']) .tab:hover .badge,
+	:host([variant='brand']) .tab[aria-selected='true'] .badge {
+		${badgeOnBrand}
+	}
+
 	#content {
 		display: flex;
 		flex-direction: column;
@@ -167,29 +251,53 @@ export const legacyStyles = css`
 		display: none !important;
 	}
 
-	:host([variant="brand"]) .tabs {
+	:host([variant='brand']) .tabs {
 		${brandBar}
 	}
 
-	:host([variant="brand"]) .tab {
+	:host([variant='brand']) .tab {
 		${brandItem}
 	}
 
-	:host([variant="brand"]) .tab:hover,
-	:host([variant="brand"]) .tab[aria-selected="true"] {
+	:host([variant='brand']) .tab:hover,
+	:host([variant='brand']) .tab[aria-selected='true'] {
 		${brandActive}
 	}
 
-	:host([variant="brand"]) .tab:hover svg,
-	:host([variant="brand"]) .tab[aria-selected="true"] svg {
+	:host([variant='brand']) .tab:hover svg,
+	:host([variant='brand']) .tab[aria-selected='true'] svg {
 		color: var(--cz-color-text-on-brand);
+	}
+
+	:host([variant='segmented']) .tabs {
+		${segmentedBar}
+	}
+
+	/* The track hugs its tabs when they are not spread. */
+	:host([variant='segmented'][compact-width]) .tabs {
+		width: max-content;
+	}
+
+	:host([variant='segmented']) .tab {
+		${segmentedItem}
+	}
+
+	:host([variant='segmented']) .tab:hover,
+	:host([variant='segmented']) .tab[aria-selected='true'] {
+		${segmentedActive}
+	}
+
+	:host([variant='segmented']) .tab:hover svg,
+	:host([variant='segmented']) .tab[aria-selected='true'] svg {
+		${segmentedIconActive}
 	}
 
 	:host([compact-width]) .tab {
 		flex: 0 1 auto;
 	}
 
-	:host(:not([compact-width]):not([variant="brand"])) .tabs {
+	:host(:not([compact-width]):not([variant='brand']):not([variant='segmented']))
+		.tabs {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -204,11 +312,22 @@ export const nextTabsStyles = css`
 		display: none;
 	}
 
-	:host([variant="brand"]) {
+	:host([variant='brand']) {
 		${brandBar}
 	}
 
-	:host(:not([compact-width]):not([variant="brand"])) {
+	:host([variant='segmented']) {
+		${segmentedBar}
+	}
+
+	/* The track hugs its tabs when they are not spread. */
+	:host([variant='segmented'][compact-width]) {
+		width: max-content;
+	}
+
+	:host(
+		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
+	) {
 		gap: calc(var(--cz-spacing) * 4);
 	}
 `;
@@ -263,18 +382,46 @@ export const nextTabStyles = css`
 		${badge}
 	}
 
-	:host([variant="brand"]) {
+	:host(:not([variant='segmented']):hover) .badge,
+	:host(:not([variant='segmented'])[active]) .badge {
+		${badgeBrand}
+	}
+
+	:host([variant='segmented']) .badge {
+		${badgeModern}
+	}
+
+	:host([variant='brand']:hover) .badge,
+	:host([variant='brand'][active]) .badge {
+		${badgeOnBrand}
+	}
+
+	:host([variant='brand']) {
 		${brandItem}
 	}
 
-	:host([variant="brand"]:hover),
-	:host([variant="brand"][active]) {
+	:host([variant='brand']:hover),
+	:host([variant='brand'][active]) {
 		${brandActive}
 	}
 
-	:host([variant="brand"]:hover) #iconSlot::slotted(svg),
-	:host([variant="brand"][active]) #iconSlot::slotted(svg) {
+	:host([variant='brand']:hover) #iconSlot::slotted(svg),
+	:host([variant='brand'][active]) #iconSlot::slotted(svg) {
 		color: var(--cz-color-text-on-brand);
+	}
+
+	:host([variant='segmented']) {
+		${segmentedItem}
+	}
+
+	:host([variant='segmented']:hover),
+	:host([variant='segmented'][active]) {
+		${segmentedActive}
+	}
+
+	:host([variant='segmented']:hover) #iconSlot::slotted(svg),
+	:host([variant='segmented'][active]) #iconSlot::slotted(svg) {
+		${segmentedIconActive}
 	}
 
 	:host([compact-width]) {

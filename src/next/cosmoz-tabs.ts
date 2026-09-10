@@ -17,7 +17,7 @@ const reflect = (tab: Element, name: string, value: string | null) => {
 
 /**
  * @element cosmoz-tabs-next
- * @attr {('brand'|'underline')} variant
+ * @attr {('brand'|'underline'|'segmented')} variant
  * @attr {boolean} compact-width
  */
 const Tabs = (host: CosmozTabsNextElement) => {

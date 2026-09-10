@@ -36,7 +36,7 @@ export default {
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['underline', 'brand'],
+			options: ['underline', 'brand', 'segmented'],
 			description: 'Untitled UI tab style',
 			table: { defaultValue: { summary: 'underline' } },
 		},
@@ -90,7 +90,7 @@ const DefaultDemo = (host) => {
 if (!customElements.get('cosmoz-tabs-next-default-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-default-demo',
-		component(DefaultDemo, { observedAttributes: ['variant'] })
+		component(DefaultDemo, { observedAttributes: ['variant'] }),
 	);
 }
 
@@ -158,7 +158,7 @@ const VariantsBar = (host) => {
 if (!customElements.get('cosmoz-tabs-next-variants-bar')) {
 	customElements.define(
 		'cosmoz-tabs-next-variants-bar',
-		component(VariantsBar, { observedAttributes: ['variant'] })
+		component(VariantsBar, { observedAttributes: ['variant'] }),
 	);
 }
 
@@ -176,8 +176,9 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 			},
 			description: {
 				story:
-					'The two Untitled UI looks: `underline` (default) and `brand` (pill). ' +
-					'Each bar is independently interactive.',
+					'The three Untitled UI looks: `underline` (default), `brand` (solid ' +
+					'pill) and `segmented` (Untitled\'s "button border" — a track holding ' +
+					'a raised, selected pill). Each bar is independently interactive.',
 			},
 		},
 	},
@@ -193,6 +194,12 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 				<div class="story-label">variant="brand"</div>
 				<cosmoz-tabs-next-variants-bar
 					variant="brand"
+				></cosmoz-tabs-next-variants-bar>
+			</div>
+			<div>
+				<div class="story-label">variant="segmented"</div>
+				<cosmoz-tabs-next-variants-bar
+					variant="segmented"
 				></cosmoz-tabs-next-variants-bar>
 			</div>
 		</div>
@@ -236,7 +243,7 @@ const WithIconsDemo = () => {
 if (!customElements.get('cosmoz-tabs-next-icons-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-icons-demo',
-		component(WithIconsDemo)
+		component(WithIconsDemo),
 	);
 }
 
@@ -303,7 +310,7 @@ const DisabledHiddenDemo = () => {
 if (!customElements.get('cosmoz-tabs-next-states-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-states-demo',
-		component(DisabledHiddenDemo)
+		component(DisabledHiddenDemo),
 	);
 }
 
@@ -378,7 +385,7 @@ const CompactWidthDemo = () => {
 if (!customElements.get('cosmoz-tabs-next-compactwidth-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-compactwidth-demo',
-		component(CompactWidthDemo)
+		component(CompactWidthDemo),
 	);
 }
 
@@ -416,7 +423,7 @@ const DataDrivenDemo = () => {
 		${renderActivated(model, (tab) =>
 			tab.isActive
 				? html`<div style="padding-top: 20px">${tab.render()}</div>`
-				: nothing
+				: nothing,
 		)}
 	`;
 };
@@ -424,7 +431,7 @@ const DataDrivenDemo = () => {
 if (!customElements.get('cosmoz-tabs-next-data-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-data-demo',
-		component(DataDrivenDemo)
+		component(DataDrivenDemo),
 	);
 }
 
@@ -464,7 +471,7 @@ const HashDemo = () => {
 		${renderActivated(model, (tab) =>
 			tab.isActive
 				? html`<div style="padding-top: 20px">${tab.render()}</div>`
-				: nothing
+				: nothing,
 		)}
 	`;
 };
@@ -538,7 +545,7 @@ const ColorsBar = (host) => {
 if (!customElements.get('cosmoz-tabs-next-colors-bar')) {
 	customElements.define(
 		'cosmoz-tabs-next-colors-bar',
-		component(ColorsBar, { observedAttributes: ['vars'] })
+		component(ColorsBar, { observedAttributes: ['vars'] }),
 	);
 }
 
@@ -557,12 +564,11 @@ export const SelectedColors = {
 			},
 			description: {
 				story:
-					'The selected pill **and** the badge are a solid brand fill — ' +
-					'`--cz-color-bg-brand-solid` with `--cz-color-text-on-brand` — so the ' +
-					'text stays legible in both light and dark themes. Override ' +
-					'`--cz-color-bg-brand-solid` on the `<cosmoz-tabs-next>` host to ' +
-					'recolor them (e.g. to a success/error solid); the on-brand text ' +
-					'follows.',
+					'The selected pill is a solid `--cz-color-bg-brand-solid` fill with ' +
+					'`--cz-color-text-on-brand` text; the counter is the Untitled UI badge ' +
+					'— gray by default, and a tint of the same brand token while the tab is ' +
+					'hot. Override `--cz-color-bg-brand-solid` on the host to recolor both ' +
+					'(e.g. to a success/error solid).',
 			},
 		},
 	},
@@ -628,7 +634,7 @@ const MinimalDemo = () => {
 if (!customElements.get('cosmoz-tabs-next-minimal-demo')) {
 	customElements.define(
 		'cosmoz-tabs-next-minimal-demo',
-		component(MinimalDemo)
+		component(MinimalDemo),
 	);
 }
 
