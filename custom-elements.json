@@ -100,6 +100,11 @@
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content (reflected onto children as compact-width)"
+				},
+				{
+					"name": "role",
+					"type": "String",
+					"description": "'tablist' (default) or 'radiogroup'; a radiogroup reflects role=radio onto its items, which then report aria-checked instead of aria-selected. Set it in authored markup — role is platform-reflected, so it is not observed"
 				}
 			],
 			"events": [],
@@ -131,6 +136,11 @@
 					"name": "disabled",
 					"type": "Boolean",
 					"description": "Disables the tab"
+				},
+				{
+					"name": "role",
+					"type": "String",
+					"description": "'tab' (default) or 'radio'; normally reflected by the container rather than set here"
 				}
 			],
 			"events": [],
