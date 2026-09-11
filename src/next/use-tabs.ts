@@ -2,9 +2,9 @@ import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { invoke } from '@neovici/cosmoz-utils/function';
 import { html, useCallback, useMemo, useRef } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import type { TabsVariant } from '../styles';
+import type { TabsSize, TabsVariant } from '../styles';
 
-export type { TabsVariant };
+export type { TabsSize, TabsVariant };
 
 export interface Tab {
 	name: string;
@@ -38,6 +38,7 @@ export interface RenderTabsOptions<T extends RenderTab> {
 	onActivate: (e: Event) => void;
 	className?: string;
 	variant?: TabsVariant;
+	size?: TabsSize;
 	compactWidth?: boolean;
 }
 
@@ -58,7 +59,7 @@ const choose = <T extends Tab>(tabs: T[], name?: string): T | undefined => {
 
 export const useTabs = <T extends Tab>(
 	tabs: T[],
-	{ hashParam, onActivate }: Options = {}
+	{ hashParam, onActivate }: Options = {},
 ): Result<T> => {
 	const [name, activate] = useHashParam(hashParam),
 		ref = useRef<string[]>([]),
@@ -83,7 +84,7 @@ export const useTabs = <T extends Tab>(
 					return;
 				}
 				const tabName = (e.currentTarget as Element | null)?.getAttribute(
-					'name'
+					'name',
 				);
 				if (!tabName) {
 					return;
@@ -91,7 +92,7 @@ export const useTabs = <T extends Tab>(
 				onActivate?.(tabName);
 				activate(tabName);
 			},
-			[activate, onActivate]
+			[activate, onActivate],
 		),
 	};
 };
@@ -102,6 +103,7 @@ export const renderTabs = <T extends RenderTab>({
 	onActivate,
 	className,
 	variant,
+	size,
 	compactWidth,
 }: RenderTabsOptions<T>) =>
 	tabs.map((tab) => {
@@ -110,6 +112,7 @@ export const renderTabs = <T extends RenderTab>({
 			name=${tab.name}
 			class=${ifDefined(className)}
 			variant=${ifDefined(variant)}
+			size=${ifDefined(size)}
 			?compact-width=${ifDefined(compactWidth)}
 			title=${ifDefined(title)}
 			?active=${active?.name === tab.name}
@@ -123,7 +126,7 @@ export const renderTabs = <T extends RenderTab>({
 
 export const renderActivated = <T extends RenderTab, R>(
 	{ tabs, active, activated }: { tabs: T[]; active: T; activated: string[] },
-	render: (t: T & { isActive: boolean }) => R
+	render: (t: T & { isActive: boolean }) => R,
 ): R[] =>
 	tabs
 		.filter((t) => activated.includes(t.name))

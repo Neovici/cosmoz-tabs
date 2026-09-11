@@ -3,13 +3,14 @@ import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, html } from '@pionjs/pion';
 import './cosmoz-tab';
 import { renderTab } from './render';
-import { legacyStyles, type TabsVariant } from './styles';
+import { legacyStyles, type TabsSize, type TabsVariant } from './styles';
 import { useTabs, type CosmozTabsHost } from './use-tabs';
 
-export type { TabsVariant };
+export type { TabsSize, TabsVariant };
 
 export interface CosmozTabsElement extends CosmozTabsHost {
 	variant?: TabsVariant;
+	size?: TabsSize;
 	compactWidth?: boolean;
 }
 
@@ -19,6 +20,8 @@ export interface CosmozTabsElement extends CosmozTabsHost {
  * @attr {string} hash-param - hash parameter to bind selection
  * @attr {boolean} no-resize
  * @attr {('brand'|'underline'|'segmented')} variant
+ * @attr {('sm')} size - omit for the default size; sm trims the item's box on
+ * both axes, and thins the segmented track's ring to match
  * @attr {boolean} compact-width
  * @csspart tabs - tab bar container
  * @csspart tab - individual tab
@@ -55,5 +58,5 @@ customElements.define(
 			'compact-width',
 		],
 		styleSheets: [normalize, legacyStyles],
-	})
+	}),
 );

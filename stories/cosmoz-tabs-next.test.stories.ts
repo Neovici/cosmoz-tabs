@@ -221,3 +221,52 @@ export const CompactWidthSizesToContent: Story = {
 		});
 	},
 };
+
+export const SizeReachesChildrenAndShrinksTheBox: Story = {
+	render: () => html`
+		<cosmoz-tabs-next variant="segmented" compact-width>
+			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			<cosmoz-tab-next>Activity</cosmoz-tab-next>
+		</cosmoz-tabs-next>
+		<cosmoz-tabs-next variant="segmented" compact-width size="sm">
+			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			<cosmoz-tab-next>Activity</cosmoz-tab-next>
+		</cosmoz-tabs-next>
+		<cosmoz-tabs-next variant="underline" compact-width>
+			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			<cosmoz-tab-next>Activity</cosmoz-tab-next>
+		</cosmoz-tabs-next>
+		<cosmoz-tabs-next variant="underline" compact-width size="sm">
+			<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			<cosmoz-tab-next>Activity</cosmoz-tab-next>
+		</cosmoz-tabs-next>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const [base, small, underlineBase, underlineSmall] = [
+			...canvasElement.querySelectorAll('cosmoz-tabs-next'),
+		] as HTMLElement[];
+		const tabOf = (bar: HTMLElement) =>
+			bar.querySelector('cosmoz-tab-next') as HTMLElement;
+
+		await step('the size reaches the children', async () => {
+			await waitFor(() => expect(tabOf(small).getAttribute('size')).toBe('sm'));
+			expect(tabOf(base).hasAttribute('size')).toBe(false);
+		});
+
+		await step('sm is shorter and narrower than the default', async () => {
+			await waitFor(() => {
+				expect(small.offsetHeight).toBeLessThan(base.offsetHeight);
+				expect(small.offsetWidth).toBeLessThan(base.offsetWidth);
+			});
+		});
+
+		await step('sm underline is shorter without getting wider', async () => {
+			await waitFor(() => {
+				expect(underlineSmall.offsetHeight).toBeLessThan(
+					underlineBase.offsetHeight,
+				);
+				expect(underlineSmall.offsetWidth).toBe(underlineBase.offsetWidth);
+			});
+		});
+	},
+};

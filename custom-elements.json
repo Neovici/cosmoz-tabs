@@ -26,6 +26,11 @@
 					"description": "Untitled UI tab style: 'brand' (default), 'underline' or 'segmented'"
 				},
 				{
+					"name": "size",
+					"type": "String",
+					"description": "Omit for the default size; 'sm' trims the tab's box on both axes and thins the segmented track's ring to match"
+				},
+				{
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
@@ -97,6 +102,11 @@
 					"description": "Untitled UI tab style: 'brand' (default), 'underline' or 'segmented'; reflected onto children as variant"
 				},
 				{
+					"name": "size",
+					"type": "String",
+					"description": "Omit for the default size; 'sm' trims the item's box on both axes and thins the segmented track's ring to match (reflected onto children as size)"
+				},
+				{
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content (reflected onto children as compact-width)"
@@ -136,6 +146,11 @@
 					"name": "disabled",
 					"type": "Boolean",
 					"description": "Disables the tab"
+				},
+				{
+					"name": "size",
+					"type": "String",
+					"description": "Reflected by the container; see cosmoz-tabs-next"
 				},
 				{
 					"name": "role",

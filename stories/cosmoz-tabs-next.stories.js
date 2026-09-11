@@ -40,6 +40,12 @@ export default {
 			description: 'Untitled UI tab style',
 			table: { defaultValue: { summary: 'underline' } },
 		},
+		size: {
+			control: 'select',
+			options: ['', 'sm'],
+			description: 'How much box the tabs carry; omit for the default',
+			table: { defaultValue: { summary: '(default)' } },
+		},
 	},
 };
 
@@ -122,12 +128,13 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 
 const VariantsBar = (host) => {
 	const variant = host.getAttribute('variant') || 'underline',
+		size = host.getAttribute('size') || nothing,
 		[active, setActive] = useState('overview'),
 		select = (e) => setActive(e.currentTarget.dataset.name);
 
 	return html`
 		${panelStyles}
-		<cosmoz-tabs-next variant=${variant}>
+		<cosmoz-tabs-next variant=${variant} size=${size}>
 			<cosmoz-tab-next
 				data-name="overview"
 				?active=${active === 'overview'}
@@ -158,7 +165,7 @@ const VariantsBar = (host) => {
 if (!customElements.get('cosmoz-tabs-next-variants-bar')) {
 	customElements.define(
 		'cosmoz-tabs-next-variants-bar',
-		component(VariantsBar, { observedAttributes: ['variant'] }),
+		component(VariantsBar, { observedAttributes: ['variant', 'size'] }),
 	);
 }
 
@@ -200,6 +207,42 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
 				<div class="story-label">variant="segmented"</div>
 				<cosmoz-tabs-next-variants-bar
 					variant="segmented"
+				></cosmoz-tabs-next-variants-bar>
+			</div>
+		</div>
+	`,
+};
+
+export const Sizes = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<cosmoz-tabs-next variant="segmented" compact-width>…</cosmoz-tabs-next>
+<cosmoz-tabs-next variant="segmented" compact-width size="sm">…</cosmoz-tabs-next>`,
+			},
+			description: {
+				story:
+					'`size="sm"` trims the item padding on both axes and thins the ' +
+					'segmented track ring, so the control stops out-weighing a heading ' +
+					'it sits next to. The type is untouched, so the labels read the same. ' +
+					'Shown on `segmented`, where the track makes the difference clearest, ' +
+					'but the attribute applies to every variant.',
+			},
+		},
+	},
+	render: () => html`
+		<div class="story-stack">
+			<div>
+				<div class="story-label">variant="segmented" (default size)</div>
+				<cosmoz-tabs-next-variants-bar
+					variant="segmented"
+				></cosmoz-tabs-next-variants-bar>
+			</div>
+			<div>
+				<div class="story-label">variant="segmented" size="sm"</div>
+				<cosmoz-tabs-next-variants-bar
+					variant="segmented"
+					size="sm"
 				></cosmoz-tabs-next-variants-bar>
 			</div>
 		</div>
