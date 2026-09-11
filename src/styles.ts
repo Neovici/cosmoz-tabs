@@ -112,7 +112,11 @@ const segmentedIconActive = css`
 `;
 
 const smItem = css`
-	padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
+	padding-block: calc(var(--cz-spacing) * 1.5);
+`;
+
+const smButtonItem = css`
+	padding-inline: calc(var(--cz-spacing) * 2);
 `;
 
 /* The track's own ring is what stacks onto the item's padding, so the compact
@@ -325,6 +329,10 @@ export const legacyStyles = css`
 		${smItem}
 	}
 
+	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .tab {
+		${smButtonItem}
+	}
+
 	:host([variant='segmented'][size='sm']) .tabs {
 		${smSegmentedBar}
 	}
@@ -463,5 +471,9 @@ export const nextTabStyles = css`
 	/* Last, so the size wins over whichever variant set the box above. */
 	:host([size='sm']) {
 		${smItem}
+	}
+
+	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
+		${smButtonItem}
 	}
 `;
