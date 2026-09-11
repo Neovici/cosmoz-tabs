@@ -1,3 +1,9 @@
+## 10.3.0
+
+### Minor Changes
+
+- d93910f: Add a `size` attribute to both tab families.
+
 ## 10.2.0
 
 ### Minor Changes
