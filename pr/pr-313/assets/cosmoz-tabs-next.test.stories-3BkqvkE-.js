@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-DLVdIAOy.js";import{t as r}from"./next-CP9gEAHH.js";var i,a,o,s,c,l,u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{t(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs (next)`},s=(e=`brand`)=>n`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-BryWlzXy.js";import{t as r}from"./next-_fh9zN_S.js";var i,a,o,s,c,l,u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{t(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs (next)`},s=(e=`brand`)=>n`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
@@ -24,7 +24,15 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
         </cosmoz-tabs-next>
-    `,play:async({canvasElement:e,step:t})=>{let[n,r]=[...e.querySelectorAll(`cosmoz-tabs-next`)],o=e=>e.querySelector(`cosmoz-tab-next`);await t(`the size reaches the children`,async()=>{await a(()=>i(o(r).getAttribute(`size`)).toBe(`sm`)),i(o(n).hasAttribute(`size`)).toBe(!1)}),await t(`sm is shorter and narrower than the default`,async()=>{await a(()=>{i(r.offsetHeight).toBeLessThan(n.offsetHeight),i(r.offsetWidth).toBeLessThan(n.offsetWidth)})})}},_=[`RolesAndActive`,`RadiogroupPicksRadioSemantics`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`SegmentedActiveStyling`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`],l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+        <cosmoz-tabs-next variant="underline" compact-width>
+            <cosmoz-tab-next active>Overview</cosmoz-tab-next>
+            <cosmoz-tab-next>Activity</cosmoz-tab-next>
+        </cosmoz-tabs-next>
+        <cosmoz-tabs-next variant="underline" compact-width size="sm">
+            <cosmoz-tab-next active>Overview</cosmoz-tab-next>
+            <cosmoz-tab-next>Activity</cosmoz-tab-next>
+        </cosmoz-tabs-next>
+    `,play:async({canvasElement:e,step:t})=>{let[n,r,o,s]=[...e.querySelectorAll(`cosmoz-tabs-next`)],c=e=>e.querySelector(`cosmoz-tab-next`);await t(`the size reaches the children`,async()=>{await a(()=>i(c(r).getAttribute(`size`)).toBe(`sm`)),i(c(n).hasAttribute(`size`)).toBe(!1)}),await t(`sm is shorter and narrower than the default`,async()=>{await a(()=>{i(r.offsetHeight).toBeLessThan(n.offsetHeight),i(r.offsetWidth).toBeLessThan(n.offsetWidth)})}),await t(`sm underline is shorter without getting wider`,async()=>{await a(()=>{i(s.offsetHeight).toBeLessThan(o.offsetHeight),i(s.offsetWidth).toBe(o.offsetWidth)})})}},_=[`RolesAndActive`,`RadiogroupPicksRadioSemantics`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`SegmentedActiveStyling`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`],l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
   play: async ({
     canvasElement,
@@ -188,12 +196,20 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
         </cosmoz-tabs-next>
+        <cosmoz-tabs-next variant="underline" compact-width>
+            <cosmoz-tab-next active>Overview</cosmoz-tab-next>
+            <cosmoz-tab-next>Activity</cosmoz-tab-next>
+        </cosmoz-tabs-next>
+        <cosmoz-tabs-next variant="underline" compact-width size="sm">
+            <cosmoz-tab-next active>Overview</cosmoz-tab-next>
+            <cosmoz-tab-next>Activity</cosmoz-tab-next>
+        </cosmoz-tabs-next>
     \`,
   play: async ({
     canvasElement,
     step
   }) => {
-    const [base, small] = [...canvasElement.querySelectorAll('cosmoz-tabs-next')] as HTMLElement[];
+    const [base, small, underlineBase, underlineSmall] = [...canvasElement.querySelectorAll('cosmoz-tabs-next')] as HTMLElement[];
     const tabOf = (bar: HTMLElement) => bar.querySelector('cosmoz-tab-next') as HTMLElement;
     await step('the size reaches the children', async () => {
       await waitFor(() => expect(tabOf(small).getAttribute('size')).toBe('sm'));
@@ -203,6 +219,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
       await waitFor(() => {
         expect(small.offsetHeight).toBeLessThan(base.offsetHeight);
         expect(small.offsetWidth).toBeLessThan(base.offsetWidth);
+      });
+    });
+    await step('sm underline is shorter without getting wider', async () => {
+      await waitFor(() => {
+        expect(underlineSmall.offsetHeight).toBeLessThan(underlineBase.offsetHeight);
+        expect(underlineSmall.offsetWidth).toBe(underlineBase.offsetWidth);
       });
     });
   }
