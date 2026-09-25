@@ -4,6 +4,7 @@ export default {
 		'@storybook/addon-docs',
 		'@storybook/addon-a11y',
 		'@storybook/addon-vitest',
+		'@neovici/cfg/storybook/preset.mjs',
 	],
 	framework: {
 		name: '@storybook/web-components-vite',
