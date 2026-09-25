@@ -78,7 +78,7 @@
 		"@changesets/cli": "^3.0.1",
 		"@commitlint/cli": "^21.0.2",
 		"@commitlint/config-conventional": "^21.0.2",
-		"@neovici/cfg": "^2.13.0",
+		"@neovici/cfg": "^2.15.0",
 		"@neovici/cosmoz-icons": "^1.6.0",
 		"@neovici/testing": "^2.3.0",
 		"@playwright/test": "^1.61.0",
