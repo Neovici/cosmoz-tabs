@@ -1,0 +1,1 @@
+import{t as e}from"./iframe-sPy336jn.js";e();
