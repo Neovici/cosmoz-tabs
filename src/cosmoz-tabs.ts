@@ -1,6 +1,7 @@
 // @license Copyright (C) 2015 Neovici AB - Apache 2 License
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, html } from '@pionjs/pion';
+import type { TemplateResult } from 'lit-html';
 import './cosmoz-tab';
 import { renderTab } from './render';
 import { legacyStyles, type TabsSize, type TabsVariant } from './styles';
@@ -27,7 +28,10 @@ export interface CosmozTabsElement extends CosmozTabsHost {
  * @csspart tab - individual tab
  * @csspart content - content container
  */
-const Tabs = (host: CosmozTabsElement) => {
+export const Tabs = (
+	host: CosmozTabsElement,
+	header?: (tabs: TemplateResult) => TemplateResult,
+) => {
 	if (!host.getAttribute('variant')) {
 		host.setAttribute('variant', 'brand');
 	}
@@ -35,11 +39,13 @@ const Tabs = (host: CosmozTabsElement) => {
 	const { tabs, onSlot, ...opts } = useTabs(host);
 
 	return html`
-		<div class="tabs" part="tabs" role="tablist">
-			<slot name="tabs"></slot>
-			${tabs.map(renderTab(opts))}
-			<slot name="stats"></slot>
-		</div>
+		${header
+			? header(html`${tabs.map(renderTab(opts))}`)
+			: html`<div class="tabs" part="tabs" role="tablist">
+					<slot name="tabs"></slot>
+					${tabs.map(renderTab(opts))}
+					<slot name="stats"></slot>
+				</div>`}
 
 		<div id="content" part="content">
 			<slot @slotchange=${onSlot}></slot>
