@@ -33,6 +33,7 @@ export default {
 	decorators: [
 		(story, context) => {
 			const isDark = context.globals?.theme === 'dark';
+			document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 			document.documentElement.classList.toggle('dark-mode', isDark);
 
 			return html`
