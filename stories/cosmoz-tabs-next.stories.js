@@ -1,8 +1,3 @@
-import {
-	calculatorIcon,
-	listIcon,
-	receiptIcon,
-} from '@neovici/cosmoz-icons/untitled';
 import { component, useState } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 
@@ -247,69 +242,6 @@ export const Sizes = {
 			</div>
 		</div>
 	`,
-};
-
-const WithIconsDemo = () => {
-	const [active, setActive] = useState('overview'),
-		select = (e) => setActive(e.currentTarget.dataset.name);
-
-	return html`
-		${panelStyles}
-		<cosmoz-tabs-next variant="brand">
-			<cosmoz-tab-next
-				data-name="overview"
-				?active=${active === 'overview'}
-				@click=${select}
-			>
-				${receiptIcon({ slot: 'icon' })} Overview
-			</cosmoz-tab-next>
-			<cosmoz-tab-next
-				data-name="rows"
-				badge="5"
-				?active=${active === 'rows'}
-				@click=${select}
-			>
-				${listIcon({ slot: 'icon' })} Invoice rows
-			</cosmoz-tab-next>
-			<cosmoz-tab-next
-				data-name="accounting"
-				?active=${active === 'accounting'}
-				@click=${select}
-			>
-				${calculatorIcon({ slot: 'icon' })} Accounting
-			</cosmoz-tab-next>
-		</cosmoz-tabs-next>
-		<div style="padding-top: 20px">${panels[active]()}</div>
-	`;
-};
-
-if (!customElements.get('cosmoz-tabs-next-icons-demo')) {
-	customElements.define(
-		'cosmoz-tabs-next-icons-demo',
-		component(WithIconsDemo),
-	);
-}
-
-export const WithIcons = {
-	parameters: {
-		docs: {
-			source: {
-				code: `<cosmoz-tabs-next variant="brand">
-  <cosmoz-tab-next data-name="overview"
-    ?active=\${active === 'overview'} @click=\${select}>
-    \${receiptIcon({ slot: 'icon' })} Overview
-  </cosmoz-tab-next>
-</cosmoz-tabs-next>`,
-			},
-			description: {
-				story:
-					'Leading icons via the `icon` slot — slot an icon template carrying ' +
-					'`slot="icon"` into each `<cosmoz-tab-next>`.',
-			},
-		},
-	},
-	render: () =>
-		html`<cosmoz-tabs-next-icons-demo></cosmoz-tabs-next-icons-demo>`,
 };
 
 const DisabledHiddenDemo = () => {
