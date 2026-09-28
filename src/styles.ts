@@ -13,13 +13,19 @@ export type TabsSize = 'sm';
 const bar = css`
 	display: flex;
 	align-items: stretch;
-	gap: calc(var(--cz-spacing) * 3);
-	padding-inline: calc(var(--cz-spacing) * 3);
+	gap: var(--cz-tabs-gap, calc(var(--cz-spacing) * 3));
+	padding-inline: var(--cz-tabs-padding-inline, calc(var(--cz-spacing) * 3));
+	padding-block: var(--cz-tabs-padding-block, 0);
+	background: var(--cz-tabs-background, transparent);
+	border-radius: var(--cz-tabs-radius, 0);
 	font-family: var(--cz-font-body);
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
+	box-shadow: var(
+		--cz-tabs-shadow,
+		inset 0 -1px 0 0 var(--cz-color-border-secondary)
+	);
 	overflow-x: auto;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: auto;
@@ -32,7 +38,11 @@ const item = css`
 	align-items: center;
 	justify-content: center;
 	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
+	padding: var(
+		--cz-tab-padding,
+		calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5)
+	);
+	border-radius: var(--cz-tab-radius, 0);
 	color: var(--cz-color-text-quaternary);
 	text-decoration: none;
 	white-space: nowrap;
@@ -56,8 +66,12 @@ const itemDisabled = css`
 `;
 
 const activeUnderline = css`
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
+	color: var(--cz-tab-active-color, var(--cz-color-text-brand));
+	background: var(--cz-tab-active-background, transparent);
+	box-shadow: var(
+		--cz-tab-active-shadow,
+		inset 0 -2px 0 0 var(--cz-color-fg-brand)
+	);
 `;
 
 const icon = css`
@@ -83,7 +97,8 @@ const brandItem = css`
 
 const brandActive = css`
 	color: var(--cz-color-text-on-brand);
-	background-color: var(--cz-color-bg-brand-solid);
+	background: var(--cz-color-bg-brand-solid);
+	background-image: var(--cz-control-sheen, none);
 	box-shadow: none;
 `;
 
@@ -103,7 +118,7 @@ const segmentedItem = css`
 
 const segmentedActive = css`
 	color: var(--cz-color-text-secondary);
-	background-color: var(--cz-color-bg-primary);
+	background: var(--cz-material-background, var(--cz-color-bg-primary));
 	box-shadow: var(--cz-shadow-sm);
 `;
 
@@ -290,7 +305,7 @@ export const legacyStyles = css`
 
 	:host(:not([compact-width]):not([variant='brand']):not([variant='segmented']))
 		.tabs {
-		gap: calc(var(--cz-spacing) * 4);
+		gap: var(--cz-tabs-gap, calc(var(--cz-spacing) * 4));
 	}
 
 	/* Last, so the size wins over whichever variant set the box above. */
@@ -304,6 +319,13 @@ export const legacyStyles = css`
 
 	:host([variant='segmented'][size='sm']) .tabs {
 		${smSegmentedBar}
+	}
+
+	@media (forced-colors: active) {
+		.tab[aria-selected='true'] {
+			outline: 2px solid Highlight;
+			outline-offset: -2px;
+		}
 	}
 `;
 
@@ -333,7 +355,7 @@ export const nextTabsStyles = css`
 	:host(
 		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
 	) {
-		gap: calc(var(--cz-spacing) * 4);
+		gap: var(--cz-tabs-gap, calc(var(--cz-spacing) * 4));
 	}
 
 	:host([variant='segmented'][size='sm']) {
@@ -439,5 +461,12 @@ export const nextTabStyles = css`
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		${smButtonItem}
+	}
+
+	@media (forced-colors: active) {
+		:host([active]) {
+			outline: 2px solid Highlight;
+			outline-offset: -2px;
+		}
 	}
 `;
