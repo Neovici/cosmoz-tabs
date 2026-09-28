@@ -47,3 +47,29 @@ export const HeadingAndCollapse: Story = {
 		});
 	},
 };
+
+export const OptionalMaterial: Story = {
+	render: () =>
+		html`<cosmoz-tab-card
+			heading="Review"
+			style="--cosmoz-tab-card-bg-color: rgb(40, 60, 80)"
+			>Invoice requires approval</cosmoz-tab-card
+		>`,
+	play: async ({ canvasElement }) => {
+		const card = canvasElement.querySelector<HTMLElement>('cosmoz-tab-card')!;
+		await waitFor(() =>
+			expect(card.shadowRoot?.querySelector('.heading')).toBeTruthy(),
+		);
+		const fill = getComputedStyle(card).backgroundColor;
+		expect(getComputedStyle(card).backgroundImage).toBe('none');
+		card.style.setProperty(
+			'--cz-material-sheen',
+			'linear-gradient(white, transparent)',
+		);
+		expect(getComputedStyle(card).backgroundImage).toContain('linear-gradient');
+		expect(getComputedStyle(card).backgroundColor).toBe(fill);
+		card.style.removeProperty('--cz-material-sheen');
+		expect(getComputedStyle(card).backgroundImage).toBe('none');
+		expect(getComputedStyle(card).backgroundColor).toBe(fill);
+	},
+};
