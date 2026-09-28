@@ -414,7 +414,14 @@ export const DataDriven = {
 	parameters: {
 		docs: {
 			source: {
-				code: `const model = useTabs(invoiceTabs);
+				code: `const tabs = [
+  { name: 'overview', title: 'Overview',
+    icon: receiptIcon, render: overview },
+  { name: 'rows', title: 'Invoice rows', badge: '5',
+    icon: listIcon, render: rows },
+];
+
+const model = useTabs(tabs);
 
 <cosmoz-tabs-next variant="brand">
   \${renderTabs({ ...model, variant: 'brand' })}
@@ -426,9 +433,10 @@ export const DataDriven = {
 				story:
 					'Driven entirely from a data array with `useTabs(tabs)` -> ' +
 					'`renderTabs(model)` for the bar and `renderActivated(model, …)` for ' +
-					'the panels (which keeps already-visited panels mounted). Pass ' +
-					'`{ hashParam }` to `useTabs` to bind selection to the URL ' +
-					'(see *Hash routing*).',
+					'the panels (which keeps already-visited panels mounted). Tabs accept ' +
+					'an optional `icon` factory from `@neovici/cosmoz-icons`, rendered ' +
+					'into the tab\'s `icon` slot. Pass `{ hashParam }` to `useTabs` to ' +
+					'bind selection to the URL (see *Hash routing*).',
 			},
 		},
 	},
