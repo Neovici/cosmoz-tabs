@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,i as n,s as r}from"./iframe-C_C2TSE2.js";import{a as i,d as a,o}from"./if-defined-CW1YjXUM.js";import{l as s,m as c,r as l,t as u}from"./untitled-CMcPRPaC.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-DaxSi5By.js";import{a as v,i as y,r as b,t as x}from"./next-Bm9-Sl8G.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W;function G(){return(G=e((()=>{u(),i(),t(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}},size:{control:`select`,options:[``,`sm`],description:`How much box the tabs carry; omit for the default`,table:{defaultValue:{summary:`(default)`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let t=e.getAttribute(`variant`)||`underline`,[n,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return r`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,i as n,s as r}from"./iframe-BpvjgUog.js";import{c as i,p as a,s as o}from"./if-defined-BdmiSgmM.js";import{l as s,m as c,r as l,t as u}from"./untitled-VbYD5KuE.js";import{a as d,c as f,i as p,l as m,o as h,s as g,t as _}from"./demo-content-DQ_ErfgP.js";import{a as v,i as y,r as b,t as x}from"./next-BKompbCw.js";var S,C,w,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W;function G(){return(G=e((()=>{u(),o(),t(),x(),d(),S={title:`Tabs/cosmoz-tabs-next`,component:`cosmoz-tabs-next`,tags:[`autodocs`],parameters:{docs:{description:{component:"Next, data-driven tabs. A `cosmoz-tab-next` is **only the clickable header** — it does not switch panels by itself. Selection is owned by the consumer: either wire `active` + a click handler yourself (the raw element API, used by most demos below), or use the `useTabs`/`renderTabs`/`renderActivated` hook API (see *Data driven*)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}},size:{control:`select`,options:[``,`sm`],description:`How much box the tabs carry; omit for the default`,table:{defaultValue:{summary:`(default)`}}}}},C={overview:g,rows:m,accounting:_,history:p},w=e=>{let t=e.getAttribute(`variant`)||`underline`,[n,i]=a(`overview`),o=e=>i(e.currentTarget.dataset.name);return r`
         ${f}
         <cosmoz-tabs-next variant=${t}>
             <cosmoz-tab-next
@@ -32,7 +32,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,i as n,s as r}f
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[n]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-default-demo`)||customElements.define(`cosmoz-tabs-next-default-demo`,o(w,{observedAttributes:[`variant`]})),T={args:{variant:`underline`},parameters:{controls:{disable:!1},docs:{source:{code:`const [active, setActive] = useState('overview');
+    `},customElements.get(`cosmoz-tabs-next-default-demo`)||customElements.define(`cosmoz-tabs-next-default-demo`,i(w,{observedAttributes:[`variant`]})),T={args:{variant:`underline`},parameters:{controls:{disable:!1},docs:{source:{code:`const [active, setActive] = useState('overview');
 const select = (e) => setActive(e.currentTarget.dataset.name);
 
 <cosmoz-tabs-next variant="underline">
@@ -71,7 +71,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[o]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-variants-bar`)||customElements.define(`cosmoz-tabs-next-variants-bar`,o(E,{observedAttributes:[`variant`,`size`]})),D={parameters:{docs:{source:{code:`const [active, setActive] = useState('overview');
+    `},customElements.get(`cosmoz-tabs-next-variants-bar`)||customElements.define(`cosmoz-tabs-next-variants-bar`,i(E,{observedAttributes:[`variant`,`size`]})),D={parameters:{docs:{source:{code:`const [active, setActive] = useState('overview');
 const select = (e) => setActive(e.currentTarget.dataset.name);
 
   <cosmoz-tab-next data-name="overview"
@@ -142,7 +142,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-icons-demo`)||customElements.define(`cosmoz-tabs-next-icons-demo`,o(k)),A={parameters:{docs:{source:{code:`<cosmoz-tabs-next variant="brand">
+    `},customElements.get(`cosmoz-tabs-next-icons-demo`)||customElements.define(`cosmoz-tabs-next-icons-demo`,i(k)),A={parameters:{docs:{source:{code:`<cosmoz-tabs-next variant="brand">
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>
     \${receiptIcon({ slot: 'icon' })} Overview
@@ -173,7 +173,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-states-demo`)||customElements.define(`cosmoz-tabs-next-states-demo`,o(j)),M={parameters:{docs:{source:{code:`const select = (e) => {
+    `},customElements.get(`cosmoz-tabs-next-states-demo`)||customElements.define(`cosmoz-tabs-next-states-demo`,i(j)),M={parameters:{docs:{source:{code:`const select = (e) => {
   const el = e.currentTarget;
   if (!el.hasAttribute('disabled')) setActive(el.dataset.name);
 };
@@ -217,7 +217,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-compactwidth-demo`)||customElements.define(`cosmoz-tabs-next-compactwidth-demo`,o(N)),P={name:`Compact width`,parameters:{docs:{source:{code:`
+    `},customElements.get(`cosmoz-tabs-next-compactwidth-demo`)||customElements.define(`cosmoz-tabs-next-compactwidth-demo`,i(N)),P={name:`Compact width`,parameters:{docs:{source:{code:`
 <cosmoz-tabs-next variant="underline" compact-width>
   <cosmoz-tab-next data-name="overview"
     ?active=\${active === 'overview'} @click=\${select}>Overview</cosmoz-tab-next>
@@ -227,7 +227,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             ${y({...e,variant:`brand`})}
         </cosmoz-tabs-next>
         ${b(e,e=>e.isActive?r`<div style="padding-top: 20px">${e.render()}</div>`:n)}
-    `},customElements.get(`cosmoz-tabs-next-data-demo`)||customElements.define(`cosmoz-tabs-next-data-demo`,o(F)),I={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs);
+    `},customElements.get(`cosmoz-tabs-next-data-demo`)||customElements.define(`cosmoz-tabs-next-data-demo`,i(F)),I={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs);
 
 <cosmoz-tabs-next variant="brand">
   \${renderTabs({ ...model, variant: 'brand' })}
@@ -239,7 +239,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             ${y({...e,variant:`brand`})}
         </cosmoz-tabs-next>
         ${b(e,e=>e.isActive?r`<div style="padding-top: 20px">${e.render()}</div>`:n)}
-    `},customElements.get(`cosmoz-tabs-next-hash-demo`)||customElements.define(`cosmoz-tabs-next-hash-demo`,o(L)),R={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs, { hashParam: 'ntab' });
+    `},customElements.get(`cosmoz-tabs-next-hash-demo`)||customElements.define(`cosmoz-tabs-next-hash-demo`,i(L)),R={parameters:{docs:{source:{code:`const model = useTabs(invoiceTabs, { hashParam: 'ntab' });
 
 <cosmoz-tabs-next variant="brand">
   \${renderTabs({ ...model, variant: 'brand' })}
@@ -272,7 +272,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[n]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-colors-bar`)||customElements.define(`cosmoz-tabs-next-colors-bar`,o(z,{observedAttributes:[`vars`]})),B={parameters:{docs:{source:{code:`
+    `},customElements.get(`cosmoz-tabs-next-colors-bar`)||customElements.define(`cosmoz-tabs-next-colors-bar`,i(z,{observedAttributes:[`vars`]})),B={parameters:{docs:{source:{code:`
 <cosmoz-tabs-next
   variant="brand"
   style="--cz-color-bg-brand-solid: var(--cz-color-bg-success-solid);"
@@ -328,7 +328,7 @@ const select = (e) => setActive(e.currentTarget.dataset.name);
             </cosmoz-tab-next>
         </cosmoz-tabs-next>
         <div style="padding-top: 20px">${C[e]()}</div>
-    `},customElements.get(`cosmoz-tabs-next-minimal-demo`)||customElements.define(`cosmoz-tabs-next-minimal-demo`,o(V)),H={parameters:{docs:{source:{code:`<cosmoz-tabs-next
+    `},customElements.get(`cosmoz-tabs-next-minimal-demo`)||customElements.define(`cosmoz-tabs-next-minimal-demo`,i(V)),H={parameters:{docs:{source:{code:`<cosmoz-tabs-next
   variant="brand"
   style="--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary);
          --cz-color-text-on-brand: var(--cz-color-text-primary);"
