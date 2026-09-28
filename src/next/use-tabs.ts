@@ -2,6 +2,7 @@ import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { invoke } from '@neovici/cosmoz-utils/function';
 import { html, useCallback, useMemo, useRef } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { when } from 'lit-html/directives/when.js';
 import type { TabsSize, TabsVariant } from '../styles';
 
 export type { TabsSize, TabsVariant };
@@ -16,6 +17,8 @@ export interface Tab {
 export interface RenderTab extends Tab {
 	title?: string | (() => string);
 	badge?: string;
+	/** Leading icon: an icon factory from `@neovici/cosmoz-icons`, rendered into the tab's `icon` slot. */
+	icon?: (options?: { slot?: string }) => unknown;
 	content?: unknown;
 }
 
@@ -107,7 +110,8 @@ export const renderTabs = <T extends RenderTab>({
 	compactWidth,
 }: RenderTabsOptions<T>) =>
 	tabs.map((tab) => {
-		const title = invoke(tab.title);
+		const title = invoke(tab.title),
+			content = tab.content ?? title;
 		return html`<cosmoz-tab-next
 			name=${tab.name}
 			class=${ifDefined(className)}
@@ -120,7 +124,9 @@ export const renderTabs = <T extends RenderTab>({
 			?disabled=${tab.disabled}
 			.badge=${tab.badge}
 			@click=${onActivate}
-			>${tab.content ?? title}</cosmoz-tab-next
+			>${when(tab.icon, (icon) =>
+				icon({ slot: 'icon' }),
+			)}${content}</cosmoz-tab-next
 		>`;
 	});
 

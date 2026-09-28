@@ -1,8 +1,11 @@
+import { listIcon, receiptIcon } from '@neovici/cosmoz-icons/untitled';
+import { component } from '@pionjs/pion';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
+import { renderActivated, renderTabs, useTabs } from '../src/next/use-tabs';
 
 const meta: Meta = {
 	title: 'Tests/Tabs (next)',
@@ -267,6 +270,105 @@ export const SizeReachesChildrenAndShrinksTheBox: Story = {
 				);
 				expect(underlineSmall.offsetWidth).toBe(underlineBase.offsetWidth);
 			});
+		});
+	},
+};
+
+const iconTabs = [
+	{
+		name: 'overview',
+		title: 'Overview',
+		icon: receiptIcon,
+		render: () => html`<div>overview panel</div>`,
+	},
+	{
+		name: 'rows',
+		title: 'Invoice rows',
+		badge: '5',
+		icon: listIcon,
+		render: () => html`<div>rows panel</div>`,
+	},
+	{
+		name: 'plain',
+		title: 'No icon',
+		render: () => html`<div>plain panel</div>`,
+	},
+];
+
+const IconTabsDemo = () => {
+	const model = useTabs(iconTabs);
+	return html`
+		<cosmoz-tabs-next id="icon-tabs">${renderTabs(model)}</cosmoz-tabs-next>
+		${renderActivated(model, (tab) =>
+			tab.isActive ? html`<div id="panel">${tab.render()}</div>` : null,
+		)}
+	`;
+};
+
+if (!customElements.get('cosmoz-tabs-next-icon-tabs-test')) {
+	customElements.define(
+		'cosmoz-tabs-next-icon-tabs-test',
+		component(IconTabsDemo),
+	);
+}
+
+export const RenderTabsRendersTheIconIntoTheIconSlot: Story = {
+	render: () =>
+		html`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>`,
+	play: async ({ canvasElement, step }) => {
+		const container = canvasElement.querySelector(
+			'cosmoz-tabs-next-icon-tabs-test',
+		) as HTMLElement & { shadowRoot: ShadowRoot };
+
+		await step('the icon lands in the icon slot before the label', async () => {
+			const bar = container.shadowRoot.querySelector(
+				'cosmoz-tabs-next#icon-tabs',
+			)! as HTMLElement;
+			await waitFor(() => {
+				const [overview, rows, plain] = [
+					...bar.querySelectorAll('cosmoz-tab-next'),
+				] as Array<HTMLElement & { shadowRoot: ShadowRoot }>;
+				expect(
+					overview.shadowRoot.querySelector('#iconSlot')!.assignedElements()[0]
+						?.tagName,
+				).toBe('svg');
+				expect(
+					rows.shadowRoot.querySelector('#iconSlot')!.assignedElements()[0]
+						?.tagName,
+				).toBe('svg');
+				// A tab without an icon stays icon-less.
+				expect(
+					plain.shadowRoot.querySelector('#iconSlot')!.assignedElements(),
+				).toEqual([]);
+			});
+		});
+
+		await step('the label still renders alongside the icon', async () => {
+			const overview = container.shadowRoot.querySelector(
+				'cosmoz-tab-next[name="overview"]',
+			) as HTMLElement & { textContent: string };
+			await waitFor(() => expect(overview.textContent).toContain('Overview'));
+		});
+
+		await step('selection and panels keep working', async () => {
+			const bar = container.shadowRoot.querySelector(
+				'cosmoz-tabs-next#icon-tabs',
+			)!;
+			const rowsTab = bar.querySelector('cosmoz-tab-next[name="rows"]')!;
+			(rowsTab as HTMLElement).click();
+			await waitFor(() =>
+				expect(
+					(
+						bar.querySelector('cosmoz-tab-next[name="rows"]') as HTMLElement
+					).hasAttribute('active'),
+				).toBe(true),
+			);
+			await waitFor(() =>
+				expect(
+					(container.shadowRoot.querySelector('#panel') as HTMLElement)
+						.textContent,
+				).toContain('rows panel'),
+			);
 		});
 	},
 };
