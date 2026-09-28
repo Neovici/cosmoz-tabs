@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-BpvjgUog.js";import{t as r}from"./cosmoz-tabs-u7ohjf3e.js";var i,a,o,s,c;function l(){return(l=e((()=>{t(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tab card`},s={render:()=>n`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-DW-q1sSs.js";import{t as r}from"./cosmoz-tabs-CHwjNoiO.js";var i,a,o,s,c;function l(){return(l=e((()=>{t(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tab card`},s={render:()=>n`
         <cosmoz-tabs .selected=${`tab1`}>
             <cosmoz-tab heading="Cards" name="tab1">
                 <cosmoz-tab-card heading="Card one">card one</cosmoz-tab-card>
