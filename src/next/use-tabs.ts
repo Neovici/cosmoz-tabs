@@ -1,8 +1,8 @@
 import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { invoke } from '@neovici/cosmoz-utils/function';
 import { html, useCallback, useMemo, useRef } from '@pionjs/pion';
-import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { when } from 'lit-html/directives/when.js';
 import type { TabsSize, TabsVariant } from '../styles';
 
 export type { TabsSize, TabsVariant };
@@ -124,9 +124,9 @@ export const renderTabs = <T extends RenderTab>({
 			?disabled=${tab.disabled}
 			.badge=${tab.badge}
 			@click=${onActivate}
-			>${tab.icon
-				? tab.icon({ slot: 'icon' })
-				: nothing}${content}</cosmoz-tab-next
+			>${when(tab.icon, (icon) =>
+				icon({ slot: 'icon' }),
+			)}${content}</cosmoz-tab-next
 		>`;
 	});
 
