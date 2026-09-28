@@ -406,9 +406,9 @@ export const SelectedColors = {
 				story:
 					'The selected pill is a solid `--cz-color-bg-brand-solid` fill with ' +
 					'`--cz-color-text-on-brand` text; the counter is the Untitled UI badge ' +
-					'— gray by default, and a tint of the same brand token while ' +
+					'— gray by default, stepping up to `--cz-color-bg-tertiary` while ' +
 					'the tab is hot. Override `--cz-color-bg-brand-solid` on the ' +
-					'`<cosmoz-tabs>` host to recolor both (e.g. to a success/error solid).',
+					'`<cosmoz-tabs>` host to recolor the pill (e.g. to a success/error solid).',
 			},
 		},
 	},

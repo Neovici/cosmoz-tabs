@@ -130,8 +130,8 @@ const spreadItem = css`
 	flex: 1 1 0;
 `;
 
-// Untitled UI badge, size sm: a "pill color" counter that turns brand while the
-// tab is hot, and their "modern" square-ish one for the button-style tabs.
+// Untitled UI badge, size sm: a "pill color" counter that steps up a surface while
+// the tab is hot, and their "modern" square-ish one for the button-style tabs.
 const badge = css`
 	display: inline-flex;
 	align-items: center;
@@ -151,36 +151,10 @@ const badge = css`
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 `;
 
-// cosmoz-tokens has no utility-* colors, so the brand tint is mixed against the
-// surface instead — which also keeps it legible in the dark theme.
-const badgeBrand = css`
-	background-color: color-mix(
-		in oklab,
-		var(--cz-color-bg-brand-solid) 12%,
-		var(--cz-color-bg-primary)
-	);
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 0 0 1px
-		color-mix(
-			in oklab,
-			var(--cz-color-bg-brand-solid) 30%,
-			var(--cz-color-bg-primary)
-		);
-`;
-
-// On the solid brand pill the tint has to mix into the pill, not the page.
-const badgeOnBrand = css`
-	background-color: color-mix(
-		in oklab,
-		var(--cz-color-bg-brand-solid) 12%,
-		var(--cz-color-text-on-brand)
-	);
-	box-shadow: inset 0 0 0 1px
-		color-mix(
-			in oklab,
-			var(--cz-color-bg-brand-solid) 30%,
-			var(--cz-color-text-on-brand)
-		);
+const badgeHot = css`
+	background-color: var(--cz-color-bg-tertiary);
+	color: var(--cz-color-text-primary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-primary);
 `;
 
 const badgeModern = css`
@@ -252,16 +226,11 @@ export const legacyStyles = css`
 
 	:host(:not([variant='segmented'])) .tab:hover .badge,
 	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge {
-		${badgeBrand}
+		${badgeHot}
 	}
 
 	:host([variant='segmented']) .badge {
 		${badgeModern}
-	}
-
-	:host([variant='brand']) .tab:hover .badge,
-	:host([variant='brand']) .tab[aria-selected='true'] .badge {
-		${badgeOnBrand}
 	}
 
 	#content {
@@ -424,16 +393,11 @@ export const nextTabStyles = css`
 
 	:host(:not([variant='segmented']):hover) .badge,
 	:host(:not([variant='segmented'])[active]) .badge {
-		${badgeBrand}
+		${badgeHot}
 	}
 
 	:host([variant='segmented']) .badge {
 		${badgeModern}
-	}
-
-	:host([variant='brand']:hover) .badge,
-	:host([variant='brand'][active]) .badge {
-		${badgeOnBrand}
 	}
 
 	:host([variant='brand']) {
