@@ -1,6 +1,6 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{s as t}from"./iframe-DpssT5f1.js";import{C as n,a as r,d as i,i as a,o,r as s,y as c}from"./if-defined-CzBhWlvH.js";import{n as l}from"./when-G5Nf7ybI.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{s as t}from"./iframe-BpvjgUog.js";import{T as n,a as r,c as i,i as a,o,p as s,s as c,x as l}from"./if-defined-BdmiSgmM.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
       :host { display: block; }
-		`);let t=this.attachShadow({mode:`open`});t.appendChild(document.createElement(`slot`)),t.adoptedStyleSheets=[e]}connectedCallback(){p(this,this.getAttribute(`opened`)!=null)}attributeChangedCallback(e,t,n){if(e===`opened`){let e=n!=null;return this.isConnected?this.toggle(this,e):p(this,e)}}},customElements.define(`cosmoz-collapse`,m)})))()}function g(){return(g=e((()=>{h()})))()}var _,v,y;function b(){return(b=e((()=>{g(),s(),r(),_=()=>t`
+		`);let t=this.attachShadow({mode:`open`});t.appendChild(document.createElement(`slot`)),t.adoptedStyleSheets=[e]}connectedCallback(){p(this,this.getAttribute(`opened`)!=null)}attributeChangedCallback(e,t,n){if(e===`opened`){let e=n!=null;return this.isConnected?this.toggle(this,e):p(this,e)}}},customElements.define(`cosmoz-collapse`,m)})))()}function g(){return(g=e((()=>{h()})))()}var _,v,y;function b(){return(b=e((()=>{g(),r(),c(),_=()=>t`
 	<svg
 		class="expand-more-icon"
 		viewBox="0 0 24 24"
@@ -11,8 +11,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{s as t}from"./iframe-D
 	>
 		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
 	</svg>
-`,v=e=>{let{heading:n,collapsable:r,collapsed:a}=e,[o,s]=i(!!a),u=()=>{if(r)return s(e=>!e)};return c(()=>{e.toggleAttribute(`collapsed`,o)},[o]),t`${l(n,()=>t`<div class="header" part="header">
-					${l(r,()=>t`
+`,v=e=>{let{heading:n,collapsable:r,collapsed:i}=e,[o,c]=s(!!i),u=()=>{if(r)return c(e=>!e)};return l(()=>{e.toggleAttribute(`collapsed`,o)},[o]),t`${a(n,()=>t`<div class="header" part="header">
+					${a(r,()=>t`
 							<div
 								@click=${u}
 								class="collapse-icon"
@@ -126,4 +126,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{s as t}from"./iframe-D
 		cursor: pointer;
 		user-select: none;
 	}
-`,customElements.define(`cosmoz-tab-card`,o(v,{observedAttributes:[`heading`,`collapsable`,`collapsed`],styleSheets:[a,y]}))})))()}export{b as t};
+`,customElements.define(`cosmoz-tab-card`,i(v,{observedAttributes:[`heading`,`collapsable`,`collapsed`],styleSheets:[o,y]}))})))()}export{b as t};
