@@ -111,7 +111,8 @@ export const renderTabs = <T extends RenderTab>({
 }: RenderTabsOptions<T>) =>
 	tabs.map((tab) => {
 		const title = invoke(tab.title),
-			content = tab.content ?? title;
+			content = tab.content ?? title,
+			badge = tab.badge || undefined;
 		return html`<cosmoz-tab-next
 			name=${tab.name}
 			class=${ifDefined(className)}
@@ -122,7 +123,7 @@ export const renderTabs = <T extends RenderTab>({
 			?active=${active?.name === tab.name}
 			?hidden=${tab.hidden}
 			?disabled=${tab.disabled}
-			.badge=${tab.badge}
+			badge=${ifDefined(badge)}
 			@click=${onActivate}
 			>${when(tab.icon, (icon) =>
 				icon({ slot: 'icon' }),

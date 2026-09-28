@@ -1,6 +1,5 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
-import { compute } from 'compute-scroll-into-view';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nextTabStyles } from '../styles';
@@ -42,17 +41,6 @@ const Tab = (host: CosmozTabNextElement) => {
 		// Read the role live rather than observing it: `role` is reflected by
 		// the platform, so it is not ours to take over as a property.
 		host.setAttribute(selectedState(host), active ? 'true' : 'false');
-
-		if (!active) {
-			return;
-		}
-		compute(host, {
-			block: 'nearest',
-			inline: 'center',
-			boundary: host.parentElement,
-		}).forEach(({ el, top, left }) =>
-			el.scroll({ top, left, behavior: 'smooth' }),
-		);
 	}, [active]);
 
 	return html`

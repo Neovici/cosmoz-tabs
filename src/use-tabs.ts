@@ -1,13 +1,6 @@
 import { link, useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { notifyProperty } from '@neovici/cosmoz-utils/hooks/use-notify-property';
-import {
-	useCallback,
-	useEffect,
-	useLayoutEffect,
-	useMemo,
-	useState,
-} from '@pionjs/pion';
-import { compute } from 'compute-scroll-into-view';
+import { useCallback, useEffect, useMemo, useState } from '@pionjs/pion';
 import { choose, collect, getName, isValid, type TabElement } from './utils';
 
 export interface CosmozTabsHost extends HTMLElement {
@@ -49,30 +42,6 @@ const useTabSelectedEffect = (
 	}, [selectedTab]);
 };
 
-const useAutoScroll = (
-	host: CosmozTabsHost,
-	selectedTab?: TabElement,
-	tabs?: TabElement[],
-) => {
-	useLayoutEffect(() => {
-		const el = host.shadowRoot?.querySelector('a[aria-selected=true]');
-		if (!el) {
-			return;
-		}
-		const rid = requestAnimationFrame(() =>
-			compute(el, {
-				block: 'nearest',
-				inline: 'center',
-				boundary: el.parentElement,
-				scrollMode: 'if-needed',
-			}).forEach(({ el, top, left }) =>
-				el.scroll({ top, left, behavior: 'smooth' }),
-			),
-		);
-		return () => cancelAnimationFrame(rid);
-	}, [selectedTab, tabs]);
-};
-
 const useTabs = (host: CosmozTabsHost) => {
 	const { selected, hashParam } = host,
 		[tabs, setTabs] = useState<TabElement[]>([]),
@@ -102,8 +71,6 @@ const useTabs = (host: CosmozTabsHost) => {
 		host.addEventListener('cosmoz-tab-alter', onTabAlter);
 		return () => host.removeEventListener('cosmoz-tab-alter', onTabAlter);
 	}, [selectedTab]);
-
-	useAutoScroll(host, selectedTab, tabs);
 
 	const href = useCallback(
 		(tab: TabElement) =>

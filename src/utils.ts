@@ -32,7 +32,7 @@ export const choose = (
 		return selectedTab;
 	}
 	const fallback = valid(tabs);
-	/* istanbul ignore else */
+	// istanbul ignore else
 	if (fallback) {
 		fallback._fallbackFor = selectedTab;
 	}

@@ -31,9 +31,11 @@ export const RolesAndActive: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('container is a tablist', async () => {
+		await step('tabs are wrapped in a tablist', async () => {
 			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('tablist'),
+				expect(
+					container.shadowRoot!.querySelector('.items')?.getAttribute('role'),
+				).toBe('tablist'),
 			);
 		});
 
@@ -76,10 +78,15 @@ export const RadiogroupPicksRadioSemantics: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('the container keeps the role it was given', async () => {
+		await step('the role it was given moves onto the items', async () => {
 			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('radiogroup'),
+				expect(
+					container.shadowRoot!.querySelector('.items')?.getAttribute('role'),
+				).toBe('radiogroup'),
 			);
+			// the host also holds the heading, stats and overflow trigger, none of
+			// which belong in the group, so it must not claim the role itself.
+			expect(container.getAttribute('role')).toBe('none');
 		});
 
 		await step('each item is a radio, not a tab', async () => {
@@ -109,6 +116,9 @@ export const RadiogroupPicksRadioSemantics: Story = {
 		await step('the radio semantics survive a variant change', async () => {
 			container.setAttribute('variant', 'underline');
 			await waitFor(() => {
+				expect(
+					container.shadowRoot!.querySelector('.items')?.getAttribute('role'),
+				).toBe('radiogroup');
 				const active = container.querySelector('cosmoz-tab-next[active]')!;
 				expect(active.getAttribute('variant')).toBe('underline');
 				expect(active.getAttribute('role')).toBe('radio');
