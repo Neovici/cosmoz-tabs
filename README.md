@@ -140,3 +140,31 @@ Releases are managed with changesets in CI.
 
 Stories double as tests: see `stories/*.stories.js` (demos) and `stories/*.test.stories.ts`
 (behavioral tests run by `@storybook/addon-vitest`).
+
+### Custom page headers
+
+`Tabs` is exported from `@neovici/cosmoz-tabs/cosmoz-tabs` for application-specific
+components. Its optional second argument renders the tab controls inside a custom
+header, while tab collection, selection, hash navigation and content slots remain
+managed by `Tabs`:
+
+```ts
+component(
+	(host: CosmozTabsElement) =>
+		Tabs(
+			host,
+			(tabs) => html`
+				<header>
+					<slot name="title"></slot>
+					<nav role="tablist">${tabs}</nav>
+				</header>
+			`,
+		),
+	{ styleSheets: [legacyStyles] },
+);
+```
+
+The callback receives the rendered controls. Forward any additional named slots
+in the custom header, and observe `selected`, `hash-param`, `no-resize`, `variant`
+and `compact-width` when exposing those attributes on your component. Omitting
+the callback preserves the standard header.
