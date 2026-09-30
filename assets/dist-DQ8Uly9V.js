@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s as i,x as a,y as o}from"./if-defined-BdmiSgmM.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j;function M(){return(M=e((()=>{i(),s=t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s as i,x as a,y as o}from"./if-defined-3tWnuAo1.js";var s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{i(),s=t`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
@@ -97,31 +97,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	color: var(--cz-color-text-secondary);
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 `,E=t`
-	background-color: color-mix(
-		in oklab,
-		var(--cz-color-bg-brand-solid) 12%,
-		var(--cz-color-bg-primary)
-	);
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 0 0 1px
-		color-mix(
-			in oklab,
-			var(--cz-color-bg-brand-solid) 30%,
-			var(--cz-color-bg-primary)
-		);
+	background-color: var(--cz-color-bg-tertiary);
+	color: var(--cz-color-text-primary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-primary);
 `,D=t`
-	background-color: color-mix(
-		in oklab,
-		var(--cz-color-bg-brand-solid) 12%,
-		var(--cz-color-text-on-brand)
-	);
-	box-shadow: inset 0 0 0 1px
-		color-mix(
-			in oklab,
-			var(--cz-color-bg-brand-solid) 30%,
-			var(--cz-color-text-on-brand)
-		);
-`,O=t`
 	padding: 2px calc(var(--cz-spacing) * 1.5);
 	border-radius: var(--cz-radius-sm);
 	background-color: var(--cz-color-bg-primary);
@@ -129,7 +108,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	box-shadow:
 		inset 0 0 0 1px var(--cz-color-border-primary),
 		var(--cz-shadow-xs);
-`,k=t`
+`,O=t`
 	:host {
 		position: relative;
 		display: flex;
@@ -192,11 +171,6 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	}
 
 	:host([variant='segmented']) .badge {
-		${O}
-	}
-
-	:host([variant='brand']) .tab:hover .badge,
-	:host([variant='brand']) .tab[aria-selected='true'] .badge {
 		${D}
 	}
 
@@ -272,7 +246,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	:host([variant='segmented'][size='sm']) .tabs {
 		${C}
 	}
-`,A=t`
+`,k=t`
 	:host {
 		${s}
 		flex: none;
@@ -304,7 +278,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	:host([variant='segmented'][size='sm']) {
 		${C}
 	}
-`,j=t`
+`,A=t`
 	:host {
 		${c}
 		${w}
@@ -360,11 +334,6 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	}
 
 	:host([variant='segmented']) .badge {
-		${O}
-	}
-
-	:host([variant='brand']:hover) .badge,
-	:host([variant='brand'][active]) .badge {
 		${D}
 	}
 
@@ -408,4 +377,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{T as t,d as n,p as r,s
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		${S}
 	}
-`})))()}var N,P,F,I;function L(){return(L=e((()=>{i(),N=()=>new URL(location.hash.replace(/^#!?/iu,``).replace(`%23`,`#`),location.origin),P=e=>e?()=>new URLSearchParams(N().hash.replace(`#`,``)).get(e):void 0,F=(e,t)=>{if(!e)return;let n=N(),r=new URLSearchParams(n.hash.replace(`#`,``));return t==null?r.delete(e):r.set(e,t),`#!`+Object.assign(n,{hash:r}).href.replace(location.origin,``)},I=e=>{let t=o(()=>P(e),[e]),[i,s]=r(t),c=n(i);return a(()=>void(c.current=i),[i]),a(()=>{if(t==null)return;let e=()=>{let e=t();c.current!==e&&s(e)};return e(),window.addEventListener(`popstate`,e),window.addEventListener(`hashchange`,e),()=>{window.removeEventListener(`popstate`,e),window.removeEventListener(`hashchange`,e)}},[t]),[i,o(()=>e?t=>{s(t),history.pushState({},``,F(e,t))}:s,[e])]}})))()}var R,z,B,V,H,U;function W(){return(W=e((()=>{R=e=>typeof e==`object`&&!!e&&e.nodeType===1,z=(e,t)=>(!t||e!==`hidden`)&&e!==`visible`&&e!==`clip`,B=(e,t)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let n=getComputedStyle(e,null);return z(n.overflowY,t)||z(n.overflowX,t)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch{return null}})(e);return!!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return!1},V=(e,t,n,r,i,a,o,s)=>a<e&&o>t||a>e&&o<t?0:a<=e&&s<=n||o>=t&&s>=n?a-e-r:o>t&&s<n||a<e&&s>n?o-t+i:0,H=e=>e.parentElement??(e.getRootNode().host||null),U=(e,t)=>{if(typeof document>`u`)return[];let{scrollMode:n,block:r,inline:i,boundary:a,skipOverflowHiddenElements:o}=t,s=typeof a==`function`?a:e=>e!==a;if(!R(e))throw TypeError(`Invalid target`);let c=document.scrollingElement||document.documentElement,l=[],u=e;for(;R(u)&&s(u);){if(u=H(u),u===c){l.push(u);break}u!=null&&u===document.body&&B(u)&&!B(document.documentElement)||u!=null&&B(u,o)&&l.push(u)}let d=window.visualViewport?.width??innerWidth,f=window.visualViewport?.height??innerHeight,{scrollX:p,scrollY:m}=window,{height:h,width:g,top:_,right:v,bottom:y,left:b}=e.getBoundingClientRect(),{top:x,right:S,bottom:C,left:w}=(e=>{let t=window.getComputedStyle(e);return{top:parseFloat(t.scrollMarginTop)||0,right:parseFloat(t.scrollMarginRight)||0,bottom:parseFloat(t.scrollMarginBottom)||0,left:parseFloat(t.scrollMarginLeft)||0}})(e),T=r===`start`||r===`nearest`?_-x:r===`end`?y+C:_+h/2-x+C,E=i===`center`?b+g/2-w+S:i===`end`?v+S:b-w,D=[];for(let e=0;e<l.length;e++){let t=l[e],{height:a,width:o,top:s,right:u,bottom:x,left:S}=t.getBoundingClientRect();if(n===`if-needed`&&_>=0&&b>=0&&y<=f&&v<=d&&(t===c&&!B(t)||_>=s&&y<=x&&b>=S&&v<=u))return D;let C=getComputedStyle(t),w=parseInt(C.borderLeftWidth,10),O=parseInt(C.borderTopWidth,10),k=parseInt(C.borderRightWidth,10),A=parseInt(C.borderBottomWidth,10),j=0,M=0,N=`offsetWidth`in t?t.offsetWidth-t.clientWidth-w-k:0,P=`offsetHeight`in t?t.offsetHeight-t.clientHeight-O-A:0,F=`offsetWidth`in t?t.offsetWidth===0?0:o/t.offsetWidth:0,I=`offsetHeight`in t?t.offsetHeight===0?0:a/t.offsetHeight:0;if(c===t)j=r===`start`?T:r===`end`?T-f:r===`nearest`?V(m,m+f,f,O,A,m+T,m+T+h,h):T-f/2,M=i===`start`?E:i===`center`?E-d/2:i===`end`?E-d:V(p,p+d,d,w,k,p+E,p+E+g,g),j=Math.max(0,j+m),M=Math.max(0,M+p);else{j=r===`start`?T-s-O:r===`end`?T-x+A+P:r===`nearest`?V(s,x,a,O,A+P,T,T+h,h):T-(s+a/2)+P/2,M=i===`start`?E-S-w:i===`center`?E-(S+o/2)+N/2:i===`end`?E-u+k+N:V(S,u,o,w,k+N,E,E+g,g);let{scrollLeft:e,scrollTop:n}=t;j=I===0?0:Math.max(0,Math.min(n+j/I,t.scrollHeight-a/I+P)),M=F===0?0:Math.max(0,Math.min(e+M/F,t.scrollWidth-o/F+N)),T+=n-j,E+=e-M}D.push({el:t,top:j,left:M})}return D}})))()}export{I as a,j as c,F as i,A as l,U as n,M as o,L as r,k as s,W as t};
+`})))()}var M,N,P,F;function I(){return(I=e((()=>{i(),M=()=>new URL(location.hash.replace(/^#!?/iu,``).replace(`%23`,`#`),location.origin),N=e=>e?()=>new URLSearchParams(M().hash.replace(`#`,``)).get(e):void 0,P=(e,t)=>{if(!e)return;let n=M(),r=new URLSearchParams(n.hash.replace(`#`,``));return t==null?r.delete(e):r.set(e,t),`#!`+Object.assign(n,{hash:r}).href.replace(location.origin,``)},F=e=>{let t=o(()=>N(e),[e]),[i,s]=r(t),c=n(i);return a(()=>void(c.current=i),[i]),a(()=>{if(t==null)return;let e=()=>{let e=t();c.current!==e&&s(e)};return e(),window.addEventListener(`popstate`,e),window.addEventListener(`hashchange`,e),()=>{window.removeEventListener(`popstate`,e),window.removeEventListener(`hashchange`,e)}},[t]),[i,o(()=>e?t=>{s(t),history.pushState({},``,P(e,t))}:s,[e])]}})))()}var L,R,z,B,V,H;function U(){return(U=e((()=>{L=e=>typeof e==`object`&&!!e&&e.nodeType===1,R=(e,t)=>(!t||e!==`hidden`)&&e!==`visible`&&e!==`clip`,z=(e,t)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let n=getComputedStyle(e,null);return R(n.overflowY,t)||R(n.overflowX,t)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch{return null}})(e);return!!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return!1},B=(e,t,n,r,i,a,o,s)=>a<e&&o>t||a>e&&o<t?0:a<=e&&s<=n||o>=t&&s>=n?a-e-r:o>t&&s<n||a<e&&s>n?o-t+i:0,V=e=>e.parentElement??(e.getRootNode().host||null),H=(e,t)=>{if(typeof document>`u`)return[];let{scrollMode:n,block:r,inline:i,boundary:a,skipOverflowHiddenElements:o}=t,s=typeof a==`function`?a:e=>e!==a;if(!L(e))throw TypeError(`Invalid target`);let c=document.scrollingElement||document.documentElement,l=[],u=e;for(;L(u)&&s(u);){if(u=V(u),u===c){l.push(u);break}u!=null&&u===document.body&&z(u)&&!z(document.documentElement)||u!=null&&z(u,o)&&l.push(u)}let d=window.visualViewport?.width??innerWidth,f=window.visualViewport?.height??innerHeight,{scrollX:p,scrollY:m}=window,{height:h,width:g,top:_,right:v,bottom:y,left:b}=e.getBoundingClientRect(),{top:x,right:S,bottom:C,left:w}=(e=>{let t=window.getComputedStyle(e);return{top:parseFloat(t.scrollMarginTop)||0,right:parseFloat(t.scrollMarginRight)||0,bottom:parseFloat(t.scrollMarginBottom)||0,left:parseFloat(t.scrollMarginLeft)||0}})(e),T=r===`start`||r===`nearest`?_-x:r===`end`?y+C:_+h/2-x+C,E=i===`center`?b+g/2-w+S:i===`end`?v+S:b-w,D=[];for(let e=0;e<l.length;e++){let t=l[e],{height:a,width:o,top:s,right:u,bottom:x,left:S}=t.getBoundingClientRect();if(n===`if-needed`&&_>=0&&b>=0&&y<=f&&v<=d&&(t===c&&!z(t)||_>=s&&y<=x&&b>=S&&v<=u))return D;let C=getComputedStyle(t),w=parseInt(C.borderLeftWidth,10),O=parseInt(C.borderTopWidth,10),k=parseInt(C.borderRightWidth,10),A=parseInt(C.borderBottomWidth,10),j=0,M=0,N=`offsetWidth`in t?t.offsetWidth-t.clientWidth-w-k:0,P=`offsetHeight`in t?t.offsetHeight-t.clientHeight-O-A:0,F=`offsetWidth`in t?t.offsetWidth===0?0:o/t.offsetWidth:0,I=`offsetHeight`in t?t.offsetHeight===0?0:a/t.offsetHeight:0;if(c===t)j=r===`start`?T:r===`end`?T-f:r===`nearest`?B(m,m+f,f,O,A,m+T,m+T+h,h):T-f/2,M=i===`start`?E:i===`center`?E-d/2:i===`end`?E-d:B(p,p+d,d,w,k,p+E,p+E+g,g),j=Math.max(0,j+m),M=Math.max(0,M+p);else{j=r===`start`?T-s-O:r===`end`?T-x+A+P:r===`nearest`?B(s,x,a,O,A+P,T,T+h,h):T-(s+a/2)+P/2,M=i===`start`?E-S-w:i===`center`?E-(S+o/2)+N/2:i===`end`?E-u+k+N:B(S,u,o,w,k+N,E,E+g,g);let{scrollLeft:e,scrollTop:n}=t;j=I===0?0:Math.max(0,Math.min(n+j/I,t.scrollHeight-a/I+P)),M=F===0?0:Math.max(0,Math.min(e+M/F,t.scrollWidth-o/F+N)),T+=n-j,E+=e-M}D.push({el:t,top:j,left:M})}return D}})))()}export{F as a,A as c,P as i,k as l,H as n,j as o,I as r,O as s,U as t};
