@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Bd__42gX.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{n(),r=e=>e.querySelector(`.box`),i=e=>e.querySelector(`cosmoz-tabs-next`),a=e=>e.shadowRoot,o=async e=>{let t=window.gc;if(!t)throw Error(`window.gc is unavailable: run with --js-flags=--expose-gc`);for(let e=0;e<5;e++)t(),await new Promise(e=>setTimeout(e,30));return e.filter(e=>e.deref()).length},s=e=>a(e).querySelector(`.more`),c=e=>a(e).querySelector(`.more-button`),l=(e,n=t``)=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Dpo_toHR.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{n(),r=e=>e.querySelector(`.box`),i=e=>e.querySelector(`cosmoz-tabs-next`),a=e=>e.shadowRoot,o=async e=>{let t=window.gc;if(!t)throw Error(`window.gc is unavailable: run with --js-flags=--expose-gc`);for(let e=0;e<5;e++)t(),await new Promise(e=>setTimeout(e,30));return e.filter(e=>e.deref()).length},s=e=>a(e).querySelector(`.more`),c=e=>a(e).querySelector(`.more-button`),l=(e,n=t``)=>t`
 	<div class="box" style="width: ${e}; overflow: hidden;">
 		<cosmoz-tabs-next variant="underline">
 			${n}
