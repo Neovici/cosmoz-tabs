@@ -86,11 +86,13 @@ const sync = (tab: Element, clone: Element) => {
 };
 
 const rove = (copies: readonly Copy[]) => {
-	const enabled = copies.filter(
-		([, c]) => !c.hasAttribute('disabled') && !c.hasAttribute('hidden'),
-	);
-	(enabled.find(([tab]) => tab.hasAttribute('active')) ??
-		enabled[0])?.[1].setAttribute('tabindex', '0');
+	// menu rows are plain tabbable content: every enabled row is a stop,
+	// Tab walks them like links in a list; the bar keeps its single stop
+	copies.forEach(([, clone]) => {
+		if (!clone.hasAttribute('disabled') && !clone.hasAttribute('hidden')) {
+			clone.setAttribute('tabindex', '0');
+		}
+	});
 };
 
 const copy = (tab: HTMLElement) => {
@@ -138,9 +140,13 @@ const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
 		// is `visibility: hidden` and unfocusable, so hand focus to the
 		// bar's tab stop instead of dropping it into the void
 		tab.focus();
-		if (document.activeElement === document.body) {
-			const root = tab.getRootNode() as HTMLElement;
-			(root.querySelector?.('[tabindex="0"]') as HTMLElement | null)?.focus();
+		if (tab.hasAttribute('overflowing')) {
+			const stop = (tab.getRootNode() as HTMLElement)?.querySelector?.(
+				'[tabindex="0"]',
+			) as HTMLElement | null;
+			if (stop && stop !== tab) {
+				stop.focus();
+			}
 		}
 		closeMenu(clone);
 	}

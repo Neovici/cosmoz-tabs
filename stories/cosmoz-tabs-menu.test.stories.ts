@@ -148,13 +148,13 @@ export const DisabledRowsAreOutOfTheTabOrder: Story = {
 			expect(on()?.hasAttribute('aria-disabled')).toBe(false),
 		);
 
-		/** a tablist gets one tab stop, not one per row. */
-		await step('exactly one row is tabbable', async () => {
+		/** menu rows are plain tabbable links; disabled rows stay out. */
+		await step('every enabled row is a tab stop', async () => {
 			const stops = copies(tabs).filter(
 				(c) => c.getAttribute('tabindex') === '0',
 			);
-			expect(stops.length).toBe(1);
-			expect(stops[0].hasAttribute('disabled')).toBe(false);
+			expect(stops.length).toBe(copies(tabs).length - 1);
+			expect(stops.every((c) => !c.hasAttribute('disabled'))).toBe(true);
 		});
 
 		await step('and disabled follows the tab, not just the copy', async () => {
@@ -169,10 +169,10 @@ export const DisabledRowsAreOutOfTheTabOrder: Story = {
 						?.hasAttribute('aria-disabled'),
 				).toBe(false),
 			);
-			/** still exactly one tab stop afterwards. */
+			/** it joined the walkable rows afterwards. */
 			expect(
 				copies(tabs).filter((c) => c.getAttribute('tabindex') === '0').length,
-			).toBe(1);
+			).toBe(copies(tabs).length);
 		});
 	},
 };
