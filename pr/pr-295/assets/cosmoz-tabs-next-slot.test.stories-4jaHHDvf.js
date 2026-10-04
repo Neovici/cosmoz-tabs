@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-C81qHdVY.js";import{c as r,s as i}from"./if-defined-mAlS1Ni2.js";import{t as a}from"./next-D1lx5QSj.js";import{c as o,n as s,s as c}from"./overflow-helpers-DBuOm38u.js";var l,u,d,f,p,m;function h(){return(h=e((()=>{i(),n(),a(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-next-slot-wrapper`)||customElements.define(`cosmoz-tabs-next-slot-wrapper`,r(()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CutESWh9.js";import{c as r,s as i}from"./if-defined-BodjxgLY.js";import{t as a}from"./next-EYktb7SF.js";import{c as o,n as s,s as c}from"./overflow-helpers-CgwY63wS.js";var l,u,d,f,p,m;function h(){return(h=e((()=>{i(),n(),a(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-next-slot-wrapper`)||customElements.define(`cosmoz-tabs-next-slot-wrapper`,r(()=>t`
                 <cosmoz-tabs-next variant="underline">
                     <cosmoz-tab-next name="tab0" active>Tab0</cosmoz-tab-next>
                     <slot></slot>
