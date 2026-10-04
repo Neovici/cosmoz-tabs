@@ -1,8 +1,8 @@
 diff --git a/node_modules/@neovici/cosmoz-dropdown/dist/next/cosmoz-dropdown-next.js b/node_modules/@neovici/cosmoz-dropdown/dist/next/cosmoz-dropdown-next.js
-index 8b85894..77a7042 100644
+index 8b85894..676b4ef 100644
 --- a/node_modules/@neovici/cosmoz-dropdown/dist/next/cosmoz-dropdown-next.js
 +++ b/node_modules/@neovici/cosmoz-dropdown/dist/next/cosmoz-dropdown-next.js
-@@ -84,6 +84,51 @@ const style = css `
+@@ -84,6 +84,57 @@ const style = css `
  		}
  	}
  `;
@@ -35,15 +35,21 @@ index 8b85894..77a7042 100644
 +    if (open || skipRestore) {
 +        return;
 +    }
-+    // focus may sit on the host itself (a forwarded click() focuses the
-+    // invoker's target), inside its shadow (popover content), or have
-+    // fallen to body after the display flip
-+    const focused = activeElement();
-+    if (focused === document.body ||
-+        focused === host ||
-+        host.shadowRoot?.contains(focused)) {
-+        invoker.focus();
-+    }
++    // focus may sit inside the popover content (flat tree: slotted light
++    // DOM through the popover's slot - shadowRoot.contains cannot see
++    // it, host.contains can), on the host itself, or have fallen to
++    // body after the display flip. The platform's own focal-fixup runs
++    // after the toggle task and would take focus to body over our
++    // write, so the restore waits it out.
++    const restore = () => {
++        const focused = activeElement();
++        if (focused === document.body ||
++            focused === host ||
++            host.contains(focused)) {
++            invoker.focus();
++        }
++    };
++    requestAnimationFrame(() => requestAnimationFrame(restore));
 +};
 +/**
 + * Select-and-close skips the focus restore: the picked content acted on
@@ -54,7 +60,7 @@ index 8b85894..77a7042 100644
  const CosmozDropdownNext = (host) => {
      const { placement = 'bottom span-right', disabled, passthrough, openOnHover, openOnFocus, } = host;
      const popoverRef = useRef();
-@@ -137,7 +182,10 @@ const CosmozDropdownNext = (host) => {
+@@ -137,7 +188,10 @@ const CosmozDropdownNext = (host) => {
      const handleClick = openOnFocus ? open : toggle;
      const onToggle = useCallback((e) => {
          autofocus(e);
@@ -66,7 +72,7 @@ index 8b85894..77a7042 100644
          host.dispatchEvent(new ToggleEvent('dropdown-toggle', {
              newState: e.newState,
              oldState: e.oldState,
-@@ -152,7 +200,10 @@ const CosmozDropdownNext = (host) => {
+@@ -152,7 +206,10 @@ const CosmozDropdownNext = (host) => {
  					popover
  					style="position-area: ${placement}"
  					@toggle=${onToggle}
