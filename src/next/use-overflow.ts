@@ -1,137 +1,86 @@
 import { useLayoutEffect, useState } from '@pionjs/pion';
 
-export interface Overflow {
-	visible: Set<HTMLElement>;
-	overflowing: Set<HTMLElement>;
-	hidden: Set<HTMLElement>;
-}
-
-const empty = (): Overflow => ({
-	visible: new Set<HTMLElement>(),
-	overflowing: new Set<HTMLElement>(),
-	hidden: new Set<HTMLElement>(),
-});
-
-const sameSet = (a: Set<HTMLElement>, b: Set<HTMLElement>) =>
-	a.size === b.size && [...a].every((el) => b.has(el));
-
-const same = (a: Overflow, b: Overflow) =>
-	sameSet(a.visible, b.visible) &&
-	sameSet(a.overflowing, b.overflowing) &&
-	sameSet(a.hidden, b.hidden);
-
-const reconcile = ({ overflowing, hidden }: Overflow) =>
-	hidden.forEach((el) => {
-		if (el.getBoundingClientRect().height === 0) {
-			return;
-		}
-		hidden.delete(el);
-		overflowing.add(el);
-	});
-
-const TOLERANCE = 1;
-
-const observe = (
-	root: HTMLElement,
-	select: (root: HTMLElement) => HTMLElement[],
-	report: (next: Overflow) => void,
-) => {
-	const state = empty(),
-		pending = new Set<HTMLElement>();
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			const { visible, overflowing, hidden } = state;
-			entries.forEach((entry) => {
-				const el = entry.target as HTMLElement;
-				pending.delete(el);
-				visible.delete(el);
-				overflowing.delete(el);
-				hidden.delete(el);
-
-				const clipped =
-					entry.boundingClientRect.width - entry.intersectionRect.width;
-
-				if (entry.boundingClientRect.height === 0) {
-					hidden.add(el);
-				} else if (
-					clipped <= TOLERANCE &&
-					entry.intersectionRect.height !== 0
-				) {
-					visible.add(el);
-				} else {
-					overflowing.add(el);
-				}
-			});
-
-			reconcile(state);
-
-			if (pending.size === 0) {
-				report({
-					visible: new Set(visible),
-					overflowing: new Set(overflowing),
-					hidden: new Set(hidden),
-				});
-			}
-		},
-		{ root, threshold: [0, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1] },
-	);
-
-	const start = () => {
-		observer.disconnect();
-		pending.clear();
-
-		const items = select(root);
-		items.forEach((el) => {
-			pending.add(el);
-			observer.observe(el);
-		});
-
-		if (items.length === 0) {
-			report(empty());
-		}
-	};
-
-	let frame = 0;
-	const resized = new ResizeObserver(() => {
-		cancelAnimationFrame(frame);
-		frame = requestAnimationFrame(start);
-	});
-	resized.observe(root);
-
-	start();
-
-	return () => {
-		cancelAnimationFrame(frame);
-		resized.disconnect();
-		observer.disconnect();
-	};
-};
-
 /**
- * Classifies the items inside a clipping container as visible, overflowing or hidden
- *
- * @param root    ref to the clipping container (filled in by the first layout effect)
- * @param select  picks the items to observe out of that container; keep it at module level
- * @param deps    re-observe when these change (item set, variant, …)
+ * Which tabs does the bar not have room for? The track wraps: a tab
+ * that does not fit lands below the first row — the layout is the
+ * answer. The cycle is measure (marks off, so everything takes part in
+ * the wrap), classify by row, mark (the marked leave the layout). A
+ * width change reruns it; the mark's own height collapse is ignored via
+ * the width guard.
  */
 export const useOverflow = (
-	root: { current?: HTMLElement | null },
-	select: (root: HTMLElement) => HTMLElement[],
+	track: { current?: HTMLElement | null },
+	tabs: () => HTMLElement[],
 	deps: unknown[],
-): Overflow => {
-	const [state, setState] = useState<Overflow>(empty);
+): Set<HTMLElement> => {
+	const [overflowing, setOverflowing] = useState<Set<HTMLElement>>(
+		() => new Set(),
+	);
 
 	useLayoutEffect(() => {
-		const el = root.current;
-		if (!el) {
+		const root = track.current;
+		const current = tabs();
+		if (!root || current.length === 0) {
 			return;
 		}
 
-		return observe(el, select, (next) =>
-			setState((prev) => (same(prev, next) ? prev : next)),
-		);
+		const mark = (next: Set<HTMLElement>) => {
+			current.forEach((tab) => {
+				const on = next.has(tab);
+				if (on === tab.hasAttribute('overflowing')) {
+					return;
+				}
+				if (on) {
+					tab.setAttribute('overflowing', '');
+				} else {
+					tab.removeAttribute('overflowing');
+				}
+			});
+			setOverflowing((prev) => {
+				if (prev.size === next.size && [...next].every((el) => prev.has(el))) {
+					return prev;
+				}
+				return next;
+			});
+		};
+
+		const apply = () => {
+			// measure with the marks OFF: clear them, reflow synchronously,
+			// then read the wrap
+			current.forEach((tab) => {
+				if (tab.hasAttribute('overflowing')) {
+					tab.removeAttribute('overflowing');
+				}
+			});
+			// forced reflow: the unmark above is visible to this read
+			const top0 = current[0].getBoundingClientRect().top;
+			const next = new Set(
+				current.filter(
+					(tab) =>
+						!tab.hidden &&
+						Math.abs(tab.getBoundingClientRect().top - top0) > 0.5,
+				),
+			);
+			mark(next);
+		};
+
+		let lastWidth = root.getBoundingClientRect().width;
+		const observer = new ResizeObserver(() => {
+			const w = root.getBoundingClientRect().width;
+			if (w === lastWidth) {
+				return; // the mark cycle's own height collapse
+			}
+			lastWidth = w;
+			apply();
+		});
+		observer.observe(root);
+		apply();
+
+		return () => {
+			observer.disconnect();
+			current.forEach((tab) => tab.removeAttribute('overflowing'));
+		};
 	}, deps);
 
-	return state;
+	return overflowing;
 };

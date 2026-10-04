@@ -4,7 +4,6 @@ import {
 	html,
 	useCallback,
 	useEffect,
-	useLayoutEffect,
 	useMemo,
 	useRef,
 	useState,
@@ -33,31 +32,6 @@ const reflect = (tab: Element, name: string, value: string | null) => {
 	} else {
 		tab.setAttribute(name, value);
 	}
-};
-
-const assigned = new WeakMap<Element, string>();
-
-const arrange = (host: HTMLElement) => {
-	let seenTab = false;
-	[...host.children].forEach((el) => {
-		if (el.matches(TAB)) {
-			seenTab = true;
-			return;
-		}
-		if (el.localName === 'slot') {
-			seenTab = true;
-			return;
-		}
-		const slot = el.getAttribute('slot');
-		if (slot != null && assigned.get(el) !== slot) {
-			return;
-		}
-		const want = seenTab ? 'stats' : 'tabs';
-		if (slot !== want) {
-			el.setAttribute('slot', want);
-		}
-		assigned.set(el, want);
-	});
 };
 
 const sync = (tab: Element, clone: Element) => {
@@ -224,41 +198,23 @@ const useCopies = (
 	}, [overflowing, version, revision]);
 };
 
-const NONE = 'none';
-
 /**
- * The group role is authored on the host but carried by the items part
- * and the menu, so the host is kept as `role="none"`. Authored values
- * are remembered (a ref) and reconciled on the host on every render;
- * removing it falls back to a tablist.
- *
- * Changes are picked up by a one-attribute observer rather than by
- * `observedAttributes`: pion maps attribute changes onto properties
- * with `Reflect.set`, and `role` is a native reflected property
- * (`Element.prototype.role`), so the write lands in the platform
- * setter and never schedules a render.
+ * The group role: authored on the host and *staying* there — the host is
+ * the tablist/radiogroup, as on master. The default is written once so
+ * readers see it; a later authored change re-renders (an observed
+ * attribute... `role` excluded: it is a platform-reflected property the
+ * host already reflects, so reading it per render is enough for
+ * consumers that set it before connect, and the render triggered by
+ * other observed attributes picks authored changes up).
  */
-const useGroupRole = (host: HTMLElement): 'tablist' | 'radiogroup' => {
-	const authored = useRef<string>();
-	const [observed, setObserved] = useState(0);
-
-	useEffect(() => {
-		const watcher = new MutationObserver(() => setObserved((o) => o + 1));
-		watcher.observe(host, { attributes: true, attributeFilter: ['role'] });
-		return () => watcher.disconnect();
-	}, []);
-
-	// observed: the re-render that follows a later `role` change
-	const raw = host.getAttribute('role');
-	if (observed >= 0 && raw !== NONE) {
-		authored.current = raw ?? undefined;
-		host.setAttribute('role', NONE);
-	}
-	return authored.current === 'radiogroup' ? 'radiogroup' : 'tablist';
-};
-
 const settings = (host: HTMLElement) => {
-	const role = useGroupRole(host);
+	if (!host.getAttribute('role')) {
+		host.setAttribute('role', 'tablist');
+	}
+	const role =
+		host.getAttribute('role') === 'radiogroup'
+			? ('radiogroup' as const)
+			: ('tablist' as const);
 	return {
 		variant: host.getAttribute('variant'),
 		size: host.getAttribute('size'),
@@ -294,18 +250,18 @@ const stamp = (
  * @attr {('sm')} size - omit for the default size; sm trims the item's box on
  * both axes, and thins the segmented track's ring to match
  * @attr {boolean} compact-width
- * @attr {('tablist'|'radiogroup')} role - tablist by default. A segmented
+ * @attr {('tablist'|'radiogroup')} role - tablist by default; a segmented
  * control that picks a value rather than a view is a radiogroup: set it here
  * and each item becomes a radio, reporting aria-checked instead of
- * aria-selected. Tabs owe their reader a tabpanel; radios do not. The role is
- * moved onto the `items` part and the host is left as `role="none"`, so the
- * heading, stats and overflow trigger stay outside the group. Setting or
- * removing it later is picked up; removing it falls back to tablist.
+ * aria-selected
  * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
- * @csspart items - clipping container holding the tabs
+ * @csspart items - the flex track holding the tabs (wraps when they do not fit)
  * @csspart more - overflow menu
  * @csspart more-button - overflow menu trigger
  * @csspart menu - overflow menu popover
+ * @slot - the `cosmoz-tab-next` headers
+ * @slot tabs - extra content at the start of the bar (assign it explicitly)
+ * @slot stats - extra content at the end of the bar (assign it explicitly)
  */
 const Tabs = (host: CosmozTabsNextElement) => {
 	if (!host.getAttribute('variant')) {
@@ -322,15 +278,11 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		[version, setVersion] = useState(0);
 
 	const tabs = useCallback(
-			() => (items.current ? tabsIn(items.current) : []),
-			[],
-		),
-		marked = useRef<Set<HTMLElement>>();
-
-	marked.current ??= new Set();
+		() => (items.current ? tabsIn(items.current) : []),
+		[],
+	);
 
 	const apply = () => {
-		arrange(host);
 		new Set([...host.querySelectorAll<HTMLElement>(TAB), ...tabs()]).forEach(
 			(tab) => stamp(tab, given),
 		);
@@ -343,7 +295,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	useEffect(apply);
 
-	const { overflowing } = useOverflow(items, tabsIn, [
+	const overflowing = useOverflow(items, tabs, [
 		version,
 		variant,
 		size,
@@ -351,32 +303,11 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		shown(tabs()),
 	]);
 
-	useLayoutEffect(() => {
-		const was = marked.current as Set<HTMLElement>,
-			now = new Set<HTMLElement>();
-
-		tabs().forEach((tab) => {
-			const over = overflowing.has(tab);
-			tab.toggleAttribute('overflowing', over);
-			if (over) {
-				now.add(tab);
-			}
-		});
-
-		was.forEach((tab) => {
-			if (!now.has(tab)) {
-				tab.removeAttribute('overflowing');
-			}
-		});
-
-		marked.current = now;
-	}, [overflowing, version]);
-
 	const copies = useCopies(tabs, overflowing, version);
 
 	return html`
 		<slot name="tabs"></slot>
-		<div class="items" part="items" role=${role} ${ref(setItems)}>
+		<div class="items" part="items" ${ref(setItems)}>
 			<slot @slotchange=${onSlotChange}></slot>
 		</div>
 		${renderOverflowMenu({

@@ -10,8 +10,10 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
  */
 export type TabsSize = 'sm';
 
-/* The bar does not scroll - tabs that do not fit go to the overflow menu, so
-   it clips and a child owns both the tabs and the clip edge. */
+/* The bar does not scroll and does not clip: its track wraps, tabs that
+   do not fit land on a second row - that is the classification - and
+   the wrapped ones are marked and leave the layout, reaching the user
+   only through the overflow menu beside the track. */
 const bar = css`
 	display: flex;
 	align-items: stretch;
@@ -22,16 +24,15 @@ const bar = css`
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
 	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-	overflow: clip;
 `;
 
 const items = css`
 	display: flex;
-	align-items: stretch;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: inherit;
 	flex: 1 1 auto;
 	min-width: 0;
-	overflow: clip;
 `;
 
 const menu = css`

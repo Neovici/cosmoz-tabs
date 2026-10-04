@@ -69,6 +69,9 @@ export const SpacePicksOnKeyUpLikeANativeButton: Story = {
 
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		sr(tabs).querySelector<HTMLButtonElement>('.more-button')?.click();
+		// let the open settle before interacting
+		await new Promise((r) => requestAnimationFrame(r));
+		await new Promise((r) => requestAnimationFrame(r));
 
 		const row = copies(tabs)[1] as HTMLElement,
 			seen: string[] = [];
@@ -80,6 +83,7 @@ export const SpacePicksOnKeyUpLikeANativeButton: Story = {
 		expect(sr(tabs).activeElement).toBe(row);
 		/** Space keydown only prevents the page scroll; the pick is on keyup */
 		key(row, ' ', 'keydown');
+		await new Promise((r) => requestAnimationFrame(r));
 		expect(seen).toEqual([]);
 		key(row, ' ', 'keyup');
 		await waitFor(() => expect(seen).toEqual([row.getAttribute('name')]));

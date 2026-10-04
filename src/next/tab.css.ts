@@ -143,7 +143,7 @@ const menuItemHover = css`
 const menuItemActive = brandActive;
 
 const overflowing = css`
-	visibility: hidden;
+	display: none;
 `;
 
 export const nextTabStyles = css`

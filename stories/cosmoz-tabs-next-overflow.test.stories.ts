@@ -17,12 +17,12 @@ export const NonTabChildrenAreNeverTreatedAsTabs: Story = {
 	render: () => html`
 		<div class="box" style="width: 260px; overflow: hidden;">
 			<cosmoz-tabs-next variant="underline">
-				<div class="heading">Orders</div>
+				<div class="heading" slot="tabs">Orders</div>
 				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
 				<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
 				<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
 				<cosmoz-tab-next name="history">History</cosmoz-tab-next>
-				<div class="stats">1-20 of 87</div>
+				<div class="stats" slot="stats">1-20 of 87</div>
 			</cosmoz-tabs-next>
 		</div>
 	`,
@@ -37,7 +37,8 @@ export const NonTabChildrenAreNeverTreatedAsTabs: Story = {
 			).toBeGreaterThan(0),
 		);
 
-		await step('they are routed out of the clipping container', async () => {
+		await step('the component leaves the consumer markup alone', async () => {
+			// no auto-assignment: the consumer's slot attributes are theirs
 			expect(heading.getAttribute('slot')).toBe('tabs');
 			expect(stats.getAttribute('slot')).toBe('stats');
 		});
@@ -67,7 +68,7 @@ export const AnExplicitSlotIsNeverReassigned: Story = {
 				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
 				<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
 				<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-				<!-- after the first tab, so auto-assignment would say "stats" -->
+				<!-- explicit assignment: there is no auto-assignment to fight with -->
 				<div class="pinned" slot="tabs">Orders</div>
 			</cosmoz-tabs-next>
 		</div>

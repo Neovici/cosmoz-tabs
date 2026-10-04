@@ -168,13 +168,11 @@ belongs outside the overflow area, in the `tabs` (start) or `stats` (end) slot:
 </cosmoz-tabs-next>
 ```
 
-For `cosmoz-tabs-next` those slots are also assigned **automatically**: a non-tab child is
-routed to `tabs` or `stats` depending on whether it sits before or after the first tab, so
-existing markup that mixes them into the default slot keeps working. Set `slot` yourself to
-override.
+For `cosmoz-tabs-next` those slots are assigned by you — there is no auto-routing; the
+component leaves your light DOM untouched.
 
 A `<slot>` child is left alone, so a wrapper component can own the bar and project the
-consumer's tabs into it — the projected tabs are measured and overflow like any other:
+consumer's tabs into it — the projected tabs are classified and overflow like any other:
 
 ```js
 html`<cosmoz-tabs-next>
@@ -183,12 +181,16 @@ html`<cosmoz-tabs-next>
 </cosmoz-tabs-next>`;
 ```
 
-For the same reason the group role no longer sits on the `cosmoz-tabs-next` host: the
-heading, stats and trigger are not tabs, so they cannot live inside a `tablist`. Author
-`role` on the host as before (`tablist` by default, `radiogroup` for a segmented picker) —
-it is moved onto the `items` part and the host keeps `role="none"`. Changing or removing
-it later is picked up (removing falls back to `tablist`). The menu takes the same role, so
-overflowing radios stay radios (`aria-checked`) in the dropdown too.
+The group role stays where master had it: authored on the host (`tablist` by default,
+`radiogroup` for a segmented picker), written to the host itself. The menu takes the same
+role, so overflowing radios stay radios (`aria-checked`) in the dropdown too.
+
+**No tab is ever clipped.** The bar's track wraps: a tab that does not fit lands on a
+second row by layout alone — flexbox is the classifier, there is no measuring machinery.
+The wrapped tabs are marked (`overflowing`, the one attribute the component writes on
+your tabs), which takes them out of the layout so the bar collapses back to one row; the
+mark is also what the overflow menu's copies follow. A width change unmarks everything,
+lets the wrap happen again and re-classifies — within a frame or two, without flashing.
 
 The dropdown comes from [`@neovici/cosmoz-dropdown`](https://github.com/neovici/cosmoz-dropdown)
 and the chevron from [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons); both

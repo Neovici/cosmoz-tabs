@@ -271,17 +271,19 @@ export const AMarkIsRemovedWhenATabLeavesTheBar: Story = {
 };
 
 /**
- * ratio thresholds miss absolute-pixel tolerance changes.
- * resize should reclassify wide near-fitting tabs.
+ * the layout itself classifies: a tab wraps the moment it does not fit,
+ * and a width change is taken fresh. 48% tabs plus the flex gap overflow
+ * under any track below 400px and fit above it, canvas-size
+ * independent.
  */
 export const AWideTabIsReclassifiedOnResize: Story = {
 	render: () => html`
-		<div class="box" style="width: 900px; overflow: hidden;">
+		<div class="box" style="width: 500px; overflow: hidden;">
 			<cosmoz-tabs-next variant="underline">
-				<cosmoz-tab-next name="a" active style="flex:0 0 400px;width:400px"
+				<cosmoz-tab-next name="a" active style="flex:0 0 48%;width:48%"
 					>Wide tab A</cosmoz-tab-next
 				>
-				<cosmoz-tab-next name="b" style="flex:0 0 400px;width:400px"
+				<cosmoz-tab-next name="b" style="flex:0 0 48%;width:48%"
 					>Wide tab B</cosmoz-tab-next
 				>
 			</cosmoz-tabs-next>
@@ -290,30 +292,18 @@ export const AWideTabIsReclassifiedOnResize: Story = {
 	play: async ({ canvasElement, step }) => {
 		const boxEl = canvasElement.querySelector('.box') as HTMLElement,
 			tabs = next(canvasElement),
-			b = tabs.querySelector('[name=b]') as HTMLElement,
-			items = sr(tabs).querySelector('.items') as HTMLElement,
-			clip = () =>
-				b.getBoundingClientRect().right - items.getBoundingClientRect().right;
+			b = tabs.querySelector('[name=b]') as HTMLElement;
 
 		await settle(30);
 
-		await step('park it just over the tolerance', async () => {
-			for (let w = 700; w < 1000; w += 1) {
-				boxEl.style.width = `${w}px`;
-				await settle(2);
-				if (clip() > 1 && clip() <= 2) {
-					break;
-				}
-			}
-			await settle(30);
-			expect(clip()).toBeGreaterThan(1);
-			expect(b.hasAttribute('overflowing')).toBe(true);
+		await step('a wide tab that does not fit is marked', async () => {
+			boxEl.style.width = '340px';
+			await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(true));
 		});
 
-		await step('a nudge under the tolerance brings it back', async () => {
-			boxEl.style.width = `${parseFloat(boxEl.style.width) + 1.5}px`;
+		await step('room for it brings it back', async () => {
+			boxEl.style.width = '500px';
 			await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(false));
-			expect(clip()).toBeLessThanOrEqual(1);
 		});
 	},
 };
