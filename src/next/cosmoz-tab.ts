@@ -13,6 +13,22 @@ export interface CosmozTabNextElement extends HTMLElement {
 }
 
 /**
+ * The item is the widget: its identity defaults (a tab, roved by the
+ * container) settle at connect, as the container's and the slideout's
+ * host defaults do.
+ */
+export class TabNextBase extends HTMLElement {
+	connectedCallback() {
+		if (!this.hasAttribute('role')) {
+			this.setAttribute('role', 'tab');
+		}
+		if (!this.hasAttribute('tabindex')) {
+			this.setAttribute('tabindex', '-1');
+		}
+	}
+}
+
+/**
  * @element cosmoz-tab-next
  * @attr {boolean} active - whether the tab is selected
  * @attr {string} badge - optional badge text
@@ -26,18 +42,9 @@ export interface CosmozTabNextElement extends HTMLElement {
 const Tab = (host: CosmozTabNextElement) => {
 	const { active, badge, href } = host;
 
-	useEffect(() => {
-		if (!host.getAttribute('tabindex')) {
-			host.setAttribute('tabindex', '-1');
-		}
-		if (!host.getAttribute('role')) {
-			host.setAttribute('role', 'tab');
-		}
-	}, []);
-
 	useLayoutEffect(() => {
-		// Read the role live rather than observing it: `role` is reflected by
-		// the platform, so it is not ours to take over as a property.
+		// the state attribute follows the selection; the wording is the
+		// item's own role's (read live: `role` is platform-reflected)
 		host.setAttribute(selectedState(host), active ? 'true' : 'false');
 	}, [active]);
 
@@ -87,6 +94,7 @@ const Tab = (host: CosmozTabNextElement) => {
 customElements.define(
 	'cosmoz-tab-next',
 	component(Tab, {
+		baseElement: TabNextBase,
 		observedAttributes: ['active', 'badge', 'href'],
 		styleSheets: [normalize, nextTabStyles],
 	}),
