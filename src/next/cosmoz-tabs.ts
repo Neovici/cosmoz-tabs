@@ -8,7 +8,6 @@ import {
 	useRef,
 	useState,
 } from '@pionjs/pion';
-import { ref } from 'lit-html/directives/ref.js';
 import { otherState, selectedState } from './aria';
 import { renderOverflowMenu } from './overflow-menu';
 import {
@@ -47,9 +46,12 @@ const shown = (tabs: HTMLElement[]) =>
 
 const tabsIn = (root: HTMLElement): HTMLElement[] =>
 	(
-		(root.querySelector('slot')?.assignedElements({ flatten: true }) ??
-			[]) as HTMLElement[]
-	).filter((el) => el.matches(TAB));
+		(
+			root.shadowRoot?.querySelector(
+				'slot:not([name])',
+			) as HTMLSlotElement | null
+		)?.assignedElements({ flatten: true }) ?? []
+	).filter((el: Element) => el.matches(TAB)) as HTMLElement[];
 
 const WATCHED = {
 	attributes: true,
@@ -187,16 +189,9 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	const given = settings(host),
 		{ role } = given;
 
-	const items = useRef<HTMLElement>(),
-		setItems = useCallback((el?: Element) => {
-			items.current = el as HTMLElement | undefined;
-		}, []),
-		[version, setVersion] = useState(0);
+	const [version, setVersion] = useState(0);
 
-	const tabs = useCallback(
-		() => (items.current ? tabsIn(items.current) : []),
-		[],
-	);
+	const tabs = useCallback(() => tabsIn(host), []);
 
 	const apply = () => {
 		new Set([...host.querySelectorAll<HTMLElement>(TAB), ...tabs()]).forEach(
@@ -211,7 +206,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	useEffect(apply);
 
-	const overflowing = useOverflow(items, tabs, [
+	const overflowing = useOverflow(host, tabs, [
 		tabs()
 			.map((tab) => tab.getAttribute('name'))
 			.join(','),
@@ -222,9 +217,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	return html`
 		<slot name="tabs"></slot>
-		<div class="items" part="items" ${ref(setItems)}>
-			<slot @slotchange=${onSlotChange}></slot>
-		</div>
+		<slot @slotchange=${onSlotChange} style="display: contents"></slot>
 		${renderOverflowMenu({
 			items: copies.map(([, clone]) => clone),
 			overflows: copies.length > 0,

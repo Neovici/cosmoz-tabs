@@ -10,6 +10,20 @@ export const settle = async (frames = 4) => {
 	}
 };
 
+/**
+ * Observer deliveries (IO) run at frame boundaries; an idle headless
+ * runner produces none - rAF itself is compositor-fed there. Poke the
+ * compositor with a zero-second animation (a BeginFrame source) and
+ * the frames - and with them the intersection deliveries - arrive.
+ */
+export const pump = async (frames = 4) => {
+	const poked = document.body.animate([], { duration: 1 });
+	for (let i = 0; i < frames + 2; i++) {
+		await new Promise(requestAnimationFrame);
+	}
+	poked.cancel();
+};
+
 export const next = (root: HTMLElement) =>
 	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 

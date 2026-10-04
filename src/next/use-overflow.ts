@@ -6,17 +6,18 @@ import { useLayoutEffect, useState } from '@pionjs/pion';
  * in `tab.css.ts`) and offered in the overflow menu.
  *
  * The band's height is a css constant per size/variant (the item box is
- * fully token-derived), so the classification is a pure read:
- * `intersectionRect.height === 0` against the clip root. The marks hide
- * paint only, so the layout never moves under the observer and a tab that
- * flows back into the band is reported as it happens.
+ * fully token-derived), and the clip lives on the host's own box, so the
+ * classification is a pure read: `intersectionRect.height === 0` against
+ * the host root. The marks hide paint only, so the layout never moves
+ * under the observer and a tab that flows back into the band is reported
+ * as it happens.
  *
  * Deliveries are deltas - only the tabs whose intersection changed are in
  * an entry batch - so the per-target state accumulates in a map and the
  * marks flush from it, never rebuilt from one batch.
  */
 export const useOverflow = (
-	track: { current?: HTMLElement | null },
+	track: HTMLElement | null,
 	tabs: () => HTMLElement[],
 	deps: unknown[],
 ): Set<HTMLElement> => {
@@ -25,7 +26,7 @@ export const useOverflow = (
 	);
 
 	useLayoutEffect(() => {
-		const root = track.current;
+		const root = track;
 		const current = tabs();
 		if (!root || current.length === 0) {
 			return;
@@ -71,9 +72,11 @@ export const useOverflow = (
 
 		// a hidden row-2 tab is already non-intersecting, so re-slotting
 		// it out of the track changes nothing the observer sees; the
-		// slot's own assignment change is what reports the departure
-
-		const slot = root.querySelector('slot');
+		// slot's own assignment change is what reports the departure. The
+		// track's slot is the shadow's (the host is its light root).
+		const slot = root.shadowRoot?.querySelector(
+			'slot:not([name])',
+		) as HTMLSlotElement | null;
 		const onSlotChange = () => {
 			const assigned = new Set(slot?.assignedElements({ flatten: true }));
 			clipped.forEach((_, tab) => {

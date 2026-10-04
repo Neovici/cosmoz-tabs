@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { next, nextFixture, sr } from './overflow-helpers';
+import { next, nextFixture, pump, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu trigger',
@@ -67,6 +67,7 @@ export const SpacePicksOnKeyUpLikeANativeButton: Story = {
 		const tabs = next(canvasElement),
 			originals = [...tabs.querySelectorAll<HTMLElement>('cosmoz-tab-next')];
 
+		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		sr(tabs).querySelector<HTMLButtonElement>('.more-button')?.click();
 		// let the open settle before interacting
@@ -86,6 +87,7 @@ export const SpacePicksOnKeyUpLikeANativeButton: Story = {
 		await new Promise((r) => requestAnimationFrame(r));
 		expect(seen).toEqual([]);
 		key(row, ' ', 'keyup');
+		await pump(2);
 		await waitFor(() => expect(seen).toEqual([row.getAttribute('name')]));
 	},
 };
@@ -94,11 +96,13 @@ export const TheTriggerAnnouncesItsPopup: Story = {
 	render: () => nextFixture('240px'),
 	play: async ({ canvasElement }) => {
 		const tabs = next(canvasElement);
+		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		const button = sr(tabs).querySelector('.more-button') as HTMLElement;
 		expect(button.getAttribute('aria-haspopup')).toBe('true');
 		expect(button.getAttribute('aria-expanded')).toBe('false');
 		button.click();
+		await pump(2);
 		await waitFor(() => expect(expanded(tabs)).toBe(true));
 		expect(opened(tabs)).toBe(true);
 	},
@@ -116,6 +120,7 @@ export const AnEmptyLabelFallsBackToTheTranslation: Story = {
 		</div>`,
 	play: async ({ canvasElement }) => {
 		const tabs = next(canvasElement);
+		await pump(2);
 		await waitFor(() =>
 			expect(sr(tabs).querySelector('.more-button')?.textContent?.trim()).toBe(
 				'More',
