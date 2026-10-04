@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-Dpo_toHR.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-Bbi5tmFu.js";import{m as ie,t as ae}from"./untitled-CUAeATyw.js";import{r as oe,t as se}from"./use-hash-param-DV4iW3Uk.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,le,ue,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H;function U(){return(U=e((()=>{y(),w=g`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-D0ZqkR4m.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-CKXjNJ3v.js";import{m as ie,t as ae}from"./untitled-CVC9Ve5W.js";import{r as oe,t as se}from"./use-hash-param-CY_ZXCDn.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W;function G(){return(G=e((()=>{y(),w=g`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -18,43 +18,43 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 `,ce=g`
 	outline: 2px solid var(--cz-color-fg-brand);
 	outline-offset: -2px;
-`,le=g`
+`,T=g`
 	opacity: 0.5;
 	cursor: not-allowed;
 	pointer-events: none;
-`,ue=g`
+`,E=g`
 	color: var(--cz-color-text-brand);
 	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`,T=g`
+`,D=g`
 	width: 16px;
 	height: 16px;
 	flex-shrink: 0;
 	color: var(--cz-color-fg-quaternary);
-`,E=g`
+`,O=g`
 	color: var(--cz-color-fg-brand-secondary);
-`,D=g`
+`,k=g`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-md);
-`,O=g`
+`,A=g`
 	color: var(--cz-color-text-on-brand);
 	background-color: var(--cz-color-bg-brand-solid);
 	box-shadow: none;
-`,k=g`
+`,j=g`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-sm);
-`,A=g`
+`,M=g`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary);
 	box-shadow: var(--cz-shadow-sm);
-`,j=g`
-	color: var(--cz-color-fg-secondary-hover);
-`,M=g`
-	padding-block: calc(var(--cz-spacing) * 1.5);
 `,N=g`
-	padding-inline: calc(var(--cz-spacing) * 2);
+	color: var(--cz-color-fg-secondary-hover);
 `,P=g`
-	flex: 1 1 0;
+	padding-block: calc(var(--cz-spacing) * 1.5);
 `,F=g`
+	padding-inline: calc(var(--cz-spacing) * 2);
+`,I=g`
+	flex: 1 1 0;
+`,L=g`
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -71,11 +71,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	background-color: var(--cz-color-bg-secondary);
 	color: var(--cz-color-text-secondary);
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`,I=g`
+`,R=g`
 	background-color: var(--cz-color-bg-tertiary);
 	color: var(--cz-color-text-primary);
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-primary);
-`,L=g`
+`,z=g`
 	padding: 2px calc(var(--cz-spacing) * 1.5);
 	border-radius: var(--cz-radius-sm);
 	background-color: var(--cz-color-bg-primary);
@@ -83,7 +83,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	box-shadow:
 		inset 0 0 0 1px var(--cz-color-border-primary),
 		var(--cz-shadow-xs);
-`,R=g`
+`,B=g`
 	${w}
 	flex: 0 0 auto;
 	justify-content: flex-start;
@@ -91,21 +91,21 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-sm);
 	box-shadow: none;
-`,z=g`
+`,V=g`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary-hover);
 	box-shadow: none;
-`,B=O,V=g`
+`,H=A,U=g`
 	visibility: hidden;
-`,H=g`
+`,W=g`
 	:host {
 		${w}
-		${P}
+		${I}
 	}
 
 	:host(:hover),
 	:host([active]) {
-		${ue}
+		${E}
 	}
 
 	:host(:focus-visible) {
@@ -113,7 +113,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([disabled]) {
-		${le}
+		${T}
 	}
 
 	:host([hidden]) {
@@ -121,19 +121,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([overflowing]) {
-		${V}
+		${U}
 	}
 
 	:host([menu]) {
-		${R}
+		${B}
 	}
 
 	:host([menu]:hover) {
-		${z}
+		${V}
 	}
 
 	:host([menu][active]) {
-		${B}
+		${H}
 	}
 
 	:host([menu][active]) #iconSlot::slotted(svg) {
@@ -151,12 +151,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	#iconSlot::slotted(svg) {
-		${T}
+		${D}
 	}
 
 	:host(:hover) #iconSlot::slotted(svg),
 	:host([active]) #iconSlot::slotted(svg) {
-		${E}
+		${O}
 	}
 
 	#contentSlot::slotted(*) {
@@ -164,25 +164,25 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	.badge {
-		${F}
+		${L}
 	}
 
 	:host(:not([variant='segmented']):hover) .badge,
 	:host(:not([variant='segmented'])[active]) .badge {
-		${I}
+		${R}
 	}
 
 	:host([variant='segmented']) .badge {
-		${L}
+		${z}
 	}
 
 	:host([variant='brand']) {
-		${D}
+		${k}
 	}
 
 	:host([variant='brand']:hover),
 	:host([variant='brand'][active]) {
-		${O}
+		${A}
 	}
 
 	:host([variant='brand']:hover) #iconSlot::slotted(svg),
@@ -191,17 +191,17 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([variant='segmented']) {
-		${k}
+		${j}
 	}
 
 	:host([variant='segmented']:hover),
 	:host([variant='segmented'][active]) {
-		${A}
+		${M}
 	}
 
 	:host([variant='segmented']:hover) #iconSlot::slotted(svg),
 	:host([variant='segmented'][active]) #iconSlot::slotted(svg) {
-		${j}
+		${N}
 	}
 
 	:host([compact-width]) {
@@ -210,19 +210,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 
 	/* Last, so the size wins over whichever variant set the box above. */
 	:host([size='sm']) {
-		${M}
+		${P}
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
-		${N}
+		${F}
 	}
-`})))()}var W,de;function fe(){return(fe=e((()=>{u(),y(),a(),te(),C(),U(),W=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tab`),this.hasAttribute(`tabindex`)||this.setAttribute(`tabindex`,`-1`)}},de=e=>{let{active:n,badge:i,href:a}=e;return re(()=>{e.setAttribute(x(e),n?`true`:`false`)},[n]),s(()=>{let t=t=>{t.target!==e||e.hasAttribute(`disabled`)||(t.key===`Enter`&&!t.repeat&&(t.preventDefault(),e.click()),t.key===` `&&t.preventDefault())},n=t=>{t.target!==e||e.hasAttribute(`disabled`)||t.key===` `&&e.click()};return e.addEventListener(`keydown`,t),e.addEventListener(`keyup`,n),()=>{e.removeEventListener(`keydown`,t),e.removeEventListener(`keyup`,n)}},[]),t`
+`})))()}var K,le;function ue(){return(ue=e((()=>{u(),y(),a(),te(),C(),G(),K=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tab`),this.hasAttribute(`tabindex`)||this.setAttribute(`tabindex`,`-1`)}},le=e=>{let{active:n,badge:i,href:a}=e;return re(()=>{e.setAttribute(x(e),n?`true`:`false`)},[n]),s(()=>{let t=t=>{t.target!==e||e.hasAttribute(`disabled`)||(t.key===`Enter`&&!t.repeat&&(t.preventDefault(),e.click()),t.key===` `&&t.preventDefault())},n=t=>{t.target!==e||e.hasAttribute(`disabled`)||t.key===` `&&e.click()};return e.addEventListener(`keydown`,t),e.addEventListener(`keyup`,n),()=>{e.removeEventListener(`keydown`,t),e.removeEventListener(`keyup`,n)}},[]),t`
 		<a part="link" href=${_(a)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
 			${i?t`<span class="badge" part="badge">${i}</span>`:r}
 		</a>
-	`},customElements.define(`cosmoz-tab-next`,d(de,{baseElement:W,observedAttributes:[`active`,`badge`,`href`],styleSheets:[v,H]}))})))()}var G,K;function q(){return(q=e((()=>{a(),f(),ee(),G=new WeakMap,K=p(class extends ne{render(e){return r}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),r}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=G.get(t);n===void 0&&(n=new WeakMap,G.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?G.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var pe;function me(){return(me=e((()=>{y(),pe=({host:e,popoverRef:t,disabled:n,openOnHover:r,openOnFocus:i,open:a,close:o})=>{let c=m(),l=()=>clearTimeout(c.current),u=()=>{clearTimeout(c.current),c.current=setTimeout(()=>{let n=t.current;r&&(e.matches(`:hover`)||n?.matches(`:hover`))||e.matches(`:focus-within`)||n?.matches(`:focus-within`)||o()},100)},d=()=>{n||(l(),a())};return s(()=>{if(r&&!n)return e.addEventListener(`pointerenter`,d),e.addEventListener(`pointerleave`,u),()=>{l(),e.removeEventListener(`pointerenter`,d),e.removeEventListener(`pointerleave`,u)}},[r,n,e]),s(()=>{if(i&&!n)return e.addEventListener(`focusin`,d),e.addEventListener(`focusout`,u),()=>{l(),e.removeEventListener(`focusin`,d),e.removeEventListener(`focusout`,u)}},[i,n,e]),{scheduleClose:u,cancelClose:l}}})))()}var he,ge,_e,ve,ye;function be(){return(be=e((()=>{y(),a(),q(),me(),he=e=>{if(e.newState!==`open`)return;let t=e.target.querySelector(`slot:not([name])`)?.assignedElements({flatten:!0})??[];for(let e of t){let t=e.matches(`[autofocus]`)?e:e.querySelector(`[autofocus]`);if(t instanceof HTMLElement){t.focus();break}}},ge=g`
+	`},customElements.define(`cosmoz-tab-next`,d(le,{baseElement:K,observedAttributes:[`active`,`badge`,`href`],styleSheets:[v,W]}))})))()}var q,de;function fe(){return(fe=e((()=>{a(),f(),ee(),q=new WeakMap,de=p(class extends ne{render(e){return r}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),r}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=q.get(t);n===void 0&&(n=new WeakMap,q.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?q.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var pe;function me(){return(me=e((()=>{y(),pe=({host:e,popoverRef:t,disabled:n,openOnHover:r,openOnFocus:i,open:a,close:o})=>{let c=m(),l=()=>clearTimeout(c.current),u=()=>{clearTimeout(c.current),c.current=setTimeout(()=>{let n=t.current;r&&(e.matches(`:hover`)||n?.matches(`:hover`))||e.matches(`:focus-within`)||n?.matches(`:focus-within`)||o()},100)},d=()=>{n||(l(),a())};return s(()=>{if(r&&!n)return e.addEventListener(`pointerenter`,d),e.addEventListener(`pointerleave`,u),()=>{l(),e.removeEventListener(`pointerenter`,d),e.removeEventListener(`pointerleave`,u)}},[r,n,e]),s(()=>{if(i&&!n)return e.addEventListener(`focusin`,d),e.addEventListener(`focusout`,u),()=>{l(),e.removeEventListener(`focusin`,d),e.removeEventListener(`focusout`,u)}},[i,n,e]),{scheduleClose:u,cancelClose:l}}})))()}var he,ge,_e,ve,ye;function be(){return(be=e((()=>{y(),a(),fe(),me(),he=e=>{if(e.newState!==`open`)return;let t=e.target.querySelector(`slot:not([name])`)?.assignedElements({flatten:!0})??[];for(let e of t){let t=e.matches(`[autofocus]`)?e:e.querySelector(`[autofocus]`);if(t instanceof HTMLElement){t.focus();break}}},ge=g`
 	:host {
 		display: inline-block;
 		anchor-name: --dropdown-anchor;
@@ -284,7 +284,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 					@select=${h}
 					@focusout=${_}
 					@focusin=${v}
-					${K(e=>e&&(u.current=e))}
+					${de(e=>e&&(u.current=e))}
 				>
 					<slot></slot>
 				</div>`}
@@ -321,29 +321,18 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 			${e}
 		</div>
 	</cosmoz-dropdown-next>
-`})))()}var Y,Te,Ee,De,Oe,ke,Ae;function je(){return(je=e((()=>{C(),J(),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},Te=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,S(t),null),Y(t,x(t),t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Ee=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},De=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Oe=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),Te(e,t)},ke=e=>new MouseEvent(`click`,e),Ae=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(ke(t))||t.preventDefault(),xe(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}Se(a)}}})))()}var Me,Ne,Pe,Fe,Ie,Le,Re,ze,Be,Ve,He,Ue,We,Ge,Ke,qe,Je,Ye,Xe,Ze;function Qe(){return(Qe=e((()=>{y(),Me=g`
-	display: flex;
-	align-items: stretch;
-	gap: calc(var(--cz-spacing) * 3);
-	padding-inline: calc(var(--cz-spacing) * 3);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-`,Ne=g`
+`})))()}var Y,Te,Ee,De,Oe,ke,Ae;function je(){return(je=e((()=>{C(),J(),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},Te=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,S(t),null),Y(t,x(t),t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Ee=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},De=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Oe=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),Te(e,t)},ke=e=>new MouseEvent(`click`,e),Ae=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(ke(t))||t.preventDefault(),xe(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}Se(a)}}})))()}var Me,Ne,Pe,Fe,Ie,Le,Re,ze,Be,Ve,He,Ue,We,Ge,Ke,qe,Je,Ye,Xe;function Ze(){return(Ze=e((()=>{y(),Me=g`
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
-	gap: inherit;
-	flex: 1 1 auto;
+	gap: calc(var(--cz-spacing) * 3);
 	min-width: 0;
 	overflow: clip;
 	/* The band is one row's box, exact per size/variant: the item's box is
 	   fully token-derived (fixed line-height, paddings, 16px icon), so
 	   the clip is a constant the observer's intersections read against. */
 	max-height: 41px; /* underline */
-`,Pe=g`
+`,Ne=g`
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -360,7 +349,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
-`,Fe=g`
+`,Pe=g`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -377,85 +366,81 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		background-color 0.1s linear,
 		box-shadow 0.1s linear;
 	outline: 0;
-`,Ie=g`
+`,Fe=g`
 	outline: 2px solid var(--cz-color-fg-brand);
 	outline-offset: -2px;
-`,Le=g`
+`,Ie=g`
 	color: var(--cz-color-text-brand);
 	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`,Re=g`
+`,Le=g`
 	width: 16px;
 	height: 16px;
 	flex-shrink: 0;
 	color: var(--cz-color-fg-quaternary);
-`,ze=g`
+`,Re=g`
 	color: var(--cz-color-fg-brand-secondary);
-`,Be=g`
+`,ze=g`
 	gap: calc(var(--cz-spacing) * 1);
 	box-shadow: none;
-`,Ve=g`
+`,Be=g`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-md);
-`,He=g`
+`,Ve=g`
 	color: var(--cz-color-text-on-brand);
 	background-color: var(--cz-color-bg-brand-solid);
 	box-shadow: none;
-`,Ue=g`
+`,He=g`
 	gap: calc(var(--cz-spacing) * 1);
 	padding: calc(var(--cz-spacing) * 1);
 	border-radius: var(--cz-radius-lg);
 	background-color: var(--cz-color-bg-secondary);
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`,We=g`
+`,Ue=g`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-sm);
-`,Ge=g`
+`,We=g`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary);
 	box-shadow: var(--cz-shadow-sm);
-`,Ke=g`
+`,Ge=g`
 	color: var(--cz-color-fg-secondary-hover);
-`,qe=g`
+`,Ke=g`
 	padding-block: calc(var(--cz-spacing) * 1.5);
-`,Je=g`
+`,qe=g`
 	padding-inline: calc(var(--cz-spacing) * 2);
-`,Ye=g`
+`,Je=g`
 	padding: calc(var(--cz-spacing) * 0.75);
 	border-radius: var(--cz-radius-md);
-`,Xe=g`
-	${Fe}
+`,Ye=g`
+	${Pe}
 	flex: 0 0 auto;
 	background: none;
 	border: 0;
 	font: inherit;
 	appearance: none;
-`,Ze=g`
+`,Xe=g`
 	:host {
 		${Me}
 		flex: 0 1 auto;
 		min-width: 0;
 	}
 
-	.items {
-		${Ne}
-	}
-
 	:host([variant='brand']) {
-		${Be}
+		${ze}
 	}
 
 	:host([variant='segmented']) {
-		${Ue}
+		${He}
 	}
 
 	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
 	   all variants to 33px */
-	:host([variant='brand']) .items,
-	:host([variant='segmented']) .items {
+	:host([variant='brand']),
+	:host([variant='segmented']) {
 		max-height: 37px;
 	}
 
-	:host([size='sm']) .items {
+	:host([size='sm']) {
 		max-height: 33px;
 	}
 
@@ -474,7 +459,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([variant='segmented'][size='sm']) {
-		${Ye}
+		${Je}
 	}
 
 	.more {
@@ -488,7 +473,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	.more-button {
-		${Xe}
+		${Ye}
 	}
 
 	.more-button .chevron {
@@ -496,7 +481,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	.more-button svg {
-		${Re}
+		${Le}
 		transition: transform 0.15s ease;
 	}
 
@@ -506,25 +491,25 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 
 	.more-button:hover,
 	.more[data-active] .more-button {
-		${Le}
+		${Ie}
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		${ze}
+		${Re}
 	}
 
 	.more-button:focus-visible {
-		${Ie}
+		${Fe}
 	}
 
 	:host([variant='brand']) .more-button {
-		${Ve}
+		${Be}
 	}
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		${He}
+		${Ve}
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
@@ -533,38 +518,36 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([variant='segmented']) .more-button {
-		${We}
+		${Ue}
 	}
 
 	:host([variant='segmented']) .more-button:hover,
 	:host([variant='segmented']) .more[data-active] .more-button {
-		${Ge}
+		${We}
 	}
 
 	:host([variant='segmented']) .more-button:hover svg,
 	:host([variant='segmented']) .more[data-active] .more-button svg {
-		${Ke}
+		${Ge}
 	}
 
 	:host([size='sm']) .more-button {
-		${qe}
+		${Ke}
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .more-button {
-		${Je}
+		${qe}
 	}
 
 	.menu {
-		${Pe}
+		${Ne}
 	}
-`})))()}var $e;function et(){return(et=e((()=>{y(),$e=(e,t,n)=>{let[r,i]=b(()=>new Set);return re(()=>{let n=e.current,r=t();if(!n||r.length===0)return;let a=new Map,o=()=>{let e=new Set(r.filter(e=>a.get(e)===!0));r.forEach(t=>{let n=e.has(t);n!==t.hasAttribute(`overflowing`)&&(n?t.setAttribute(`overflowing`,``):t.removeAttribute(`overflowing`))}),i(t=>t.size===e.size&&[...e].every(e=>t.has(e))?t:e)},s=new IntersectionObserver(e=>{e.forEach(e=>{let t=e.target;a.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),o()},{root:n,threshold:[0,1]}),c=n.querySelector(`slot`),l=()=>{let e=new Set(c?.assignedElements({flatten:!0}));a.forEach((t,n)=>{e.has(n)||a.set(n,!1)}),o()};return c?.addEventListener(`slotchange`,l),r.forEach(e=>{a.set(e,!1),s.observe(e)}),()=>{s.disconnect(),c?.removeEventListener(`slotchange`,l)}},n),r}})))()}var tt,X,nt,rt,Z,it,at,ot,st,ct;function lt(){return(lt=e((()=>{u(),y(),q(),C(),J(),je(),Qe(),et(),tt=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tablist`)}},X=`cosmoz-tab-next`,nt=e=>e.map(e=>+!e.hidden).join(``),rt=e=>(e.querySelector(`slot`)?.assignedElements({flatten:!0})??[]).filter(e=>e.matches(X)),Z={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`,`role`],childList:!0,subtree:!0,characterData:!0},it=(e,t)=>{let[n,r]=b(0);return s(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,Z)),()=>t.disconnect()},[t]),n},at=(e,t,n)=>{let r=it(e,n),i=m();return i.current??=new Map,c(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??De(e);return n.set(e,t),Oe(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),Ee(r),r},[t,n,r])},ot=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.setAttribute(`role`,`tablist`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),compactWidth:e.hasAttribute(`compact-width`)?``:null,role:`tablist`,itemRole:`tab`}),st=(e,{variant:t,size:n,compactWidth:r,itemRole:i})=>{Y(e,`variant`,t),Y(e,`size`,n),Y(e,`compact-width`,r),Y(e,`role`,i),Y(e,`tabindex`,e.hasAttribute(`active`)?`0`:`-1`),Y(e,S(e),null),Y(e,x(e),e.hasAttribute(`active`)?`true`:`false`)},ct=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let n=ot(e),{role:r}=n,i=m(),a=o(e=>{i.current=e},[]),[c,l]=b(0),u=o(()=>i.current?rt(i.current):[],[]),d=()=>{new Set([...e.querySelectorAll(X),...u()]).forEach(e=>st(e,n))},f=()=>{d(),l(e=>e+1)};s(d);let p=$e(i,u,[u().map(e=>e.getAttribute(`name`)).join(`,`),nt(u())]),h=at(u,p,c);return t`
+`})))()}var Qe;function $e(){return($e=e((()=>{y(),Qe=(e,t,n)=>{let[r,i]=b(()=>new Set);return re(()=>{let n=e,r=t();if(!n||r.length===0)return;let a=new Map,o=()=>{let e=new Set(r.filter(e=>a.get(e)===!0));r.forEach(t=>{let n=e.has(t);n!==t.hasAttribute(`overflowing`)&&(n?t.setAttribute(`overflowing`,``):t.removeAttribute(`overflowing`))}),i(t=>t.size===e.size&&[...e].every(e=>t.has(e))?t:e)},s=new IntersectionObserver(e=>{e.forEach(e=>{let t=e.target;a.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),o()},{root:n,threshold:[0,1]}),c=n.shadowRoot?.querySelector(`slot:not([name])`),l=()=>{let e=new Set(c?.assignedElements({flatten:!0}));a.forEach((t,n)=>{e.has(n)||a.set(n,!1)}),o()};return c?.addEventListener(`slotchange`,l),r.forEach(e=>{a.set(e,!1),s.observe(e)}),()=>{s.disconnect(),c?.removeEventListener(`slotchange`,l)}},n),r}})))()}var et,X,tt,nt,rt,it,at,ot,Z,st;function ct(){return(ct=e((()=>{u(),y(),C(),J(),je(),Ze(),$e(),et=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tablist`)}},X=`cosmoz-tab-next`,tt=e=>e.map(e=>+!e.hidden).join(``),nt=e=>((e.shadowRoot?.querySelector(`slot:not([name])`))?.assignedElements({flatten:!0})??[]).filter(e=>e.matches(X)),rt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`,`role`],childList:!0,subtree:!0,characterData:!0},it=(e,t)=>{let[n,r]=b(0);return s(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,rt)),()=>t.disconnect()},[t]),n},at=(e,t,n)=>{let r=it(e,n),i=m();return i.current??=new Map,c(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??De(e);return n.set(e,t),Oe(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),Ee(r),r},[t,n,r])},ot=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.setAttribute(`role`,`tablist`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),compactWidth:e.hasAttribute(`compact-width`)?``:null,role:`tablist`,itemRole:`tab`}),Z=(e,{variant:t,size:n,compactWidth:r,itemRole:i})=>{Y(e,`variant`,t),Y(e,`size`,n),Y(e,`compact-width`,r),Y(e,`role`,i),Y(e,`tabindex`,e.hasAttribute(`active`)?`0`:`-1`),Y(e,S(e),null),Y(e,x(e),e.hasAttribute(`active`)?`true`:`false`)},st=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let n=ot(e),{role:r}=n,[i,a]=b(0),c=o(()=>nt(e),[]),l=()=>{new Set([...e.querySelectorAll(X),...c()]).forEach(e=>Z(e,n))},u=()=>{l(),a(e=>e+1)};s(l);let d=Qe(e,c,[c().map(e=>e.getAttribute(`name`)).join(`,`),tt(c())]),f=at(c,d,i);return t`
 		<slot name="tabs"></slot>
-		<div class="items" part="items" ${K(a)}>
-			<slot @slotchange=${f}></slot>
-		</div>
-		${we({items:h.map(([,e])=>e),overflows:h.length>0,active:h.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,role:r,onItemClick:Ae(h)})}
+		<slot @slotchange=${u} style="display: contents"></slot>
+		${we({items:f.map(([,e])=>e),overflows:f.length>0,active:f.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,role:r,onItemClick:Ae(f)})}
 		<slot name="stats"></slot>
-	`},customElements.define(`cosmoz-tabs-next`,d(ct,{baseElement:tt,observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[v,Ze]}))})))()}var ut;function dt(){return(dt=e((()=>{ut=(e,...t)=>typeof e==`function`?e(...t):e})))()}var Q,ft,pt,mt,ht,gt;function $(){return($=e((()=>{se(),dt(),y(),te(),Q=e=>!e.hidden&&!e.disabled,ft=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),pt=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:ft(e)},mt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=oe(t),a=m([]),s=c(()=>pt(e,r??void 0),[e,r]);return{tabs:e,active:s,activated:c(()=>{let e=s?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[s]),activate:i,onActivate:o(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},ht=({tabs:e,active:n,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=ut(e.title),l=e.content??c,u=e.badge||void 0;return t`<cosmoz-tab-next
+	`},customElements.define(`cosmoz-tabs-next`,d(st,{baseElement:et,observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[v,Xe]}))})))()}var lt;function ut(){return(ut=e((()=>{lt=(e,...t)=>typeof e==`function`?e(...t):e})))()}var Q,dt,ft,pt,mt,ht;function $(){return($=e((()=>{se(),ut(),y(),te(),Q=e=>!e.hidden&&!e.disabled,dt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),ft=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:dt(e)},pt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=oe(t),a=m([]),s=c(()=>ft(e,r??void 0),[e,r]);return{tabs:e,active:s,activated:c(()=>{let e=s?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[s]),activate:i,onActivate:o(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},mt=({tabs:e,active:n,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=lt(e.title),l=e.content??c,u=e.badge||void 0;return t`<cosmoz-tab-next
 			name=${e.name}
 			class=${_(i)}
 			variant=${_(a)}
@@ -577,4 +560,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 			badge=${_(u)}
 			@click=${r}
 			>${h(e.icon,e=>e({slot:`icon`}))}${l}</cosmoz-tab-next
-		>`}),gt=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function _t(){return(_t=e((()=>{fe(),lt(),$()})))()}export{mt as a,ht as i,$ as n,gt as r,_t as t};
+		>`}),ht=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function gt(){return(gt=e((()=>{ue(),ct(),$()})))()}export{pt as a,mt as i,$ as n,ht as r,gt as t};
