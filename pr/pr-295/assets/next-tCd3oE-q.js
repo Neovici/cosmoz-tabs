@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-CV84_XUQ.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-Bva4w_jD.js";import{m as ie,t as ae}from"./untitled-DGQ7CmDb.js";import{r as oe,t as se}from"./use-hash-param-D2b5DdoV.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,le,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{y(),w=g`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-BF55bw_C.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-CfHYK7fv.js";import{m as ie,t as ae}from"./untitled-B5DRa3Ae.js";import{r as oe,t as se}from"./use-hash-param-Cwjm91_Q.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,le,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{y(),w=g`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -339,10 +339,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	flex: 1 1 auto;
 	min-width: 0;
 	overflow: clip;
-	/* one row's band, exact per size/variant: the item's box is fully
-	   token-derived (fixed line-height, paddings, 16px icon), so the
-	   clip is a constant and the wrap classifier never measures: the
-	   observer reads intersections against the band for free */
+	/* The band is one row's box, exact per size/variant: the item's box is
+	   fully token-derived (fixed line-height, paddings, 16px icon), so
+	   the clip is a constant the observer's intersections read against. */
 	max-height: 41px; /* underline */
 `,Ee=g`
 	display: flex;
@@ -449,8 +448,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		${Fe}
 	}
 
-	/* brand and segmented rows sit a touch shorter (37px); sm trims all
-	   variants to 33px */
+	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
+	   all variants to 33px */
 	:host([variant='brand']) .items,
 	:host([variant='segmented']) .items {
 		max-height: 37px;
@@ -460,8 +459,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		max-height: 33px;
 	}
 
-	/* The track hugs its tabs when they are not spread, but stops at the
-	   container's width, so tabs past it move into the overflow menu. */
+	/* The track hugs its tabs when they are not spread, staying within
+	   the container's width. */
 	:host([variant='segmented'][compact-width]) {
 		box-sizing: border-box;
 		width: max-content;
