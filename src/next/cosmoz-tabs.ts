@@ -59,7 +59,7 @@ const sync = (tab: Element, clone: Element) => {
 	clone.setAttribute('tabindex', '-1');
 };
 
-const rove = (copies: readonly Copy[]) => {
+const tabStops = (copies: readonly Copy[]) => {
 	// rows are plain tab stops; the bar keeps its one stop on the
 	// selected tab
 	copies.forEach(([, clone]) => {
@@ -89,7 +89,7 @@ const refresh = (tab: HTMLElement, clone: HTMLElement) => {
 
 type Copy = readonly [HTMLElement, HTMLElement];
 
-const like = (e: MouseEvent) =>
+const copyClick = (e: MouseEvent) =>
 	// a MouseEvent is itself a MouseEventInit: the platform copies the
 	// button/modifier fields in the dictionary conversion
 	new MouseEvent('click', e);
@@ -105,7 +105,7 @@ const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
 	const [tab, clone] = pair;
 	e.stopPropagation();
 
-	if (!tab.dispatchEvent(like(e))) {
+	if (!tab.dispatchEvent(copyClick(e))) {
 		e.preventDefault();
 	}
 
@@ -192,7 +192,7 @@ const useCopies = (
 			}
 		});
 
-		rove(copies);
+		tabStops(copies);
 
 		return copies;
 	}, [overflowing, version, revision]);
@@ -219,13 +219,23 @@ const settings = (host: HTMLElement) => {
 		size: host.getAttribute('size'),
 		compactWidth: host.hasAttribute('compact-width') ? '' : null,
 		role,
-		itemRole: role === 'radiogroup' ? 'radio' : 'tab',
+		itemRole: role === 'radiogroup' ? ('radio' as const) : ('tab' as const),
 	};
 };
 
 const stamp = (
 	tab: Element,
-	{ variant, size, compactWidth, itemRole }: ReturnType<typeof settings>,
+	{
+		variant,
+		size,
+		compactWidth,
+		itemRole,
+	}: {
+		variant: string | null;
+		size: string | null;
+		compactWidth: string | null;
+		itemRole: 'radio' | 'tab';
+	},
 ) => {
 	reflect(tab, 'variant', variant);
 	reflect(tab, 'size', size);
