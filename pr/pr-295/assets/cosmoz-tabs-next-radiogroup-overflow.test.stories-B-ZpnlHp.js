@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-jaVSQbya.js";import{t as r}from"./next-B3-1uwyr.js";import{c as i,i as a,n as o,s}from"./overflow-helpers-DPm0JCCM.js";var c,l,u,d,f,p,m,h,g;function _(){return(_=e((()=>{n(),r(),o(),{expect:c,waitFor:l}=__STORYBOOK_MODULE_TEST__,u={title:`Tests/Tabs overflow (next, radiogroup)`},d=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BM-LA05i.js";import{t as r}from"./next-CIrwUp2r.js";import{c as i,i as a,n as o,s}from"./overflow-helpers-DanYykNW.js";var c,l,u,d,f,p,m,h,g;function _(){return(_=e((()=>{n(),r(),o(),{expect:c,waitFor:l}=__STORYBOOK_MODULE_TEST__,u={title:`Tests/Tabs overflow (next, radiogroup)`},d=()=>t`
     <div class="box" style="width: 220px; overflow: hidden;">
         <cosmoz-tabs-next variant="segmented" compact-width role="radiogroup">
             <cosmoz-tab-next name="today">Today</cosmoz-tab-next>
