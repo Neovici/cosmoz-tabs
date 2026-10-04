@@ -1,21 +1,21 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BHhQCr41.js";import{t as r}from"./next-BqZLVtIb.js";import{c as i,i as a,n as o,o as s,s as c,t as l}from"./overflow-helpers-Cpuqudoz.js";var u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-jaVSQbya.js";import{t as r}from"./next-B3-1uwyr.js";import{c as i,i as a,n as o,o as s,s as c,t as l}from"./overflow-helpers-DPm0JCCM.js";var u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
-                <div class="heading">Orders</div>
+                <div class="heading" slot="tabs">Orders</div>
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
                 <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
                 <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
                 <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-                <div class="stats">1-20 of 87</div>
+                <div class="stats" slot="stats">1-20 of 87</div>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.heading`),o=n.querySelector(`.stats`);await d(()=>u(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`they are routed out of the clipping container`,async()=>{u(r.getAttribute(`slot`)).toBe(`tabs`),u(o.getAttribute(`slot`)).toBe(`stats`)}),await t(`they are never marked, clipped or copied`,async()=>{u(r.hasAttribute(`overflowing`)).toBe(!1),u(o.hasAttribute(`overflowing`)).toBe(!1),u(i(n).querySelectorAll(`.menu > :not(cosmoz-tab-next)`).length).toBe(0)}),await t(`they stay visible however narrow the bar gets`,async()=>{l(e).style.width=`120px`,await d(()=>u(o.getBoundingClientRect().width).toBeGreaterThan(0)),u(r.getBoundingClientRect().width).toBeGreaterThan(0)})}},m={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.heading`),o=n.querySelector(`.stats`);await d(()=>u(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`the component leaves the consumer markup alone`,async()=>{u(r.getAttribute(`slot`)).toBe(`tabs`),u(o.getAttribute(`slot`)).toBe(`stats`)}),await t(`they are never marked, clipped or copied`,async()=>{u(r.hasAttribute(`overflowing`)).toBe(!1),u(o.hasAttribute(`overflowing`)).toBe(!1),u(i(n).querySelectorAll(`.menu > :not(cosmoz-tab-next)`).length).toBe(0)}),await t(`they stay visible however narrow the bar gets`,async()=>{l(e).style.width=`120px`,await d(()=>u(o.getBoundingClientRect().width).toBeGreaterThan(0)),u(r.getBoundingClientRect().width).toBeGreaterThan(0)})}},m={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
                 <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
                 <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-                <!-- after the first tab, so auto-assignment would say "stats" -->
+                <!-- explicit assignment: there is no auto-assignment to fight with -->
                 <div class="pinned" slot="tabs">Orders</div>
             </cosmoz-tabs-next>
         </div>
@@ -77,12 +77,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
   render: () => html\`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
-                <div class="heading">Orders</div>
+                <div class="heading" slot="tabs">Orders</div>
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
                 <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
                 <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
                 <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-                <div class="stats">1-20 of 87</div>
+                <div class="stats" slot="stats">1-20 of 87</div>
             </cosmoz-tabs-next>
         </div>
     \`,
@@ -94,7 +94,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       heading = bar.querySelector('.heading') as HTMLElement,
       stats = bar.querySelector('.stats') as HTMLElement;
     await waitFor(() => expect(bar.querySelectorAll('cosmoz-tab-next[overflowing]').length).toBeGreaterThan(0));
-    await step('they are routed out of the clipping container', async () => {
+    await step('the component leaves the consumer markup alone', async () => {
+      // no auto-assignment: the consumer's slot attributes are theirs
       expect(heading.getAttribute('slot')).toBe('tabs');
       expect(stats.getAttribute('slot')).toBe('stats');
     });
@@ -116,7 +117,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
                 <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
                 <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-                <!-- after the first tab, so auto-assignment would say "stats" -->
+                <!-- explicit assignment: there is no auto-assignment to fight with -->
                 <div class="pinned" slot="tabs">Orders</div>
             </cosmoz-tabs-next>
         </div>

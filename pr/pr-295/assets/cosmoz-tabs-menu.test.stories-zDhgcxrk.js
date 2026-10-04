@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BHhQCr41.js";import{i as r,n as i,t as a}from"./next-BqZLVtIb.js";import{c as o,i as s,l as c,n as l,s as u}from"./overflow-helpers-Cpuqudoz.js";var d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;function E(){return(E=e((()=>{n(),a(),i(),l(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Overflow menu`},m=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-jaVSQbya.js";import{i as r,n as i,t as a}from"./next-B3-1uwyr.js";import{c as o,i as s,l as c,n as l,s as u}from"./overflow-helpers-DPm0JCCM.js";var d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;function E(){return(E=e((()=>{n(),a(),i(),l(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Overflow menu`},m=()=>t`
     <div class="box" style="width: 240px; overflow: hidden;">
         <cosmoz-tabs-next variant="underline">
             <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
@@ -19,17 +19,17 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
         </cosmoz-tabs-next>
     </div>
 `,b={render:y,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=()=>h(n).find(e=>e.hasAttribute(`disabled`)),i=()=>h(n).find(e=>!e.hasAttribute(`disabled`));await t(`a disabled copy is skipped and announced`,async()=>{d(r()?.getAttribute(`tabindex`)).toBe(`-1`),d(r()?.getAttribute(`aria-disabled`)).toBe(`true`)}),await t(`an enabled copy is not announced disabled`,async()=>d(i()?.hasAttribute(`aria-disabled`)).toBe(!1)),await t(`every enabled row is a tab stop`,async()=>{let e=h(n).filter(e=>e.getAttribute(`tabindex`)===`0`);d(e.length).toBe(h(n).length-1),d(e.every(e=>!e.hasAttribute(`disabled`))).toBe(!0)}),await t(`and disabled follows the tab, not just the copy`,async()=>{n.querySelector(`[name=attachments]`).removeAttribute(`disabled`),await f(()=>d(h(n).find(e=>e.getAttribute(`name`)===`attachments`)?.hasAttribute(`aria-disabled`)).toBe(!1)),d(h(n).filter(e=>e.getAttribute(`tabindex`)===`0`).length).toBe(h(n).length)})}},x={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=h(n).at(-1),i=n.querySelector(`[name=${r.getAttribute(`name`)}]`),a;i.addEventListener(`click`,e=>a=e),await t(`a modified click stays modified`,async()=>{r.dispatchEvent(new MouseEvent(`click`,{bubbles:!0,composed:!0,ctrlKey:!0})),await u(4),d(a?.ctrlKey).toBe(!0)}),await t(`and leaves the menu open, having selected nothing`,async()=>d(o(n).querySelector(`.more`)?.hasAttribute(`opened`)).toBe(!1)),await t(`a plain click arrives plain`,async()=>{a=void 0,r.click(),await f(()=>d(a).toBeTruthy()),d(a?.ctrlKey).toBe(!1),d(a?.button).toBe(0)}),await t(`cancelling the forward cancels the copy too`,async()=>{i.addEventListener(`click`,e=>e.preventDefault());let e=new MouseEvent(`click`,{bubbles:!0,composed:!0,cancelable:!0});r.dispatchEvent(e),await u(4),d(e.defaultPrevented).toBe(!0)})}},S={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0));let r=n.querySelector(`cosmoz-tab-next[overflowing]`);await t(`re-slotting it out of the bar clears the mark`,async()=>{r.setAttribute(`slot`,`stats`),await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1)),d(getComputedStyle(r).visibility).not.toBe(`hidden`)}),await t(`removing one from the DOM clears it too`,async()=>{let e=n.querySelector(`cosmoz-tab-next[overflowing]`);e.remove(),await f(()=>d(e.hasAttribute(`overflowing`)).toBe(!1))})}},C={render:()=>t`
-        <div class="box" style="width: 900px; overflow: hidden;">
+        <div class="box" style="width: 500px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
-                <cosmoz-tab-next name="a" active style="flex:0 0 400px;width:400px"
+                <cosmoz-tab-next name="a" active style="flex:0 0 48%;width:48%"
                     >Wide tab A</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="b" style="flex:0 0 400px;width:400px"
+                <cosmoz-tab-next name="b" style="flex:0 0 48%;width:48%"
                     >Wide tab B</cosmoz-tab-next
                 >
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`.box`),r=s(e),i=r.querySelector(`[name=b]`),a=o(r).querySelector(`.items`),c=()=>i.getBoundingClientRect().right-a.getBoundingClientRect().right;await u(30),await t(`park it just over the tolerance`,async()=>{for(let e=700;e<1e3&&(n.style.width=`${e}px`,await u(2),!(c()>1&&c()<=2));e+=1);await u(30),d(c()).toBeGreaterThan(1),d(i.hasAttribute(`overflowing`)).toBe(!0)}),await t(`a nudge under the tolerance brings it back`,async()=>{n.style.width=`${parseFloat(n.style.width)+1.5}px`,await f(()=>d(i.hasAttribute(`overflowing`)).toBe(!1)),d(c()).toBeLessThanOrEqual(1)})}},w={render:()=>t`<div class="box">
+    `,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`.box`),r=s(e).querySelector(`[name=b]`);await u(30),await t(`a wide tab that does not fit is marked`,async()=>{n.style.width=`340px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!0))}),await t(`room for it brings it back`,async()=>{n.style.width=`500px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1))})}},w={render:()=>t`<div class="box">
             <cosmoz-tabs-next>
                 ${r({tabs:[{name:`x`,title:`Tab X`,badge:``},{name:`y`,title:`Tab Y`,badge:`3`}],active:{name:`x`,title:`Tab X`},onActivate:()=>void 0})}
             </cosmoz-tabs-next>
@@ -186,12 +186,12 @@ consumers must be able to cancel clone navigation.`,...x.parameters?.docs?.descr
   }
 }`,...S.parameters?.docs?.source},description:{story:`remove our hidden mark when a tab leaves the bar.`,...S.parameters?.docs?.description}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
   render: () => html\`
-        <div class="box" style="width: 900px; overflow: hidden;">
+        <div class="box" style="width: 500px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
-                <cosmoz-tab-next name="a" active style="flex:0 0 400px;width:400px"
+                <cosmoz-tab-next name="a" active style="flex:0 0 48%;width:48%"
                     >Wide tab A</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="b" style="flex:0 0 400px;width:400px"
+                <cosmoz-tab-next name="b" style="flex:0 0 48%;width:48%"
                     >Wide tab B</cosmoz-tab-next
                 >
             </cosmoz-tabs-next>
@@ -203,30 +203,21 @@ consumers must be able to cancel clone navigation.`,...x.parameters?.docs?.descr
   }) => {
     const boxEl = canvasElement.querySelector('.box') as HTMLElement,
       tabs = next(canvasElement),
-      b = tabs.querySelector('[name=b]') as HTMLElement,
-      items = sr(tabs).querySelector('.items') as HTMLElement,
-      clip = () => b.getBoundingClientRect().right - items.getBoundingClientRect().right;
+      b = tabs.querySelector('[name=b]') as HTMLElement;
     await settle(30);
-    await step('park it just over the tolerance', async () => {
-      for (let w = 700; w < 1000; w += 1) {
-        boxEl.style.width = \`\${w}px\`;
-        await settle(2);
-        if (clip() > 1 && clip() <= 2) {
-          break;
-        }
-      }
-      await settle(30);
-      expect(clip()).toBeGreaterThan(1);
-      expect(b.hasAttribute('overflowing')).toBe(true);
+    await step('a wide tab that does not fit is marked', async () => {
+      boxEl.style.width = '340px';
+      await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(true));
     });
-    await step('a nudge under the tolerance brings it back', async () => {
-      boxEl.style.width = \`\${parseFloat(boxEl.style.width) + 1.5}px\`;
+    await step('room for it brings it back', async () => {
+      boxEl.style.width = '500px';
       await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(false));
-      expect(clip()).toBeLessThanOrEqual(1);
     });
   }
-}`,...C.parameters?.docs?.source},description:{story:`ratio thresholds miss absolute-pixel tolerance changes.
-resize should reclassify wide near-fitting tabs.`,...C.parameters?.docs?.description}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
+}`,...C.parameters?.docs?.source},description:{story:`the layout itself classifies: a tab wraps the moment it does not fit,
+and a width change is taken fresh. 48% tabs plus the flex gap overflow
+under any track below 400px and fit above it, canvas-size
+independent.`,...C.parameters?.docs?.description}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
   render: () => html\`<div class="box">
             <cosmoz-tabs-next>
                 \${renderTabs({
