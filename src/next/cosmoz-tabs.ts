@@ -29,6 +29,18 @@ export interface CosmozTabsNextElement extends HTMLElement {
 	moreLabel?: string;
 }
 
+/**
+ * The host is the widget: the group role is authored and carried here
+ * (as the slideout's host is its dialog), settled at connect.
+ */
+export class TabsNextBase extends HTMLElement {
+	connectedCallback() {
+		if (!this.hasAttribute('role')) {
+			this.setAttribute('role', 'tablist');
+		}
+	}
+}
+
 const TAB = 'cosmoz-tab-next';
 const shown = (tabs: HTMLElement[]) =>
 	tabs.map((tab) => (tab.hidden ? 0 : 1)).join('');
@@ -103,24 +115,15 @@ const useCopies = (
 };
 
 /**
- * The family is a tablist: the host's role is owned here (the default
- * written at the first render - pion renders synchronously on connect),
- * and an authored `radiogroup` is a migration leftover whose value is
- * overridden so the items' tab wording stays truthful; the value picker
- * lives in the input package (`cosmoz-toggle-group`). `role` is
- * platform-reflected, not in `observedAttributes`: authored changes are
- * read on the render other observed attributes (or a slot change)
- * trigger.
+ * The family is a tablist (the default written at connect via
+ * `TabsNextBase`); the host's role is owned here. Value pickers build
+ * on the input's own radiogroup (`cosmoz-toggle-group`); authored
+ * `radiogroup` overrides are reported.
  */
 const settings = (host: HTMLElement) => {
-	if (!host.getAttribute('role')) {
-		host.setAttribute('role', 'tablist');
-	}
 	const authored = host.getAttribute('role');
 	if (authored === 'radiogroup') {
 		host.setAttribute('role', 'tablist');
-		// the deprecation nudge; a warn, not a throw - the markup keeps
-		// working
 		host.dispatchEvent(
 			new CustomEvent('deprecation-warning', {
 				detail: {
@@ -237,6 +240,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
+		baseElement: TabsNextBase,
 		observedAttributes: ['variant', 'size', 'compact-width', 'more-label'],
 		styleSheets: [normalize, nextTabsStyles],
 	}),
