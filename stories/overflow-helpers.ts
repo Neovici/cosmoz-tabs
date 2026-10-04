@@ -10,10 +10,8 @@ export const settle = async (frames = 4) => {
 	}
 };
 
-export const legacy = (root: HTMLElement) =>
-		root.querySelector('cosmoz-tabs') as HTMLElement,
-	next = (root: HTMLElement) =>
-		root.querySelector('cosmoz-tabs-next') as HTMLElement;
+export const next = (root: HTMLElement) =>
+	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 
 export const sr = (el: HTMLElement) => el.shadowRoot as ShadowRoot;
 
@@ -39,46 +37,10 @@ export const retained = async (refs: WeakRef<object>[]) => {
 	return refs.filter((ref) => ref.deref()).length;
 };
 
-export const clipped = (el: HTMLElement) =>
-	sr(el).querySelectorAll('.items > .tab[overflowing]');
-export const rows = (el: HTMLElement) =>
-	sr(el).querySelectorAll('.menu .menu-item');
 export const more = (el: HTMLElement) =>
 	sr(el).querySelector('.more') as HTMLElement;
 export const trigger = (el: HTMLElement) =>
 	sr(el).querySelector('.more-button') as HTMLElement;
-
-/**
- * count visible geometry, not component state.
- * this catches clipped tabs missing from the menu.
- */
-export const reachable = (el: HTMLElement) => {
-	const bounds = (
-		sr(el).querySelector('.items') as HTMLElement
-	).getBoundingClientRect();
-	const inBar = [
-		...sr(el).querySelectorAll<HTMLElement>('.items > .tab'),
-	].filter((tab) => {
-		const r = tab.getBoundingClientRect();
-		return (
-			r.width > 0 && r.left >= bounds.left - 1 && r.right <= bounds.right + 1
-		);
-	});
-	return inBar.length + rows(el).length;
-};
-
-export const fixture = (width: string, extra = html``) => html`
-	<div class="box" style="width: ${width}; overflow: hidden;">
-		<cosmoz-tabs variant="underline">
-			<cosmoz-tab name="overview" heading="Overview"></cosmoz-tab>
-			<cosmoz-tab name="rows" heading="Invoice rows"></cosmoz-tab>
-			<cosmoz-tab name="accounting" heading="Accounting"></cosmoz-tab>
-			<cosmoz-tab name="history" heading="History"></cosmoz-tab>
-			<cosmoz-tab name="attachments" heading="Attachments"></cosmoz-tab>
-			${extra}
-		</cosmoz-tabs>
-	</div>
-`;
 
 export const nextFixture = (width: string, extra = html``) => html`
 	<div class="box" style="width: ${width}; overflow: hidden;">

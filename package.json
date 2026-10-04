@@ -38,6 +38,7 @@
 		"storybook:build": "storybook build",
 		"storybook:preview": "npm run storybook:build && http-server ./storybook-static/ --silent",
 		"changeset": "changeset",
+		"postinstall": "patch-package --error-on-fail",
 		"prepare": "husky"
 	},
 	"publishConfig": {
@@ -73,6 +74,7 @@
 		"@neovici/cosmoz-tokens": "^3.4.0 || ^4.0.0",
 		"@neovici/cosmoz-utils": "^6.22.0",
 		"@pionjs/pion": "^2.16.0",
+		"compute-scroll-into-view": "^3.1.1",
 		"i18next": ">=23.0.0 <27.0.0",
 		"lit-html": "^3.3.3"
 	},
@@ -83,6 +85,7 @@
 		"@neovici/cfg": "^2.15.0",
 		"@neovici/testing": "^2.3.0",
 		"@playwright/test": "^1.61.0",
+		"patch-package": "^8.0.1",
 		"@storybook/addon-a11y": "^10.4.6",
 		"@storybook/addon-docs": "^10.4.6",
 		"@storybook/addon-vitest": "^10.4.6",

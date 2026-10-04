@@ -3,7 +3,7 @@ import { invoke } from '@neovici/cosmoz-utils/function';
 import { html, useCallback, useMemo, useRef } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { when } from 'lit-html/directives/when.js';
-import type { TabsSize, TabsVariant } from '../styles';
+import type { TabsSize, TabsVariant } from './styles';
 
 export type { TabsSize, TabsVariant };
 

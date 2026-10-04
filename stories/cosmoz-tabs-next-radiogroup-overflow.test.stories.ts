@@ -56,21 +56,31 @@ export const OverflowingRadiosStayRadios: Story = {
 			).toBe('true');
 		});
 
-		await step('the arrow keys walk the radios', async () => {
+		await step('Enter picks a radio like any button', async () => {
+			const seen: string[] = [];
+			bar
+				.querySelectorAll('cosmoz-tab-next')
+				.forEach((tab) =>
+					tab.addEventListener('click', () =>
+						seen.push(tab.getAttribute('name')!),
+					),
+				);
 			(sr(bar).querySelector('.more-button') as HTMLElement).click();
-			const [first, second] = copies();
+			const [first] = copies();
 			await waitFor(() => {
 				first.focus();
 				expect(sr(bar).activeElement).toBe(first);
 			});
 			first.dispatchEvent(
 				new KeyboardEvent('keydown', {
-					key: 'ArrowDown',
+					key: 'Enter',
 					bubbles: true,
 					composed: true,
+					cancelable: true,
 				}),
 			);
-			expect(sr(bar).activeElement).toBe(second);
+			// the original, not the copy, received the pick
+			expect(seen).toEqual([first.getAttribute('name')]);
 		});
 
 		await step('copies do not carry the bar-only size', async () => {

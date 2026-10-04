@@ -1,29 +1,5 @@
+/* Styles of the `cosmoz-tab-next` item itself; the bar's are in ./styles */
 import { css } from '@pionjs/pion';
-
-export type TabsVariant = 'brand' | 'underline' | 'segmented';
-
-/**
- * The default size is the unnamed one - omit the attribute to get it. `sm`
- * trims the item's box on both axes so a control that sits beside a heading
- * does not out-weigh it; the type is left alone, so the labels stay as
- * readable as they were.
- */
-export type TabsSize = 'sm';
-
-const bar = css`
-	display: flex;
-	align-items: stretch;
-	gap: calc(var(--cz-spacing) * 3);
-	padding-inline: calc(var(--cz-spacing) * 3);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-	overflow-x: auto;
-	scrollbar-width: none;
-	-webkit-overflow-scrolling: auto;
-`;
 
 const item = css`
 	position: relative;
@@ -71,11 +47,6 @@ const iconActive = css`
 	color: var(--cz-color-fg-brand-secondary);
 `;
 
-const brandBar = css`
-	gap: calc(var(--cz-spacing) * 1);
-	box-shadow: none;
-`;
-
 const brandItem = css`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-md);
@@ -85,15 +56,6 @@ const brandActive = css`
 	color: var(--cz-color-text-on-brand);
 	background-color: var(--cz-color-bg-brand-solid);
 	box-shadow: none;
-`;
-
-// Untitled UI's "button border" tabs: a track holding a raised, selected pill.
-const segmentedBar = css`
-	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 1);
-	border-radius: var(--cz-radius-lg);
-	background-color: var(--cz-color-bg-secondary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 `;
 
 const segmentedItem = css`
@@ -117,13 +79,6 @@ const smItem = css`
 
 const smButtonItem = css`
 	padding-inline: calc(var(--cz-spacing) * 2);
-`;
-
-/* The track's own ring is what stacks onto the item's padding, so the compact
-   size has to thin that too or the height barely moves. */
-const smSegmentedBar = css`
-	padding: calc(var(--cz-spacing) * 0.75);
-	border-radius: var(--cz-radius-md);
 `;
 
 const spreadItem = css`
@@ -167,178 +122,28 @@ const badgeModern = css`
 		var(--cz-shadow-xs);
 `;
 
-export const legacyStyles = css`
-	:host {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		font-family: var(--cz-font-body);
-		gap: calc(var(--cz-spacing) * 3);
-	}
-
-	:host([hidden]) {
-		display: none;
-	}
-
-	.tabs {
-		${bar}
-		flex: none;
-	}
-
-	.tabs::-webkit-scrollbar {
-		display: none;
-	}
-
-	.tab {
-		${item}
-		${spreadItem}
-	}
-
-	.tab svg {
-		${icon}
-	}
-
-	.tab:hover,
-	.tab[aria-selected='true'] {
-		${activeUnderline}
-	}
-
-	.tab:hover svg,
-	.tab[aria-selected='true'] svg {
-		${iconActive}
-	}
-
-	.tab:focus-visible {
-		${itemFocus}
-	}
-
-	.tab[disabled] {
-		${itemDisabled}
-	}
-
-	.tab[hidden] {
-		display: none !important;
-	}
-
-	.badge {
-		${badge}
-	}
-
-	:host(:not([variant='segmented'])) .tab:hover .badge,
-	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge {
-		${badgeHot}
-	}
-
-	:host([variant='segmented']) .badge {
-		${badgeModern}
-	}
-
-	#content {
-		display: flex;
-		flex-direction: column;
-		flex: auto;
-	}
-
-	#content ::slotted(:not(slot):not([is-selected])) {
-		display: none !important;
-	}
-
-	:host([variant='brand']) .tabs {
-		${brandBar}
-	}
-
-	:host([variant='brand']) .tab {
-		${brandItem}
-	}
-
-	:host([variant='brand']) .tab:hover,
-	:host([variant='brand']) .tab[aria-selected='true'] {
-		${brandActive}
-	}
-
-	:host([variant='brand']) .tab:hover svg,
-	:host([variant='brand']) .tab[aria-selected='true'] svg {
-		color: var(--cz-color-text-on-brand);
-	}
-
-	:host([variant='segmented']) .tabs {
-		${segmentedBar}
-	}
-
-	/* The track hugs its tabs when they are not spread. */
-	:host([variant='segmented'][compact-width]) .tabs {
-		width: max-content;
-	}
-
-	:host([variant='segmented']) .tab {
-		${segmentedItem}
-	}
-
-	:host([variant='segmented']) .tab:hover,
-	:host([variant='segmented']) .tab[aria-selected='true'] {
-		${segmentedActive}
-	}
-
-	:host([variant='segmented']) .tab:hover svg,
-	:host([variant='segmented']) .tab[aria-selected='true'] svg {
-		${segmentedIconActive}
-	}
-
-	:host([compact-width]) .tab {
-		flex: 0 1 auto;
-	}
-
-	:host(:not([compact-width]):not([variant='brand']):not([variant='segmented']))
-		.tabs {
-		gap: calc(var(--cz-spacing) * 4);
-	}
-
-	/* Last, so the size wins over whichever variant set the box above. */
-	:host([size='sm']) .tab {
-		${smItem}
-	}
-
-	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .tab {
-		${smButtonItem}
-	}
-
-	:host([variant='segmented'][size='sm']) .tabs {
-		${smSegmentedBar}
-	}
+/* Menu rows are the same element with a `menu` attribute, so these ride on
+   the item styles with menu-appropriate tweaks. */
+const menuItem = css`
+	${item}
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	gap: calc(var(--cz-spacing) * 2);
+	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+	border-radius: var(--cz-radius-sm);
+	box-shadow: none;
 `;
 
-export const nextTabsStyles = css`
-	:host {
-		${bar}
-		flex: none;
-	}
+const menuItemHover = css`
+	color: var(--cz-color-text-secondary);
+	background-color: var(--cz-color-bg-primary-hover);
+	box-shadow: none;
+`;
 
-	:host::-webkit-scrollbar {
-		display: none;
-	}
+const menuItemActive = brandActive;
 
-	:host([variant='brand']) {
-		${brandBar}
-	}
-
-	:host([variant='segmented']) {
-		${segmentedBar}
-	}
-
-	/* The track hugs its tabs when they are not spread. */
-	:host([variant='segmented'][compact-width]) {
-		width: max-content;
-	}
-
-	:host(
-		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
-	) {
-		gap: calc(var(--cz-spacing) * 4);
-	}
-
-	:host([variant='segmented'][size='sm']) {
-		${smSegmentedBar}
-	}
+const overflowing = css`
+	visibility: hidden;
 `;
 
 export const nextTabStyles = css`
@@ -362,6 +167,26 @@ export const nextTabStyles = css`
 
 	:host([hidden]) {
 		display: none !important;
+	}
+
+	:host([overflowing]) {
+		${overflowing}
+	}
+
+	:host([menu]) {
+		${menuItem}
+	}
+
+	:host([menu]:hover) {
+		${menuItemHover}
+	}
+
+	:host([menu][active]) {
+		${menuItemActive}
+	}
+
+	:host([menu][active]) #iconSlot::slotted(svg) {
+		color: var(--cz-color-text-on-brand);
 	}
 
 	a {

@@ -10,15 +10,10 @@ import {
 	useState,
 } from '@pionjs/pion';
 import { ref } from 'lit-html/directives/ref.js';
-import {
-	closeMenu,
-	plain,
-	renderOverflowMenu,
-	useCloseWhenEmpty,
-} from '../overflow-menu';
-import { nextTabsStyles, type TabsSize, type TabsVariant } from '../styles';
-import { useOverflow } from '../use-overflow';
 import { otherState, selectedState } from './aria';
+import { closeMenu, plain, renderOverflowMenu } from './overflow-menu';
+import { nextTabsStyles, type TabsSize, type TabsVariant } from './styles';
+import { useOverflow } from './use-overflow';
 
 export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
@@ -119,18 +114,9 @@ const refresh = (tab: HTMLElement, clone: HTMLElement) => {
 type Copy = readonly [HTMLElement, HTMLElement];
 
 const like = (e: MouseEvent) =>
-	new MouseEvent('click', {
-		bubbles: true,
-		composed: true,
-		cancelable: true,
-		button: e.button,
-		buttons: e.buttons,
-		detail: e.detail,
-		altKey: e.altKey,
-		ctrlKey: e.ctrlKey,
-		metaKey: e.metaKey,
-		shiftKey: e.shiftKey,
-	});
+	// a MouseEvent is itself a MouseEventInit: the platform copies the
+	// button/modifier fields in the dictionary conversion
+	new MouseEvent('click', e);
 
 const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
 	const path = e.composedPath(),
@@ -148,6 +134,14 @@ const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
 	}
 
 	if (plain(e)) {
+		// a pick: the chosen tab takes focus - but the clipped original
+		// is `visibility: hidden` and unfocusable, so hand focus to the
+		// bar's tab stop instead of dropping it into the void
+		tab.focus();
+		if (document.activeElement === document.body) {
+			const root = tab.getRootNode() as HTMLElement;
+			(root.querySelector?.('[tabindex="0"]') as HTMLElement | null)?.focus();
+		}
 		closeMenu(clone);
 	}
 };
@@ -225,38 +219,40 @@ const useCopies = (
 };
 
 const NONE = 'none';
-const roles = new WeakMap<Element, string>();
 
-const groupRole = (host: HTMLElement): 'tablist' | 'radiogroup' => {
-	const authored = host.getAttribute('role');
-	if (authored !== NONE) {
-		if (authored == null) {
-			roles.delete(host);
-		} else {
-			roles.set(host, authored);
-		}
+/**
+ * The group role is authored on the host but carried by the items part
+ * and the menu, so the host is kept as `role="none"`. Authored values
+ * are remembered (a ref) and reconciled on the host on every render;
+ * removing it falls back to a tablist.
+ *
+ * Changes are picked up by a one-attribute observer rather than by
+ * `observedAttributes`: pion maps attribute changes onto properties
+ * with `Reflect.set`, and `role` is a native reflected property
+ * (`Element.prototype.role`), so the write lands in the platform
+ * setter and never schedules a render.
+ */
+const useGroupRole = (host: HTMLElement): 'tablist' | 'radiogroup' => {
+	const authored = useRef<string>();
+	const [observed, setObserved] = useState(0);
+
+	useEffect(() => {
+		const watcher = new MutationObserver(() => setObserved((o) => o + 1));
+		watcher.observe(host, { attributes: true, attributeFilter: ['role'] });
+		return () => watcher.disconnect();
+	}, []);
+
+	// observed: the re-render that follows a later `role` change
+	const raw = host.getAttribute('role');
+	if (observed >= 0 && raw !== NONE) {
+		authored.current = raw ?? undefined;
 		host.setAttribute('role', NONE);
 	}
-	return roles.get(host) === 'radiogroup' ? 'radiogroup' : 'tablist';
-};
-
-const useRoleChanges = (host: HTMLElement) => {
-	const [, setChanges] = useState(0);
-	useLayoutEffect(() => {
-		const changed = () => {
-			if (host.getAttribute('role') !== NONE) {
-				setChanges((c) => c + 1);
-			}
-		};
-		const observer = new MutationObserver(changed);
-		observer.observe(host, { attributes: true, attributeFilter: ['role'] });
-		changed();
-		return () => observer.disconnect();
-	}, []);
+	return authored.current === 'radiogroup' ? 'radiogroup' : 'tablist';
 };
 
 const settings = (host: HTMLElement) => {
-	const role = groupRole(host);
+	const role = useGroupRole(host);
 	return {
 		variant: host.getAttribute('variant'),
 		size: host.getAttribute('size'),
@@ -305,8 +301,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	if (!host.getAttribute('variant')) {
 		host.setAttribute('variant', 'brand');
 	}
-
-	useRoleChanges(host);
 
 	const given = settings(host),
 		{ variant, size, compactWidth, role } = given;
@@ -369,8 +363,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}, [overflowing, version]);
 
 	const copies = useCopies(tabs, overflowing, version);
-
-	useCloseWhenEmpty(host, copies.length > 0);
 
 	return html`
 		<slot name="tabs"></slot>

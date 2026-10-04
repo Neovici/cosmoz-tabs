@@ -34,11 +34,6 @@
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
-				},
-				{
-					"name": "more-label",
-					"type": "String",
-					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],
@@ -77,7 +72,11 @@
 					"type": "Boolean",
 					"description": "Disables the tab"
 				},
-				{ "name": "hidden", "type": "Boolean", "description": "Hides the tab" },
+				{
+					"name": "hidden",
+					"type": "Boolean",
+					"description": "Hides the tab"
+				},
 				{
 					"name": "icon",
 					"type": "Object",
@@ -94,7 +93,12 @@
 					"description": "Fired each time this tab becomes active"
 				}
 			],
-			"slots": [{ "name": "", "description": "The tab panel content" }],
+			"slots": [
+				{
+					"name": "",
+					"description": "The tab panel content"
+				}
+			],
 			"cssProperties": []
 		},
 		{
@@ -129,7 +133,10 @@
 			],
 			"events": [],
 			"slots": [
-				{ "name": "", "description": "The `cosmoz-tab-next` header elements" },
+				{
+					"name": "",
+					"description": "The `cosmoz-tab-next` header elements"
+				},
 				{
 					"name": "tabs",
 					"description": "Extra content at the start of the tab bar, outside the overflow area. Non-tab children placed before the first tab are routed here automatically"
@@ -143,7 +150,7 @@
 		},
 		{
 			"name": "cosmoz-tab-next",
-			"description": "A single clickable tab header within <cosmoz-tabs-next>. It does not hold panel content — the consumer renders panels (e.g. via renderActivated).",
+			"description": "A single clickable tab header within <cosmoz-tabs-next>. It does not hold panel content \u2014 the consumer renders panels (e.g. via renderActivated).",
 			"properties": [
 				{
 					"name": "active",
@@ -178,7 +185,10 @@
 			],
 			"events": [],
 			"slots": [
-				{ "name": "", "description": "The tab label" },
+				{
+					"name": "",
+					"description": "The tab label"
+				},
 				{
 					"name": "icon",
 					"description": "A leading icon (e.g. an SVG from @neovici/cosmoz-icons)"
@@ -208,7 +218,10 @@
 			],
 			"events": [],
 			"slots": [
-				{ "name": "", "description": "The card content" },
+				{
+					"name": "",
+					"description": "The card content"
+				},
 				{
 					"name": "collapse-icon",
 					"description": "Custom collapse toggle icon"
@@ -239,8 +252,14 @@
 					"name": "--cosmoz-tab-card-shadow",
 					"description": "Card box-shadow (default: --cz-shadow-xs)"
 				},
-				{ "name": "--cosmoz-tab-card-margin", "description": "Card margin" },
-				{ "name": "--cosmoz-tab-card-padding", "description": "Card padding" },
+				{
+					"name": "--cosmoz-tab-card-margin",
+					"description": "Card margin"
+				},
+				{
+					"name": "--cosmoz-tab-card-padding",
+					"description": "Card padding"
+				},
 				{
 					"name": "--cosmoz-tab-card-width",
 					"description": "Card width (default: 300px)"

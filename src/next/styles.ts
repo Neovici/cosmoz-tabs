@@ -1,6 +1,18 @@
 import { css } from '@pionjs/pion';
 
-export const bar = css`
+export type TabsVariant = 'brand' | 'underline' | 'segmented';
+
+/**
+ * The default size is the unnamed one - omit the attribute to get it. `sm`
+ * trims the item's box on both axes so a control that sits beside a heading
+ * does not out-weigh it; the type is left alone, so the labels stay as
+ * readable as they were.
+ */
+export type TabsSize = 'sm';
+
+/* The bar does not scroll - tabs that do not fit go to the overflow menu, so
+   it clips and a child owns both the tabs and the clip edge. */
+const bar = css`
 	display: flex;
 	align-items: stretch;
 	gap: calc(var(--cz-spacing) * 3);
@@ -13,7 +25,7 @@ export const bar = css`
 	overflow: clip;
 `;
 
-export const items = css`
+const items = css`
 	display: flex;
 	align-items: stretch;
 	gap: inherit;
@@ -22,157 +34,7 @@ export const items = css`
 	overflow: clip;
 `;
 
-export const overflowing = css`
-	visibility: hidden;
-`;
-
-export const item = css`
-	position: relative;
-	display: inline-flex;
-	box-sizing: border-box;
-	align-items: center;
-	justify-content: center;
-	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
-	color: var(--cz-color-text-quaternary);
-	text-decoration: none;
-	white-space: nowrap;
-	cursor: pointer;
-	transition:
-		color 0.1s linear,
-		background-color 0.1s linear,
-		box-shadow 0.1s linear;
-	outline: 0;
-`;
-
-export const itemFocus = css`
-	outline: 2px solid var(--cz-color-fg-brand);
-	outline-offset: -2px;
-`;
-
-export const itemDisabled = css`
-	opacity: 0.5;
-	cursor: not-allowed;
-	pointer-events: none;
-`;
-
-export const activeUnderline = css`
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`;
-
-export const icon = css`
-	width: 16px;
-	height: 16px;
-	flex-shrink: 0;
-	color: var(--cz-color-fg-quaternary);
-`;
-
-export const iconActive = css`
-	color: var(--cz-color-fg-brand-secondary);
-`;
-
-export const brandBar = css`
-	gap: calc(var(--cz-spacing) * 1);
-	box-shadow: none;
-`;
-
-export const brandItem = css`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-md);
-`;
-
-export const brandActive = css`
-	color: var(--cz-color-text-on-brand);
-	background-color: var(--cz-color-bg-brand-solid);
-	box-shadow: none;
-`;
-
-export const segmentedBar = css`
-	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 1);
-	border-radius: var(--cz-radius-lg);
-	background-color: var(--cz-color-bg-secondary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`;
-
-export const segmentedItem = css`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-sm);
-`;
-
-export const segmentedActive = css`
-	color: var(--cz-color-text-secondary);
-	background-color: var(--cz-color-bg-primary);
-	box-shadow: var(--cz-shadow-sm);
-`;
-
-export const segmentedIconActive = css`
-	color: var(--cz-color-fg-secondary-hover);
-`;
-
-export const smItem = css`
-	padding-block: calc(var(--cz-spacing) * 1.5);
-`;
-
-export const smButtonItem = css`
-	padding-inline: calc(var(--cz-spacing) * 2);
-`;
-
-export const smSegmentedBar = css`
-	padding: calc(var(--cz-spacing) * 0.75);
-	border-radius: var(--cz-radius-md);
-`;
-
-export const spreadItem = css`
-	flex: 1 1 0;
-`;
-
-export const badge = css`
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-	font-size: var(--cz-text-xs);
-	font-weight: var(--cz-font-weight-medium);
-	line-height: var(--cz-text-xs-line-height);
-	padding: 2px calc(var(--cz-spacing) * 2);
-	max-width: 80px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: center;
-	border-radius: var(--cz-radius-full);
-	background-color: var(--cz-color-bg-secondary);
-	color: var(--cz-color-text-secondary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`;
-
-export const badgeHot = css`
-	background-color: var(--cz-color-bg-tertiary);
-	color: var(--cz-color-text-primary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-primary);
-`;
-
-export const badgeModern = css`
-	padding: 2px calc(var(--cz-spacing) * 1.5);
-	border-radius: var(--cz-radius-sm);
-	background-color: var(--cz-color-bg-primary);
-	color: var(--cz-color-text-secondary);
-	box-shadow:
-		inset 0 0 0 1px var(--cz-color-border-primary),
-		var(--cz-shadow-xs);
-`;
-
-export const moreItem = css`
-	${item}
-	flex: 0 0 auto;
-	background: none;
-	border: 0;
-	font: inherit;
-	appearance: none;
-`;
-
-export const menu = css`
+const menu = css`
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -191,25 +53,147 @@ export const menu = css`
 	font-weight: var(--cz-font-weight-semibold);
 `;
 
-export const menuItem = css`
-	${item}
-	flex: 0 0 auto;
-	justify-content: flex-start;
-	gap: calc(var(--cz-spacing) * 2);
+const item = css`
+	position: relative;
+	display: inline-flex;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	gap: calc(var(--cz-spacing) * 1);
+	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
+	color: var(--cz-color-text-quaternary);
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition:
+		color 0.1s linear,
+		background-color 0.1s linear,
+		box-shadow 0.1s linear;
+	outline: 0;
+`;
+
+const itemFocus = css`
+	outline: 2px solid var(--cz-color-fg-brand);
+	outline-offset: -2px;
+`;
+
+const activeUnderline = css`
+	color: var(--cz-color-text-brand);
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
+`;
+
+const icon = css`
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	color: var(--cz-color-fg-quaternary);
+`;
+
+const iconActive = css`
+	color: var(--cz-color-fg-brand-secondary);
+`;
+
+const brandBar = css`
+	gap: calc(var(--cz-spacing) * 1);
+	box-shadow: none;
+`;
+
+const brandItem = css`
+	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+	border-radius: var(--cz-radius-md);
+`;
+
+const brandActive = css`
+	color: var(--cz-color-text-on-brand);
+	background-color: var(--cz-color-bg-brand-solid);
+	box-shadow: none;
+`;
+
+// Untitled UI's "button border" tabs: a track holding a raised, selected pill.
+const segmentedBar = css`
+	gap: calc(var(--cz-spacing) * 1);
+	padding: calc(var(--cz-spacing) * 1);
+	border-radius: var(--cz-radius-lg);
+	background-color: var(--cz-color-bg-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+`;
+
+const segmentedItem = css`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-sm);
-	box-shadow: none;
 `;
 
-export const menuItemHover = css`
+const segmentedActive = css`
 	color: var(--cz-color-text-secondary);
-	background-color: var(--cz-color-bg-primary-hover);
-	box-shadow: none;
+	background-color: var(--cz-color-bg-primary);
+	box-shadow: var(--cz-shadow-sm);
 `;
 
-export const menuItemActive = brandActive;
+const segmentedIconActive = css`
+	color: var(--cz-color-fg-secondary-hover);
+`;
 
-export const overflowMenu = css`
+const smItem = css`
+	padding-block: calc(var(--cz-spacing) * 1.5);
+`;
+
+const smButtonItem = css`
+	padding-inline: calc(var(--cz-spacing) * 2);
+`;
+
+/* The track's own ring is what stacks onto the item's padding, so the compact
+   size has to thin that too or the height barely moves. */
+const smSegmentedBar = css`
+	padding: calc(var(--cz-spacing) * 0.75);
+	border-radius: var(--cz-radius-md);
+`;
+
+const moreItem = css`
+	${item}
+	flex: 0 0 auto;
+	background: none;
+	border: 0;
+	font: inherit;
+	appearance: none;
+`;
+
+export const nextTabsStyles = css`
+	:host {
+		${bar}
+		flex: 0 1 auto;
+		min-width: 0;
+	}
+
+	.items {
+		${items}
+	}
+
+	:host([variant='brand']) {
+		${brandBar}
+	}
+
+	:host([variant='segmented']) {
+		${segmentedBar}
+	}
+
+	/* The track hugs its tabs when they are not spread, but stops at the
+	   container's width, so tabs past it move into the overflow menu. */
+	:host([variant='segmented'][compact-width]) {
+		box-sizing: border-box;
+		width: max-content;
+		max-width: 100%;
+	}
+
+	:host(
+		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
+	) {
+		gap: calc(var(--cz-spacing) * 4);
+	}
+
+	:host([variant='segmented'][size='sm']) {
+		${smSegmentedBar}
+	}
+
 	.more {
 		flex: 0 0 auto;
 		display: inline-flex;
