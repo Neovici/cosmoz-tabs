@@ -1,21 +1,19 @@
 import { useLayoutEffect, useState } from '@pionjs/pion';
 
 /**
- * Which tabs does the bar not have room for? The track clips to its
- * first row: tabs that land on a later row are marked (`overflowing` -
- * styled `visibility: hidden` in `tab.css.ts`) and offered in the
- * overflow menu.
+ * Classifies the track's tabs against the clip band: a tab whose box lands
+ * past the first row is marked (`overflowing`, styled `visibility: hidden`
+ * in `tab.css.ts`) and offered in the overflow menu.
  *
  * The band's height is a css constant per size/variant (the item box is
  * fully token-derived), so the classification is a pure read:
- * `intersectionRect.height === 0` against the clip root - no rect reads
- * in JS, no reflow, no unmark cycle: the marks hide paint only, the
- * geometry never moves under them, and a tab that flows back into the
- * band is reported as it happens.
+ * `intersectionRect.height === 0` against the clip root. The marks hide
+ * paint only, so the layout never moves under the observer and a tab that
+ * flows back into the band is reported as it happens.
  *
- * Deliveries are deltas - only the tabs whose intersection changed are
- * in an entry batch - so the per-target state accumulates in a map and
- * the marked set is read from it, never rebuilt from one batch.
+ * Deliveries are deltas - only the tabs whose intersection changed are in
+ * an entry batch - so the per-target state accumulates in a map and the
+ * marks flush from it, never rebuilt from one batch.
  */
 export const useOverflow = (
 	track: { current?: HTMLElement | null },
@@ -71,10 +69,10 @@ export const useOverflow = (
 			{ root, threshold: [0, 1] },
 		);
 
-		// a tab re-slotted out of the track may not change intersection
-		// (a hidden row-2 tab was already non-intersecting) - the slot's
-		// own assignment change is what reports the departure; its mark
-		// goes with it
+		// a hidden row-2 tab is already non-intersecting, so re-slotting
+		// it out of the track changes nothing the observer sees; the
+		// slot's own assignment change is what reports the departure
+
 		const slot = root.querySelector('slot');
 		const onSlotChange = () => {
 			const assigned = new Set(slot?.assignedElements({ flatten: true }));
@@ -91,7 +89,6 @@ export const useOverflow = (
 			clipped.set(tab, false);
 			observer.observe(tab);
 		});
-		// tabs added later (slot changes) join the next effect run
 
 		return () => {
 			observer.disconnect();

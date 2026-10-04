@@ -24,10 +24,6 @@ export interface CosmozTabNextElement extends HTMLElement {
  * aria-checked rather than aria-selected
  * @slot tab label
  * @slot icon
- *
- * The element claims tab/radio semantics, so it picks like a native button:
- * Enter on keydown, Space on keyup - wherever it is rendered, in a bar or in
- * the overflow menu.
  */
 const Tab = (host: CosmozTabNextElement) => {
 	const { active, badge, href } = host;
@@ -47,11 +43,9 @@ const Tab = (host: CosmozTabNextElement) => {
 		host.setAttribute(selectedState(host), active ? 'true' : 'false');
 	}, [active]);
 
-	// The element claims tab/radio semantics, so it behaves like a button:
-	// Enter on keydown, Space on keyup (as native <button> does), Space
-	// keydown only prevents the page scroll. A click() bubbles to the
-	// consumer's activation wiring, wherever the tab is rendered - in the
-	// bar or as a copy in the overflow menu.
+	// The element claims tab/radio semantics, so it picks like a native
+	// button: Enter on keydown, Space on keyup (as <button> does); Space
+	// keydown only prevents the page scroll.
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if (e.target !== host || host.hasAttribute('disabled')) {

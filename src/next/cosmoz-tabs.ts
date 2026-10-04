@@ -60,8 +60,8 @@ const sync = (tab: Element, clone: Element) => {
 };
 
 const rove = (copies: readonly Copy[]) => {
-	// menu rows are plain tabbable content: every enabled row is a stop,
-	// Tab walks them like links in a list; the bar keeps its single stop
+	// rows are plain tab stops; the bar keeps its one stop on the
+	// selected tab
 	copies.forEach(([, clone]) => {
 		if (!clone.hasAttribute('disabled') && !clone.hasAttribute('hidden')) {
 			clone.setAttribute('tabindex', '0');
@@ -110,9 +110,9 @@ const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
 	}
 
 	if (plain(e)) {
-		// a pick: the chosen tab takes focus - but the clipped original
-		// is `visibility: hidden` and unfocusable, so hand focus to the
-		// bar's tab stop instead of dropping it into the void
+		// a pick: the chosen tab takes focus - the clipped original is
+		// `visibility: hidden` and unfocusable, so the bar's tab stop
+		// takes it
 		tab.focus();
 		if (tab.hasAttribute('overflowing')) {
 			const stop = (tab.getRootNode() as HTMLElement)?.querySelector?.(
@@ -199,13 +199,12 @@ const useCopies = (
 };
 
 /**
- * The group role: authored on the host and *staying* there — the host is
- * the tablist/radiogroup, as on master. The default is written once so
- * readers see it; a later authored change re-renders (an observed
- * attribute... `role` excluded: it is a platform-reflected property the
- * host already reflects, so reading it per render is enough for
- * consumers that set it before connect, and the render triggered by
- * other observed attributes picks authored changes up).
+ * The group role is authored on the host and stays there; the default
+ * (`tablist`) is written so readers see it. `role` is platform-reflected
+ * and not in `observedAttributes`: an authored change re-renders through
+ * the attribute→property path only for pion's own reflective props, so
+ * later authored changes are read on the render other observed
+ * attributes (or a slot change) trigger.
  */
 const settings = (host: HTMLElement) => {
 	if (!host.getAttribute('role')) {
@@ -232,9 +231,8 @@ const stamp = (
 	reflect(tab, 'size', size);
 	reflect(tab, 'compact-width', compactWidth);
 	reflect(tab, 'role', itemRole);
-	// roving tabindex, as the legacy family models it: the selected tab is
-	// the bar's one tab stop; the container owns the attribute like it owns
-	// role/variant
+	// roving tabindex: the selected tab is the bar's one tab stop; the
+	// container owns the attribute like it owns role/variant
 	reflect(tab, 'tabindex', tab.hasAttribute('active') ? '0' : '-1');
 	reflect(tab, otherState(tab), null);
 	reflect(

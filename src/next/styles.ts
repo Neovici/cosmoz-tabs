@@ -10,12 +10,9 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
  */
 export type TabsSize = 'sm';
 
-/* The bar does not scroll and does not clip at its own edge: its track
-   wraps, tabs that do not fit land on a second row - the layout is the
-   classification - and the track clips itself to the first row: the
-   wrapped tabs stay in the layout (invisible via their mark), so the
-   observer keeps reporting them and a tab that flows back in needs no
-   unmark-and-remeasure cycle. */
+/* The track wraps and clips itself to the first row: tabs that do not
+   fit land on a second row in the layout and are painted away by their
+   mark, so the observer's geometry is stable under the marks. */
 const bar = css`
 	display: flex;
 	align-items: stretch;
@@ -36,10 +33,9 @@ const items = css`
 	flex: 1 1 auto;
 	min-width: 0;
 	overflow: clip;
-	/* one row's band, exact per size/variant: the item's box is fully
-	   token-derived (fixed line-height, paddings, 16px icon), so the
-	   clip is a constant and the wrap classifier never measures: the
-	   observer reads intersections against the band for free */
+	/* The band is one row's box, exact per size/variant: the item's box is
+	   fully token-derived (fixed line-height, paddings, 16px icon), so
+	   the clip is a constant the observer's intersections read against. */
 	max-height: 41px; /* underline */
 `;
 
@@ -185,8 +181,8 @@ export const nextTabsStyles = css`
 		${segmentedBar}
 	}
 
-	/* brand and segmented rows sit a touch shorter (37px); sm trims all
-	   variants to 33px */
+	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
+	   all variants to 33px */
 	:host([variant='brand']) .items,
 	:host([variant='segmented']) .items {
 		max-height: 37px;
@@ -196,8 +192,8 @@ export const nextTabsStyles = css`
 		max-height: 33px;
 	}
 
-	/* The track hugs its tabs when they are not spread, but stops at the
-	   container's width, so tabs past it move into the overflow menu. */
+	/* The track hugs its tabs when they are not spread, staying within
+	   the container's width. */
 	:host([variant='segmented'][compact-width]) {
 		box-sizing: border-box;
 		width: max-content;
