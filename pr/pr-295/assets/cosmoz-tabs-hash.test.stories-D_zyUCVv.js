@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Cdvi9uWS.js";import{t as r}from"./cosmoz-tabs-v3YGL7cr.js";var i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-C81qHdVY.js";import{n as r}from"./cosmoz-tabs-DTsrg5qj.js";var i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
     <cosmoz-tabs hash-param="tab">
         <cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
         <cosmoz-tab name="tab1" heading="Tab1">1</cosmoz-tab>
@@ -52,7 +52,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     const tabs = getTabs(canvasElement);
     await waitFor(() => expect(selectedName(tabs)).toBe('tab0'));
 
-    // a bad hash falls back to the first valid tab
+    // a hash pointing at a non-existent tab -> first valid tab stays selected
     window.location.hash = barTab(tabs, 0).getAttribute('href')!.replace('tab0', 'nope');
     await waitFor(() => expect(selectedName(tabs)).toBe('tab0'));
     window.location.hash = '';

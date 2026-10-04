@@ -1,6 +1,6 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t}from"./iframe-Cdvi9uWS.js";import{C as n,I as r,J as i,S as a,T as o,W as s,w as c,x as l}from"./untitled-CLusGqw9.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t}from"./iframe-C81qHdVY.js";import{D as n,a as r,c as i,i as a,j as o,o as s,s as c,y as l}from"./if-defined-mAlS1Ni2.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
       :host { display: block; }
-		`);let t=this.attachShadow({mode:`open`});t.appendChild(document.createElement(`slot`)),t.adoptedStyleSheets=[e]}connectedCallback(){p(this,this.getAttribute(`opened`)!=null)}attributeChangedCallback(e,t,n){if(e===`opened`){let e=n!=null;return this.isConnected?this.toggle(this,e):p(this,e)}}},customElements.define(`cosmoz-collapse`,m)})))()}function g(){return(g=e((()=>{h()})))()}var _,v,y;function b(){return(b=e((()=>{g(),a(),c(),_=()=>t`
+		`);let t=this.attachShadow({mode:`open`});t.appendChild(document.createElement(`slot`)),t.adoptedStyleSheets=[e]}connectedCallback(){p(this,this.getAttribute(`opened`)!=null)}attributeChangedCallback(e,t,n){if(e===`opened`){let e=n!=null;return this.isConnected?this.toggle(this,e):p(this,e)}}},customElements.define(`cosmoz-collapse`,m)})))()}function g(){return(g=e((()=>{h()})))()}var _,v,y;function b(){return(b=e((()=>{g(),r(),c(),_=()=>t`
 	<svg
 		class="expand-more-icon"
 		viewBox="0 0 24 24"
@@ -11,8 +11,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t}from"./iframe-C
 	>
 		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
 	</svg>
-`,v=e=>{let{heading:n,collapsable:i,collapsed:a}=e,[o,c]=r(!!a),u=()=>{if(i)return c(e=>!e)};return s(()=>{e.toggleAttribute(`collapsed`,o)},[o]),t`${l(n,()=>t`<div class="header" part="header">
-					${l(i,()=>t`
+`,v=e=>{let{heading:r,collapsable:i,collapsed:o}=e,[s,c]=l(!!o),u=()=>{if(i)return c(e=>!e)};return n(()=>{e.toggleAttribute(`collapsed`,s)},[s]),t`${a(r,()=>t`<div class="header" part="header">
+					${a(i,()=>t`
 							<div
 								@click=${u}
 								class="collapse-icon"
@@ -22,16 +22,16 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t}from"./iframe-C
 							</div>
 						`)}
 					<h1 class="heading" @click=${u} part="heading">
-						${n}<slot name="after-title"></slot>
+						${r}<slot name="after-title"></slot>
 					</h1>
 					<slot name="card-actions"></slot>
 				</div>`)}
 
-		<cosmoz-collapse class="collapse" ?opened=${!o}>
+		<cosmoz-collapse class="collapse" ?opened=${!s}>
 			<div class="content" part="content">
 				<slot></slot>
 			</div>
-		</cosmoz-collapse>`},y=i`
+		</cosmoz-collapse>`},y=o`
 	:host {
 		display: block;
 		position: relative;
@@ -126,4 +126,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t}from"./iframe-C
 		cursor: pointer;
 		user-select: none;
 	}
-`,customElements.define(`cosmoz-tab-card`,o(v,{observedAttributes:[`heading`,`collapsable`,`collapsed`],styleSheets:[n,y]}))})))()}export{b as t};
+`,customElements.define(`cosmoz-tab-card`,i(v,{observedAttributes:[`heading`,`collapsable`,`collapsed`],styleSheets:[s,y]}))})))()}export{b as t};

@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Cdvi9uWS.js";import{a as r,f as i,g as a,l as o,r as s,s as c,t as l}from"./untitled-CLusGqw9.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-YUrOvf-b.js";import{t as v}from"./cosmoz-tabs-v3YGL7cr.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M,N;function P(){return(P=e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-C81qHdVY.js";import{a as r,f as i,g as a,l as o,r as s,s as c,t as l}from"./untitled-BOQpYjdo.js";import{a as u,c as d,i as f,l as p,n as m,r as h,s as g,t as _}from"./demo-content-B1SfkdXy.js";import{n as v}from"./cosmoz-tabs-DTsrg5qj.js";var y,b,x,S,C,w,T,E,D,O,k,A,j,M;function N(){return(N=e((()=>{l(),n(),v(),u(),y={title:`Tabs/cosmoz-tabs`,component:`cosmoz-tabs`,tags:[`autodocs`],parameters:{docs:{description:{component:"Legacy, DOM-driven tabs: you author `<cosmoz-tab>` elements and the container renders the bar and switches the panels. Selection works out of the box (no wiring needed)."}},controls:{disable:!0}},argTypes:{variant:{control:`select`,options:[`underline`,`brand`,`segmented`],description:`Untitled UI tab style`,table:{defaultValue:{summary:`underline`}}}}},b={args:{variant:`underline`},parameters:{controls:{disable:!1}},render:({variant:e})=>t`
         ${d}
         <cosmoz-tabs variant=${e} .selected=${`overview`}>
             <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
@@ -156,7 +156,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 ${h()}
             </cosmoz-tab>
         </cosmoz-tabs>
-    `},T={parameters:{docs:{description:{story:"When the bar overflows its container the tabs that do not fit are collected into the overflow menu at the end of it - here in the `brand` variant. See *Overflow* for the resizable version."}}},render:()=>t`
+    `},T={parameters:{docs:{description:{story:`When the bar overflows its container it scrolls horizontally and the selected tab is scrolled into view.`}}},render:()=>t`
         ${d}
         <div style="max-width: 460px">
             <cosmoz-tabs variant="brand" .selected=${`overview`}>
@@ -209,7 +209,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 </cosmoz-tab>
             </cosmoz-tabs>
         </div>
-    `},E={parameters:{docs:{description:{story:"A tab panel containing `cosmoz-tab-card` (collapsible cards) - a common cosmoz-frontend pattern. Cards are sized via `--cosmoz-tab-card-width` to fit their content."}}},render:()=>t`
+    `},E={parameters:{docs:{description:{story:"A tab panel containing `cosmoz-tab-card` (collapsible cards) — a common cosmoz-frontend pattern. Cards are sized via `--cosmoz-tab-card-width` to fit their content."}}},render:()=>t`
         ${d}
         <cosmoz-tabs variant="underline" .selected=${`overview`}>
             <cosmoz-tab
@@ -332,60 +332,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
             ${A(`warning`,`--cz-color-bg-brand-solid: var(--cz-color-bg-warning-solid);`)}
             ${A(`neutral`,`--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);`)}
         </div>
-    `},M={parameters:{docs:{description:{story:`Tabs that do not fit are collected into an overflow menu at the end of the bar instead of being reachable only by horizontal scrolling. An overflowing tab is rendered twice - clipped in the bar and, as a row of the menu - from the same data, so selection behaves identically in both places. **Drag the resize handle** in the bottom-right corner of the box to see tabs move in and out of the menu. When the selected tab is one of the overflowing ones, the trigger itself is highlighted.`}}},render:()=>t`
-        ${d}
-        <style>
-            .resizable {
-                resize: horizontal;
-                overflow: auto;
-                width: 420px;
-                min-width: 90px;
-                max-width: 100%;
-                padding-bottom: 10px;
-            }
-        </style>
-        <div class="resizable">
-            <cosmoz-tabs variant="underline">
-                <cosmoz-tab name="overview" heading="Overview" .icon=${s()}>
-                    ${g()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="rows"
-                    heading="Invoice rows"
-                    badge="5"
-                    .icon=${o()}
-                >
-                    ${p()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="accounting"
-                    heading="Accounting"
-                    .icon=${a()}
-                >
-                    ${_()}
-                </cosmoz-tab>
-                <cosmoz-tab name="history" heading="History" .icon=${i()}>
-                    ${f()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="comments"
-                    heading="Comments"
-                    badge="2"
-                    .icon=${c()}
-                >
-                    ${h()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="attachments"
-                    heading="Attachments"
-                    badge="3"
-                    .icon=${r()}
-                >
-                    ${m()}
-                </cosmoz-tab>
-            </cosmoz-tabs>
-        </div>
-    `},N=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`CompactWidth`,`SelectedColors`,`Minimal`,`Theming`,`Overflow`],b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
+    `},M=[`Default`,`Variants`,`WithoutIcons`,`DisabledAndHidden`,`HashRouting`,`ManyTabs`,`WithTabCards`,`CompactWidth`,`SelectedColors`,`Minimal`,`Theming`],b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
   args: {
     variant: 'underline'
   },
@@ -595,7 +542,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
   parameters: {
     docs: {
       description: {
-        story: 'When the bar overflows its container the tabs that do not fit are ' + 'collected into the overflow menu at the end of it - here in the ' + '\`brand\` variant. See *Overflow* for the resizable version.'
+        story: 'When the bar overflows its container it scrolls horizontally and the ' + 'selected tab is scrolled into view.'
       }
     }
   },
@@ -657,7 +604,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
   parameters: {
     docs: {
       description: {
-        story: 'A tab panel containing \`cosmoz-tab-card\` (collapsible cards) - a ' + 'common cosmoz-frontend pattern. Cards are sized via ' + '\`--cosmoz-tab-card-width\` to fit their content.'
+        story: 'A tab panel containing \`cosmoz-tab-card\` (collapsible cards) — a ' + 'common cosmoz-frontend pattern. Cards are sized via ' + '\`--cosmoz-tab-card-width\` to fit their content.'
       }
     }
   },
@@ -823,66 +770,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
             \${themedTabs('neutral', '--cz-color-bg-brand-solid: var(--cz-color-bg-tertiary); --cz-color-text-on-brand: var(--cz-color-text-primary);')}
         </div>
     \`
-}`,...j.parameters?.docs?.source}}},M.parameters={...M.parameters,docs:{...M.parameters?.docs,source:{originalSource:`{
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tabs that do not fit are collected into an overflow menu at the end ' + 'of the bar instead of being reachable only by horizontal scrolling. ' + 'An overflowing tab is rendered twice - clipped in the bar and, as a ' + 'row of the menu - from the same data, so selection behaves ' + 'identically in both places. **Drag the resize handle** in the ' + 'bottom-right corner of the box to see tabs move in and out of the ' + 'menu. When the selected tab is one of the overflowing ones, the ' + 'trigger itself is highlighted.'
-      }
-    }
-  },
-  render: () => html\`
-        \${panelStyles}
-        <style>
-            .resizable {
-                resize: horizontal;
-                overflow: auto;
-                width: 420px;
-                min-width: 90px;
-                max-width: 100%;
-                padding-bottom: 10px;
-            }
-        </style>
-        <div class="resizable">
-            <cosmoz-tabs variant="underline">
-                <cosmoz-tab name="overview" heading="Overview" .icon=\${receiptIcon()}>
-                    \${overview()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="rows"
-                    heading="Invoice rows"
-                    badge="5"
-                    .icon=\${listIcon()}
-                >
-                    \${rows()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="accounting"
-                    heading="Accounting"
-                    .icon=\${calculatorIcon()}
-                >
-                    \${accounting()}
-                </cosmoz-tab>
-                <cosmoz-tab name="history" heading="History" .icon=\${clockRewindIcon()}>
-                    \${history()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="comments"
-                    heading="Comments"
-                    badge="2"
-                    .icon=\${messageChatCircleIcon()}
-                >
-                    \${comments()}
-                </cosmoz-tab>
-                <cosmoz-tab
-                    name="attachments"
-                    heading="Attachments"
-                    badge="3"
-                    .icon=\${paperclipIcon()}
-                >
-                    \${attachments()}
-                </cosmoz-tab>
-            </cosmoz-tabs>
-        </div>
-    \`
-}`,...M.parameters?.docs?.source}}}})))()}P();export{D as CompactWidth,b as Default,C as DisabledAndHidden,w as HashRouting,T as ManyTabs,k as Minimal,M as Overflow,O as SelectedColors,j as Theming,x as Variants,E as WithTabCards,S as WithoutIcons,N as __namedExportsOrder,y as default};
+}`,...j.parameters?.docs?.source}}}})))()}N();export{D as CompactWidth,b as Default,C as DisabledAndHidden,w as HashRouting,T as ManyTabs,k as Minimal,O as SelectedColors,j as Theming,x as Variants,E as WithTabCards,S as WithoutIcons,M as __namedExportsOrder,y as default};
