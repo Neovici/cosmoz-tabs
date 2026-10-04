@@ -1,12 +1,21 @@
 import { useLayoutEffect, useState } from '@pionjs/pion';
 
 /**
- * Which tabs does the bar not have room for? The track wraps: a tab
- * that does not fit lands below the first row — the layout is the
- * answer. The cycle is measure (marks off, so everything takes part in
- * the wrap), classify by row, mark (the marked leave the layout). A
- * width change reruns it; the mark's own height collapse is ignored via
- * the width guard.
+ * Which tabs does the bar not have room for? The track clips to its
+ * first row: tabs that land on a later row are marked (`overflowing` -
+ * styled `visibility: hidden` in `tab.css.ts`) and offered in the
+ * overflow menu.
+ *
+ * The band's height is a css constant per size/variant (the item box is
+ * fully token-derived), so the classification is a pure read:
+ * `intersectionRect.height === 0` against the clip root - no rect reads
+ * in JS, no reflow, no unmark cycle: the marks hide paint only, the
+ * geometry never moves under them, and a tab that flows back into the
+ * band is reported as it happens.
+ *
+ * Deliveries are deltas - only the tabs whose intersection changed are
+ * in an entry batch - so the per-target state accumulates in a map and
+ * the marked set is read from it, never rebuilt from one batch.
  */
 export const useOverflow = (
 	track: { current?: HTMLElement | null },
@@ -24,7 +33,10 @@ export const useOverflow = (
 			return;
 		}
 
-		const mark = (next: Set<HTMLElement>) => {
+		const clipped = new Map<HTMLElement, boolean>();
+
+		const flush = () => {
+			const next = new Set(current.filter((tab) => clipped.get(tab) === true));
 			current.forEach((tab) => {
 				const on = next.has(tab);
 				if (on === tab.hasAttribute('overflowing')) {
@@ -44,41 +56,46 @@ export const useOverflow = (
 			});
 		};
 
-		const apply = () => {
-			// measure with the marks OFF: clear them, reflow synchronously,
-			// then read the wrap
-			current.forEach((tab) => {
-				if (tab.hasAttribute('overflowing')) {
-					tab.removeAttribute('overflowing');
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const tab = entry.target as HTMLElement;
+					clipped.set(
+						tab,
+						entry.boundingClientRect.height > 0 &&
+							entry.intersectionRect.height === 0,
+					);
+				});
+				flush();
+			},
+			{ root, threshold: [0, 1] },
+		);
+
+		// a tab re-slotted out of the track may not change intersection
+		// (a hidden row-2 tab was already non-intersecting) - the slot's
+		// own assignment change is what reports the departure; its mark
+		// goes with it
+		const slot = root.querySelector('slot');
+		const onSlotChange = () => {
+			const assigned = new Set(slot?.assignedElements({ flatten: true }));
+			clipped.forEach((_, tab) => {
+				if (!assigned.has(tab)) {
+					clipped.set(tab, false);
 				}
 			});
-			// forced reflow: the unmark above is visible to this read
-			const top0 = current[0].getBoundingClientRect().top;
-			const next = new Set(
-				current.filter(
-					(tab) =>
-						!tab.hidden &&
-						Math.abs(tab.getBoundingClientRect().top - top0) > 0.5,
-				),
-			);
-			mark(next);
+			flush();
 		};
+		slot?.addEventListener('slotchange', onSlotChange);
 
-		let lastWidth = root.getBoundingClientRect().width;
-		const observer = new ResizeObserver(() => {
-			const w = root.getBoundingClientRect().width;
-			if (w === lastWidth) {
-				return; // the mark cycle's own height collapse
-			}
-			lastWidth = w;
-			apply();
+		current.forEach((tab) => {
+			clipped.set(tab, false);
+			observer.observe(tab);
 		});
-		observer.observe(root);
-		apply();
+		// tabs added later (slot changes) join the next effect run
 
 		return () => {
 			observer.disconnect();
-			current.forEach((tab) => tab.removeAttribute('overflowing'));
+			slot?.removeEventListener('slotchange', onSlotChange);
 		};
 	}, deps);
 

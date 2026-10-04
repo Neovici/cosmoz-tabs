@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { next, settle, sr } from './overflow-helpers';
+import { next, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next, radiogroup)',
@@ -83,8 +83,9 @@ export const OverflowingRadiosStayRadios: Story = {
 
 		await step('copies do not carry the bar-only size', async () => {
 			bar.setAttribute('size', 'sm');
-			await settle();
-			copies().forEach((copy) => expect(copy.hasAttribute('size')).toBe(false));
+			await waitFor(() =>
+				expect([...copies()].some((c) => c.hasAttribute('size'))).toBe(false),
+			);
 		});
 	},
 };
@@ -99,9 +100,6 @@ export const ASettledBarStopsWriting: Story = {
 				sr(bar).querySelectorAll('.menu > cosmoz-tab-next').length,
 			).toBeGreaterThan(0),
 		);
-		// let the mark cycle finish (it settles a frame per width change);
-		// the settle above must cover its trailing rAF
-		await settle(8);
 
 		await step('no attribute churn once nothing changes', async () => {
 			let writes = 0;
@@ -114,20 +112,24 @@ export const ASettledBarStopsWriting: Story = {
 			// the mark cycle settles late under a cold storybook iframe;
 			// wait for a quiet stretch before arming the comparison
 			writes = 0;
-			const quiet = async () => {
-				for (;;) {
+			await waitFor(
+				() => {
 					const before = writes;
-					await settle(10);
-					if (writes === before) {
-						return;
-					}
-				}
-			};
-			await quiet();
+					return new Promise<void>((resolve) => {
+						setTimeout(resolve, 200);
+					}).then(() => expect(writes).toBe(before));
+				},
+				{ timeout: 5000 },
+			);
 			writes = 0;
 			// re-render without changing anything the tabs depend on
 			bar.setAttribute('more-label', 'More');
-			await settle(16);
+			await waitFor(() => {
+				// a quiet window proves no follow-up writes came
+				return new Promise<void>((resolve) => {
+					setTimeout(resolve, 300);
+				}).then(() => expect(writes).toBe(0));
+			}).catch(() => undefined);
 			observer.disconnect();
 			expect(writes).toBe(0);
 		});

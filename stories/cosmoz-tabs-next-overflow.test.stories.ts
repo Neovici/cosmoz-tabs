@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, retained, settle, sr } from './overflow-helpers';
+import { box, next, retained, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
@@ -84,15 +84,13 @@ export const AnExplicitSlotIsNeverReassigned: Story = {
 		);
 
 		await step('the consumer keeps the slot they asked for', async () => {
-			await settle();
 			expect(pinned.getAttribute('slot')).toBe('tabs');
 		});
 
 		await step('and keeps it across re-renders', async () => {
 			bar.setAttribute('variant', 'brand');
 			box(canvasElement).style.width = '200px';
-			await settle();
-			expect(pinned.getAttribute('slot')).toBe('tabs');
+			await waitFor(() => expect(pinned.getAttribute('slot')).toBe('tabs'));
 		});
 	},
 };
@@ -196,14 +194,18 @@ export const CopiesFollowTheirOriginals: Story = {
 
 		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
-		/** wait out the trigger-induced overflow reshuffle. */
+		/** wait out the overflow set settling: two stable reads a frame apart. */
 		await step('wait for the overflow set to stop moving', async () => {
 			let count = -1;
-			await waitFor(async () => {
+			await waitFor(() => {
 				const seen = copies().length;
-				await settle();
-				expect(copies().length).toBe(seen);
-				count = seen;
+				return new Promise<void>((resolve) => {
+					requestAnimationFrame(() => {
+						expect(copies().length).toBe(seen);
+						count = seen;
+						resolve();
+					});
+				});
 			});
 			expect(count).toBeGreaterThan(0);
 		});
@@ -268,7 +270,18 @@ export const RemovedTabsAreNotRetained: Story = {
 			victims.forEach((tab) => tab.remove());
 			expect(refs.length).toBeGreaterThan(0);
 			expect(cloneRefs.length).toBeGreaterThan(0);
-			await settle(20);
+			// the copies of the removed tabs must drop
+			await waitFor(() =>
+				expect(
+					[...copies()].some((clone) =>
+						victims.includes(
+							clone.parentElement.querySelector(
+								`[name="${clone.getAttribute('name')}"]`,
+							) as HTMLElement,
+						),
+					),
+				).toBe(false),
+			);
 		});
 
 		await step('the removed tabs are collectable', async () =>

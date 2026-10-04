@@ -4,7 +4,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { settle, sr } from './overflow-helpers';
+import { sr } from './overflow-helpers';
 
 /**
  * wrapper components can project tabs through a slot.
@@ -77,17 +77,20 @@ export const CollectsTabsThroughNestedSlot: Story = {
 				sr(bar).querySelector('.items slot') as HTMLSlotElement
 			).assignedElements({ flatten: true });
 
-		await settle(20);
-
-		await step('the projecting slot is left where it is', async () =>
-			expect(
-				[...bar.children]
-					.find((el) => el.localName === 'slot')
-					?.hasAttribute('slot'),
-			).toBe(false),
+		await step(
+			'the projecting slot is left where it is',
+			async () =>
+				await waitFor(() =>
+					expect(
+						[...bar.children]
+							.find((el) => el.localName === 'slot')
+							?.hasAttribute('slot'),
+					).toBe(false),
+				),
 		);
 
 		await step('every tab reaches the clipping container', async () => {
+			await waitFor(() => expect(projected().length).toBeGreaterThan(3));
 			const tabs = projected().filter(
 				(el) => el.localName === 'cosmoz-tab-next',
 			);

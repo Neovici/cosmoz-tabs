@@ -10,10 +10,12 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
  */
 export type TabsSize = 'sm';
 
-/* The bar does not scroll and does not clip: its track wraps, tabs that
-   do not fit land on a second row - that is the classification - and
-   the wrapped ones are marked and leave the layout, reaching the user
-   only through the overflow menu beside the track. */
+/* The bar does not scroll and does not clip at its own edge: its track
+   wraps, tabs that do not fit land on a second row - the layout is the
+   classification - and the track clips itself to the first row: the
+   wrapped tabs stay in the layout (invisible via their mark), so the
+   observer keeps reporting them and a tab that flows back in needs no
+   unmark-and-remeasure cycle. */
 const bar = css`
 	display: flex;
 	align-items: stretch;
@@ -33,6 +35,12 @@ const items = css`
 	gap: inherit;
 	flex: 1 1 auto;
 	min-width: 0;
+	overflow: clip;
+	/* one row's band, exact per size/variant: the item's box is fully
+	   token-derived (fixed line-height, paddings, 16px icon), so the
+	   clip is a constant and the wrap classifier never measures: the
+	   observer reads intersections against the band for free */
+	max-height: 41px; /* underline */
 `;
 
 const menu = css`
@@ -175,6 +183,17 @@ export const nextTabsStyles = css`
 
 	:host([variant='segmented']) {
 		${segmentedBar}
+	}
+
+	/* brand and segmented rows sit a touch shorter (37px); sm trims all
+	   variants to 33px */
+	:host([variant='brand']) .items,
+	:host([variant='segmented']) .items {
+		max-height: 37px;
+	}
+
+	:host([size='sm']) .items {
+		max-height: 33px;
 	}
 
 	/* The track hugs its tabs when they are not spread, but stops at the

@@ -4,7 +4,7 @@ import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
 import { renderTabs } from '../src/next/use-tabs';
-import { next, settle, sr, trigger } from './overflow-helpers';
+import { next, nextFixture, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu',
@@ -14,17 +14,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const bar = () => html`
-	<div class="box" style="width: 240px; overflow: hidden;">
-		<cosmoz-tabs-next variant="underline">
-			<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-			<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
-			<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-			<cosmoz-tab-next name="history">History</cosmoz-tab-next>
-			<cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
-		</cosmoz-tabs-next>
-	</div>
-`;
+const bar = () => nextFixture('260px');
 
 const copies = (el: HTMLElement) => [
 	...sr(el).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next'),
@@ -49,11 +39,16 @@ export const AnOpenMenuKeepsFocusWhenATabChanges: Story = {
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		await open(tabs);
 
-		/** the last tab can change without reshuffling overflow. */
-		const last = [
-			...tabs.querySelectorAll<HTMLElement>('cosmoz-tab-next'),
-		].pop() as HTMLElement;
-		const row = copies(tabs).at(-1) as HTMLElement;
+		/**
+		 * pick the overflowing tab at runtime - which tabs overflow is
+		 * fixture geometry; the behavior (copies follow mutations in
+		 * place) must not depend on which one it is.
+		 */
+		const name = [...sr(tabs).querySelectorAll('.menu > cosmoz-tab-next')]
+			.at(-1)
+			?.getAttribute('name');
+		const last = tabs.querySelector(`[name="${name}"]`) as HTMLElement;
+		const row = [...copies(tabs)].at(-1) as HTMLElement;
 
 		await step('focus the last menu row', async () => {
 			row.focus();
@@ -62,10 +57,8 @@ export const AnOpenMenuKeepsFocusWhenATabChanges: Story = {
 
 		await step('a badge lands on the copy without replacing it', async () => {
 			last.setAttribute('badge', '9');
-			await waitFor(() =>
-				expect(copies(tabs).at(-1)?.getAttribute('badge')).toBe('9'),
-			);
-			expect(copies(tabs).at(-1)).toBe(row);
+			await waitFor(() => expect(row.getAttribute('badge')).toBe('9'));
+			expect(copies(tabs).includes(row)).toBe(true);
 			expect(row.isConnected).toBe(true);
 		});
 
@@ -75,10 +68,8 @@ export const AnOpenMenuKeepsFocusWhenATabChanges: Story = {
 
 		await step('a relabel also lands in place', async () => {
 			last.textContent = 'Files';
-			await waitFor(() =>
-				expect(copies(tabs).at(-1)?.textContent?.trim()).toBe('Files'),
-			);
-			expect(copies(tabs).at(-1)).toBe(row);
+			await waitFor(() => expect(row.textContent?.trim()).toBe('Files'));
+			expect(copies(tabs).includes(row)).toBe(true);
 			expect(sr(tabs).activeElement).toBe(row);
 		});
 	},
@@ -108,20 +99,32 @@ export const TheMoreLabelIsTranslatedAndOverridable: Story = {
 		await step('and so does the property', async () => {
 			tabs.removeAttribute('more-label');
 			(tabs as HTMLElement & { moreLabel?: string }).moreLabel = 'Fler';
-			await settle();
-			expect(label()).toBe('Fler');
+			await waitFor(() => expect(label()).toBe('Fler'));
 		});
 	},
 };
 
 const withDisabled = () => html`
-	<div class="box" style="width: 240px; overflow: hidden;">
+	<div class="box" style="width: 260px; overflow: hidden;">
 		<cosmoz-tabs-next variant="underline">
-			<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-			<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
-			<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-			<cosmoz-tab-next name="history">History</cosmoz-tab-next>
-			<cosmoz-tab-next name="attachments" disabled>Attachments</cosmoz-tab-next>
+			<cosmoz-tab-next
+				name="overview"
+				active
+				style="width: 90px; flex: 0 0 90px"
+				>Overview</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="rows" style="width: 110px; flex: 0 0 110px"
+				>Invoice rows</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="accounting" style="width: 100px; flex: 0 0 100px"
+				>Accounting</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="history" style="width: 80px; flex: 0 0 80px"
+				>History</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="off" disabled style="width: 110px; flex: 0 0 110px"
+				>Off</cosmoz-tab-next
+			>
 		</cosmoz-tabs-next>
 	</div>
 `;
@@ -158,14 +161,12 @@ export const DisabledRowsAreOutOfTheTabOrder: Story = {
 		});
 
 		await step('and disabled follows the tab, not just the copy', async () => {
-			const attachments = tabs.querySelector(
-				'[name=attachments]',
-			) as HTMLElement;
-			attachments.removeAttribute('disabled');
+			const off = tabs.querySelector('[name=off]') as HTMLElement;
+			off.removeAttribute('disabled');
 			await waitFor(() =>
 				expect(
 					copies(tabs)
-						.find((c) => c.getAttribute('name') === 'attachments')
+						.find((c) => c.getAttribute('name') === 'off')
 						?.hasAttribute('aria-disabled'),
 				).toBe(false),
 			);
@@ -203,8 +204,7 @@ export const ForwardedClicksKeepTheirMouseSemantics: Story = {
 					ctrlKey: true,
 				}),
 			);
-			await settle(4);
-			expect(seen?.ctrlKey).toBe(true);
+			await waitFor(() => expect(seen?.ctrlKey).toBe(true));
 		});
 
 		await step('and leaves the menu open, having selected nothing', async () =>
@@ -229,8 +229,7 @@ export const ForwardedClicksKeepTheirMouseSemantics: Story = {
 				cancelable: true,
 			});
 			row.dispatchEvent(own);
-			await settle(4);
-			expect(own.defaultPrevented).toBe(true);
+			await waitFor(() => expect(own.defaultPrevented).toBe(true));
 		});
 	},
 };
@@ -294,8 +293,6 @@ export const AWideTabIsReclassifiedOnResize: Story = {
 			tabs = next(canvasElement),
 			b = tabs.querySelector('[name=b]') as HTMLElement;
 
-		await settle(30);
-
 		await step('a wide tab that does not fit is marked', async () => {
 			boxEl.style.width = '340px';
 			await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(true));
@@ -328,18 +325,22 @@ export const AnEmptyBadgeRendersNothing: Story = {
 		</div>`,
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
-		await settle(20);
 		const badgeOf = (name: string) =>
 			sr(tabs.querySelector(`[name=${name}]`) as HTMLElement).querySelector(
 				'.badge',
 			);
 
-		await step('an empty badge renders no badge at all', async () =>
-			expect(badgeOf('x')).toBe(null),
+		await step(
+			'an empty badge renders no badge at all',
+			async () => await waitFor(() => expect(badgeOf('x')).toBe(null)),
 		);
 
-		await step('a real one still does', async () =>
-			expect(badgeOf('y')?.textContent?.trim()).toBe('3'),
+		await step(
+			'a real one still does',
+			async () =>
+				await waitFor(() =>
+					expect(badgeOf('y')?.textContent?.trim()).toBe('3'),
+				),
 		);
 	},
 };

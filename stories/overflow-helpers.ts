@@ -42,15 +42,35 @@ export const more = (el: HTMLElement) =>
 export const trigger = (el: HTMLElement) =>
 	sr(el).querySelector('.more-button') as HTMLElement;
 
+/**
+ * Fixed tab widths: the overflow set is not font-load dependent, so the
+ * rows the stories assert on are deterministic.
+ */
 export const nextFixture = (width: string, extra = html``) => html`
 	<div class="box" style="width: ${width}; overflow: hidden;">
 		<cosmoz-tabs-next variant="underline">
 			${extra}
-			<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-			<cosmoz-tab-next name="rows" badge="5">Invoice rows</cosmoz-tab-next>
-			<cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-			<cosmoz-tab-next name="history">History</cosmoz-tab-next>
-			<cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
+			<cosmoz-tab-next
+				name="overview"
+				active
+				style="width: 90px; flex: 0 0 90px"
+				>Overview</cosmoz-tab-next
+			>
+			<cosmoz-tab-next
+				name="rows"
+				badge="5"
+				style="width: 110px; flex: 0 0 110px"
+				>Invoice rows</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="accounting" style="width: 100px; flex: 0 0 100px"
+				>Accounting</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="history" style="width: 80px; flex: 0 0 80px"
+				>History</cosmoz-tab-next
+			>
+			<cosmoz-tab-next name="attachments" style="width: 110px; flex: 0 0 110px"
+				>Attachments</cosmoz-tab-next
+			>
 		</cosmoz-tabs-next>
 	</div>
 `;

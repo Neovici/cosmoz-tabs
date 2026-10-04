@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { more, next, settle, sr } from './overflow-helpers';
+import { more, next, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next, hidden tabs)',
@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj;
 
 const bar = () => html`
-	<div class="box" style="width: 240px; overflow: hidden;">
+	<div class="box" style="width: 260px; overflow: hidden;">
 		<cosmoz-tabs-next variant="underline">
 			<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
 			<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
@@ -59,7 +59,6 @@ export const HidingEveryOverflowingTabHidesTheTrigger: Story = {
 		const tabs = next(canvasElement);
 
 		await waitFor(() => expect(names(tabs).length).toBeGreaterThan(0));
-		await settle(8);
 
 		await step('the menu empties and the trigger goes away', async () => {
 			tabs
@@ -70,15 +69,16 @@ export const HidingEveryOverflowingTabHidesTheTrigger: Story = {
 		});
 
 		await step('no hidden tab keeps its overflow mark', async () => {
-			await settle();
-			expect(tabs.querySelectorAll('[hidden][overflowing]').length).toBe(0);
+			await waitFor(() =>
+				expect(tabs.querySelectorAll('[hidden][overflowing]').length).toBe(0),
+			);
 		});
 	},
 };
 
 export const HidingATrailingClippedTabDropsItsCopy: Story = {
 	render: () => html`
-		<div class="box" style="width: 240px; overflow: hidden;">
+		<div class="box" style="width: 260px; overflow: hidden;">
 			<cosmoz-tabs-next variant="underline">
 				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
 				<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
@@ -93,7 +93,6 @@ export const HidingATrailingClippedTabDropsItsCopy: Story = {
 			late = tabs.querySelector('[name="late"]') as HTMLElement;
 
 		await waitFor(() => expect(names(tabs)).toContain('late'));
-		await settle(8);
 		const others = names(tabs).filter((name) => name !== 'late');
 		expect(others.length).toBeGreaterThan(0);
 

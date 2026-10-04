@@ -269,7 +269,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}
 
 	const given = settings(host),
-		{ variant, size, compactWidth, role } = given;
+		{ role } = given;
 
 	const items = useRef<HTMLElement>(),
 		setItems = useCallback((el?: Element) => {
@@ -296,10 +296,9 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	useEffect(apply);
 
 	const overflowing = useOverflow(items, tabs, [
-		version,
-		variant,
-		size,
-		compactWidth,
+		tabs()
+			.map((tab) => tab.getAttribute('name'))
+			.join(','),
 		shown(tabs()),
 	]);
 
