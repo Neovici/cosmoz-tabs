@@ -26,6 +26,38 @@ const fixture = (variant = 'brand') => html`
 const getContainer = (root: HTMLElement) =>
 	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 
+export const RovingTabindex: Story = {
+	render: () => fixture(),
+	play: async ({ canvasElement, step }) => {
+		const container = getContainer(canvasElement);
+
+		await step('the selected tab is the one tab stop', () => {
+			expect(
+				container
+					.querySelector('cosmoz-tab-next[active]')!
+					.getAttribute('tabindex'),
+			).toBe('0');
+			container
+				.querySelectorAll('cosmoz-tab-next:not([active])')
+				.forEach((tab) => expect(tab.getAttribute('tabindex')).toBe('-1'));
+		});
+
+		await step('the stop follows selection', async () => {
+			container
+				.querySelector('cosmoz-tab-next[active]')!
+				.removeAttribute('active');
+			const next = container.querySelector(
+				'cosmoz-tab-next:not([disabled])',
+			) as HTMLElement;
+			next.setAttribute('active', '');
+			await waitFor(() => expect(next.getAttribute('tabindex')).toBe('0'));
+			expect(
+				container.querySelectorAll('cosmoz-tab-next[tabindex="0"]').length,
+			).toBe(1);
+		});
+	},
+};
+
 export const RolesAndActive: Story = {
 	render: () => fixture(),
 	play: async ({ canvasElement, step }) => {

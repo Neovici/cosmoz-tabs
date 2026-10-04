@@ -270,6 +270,10 @@ const stamp = (
 	reflect(tab, 'size', size);
 	reflect(tab, 'compact-width', compactWidth);
 	reflect(tab, 'role', itemRole);
+	// roving tabindex, as the legacy family models it: the selected tab is
+	// the bar's one tab stop; the container owns the attribute like it owns
+	// role/variant
+	reflect(tab, 'tabindex', tab.hasAttribute('active') ? '0' : '-1');
 	reflect(tab, otherState(tab), null);
 	reflect(
 		tab,

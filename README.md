@@ -144,15 +144,17 @@ Which tabs fit is measured with an `IntersectionObserver` rooted on the clipping
 bookkeeping to keep in sync. Style the menu through the `more`, `more-button` and `menu`
 parts.
 
-Keyboard behavior is the platform's, same as the bar: the rows tab like the bar's tabs (one
-of them is the tab stop when the menu opens) and `cosmoz-tab-next` picks on Enter (keydown)
-and Space (keyup) like a native button — in the bar and in the menu alike. The trigger is a
-native button that announces the popup (`aria-haspopup`; `aria-expanded` reconciled by the
-dropdown to its own popover state). A dismissal — Escape, light dismiss or click outside,
-all native `popover="auto"` close paths — hands focus back to the trigger; a pick lands it
-on the bar's selected tab. No arrow-key machinery of our own. The invoker management
-(`aria-expanded` + focus restore) comes from a small local patch to `cosmoz-dropdown-next`
-(`patches/`), an upstream candidate.
+Keyboard behavior is the platform's, same as the bar: the selected tab is the bar's one
+tab stop (roving `tabindex`, as the legacy family models it) — Tab enters the bar on the
+selected tab and moves on, or into the menu's tabbable rows when it is open.
+`cosmoz-tab-next` picks on Enter (keydown) and Space (keyup) like a native button — in the
+bar and in the menu alike. The trigger is a native button that announces the popup
+(`aria-haspopup`; `aria-expanded` reconciled by the dropdown to its own popover state). A
+dismissal — Escape, light dismiss or click outside, all native `popover="auto"` close
+paths — hands focus back to the trigger; a pick lands it on the bar's selected tab. No
+arrow-key machinery of our own. The invoker management (`aria-expanded` + focus restore)
+comes from a small local patch to `cosmoz-dropdown-next` (`patches/`), an upstream
+candidate.
 
 Only tabs take part in this. Anything else in the bar — a heading, stats, pagination —
 belongs outside the overflow area, in the `tabs` (start) or `stats` (end) slot:

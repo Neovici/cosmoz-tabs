@@ -11,13 +11,15 @@ and both copies drive the same selection. The trigger reads "More" followed by a
 while everything fits, and is highlighted when the selected tab is one of the overflowing ones. It
 reads `t('More')`, so it is translated out of the box and no call site has to pass anything; the new
 `more-label` attribute (or `.moreLabel` property) overrides it where a different word is wanted.
-Keyboard behavior is the platform's: the trigger is a native button and the rows are tabbable like
-the bar's tabs, `cosmoz-tab-next` itself picks on Enter (keydown) and Space (keyup) like a native
-button. Focus follows the pick - a row's Enter/Space lands it on the bar's selected tab, and a
-dismissal (Escape, light dismiss, click outside, native via the `popover="auto"` close-request
-stack) hands it back to the trigger. The dropdown reconciles the trigger's `aria-expanded` to its
-own state, so every close path stays announced; this needs a small local patch
-(`patches/@neovici+cosmoz-dropdown+7.7.1.patch`, upstream candidate for cosmoz-dropdown).
+Keyboard behavior is the platform's: the selected tab is the bar's one tab stop (roving
+`tabindex`, as in the legacy family), the rows are tabbable like the bar's tabs, and
+`cosmoz-tab-next` itself picks on Enter (keydown) and Space (keyup) like a native button.
+Focus follows the pick - a row's Enter/Space lands it on the bar's selected tab, and a
+dismissal (Escape, light dismiss, click outside, native via the `popover="auto"`
+close-request stack) hands it back to the trigger. The dropdown reconciles the trigger's
+`aria-expanded` to its own state, so every close path stays announced; this needs a small
+local patch (`patches/@neovici+cosmoz-dropdown+7.7.1.patch`, upstream candidate for
+cosmoz-dropdown).
 
 It works with every variant and size: the trigger takes the item box of `brand`, `underline` and
 `segmented` (sitting inside the segmented track), and `size="sm"` trims it like the tabs. A
