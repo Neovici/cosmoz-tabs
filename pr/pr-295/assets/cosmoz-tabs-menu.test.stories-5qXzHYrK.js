@@ -1,24 +1,27 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DlcEHjqf.js";import{i as r,n as i,t as a}from"./next-Byy_h0mg.js";import{c as o,i as s,l as c,n as l,s as u}from"./overflow-helpers-WGKXL7Md.js";var d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;function E(){return(E=e((()=>{n(),a(),i(),l(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Overflow menu`},m=()=>t`
-    <div class="box" style="width: 240px; overflow: hidden;">
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CV84_XUQ.js";import{i as r,n as i,t as a}from"./next-Dv8EfTZN.js";import{a as o,c as s,i as c,n as l,s as u}from"./overflow-helpers-aj2VO1cY.js";var d,f,p,m,h,g,_,v,y,b,x,S,C,w,T;function E(){return(E=e((()=>{n(),a(),i(),l(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Overflow menu`},m=()=>o(`260px`),h=e=>[...u(e).querySelectorAll(`.menu > cosmoz-tab-next`)],g=async e=>{s(e).click(),await f(()=>d(u(e).querySelector(`.more`)?.hasAttribute(`opened`)).toBe(!0))},_={render:m,play:async({canvasElement:e,step:t})=>{let n=c(e);await f(()=>d(h(n).length).toBeGreaterThan(0)),await g(n);let r=[...u(n).querySelectorAll(`.menu > cosmoz-tab-next`)].at(-1)?.getAttribute(`name`),i=n.querySelector(`[name="${r}"]`),a=[...h(n)].at(-1);await t(`focus the last menu row`,async()=>{a.focus(),d(u(n).activeElement).toBe(a)}),await t(`a badge lands on the copy without replacing it`,async()=>{i.setAttribute(`badge`,`9`),await f(()=>d(a.getAttribute(`badge`)).toBe(`9`)),d(h(n).includes(a)).toBe(!0),d(a.isConnected).toBe(!0)}),await t(`and the row still has focus`,async()=>d(u(n).activeElement).toBe(a)),await t(`a relabel also lands in place`,async()=>{i.textContent=`Files`,await f(()=>d(a.textContent?.trim()).toBe(`Files`)),d(h(n).includes(a)).toBe(!0),d(u(n).activeElement).toBe(a)})}},v={render:m,play:async({canvasElement:e,step:t})=>{let n=c(e),r=()=>s(n).textContent?.trim();await f(()=>d(h(n).length).toBeGreaterThan(0)),await t(`defaults to a label without the call site asking`,async()=>{d(r()).toBe(`More`)}),await t(`the attribute overrides it`,async()=>{n.setAttribute(`more-label`,`Mer`),await f(()=>d(r()).toBe(`Mer`))}),await t(`and so does the property`,async()=>{n.removeAttribute(`more-label`),n.moreLabel=`Fler`,await f(()=>d(r()).toBe(`Fler`))})}},y=()=>t`
+    <div class="box" style="width: 260px; overflow: hidden;">
         <cosmoz-tabs-next variant="underline">
-            <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-            <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
-            <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-            <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-            <cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
+            <cosmoz-tab-next
+                name="overview"
+                active
+                style="width: 90px; flex: 0 0 90px"
+                >Overview</cosmoz-tab-next
+            >
+            <cosmoz-tab-next name="rows" style="width: 110px; flex: 0 0 110px"
+                >Invoice rows</cosmoz-tab-next
+            >
+            <cosmoz-tab-next name="accounting" style="width: 100px; flex: 0 0 100px"
+                >Accounting</cosmoz-tab-next
+            >
+            <cosmoz-tab-next name="history" style="width: 80px; flex: 0 0 80px"
+                >History</cosmoz-tab-next
+            >
+            <cosmoz-tab-next name="off" disabled style="width: 110px; flex: 0 0 110px"
+                >Off</cosmoz-tab-next
+            >
         </cosmoz-tabs-next>
     </div>
-`,h=e=>[...o(e).querySelectorAll(`.menu > cosmoz-tab-next`)],g=async e=>{c(e).click(),await f(()=>d(o(e).querySelector(`.more`)?.hasAttribute(`opened`)).toBe(!0))},_={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(h(n).length).toBeGreaterThan(0)),await g(n);let r=[...n.querySelectorAll(`cosmoz-tab-next`)].pop(),i=h(n).at(-1);await t(`focus the last menu row`,async()=>{i.focus(),d(o(n).activeElement).toBe(i)}),await t(`a badge lands on the copy without replacing it`,async()=>{r.setAttribute(`badge`,`9`),await f(()=>d(h(n).at(-1)?.getAttribute(`badge`)).toBe(`9`)),d(h(n).at(-1)).toBe(i),d(i.isConnected).toBe(!0)}),await t(`and the row still has focus`,async()=>d(o(n).activeElement).toBe(i)),await t(`a relabel also lands in place`,async()=>{r.textContent=`Files`,await f(()=>d(h(n).at(-1)?.textContent?.trim()).toBe(`Files`)),d(h(n).at(-1)).toBe(i),d(o(n).activeElement).toBe(i)})}},v={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e),r=()=>c(n).textContent?.trim();await f(()=>d(h(n).length).toBeGreaterThan(0)),await t(`defaults to a label without the call site asking`,async()=>{d(r()).toBe(`More`)}),await t(`the attribute overrides it`,async()=>{n.setAttribute(`more-label`,`Mer`),await f(()=>d(r()).toBe(`Mer`))}),await t(`and so does the property`,async()=>{n.removeAttribute(`more-label`),n.moreLabel=`Fler`,await u(),d(r()).toBe(`Fler`)})}},y=()=>t`
-    <div class="box" style="width: 240px; overflow: hidden;">
-        <cosmoz-tabs-next variant="underline">
-            <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-            <cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
-            <cosmoz-tab-next name="accounting">Accounting</cosmoz-tab-next>
-            <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-            <cosmoz-tab-next name="attachments" disabled>Attachments</cosmoz-tab-next>
-        </cosmoz-tabs-next>
-    </div>
-`,b={render:y,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=()=>h(n).find(e=>e.hasAttribute(`disabled`)),i=()=>h(n).find(e=>!e.hasAttribute(`disabled`));await t(`a disabled copy is skipped and announced`,async()=>{d(r()?.getAttribute(`tabindex`)).toBe(`-1`),d(r()?.getAttribute(`aria-disabled`)).toBe(`true`)}),await t(`an enabled copy is not announced disabled`,async()=>d(i()?.hasAttribute(`aria-disabled`)).toBe(!1)),await t(`every enabled row is a tab stop`,async()=>{let e=h(n).filter(e=>e.getAttribute(`tabindex`)===`0`);d(e.length).toBe(h(n).length-1),d(e.every(e=>!e.hasAttribute(`disabled`))).toBe(!0)}),await t(`and disabled follows the tab, not just the copy`,async()=>{n.querySelector(`[name=attachments]`).removeAttribute(`disabled`),await f(()=>d(h(n).find(e=>e.getAttribute(`name`)===`attachments`)?.hasAttribute(`aria-disabled`)).toBe(!1)),d(h(n).filter(e=>e.getAttribute(`tabindex`)===`0`).length).toBe(h(n).length)})}},x={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=h(n).at(-1),i=n.querySelector(`[name=${r.getAttribute(`name`)}]`),a;i.addEventListener(`click`,e=>a=e),await t(`a modified click stays modified`,async()=>{r.dispatchEvent(new MouseEvent(`click`,{bubbles:!0,composed:!0,ctrlKey:!0})),await u(4),d(a?.ctrlKey).toBe(!0)}),await t(`and leaves the menu open, having selected nothing`,async()=>d(o(n).querySelector(`.more`)?.hasAttribute(`opened`)).toBe(!1)),await t(`a plain click arrives plain`,async()=>{a=void 0,r.click(),await f(()=>d(a).toBeTruthy()),d(a?.ctrlKey).toBe(!1),d(a?.button).toBe(0)}),await t(`cancelling the forward cancels the copy too`,async()=>{i.addEventListener(`click`,e=>e.preventDefault());let e=new MouseEvent(`click`,{bubbles:!0,composed:!0,cancelable:!0});r.dispatchEvent(e),await u(4),d(e.defaultPrevented).toBe(!0)})}},S={render:m,play:async({canvasElement:e,step:t})=>{let n=s(e);await f(()=>d(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0));let r=n.querySelector(`cosmoz-tab-next[overflowing]`);await t(`re-slotting it out of the bar clears the mark`,async()=>{r.setAttribute(`slot`,`stats`),await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1)),d(getComputedStyle(r).visibility).not.toBe(`hidden`)}),await t(`removing one from the DOM clears it too`,async()=>{let e=n.querySelector(`cosmoz-tab-next[overflowing]`);e.remove(),await f(()=>d(e.hasAttribute(`overflowing`)).toBe(!1))})}},C={render:()=>t`
+`,b={render:y,play:async({canvasElement:e,step:t})=>{let n=c(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=()=>h(n).find(e=>e.hasAttribute(`disabled`)),i=()=>h(n).find(e=>!e.hasAttribute(`disabled`));await t(`a disabled copy is skipped and announced`,async()=>{d(r()?.getAttribute(`tabindex`)).toBe(`-1`),d(r()?.getAttribute(`aria-disabled`)).toBe(`true`)}),await t(`an enabled copy is not announced disabled`,async()=>d(i()?.hasAttribute(`aria-disabled`)).toBe(!1)),await t(`every enabled row is a tab stop`,async()=>{let e=h(n).filter(e=>e.getAttribute(`tabindex`)===`0`);d(e.length).toBe(h(n).length-1),d(e.every(e=>!e.hasAttribute(`disabled`))).toBe(!0)}),await t(`and disabled follows the tab, not just the copy`,async()=>{n.querySelector(`[name=off]`).removeAttribute(`disabled`),await f(()=>d(h(n).find(e=>e.getAttribute(`name`)===`off`)?.hasAttribute(`aria-disabled`)).toBe(!1)),d(h(n).filter(e=>e.getAttribute(`tabindex`)===`0`).length).toBe(h(n).length)})}},x={render:m,play:async({canvasElement:e,step:t})=>{let n=c(e);await f(()=>d(h(n).length).toBeGreaterThan(0));let r=h(n).at(-1),i=n.querySelector(`[name=${r.getAttribute(`name`)}]`),a;i.addEventListener(`click`,e=>a=e),await t(`a modified click stays modified`,async()=>{r.dispatchEvent(new MouseEvent(`click`,{bubbles:!0,composed:!0,ctrlKey:!0})),await f(()=>d(a?.ctrlKey).toBe(!0))}),await t(`and leaves the menu open, having selected nothing`,async()=>d(u(n).querySelector(`.more`)?.hasAttribute(`opened`)).toBe(!1)),await t(`a plain click arrives plain`,async()=>{a=void 0,r.click(),await f(()=>d(a).toBeTruthy()),d(a?.ctrlKey).toBe(!1),d(a?.button).toBe(0)}),await t(`cancelling the forward cancels the copy too`,async()=>{i.addEventListener(`click`,e=>e.preventDefault());let e=new MouseEvent(`click`,{bubbles:!0,composed:!0,cancelable:!0});r.dispatchEvent(e),await f(()=>d(e.defaultPrevented).toBe(!0))})}},S={render:m,play:async({canvasElement:e,step:t})=>{let n=c(e);await f(()=>d(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0));let r=n.querySelector(`cosmoz-tab-next[overflowing]`);await t(`re-slotting it out of the bar clears the mark`,async()=>{r.setAttribute(`slot`,`stats`),await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1)),d(getComputedStyle(r).visibility).not.toBe(`hidden`)}),await t(`removing one from the DOM clears it too`,async()=>{let e=n.querySelector(`cosmoz-tab-next[overflowing]`);e.remove(),await f(()=>d(e.hasAttribute(`overflowing`)).toBe(!1))})}},C={render:()=>t`
         <div class="box" style="width: 500px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next name="a" active style="flex:0 0 48%;width:48%"
@@ -29,11 +32,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 >
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`.box`),r=s(e).querySelector(`[name=b]`);await u(30),await t(`a wide tab that does not fit is marked`,async()=>{n.style.width=`340px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!0))}),await t(`room for it brings it back`,async()=>{n.style.width=`500px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1))})}},w={render:()=>t`<div class="box">
+    `,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`.box`),r=c(e).querySelector(`[name=b]`);await t(`a wide tab that does not fit is marked`,async()=>{n.style.width=`340px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!0))}),await t(`room for it brings it back`,async()=>{n.style.width=`500px`,await f(()=>d(r.hasAttribute(`overflowing`)).toBe(!1))})}},w={render:()=>t`<div class="box">
             <cosmoz-tabs-next>
                 ${r({tabs:[{name:`x`,title:`Tab X`,badge:``},{name:`y`,title:`Tab Y`,badge:`3`}],active:{name:`x`,title:`Tab X`},onActivate:()=>void 0})}
             </cosmoz-tabs-next>
-        </div>`,play:async({canvasElement:e,step:t})=>{let n=s(e);await u(20);let r=e=>o(n.querySelector(`[name=${e}]`)).querySelector(`.badge`);await t(`an empty badge renders no badge at all`,async()=>d(r(`x`)).toBe(null)),await t(`a real one still does`,async()=>d(r(`y`)?.textContent?.trim()).toBe(`3`))}},T=[`AnOpenMenuKeepsFocusWhenATabChanges`,`TheMoreLabelIsTranslatedAndOverridable`,`DisabledRowsAreOutOfTheTabOrder`,`ForwardedClicksKeepTheirMouseSemantics`,`AMarkIsRemovedWhenATabLeavesTheBar`,`AWideTabIsReclassifiedOnResize`,`AnEmptyBadgeRendersNothing`],_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
+        </div>`,play:async({canvasElement:e,step:t})=>{let n=c(e),r=e=>u(n.querySelector(`[name=${e}]`)).querySelector(`.badge`);await t(`an empty badge renders no badge at all`,async()=>await f(()=>d(r(`x`)).toBe(null))),await t(`a real one still does`,async()=>await f(()=>d(r(`y`)?.textContent?.trim()).toBe(`3`)))}},T=[`AnOpenMenuKeepsFocusWhenATabChanges`,`TheMoreLabelIsTranslatedAndOverridable`,`DisabledRowsAreOutOfTheTabOrder`,`ForwardedClicksKeepTheirMouseSemantics`,`AMarkIsRemovedWhenATabLeavesTheBar`,`AWideTabIsReclassifiedOnResize`,`AnEmptyBadgeRendersNothing`],_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: bar,
   play: async ({
     canvasElement,
@@ -43,24 +46,29 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
     await open(tabs);
 
-    /** the last tab can change without reshuffling overflow. */
-    const last = [...tabs.querySelectorAll<HTMLElement>('cosmoz-tab-next')].pop() as HTMLElement;
-    const row = copies(tabs).at(-1) as HTMLElement;
+    /**
+     * pick the overflowing tab at runtime - which tabs overflow is
+     * fixture geometry; the behavior (copies follow mutations in
+     * place) must not depend on which one it is.
+     */
+    const name = [...sr(tabs).querySelectorAll('.menu > cosmoz-tab-next')].at(-1)?.getAttribute('name');
+    const last = tabs.querySelector(\`[name="\${name}"]\`) as HTMLElement;
+    const row = [...copies(tabs)].at(-1) as HTMLElement;
     await step('focus the last menu row', async () => {
       row.focus();
       expect(sr(tabs).activeElement).toBe(row);
     });
     await step('a badge lands on the copy without replacing it', async () => {
       last.setAttribute('badge', '9');
-      await waitFor(() => expect(copies(tabs).at(-1)?.getAttribute('badge')).toBe('9'));
-      expect(copies(tabs).at(-1)).toBe(row);
+      await waitFor(() => expect(row.getAttribute('badge')).toBe('9'));
+      expect(copies(tabs).includes(row)).toBe(true);
       expect(row.isConnected).toBe(true);
     });
     await step('and the row still has focus', async () => expect(sr(tabs).activeElement).toBe(row));
     await step('a relabel also lands in place', async () => {
       last.textContent = 'Files';
-      await waitFor(() => expect(copies(tabs).at(-1)?.textContent?.trim()).toBe('Files'));
-      expect(copies(tabs).at(-1)).toBe(row);
+      await waitFor(() => expect(row.textContent?.trim()).toBe('Files'));
+      expect(copies(tabs).includes(row)).toBe(true);
       expect(sr(tabs).activeElement).toBe(row);
     });
   }
@@ -86,8 +94,7 @@ open menus must keep focus during live tab updates.`,..._.parameters?.docs?.desc
       (tabs as HTMLElement & {
         moreLabel?: string;
       }).moreLabel = 'Fler';
-      await settle();
-      expect(label()).toBe('Fler');
+      await waitFor(() => expect(label()).toBe('Fler'));
     });
   }
 }`,...v.parameters?.docs?.source},description:{story:`the component owns the default translated label.
@@ -114,9 +121,9 @@ property overrides must work too.`,...v.parameters?.docs?.description}}},b.param
       expect(stops.every(c => !c.hasAttribute('disabled'))).toBe(true);
     });
     await step('and disabled follows the tab, not just the copy', async () => {
-      const attachments = tabs.querySelector('[name=attachments]') as HTMLElement;
-      attachments.removeAttribute('disabled');
-      await waitFor(() => expect(copies(tabs).find(c => c.getAttribute('name') === 'attachments')?.hasAttribute('aria-disabled')).toBe(false));
+      const off = tabs.querySelector('[name=off]') as HTMLElement;
+      off.removeAttribute('disabled');
+      await waitFor(() => expect(copies(tabs).find(c => c.getAttribute('name') === 'off')?.hasAttribute('aria-disabled')).toBe(false));
       /** it joined the walkable rows afterwards. */
       expect(copies(tabs).filter(c => c.getAttribute('tabindex') === '0').length).toBe(copies(tabs).length);
     });
@@ -140,8 +147,7 @@ they still need aria because they are custom elements.`,...b.parameters?.docs?.d
         composed: true,
         ctrlKey: true
       }));
-      await settle(4);
-      expect(seen?.ctrlKey).toBe(true);
+      await waitFor(() => expect(seen?.ctrlKey).toBe(true));
     });
     await step('and leaves the menu open, having selected nothing', async () => expect(sr(tabs).querySelector('.more')?.hasAttribute('opened')).toBe(false));
     await step('a plain click arrives plain', async () => {
@@ -159,8 +165,7 @@ they still need aria because they are custom elements.`,...b.parameters?.docs?.d
         cancelable: true
       });
       row.dispatchEvent(own);
-      await settle(4);
-      expect(own.defaultPrevented).toBe(true);
+      await waitFor(() => expect(own.defaultPrevented).toBe(true));
     });
   }
 }`,...x.parameters?.docs?.source},description:{story:`forwarded clicks should keep mouse modifiers.
@@ -204,7 +209,6 @@ consumers must be able to cancel clone navigation.`,...x.parameters?.docs?.descr
     const boxEl = canvasElement.querySelector('.box') as HTMLElement,
       tabs = next(canvasElement),
       b = tabs.querySelector('[name=b]') as HTMLElement;
-    await settle(30);
     await step('a wide tab that does not fit is marked', async () => {
       boxEl.style.width = '340px';
       await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(true));
@@ -243,10 +247,9 @@ independent.`,...C.parameters?.docs?.description}}},w.parameters={...w.parameter
     step
   }) => {
     const tabs = next(canvasElement);
-    await settle(20);
     const badgeOf = (name: string) => sr(tabs.querySelector(\`[name=\${name}]\`) as HTMLElement).querySelector('.badge');
-    await step('an empty badge renders no badge at all', async () => expect(badgeOf('x')).toBe(null));
-    await step('a real one still does', async () => expect(badgeOf('y')?.textContent?.trim()).toBe('3'));
+    await step('an empty badge renders no badge at all', async () => await waitFor(() => expect(badgeOf('x')).toBe(null)));
+    await step('a real one still does', async () => await waitFor(() => expect(badgeOf('y')?.textContent?.trim()).toBe('3')));
   }
 }`,...w.parameters?.docs?.source},description:{story:`empty badge attributes become boolean true in pion.
 render tabs should omit them instead.`,...w.parameters?.docs?.description}}}})))()}E();export{S as AMarkIsRemovedWhenATabLeavesTheBar,C as AWideTabIsReclassifiedOnResize,w as AnEmptyBadgeRendersNothing,_ as AnOpenMenuKeepsFocusWhenATabChanges,b as DisabledRowsAreOutOfTheTabOrder,x as ForwardedClicksKeepTheirMouseSemantics,v as TheMoreLabelIsTranslatedAndOverridable,T as __namedExportsOrder,p as default};

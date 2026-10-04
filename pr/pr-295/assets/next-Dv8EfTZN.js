@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-DlcEHjqf.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-DshjptMI.js";import{m as ie,t as ae}from"./untitled-0hGfJY5C.js";import{r as oe,t as se}from"./use-hash-param-BDvdyiTp.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,le,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{y(),w=g`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-CV84_XUQ.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-Bva4w_jD.js";import{m as ie,t as ae}from"./untitled-DGQ7CmDb.js";import{r as oe,t as se}from"./use-hash-param-D2b5DdoV.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,le,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U;function W(){return(W=e((()=>{y(),w=g`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -96,7 +96,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	background-color: var(--cz-color-bg-primary-hover);
 	box-shadow: none;
 `,V=k,H=g`
-	display: none;
+	visibility: hidden;
 `,U=g`
 	:host {
 		${w}
@@ -338,6 +338,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	gap: inherit;
 	flex: 1 1 auto;
 	min-width: 0;
+	overflow: clip;
+	/* one row's band, exact per size/variant: the item's box is fully
+	   token-derived (fixed line-height, paddings, 16px icon), so the
+	   clip is a constant and the wrap classifier never measures: the
+	   observer reads intersections against the band for free */
+	max-height: 41px; /* underline */
 `,Ee=g`
 	display: flex;
 	flex-direction: column;
@@ -443,6 +449,17 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		${Fe}
 	}
 
+	/* brand and segmented rows sit a touch shorter (37px); sm trims all
+	   variants to 33px */
+	:host([variant='brand']) .items,
+	:host([variant='segmented']) .items {
+		max-height: 37px;
+	}
+
+	:host([size='sm']) .items {
+		max-height: 33px;
+	}
+
 	/* The track hugs its tabs when they are not spread, but stops at the
 	   container's width, so tabs past it move into the overflow menu. */
 	:host([variant='segmented'][compact-width]) {
@@ -541,12 +558,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	.menu {
 		${Ee}
 	}
-`})))()}var Ge;function Ke(){return(Ke=e((()=>{y(),Ge=(e,t,n)=>{let[r,i]=b(()=>new Set);return re(()=>{let n=e.current,r=t();if(!n||r.length===0)return;let a=e=>{r.forEach(t=>{let n=e.has(t);n!==t.hasAttribute(`overflowing`)&&(n?t.setAttribute(`overflowing`,``):t.removeAttribute(`overflowing`))}),i(t=>t.size===e.size&&[...e].every(e=>t.has(e))?t:e)},o=()=>{r.forEach(e=>{e.hasAttribute(`overflowing`)&&e.removeAttribute(`overflowing`)});let e=r[0].getBoundingClientRect().top,t=new Set(r.filter(t=>!t.hidden&&Math.abs(t.getBoundingClientRect().top-e)>.5));a(t)},s=n.getBoundingClientRect().width,c=new ResizeObserver(()=>{let e=n.getBoundingClientRect().width;e!==s&&(s=e,o())});return c.observe(n),o(),()=>{c.disconnect(),r.forEach(e=>e.removeAttribute(`overflowing`))}},n),r}})))()}var Y,X,qe,Je,Ye,Xe,Ze,Qe,$e,et,tt,nt,rt,Z,it,at;function ot(){return(ot=e((()=>{u(),y(),J(),C(),Ce(),We(),Ke(),Y=`cosmoz-tab-next`,X=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},qe=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>X(t,n,e.getAttribute(n))),X(t,S(t),null),X(t,x(t),t.hasAttribute(`active`)?`true`:`false`),X(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Je=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},Ye=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Xe=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),qe(e,t)},Ze=e=>new MouseEvent(`click`,e),Qe=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(Ze(t))||t.preventDefault(),ye(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}be(a)}},$e=e=>e.map(e=>+!e.hidden).join(``),et=e=>(e.querySelector(`slot`)?.assignedElements({flatten:!0})??[]).filter(e=>e.matches(Y)),tt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`,`role`],childList:!0,subtree:!0,characterData:!0},nt=(e,t)=>{let[n,r]=b(0);return s(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,tt)),()=>t.disconnect()},[t]),n},rt=(e,t,n)=>{let r=nt(e,n),i=m();return i.current??=new Map,c(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Ye(e);return n.set(e,t),Xe(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),Je(r),r},[t,n,r])},Z=e=>{e.getAttribute(`role`)||e.setAttribute(`role`,`tablist`);let t=e.getAttribute(`role`)===`radiogroup`?`radiogroup`:`tablist`;return{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),compactWidth:e.hasAttribute(`compact-width`)?``:null,role:t,itemRole:t===`radiogroup`?`radio`:`tab`}},it=(e,{variant:t,size:n,compactWidth:r,itemRole:i})=>{X(e,`variant`,t),X(e,`size`,n),X(e,`compact-width`,r),X(e,`role`,i),X(e,`tabindex`,e.hasAttribute(`active`)?`0`:`-1`),X(e,S(e),null),X(e,x(e),e.hasAttribute(`active`)?`true`:`false`)},at=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let n=Z(e),{variant:r,size:i,compactWidth:a,role:c}=n,l=m(),u=o(e=>{l.current=e},[]),[d,f]=b(0),p=o(()=>l.current?et(l.current):[],[]),h=()=>{new Set([...e.querySelectorAll(Y),...p()]).forEach(e=>it(e,n))},g=()=>{h(),f(e=>e+1)};s(h);let _=Ge(l,p,[d,r,i,a,$e(p())]),v=rt(p,_,d);return t`
+`})))()}var Ge;function Ke(){return(Ke=e((()=>{y(),Ge=(e,t,n)=>{let[r,i]=b(()=>new Set);return re(()=>{let n=e.current,r=t();if(!n||r.length===0)return;let a=new Map,o=()=>{let e=new Set(r.filter(e=>a.get(e)===!0));r.forEach(t=>{let n=e.has(t);n!==t.hasAttribute(`overflowing`)&&(n?t.setAttribute(`overflowing`,``):t.removeAttribute(`overflowing`))}),i(t=>t.size===e.size&&[...e].every(e=>t.has(e))?t:e)},s=new IntersectionObserver(e=>{e.forEach(e=>{let t=e.target;a.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),o()},{root:n,threshold:[0,1]}),c=n.querySelector(`slot`),l=()=>{let e=new Set(c?.assignedElements({flatten:!0}));a.forEach((t,n)=>{e.has(n)||a.set(n,!1)}),o()};return c?.addEventListener(`slotchange`,l),r.forEach(e=>{a.set(e,!1),s.observe(e)}),()=>{s.disconnect(),c?.removeEventListener(`slotchange`,l)}},n),r}})))()}var Y,X,qe,Je,Ye,Xe,Ze,Qe,$e,et,tt,nt,rt,Z,it,at;function ot(){return(ot=e((()=>{u(),y(),J(),C(),Ce(),We(),Ke(),Y=`cosmoz-tab-next`,X=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},qe=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>X(t,n,e.getAttribute(n))),X(t,S(t),null),X(t,x(t),t.hasAttribute(`active`)?`true`:`false`),X(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Je=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},Ye=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Xe=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),qe(e,t)},Ze=e=>new MouseEvent(`click`,e),Qe=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(Ze(t))||t.preventDefault(),ye(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}be(a)}},$e=e=>e.map(e=>+!e.hidden).join(``),et=e=>(e.querySelector(`slot`)?.assignedElements({flatten:!0})??[]).filter(e=>e.matches(Y)),tt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`,`role`],childList:!0,subtree:!0,characterData:!0},nt=(e,t)=>{let[n,r]=b(0);return s(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,tt)),()=>t.disconnect()},[t]),n},rt=(e,t,n)=>{let r=nt(e,n),i=m();return i.current??=new Map,c(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Ye(e);return n.set(e,t),Xe(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),Je(r),r},[t,n,r])},Z=e=>{e.getAttribute(`role`)||e.setAttribute(`role`,`tablist`);let t=e.getAttribute(`role`)===`radiogroup`?`radiogroup`:`tablist`;return{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),compactWidth:e.hasAttribute(`compact-width`)?``:null,role:t,itemRole:t===`radiogroup`?`radio`:`tab`}},it=(e,{variant:t,size:n,compactWidth:r,itemRole:i})=>{X(e,`variant`,t),X(e,`size`,n),X(e,`compact-width`,r),X(e,`role`,i),X(e,`tabindex`,e.hasAttribute(`active`)?`0`:`-1`),X(e,S(e),null),X(e,x(e),e.hasAttribute(`active`)?`true`:`false`)},at=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let n=Z(e),{role:r}=n,i=m(),a=o(e=>{i.current=e},[]),[c,l]=b(0),u=o(()=>i.current?et(i.current):[],[]),d=()=>{new Set([...e.querySelectorAll(Y),...u()]).forEach(e=>it(e,n))},f=()=>{d(),l(e=>e+1)};s(d);let p=Ge(i,u,[u().map(e=>e.getAttribute(`name`)).join(`,`),$e(u())]),h=rt(u,p,c);return t`
 		<slot name="tabs"></slot>
-		<div class="items" part="items" ${q(u)}>
-			<slot @slotchange=${g}></slot>
+		<div class="items" part="items" ${q(a)}>
+			<slot @slotchange=${f}></slot>
 		</div>
-		${Se({items:v.map(([,e])=>e),overflows:v.length>0,active:v.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,role:c,onItemClick:Qe(v)})}
+		${Se({items:h.map(([,e])=>e),overflows:h.length>0,active:h.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,role:r,onItemClick:Qe(h)})}
 		<slot name="stats"></slot>
 	`},customElements.define(`cosmoz-tabs-next`,d(at,{observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[v,Ue]}))})))()}var st;function ct(){return(ct=e((()=>{st=(e,...t)=>typeof e==`function`?e(...t):e})))()}var Q,lt,ut,dt,ft,pt;function $(){return($=e((()=>{se(),ct(),y(),te(),Q=e=>!e.hidden&&!e.disabled,lt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),ut=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:lt(e)},dt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=oe(t),a=m([]),s=c(()=>ut(e,r??void 0),[e,r]);return{tabs:e,active:s,activated:c(()=>{let e=s?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[s]),activate:i,onActivate:o(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},ft=({tabs:e,active:n,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=st(e.title),l=e.content??c,u=e.badge||void 0;return t`<cosmoz-tab-next
 			name=${e.name}

@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DlcEHjqf.js";import{t as r}from"./next-Byy_h0mg.js";import{c as i,i as a,n as o,s}from"./overflow-helpers-WGKXL7Md.js";var c,l,u,d,f,p,m,h,g;function _(){return(_=e((()=>{n(),r(),o(),{expect:c,waitFor:l}=__STORYBOOK_MODULE_TEST__,u={title:`Tests/Tabs overflow (next, radiogroup)`},d=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CV84_XUQ.js";import{t as r}from"./next-Dv8EfTZN.js";import{i,n as a,s as o}from"./overflow-helpers-aj2VO1cY.js";var s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{n(),r(),a(),{expect:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs overflow (next, radiogroup)`},u=()=>t`
     <div class="box" style="width: 220px; overflow: hidden;">
         <cosmoz-tabs-next variant="segmented" compact-width role="radiogroup">
             <cosmoz-tab-next name="today">Today</cosmoz-tab-next>
@@ -8,12 +8,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
             <cosmoz-tab-next name="year" active>12 months</cosmoz-tab-next>
         </cosmoz-tabs-next>
     </div>
-`,f={render:d,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelector(`.menu`),o=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await l(()=>c(o().length).toBeGreaterThan(0)),await t(`the menu is the same group as the bar`,async()=>{c(n.getAttribute(`role`)).toBe(`radiogroup`),c(r().getAttribute(`role`)).toBe(`radiogroup`)}),await t(`the copies are radios reporting aria-checked`,async()=>{o().forEach(e=>{c(e.getAttribute(`role`)).toBe(`radio`),c(e.hasAttribute(`aria-selected`)).toBe(!1),c(e.getAttribute(`aria-checked`)).toBe(e.hasAttribute(`active`)?`true`:`false`)}),c(r().querySelector(`[name="year"]`)?.getAttribute(`aria-checked`)).toBe(`true`)}),await t(`Enter picks a radio like any button`,async()=>{let e=[];n.querySelectorAll(`cosmoz-tab-next`).forEach(t=>t.addEventListener(`click`,()=>e.push(t.getAttribute(`name`)))),i(n).querySelector(`.more-button`).click();let[t]=o();await l(()=>{t.focus(),c(i(n).activeElement).toBe(t)}),t.dispatchEvent(new KeyboardEvent(`keydown`,{key:`Enter`,bubbles:!0,composed:!0,cancelable:!0})),c(e).toEqual([t.getAttribute(`name`)])}),await t(`copies do not carry the bar-only size`,async()=>{n.setAttribute(`size`,`sm`),await s(),o().forEach(e=>c(e.hasAttribute(`size`)).toBe(!1))})}},p={render:d,play:async({canvasElement:e,step:t})=>{let n=a(e);await l(()=>c(i(n).querySelectorAll(`.menu > cosmoz-tab-next`).length).toBeGreaterThan(0)),await s(8),await t(`no attribute churn once nothing changes`,async()=>{let e=0,t=new MutationObserver(t=>{e+=t.length});n.querySelectorAll(`cosmoz-tab-next`).forEach(e=>t.observe(e,{attributes:!0})),e=0,await(async()=>{for(;;){let t=e;if(await s(10),e===t)return}})(),e=0,n.setAttribute(`more-label`,`More`),await s(16),t.disconnect(),c(e).toBe(0)})}},m=e=>e.getAttribute(`role`),h={render:()=>t`
+`,d={render:u,play:async({canvasElement:e,step:t})=>{let n=i(e),r=()=>o(n).querySelector(`.menu`),a=()=>o(n).querySelectorAll(`.menu > cosmoz-tab-next`);await c(()=>s(a().length).toBeGreaterThan(0)),await t(`the menu is the same group as the bar`,async()=>{s(n.getAttribute(`role`)).toBe(`radiogroup`),s(r().getAttribute(`role`)).toBe(`radiogroup`)}),await t(`the copies are radios reporting aria-checked`,async()=>{a().forEach(e=>{s(e.getAttribute(`role`)).toBe(`radio`),s(e.hasAttribute(`aria-selected`)).toBe(!1),s(e.getAttribute(`aria-checked`)).toBe(e.hasAttribute(`active`)?`true`:`false`)}),s(r().querySelector(`[name="year"]`)?.getAttribute(`aria-checked`)).toBe(`true`)}),await t(`Enter picks a radio like any button`,async()=>{let e=[];n.querySelectorAll(`cosmoz-tab-next`).forEach(t=>t.addEventListener(`click`,()=>e.push(t.getAttribute(`name`)))),o(n).querySelector(`.more-button`).click();let[t]=a();await c(()=>{t.focus(),s(o(n).activeElement).toBe(t)}),t.dispatchEvent(new KeyboardEvent(`keydown`,{key:`Enter`,bubbles:!0,composed:!0,cancelable:!0})),s(e).toEqual([t.getAttribute(`name`)])}),await t(`copies do not carry the bar-only size`,async()=>{n.setAttribute(`size`,`sm`),await c(()=>s([...a()].some(e=>e.hasAttribute(`size`))).toBe(!1))})}},f={render:u,play:async({canvasElement:e,step:t})=>{let n=i(e);await c(()=>s(o(n).querySelectorAll(`.menu > cosmoz-tab-next`).length).toBeGreaterThan(0)),await t(`no attribute churn once nothing changes`,async()=>{let e=0,t=new MutationObserver(t=>{e+=t.length});n.querySelectorAll(`cosmoz-tab-next`).forEach(e=>t.observe(e,{attributes:!0})),e=0,await c(()=>{let t=e;return new Promise(e=>{setTimeout(e,200)}).then(()=>s(e).toBe(t))},{timeout:5e3}),e=0,n.setAttribute(`more-label`,`More`),await c(()=>new Promise(e=>{setTimeout(e,300)}).then(()=>s(e).toBe(0))).catch(()=>void 0),t.disconnect(),s(e).toBe(0)})}},p=e=>e.getAttribute(`role`),m={render:()=>t`
         <cosmoz-tabs-next variant="segmented" compact-width>
             <cosmoz-tab-next name="today" active>Today</cosmoz-tab-next>
             <cosmoz-tab-next name="week">7 days</cosmoz-tab-next>
         </cosmoz-tabs-next>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>n.querySelector(`cosmoz-tab-next`);await l(()=>c(m(n)).toBe(`tablist`)),await t(`setting a role later re-renders`,async()=>{n.setAttribute(`role`,`radiogroup`),n.setAttribute(`more-label`,`More`),await l(()=>c(m(n)).toBe(`radiogroup`)),await l(()=>c(r().getAttribute(`role`)).toBe(`radio`))}),await t(`removing it falls back to a tablist`,async()=>{n.removeAttribute(`role`),n.setAttribute(`more-label`,`Mer`),await l(()=>c(m(n)).toBe(`tablist`)),await l(()=>c(r().getAttribute(`role`)).toBe(`tab`)),c(r().getAttribute(`aria-selected`)).toBe(`true`),c(r().hasAttribute(`aria-checked`)).toBe(!1)}),await t(`and it can be set again`,async()=>{n.setAttribute(`role`,`radiogroup`),await l(()=>c(m(n)).toBe(`radiogroup`))})}},g=[`OverflowingRadiosStayRadios`,`ASettledBarStopsWriting`,`RoleChangesLandOnTheirOwn`],f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+    `,play:async({canvasElement:e,step:t})=>{let n=i(e),r=()=>n.querySelector(`cosmoz-tab-next`);await c(()=>s(p(n)).toBe(`tablist`)),await t(`setting a role later re-renders`,async()=>{n.setAttribute(`role`,`radiogroup`),n.setAttribute(`more-label`,`More`),await c(()=>s(p(n)).toBe(`radiogroup`)),await c(()=>s(r().getAttribute(`role`)).toBe(`radio`))}),await t(`removing it falls back to a tablist`,async()=>{n.removeAttribute(`role`),n.setAttribute(`more-label`,`Mer`),await c(()=>s(p(n)).toBe(`tablist`)),await c(()=>s(r().getAttribute(`role`)).toBe(`tab`)),s(r().getAttribute(`aria-selected`)).toBe(`true`),s(r().hasAttribute(`aria-checked`)).toBe(!1)}),await t(`and it can be set again`,async()=>{n.setAttribute(`role`,`radiogroup`),await c(()=>s(p(n)).toBe(`radiogroup`))})}},h=[`OverflowingRadiosStayRadios`,`ASettledBarStopsWriting`,`RoleChangesLandOnTheirOwn`],d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
   render: radiogroup,
   play: async ({
     canvasElement,
@@ -56,11 +56,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     });
     await step('copies do not carry the bar-only size', async () => {
       bar.setAttribute('size', 'sm');
-      await settle();
-      copies().forEach(copy => expect(copy.hasAttribute('size')).toBe(false));
+      await waitFor(() => expect([...copies()].some(c => c.hasAttribute('size'))).toBe(false));
     });
   }
-}`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
   render: radiogroup,
   play: async ({
     canvasElement,
@@ -68,9 +67,6 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
   }) => {
     const bar = next(canvasElement);
     await waitFor(() => expect(sr(bar).querySelectorAll('.menu > cosmoz-tab-next').length).toBeGreaterThan(0));
-    // let the mark cycle finish (it settles a frame per width change);
-    // the settle above must cover its trailing rAF
-    await settle(8);
     await step('no attribute churn once nothing changes', async () => {
       let writes = 0;
       const observer = new MutationObserver(records => {
@@ -82,25 +78,28 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       // the mark cycle settles late under a cold storybook iframe;
       // wait for a quiet stretch before arming the comparison
       writes = 0;
-      const quiet = async () => {
-        for (;;) {
-          const before = writes;
-          await settle(10);
-          if (writes === before) {
-            return;
-          }
-        }
-      };
-      await quiet();
+      await waitFor(() => {
+        const before = writes;
+        return new Promise<void>(resolve => {
+          setTimeout(resolve, 200);
+        }).then(() => expect(writes).toBe(before));
+      }, {
+        timeout: 5000
+      });
       writes = 0;
       // re-render without changing anything the tabs depend on
       bar.setAttribute('more-label', 'More');
-      await settle(16);
+      await waitFor(() => {
+        // a quiet window proves no follow-up writes came
+        return new Promise<void>(resolve => {
+          setTimeout(resolve, 300);
+        }).then(() => expect(writes).toBe(0));
+      }).catch(() => undefined);
       observer.disconnect();
       expect(writes).toBe(0);
     });
   }
-}`,...p.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,...f.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <cosmoz-tabs-next variant="segmented" compact-width>
             <cosmoz-tab-next name="today" active>Today</cosmoz-tab-next>
@@ -136,4 +135,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       await waitFor(() => expect(itemsRole(bar)).toBe('radiogroup'));
     });
   }
-}`,...h.parameters?.docs?.source}}}})))()}_();export{p as ASettledBarStopsWriting,f as OverflowingRadiosStayRadios,h as RoleChangesLandOnTheirOwn,g as __namedExportsOrder,u as default};
+}`,...m.parameters?.docs?.source}}}})))()}g();export{f as ASettledBarStopsWriting,d as OverflowingRadiosStayRadios,m as RoleChangesLandOnTheirOwn,h as __namedExportsOrder,l as default};
