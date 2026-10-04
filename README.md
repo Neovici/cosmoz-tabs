@@ -170,9 +170,10 @@ html`<cosmoz-tabs-next>
 </cosmoz-tabs-next>`;
 ```
 
-The group role stays where master had it: authored on the host (`tablist` by default,
-`radiogroup` for a segmented picker), written to the host itself. The menu takes the same
-role, so overflowing radios stay radios (`aria-checked`) in the dropdown too.
+The group family is a tablist: the role is authored on the host and written to the host
+itself (`tablist` default; the menu takes the same role). An authored `role="radiogroup"`
+is overridden with a `deprecation-warning` event — a value picker belongs in
+`cosmoz-toggle-group` (`@neovici/cosmoz-input`).
 
 **No tab is ever clipped.** The bar's track wraps: a tab that does not fit lands on a
 second row by layout alone — flexbox is the classifier, there is no measuring machinery.

@@ -103,27 +103,39 @@ const useCopies = (
 };
 
 /**
- * The group role is authored on the host and stays there; the default
- * (`tablist`) is written so readers see it. `role` is platform-reflected
- * and not in `observedAttributes`: an authored change re-renders through
- * the attribute→property path only for pion's own reflective props, so
- * later authored changes are read on the render other observed
- * attributes (or a slot change) trigger.
+ * The family is a tablist: the host's role is owned here (the default
+ * written at the first render - pion renders synchronously on connect),
+ * and an authored `radiogroup` is a migration leftover whose value is
+ * overridden so the items' tab wording stays truthful; the value picker
+ * lives in the input package (`cosmoz-toggle-group`). `role` is
+ * platform-reflected, not in `observedAttributes`: authored changes are
+ * read on the render other observed attributes (or a slot change)
+ * trigger.
  */
 const settings = (host: HTMLElement) => {
 	if (!host.getAttribute('role')) {
 		host.setAttribute('role', 'tablist');
 	}
-	const role =
-		host.getAttribute('role') === 'radiogroup'
-			? ('radiogroup' as const)
-			: ('tablist' as const);
+	const authored = host.getAttribute('role');
+	if (authored === 'radiogroup') {
+		host.setAttribute('role', 'tablist');
+		// the deprecation nudge; a warn, not a throw - the markup keeps
+		// working
+		host.dispatchEvent(
+			new CustomEvent('deprecation-warning', {
+				detail: {
+					message:
+						'role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.',
+				},
+			}),
+		);
+	}
 	return {
 		variant: host.getAttribute('variant'),
 		size: host.getAttribute('size'),
 		compactWidth: host.hasAttribute('compact-width') ? '' : null,
-		role,
-		itemRole: role === 'radiogroup' ? ('radio' as const) : ('tab' as const),
+		role: 'tablist' as const,
+		itemRole: 'tab' as const,
 	};
 };
 
@@ -152,10 +164,9 @@ const stamp = (
  * @attr {('sm')} size - omit for the default size; sm trims the item's box on
  * both axes, and thins the segmented track's ring to match
  * @attr {boolean} compact-width
- * @attr {('tablist'|'radiogroup')} role - tablist by default; a segmented
- * control that picks a value rather than a view is a radiogroup: set it here
- * and each item becomes a radio, reporting aria-checked instead of
- * aria-selected
+ * @attr {string} role - a tablist; an authored `radiogroup` is
+ * overridden (with a `deprecation-warning` event) - a value picker
+ * belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input)
  * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
  * @csspart items - the flex track holding the tabs (wraps when they do not fit)
  * @csspart more - overflow menu

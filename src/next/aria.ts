@@ -1,7 +1,6 @@
 /**
- * A tab reports its selection with aria-selected, a radio with aria-checked.
- * Both the item and its container need the same answer, and neither may
- * observe `role` as a property: the platform reflects it already.
+ * A tab reports its selection with aria-selected; the wording is read
+ * from the item's own role (the copy mirrors roles too).
  */
 export const selectedState = (item: Element) =>
 	item.getAttribute('role') === 'radio' ? 'aria-checked' : 'aria-selected';

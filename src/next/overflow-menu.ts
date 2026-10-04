@@ -20,7 +20,7 @@ export interface OverflowMenuOptions {
 	overflows: boolean;
 	active: boolean;
 	label?: string;
-	role?: 'tablist' | 'radiogroup';
+	role?: 'tablist';
 	onItemClick?: (e: MouseEvent) => void;
 }
 

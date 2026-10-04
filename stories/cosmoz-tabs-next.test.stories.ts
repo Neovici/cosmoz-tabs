@@ -97,7 +97,7 @@ export const RolesAndActive: Story = {
 	},
 };
 
-export const RadiogroupPicksRadioSemantics: Story = {
+export const RadiogroupIsATablist: Story = {
 	render: () => html`
 		<cosmoz-tabs-next variant="segmented" compact-width role="radiogroup">
 			<cosmoz-tab-next active>Today</cosmoz-tab-next>
@@ -108,46 +108,24 @@ export const RadiogroupPicksRadioSemantics: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('the host keeps the role it was given', async () => {
-			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('radiogroup'),
-			);
-		});
+		await step(
+			'the family is a tablist regardless of authored role: a value picker is the input package\'s radiogroup',
+			async () => {
+				await waitFor(() =>
+					expect(container.getAttribute('role')).toBe('tablist'),
+				);
+			},
+		);
 
-		await step('each item is a radio, not a tab', async () => {
+		await step('each item is a tab reporting aria-selected', async () => {
 			await waitFor(() => {
 				const items = container.querySelectorAll('cosmoz-tab-next');
 				expect(items.length).toBe(3);
-				items.forEach((item) =>
-					expect(item.getAttribute('role')).toBe('radio'),
-				);
+				items.forEach((item) => expect(item.getAttribute('role')).toBe('tab'));
 			});
-		});
-
-		await step('selection is reported as aria-checked only', async () => {
 			const active = container.querySelector('cosmoz-tab-next[active]')!;
-			const inactive = container.querySelector(
-				'cosmoz-tab-next:not([active])',
-			)!;
-			await waitFor(() => {
-				expect(active.getAttribute('aria-checked')).toBe('true');
-				expect(inactive.getAttribute('aria-checked')).toBe('false');
-			});
-			// A radio that also claims aria-selected describes itself twice.
-			expect(active.hasAttribute('aria-selected')).toBe(false);
-			expect(inactive.hasAttribute('aria-selected')).toBe(false);
-		});
-
-		await step('the radio semantics survive a variant change', async () => {
-			container.setAttribute('variant', 'underline');
-			await waitFor(() => {
-				expect(container.getAttribute('role')).toBe('radiogroup');
-				const active = container.querySelector('cosmoz-tab-next[active]')!;
-				expect(active.getAttribute('variant')).toBe('underline');
-				expect(active.getAttribute('role')).toBe('radio');
-				expect(active.getAttribute('aria-checked')).toBe('true');
-				expect(active.hasAttribute('aria-selected')).toBe(false);
-			});
+			expect(active.getAttribute('aria-selected')).toBe('true');
+			expect(active.hasAttribute('aria-checked')).toBe(false);
 		});
 	},
 };
