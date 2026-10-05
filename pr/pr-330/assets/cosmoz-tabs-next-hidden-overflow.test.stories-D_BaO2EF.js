@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-es1tv1o5.js";import{t as r}from"./next-DXrm-ReY.js";import{c as i,i as a,n as o,o as s,r as c}from"./overflow-helpers-CFuvIu03.js";var l,u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{n(),r(),o(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next, hidden tabs)`},f=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-j19rjXL1.js";import{t as r}from"./next-CVlcRh6S.js";import{c as i,i as a,n as o,o as s,r as c}from"./overflow-helpers-1viTWQ5W.js";var l,u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{n(),r(),o(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next, hidden tabs)`},f=()=>t`
     <div class="box" style="width: 260px; overflow: hidden;">
         <cosmoz-tabs-next variant="underline">
             <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
