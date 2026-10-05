@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-D0ZqkR4m.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-CKXjNJ3v.js";import{m as ie,t as ae}from"./untitled-CVC9Ve5W.js";import{r as oe,t as se}from"./use-hash-param-CY_ZXCDn.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W;function G(){return(G=e((()=>{y(),w=g`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-AMO8G4yI.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as ee,s as y,t as te,u as ne,x as re,y as b}from"./if-defined-BIJDAoY_.js";import{m as ie,t as ae}from"./untitled-0Ctuks2j.js";import{r as oe,t as se}from"./use-hash-param-DC-y8eCz.js";var x,S;function C(){return(C=e((()=>{x=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,S=e=>x(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var w,ce,T,E,D,O,k,A,j,M,N,P,F,I,L,R,z,B,V,H,U,W;function G(){return(G=e((()=>{y(),w=g`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -326,6 +326,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: calc(var(--cz-spacing) * 3);
+	padding-inline: calc(var(--cz-spacing) * 3);
+	font-family: var(--cz-font-body);
+	font-size: var(--cz-text-sm);
+	line-height: var(--cz-text-sm-line-height);
+	font-weight: var(--cz-font-weight-semibold);
+	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
 	min-width: 0;
 	overflow: clip;
 	/* The band is one row's box, exact per size/variant: the item's box is

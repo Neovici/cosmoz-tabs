@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-D0ZqkR4m.js";import{c as r,s as i}from"./if-defined-CKXjNJ3v.js";import{n as a}from"./cosmoz-tabs-Bl_8rRtp.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),n(),a(),{expect:o,waitFor:s}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-slot-wrapper`)||customElements.define(`cosmoz-tabs-slot-wrapper`,r(()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-AMO8G4yI.js";import{c as r,s as i}from"./if-defined-BIJDAoY_.js";import{n as a}from"./cosmoz-tabs-DO2zfZno.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),n(),a(),{expect:o,waitFor:s}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-slot-wrapper`)||customElements.define(`cosmoz-tabs-slot-wrapper`,r(()=>t`
                 <cosmoz-tabs>
                     <cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
                     <slot></slot>

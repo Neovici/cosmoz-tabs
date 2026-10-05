@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-D0ZqkR4m.js";import{n as r}from"./cosmoz-tabs-Bl_8rRtp.js";var i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-AMO8G4yI.js";import{n as r}from"./cosmoz-tabs-DO2zfZno.js";var i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{n(),r(),{expect:i,waitFor:a}=__STORYBOOK_MODULE_TEST__,o={title:`Tests/Tabs hash routing`},s=()=>t`
     <cosmoz-tabs hash-param="tab">
         <cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
         <cosmoz-tab name="tab1" heading="Tab1">1</cosmoz-tab>
