@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-CRjgmSSE.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as y,s as b,t as ee,u as te,x as ne,y as x}from"./if-defined-DC9qu91T.js";import{m as re,t as ie}from"./untitled-CrCIv7dU.js";import{r as ae,t as oe}from"./use-hash-param-SzEslXgi.js";var S,C;function w(){return(w=e((()=>{S=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,C=e=>S(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var T;function E(){return(E=e((()=>{b(),T=g`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i,u as a}from"./iframe-es1tv1o5.js";import{C as o,D as s,T as c,_ as l,a as u,c as d,d as f,f as p,h as m,i as h,j as g,n as _,o as v,p as y,s as b,t as ee,u as te,x as ne,y as x}from"./if-defined-DoqigKys.js";import{m as re,t as ie}from"./untitled-Cvf_z15Y.js";import{r as ae,t as oe}from"./use-hash-param-w0if5HGP.js";var S,C;function w(){return(w=e((()=>{S=e=>e.getAttribute(`role`)===`radio`?`aria-checked`:`aria-selected`,C=e=>S(e)===`aria-checked`?`aria-selected`:`aria-checked`})))()}var T;function E(){return(E=e((()=>{b(),T=g`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -6,9 +6,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		align-items: center;
 		justify-content: center;
 		gap: calc(var(--cz-spacing) * 1);
-		padding-block: calc(var(--cz-spacing) * 2.5);
-		padding-inline: calc(var(--cz-spacing) * 0.5);
-		border-radius: var(--cz-radius-md);
+		padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
 		color: var(--_color);
 		text-decoration: none;
 		white-space: nowrap;
@@ -20,8 +18,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 			box-shadow 0.1s linear;
 		outline: 0;
 
-		/* the faces: the hover rule and the active rule bind their own
-		   wording; the variants set their own */
+		/* The item's face: hover and active read these; the variants set
+		   their own (for brand and segmented, hover and active share one
+		   face, so both stay in sync by construction). */
 		--_color: var(--cz-color-text-quaternary);
 		--_icon-color: var(--cz-color-fg-quaternary);
 		--_hover-color: var(--cz-color-text-brand);
@@ -65,10 +64,6 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		pointer-events: none;
 	}
 
-	:host([compact-width]) {
-		flex: 0 1 auto;
-	}
-
 	:host([hidden]) {
 		display: none !important;
 	}
@@ -77,8 +72,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		visibility: hidden;
 	}
 
-	/* The menu copy: the same box with the menu's face - left-set content
-	   and the menu row's own paint. */
+	/* The menu copy: the same element with the menu row's box and face. */
 	:host([menu]) {
 		flex: 0 0 auto;
 		justify-content: flex-start;
@@ -118,9 +112,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		flex: auto;
 	}
 
-	/* Untitled UI badge, size sm: a counter pill; hot on hovered/active
-	   tabs, the segmented variant's square-ish modern one. The badge's
-	   face flips with the item's state the same way. */
+	/* Untitled UI badge, size sm: a counter pill that steps up a surface
+	   while the tab is hot, and the segmented variant's square-ish one. */
 	.badge {
 		display: inline-flex;
 		align-items: center;
@@ -129,30 +122,46 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 		font-size: var(--cz-text-xs);
 		font-weight: var(--cz-font-weight-medium);
 		line-height: var(--cz-text-xs-line-height);
-		padding: 2px calc(var(--cz-spacing) * 2.5);
+		padding: 2px var(--_badge-padding-inline);
 		max-width: 80px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		text-align: center;
-		border-radius: var(--cz-radius-full);
-		background-color: var(--cz-color-bg-secondary);
-		color: var(--cz-color-text-secondary);
-		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+		border-radius: var(--_badge-radius);
+		background-color: var(--_badge-background);
+		color: var(--_badge-color);
+		box-shadow: var(--_badge-shadow);
 
+		--_badge-padding-inline: calc(var(--cz-spacing) * 2);
+		--_badge-radius: var(--cz-radius-full);
+		--_badge-background: var(--cz-color-bg-secondary);
+		--_badge-color: var(--cz-color-text-secondary);
+		--_badge-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+	}
+
+	:host(:not([variant='segmented']):hover) .badge,
+	:host(:not([variant='segmented'])[active]) .badge {
 		--_badge-background: var(--cz-color-bg-tertiary);
 		--_badge-color: var(--cz-color-text-primary);
 		--_badge-shadow: inset 0 0 0 1px var(--cz-color-border-primary);
 	}
 
-	/* the sm box: the item's block padding trims to match a control that
-	   sits beside a heading; the size rules come last - the size wins
-	   over whichever variant set its box above */
-	:host([size='sm']) {
-		padding-block: calc(var(--cz-spacing) * 1.5);
+	:host([variant='segmented']) .badge {
+		--_badge-padding-inline: calc(var(--cz-spacing) * 1.5);
+		--_badge-radius: var(--cz-radius-sm);
+		--_badge-background: var(--cz-color-bg-primary);
+		--_badge-color: var(--cz-color-text-secondary);
+		--_badge-shadow:
+			inset 0 0 0 1px var(--cz-color-border-primary), var(--cz-shadow-xs);
 	}
 
 	:host([variant='brand']) {
-		padding-inline: calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-md);
+		--_hover-color: var(--cz-color-text-on-brand);
+		--_hover-background: var(--cz-color-bg-brand-solid);
+		--_hover-shadow: none;
+		--_hover-icon-color: var(--cz-color-text-on-brand);
 		--_active-color: var(--cz-color-text-on-brand);
 		--_active-background: var(--cz-color-bg-brand-solid);
 		--_active-shadow: none;
@@ -160,18 +169,25 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,n,o as r,r as i
 	}
 
 	:host([variant='segmented']) {
-		padding-inline: calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 		border-radius: var(--cz-radius-sm);
-		background-color: var(--cz-color-bg-primary);
-
 		--_hover-color: var(--cz-color-text-secondary);
-		--_hover-background: var(--cz-color-bg-primary-hover);
+		--_hover-background: var(--cz-color-bg-primary);
 		--_hover-shadow: var(--cz-shadow-sm);
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
 		--_active-color: var(--cz-color-text-secondary);
 		--_active-background: var(--cz-color-bg-primary);
 		--_active-shadow: var(--cz-shadow-sm);
 		--_active-icon-color: var(--cz-color-fg-secondary-hover);
+	}
+
+	:host([compact-width]) {
+		flex: 0 1 auto;
+	}
+
+	/* Last, so the size wins over whichever variant set the box above. */
+	:host([size='sm']) {
+		padding-block: calc(var(--cz-spacing) * 1.5);
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
