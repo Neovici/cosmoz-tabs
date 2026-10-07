@@ -10,7 +10,15 @@ import {
 } from '@pionjs/pion';
 import { ref } from 'lit-html/directives/ref.js';
 import { otherState, selectedState } from './aria';
-import { closeMenu, plain, renderOverflowMenu } from './overflow-menu';
+import { renderOverflowMenu } from './overflow-menu';
+import {
+	copyOf,
+	forward,
+	reflect,
+	refresh,
+	tabStops,
+	type CopyPair,
+} from './projection';
 import { nextTabsStyles, type TabsSize, type TabsVariant } from './styles';
 import { useOverflow } from './use-overflow';
 
@@ -22,110 +30,6 @@ export interface CosmozTabsNextElement extends HTMLElement {
 }
 
 const TAB = 'cosmoz-tab-next';
-
-const reflect = (tab: Element, name: string, value: string | null) => {
-	if (tab.getAttribute(name) === value) {
-		return;
-	}
-	if (value == null) {
-		tab.removeAttribute(name);
-	} else {
-		tab.setAttribute(name, value);
-	}
-};
-
-const sync = (tab: Element, clone: Element) => {
-	(
-		[
-			'active',
-			'disabled',
-			'hidden',
-			'href',
-			'name',
-			'badge',
-			'title',
-			'role',
-		] as const
-	).forEach((name) => reflect(clone, name, tab.getAttribute(name)));
-
-	reflect(clone, otherState(clone), null);
-	reflect(
-		clone,
-		selectedState(clone),
-		clone.hasAttribute('active') ? 'true' : 'false',
-	);
-
-	reflect(clone, 'aria-disabled', tab.hasAttribute('disabled') ? 'true' : null);
-	clone.setAttribute('tabindex', '-1');
-};
-
-const tabStops = (copies: readonly Copy[]) => {
-	// rows are plain tab stops; the bar keeps its one stop on the
-	// selected tab
-	copies.forEach(([, clone]) => {
-		if (!clone.hasAttribute('disabled') && !clone.hasAttribute('hidden')) {
-			clone.setAttribute('tabindex', '0');
-		}
-	});
-};
-
-const copy = (tab: HTMLElement) => {
-	const clone = tab.cloneNode(true) as HTMLElement;
-	['variant', 'size', 'compact-width', 'overflowing', 'style'].forEach((name) =>
-		clone.removeAttribute(name),
-	);
-	clone.setAttribute('menu', '');
-	return clone;
-};
-
-const refresh = (tab: HTMLElement, clone: HTMLElement) => {
-	if (clone.innerHTML !== tab.innerHTML) {
-		clone.replaceChildren(
-			...[...tab.childNodes].map((node) => node.cloneNode(true)),
-		);
-	}
-	sync(tab, clone);
-};
-
-type Copy = readonly [HTMLElement, HTMLElement];
-
-const copyClick = (e: MouseEvent) =>
-	// a MouseEvent is itself a MouseEventInit: the platform copies the
-	// button/modifier fields in the dictionary conversion
-	new MouseEvent('click', e);
-
-const forward = (copies: readonly Copy[]) => (e: MouseEvent) => {
-	const path = e.composedPath(),
-		pair = copies.find(([, clone]) => path.includes(clone));
-
-	if (!pair) {
-		return;
-	}
-
-	const [tab, clone] = pair;
-	e.stopPropagation();
-
-	if (!tab.dispatchEvent(copyClick(e))) {
-		e.preventDefault();
-	}
-
-	if (plain(e)) {
-		// a pick: the chosen tab takes focus - the clipped original is
-		// `visibility: hidden` and unfocusable, so the bar's tab stop
-		// takes it
-		tab.focus();
-		if (tab.hasAttribute('overflowing')) {
-			const stop = (tab.getRootNode() as HTMLElement)?.querySelector?.(
-				'[tabindex="0"]',
-			) as HTMLElement | null;
-			if (stop && stop !== tab) {
-				stop.focus();
-			}
-		}
-		closeMenu(clone);
-	}
-};
-
 const shown = (tabs: HTMLElement[]) =>
 	tabs.map((tab) => (tab.hidden ? 0 : 1)).join('');
 
@@ -179,10 +83,10 @@ const useCopies = (
 			copies = tabs()
 				.filter((tab) => overflowing.has(tab))
 				.map((tab) => {
-					const clone = cached.get(tab) ?? copy(tab);
+					const clone = cached.get(tab) ?? copyOf(tab);
 					cached.set(tab, clone);
 					refresh(tab, clone);
-					return [tab, clone] as Copy;
+					return [tab, clone] as CopyPair;
 				}),
 			live = new Set(copies.map(([tab]) => tab));
 
@@ -225,17 +129,7 @@ const settings = (host: HTMLElement) => {
 
 const stamp = (
 	tab: Element,
-	{
-		variant,
-		size,
-		compactWidth,
-		itemRole,
-	}: {
-		variant: string | null;
-		size: string | null;
-		compactWidth: string | null;
-		itemRole: 'radio' | 'tab';
-	},
+	{ variant, size, compactWidth, itemRole }: ReturnType<typeof settings>,
 ) => {
 	reflect(tab, 'variant', variant);
 	reflect(tab, 'size', size);
