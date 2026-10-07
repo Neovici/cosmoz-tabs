@@ -17,9 +17,8 @@ Keyboard behavior is the platform's: the selected tab is the bar's one tab stop 
 Focus follows the pick - a row's Enter/Space lands it on the bar's selected tab, and a
 dismissal (Escape, light dismiss, click outside, native via the `popover="auto"`
 close-request stack) hands it back to the trigger. The dropdown reconciles the trigger's
-`aria-expanded` to its own state, so every close path stays announced; this needs a small
-local patch (`patches/@neovici+cosmoz-dropdown+7.7.1.patch`, upstream candidate for
-cosmoz-dropdown).
+`aria-expanded` to its own state, so every close path stays announced;
+`@neovici/cosmoz-dropdown@8.0.1` carries the invoker management.
 
 It works with every variant and size: the trigger takes the item box of `brand`, `underline` and
 `segmented` (sitting inside the segmented track), and `size="sm"` trims it like the tabs. A
@@ -51,7 +50,8 @@ Breaking (all in `cosmoz-tabs-next`; `cosmoz-tabs` is unchanged):
   removes it again). This mutates the consumer's own DOM, so it shows up in DOM snapshots and
   in selectors such as `:not([overflowing])`.
 - `compute-scroll-into-view` stays for `cosmoz-tabs` (the legacy family still scrolls); it is
-  no longer used by `cosmoz-tabs-next`. `@neovici/cosmoz-dropdown` and `i18next` are new
+  no longer used by `cosmoz-tabs-next`. `@neovici/cosmoz-dropdown` (8.0.1, for the
+  invoker management) and `i18next` are new
   dependencies, and `@neovici/cosmoz-icons` moved from a devDependency to a dependency (the
   trigger's chevron).
 - `cosmoz-tab-next` now picks on Enter (keydown) and Space (keyup) on itself, like a native

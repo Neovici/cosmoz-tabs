@@ -153,8 +153,7 @@ bar and in the menu alike. The trigger is a native button that announces the pop
 dismissal — Escape, light dismiss or click outside, all native `popover="auto"` close
 paths — hands focus back to the trigger; a pick lands it on the bar's selected tab. No
 arrow-key machinery of our own. The invoker management (`aria-expanded` + focus restore)
-comes from a small local patch to `cosmoz-dropdown-next` (`patches/`), an upstream
-candidate.
+is the dropdown's, from `@neovici/cosmoz-dropdown@8.0.1`.
 
 Only tabs take part in this. Anything else in the bar — a heading, stats, pagination —
 belongs outside the overflow area, in the `tabs` (start) or `stats` (end) slot:
