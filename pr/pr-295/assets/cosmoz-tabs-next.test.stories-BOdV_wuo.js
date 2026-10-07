@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BF55bw_C.js";import{c as r,s as i}from"./if-defined-CfHYK7fv.js";import{l as a,r as o,t as s}from"./untitled-B5DRa3Ae.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-tCd3oE-q.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Dq8ZPbTf.js";import{c as r,s as i}from"./if-defined-CCmx7dVS.js";import{l as a,r as o,t as s}from"./untitled-CKmdcHBI.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-bUuF6DIv.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
