@@ -117,19 +117,14 @@ an icon with the icon template's `slot` option: `${receiptIcon({ slot: 'icon' })
 
 ### Overflow menu (`cosmoz-tabs-next` only)
 
-The `cosmoz-tabs-next` bar never scrolls horizontally. It clips instead, and the tabs that do
-not fit are rendered a second time as rows of a dropdown at the end of the bar — so an
-overflowing tab exists twice: clipped in the bar (`visibility: hidden`, hence out of the
-accessibility tree) and as a copy in the menu. Both drive the same selection. The trigger
-only appears once something actually overflows, and is highlighted while the selected tab is
-one of the overflowing ones.
+Tabs that do not fit in the bar move into a "More" dropdown at its end.
+They are hidden in the bar and picked from the menu — both drive the same
+selection. The trigger appears only when something overflows, and is
+highlighted while the selected tab hides in it. Nothing to wire up — it
+is on by default.
 
-The legacy `cosmoz-tabs` is unchanged — its bar still scrolls and scrolls the selected tab
-into view.
-
-There is nothing to wire up; it is on by default. The trigger reads `t('More')` followed by
-a chevron, so it is already translated and no call site has to pass anything. Override it
-per instance only where a different word is wanted — as an attribute, or as a property:
+The trigger reads `t('More')` followed by a chevron, so it is translated
+out of the box. Override the label as an attribute or a property:
 
 ```html
 <cosmoz-tabs-next more-label="Fler">…</cosmoz-tabs-next>
@@ -139,21 +134,16 @@ per instance only where a different word is wanted — as an attribute, or as a 
 html`<cosmoz-tabs-next .moreLabel=${t('More tabs')}>…</cosmoz-tabs-next>`;
 ```
 
-Which tabs fit is measured with an `IntersectionObserver` rooted on the clipping element
-(`src/next/use-overflow.ts`), so the browser's own layout decides — there is no width
-bookkeeping to keep in sync. Style the menu through the `more`, `more-button` and `menu`
-parts.
+The menu is styled through the `more`, `more-button` and `menu` parts.
 
-Keyboard behavior is the platform's, same as the bar: the selected tab is the bar's one
-tab stop (roving `tabindex`, as the legacy family models it) — Tab enters the bar on the
-selected tab and moves on, or into the menu's tabbable rows when it is open.
-`cosmoz-tab-next` picks on Enter (keydown) and Space (keyup) like a native button — in the
-bar and in the menu alike. The trigger is a native button that announces the popup
-(`aria-haspopup`; `aria-expanded` reconciled by the dropdown to its own popover state). A
-dismissal — Escape, light dismiss or click outside, all native `popover="auto"` close
-paths — hands focus back to the trigger; a pick lands it on the bar's selected tab. No
-arrow-key machinery of our own. The invoker management (`aria-expanded` + focus restore)
-is the dropdown's, from `@neovici/cosmoz-dropdown@8.0.1`.
+Keyboard behavior is the platform's: the selected tab is the bar's one tab
+stop, the menu's rows are tabbable, and `cosmoz-tab-next` picks on Enter
+and Space like a native button — in the bar and in the menu alike. The
+dropdown handles the rest — it announces `aria-expanded` and hands focus
+back to the trigger on Escape or click-outside, from
+`@neovici/cosmoz-dropdown@8.0.1`.
+
+The legacy `cosmoz-tabs` is unchanged — its bar still scrolls.
 
 Only tabs take part in this. Anything else in the bar — a heading, stats, pagination —
 belongs outside the overflow area, in the `tabs` (start) or `stats` (end) slot:
