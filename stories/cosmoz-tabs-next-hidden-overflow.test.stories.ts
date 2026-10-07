@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { more, next, sr } from './overflow-helpers';
+import { more, next, pump, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next, hidden tabs)',
@@ -36,6 +36,7 @@ export const AnUnhiddenTabPastTheEdgeJoinsTheMenu: Story = {
 		const tabs = next(canvasElement),
 			late = tabs.querySelector('[name="late"]') as HTMLElement;
 
+		await pump(2);
 		await waitFor(() => expect(names(tabs).length).toBeGreaterThan(0));
 		expect(names(tabs)).not.toContain('late');
 
@@ -58,6 +59,7 @@ export const HidingEveryOverflowingTabHidesTheTrigger: Story = {
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
 
+		await pump(2);
 		await waitFor(() => expect(names(tabs).length).toBeGreaterThan(0));
 
 		await step('the menu empties and the trigger goes away', async () => {
@@ -92,6 +94,7 @@ export const HidingATrailingClippedTabDropsItsCopy: Story = {
 		const tabs = next(canvasElement),
 			late = tabs.querySelector('[name="late"]') as HTMLElement;
 
+		await pump(2);
 		await waitFor(() => expect(names(tabs)).toContain('late'));
 		const others = names(tabs).filter((name) => name !== 'late');
 		expect(others.length).toBeGreaterThan(0);
