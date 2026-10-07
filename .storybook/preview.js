@@ -1,6 +1,9 @@
 import '@neovici/cosmoz-tokens';
+import { init } from 'i18next';
 import { html } from 'lit-html';
 import { within as withinShadow } from 'shadow-dom-testing-library';
+
+init({ lng: 'en', resources: { en: { translation: {} } } });
 
 export default {
 	parameters: {
@@ -38,7 +41,7 @@ export default {
 
 			return html`
 				<style>
-					@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+					@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 					.story-root {
 						font-family: var(--cz-font-body);
@@ -46,7 +49,9 @@ export default {
 						background: var(--cz-color-bg-primary);
 						padding: calc(var(--cz-spacing) * 4);
 						min-height: 100%;
-						transition: background-color 0.2s, color 0.2s;
+						transition:
+							background-color 0.2s,
+							color 0.2s;
 					}
 
 					.story-row {

@@ -26,6 +26,10 @@ item's padding on both axes and thins the segmented track's ring to match, which
 a control sitting next to a heading usually wants — the type is left alone, so the labels
 stay as readable as they were.
 
+`cosmoz-tabs-next` additionally collects tabs that do not fit into an **overflow menu**;
+see [Overflow menu](#overflow-menu-cosmoz-tabs-next-only). The legacy `cosmoz-tabs` bar
+still scrolls horizontally.
+
 > Styling comes from `@neovici/cosmoz-tokens` (`--cz-*`), with light/dark mode via
 > `:root.dark-mode`. It ships as a dependency — see [Install](#install) for loading it.
 
@@ -111,6 +115,76 @@ For the next family the container reflects `variant`/`size`/`compact-width` onto
 boundary); when both `renderTabs(...)` and the container set them, the container wins. Slot
 an icon with the icon template's `slot` option: `${receiptIcon({ slot: 'icon' })}`.
 
+### Overflow menu (`cosmoz-tabs-next` only)
+
+Tabs that do not fit in the bar move into a "More" dropdown at its end.
+They are hidden in the bar and picked from the menu — both drive the same
+selection. The trigger appears only when something overflows, and is
+highlighted while the selected tab hides in it. Nothing to wire up — it
+is on by default.
+
+The trigger reads `t('More')` followed by a chevron, so it is translated
+out of the box. Override the label as an attribute or a property:
+
+```html
+<cosmoz-tabs-next more-label="Fler">…</cosmoz-tabs-next>
+```
+
+```js
+html`<cosmoz-tabs-next .moreLabel=${t('More tabs')}>…</cosmoz-tabs-next>`;
+```
+
+The menu is styled through the `more`, `more-button` and `menu` parts.
+
+Keyboard behavior is the platform's: the selected tab is the bar's one tab
+stop, the menu's rows are tabbable, and `cosmoz-tab-next` picks on Enter
+and Space like a native button — in the bar and in the menu alike. The
+dropdown handles the rest — it announces `aria-expanded` and hands focus
+back to the trigger on Escape or click-outside, from
+`@neovici/cosmoz-dropdown@8.0.1`.
+
+The legacy `cosmoz-tabs` is unchanged — its bar still scrolls.
+
+Only tabs take part in this. Anything else in the bar — a heading, stats, pagination —
+belongs outside the overflow area, in the `tabs` (start) or `stats` (end) slot:
+
+```html
+<cosmoz-tabs-next>
+	<div slot="tabs">Orders</div>
+	<cosmoz-tab-next name="all" active>All</cosmoz-tab-next>
+	<cosmoz-tab-next name="draft">Draft</cosmoz-tab-next>
+	<div slot="stats">1-20 of 87</div>
+</cosmoz-tabs-next>
+```
+
+For `cosmoz-tabs-next` those slots are assigned by you — there is no auto-routing; the
+component leaves your light DOM untouched.
+
+A `<slot>` child is left alone, so a wrapper component can own the bar and project the
+consumer's tabs into it — the projected tabs are classified and overflow like any other:
+
+```js
+html`<cosmoz-tabs-next>
+	<cosmoz-tab-next name="all" active>All</cosmoz-tab-next>
+	<slot></slot>
+</cosmoz-tabs-next>`;
+```
+
+The group role stays where master had it: authored on the host (`tablist` by default,
+`radiogroup` for a segmented picker), written to the host itself. The menu takes the same
+role, so overflowing radios stay radios (`aria-checked`) in the dropdown too.
+
+**No tab is ever clipped.** The bar's track wraps: a tab that does not fit lands on a
+second row by layout alone — flexbox is the classifier, there is no measuring machinery.
+The wrapped tabs are marked (`overflowing`, the one attribute the component writes on
+your tabs), which takes them out of the layout so the bar collapses back to one row; the
+mark is also what the overflow menu's copies follow. A width change unmarks everything,
+lets the wrap happen again and re-classifies — within a frame or two, without flashing.
+
+The dropdown comes from [`@neovici/cosmoz-dropdown`](https://github.com/neovici/cosmoz-dropdown)
+and the chevron from [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons); both
+ship as dependencies.
+
 ## API
 
 The custom-element API (attributes, properties, slots, CSS parts) is described in
@@ -120,7 +194,9 @@ Highlights:
 - **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `size`,
   `compact-width`; parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
-- **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`.
+- **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`, `role`, `more-label`; parts
+  `items`, `more`, `more-button`, `menu`; slots `tabs`, `stats` (auto-assigned for non-tab children).
+  Overflow menu: on by default; see [Overflow menu](#overflow-menu-cosmoz-tabs-next-only).
 - **`cosmoz-tab-next`** — attrs `active`, `badge`, `href`, `disabled`, `size`; `icon` slot.
 - **`cosmoz-tab-card`** — attrs `heading`, `collapsable`, `collapsed`; parts `header`,
   `heading`, `collapse-icon`, `content`. Themable via the `--cosmoz-tab-card-*` custom
