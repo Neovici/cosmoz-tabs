@@ -142,6 +142,46 @@ const project = (host: HTMLElement) => {
 	};
 };
 
+/** The keys the bar's walk speaks; the menu's keys are the dropdown's. */
+const ROVED = new Set(['ArrowLeft', 'ArrowRight', 'Home', 'End']);
+
+/** the walk lands on shown members only: enabled, and showing in the band */
+const shown = (member: HTMLElement) =>
+	!member.hasAttribute('disabled') &&
+	!member.hasAttribute('hidden') &&
+	!member.hasAttribute('overflowing');
+
+/**
+ * The walk's target: the shown member a step from `from`, clamped at the
+ * band's edges (no wrap — the edges are Home/End's; the overflowed
+ * members' view is the menu, reached through its own keys).
+ */
+const rove = (
+	members: readonly HTMLElement[],
+	from: HTMLElement,
+	key: string,
+): HTMLElement | null => {
+	const band = members.filter(shown);
+	if (band.length === 0) {
+		return null;
+	}
+	if (key === 'Home') {
+		return band[0];
+	}
+	if (key === 'End') {
+		return band[band.length - 1];
+	}
+	const at = band.indexOf(from);
+	return at < 0
+		? null
+		: band[
+				Math.max(
+					0,
+					Math.min(band.length - 1, at + (key === 'ArrowLeft' ? -1 : 1)),
+				)
+			];
+};
+
 /**
  * @element cosmoz-tabs-next
  * @attr {('brand'|'underline'|'segmented')} variant
@@ -177,6 +217,33 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		onSlotChange = () => setVersion((v) => v + 1);
 
 	const copies = useCopies(tabs, overflowing, version);
+
+	// The container roves, the item picks: the walk focuses a shown
+	// member and its own click picks it (selection follows focus, one
+	// pick path for pointer, Enter/Space and arrows). An overflowed view
+	// stays out — the menu's walk is the dropdown's business.
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if (!ROVED.has(e.key)) {
+				return;
+			}
+			const members = tabs(),
+				target = e.target as HTMLElement;
+			if (!members.includes(target)) {
+				return;
+			}
+			// the walk claims the key: Home/End would page otherwise
+			e.preventDefault();
+			const to = rove(members, target, e.key);
+			if (!to || to === target) {
+				return;
+			}
+			to.click();
+			to.focus();
+		};
+		host.addEventListener('keydown', onKey);
+		return () => host.removeEventListener('keydown', onKey);
+	}, []);
 
 	return html`
 		<slot name="tabs"></slot>

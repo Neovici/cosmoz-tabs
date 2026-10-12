@@ -138,10 +138,13 @@ The menu is styled through the `more`, `more-button` and `menu` parts.
 
 Keyboard behavior is the platform's: the selected tab is the bar's one tab
 stop, the menu's rows are tabbable, and `cosmoz-tab-next` picks on Enter
-and Space like a native button — in the bar and in the menu alike. The
-dropdown handles the rest — it announces `aria-expanded` and hands focus
-back to the trigger on Escape or click-outside, from
-`@neovici/cosmoz-dropdown@8.0.1`.
+and Space like a native button — in the bar and in the menu alike. In the
+bar the arrows walk: Left and Right step among the shown tabs and pick as
+they go (activation follows focus), Home/End jump to the band's edges;
+hidden, disabled and overflowed tabs stay out of the walk — the menu
+reaches the overflowed ones. The dropdown handles the rest of the menu's
+keyboard — it announces `aria-expanded` and hands focus back to the
+trigger on Escape or click-outside, from `@neovici/cosmoz-dropdown@8.0.1`.
 
 The legacy `cosmoz-tabs` is unchanged — its bar still scrolls.
 
