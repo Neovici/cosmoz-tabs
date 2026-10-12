@@ -2,7 +2,6 @@ import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { selectedState } from './aria';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -43,12 +42,11 @@ const Tab = (host: CosmozTabNextElement) => {
 	const { active, badge, href } = host;
 
 	useLayoutEffect(() => {
-		// the state attribute follows the selection; the wording is the
-		// item's own role's (read live: `role` is platform-reflected)
-		host.setAttribute(selectedState(host), active ? 'true' : 'false');
+		// the state attribute follows the selection
+		host.setAttribute('aria-selected', active ? 'true' : 'false');
 	}, [active]);
 
-	// The element claims tab/radio semantics, so it picks like a native
+	// The element claims tab semantics, so it picks like a native
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
 	// keydown only prevents the page scroll.
 	useEffect(() => {

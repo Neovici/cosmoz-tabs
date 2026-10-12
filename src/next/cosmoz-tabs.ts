@@ -8,7 +8,6 @@ import {
 	useRef,
 	useState,
 } from '@pionjs/pion';
-import { otherState, selectedState } from './aria';
 import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
@@ -139,28 +138,21 @@ const settings = (host: HTMLElement) => {
 		variant: host.getAttribute('variant'),
 		size: host.getAttribute('size'),
 		compactWidth: host.hasAttribute('compact-width') ? '' : null,
-		role: 'tablist' as const,
-		itemRole: 'tab' as const,
 	};
 };
 
 const stamp = (
 	tab: Element,
-	{ variant, size, compactWidth, itemRole }: ReturnType<typeof settings>,
+	{ variant, size, compactWidth }: ReturnType<typeof settings>,
 ) => {
 	reflect(tab, 'variant', variant);
 	reflect(tab, 'size', size);
 	reflect(tab, 'compact-width', compactWidth);
-	reflect(tab, 'role', itemRole);
+	reflect(tab, 'role', 'tab');
 	// roving tabindex: the selected tab is the bar's one tab stop; the
 	// container owns the attribute like it owns role/variant
 	reflect(tab, 'tabindex', tab.hasAttribute('active') ? '0' : '-1');
-	reflect(tab, otherState(tab), null);
-	reflect(
-		tab,
-		selectedState(tab),
-		tab.hasAttribute('active') ? 'true' : 'false',
-	);
+	reflect(tab, 'aria-selected', tab.hasAttribute('active') ? 'true' : 'false');
 };
 
 /**
@@ -186,8 +178,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		host.setAttribute('variant', 'brand');
 	}
 
-	const given = settings(host),
-		{ role } = given;
+	const given = settings(host);
 
 	const [version, setVersion] = useState(0);
 
@@ -223,7 +214,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 			overflows: copies.length > 0,
 			active: copies.some(([tab]) => tab.hasAttribute('active') && !tab.hidden),
 			label: host.moreLabel,
-			role,
 			onItemClick: forward(copies),
 		})}
 		<slot name="stats"></slot>

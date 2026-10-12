@@ -1,4 +1,3 @@
-import { otherState, selectedState } from './aria';
 import { closeMenu, plain } from './overflow-menu';
 
 /** The pair a projection carries: the original tab and its menu copy. */
@@ -18,9 +17,8 @@ export const reflect = (tab: Element, name: string, value: string | null) => {
 
 /**
  * The copy mirrors its original's observable face: the plain attributes
- * the render carries, the aria state its own role's wording (a radio
- * copy reports aria-checked), and an explicit -1 until the projection's
- * tabStops marks the stop.
+ * the render carries, the aria-selected state, and an explicit -1 until
+ * the projection's tabStops marks the stop.
  */
 export const sync = (tab: Element, clone: Element) => {
 	(
@@ -36,10 +34,9 @@ export const sync = (tab: Element, clone: Element) => {
 		] as const
 	).forEach((name) => reflect(clone, name, tab.getAttribute(name)));
 
-	reflect(clone, otherState(clone), null);
 	reflect(
 		clone,
-		selectedState(clone),
+		'aria-selected',
 		clone.hasAttribute('active') ? 'true' : 'false',
 	);
 
