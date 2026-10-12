@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CKiHJFd3.js";import{t as r}from"./next-owEVcXu7.js";import{c as i,i as a,n as o,o as s,s as c,t as l}from"./overflow-helpers-H9kiIusL.js";var u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DJWq8NFJ.js";import{t as r}from"./next-B0gfrNHI.js";import{c as i,i as a,n as o,o as s,s as c,t as l}from"./overflow-helpers-pd_3z0O9.js";var u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading" slot="tabs">Orders</div>
