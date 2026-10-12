@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-DJWq8NFJ.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as w,y as T}from"./if-defined-DxGa-9ld.js";import{m as ee,t as te}from"./untitled-r7QsN0ga.js";import{r as ne,t as re}from"./use-hash-param-BiUMCyVF.js";var E;function D(){return(D=e((()=>{x(),E=_`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-BNPIsCcH.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as ee,y as w}from"./if-defined-Ch8xZDbL.js";import{m as te,t as ne}from"./untitled-Cb9Pv03-.js";import{r as re,t as ie}from"./use-hash-param-DI9jzpy9.js";var T;function E(){return(E=e((()=>{x(),T=_`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -193,13 +193,13 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		padding-inline: calc(var(--cz-spacing) * 2);
 	}
-`})))()}var O,ie;function ae(){return(ae=e((()=>{d(),x(),o(),S(),D(),O=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tab`),this.hasAttribute(`tabindex`)||this.setAttribute(`tabindex`,`-1`)}},ie=e=>{let{active:t,badge:r,href:a}=e;return w(()=>{e.setAttribute(`aria-selected`,t?`true`:`false`)},[t]),c(()=>{let t=t=>{t.target!==e||e.hasAttribute(`disabled`)||(t.key===`Enter`&&!t.repeat&&(t.preventDefault(),e.click()),t.key===` `&&t.preventDefault())},n=t=>{t.target!==e||e.hasAttribute(`disabled`)||t.key===` `&&e.click()};return e.addEventListener(`keydown`,t),e.addEventListener(`keyup`,n),()=>{e.removeEventListener(`keydown`,t),e.removeEventListener(`keyup`,n)}},[]),n`
+`})))()}var D,ae;function oe(){return(oe=e((()=>{d(),x(),o(),S(),E(),D=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tab`),this.hasAttribute(`tabindex`)||this.setAttribute(`tabindex`,`-1`)}},ae=e=>{let{active:t,badge:r,href:a}=e;return ee(()=>{e.setAttribute(`aria-selected`,t?`true`:`false`)},[t]),c(()=>{let t=t=>{t.target!==e||e.hasAttribute(`disabled`)||(t.key===`Enter`&&!t.repeat&&(t.preventDefault(),e.click()),t.key===` `&&t.preventDefault())},n=t=>{t.target!==e||e.hasAttribute(`disabled`)||t.key===` `&&e.click()};return e.addEventListener(`keydown`,t),e.addEventListener(`keyup`,n),()=>{e.removeEventListener(`keydown`,t),e.removeEventListener(`keyup`,n)}},[]),n`
 		<a part="link" href=${v(a)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
 			${r?n`<span class="badge" part="badge">${r}</span>`:i}
 		</a>
-	`},customElements.define(`cosmoz-tab-next`,f(ie,{baseElement:O,observedAttributes:[`active`,`badge`,`href`],styleSheets:[y,E]}))})))()}var oe,k;function A(){return(A=e((()=>{o(),p(),oe=class extends C{_slot;_ref;#e=()=>{this._slot&&this._ref&&(this._ref.current=this._slot.assignedElements({flatten:!0}))};#t=()=>this.#e();update(e,[t]){this._ref=t;let n=e.element;this._slot!==n&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=n,n.addEventListener(`slotchange`,this.#t)),this.#e()}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}render(e){return t}},k=m(oe)})))()}var j;function M(){return(M=e((()=>{j=(e,...t)=>typeof e==`function`?e(...t):e})))()}var N,P,F,I;function L(){return(L=e((()=>{o(),p(),M(),N=(e,t,n)=>{n==null?e.removeAttribute(t):e.setAttribute(t,n)},P=(e,t)=>{for(let[n,r]of Object.entries(e))N(t,n,j(r,t))},F=class extends C{_slot;_attrs;#e=()=>{if(!this._slot||!this._attrs)return;let e=this._slot.assignedElements({flatten:!0});for(let t of e)P(this._attrs,t)};#t=()=>this.#e();render(e){return t}update(e,[n]){this._attrs=n;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=r,r.addEventListener(`slotchange`,this.#t)),this.#e(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}},I=m(F)})))()}var R,z;function B(){return(B=e((()=>{o(),p(),b(),R=new WeakMap,z=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=R.get(t);n===void 0&&(n=new WeakMap,R.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?R.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var V;function H(){return(H=e((()=>{x(),V=e=>{let t=l(()=>({}),[]);return l(()=>Object.assign(t,e),[t,...Object.values(e)])}})))()}var U,W;function G(){return(G=e((()=>{H(),x(),U=e=>{for(let t of e.current??[]){let e=t.matches(`[autofocus]`)?t:t.querySelector(`[autofocus]`);if(e instanceof HTMLElement){e.focus();break}}},W=e=>{let{placement:t=`bottom span-right`,disabled:n,passthrough:r,openOnHover:i,openOnFocus:a}=e,o=h(),[l,d]=u(`opened`,!1),f=h(),p=h(),m=V({disabled:n,openOnHover:i}),g=s(()=>{let e=f.current?.[0];return e instanceof HTMLElement?e:void 0},[]),_=s(()=>{m.disabled||(d(!0),o.current?.showPopover?.())},[]),v=s(()=>{d(!1),o.current?.hidePopover?.()},[]),y=s(()=>{o.current?.matches(`:popover-open`)?v():_()},[]),b=s(()=>{clearTimeout(m.closeTimeout)},[]),x=s(e=>{m.disabled||e.target===g()&&(b(),_())},[]),S=s(()=>{m.disabled||(b(),_())},[]),C=s(()=>{clearTimeout(m.closeTimeout),m.closeTimeout=setTimeout(()=>{let t=o.current;m.openOnHover&&(e.matches(`:hover`)||t?.matches(`:hover`))||e.matches(`:focus-within`)||t?.matches(`:focus-within`)||v()},100)},[]),w=s(()=>{let t=document.activeElement;for(;t?.shadowRoot;)t=t.shadowRoot.activeElement;if(t!=null&&t!==document.body&&t.offsetParent!=null)return;let n=g();n&&(e.removeEventListener(`focusin`,x),n.focus(),e.addEventListener(`focusin`,x))},[]),T=s(t=>{let n=t.newState===`open`;d(n),n?U(p):w(),e.dispatchEvent(new ToggleEvent(`dropdown-toggle`,{newState:t.newState,oldState:t.oldState,composed:!0}))},[]);return c(()=>{let e=o.current;e&&(l?e.showPopover?.():e.hidePopover?.())},[l]),c(()=>{e.toggleAttribute(`opened`,!!l)},[l]),c(()=>{if(a&&!n)return e.addEventListener(`focusin`,x),e.addEventListener(`focusout`,C),()=>{e.removeEventListener(`focusin`,x),e.removeEventListener(`focusout`,C)}},[a,n]),c(()=>{if(i&&!n)return e.addEventListener(`pointerenter`,S),e.addEventListener(`pointerleave`,C),()=>{e.removeEventListener(`pointerenter`,S),e.removeEventListener(`pointerleave`,C)}},[i,n]),{placement:t,disabled:n,passthrough:r,opened:l,triggers:f,content:p,popoverRef:o,handleClick:a?_:y,onToggle:T,close:v,scheduleClose:C,cancelClose:b}}})))()}var K,q,se;function ce(){return(ce=e((()=>{A(),L(),x(),o(),B(),G(),K=_`
+	`},customElements.define(`cosmoz-tab-next`,f(ae,{baseElement:D,observedAttributes:[`active`,`badge`,`href`],styleSheets:[y,T]}))})))()}var se,O;function k(){return(k=e((()=>{o(),p(),se=class extends C{_slot;_ref;#e=()=>{this._slot&&this._ref&&(this._ref.current=this._slot.assignedElements({flatten:!0}))};#t=()=>this.#e();update(e,[t]){this._ref=t;let n=e.element;this._slot!==n&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=n,n.addEventListener(`slotchange`,this.#t)),this.#e()}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}render(e){return t}},O=m(se)})))()}var A;function j(){return(j=e((()=>{A=(e,...t)=>typeof e==`function`?e(...t):e})))()}var M,N,P,F;function I(){return(I=e((()=>{o(),p(),j(),M=(e,t,n)=>{n==null?e.removeAttribute(t):e.setAttribute(t,n)},N=(e,t)=>{for(let[n,r]of Object.entries(e))M(t,n,A(r,t))},P=class extends C{_slot;_attrs;#e=()=>{if(!this._slot||!this._attrs)return;let e=this._slot.assignedElements({flatten:!0});for(let t of e)N(this._attrs,t)};#t=()=>this.#e();render(e){return t}update(e,[n]){this._attrs=n;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=r,r.addEventListener(`slotchange`,this.#t)),this.#e(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}},F=m(P)})))()}var L,R,z,B;function V(){return(V=e((()=>{o(),p(),L=(e,t)=>e.assignedElements({flatten:!0}).filter(t),R=(e,t)=>e!=null&&t!=null&&e.size===t.size&&[...t].every(t=>e.has(t)),z=class extends C{_slot;_host;_is;_onOverflow;#e=new Map;#t;#n;#r=e=>{e.forEach(e=>{let t=e.target;this.#e.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),this.#a()};#i=e=>{this.#n?.unobserve(e),this.#n?.observe(e)};#a=()=>{if(!this._slot||!this._is)return;let e=L(this._slot,this._is);e.forEach(e=>{let t=this.#e.get(e)===!0;t!==e.hasAttribute(`overflowing`)&&(t?e.setAttribute(`overflowing`,``):e.removeAttribute(`overflowing`))}),this.#e.forEach((t,n)=>{e.includes(n)||(this.#e.delete(n),this.#n?.unobserve(n),n.hasAttribute(`overflowing`)&&n.removeAttribute(`overflowing`))});let t=new Set(e.filter(e=>this.#e.get(e)===!0));R(this.#t,t)||(this.#t=t,this._onOverflow?.(t))};#o=()=>this.#s();#s=()=>{if(this.#n&&this._slot&&this._is){for(let e of L(this._slot,this._is))this.#i(e);this.#a()}};render(e){return t}update(e,[n]){this._host=n.host,this._is=n.is,this._onOverflow=n.onOverflow;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#o),this._slot=r,r.addEventListener(`slotchange`,this.#o)),this.#n??=new IntersectionObserver(this.#r,{root:this._host,threshold:[0,1]}),this.#s(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#o),this._slot=void 0,this.#n?.disconnect(),this.#n=void 0,this.#e.clear(),this.#t=void 0}},B=m(z)})))()}var H,U;function W(){return(W=e((()=>{o(),p(),b(),H=new WeakMap,U=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=H.get(t);n===void 0&&(n=new WeakMap,H.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?H.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var G;function K(){return(K=e((()=>{x(),G=e=>{let t=l(()=>({}),[]);return l(()=>Object.assign(t,e),[t,...Object.values(e)])}})))()}var q,ce;function le(){return(le=e((()=>{K(),x(),q=e=>{for(let t of e.current??[]){let e=t.matches(`[autofocus]`)?t:t.querySelector(`[autofocus]`);if(e instanceof HTMLElement){e.focus();break}}},ce=e=>{let{placement:t=`bottom span-right`,disabled:n,passthrough:r,openOnHover:i,openOnFocus:a}=e,o=h(),[l,d]=u(`opened`,!1),f=h(),p=h(),m=G({disabled:n,openOnHover:i}),g=s(()=>{let e=f.current?.[0];return e instanceof HTMLElement?e:void 0},[]),_=s(()=>{m.disabled||(d(!0),o.current?.showPopover?.())},[]),v=s(()=>{d(!1),o.current?.hidePopover?.()},[]),y=s(()=>{o.current?.matches(`:popover-open`)?v():_()},[]),b=s(()=>{clearTimeout(m.closeTimeout)},[]),x=s(e=>{m.disabled||e.target===g()&&(b(),_())},[]),S=s(()=>{m.disabled||(b(),_())},[]),C=s(()=>{clearTimeout(m.closeTimeout),m.closeTimeout=setTimeout(()=>{let t=o.current;m.openOnHover&&(e.matches(`:hover`)||t?.matches(`:hover`))||e.matches(`:focus-within`)||t?.matches(`:focus-within`)||v()},100)},[]),ee=s(()=>{let t=document.activeElement;for(;t?.shadowRoot;)t=t.shadowRoot.activeElement;if(t!=null&&t!==document.body&&t.offsetParent!=null)return;let n=g();n&&(e.removeEventListener(`focusin`,x),n.focus(),e.addEventListener(`focusin`,x))},[]),w=s(t=>{let n=t.newState===`open`;d(n),n?q(p):ee(),e.dispatchEvent(new ToggleEvent(`dropdown-toggle`,{newState:t.newState,oldState:t.oldState,composed:!0}))},[]);return c(()=>{let e=o.current;e&&(l?e.showPopover?.():e.hidePopover?.())},[l]),c(()=>{e.toggleAttribute(`opened`,!!l)},[l]),c(()=>{if(a&&!n)return e.addEventListener(`focusin`,x),e.addEventListener(`focusout`,C),()=>{e.removeEventListener(`focusin`,x),e.removeEventListener(`focusout`,C)}},[a,n]),c(()=>{if(i&&!n)return e.addEventListener(`pointerenter`,S),e.addEventListener(`pointerleave`,C),()=>{e.removeEventListener(`pointerenter`,S),e.removeEventListener(`pointerleave`,C)}},[i,n]),{placement:t,disabled:n,passthrough:r,opened:l,triggers:f,content:p,popoverRef:o,handleClick:a?_:y,onToggle:w,close:v,scheduleClose:C,cancelClose:b}}})))()}var ue,de,fe;function pe(){return(pe=e((()=>{k(),I(),x(),o(),W(),le(),ue=_`
 	:host {
 		display: inline-block;
 		anchor-name: --dropdown-anchor;
@@ -250,11 +250,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			transition: none;
 		}
 	}
-`,q=({placement:e,disabled:t,passthrough:r,opened:i,triggers:a,content:o,popoverRef:s,handleClick:c,onToggle:l,close:u,scheduleClose:d,cancelClose:f})=>n`
+`,de=({placement:e,disabled:t,passthrough:r,opened:i,triggers:a,content:o,popoverRef:s,handleClick:c,onToggle:l,close:u,scheduleClose:d,cancelClose:f})=>n`
 		<slot
 			name="button"
-			${k(a)}
-			${I({"aria-expanded":r?null:String(i),disabled:t&&!r?``:null})}
+			${O(a)}
+			${F({"aria-expanded":r?null:String(i),disabled:t&&!r?``:null})}
 			@click=${c}
 		></slot>
 		${t&&r?n`<slot></slot>`:n`<div
@@ -264,11 +264,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 					@select=${u}
 					@focusout=${d}
 					@focusin=${f}
-					${z(e=>e&&(s.current=e))}
+					${U(e=>e&&(s.current=e))}
 				>
-					<slot ${k(o)}></slot>
+					<slot ${O(o)}></slot>
 				</div>`}
-	`,se=e=>q(W(e)),customElements.define(`cosmoz-dropdown-next`,f(se,{styleSheets:[K],observedAttributes:[`placement`,`disabled`,`passthrough`,`open-on-hover`,`open-on-focus`],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}var le,ue,de,fe;function J(){return(J=e((()=>{ce(),te(),r(),o(),le=e=>e.button===0&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey,ue=e=>e?.dispatchEvent(new Event(`select`,{bubbles:!0})),de=e=>typeof e==`string`&&e?e:a(`More`)||`More`,fe=({items:e,overflows:t,active:r,label:i,onItemClick:a})=>n`
+	`,fe=e=>de(ce(e)),customElements.define(`cosmoz-dropdown-next`,f(fe,{styleSheets:[ue],observedAttributes:[`placement`,`disabled`,`passthrough`,`open-on-hover`,`open-on-focus`],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}var me,he,ge,_e;function J(){return(J=e((()=>{pe(),ne(),r(),o(),me=e=>e.button===0&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey,he=e=>e?.dispatchEvent(new Event(`select`,{bubbles:!0})),ge=e=>typeof e==`string`&&e?e:a(`More`)||`More`,_e=({items:e,overflows:t,active:r,label:i,onItemClick:a})=>n`
 	<cosmoz-dropdown-next
 		class="more"
 		part="more"
@@ -285,9 +285,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			aria-haspopup="true"
 			aria-controls="more-menu"
 		>
-			<span>${de(i)}</span>
+			<span>${ge(i)}</span>
 			<span class="chevron" aria-hidden="true"
-				>${ee({width:`16`,height:`16`})}</span
+				>${te({width:`16`,height:`16`})}</span
 			>
 		</button>
 		<div
@@ -301,7 +301,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			${e}
 		</div>
 	</cosmoz-dropdown-next>
-`})))()}var Y,pe,me,he,ge,_e,ve;function ye(){return(ye=e((()=>{J(),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},pe=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},me=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},he=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},ge=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),pe(e,t)},_e=e=>new MouseEvent(`click`,e),ve=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(_e(t))||t.preventDefault(),le(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}ue(a)}}})))()}var be,xe,Se,Ce,we,Te,Ee,De,Oe,ke,Ae,je,Me,Ne,Pe,Fe,Ie,Le,Re;function ze(){return(ze=e((()=>{x(),be=_`
+`})))()}var Y,ve,ye,be,xe,Se,Ce;function we(){return(we=e((()=>{J(),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},ve=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},ye=e=>{e.forEach(([,e])=>{!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&e.setAttribute(`tabindex`,`0`)})},be=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},xe=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),ve(e,t)},Se=e=>new MouseEvent(`click`,e),Ce=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;if(t.stopPropagation(),i.dispatchEvent(Se(t))||t.preventDefault(),me(t)){if(i.focus(),i.hasAttribute(`overflowing`)){let e=i.getRootNode()?.querySelector?.(`[tabindex="0"]`);e&&e!==i&&e.focus()}he(a)}}})))()}var Te,Ee,De,Oe,ke,Ae,je,Me,Ne,Pe,Fe,Ie,Le,Re,ze,Be,Ve,He,Ue;function We(){return(We=e((()=>{x(),Te=_`
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -318,7 +318,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	   fully token-derived (fixed line-height, paddings, 16px icon), so
 	   the clip is a constant the observer's intersections read against. */
 	max-height: 41px; /* underline */
-`,xe=_`
+`,Ee=_`
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -335,7 +335,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
-`,Se=_`
+`,De=_`
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
@@ -352,71 +352,71 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		background-color 0.1s linear,
 		box-shadow 0.1s linear;
 	outline: 0;
-`,Ce=_`
+`,Oe=_`
 	outline: 2px solid var(--cz-color-fg-brand);
 	outline-offset: -2px;
-`,we=_`
+`,ke=_`
 	color: var(--cz-color-text-brand);
 	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`,Te=_`
+`,Ae=_`
 	width: 16px;
 	height: 16px;
 	flex-shrink: 0;
 	color: var(--cz-color-fg-quaternary);
-`,Ee=_`
+`,je=_`
 	color: var(--cz-color-fg-brand-secondary);
-`,De=_`
+`,Me=_`
 	gap: calc(var(--cz-spacing) * 1);
 	box-shadow: none;
-`,Oe=_`
+`,Ne=_`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-md);
-`,ke=_`
+`,Pe=_`
 	color: var(--cz-color-text-on-brand);
 	background-color: var(--cz-color-bg-brand-solid);
 	box-shadow: none;
-`,Ae=_`
+`,Fe=_`
 	gap: calc(var(--cz-spacing) * 1);
 	padding: calc(var(--cz-spacing) * 1);
 	border-radius: var(--cz-radius-lg);
 	background-color: var(--cz-color-bg-secondary);
 	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`,je=_`
+`,Ie=_`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-sm);
-`,Me=_`
+`,Le=_`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary);
 	box-shadow: var(--cz-shadow-sm);
-`,Ne=_`
+`,Re=_`
 	color: var(--cz-color-fg-secondary-hover);
-`,Pe=_`
+`,ze=_`
 	padding-block: calc(var(--cz-spacing) * 1.5);
-`,Fe=_`
+`,Be=_`
 	padding-inline: calc(var(--cz-spacing) * 2);
-`,Ie=_`
+`,Ve=_`
 	padding: calc(var(--cz-spacing) * 0.75);
 	border-radius: var(--cz-radius-md);
-`,Le=_`
-	${Se}
+`,He=_`
+	${De}
 	flex: 0 0 auto;
 	background: none;
 	border: 0;
 	font: inherit;
 	appearance: none;
-`,Re=_`
+`,Ue=_`
 	:host {
-		${be}
+		${Te}
 		flex: 0 1 auto;
 		min-width: 0;
 	}
 
 	:host([variant='brand']) {
-		${De}
+		${Me}
 	}
 
 	:host([variant='segmented']) {
-		${Ae}
+		${Fe}
 	}
 
 	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
@@ -445,7 +445,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	:host([variant='segmented'][size='sm']) {
-		${Ie}
+		${Ve}
 	}
 
 	.more {
@@ -459,7 +459,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	.more-button {
-		${Le}
+		${He}
 	}
 
 	.more-button .chevron {
@@ -467,7 +467,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	.more-button svg {
-		${Te}
+		${Ae}
 		transition: transform 0.15s ease;
 	}
 
@@ -477,25 +477,25 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	.more-button:hover,
 	.more[data-active] .more-button {
-		${we}
+		${ke}
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		${Ee}
+		${je}
 	}
 
 	.more-button:focus-visible {
-		${Ce}
+		${Oe}
 	}
 
 	:host([variant='brand']) .more-button {
-		${Oe}
+		${Ne}
 	}
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		${ke}
+		${Pe}
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
@@ -504,41 +504,42 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	:host([variant='segmented']) .more-button {
-		${je}
+		${Ie}
 	}
 
 	:host([variant='segmented']) .more-button:hover,
 	:host([variant='segmented']) .more[data-active] .more-button {
-		${Me}
+		${Le}
 	}
 
 	:host([variant='segmented']) .more-button:hover svg,
 	:host([variant='segmented']) .more[data-active] .more-button svg {
-		${Ne}
+		${Re}
 	}
 
 	:host([size='sm']) .more-button {
-		${Pe}
+		${ze}
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .more-button {
-		${Fe}
+		${Be}
 	}
 
 	.menu {
-		${xe}
+		${Ee}
 	}
-`})))()}var Be;function Ve(){return(Ve=e((()=>{x(),Be=(e,t,n)=>{let[r,i]=T(()=>new Set);return w(()=>{let n=e,r=t();if(!n||r.length===0)return;let a=new Map,o=()=>{let e=new Set(r.filter(e=>a.get(e)===!0));r.forEach(t=>{let n=e.has(t);n!==t.hasAttribute(`overflowing`)&&(n?t.setAttribute(`overflowing`,``):t.removeAttribute(`overflowing`))}),i(t=>t.size===e.size&&[...e].every(e=>t.has(e))?t:e)},s=new IntersectionObserver(e=>{e.forEach(e=>{let t=e.target;a.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),o()},{root:n,threshold:[0,1]}),c=n.shadowRoot?.querySelector(`slot:not([name])`),l=()=>{let e=new Set(c?.assignedElements({flatten:!0}));a.forEach((t,n)=>{e.has(n)||a.set(n,!1)}),o()};return c?.addEventListener(`slotchange`,l),r.forEach(e=>{a.set(e,!1),s.observe(e)}),()=>{s.disconnect(),c?.removeEventListener(`slotchange`,l)}},n),r}})))()}var He,Ue,We,X,Ge,Ke,qe,Je;function Ye(){return(Ye=e((()=>{d(),A(),L(),x(),J(),ye(),ze(),Ve(),He=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tablist`)}},Ue=`cosmoz-tab-next`,We=e=>e.map(e=>+!e.hidden).join(``),X={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},Ge=(e,t)=>{let[n,r]=T(0);return c(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,X)),()=>t.disconnect()},[t]),n},Ke=(e,t,n)=>{let r=Ge(e,n),i=h();return i.current??=new Map,l(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??he(e);return n.set(e,t),ge(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),me(r),r},[t,n,r])},qe=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.setAttribute(`role`,`tablist`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,tabindex:e=>e.hasAttribute(`active`)?`0`:`-1`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`}),Je=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=T(0),i=h(),a=s(()=>(i.current??[]).filter(e=>e.matches(Ue)),[]),o=()=>r(e=>e+1),c=Be(e,a,[a().map(e=>e.getAttribute(`name`)).join(`,`),We(a())]),l=Ke(a,c,t);return n`
+`})))()}var X,Z,Ge,Ke,qe,Je,Ye;function Xe(){return(Xe=e((()=>{d(),k(),I(),x(),V(),J(),we(),We(),X=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tablist`)}},Z=`cosmoz-tab-next`,Ge={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},Ke=(e,t)=>{let[n,r]=w(0);return c(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,Ge)),()=>t.disconnect()},[t]),n},qe=(e,t,n)=>{let r=Ke(e,n),i=h();return i.current??=new Map,l(()=>{let n=i.current,r=e().filter(e=>t.has(e)).map(e=>{let t=n.get(e)??be(e);return n.set(e,t),xe(e,t),[e,t]}),a=new Set(r.map(([e])=>e));return n.forEach((e,t)=>{a.has(t)||n.delete(t)}),ye(r),r},[t,n,r])},Je=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.setAttribute(`role`,`tablist`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,tabindex:e=>e.hasAttribute(`active`)?`0`:`-1`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`}),Ye=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=w(0),[i,a]=w(()=>new Set),o=h(),c=s(()=>(o.current??[]).filter(e=>e.matches(Z)),[]),l=()=>r(e=>e+1),u=qe(c,i,t);return n`
 		<slot name="tabs"></slot>
 		<slot
-			${k(i)}
-			${I(qe(e))}
-			@slotchange=${o}
+			${O(o)}
+			${F(Je(e))}
+			${B({host:e,is:e=>e.matches(Z),onOverflow:a})}
+			@slotchange=${l}
 			style="display: contents"
 		></slot>
-		${fe({items:l.map(([,e])=>e),overflows:l.length>0,active:l.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:ve(l)})}
+		${_e({items:u.map(([,e])=>e),overflows:u.length>0,active:u.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:Ce(u)})}
 		<slot name="stats"></slot>
-	`},customElements.define(`cosmoz-tabs-next`,f(Je,{baseElement:He,observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[y,Re]}))})))()}var Z,Xe,Ze,Qe,$e,et;function Q(){return(Q=e((()=>{re(),M(),x(),S(),Z=e=>!e.hidden&&!e.disabled,Xe=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Z),Ze=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Z(n)?n:Xe(e)},Qe=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=ne(t),a=h([]),o=l(()=>Ze(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:l(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:s(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},$e=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=j(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
+	`},customElements.define(`cosmoz-tabs-next`,f(Ye,{baseElement:X,observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[y,Ue]}))})))()}var Q,Ze,Qe,$e,et,tt;function $(){return($=e((()=>{ie(),j(),x(),S(),Q=e=>!e.hidden&&!e.disabled,Ze=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),Qe=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:Ze(e)},$e=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=re(t),a=h([]),o=l(()=>Qe(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:l(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:s(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},et=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=A(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
 			name=${e.name}
 			class=${v(i)}
 			variant=${v(a)}
@@ -551,4 +552,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			badge=${v(u)}
 			@click=${r}
 			>${g(e.icon,e=>e({slot:`icon`}))}${l}</cosmoz-tab-next
-		>`}),et=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function $(){return($=e((()=>{ae(),Ye(),Q()})))()}export{Qe as a,$e as i,Q as n,et as r,$ as t};
+		>`}),tt=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function nt(){return(nt=e((()=>{oe(),Xe(),$()})))()}export{$e as a,et as i,$ as n,tt as r,nt as t};
