@@ -10,6 +10,7 @@ import {
 	useRef,
 	useState,
 } from '@pionjs/pion';
+import { overflow } from './overflow';
 import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
@@ -19,7 +20,6 @@ import {
 	type CopyPair,
 } from './projection';
 import { nextTabsStyles, type TabsSize, type TabsVariant } from './styles';
-import { useOverflow } from './use-overflow';
 
 export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
@@ -41,8 +41,6 @@ export class TabsNextBase extends HTMLElement {
 }
 
 const TAB = 'cosmoz-tab-next';
-const shown = (tabs: HTMLElement[]) =>
-	tabs.map((tab) => (tab.hidden ? 0 : 1)).join('');
 
 const WATCHED = {
 	attributes: true,
@@ -166,6 +164,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	}
 
 	const [version, setVersion] = useState(0),
+		[overflowing, setOverflowing] = useState<Set<HTMLElement>>(() => new Set()),
 		assigned = useRef<Element[]>(),
 		tabs = useCallback(
 			() =>
@@ -176,13 +175,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		),
 		onSlotChange = () => setVersion((v) => v + 1);
 
-	const overflowing = useOverflow(host, tabs, [
-		tabs()
-			.map((tab) => tab.getAttribute('name'))
-			.join(','),
-		shown(tabs()),
-	]);
-
 	const copies = useCopies(tabs, overflowing, version);
 
 	return html`
@@ -190,6 +182,11 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		<slot
 			${assignedRef(assigned)}
 			${forwardAttributes(project(host))}
+			${overflow({
+				host,
+				is: (el) => el.matches(TAB),
+				onOverflow: setOverflowing,
+			})}
 			@slotchange=${onSlotChange}
 			style="display: contents"
 		></slot>
