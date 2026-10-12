@@ -1,4 +1,6 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
+import { assignedRef } from '@neovici/cosmoz-utils/directives/assigned-ref';
+import { forwardAttributes } from '@neovici/cosmoz-utils/directives/forward-attributes';
 import {
 	component,
 	html,
@@ -12,7 +14,6 @@ import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
 	forward,
-	reflect,
 	refresh,
 	tabStops,
 	type CopyPair,
@@ -43,17 +44,10 @@ const TAB = 'cosmoz-tab-next';
 const shown = (tabs: HTMLElement[]) =>
 	tabs.map((tab) => (tab.hidden ? 0 : 1)).join('');
 
-const tabsIn = (root: HTMLElement): HTMLElement[] =>
-	(
-		(
-			root.shadowRoot?.querySelector(
-				'slot:not([name])',
-			) as HTMLSlotElement | null
-		)?.assignedElements({ flatten: true }) ?? []
-	).filter((el: Element) => el.matches(TAB)) as HTMLElement[];
-
 const WATCHED = {
 	attributes: true,
+	// not role: the group owns the wording and stamps it per render; an
+	// observer would feed on its own same-value writes
 	attributeFilter: [
 		'active',
 		'disabled',
@@ -62,7 +56,6 @@ const WATCHED = {
 		'href',
 		'name',
 		'title',
-		'role',
 	],
 	childList: true,
 	subtree: true,
@@ -116,12 +109,16 @@ const useCopies = (
 };
 
 /**
- * The family is a tablist (the default written at connect via
- * `TabsNextBase`); the host's role is owned here. Value pickers build
- * on the input's own radiogroup (`cosmoz-toggle-group`); authored
- * `radiogroup` overrides are reported.
+ * The host's policy and the projection's map: the family is a tablist
+ * (the default written at connect via `TabsNextBase`), value pickers
+ * build on the input's own radiogroup (`cosmoz-toggle-group`), and every
+ * bar member carries the group's variant/size and the item's face.
+ *
+ * The map is projected by `forwardAttributes` onto the assigned members;
+ * its functions are evaluated per element at projection time, so the
+ * roving tabindex and the selection word with the element's own `active`.
  */
-const settings = (host: HTMLElement) => {
+const project = (host: HTMLElement) => {
 	const authored = host.getAttribute('role');
 	if (authored === 'radiogroup') {
 		host.setAttribute('role', 'tablist');
@@ -137,22 +134,12 @@ const settings = (host: HTMLElement) => {
 	return {
 		variant: host.getAttribute('variant'),
 		size: host.getAttribute('size'),
-		compactWidth: host.hasAttribute('compact-width') ? '' : null,
+		'compact-width': host.hasAttribute('compact-width') ? '' : null,
+		role: 'tab',
+		tabindex: (el: Element) => (el.hasAttribute('active') ? '0' : '-1'),
+		'aria-selected': (el: Element) =>
+			el.hasAttribute('active') ? 'true' : 'false',
 	};
-};
-
-const stamp = (
-	tab: Element,
-	{ variant, size, compactWidth }: ReturnType<typeof settings>,
-) => {
-	reflect(tab, 'variant', variant);
-	reflect(tab, 'size', size);
-	reflect(tab, 'compact-width', compactWidth);
-	reflect(tab, 'role', 'tab');
-	// roving tabindex: the selected tab is the bar's one tab stop; the
-	// container owns the attribute like it owns role/variant
-	reflect(tab, 'tabindex', tab.hasAttribute('active') ? '0' : '-1');
-	reflect(tab, 'aria-selected', tab.hasAttribute('active') ? 'true' : 'false');
 };
 
 /**
@@ -178,24 +165,16 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		host.setAttribute('variant', 'brand');
 	}
 
-	const given = settings(host);
-
-	const [version, setVersion] = useState(0);
-
-	const tabs = useCallback(() => tabsIn(host), []);
-
-	const apply = () => {
-		new Set([...host.querySelectorAll<HTMLElement>(TAB), ...tabs()]).forEach(
-			(tab) => stamp(tab, given),
-		);
-	};
-
-	const onSlotChange = () => {
-		apply();
-		setVersion((v) => v + 1);
-	};
-
-	useEffect(apply);
+	const [version, setVersion] = useState(0),
+		assigned = useRef<Element[]>(),
+		tabs = useCallback(
+			() =>
+				(assigned.current ?? []).filter((el) =>
+					el.matches(TAB),
+				) as HTMLElement[],
+			[],
+		),
+		onSlotChange = () => setVersion((v) => v + 1);
 
 	const overflowing = useOverflow(host, tabs, [
 		tabs()
@@ -208,7 +187,12 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	return html`
 		<slot name="tabs"></slot>
-		<slot @slotchange=${onSlotChange} style="display: contents"></slot>
+		<slot
+			${assignedRef(assigned)}
+			${forwardAttributes(project(host))}
+			@slotchange=${onSlotChange}
+			style="display: contents"
+		></slot>
 		${renderOverflowMenu({
 			items: copies.map(([, clone]) => clone),
 			overflows: copies.length > 0,
