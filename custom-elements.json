@@ -123,7 +123,7 @@
 				{
 					"name": "role",
 					"type": "String",
-					"description": "'tablist' is the default (written on the host itself when absent; the host is the track). An authored `radiogroup` is overridden to `tablist` with a `deprecation-warning` event — a value picker belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input), not in a tab family"
+					"description": "'tablist' is the default (written on the host itself when absent). An authored `radiogroup` is overridden to `tablist` with a `deprecation-warning` event — a value picker belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input), not in a tab family"
 				},
 				{
 					"name": "more-label",

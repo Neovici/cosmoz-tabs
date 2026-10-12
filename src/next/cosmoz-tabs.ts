@@ -182,12 +182,10 @@ const Tabs = (host: CosmozTabsNextElement) => {
 			${assignedRef(assigned)}
 			${forwardAttributes(project(host))}
 			${overflow({
-				host,
 				is: (el) => el.matches(TAB),
 				onOverflow: setOverflowing,
 			})}
 			@slotchange=${onSlotChange}
-			style="display: contents"
 		></slot>
 		${renderOverflowMenu({
 			items: copies.map(([, clone]) => clone),
