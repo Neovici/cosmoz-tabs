@@ -372,3 +372,53 @@ export const RenderTabsRendersTheIconIntoTheIconSlot: Story = {
 		});
 	},
 };
+
+export const OptionalMaterial: Story = {
+	render: () => fixture('underline'),
+	play: async ({ canvasElement, step }) => {
+		const container = getContainer(canvasElement);
+		const active = container.querySelector<HTMLElement>(
+			'cosmoz-tab-next[active]',
+		)!;
+		await step('material applies to the track and selected tab', async () => {
+			container.style.setProperty(
+				'--cz-tabs-background',
+				'linear-gradient(white, transparent) navy',
+			);
+			container.style.setProperty(
+				'--cz-tab-active-background',
+				'linear-gradient(white, transparent) teal',
+			);
+			await waitFor(() => {
+				expect(getComputedStyle(container).backgroundImage).toContain(
+					'linear-gradient',
+				);
+				expect(getComputedStyle(active).backgroundImage).toContain(
+					'linear-gradient',
+				);
+			});
+		});
+		await step('brand and segmented variants keep their own fill', async () => {
+			container.setAttribute('variant', 'brand');
+			await waitFor(() => expect(active.getAttribute('variant')).toBe('brand'));
+			expect(getComputedStyle(active).backgroundImage).toBe('none');
+			container.setAttribute('variant', 'segmented');
+			await waitFor(() =>
+				expect(active.getAttribute('variant')).toBe('segmented'),
+			);
+			expect(getComputedStyle(active).backgroundImage).toBe('none');
+		});
+		await step(
+			'removing material restores the default underline surface',
+			async () => {
+				container.removeAttribute('style');
+				container.setAttribute('variant', 'underline');
+				await waitFor(() =>
+					expect(active.getAttribute('variant')).toBe('underline'),
+				);
+				expect(getComputedStyle(active).backgroundImage).toBe('none');
+				expect(getComputedStyle(container).backgroundImage).toBe('none');
+			},
+		);
+	},
+};
