@@ -47,6 +47,21 @@ export default defineConfig({
 					},
 				},
 			},
+			{
+				extends: true,
+				test: {
+					name: 'browser',
+					include: ['test/**/*.test.ts'],
+					browser: {
+						enabled: true,
+						provider: playwright({
+							launchOptions: { args: ['--js-flags=--expose-gc'] },
+						}),
+						headless: true,
+						instances: [{ browser: 'chromium' }],
+					},
+				},
+			},
 		],
 	},
 });
