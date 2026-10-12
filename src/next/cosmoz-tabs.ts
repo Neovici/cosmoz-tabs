@@ -150,7 +150,6 @@ const project = (host: HTMLElement) => {
  * overridden (with a `deprecation-warning` event) - a value picker
  * belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input)
  * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
- * @csspart items - the flex track holding the tabs (wraps when they do not fit)
  * @csspart more - overflow menu
  * @csspart more-button - overflow menu trigger
  * @csspart menu - overflow menu popover

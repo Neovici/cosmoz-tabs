@@ -176,11 +176,13 @@ is overridden with a `deprecation-warning` event — a value picker belongs in
 `cosmoz-toggle-group` (`@neovici/cosmoz-input`).
 
 **No tab is ever clipped.** The bar's track wraps: a tab that does not fit lands on a
-second row by layout alone — flexbox is the classifier, there is no measuring machinery.
-The wrapped tabs are marked (`overflowing`, the one attribute the component writes on
-your tabs), which takes them out of the layout so the bar collapses back to one row; the
-mark is also what the overflow menu's copies follow. A width change unmarks everything,
-lets the wrap happen again and re-classifies — within a frame or two, without flashing.
+second row by layout alone — flexbox is the classifier. Where a tab landed is read with
+an `IntersectionObserver` rooted on the host's clip band (`overflow: clip`, bounded to
+the first row's height): a tab below the band is marked (`overflowing`, the one
+attribute the component writes on your tabs) and offered in the overflow menu. The
+marks are paint-only (`visibility: hidden`), so the layout never moves underneath the
+observer; the observer delivers deltas — a tab flowing back into the band is unmarked
+as it happens, a re-slotted or removed tab clears through the slot's own `slotchange`.
 
 The dropdown comes from [`@neovici/cosmoz-dropdown`](https://github.com/neovici/cosmoz-dropdown)
 and the chevron from [`@neovici/cosmoz-icons`](https://github.com/neovici/cosmoz-icons); both
@@ -196,8 +198,10 @@ Highlights:
   `compact-width`; parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
 - **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`, `role`, `more-label`; parts
-  `items`, `more`, `more-button`, `menu`; slots `tabs`, `stats` (auto-assigned for non-tab children).
-  Overflow menu: on by default; see [Overflow menu](#overflow-menu-cosmoz-tabs-next-only).
+  `more`, `more-button`, `menu`; slots `tabs`, `stats` (assigned explicitly, no auto-routing).
+  The host is the track itself; an `IntersectionObserver` marks the tabs that do not fit as
+  `overflowing` and offers them in the menu (on by default; see
+  [Overflow menu](#overflow-menu-cosmoz-tabs-next-only)).
 - **`cosmoz-tab-next`** — attrs `active`, `badge`, `href`, `disabled`, `size`; `icon` slot.
 - **`cosmoz-tab-card`** — attrs `heading`, `collapsable`, `collapsed`; parts `header`,
   `heading`, `collapse-icon`, `content`. Themable via the `--cosmoz-tab-card-*` custom
