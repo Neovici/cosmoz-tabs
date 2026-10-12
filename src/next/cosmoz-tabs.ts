@@ -137,6 +137,8 @@ const project = (host: HTMLElement) => {
 		tabindex: (el: Element) => (el.hasAttribute('active') ? '0' : '-1'),
 		'aria-selected': (el: Element) =>
 			el.hasAttribute('active') ? 'true' : 'false',
+		'aria-disabled': (el: Element) =>
+			el.hasAttribute('disabled') ? 'true' : null,
 	};
 };
 
