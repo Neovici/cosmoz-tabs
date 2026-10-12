@@ -15,7 +15,10 @@ import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
 	forward,
+	reflect,
 	refresh,
+	shown,
+	stopOf,
 	tabStops,
 	type CopyPair,
 } from './projection';
@@ -26,18 +29,6 @@ export interface CosmozTabsNextElement extends HTMLElement {
 	size?: TabsSize;
 	compactWidth?: boolean;
 	moreLabel?: string;
-}
-
-/**
- * The host is the widget: the group role is authored and carried here
- * (as the slideout's host is its dialog), settled at connect.
- */
-export class TabsNextBase extends HTMLElement {
-	connectedCallback() {
-		if (!this.hasAttribute('role')) {
-			this.setAttribute('role', 'tablist');
-		}
-	}
 }
 
 const TAB = 'cosmoz-tab-next';
@@ -84,7 +75,8 @@ const useCopies = (
 
 	return useMemo(() => {
 		const cached = cache.current as Map<HTMLElement, HTMLElement>,
-			copies = tabs()
+			members = tabs(),
+			copies = members
 				.filter((tab) => overflowing.has(tab))
 				.map((tab) => {
 					const clone = cached.get(tab) ?? copyOf(tab);
@@ -102,24 +94,34 @@ const useCopies = (
 
 		tabStops(copies);
 
+		// the bar's own stop: the selection's reachable representative -
+		// the walk's home base even when the selection hides in the menu
+		const stop = stopOf(members);
+		members.forEach((member) =>
+			reflect(member, 'tabindex', member === stop ? '0' : '-1'),
+		);
+
 		return copies;
 	}, [overflowing, version, revision]);
 };
 
 /**
- * The host's policy and the projection's map: the family is a tablist
- * (the default written at connect via `TabsNextBase`), value pickers
- * build on the input's own radiogroup (`cosmoz-toggle-group`), and every
- * bar member carries the group's variant/size and the item's face.
+ * The frame's policy and the projection's map: the group role is
+ * carried by the track's group (only the tabs inside it), value
+ * pickers build on the input's own radiogroup (`cosmoz-toggle-group`),
+ * and every bar member carries the group's variant/size and the item's
+ * face.
  *
  * The map is projected by `forwardAttributes` onto the assigned members;
  * its functions are evaluated per element at projection time, so the
- * roving tabindex and the selection word with the element's own `active`.
+ * selection and the disabled word follow the element's own attributes.
+ * The roving tabindex is the stop pass's (the container's `stopOf`):
+ * the bar's stop is reachable even when the selection hides in the menu.
  */
 const project = (host: HTMLElement) => {
 	const authored = host.getAttribute('role');
 	if (authored === 'radiogroup') {
-		host.setAttribute('role', 'tablist');
+		host.removeAttribute('role');
 		host.dispatchEvent(
 			new CustomEvent('deprecation-warning', {
 				detail: {
@@ -134,7 +136,6 @@ const project = (host: HTMLElement) => {
 		size: host.getAttribute('size'),
 		'compact-width': host.hasAttribute('compact-width') ? '' : null,
 		role: 'tab',
-		tabindex: (el: Element) => (el.hasAttribute('active') ? '0' : '-1'),
 		'aria-selected': (el: Element) =>
 			el.hasAttribute('active') ? 'true' : 'false',
 		'aria-disabled': (el: Element) =>
@@ -144,12 +145,6 @@ const project = (host: HTMLElement) => {
 
 /** The keys the bar's walk speaks; the menu's keys are the dropdown's. */
 const ROVED = new Set(['ArrowLeft', 'ArrowRight', 'Home', 'End']);
-
-/** the walk lands on shown members only: enabled, and showing in the band */
-const shown = (member: HTMLElement) =>
-	!member.hasAttribute('disabled') &&
-	!member.hasAttribute('hidden') &&
-	!member.hasAttribute('overflowing');
 
 /**
  * The walk's target: the shown member a step from `from`, clamped at the
@@ -188,8 +183,9 @@ const rove = (
  * @attr {('sm')} size - omit for the default size; sm trims the item's box on
  * both axes, and thins the segmented track's ring to match
  * @attr {boolean} compact-width
- * @attr {string} role - a tablist; an authored `radiogroup` is
- * overridden (with a `deprecation-warning` event) - a value picker
+ * @attr {string} role - the family is a tablist: the role rides the
+ * rendered group around the track's members; an authored `radiogroup` is
+ * removed (with a `deprecation-warning` event) - a value picker
  * belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input)
  * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
  * @csspart more - overflow menu
@@ -247,15 +243,17 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	return html`
 		<slot name="tabs"></slot>
-		<slot
-			${assignedRef(assigned)}
-			${forwardAttributes(project(host))}
-			${overflow({
-				is: (el) => el.matches(TAB),
-				onOverflow: setOverflowing,
-			})}
-			@slotchange=${onSlotChange}
-		></slot>
+		<div class="group" role="tablist">
+			<slot
+				${assignedRef(assigned)}
+				${forwardAttributes(project(host))}
+				${overflow({
+					is: (el) => el.matches(TAB),
+					onOverflow: setOverflowing,
+				})}
+				@slotchange=${onSlotChange}
+			></slot>
+		</div>
 		${renderOverflowMenu({
 			items: copies.map(([, clone]) => clone),
 			overflows: copies.length > 0,
@@ -270,7 +268,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
-		baseElement: TabsNextBase,
 		observedAttributes: ['variant', 'size', 'compact-width', 'more-label'],
 		styleSheets: [normalize, nextTabsStyles],
 	}),

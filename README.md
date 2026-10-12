@@ -137,13 +137,14 @@ html`<cosmoz-tabs-next .moreLabel=${t('More tabs')}>…</cosmoz-tabs-next>`;
 The menu is styled through the `more`, `more-button` and `menu` parts.
 
 Keyboard behavior is the platform's: the selected tab is the bar's one tab
-stop, the menu's rows are tabbable, and `cosmoz-tab-next` picks on Enter
-and Space like a native button — in the bar and in the menu alike. In the
-bar the arrows walk: Left and Right step among the shown tabs and pick as
-they go (activation follows focus), Home/End jump to the band's edges;
-hidden, disabled and overflowed tabs stay out of the walk — the menu
-reaches the overflowed ones. The dropdown handles the rest of the menu's
-keyboard — it announces `aria-expanded` and hands focus back to the
+stop (a selection hidden in the menu leaves the stop with the shown tab
+before it, so the bar is always reachable), the menu's rows are tabbable,
+and `cosmoz-tab-next` picks on Enter and Space like a native button — in
+the bar and in the menu alike. In the bar the arrows walk: Left and Right
+step among the shown tabs and pick as they go (activation follows focus),
+Home/End jump to the band's edges; hidden, disabled and overflowed tabs
+stay out of the walk — the menu reaches the overflowed ones. The dropdown
+handles the rest of the menu's keyboard — it announces `aria-expanded` and hands focus back to the
 trigger on Escape or click-outside, from `@neovici/cosmoz-dropdown@8.0.1`.
 
 The legacy `cosmoz-tabs` is unchanged — its bar still scrolls.
@@ -173,9 +174,11 @@ html`<cosmoz-tabs-next>
 </cosmoz-tabs-next>`;
 ```
 
-The group family is a tablist: the role is authored on the host and written to the host
-itself (`tablist` default; the menu takes the same role). An authored `role="radiogroup"`
-is overridden with a `deprecation-warning` event — a value picker belongs in
+The group family is a tablist: the container renders its track inside a
+group that carries the role, so only the tab members sit in the group's
+membership — a heading in `tabs`, stats in `stats` and the overflow
+trigger stay outside it. An authored `role="radiogroup"` on the container
+is removed with a `deprecation-warning` event — a value picker belongs in
 `cosmoz-toggle-group` (`@neovici/cosmoz-input`).
 
 **No tab is ever clipped.** The track — the wrapping, clipping default slot; the host

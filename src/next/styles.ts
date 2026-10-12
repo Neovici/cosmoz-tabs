@@ -26,21 +26,26 @@ const frame = css`
 	min-width: 0;
 `;
 
-/* The track wraps and clips itself to the first row: tabs that do not
-   fit land on a second row in the layout and are painted away by their
-   mark, so the observer's geometry is stable under the marks. */
+/* The band: the wrapping, clipping row the members land in and the
+   observer reads against. One row's box is exact per size/variant (the
+   item's box is fully token-derived), so the clip is a constant the
+   intersections read against. */
 const track = css`
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: var(--_gap);
+	overflow: clip;
+	max-height: 41px; /* underline */
+`;
+
+/* The group is the tablist: the element carrying the role around only
+   the track's members - the frame's flanks (the headings slot, the
+   overflow trigger, the stats slot) stay outside the group's
+   membership. Frame sizing rides here, where the band's box used to. */
+const group = css`
 	flex: 1 1 auto;
 	min-width: 0;
-	overflow: clip;
-	/* The band is one row's box, exact per size/variant: the item's box is
-	   fully token-derived (fixed line-height, paddings, 16px icon), so
-	   the clip is a constant the observer's intersections read against. */
-	max-height: 41px; /* underline */
 `;
 
 const menu = css`
@@ -187,6 +192,12 @@ export const nextTabsStyles = css`
 	   all variants to 33px */
 	slot:not([name]) {
 		${track}
+	}
+
+	/* the group: the role-carrier around the track's members; frame
+	   sizing rides here, where the band's box used to */
+	.group {
+		${group}
 	}
 
 	:host([variant='brand']) slot:not([name]),

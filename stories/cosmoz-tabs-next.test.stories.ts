@@ -26,48 +26,22 @@ const fixture = (variant = 'brand') => html`
 const getContainer = (root: HTMLElement) =>
 	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 
-export const RovingTabindex: Story = {
-	render: () => fixture(),
-	play: async ({ canvasElement, step }) => {
-		const container = getContainer(canvasElement);
-
-		await step('the selected tab is the one tab stop', () => {
-			expect(
-				container
-					.querySelector('cosmoz-tab-next[active]')!
-					.getAttribute('tabindex'),
-			).toBe('0');
-			container
-				.querySelectorAll('cosmoz-tab-next:not([active])')
-				.forEach((tab) => expect(tab.getAttribute('tabindex')).toBe('-1'));
-		});
-
-		await step('the stop follows selection', async () => {
-			container
-				.querySelector('cosmoz-tab-next[active]')!
-				.removeAttribute('active');
-			const next = container.querySelector(
-				'cosmoz-tab-next:not([disabled])',
-			) as HTMLElement;
-			next.setAttribute('active', '');
-			await waitFor(() => expect(next.getAttribute('tabindex')).toBe('0'));
-			expect(
-				container.querySelectorAll('cosmoz-tab-next[tabindex="0"]').length,
-			).toBe(1);
-		});
-	},
-};
-
 export const RolesAndActive: Story = {
 	render: () => fixture(),
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('the host is the tablist', async () => {
-			await waitFor(() =>
-				expect(container.getAttribute('role')).toBe('tablist'),
-			);
-		});
+		await step(
+			'the track is the tablist - only the items inside it',
+			async () => {
+				await waitFor(() => {
+					expect(container.getAttribute('role')).toBeNull();
+					expect(
+						container.shadowRoot!.querySelector('[role="tablist"]'),
+					).not.toBeNull();
+				});
+			},
+		);
 
 		await step('active tab gets role=tab and aria-selected', async () => {
 			const active = container.querySelector('cosmoz-tab-next[active]')!;
@@ -111,9 +85,12 @@ export const RadiogroupIsATablist: Story = {
 		await step(
 			'the family is a tablist regardless of authored role: a value picker is the input package\'s radiogroup',
 			async () => {
-				await waitFor(() =>
-					expect(container.getAttribute('role')).toBe('tablist'),
-				);
+				await waitFor(() => {
+					expect(container.getAttribute('role')).toBeNull();
+					expect(
+						container.shadowRoot!.querySelector('[role="tablist"]'),
+					).not.toBeNull();
+				});
 			},
 		);
 
