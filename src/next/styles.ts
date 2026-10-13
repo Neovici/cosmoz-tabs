@@ -10,194 +10,60 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
  */
 export type TabsSize = 'sm';
 
-/* The host is the frame: one nowrap row carrying the track, the overflow
-   trigger and the stats; the identity (font stack, paddings, the
-   underline's bottom rule) lives here. */
-const frame = css`
-	display: flex;
-	align-items: flex-start;
-	gap: var(--_gap);
-	padding-inline: calc(var(--cz-spacing) * 3);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-	min-width: 0;
-`;
-
-/* The band: the wrapping, clipping row the members land in and the
-   observer reads against. One row's box is exact per size/variant (the
-   item's box is fully token-derived), so the clip is a constant the
-   intersections read against. */
-const track = css`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	gap: var(--_gap);
-	overflow: clip;
-	max-height: 41px; /* underline */
-`;
-
-/* The group is the tablist: the element carrying the role around only
-   the track's members - the frame's flanks (the headings slot, the
-   overflow trigger, the stats slot) stay outside the group's
-   membership. Frame sizing rides here, where the band's box used to. */
-const group = css`
-	flex: 1 1 auto;
-	min-width: 0;
-`;
-
-const menu = css`
-	display: flex;
-	flex-direction: column;
-	box-sizing: border-box;
-	gap: calc(var(--cz-spacing) * 0.5);
-	min-width: 180px;
-	max-height: 60vh;
-	overflow-y: auto;
-	padding: calc(var(--cz-spacing) * 1.5);
-	background-color: var(--cz-color-bg-primary);
-	border: 1px solid var(--cz-color-border-secondary);
-	border-radius: var(--cz-radius-md);
-	box-shadow: var(--cz-shadow-lg);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-`;
-
-const item = css`
-	position: relative;
-	display: inline-flex;
-	box-sizing: border-box;
-	align-items: center;
-	justify-content: center;
-	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
-	color: var(--cz-color-text-quaternary);
-	text-decoration: none;
-	white-space: nowrap;
-	cursor: pointer;
-	transition:
-		color 0.1s linear,
-		background-color 0.1s linear,
-		box-shadow 0.1s linear;
-	outline: 0;
-`;
-
-const itemFocus = css`
-	outline: 2px solid var(--cz-color-fg-brand);
-	outline-offset: -2px;
-`;
-
-const activeUnderline = css`
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`;
-
-const icon = css`
-	width: 16px;
-	height: 16px;
-	flex-shrink: 0;
-	color: var(--cz-color-fg-quaternary);
-`;
-
-const iconActive = css`
-	color: var(--cz-color-fg-brand-secondary);
-`;
-
-const brandBar = css`
-	--_gap: calc(var(--cz-spacing) * 1);
-	box-shadow: none;
-`;
-
-const brandItem = css`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-md);
-`;
-
-const brandActive = css`
-	color: var(--cz-color-text-on-brand);
-	background-color: var(--cz-color-bg-brand-solid);
-	box-shadow: none;
-`;
-
-// Untitled UI's "button border" tabs: a track holding a raised, selected pill.
-const segmentedBar = css`
-	--_gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 1);
-	border-radius: var(--cz-radius-lg);
-	background-color: var(--cz-color-bg-secondary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`;
-
-const segmentedItem = css`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-sm);
-`;
-
-const segmentedActive = css`
-	color: var(--cz-color-text-secondary);
-	background-color: var(--cz-color-bg-primary);
-	box-shadow: var(--cz-shadow-sm);
-`;
-
-const segmentedIconActive = css`
-	color: var(--cz-color-fg-secondary-hover);
-`;
-
-const smItem = css`
-	padding-block: calc(var(--cz-spacing) * 1.5);
-`;
-
-const smButtonItem = css`
-	padding-inline: calc(var(--cz-spacing) * 2);
-`;
-
-/* The track's own ring is what stacks onto the item's padding, so the compact
-   size has to thin that too or the height barely moves. */
-const smSegmentedBar = css`
-	padding: calc(var(--cz-spacing) * 0.75);
-	border-radius: var(--cz-radius-md);
-`;
-
-const moreItem = css`
-	${item}
-	flex: 0 0 auto;
-	background: none;
-	border: 0;
-	font: inherit;
-	appearance: none;
-`;
-
 export const nextTabsStyles = css`
+	/* The host is the frame: one nowrap row carrying the track, the overflow
+	   trigger and the stats; the identity (font stack, paddings, the
+	   underline's bottom rule) lives here. */
 	:host {
-		${frame}
+		display: flex;
+		align-items: flex-start;
+		gap: var(--_gap);
+		padding-inline: calc(var(--cz-spacing) * 3);
+		font-family: var(--cz-font-body);
+		font-size: var(--cz-text-sm);
+		line-height: var(--cz-text-sm-line-height);
+		font-weight: var(--cz-font-weight-semibold);
+		box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
 		flex: 0 1 auto;
 		min-width: 0;
 		--_gap: calc(var(--cz-spacing) * 4);
 	}
 
 	:host([variant='brand']) {
-		${brandBar}
+		--_gap: calc(var(--cz-spacing) * 1);
+		box-shadow: none;
 	}
 
+	/* Untitled UI's "button border" tabs: a track holding a raised, selected pill. */
 	:host([variant='segmented']) {
-		${segmentedBar}
+		--_gap: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 1);
+		border-radius: var(--cz-radius-lg);
+		background-color: var(--cz-color-bg-secondary);
+		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 	}
 
-	/* The wrapping, clipping track is the default slot: band per size/variant.
-	   brand and segmented item boxes sit a touch shorter: 37px; sm trims
-	   all variants to 33px */
+	/* The band: the wrapping, clipping row the members land in and the
+	   observer reads against. One row's box is exact per size/variant (the
+	   item's box is fully token-derived), so the clip is a constant the
+	   intersections read against. The wrapping, clipping track is the
+	   default slot: brand and segmented item boxes sit a touch shorter:
+	   37px; sm trims all variants to 33px */
 	slot:not([name]) {
-		${track}
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: var(--_gap);
+		overflow: clip;
+		max-height: 41px; /* underline */
 	}
 
-	/* the group: the role-carrier around the track's members; frame
-	   sizing rides here, where the band's box used to */
+	/* the group: the tablist around the track's members - the frame's
+	   flanks (the headings slot, the overflow trigger, the stats slot)
+	   stay outside the group's membership. Frame sizing rides here. */
 	.group {
-		${group}
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 
 	:host([variant='brand']) slot:not([name]),
@@ -217,8 +83,11 @@ export const nextTabsStyles = css`
 		max-width: 100%;
 	}
 
+	/* The track's own ring is what stacks onto the item's padding, so the
+	   compact size has to thin that too or the height barely moves. */
 	:host([variant='segmented'][size='sm']) {
-		${smSegmentedBar}
+		padding: calc(var(--cz-spacing) * 0.75);
+		border-radius: var(--cz-radius-md);
 	}
 
 	.more {
@@ -231,8 +100,29 @@ export const nextTabsStyles = css`
 		display: none;
 	}
 
+	/* the button borrows the item's face */
 	.more-button {
-		${moreItem}
+		position: relative;
+		display: inline-flex;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		gap: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
+		color: var(--cz-color-text-quaternary);
+		text-decoration: none;
+		white-space: nowrap;
+		cursor: pointer;
+		transition:
+			color 0.1s linear,
+			background-color 0.1s linear,
+			box-shadow 0.1s linear;
+		outline: 0;
+		flex: 0 0 auto;
+		background: none;
+		border: 0;
+		font: inherit;
+		appearance: none;
 	}
 
 	.more-button .chevron {
@@ -240,7 +130,10 @@ export const nextTabsStyles = css`
 	}
 
 	.more-button svg {
-		${icon}
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		color: var(--cz-color-fg-quaternary);
 		transition: transform 0.15s ease;
 	}
 
@@ -250,25 +143,30 @@ export const nextTabsStyles = css`
 
 	.more-button:hover,
 	.more[data-active] .more-button {
-		${activeUnderline}
+		color: var(--cz-color-text-brand);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		${iconActive}
+		color: var(--cz-color-fg-brand-secondary);
 	}
 
 	.more-button:focus-visible {
-		${itemFocus}
+		outline: 2px solid var(--cz-color-fg-brand);
+		outline-offset: -2px;
 	}
 
 	:host([variant='brand']) .more-button {
-		${brandItem}
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-md);
 	}
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		${brandActive}
+		color: var(--cz-color-text-on-brand);
+		background-color: var(--cz-color-bg-brand-solid);
+		box-shadow: none;
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
@@ -277,28 +175,46 @@ export const nextTabsStyles = css`
 	}
 
 	:host([variant='segmented']) .more-button {
-		${segmentedItem}
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-sm);
 	}
 
 	:host([variant='segmented']) .more-button:hover,
 	:host([variant='segmented']) .more[data-active] .more-button {
-		${segmentedActive}
+		color: var(--cz-color-text-secondary);
+		background-color: var(--cz-color-bg-primary);
+		box-shadow: var(--cz-shadow-sm);
 	}
 
 	:host([variant='segmented']) .more-button:hover svg,
 	:host([variant='segmented']) .more[data-active] .more-button svg {
-		${segmentedIconActive}
+		color: var(--cz-color-fg-secondary-hover);
 	}
 
 	:host([size='sm']) .more-button {
-		${smItem}
+		padding-block: calc(var(--cz-spacing) * 1.5);
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .more-button {
-		${smButtonItem}
+		padding-inline: calc(var(--cz-spacing) * 2);
 	}
 
 	.menu {
-		${menu}
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		gap: calc(var(--cz-spacing) * 0.5);
+		min-width: 180px;
+		max-height: 60vh;
+		overflow-y: auto;
+		padding: calc(var(--cz-spacing) * 1.5);
+		background-color: var(--cz-color-bg-primary);
+		border: 1px solid var(--cz-color-border-secondary);
+		border-radius: var(--cz-radius-md);
+		box-shadow: var(--cz-shadow-lg);
+		font-family: var(--cz-font-body);
+		font-size: var(--cz-text-sm);
+		line-height: var(--cz-text-sm-line-height);
+		font-weight: var(--cz-font-weight-semibold);
 	}
 `;
