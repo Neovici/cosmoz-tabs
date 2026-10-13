@@ -18,6 +18,13 @@ Breaking:
 - `renderTabs` sets `badge` as an attribute, not a property. Menu copies
   follow attributes only — a badge set as a property is not tracked.
 - Writes `overflowing` onto tabs that do not fit (visible in snapshots).
+- `role` is owned by the family: a tablist, written to the host when
+  absent; an authored `radiogroup` is overridden with a
+  `deprecation-warning` event — the radio picker moved to
+  `cosmoz-toggle-group` (`@neovici/cosmoz-input`).
+- `cosmoz-tab-next` picks on Enter and Space like a native button; the
+  selected tab is the bar's one tab stop; every menu row is a tab stop
+  while the menu is open.
 - New dependencies: `@neovici/cosmoz-dropdown` (8.0.1 — the dropdown
   reconciles `aria-expanded` and restores focus to the trigger) and
   `i18next`. `@neovici/cosmoz-icons` is now a runtime dependency.

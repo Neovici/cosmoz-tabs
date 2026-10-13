@@ -4,7 +4,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { sr } from './overflow-helpers';
+import { pump, sr } from './overflow-helpers';
 
 /**
  * wrapper components can project tabs through a slot.
@@ -74,7 +74,7 @@ export const CollectsTabsThroughNestedSlot: Story = {
 		const bar = sr(wrapper).querySelector('cosmoz-tabs-next') as HTMLElement;
 		const projected = () =>
 			(
-				sr(bar).querySelector('.items slot') as HTMLSlotElement
+				sr(bar).querySelector('slot:not([name])') as HTMLSlotElement
 			).assignedElements({ flatten: true });
 
 		await step(
@@ -142,6 +142,7 @@ export const TracksDynamicNestedSlotChanges: Story = {
 		const bar = sr(wrapper).querySelector('cosmoz-tabs-next') as HTMLElement;
 		const rows = () => sr(bar).querySelectorAll('.menu > cosmoz-tab-next');
 
+		await pump(2);
 		await waitFor(() => expect(rows().length).toBeGreaterThan(0));
 
 		await step('new projected tabs are picked up', async () => {

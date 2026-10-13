@@ -15,7 +15,8 @@ export type TabsSize = 'sm';
    mark, so the observer's geometry is stable under the marks. */
 const bar = css`
 	display: flex;
-	align-items: stretch;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: calc(var(--cz-spacing) * 3);
 	padding-inline: calc(var(--cz-spacing) * 3);
 	font-family: var(--cz-font-body);
@@ -23,14 +24,6 @@ const bar = css`
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
 	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-`;
-
-const items = css`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	gap: inherit;
-	flex: 1 1 auto;
 	min-width: 0;
 	overflow: clip;
 	/* The band is one row's box, exact per size/variant: the item's box is
@@ -169,10 +162,6 @@ export const nextTabsStyles = css`
 		min-width: 0;
 	}
 
-	.items {
-		${items}
-	}
-
 	:host([variant='brand']) {
 		${brandBar}
 	}
@@ -183,12 +172,12 @@ export const nextTabsStyles = css`
 
 	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
 	   all variants to 33px */
-	:host([variant='brand']) .items,
-	:host([variant='segmented']) .items {
+	:host([variant='brand']),
+	:host([variant='segmented']) {
 		max-height: 37px;
 	}
 
-	:host([size='sm']) .items {
+	:host([size='sm']) {
 		max-height: 33px;
 	}
 

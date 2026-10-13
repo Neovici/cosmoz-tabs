@@ -20,7 +20,6 @@ export interface OverflowMenuOptions {
 	overflows: boolean;
 	active: boolean;
 	label?: string;
-	role?: 'tablist' | 'radiogroup';
 	onItemClick?: (e: MouseEvent) => void;
 }
 
@@ -34,7 +33,6 @@ export const renderOverflowMenu = ({
 	overflows,
 	active,
 	label,
-	role = 'tablist',
 	onItemClick,
 }: OverflowMenuOptions): TemplateResult => html`
 	<cosmoz-dropdown-next
@@ -62,7 +60,7 @@ export const renderOverflowMenu = ({
 			id="more-menu"
 			class="menu"
 			part="menu"
-			role=${role}
+			role="tablist"
 			aria-orientation="vertical"
 			@click=${onItemClick}
 		>

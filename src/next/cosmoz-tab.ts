@@ -2,7 +2,6 @@ import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { selectedState } from './aria';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -13,37 +12,41 @@ export interface CosmozTabNextElement extends HTMLElement {
 }
 
 /**
+ * The item is the widget: its identity defaults (a tab, roved by the
+ * container) settle at connect, as the container's and the slideout's
+ * host defaults do.
+ */
+export class TabNextBase extends HTMLElement {
+	connectedCallback() {
+		if (!this.hasAttribute('role')) {
+			this.setAttribute('role', 'tab');
+		}
+		if (!this.hasAttribute('tabindex')) {
+			this.setAttribute('tabindex', '-1');
+		}
+	}
+}
+
+/**
  * @element cosmoz-tab-next
  * @attr {boolean} active - whether the tab is selected
  * @attr {string} badge - optional badge text
  * @attr {string} href - optional link target
  * @attr {boolean} disabled - disables the tab
  * @attr {('sm')} size - reflected by the container; see cosmoz-tabs-next
- * @attr {('tab'|'radio')} role - tab by default; a radiogroup container
- * reflects radio onto its items, and the selected state is then reported as
- * aria-checked rather than aria-selected
+ * @attr {string} role - tab; written by the container
  * @slot tab label
  * @slot icon
  */
 const Tab = (host: CosmozTabNextElement) => {
 	const { active, badge, href } = host;
 
-	useEffect(() => {
-		if (!host.getAttribute('tabindex')) {
-			host.setAttribute('tabindex', '-1');
-		}
-		if (!host.getAttribute('role')) {
-			host.setAttribute('role', 'tab');
-		}
-	}, []);
-
 	useLayoutEffect(() => {
-		// Read the role live rather than observing it: `role` is reflected by
-		// the platform, so it is not ours to take over as a property.
-		host.setAttribute(selectedState(host), active ? 'true' : 'false');
+		// the state attribute follows the selection
+		host.setAttribute('aria-selected', active ? 'true' : 'false');
 	}, [active]);
 
-	// The element claims tab/radio semantics, so it picks like a native
+	// The element claims tab semantics, so it picks like a native
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
 	// keydown only prevents the page scroll.
 	useEffect(() => {
@@ -89,6 +92,7 @@ const Tab = (host: CosmozTabNextElement) => {
 customElements.define(
 	'cosmoz-tab-next',
 	component(Tab, {
+		baseElement: TabNextBase,
 		observedAttributes: ['active', 'badge', 'href'],
 		styleSheets: [normalize, nextTabStyles],
 	}),
