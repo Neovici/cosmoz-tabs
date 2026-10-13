@@ -32,6 +32,10 @@ hidden`). `cosmoz-tabs` (legacy) still scrolls as before.
   while the menu is open.
 - A disabled member is named (`aria-disabled`) in the bar and in the
   menu alike.
+- The bar's arrows pick: Left and Right walk the shown members with
+  activation following focus, Home/End jump to the band's edges; hidden,
+  disabled and overflowed members stay out of the walk (the menu reaches
+  the overflowed ones).
 - New dependencies: `@neovici/cosmoz-dropdown` (8.0.1 — the dropdown
   reconciles `aria-expanded` and restores focus to the trigger) and
   `i18next`. `@neovici/cosmoz-icons` is now a runtime dependency.
