@@ -3,6 +3,12 @@ import { closeMenu, plain } from './overflow-menu';
 /** The pair a projection carries: the original tab and its menu copy. */
 export type CopyPair = readonly [HTMLElement, HTMLElement];
 
+/** The members the band hands focus to: enabled, and showing in the band. */
+export const shown = (member: HTMLElement) =>
+	!member.hasAttribute('disabled') &&
+	!member.hasAttribute('hidden') &&
+	!member.hasAttribute('overflowing');
+
 /** Reflects only on change: the stamped attrs live in the consumer's DOM. */
 export const reflect = (tab: Element, name: string, value: string | null) => {
 	if (tab.getAttribute(name) === value) {
@@ -44,13 +50,30 @@ export const sync = (tab: Element, clone: Element) => {
 	clone.setAttribute('tabindex', '-1');
 };
 
-/** marks the enabled rows as tab stops; the bar keeps its one stop on the selected tab */
+/** marks the shown rows as tab stops; the bar keeps its one stop on the selection */
 export const tabStops = (copies: readonly CopyPair[]) => {
 	copies.forEach(([, clone]) => {
-		if (!clone.hasAttribute('disabled') && !clone.hasAttribute('hidden')) {
+		if (shown(clone)) {
 			clone.setAttribute('tabindex', '0');
 		}
 	});
+};
+
+/**
+ * The bar's one stop: the selection when it shows in the band. Where
+ * the selection hides in the menu, the shown member before it keeps
+ * the stop - the bar stays reachable, and the walk has a home base.
+ */
+export const stopOf = (members: readonly HTMLElement[]): HTMLElement | null => {
+	const active = members.find((member) => member.hasAttribute('active'));
+	if (active == null) {
+		return null;
+	}
+	if (shown(active)) {
+		return active;
+	}
+	const before = members.slice(0, members.indexOf(active));
+	return [...before].reverse().find(shown) ?? null;
 };
 
 /** the projection: a clone without the bar-side attributes, wearing the menu mark */
@@ -94,18 +117,8 @@ export const forward = (copies: readonly CopyPair[]) => (e: MouseEvent) => {
 	}
 
 	if (plain(e)) {
-		// a pick: the chosen tab takes focus - the clipped original is
-		// `visibility: hidden` and unfocusable, so the bar's tab stop
-		// takes it
-		tab.focus();
-		if (tab.hasAttribute('overflowing')) {
-			const stop = (tab.getRootNode() as HTMLElement)?.querySelector?.(
-				'[tabindex="0"]',
-			) as HTMLElement | null;
-			if (stop && stop !== tab) {
-				stop.focus();
-			}
-		}
+		// a pick: the menu closes; the dropdown returns focus to the
+		// trigger, and the container's stop keeps the bar reachable
 		closeMenu(clone);
 	}
 };

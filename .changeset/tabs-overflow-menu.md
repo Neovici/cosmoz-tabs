@@ -23,13 +23,18 @@ hidden`). `cosmoz-tabs` (legacy) still scrolls as before.
   `tabs`/`stats` slots with an explicit `slot=`. Anything assigned to
   the default slot carries the family's identity (`role`, `tabindex`,
   `variant`) — keep `cosmoz-tab-next` items there.
-- `role` is owned by the family: a tablist, written to the host when
-  absent; an authored `radiogroup` is overridden with a
-  `deprecation-warning` event — the radio picker moved to
+- `role` is owned by the family: the container renders the track inside a
+  `group` that carries the `tablist` role, so a heading in `tabs`, stats
+  in `stats` and the overflow trigger sit outside the group's membership.
+  The container itself carries no role; an authored `radiogroup` on it is
+  removed with a `deprecation-warning` event — the radio picker moved to
   `cosmoz-toggle-group` (`@neovici/cosmoz-input`).
 - `cosmoz-tab-next` picks on Enter and Space like a native button; the
-  selected tab is the bar's one tab stop; every menu row is a tab stop
-  while the menu is open.
+  selected tab is the bar's one tab stop while it shows in the band, and
+  every menu row is a tab stop while the menu is open. A selection that
+  hides in the menu (a More row pick) leaves the bar's stop with the
+  shown member before it, so the bar stays reachable and the walk has a
+  home base.
 - A disabled member is named (`aria-disabled`) in the bar and in the
   menu alike.
 - The bar's arrows pick: Left and Right walk the shown members with
