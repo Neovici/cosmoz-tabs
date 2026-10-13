@@ -1,9 +1,9 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-Cf16ebFM.js";import{c as r,s as i}from"./if-defined-3tWnuAo1.js";import{n as a,t as o}from"./cosmoz-tabs-CHmzzP90.js";import{o as s,s as c}from"./dist-DQ8Uly9V.js";var l,u,d,f,p;function m(){return(m=e((()=>{i(),t(),a(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.define(`custom-header-tabs`,r(e=>o(e,e=>n`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BBig1c9M.js";import{c as r,s as i}from"./if-defined-CdMIJQz5.js";import{i as a,n as o,r as s,t as c}from"./cosmoz-tabs-IGQG3MFx.js";var l,u,d,f,p;function m(){return(m=e((()=>{i(),n(),o(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.define(`custom-header-tabs`,r(e=>c(e,e=>t`
                     <header>
                         <slot name="heading"></slot>
                         <nav role="tablist">${e}</nav>
                     </header>
-                `),{observedAttributes:[`selected`,`hash-param`],styleSheets:[c]})),d={title:`Tests/Tabs custom header`},f={render:()=>n`<custom-header-tabs>
+                `),{observedAttributes:[`selected`,`hash-param`],styleSheets:[a]})),d={title:`Tests/Tabs custom header`},f={render:()=>t`<custom-header-tabs>
             <span slot="heading">Orders</span>
             <cosmoz-tab name="list" heading="List">List contents</cosmoz-tab>
             <cosmoz-tab name="details" heading="Details">Details contents</cosmoz-tab>

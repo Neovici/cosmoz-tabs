@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-Cf16ebFM.js";import{a as r,f as i,l as a,m as o,r as s,s as c,t as l}from"./untitled-cMz9vq6U.js";var u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{l(),t(),u=n`<style>
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BBig1c9M.js";import{a as r,f as i,g as a,l as o,r as s,s as c,t as l}from"./untitled-CX-yt9ll.js";var u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{l(),n(),u=t`<style>
 	cosmoz-tabs::part(content) {
 		padding-top: calc(var(--cz-spacing) * 5);
 	}
@@ -141,7 +141,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 		color: var(--cz-color-text-on-brand);
 		background: var(--cz-color-bg-brand-solid);
 	}
-</style>`,d=()=>n`<div class="panel">
+</style>`,d=()=>t`<div class="panel">
 		<h3>Invoice INV-2026-04417</h3>
 		<dl class="dl">
 			<dt>Supplier</dt>
@@ -167,7 +167,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 			<dt>Status</dt>
 			<dd><span class="status">Awaiting approval</span></dd>
 		</dl>
-	</div>`,f=()=>n`<div class="panel">
+	</div>`,f=()=>t`<div class="panel">
 		<h3>Invoice rows</h3>
 		<table class="rows">
 			<thead>
@@ -223,7 +223,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 				</tr>
 			</tfoot>
 		</table>
-	</div>`,p=()=>n`<div class="panel">
+	</div>`,p=()=>t`<div class="panel">
 		<h3>Accounting</h3>
 		<table class="rows">
 			<thead>
@@ -261,7 +261,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 				</tr>
 			</tfoot>
 		</table>
-	</div>`,m=()=>n`<div class="panel">
+	</div>`,m=()=>t`<div class="panel">
 		<h3>History</h3>
 		<ul class="timeline">
 			<li>
@@ -285,7 +285,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 				Submitted for approval.
 			</li>
 		</ul>
-	</div>`,h=()=>n`<div class="panel">
+	</div>`,h=()=>t`<div class="panel">
 		<div class="thread">
 			<div class="comment">
 				<div class="avatar">ML</div>
@@ -311,7 +311,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 				</div>
 			</div>
 		</div>
-	</div>`,g=()=>n`<div class="panel">
+	</div>`,g=()=>t`<div class="panel">
 		<h3>Attachments</h3>
 		<ul class="files">
 			<li>
@@ -327,4 +327,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./i
 				<span class="meta">XLSX · 41 KB</span>
 			</li>
 		</ul>
-	</div>`,_=[{name:`overview`,title:`Overview`,icon:s,render:d},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:f},{name:`accounting`,title:`Accounting`,icon:o,render:p},{name:`history`,title:`History`,icon:i,render:m},{name:`comments`,title:`Comments`,badge:`2`,icon:c,render:h},{name:`attachments`,title:`Attachments`,badge:`3`,icon:r,render:g}]})))()}export{v as a,u as c,m as i,f as l,g as n,_ as o,h as r,d as s,p as t};
+	</div>`,_=[{name:`overview`,title:`Overview`,icon:s,render:d},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:o,render:f},{name:`accounting`,title:`Accounting`,icon:a,render:p},{name:`history`,title:`History`,icon:i,render:m},{name:`comments`,title:`Comments`,badge:`2`,icon:c,render:h},{name:`attachments`,title:`Attachments`,badge:`3`,icon:r,render:g}]})))()}export{v as a,u as c,m as i,f as l,g as n,_ as o,h as r,d as s,p as t};

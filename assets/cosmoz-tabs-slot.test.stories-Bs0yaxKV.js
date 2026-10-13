@@ -1,9 +1,9 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,s as n}from"./iframe-Cf16ebFM.js";import{c as r,s as i}from"./if-defined-3tWnuAo1.js";import{n as a}from"./cosmoz-tabs-CHmzzP90.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),t(),a(),{expect:o,waitFor:s}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-slot-wrapper`)||customElements.define(`cosmoz-tabs-slot-wrapper`,r(()=>n`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BBig1c9M.js";import{c as r,s as i}from"./if-defined-CdMIJQz5.js";import{n as a}from"./cosmoz-tabs-IGQG3MFx.js";var o,s,c,l,u;function d(){return(d=e((()=>{i(),n(),a(),{expect:o,waitFor:s}=__STORYBOOK_MODULE_TEST__,customElements.get(`cosmoz-tabs-slot-wrapper`)||customElements.define(`cosmoz-tabs-slot-wrapper`,r(()=>t`
                 <cosmoz-tabs>
                     <cosmoz-tab name="tab0" heading="Tab0">0</cosmoz-tab>
                     <slot></slot>
                 </cosmoz-tabs>
-            `)),c={title:`Tests/Tabs slot`},l={render:()=>n`
+            `)),c={title:`Tests/Tabs slot`},l={render:()=>t`
         <cosmoz-tabs-slot-wrapper>
             <cosmoz-tab name="tab1" heading="Tab1">1</cosmoz-tab>
             <span name="notatab">x</span>
