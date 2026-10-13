@@ -154,6 +154,13 @@ export const DisabledRowsAreOutOfTheTabOrder: Story = {
 			expect(on()?.hasAttribute('aria-disabled')).toBe(false),
 		);
 
+		/** the container reflects; the items word. */
+		await step('a disabled item is not a tab stop but is named', async () => {
+			const tab = tabs.querySelector('[name=off]') as HTMLElement;
+			expect(tab.getAttribute('tabindex')).toBe('-1');
+			expect(tab.getAttribute('aria-disabled')).toBe('true');
+		});
+
 		/** menu rows are plain tabbable links; disabled rows stay out. */
 		await step('every enabled row is a tab stop', async () => {
 			const stops = copies(tabs).filter(

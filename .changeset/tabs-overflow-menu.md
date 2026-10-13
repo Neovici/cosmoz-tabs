@@ -30,6 +30,8 @@ hidden`). `cosmoz-tabs` (legacy) still scrolls as before.
 - `cosmoz-tab-next` picks on Enter and Space like a native button; the
   selected tab is the bar's one tab stop; every menu row is a tab stop
   while the menu is open.
+- A disabled member is named (`aria-disabled`) in the bar and in the
+  menu alike.
 - New dependencies: `@neovici/cosmoz-dropdown` (8.0.1 — the dropdown
   reconciles `aria-expanded` and restores focus to the trigger) and
   `i18next`. `@neovici/cosmoz-icons` is now a runtime dependency.
