@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BBig1c9M.js";import{a as r,f as i,g as a,l as o,r as s,s as c,t as l}from"./untitled-CX-yt9ll.js";var u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{l(),n(),u=t`<style>
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DdYlncx5.js";import{a as r,f as i,g as a,l as o,r as s,s as c,t as l}from"./untitled-BllLN4sE.js";var u,d,f,p,m,h,g,_;function v(){return(v=e((()=>{l(),n(),u=t`<style>
 	cosmoz-tabs::part(content) {
 		padding-top: calc(var(--cz-spacing) * 5);
 	}
