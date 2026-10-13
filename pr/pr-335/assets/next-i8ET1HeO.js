@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-DdYlncx5.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as ee,y as w}from"./if-defined-BPbukh_Y.js";import{m as te,t as ne}from"./untitled-BllLN4sE.js";import{r as re,t as ie}from"./use-hash-param-ChZhRRAx.js";var T;function E(){return(E=e((()=>{x(),T=_`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-BBig1c9M.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as ee,y as w}from"./if-defined-CdMIJQz5.js";import{m as te,t as ne}from"./untitled-CX-yt9ll.js";import{r as re,t as ie}from"./use-hash-param-8uNkeIOV.js";var T;function E(){return(E=e((()=>{x(),T=_`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -301,140 +301,60 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			${e}
 		</div>
 	</cosmoz-dropdown-next>
-`})))()}var J,Y,ye,be,xe,Se,Ce,we,Te;function Ee(){return(Ee=e((()=>{q(),J=e=>!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&!e.hasAttribute(`overflowing`),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},ye=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},be=e=>{e.forEach(([,e])=>{J(e)&&e.setAttribute(`tabindex`,`0`)})},xe=e=>{let t=e.find(e=>e.hasAttribute(`active`));return t==null?null:J(t)?t:[...e.slice(0,e.indexOf(t))].reverse().find(J)??null},Se=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Ce=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),ye(e,t)},we=e=>new MouseEvent(`click`,e),Te=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;t.stopPropagation(),i.dispatchEvent(we(t))||t.preventDefault(),he(t)&&ge(a)}})))()}var De,Oe,ke,Ae,je,Me,Ne,Pe,Fe,Ie,Le,Re,ze,Be,Ve,He,Ue,We,Ge,Ke,qe;function Je(){return(Je=e((()=>{x(),De=_`
-	display: flex;
-	align-items: flex-start;
-	gap: var(--_gap);
-	padding-inline: calc(var(--cz-spacing) * 3);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
-	min-width: 0;
-`,Oe=_`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	gap: var(--_gap);
-	overflow: clip;
-	max-height: 41px; /* underline */
-`,ke=_`
-	flex: 1 1 auto;
-	min-width: 0;
-`,Ae=_`
-	display: flex;
-	flex-direction: column;
-	box-sizing: border-box;
-	gap: calc(var(--cz-spacing) * 0.5);
-	min-width: 180px;
-	max-height: 60vh;
-	overflow-y: auto;
-	padding: calc(var(--cz-spacing) * 1.5);
-	background-color: var(--cz-color-bg-primary);
-	border: 1px solid var(--cz-color-border-secondary);
-	border-radius: var(--cz-radius-md);
-	box-shadow: var(--cz-shadow-lg);
-	font-family: var(--cz-font-body);
-	font-size: var(--cz-text-sm);
-	line-height: var(--cz-text-sm-line-height);
-	font-weight: var(--cz-font-weight-semibold);
-`,je=_`
-	position: relative;
-	display: inline-flex;
-	box-sizing: border-box;
-	align-items: center;
-	justify-content: center;
-	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
-	color: var(--cz-color-text-quaternary);
-	text-decoration: none;
-	white-space: nowrap;
-	cursor: pointer;
-	transition:
-		color 0.1s linear,
-		background-color 0.1s linear,
-		box-shadow 0.1s linear;
-	outline: 0;
-`,Me=_`
-	outline: 2px solid var(--cz-color-fg-brand);
-	outline-offset: -2px;
-`,Ne=_`
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-`,Pe=_`
-	width: 16px;
-	height: 16px;
-	flex-shrink: 0;
-	color: var(--cz-color-fg-quaternary);
-`,Fe=_`
-	color: var(--cz-color-fg-brand-secondary);
-`,Ie=_`
-	--_gap: calc(var(--cz-spacing) * 1);
-	box-shadow: none;
-`,Le=_`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-md);
-`,Re=_`
-	color: var(--cz-color-text-on-brand);
-	background-color: var(--cz-color-bg-brand-solid);
-	box-shadow: none;
-`,ze=_`
-	--_gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 1);
-	border-radius: var(--cz-radius-lg);
-	background-color: var(--cz-color-bg-secondary);
-	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
-`,Be=_`
-	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-	border-radius: var(--cz-radius-sm);
-`,Ve=_`
-	color: var(--cz-color-text-secondary);
-	background-color: var(--cz-color-bg-primary);
-	box-shadow: var(--cz-shadow-sm);
-`,He=_`
-	color: var(--cz-color-fg-secondary-hover);
-`,Ue=_`
-	padding-block: calc(var(--cz-spacing) * 1.5);
-`,We=_`
-	padding-inline: calc(var(--cz-spacing) * 2);
-`,Ge=_`
-	padding: calc(var(--cz-spacing) * 0.75);
-	border-radius: var(--cz-radius-md);
-`,Ke=_`
-	${je}
-	flex: 0 0 auto;
-	background: none;
-	border: 0;
-	font: inherit;
-	appearance: none;
-`,qe=_`
+`})))()}var J,Y,ye,be,xe,Se,Ce,we,Te;function Ee(){return(Ee=e((()=>{q(),J=e=>!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&!e.hasAttribute(`overflowing`),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},ye=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},be=e=>{e.forEach(([,e])=>{J(e)&&e.setAttribute(`tabindex`,`0`)})},xe=e=>{let t=e.find(e=>e.hasAttribute(`active`));return t==null?null:J(t)?t:[...e.slice(0,e.indexOf(t))].reverse().find(J)??null},Se=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Ce=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),ye(e,t)},we=e=>new MouseEvent(`click`,e),Te=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;t.stopPropagation(),i.dispatchEvent(we(t))||t.preventDefault(),he(t)&&ge(a)}})))()}var De;function Oe(){return(Oe=e((()=>{x(),De=_`
+	/* The host is the frame: one nowrap row carrying the track, the overflow
+	   trigger and the stats; the identity (font stack, paddings, the
+	   underline's bottom rule) lives here. */
 	:host {
-		${De}
+		display: flex;
+		align-items: flex-start;
+		gap: var(--_gap);
+		padding-inline: calc(var(--cz-spacing) * 3);
+		font-family: var(--cz-font-body);
+		font-size: var(--cz-text-sm);
+		line-height: var(--cz-text-sm-line-height);
+		font-weight: var(--cz-font-weight-semibold);
+		box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
 		flex: 0 1 auto;
 		min-width: 0;
 		--_gap: calc(var(--cz-spacing) * 4);
 	}
 
 	:host([variant='brand']) {
-		${Ie}
+		--_gap: calc(var(--cz-spacing) * 1);
+		box-shadow: none;
 	}
 
+	/* Untitled UI's "button border" tabs: a track holding a raised, selected pill. */
 	:host([variant='segmented']) {
-		${ze}
+		--_gap: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 1);
+		border-radius: var(--cz-radius-lg);
+		background-color: var(--cz-color-bg-secondary);
+		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 	}
 
-	/* The wrapping, clipping track is the default slot: band per size/variant.
-	   brand and segmented item boxes sit a touch shorter: 37px; sm trims
-	   all variants to 33px */
+	/* The band: the wrapping, clipping row the members land in and the
+	   observer reads against. One row's box is exact per size/variant (the
+	   item's box is fully token-derived), so the clip is a constant the
+	   intersections read against. The wrapping, clipping track is the
+	   default slot: brand and segmented item boxes sit a touch shorter:
+	   37px; sm trims all variants to 33px */
 	slot:not([name]) {
-		${Oe}
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: var(--_gap);
+		overflow: clip;
+		max-height: 41px; /* underline */
 	}
 
-	/* the group: the role-carrier around the track's members; frame
-	   sizing rides here, where the band's box used to */
+	/* the group: the tablist around the track's members - the frame's
+	   flanks (the headings slot, the overflow trigger, the stats slot)
+	   stay outside the group's membership. Frame sizing rides here. */
 	.group {
-		${ke}
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 
 	:host([variant='brand']) slot:not([name]),
@@ -454,8 +374,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		max-width: 100%;
 	}
 
+	/* The track's own ring is what stacks onto the item's padding, so the
+	   compact size has to thin that too or the height barely moves. */
 	:host([variant='segmented'][size='sm']) {
-		${Ge}
+		padding: calc(var(--cz-spacing) * 0.75);
+		border-radius: var(--cz-radius-md);
 	}
 
 	.more {
@@ -468,8 +391,29 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		display: none;
 	}
 
+	/* the button borrows the item's face */
 	.more-button {
-		${Ke}
+		position: relative;
+		display: inline-flex;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		gap: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
+		color: var(--cz-color-text-quaternary);
+		text-decoration: none;
+		white-space: nowrap;
+		cursor: pointer;
+		transition:
+			color 0.1s linear,
+			background-color 0.1s linear,
+			box-shadow 0.1s linear;
+		outline: 0;
+		flex: 0 0 auto;
+		background: none;
+		border: 0;
+		font: inherit;
+		appearance: none;
 	}
 
 	.more-button .chevron {
@@ -477,7 +421,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	.more-button svg {
-		${Pe}
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		color: var(--cz-color-fg-quaternary);
 		transition: transform 0.15s ease;
 	}
 
@@ -487,25 +434,30 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	.more-button:hover,
 	.more[data-active] .more-button {
-		${Ne}
+		color: var(--cz-color-text-brand);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		${Fe}
+		color: var(--cz-color-fg-brand-secondary);
 	}
 
 	.more-button:focus-visible {
-		${Me}
+		outline: 2px solid var(--cz-color-fg-brand);
+		outline-offset: -2px;
 	}
 
 	:host([variant='brand']) .more-button {
-		${Le}
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-md);
 	}
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		${Re}
+		color: var(--cz-color-text-on-brand);
+		background-color: var(--cz-color-bg-brand-solid);
+		box-shadow: none;
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
@@ -514,43 +466,61 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	:host([variant='segmented']) .more-button {
-		${Be}
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-sm);
 	}
 
 	:host([variant='segmented']) .more-button:hover,
 	:host([variant='segmented']) .more[data-active] .more-button {
-		${Ve}
+		color: var(--cz-color-text-secondary);
+		background-color: var(--cz-color-bg-primary);
+		box-shadow: var(--cz-shadow-sm);
 	}
 
 	:host([variant='segmented']) .more-button:hover svg,
 	:host([variant='segmented']) .more[data-active] .more-button svg {
-		${He}
+		color: var(--cz-color-fg-secondary-hover);
 	}
 
 	:host([size='sm']) .more-button {
-		${Ue}
+		padding-block: calc(var(--cz-spacing) * 1.5);
 	}
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .more-button {
-		${We}
+		padding-inline: calc(var(--cz-spacing) * 2);
 	}
 
 	.menu {
-		${Ae}
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		gap: calc(var(--cz-spacing) * 0.5);
+		min-width: 180px;
+		max-height: 60vh;
+		overflow-y: auto;
+		padding: calc(var(--cz-spacing) * 1.5);
+		background-color: var(--cz-color-bg-primary);
+		border: 1px solid var(--cz-color-border-secondary);
+		border-radius: var(--cz-radius-md);
+		box-shadow: var(--cz-shadow-lg);
+		font-family: var(--cz-font-body);
+		font-size: var(--cz-text-sm);
+		line-height: var(--cz-text-sm-line-height);
+		font-weight: var(--cz-font-weight-semibold);
 	}
-`})))()}var X,Ye,Xe,Z,Ze,Qe,$e,et;function tt(){return(tt=e((()=>{d(),k(),F(),x(),B(),q(),Ee(),Je(),X=`cosmoz-tab-next`,Ye={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},Xe=(e,t)=>{let[n,r]=w(0);return c(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,Ye)),()=>t.disconnect()},[t]),n},Z=(e,t,n)=>{let r=Xe(e,n),i=h();return i.current??=new Map,l(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Se(e);return n.set(e,t),Ce(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),be(a);let s=xe(r);return r.forEach(e=>Y(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},Ze=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),Qe=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),$e=(e,t,n)=>{let r=e.filter(J);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},et=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=w(0),[i,a]=w(()=>new Set),o=h(),l=s(()=>(o.current??[]).filter(e=>e.matches(X)),[]),u=()=>r(e=>e+1),d=Z(l,i,t);return c(()=>{let t=e=>{if(!Qe.has(e.key))return;let t=l(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=$e(t,n,e.key);r&&r!==n&&(r.click(),r.focus())};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
+`})))()}var X,ke,Ae,je,Me,Ne,Pe,Fe;function Ie(){return(Ie=e((()=>{d(),k(),F(),x(),B(),q(),Ee(),Oe(),X=`cosmoz-tab-next`,ke={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},Ae=(e,t)=>{let[n,r]=w(0);return c(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,ke)),()=>t.disconnect()},[t]),n},je=(e,t,n)=>{let r=Ae(e,n),i=h();return i.current??=new Map,l(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Se(e);return n.set(e,t),Ce(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),be(a);let s=xe(r);return r.forEach(e=>Y(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},Me=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),Ne=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),Pe=(e,t,n)=>{let r=e.filter(J);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},Fe=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=w(0),[i,a]=w(()=>new Set),o=h(),l=s(()=>(o.current??[]).filter(e=>e.matches(X)),[]),u=()=>r(e=>e+1),d=je(l,i,t);return c(()=>{let t=e=>{if(!Ne.has(e.key))return;let t=l(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=Pe(t,n,e.key);r&&r!==n&&(r.click(),r.focus())};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
 		<slot name="tabs"></slot>
 		<div class="group" role="tablist">
 			<slot
 				${O(o)}
-				${P(Ze(e))}
+				${P(Me(e))}
 				${z({is:e=>e.matches(X),onOverflow:a})}
 				@slotchange=${u}
 			></slot>
 		</div>
 		${ve({items:d.map(([,e])=>e),overflows:d.length>0,active:d.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:Te(d)})}
 		<slot name="stats"></slot>
-	`},customElements.define(`cosmoz-tabs-next`,f(et,{observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[y,qe]}))})))()}var Q,nt,rt,it,at,ot;function $(){return($=e((()=>{ie(),j(),x(),S(),Q=e=>!e.hidden&&!e.disabled,nt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),rt=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:nt(e)},it=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=re(t),a=h([]),o=l(()=>rt(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:l(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:s(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},at=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=A(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
+	`},customElements.define(`cosmoz-tabs-next`,f(Fe,{observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[y,De]}))})))()}var Z,Le,Re,Q,ze,Be;function $(){return($=e((()=>{ie(),j(),x(),S(),Z=e=>!e.hidden&&!e.disabled,Le=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Z),Re=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Z(n)?n:Le(e)},Q=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=re(t),a=h([]),o=l(()=>Re(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:l(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:s(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},ze=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=A(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
 			name=${e.name}
 			class=${v(i)}
 			variant=${v(a)}
@@ -563,4 +533,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			badge=${v(u)}
 			@click=${r}
 			>${g(e.icon,e=>e({slot:`icon`}))}${l}</cosmoz-tab-next
-		>`}),ot=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function st(){return(st=e((()=>{oe(),tt(),$()})))()}export{it as a,at as i,$ as n,ot as r,st as t};
+		>`}),Be=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function Ve(){return(Ve=e((()=>{oe(),Ie(),$()})))()}export{Q as a,ze as i,$ as n,Be as r,Ve as t};
