@@ -1,10 +1,9 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
-import { compute } from 'compute-scroll-into-view';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { nextTabStyles } from '../styles';
 import { selectedState } from './aria';
+import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
 	active?: boolean;
@@ -42,18 +41,39 @@ const Tab = (host: CosmozTabNextElement) => {
 		// Read the role live rather than observing it: `role` is reflected by
 		// the platform, so it is not ours to take over as a property.
 		host.setAttribute(selectedState(host), active ? 'true' : 'false');
-
-		if (!active) {
-			return;
-		}
-		compute(host, {
-			block: 'nearest',
-			inline: 'center',
-			boundary: host.parentElement,
-		}).forEach(({ el, top, left }) =>
-			el.scroll({ top, left, behavior: 'smooth' }),
-		);
 	}, [active]);
+
+	// The element claims tab/radio semantics, so it picks like a native
+	// button: Enter on keydown, Space on keyup (as <button> does); Space
+	// keydown only prevents the page scroll.
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if (e.target !== host || host.hasAttribute('disabled')) {
+				return;
+			}
+			if (e.key === 'Enter' && !e.repeat) {
+				e.preventDefault();
+				host.click();
+			}
+			if (e.key === ' ') {
+				e.preventDefault();
+			}
+		};
+		const onKeyUp = (e: KeyboardEvent) => {
+			if (e.target !== host || host.hasAttribute('disabled')) {
+				return;
+			}
+			if (e.key === ' ') {
+				host.click();
+			}
+		};
+		host.addEventListener('keydown', onKey);
+		host.addEventListener('keyup', onKeyUp);
+		return () => {
+			host.removeEventListener('keydown', onKey);
+			host.removeEventListener('keyup', onKeyUp);
+		};
+	}, []);
 
 	return html`
 		<a part="link" href=${ifDefined(href)}>

@@ -26,12 +26,44 @@ const fixture = (variant = 'brand') => html`
 const getContainer = (root: HTMLElement) =>
 	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 
+export const RovingTabindex: Story = {
+	render: () => fixture(),
+	play: async ({ canvasElement, step }) => {
+		const container = getContainer(canvasElement);
+
+		await step('the selected tab is the one tab stop', () => {
+			expect(
+				container
+					.querySelector('cosmoz-tab-next[active]')!
+					.getAttribute('tabindex'),
+			).toBe('0');
+			container
+				.querySelectorAll('cosmoz-tab-next:not([active])')
+				.forEach((tab) => expect(tab.getAttribute('tabindex')).toBe('-1'));
+		});
+
+		await step('the stop follows selection', async () => {
+			container
+				.querySelector('cosmoz-tab-next[active]')!
+				.removeAttribute('active');
+			const next = container.querySelector(
+				'cosmoz-tab-next:not([disabled])',
+			) as HTMLElement;
+			next.setAttribute('active', '');
+			await waitFor(() => expect(next.getAttribute('tabindex')).toBe('0'));
+			expect(
+				container.querySelectorAll('cosmoz-tab-next[tabindex="0"]').length,
+			).toBe(1);
+		});
+	},
+};
+
 export const RolesAndActive: Story = {
 	render: () => fixture(),
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('container is a tablist', async () => {
+		await step('the host is the tablist', async () => {
 			await waitFor(() =>
 				expect(container.getAttribute('role')).toBe('tablist'),
 			);
@@ -76,7 +108,7 @@ export const RadiogroupPicksRadioSemantics: Story = {
 	play: async ({ canvasElement, step }) => {
 		const container = getContainer(canvasElement);
 
-		await step('the container keeps the role it was given', async () => {
+		await step('the host keeps the role it was given', async () => {
 			await waitFor(() =>
 				expect(container.getAttribute('role')).toBe('radiogroup'),
 			);
@@ -109,6 +141,7 @@ export const RadiogroupPicksRadioSemantics: Story = {
 		await step('the radio semantics survive a variant change', async () => {
 			container.setAttribute('variant', 'underline');
 			await waitFor(() => {
+				expect(container.getAttribute('role')).toBe('radiogroup');
 				const active = container.querySelector('cosmoz-tab-next[active]')!;
 				expect(active.getAttribute('variant')).toBe('underline');
 				expect(active.getAttribute('role')).toBe('radio');
