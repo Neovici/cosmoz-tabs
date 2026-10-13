@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
+import { userEvent as driverUserEvent } from 'vitest/browser';
 
 import '../src/next';
-import { next, nextFixture, pump, sr } from './overflow-helpers';
+import { next, nextFixture, pump, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu trigger',
@@ -105,6 +106,51 @@ export const TheTriggerAnnouncesItsPopup: Story = {
 		await pump(2);
 		await waitFor(() => expect(expanded(tabs)).toBe(true));
 		expect(opened(tabs)).toBe(true);
+	},
+};
+
+/** the trigger sits in the bar's first row: a real click has to reach it.
+    the regression that motivated this pin: the trigger wrapped below the
+    host's own clip band exactly when the menu was needed - invisible and
+    unhittable for users, invisible to programmatic clicks too. */
+export const TheTriggerIsReachableByARealClick: Story = {
+	render: () => nextFixture('240px'),
+	play: async ({ canvasElement, step }) => {
+		const tabs = next(canvasElement);
+
+		await pump(2);
+		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
+
+		await step('the trigger is painted inside the clip band', async () => {
+			const band = sr(tabs).querySelector(
+				'slot:not([name])',
+			) as HTMLSlotElement;
+			const b = band.getBoundingClientRect();
+			const button = trigger(tabs);
+			const t = button.getBoundingClientRect();
+			expect(document.defaultView?.getComputedStyle(button).visibility).toBe(
+				'visible',
+			);
+			expect(t.top).toBeGreaterThanOrEqual(b.top - 0.5);
+			expect(t.bottom).toBeLessThanOrEqual(b.bottom + 0.5);
+			expect(t.height).toBeGreaterThan(0);
+		});
+
+		await step('a real click opens the menu', async () => {
+			await driverUserEvent.click(trigger(tabs));
+			await waitFor(() => expect(expanded(tabs)).toBe(true));
+			expect(opened(tabs)).toBe(true);
+		});
+
+		await step('a real Escape dismisses and restores the focus', async () => {
+			await driverUserEvent.keyboard('{Escape}');
+			await waitFor(() => expect(expanded(tabs)).toBe(false));
+			await waitFor(() =>
+				expect(sr(tabs).activeElement?.classList.contains('more-button')).toBe(
+					true,
+				),
+			);
+		});
 	},
 };
 

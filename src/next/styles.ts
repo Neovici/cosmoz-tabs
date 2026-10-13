@@ -10,20 +10,31 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
  */
 export type TabsSize = 'sm';
 
-/* The track wraps and clips itself to the first row: tabs that do not
-   fit land on a second row in the layout and are painted away by their
-   mark, so the observer's geometry is stable under the marks. */
-const bar = css`
+/* The host is the frame: one nowrap row carrying the track, the overflow
+   trigger and the stats; the identity (font stack, paddings, the
+   underline's bottom rule) lives here. */
+const frame = css`
 	display: flex;
-	flex-wrap: wrap;
 	align-items: flex-start;
-	gap: calc(var(--cz-spacing) * 3);
+	gap: var(--_gap);
 	padding-inline: calc(var(--cz-spacing) * 3);
 	font-family: var(--cz-font-body);
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
 	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
+	min-width: 0;
+`;
+
+/* The track wraps and clips itself to the first row: tabs that do not
+   fit land on a second row in the layout and are painted away by their
+   mark, so the observer's geometry is stable under the marks. */
+const track = css`
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: var(--_gap);
+	flex: 1 1 auto;
 	min-width: 0;
 	overflow: clip;
 	/* The band is one row's box, exact per size/variant: the item's box is
@@ -92,7 +103,7 @@ const iconActive = css`
 `;
 
 const brandBar = css`
-	gap: calc(var(--cz-spacing) * 1);
+	--_gap: calc(var(--cz-spacing) * 1);
 	box-shadow: none;
 `;
 
@@ -109,7 +120,7 @@ const brandActive = css`
 
 // Untitled UI's "button border" tabs: a track holding a raised, selected pill.
 const segmentedBar = css`
-	gap: calc(var(--cz-spacing) * 1);
+	--_gap: calc(var(--cz-spacing) * 1);
 	padding: calc(var(--cz-spacing) * 1);
 	border-radius: var(--cz-radius-lg);
 	background-color: var(--cz-color-bg-secondary);
@@ -157,9 +168,10 @@ const moreItem = css`
 
 export const nextTabsStyles = css`
 	:host {
-		${bar}
+		${frame}
 		flex: 0 1 auto;
 		min-width: 0;
+		--_gap: calc(var(--cz-spacing) * 4);
 	}
 
 	:host([variant='brand']) {
@@ -170,14 +182,19 @@ export const nextTabsStyles = css`
 		${segmentedBar}
 	}
 
-	/* brand and segmented item boxes sit a touch shorter: 37px; sm trims
+	/* The wrapping, clipping track is the default slot: band per size/variant.
+	   brand and segmented item boxes sit a touch shorter: 37px; sm trims
 	   all variants to 33px */
-	:host([variant='brand']),
-	:host([variant='segmented']) {
+	slot:not([name]) {
+		${track}
+	}
+
+	:host([variant='brand']) slot:not([name]),
+	:host([variant='segmented']) slot:not([name]) {
 		max-height: 37px;
 	}
 
-	:host([size='sm']) {
+	:host([size='sm']) slot:not([name]) {
 		max-height: 33px;
 	}
 
@@ -187,12 +204,6 @@ export const nextTabsStyles = css`
 		box-sizing: border-box;
 		width: max-content;
 		max-width: 100%;
-	}
-
-	:host(
-		:not([compact-width]):not([variant='brand']):not([variant='segmented'])
-	) {
-		gap: calc(var(--cz-spacing) * 4);
 	}
 
 	:host([variant='segmented'][size='sm']) {

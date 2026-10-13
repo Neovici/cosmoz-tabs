@@ -2,16 +2,18 @@ import { noChange, type ElementPart } from 'lit-html';
 import { AsyncDirective, directive } from 'lit-html/async-directive.js';
 
 /**
- * Classifies the placed slot's members against the clip band: a member
- * whose box lands past the first row is marked (`overflowing`, styled
+ * Classifies the placed slot's members against the band: a member whose
+ * box lands past the first row is marked (`overflowing`, styled
  * `visibility: hidden` in `tab.css.ts`) and reported to `onOverflow`.
+ * Placement is the configuration: the placed slot is the wrapping,
+ * clipping track (the band) and its assignment is the membership.
  *
  * The band's height is a css constant per size/variant (the item box is
- * fully token-derived), and the clip lives on the host's own box, so the
- * classification is a pure read: `intersectionRect.height === 0` against
- * the band. The marks hide paint only, so the layout never moves under
- * the observer, and a member that flows back into the band is reported
- * as it happens - no unmark-remeasure cycle.
+ * fully token-derived), so the classification is a pure read:
+ * `intersectionRect.height === 0` against the band. The marks hide paint
+ * only, so the layout never moves under the observer, and a member that
+ * flows back into the band is reported as it happens - no
+ * unmark-remeasure cycle.
  *
  * Every render re-arms: each member's observation is rebuilt
  * (unobserve/observe), which produces a fresh initial delivery that
@@ -24,8 +26,6 @@ import { AsyncDirective, directive } from 'lit-html/async-directive.js';
  * marks and the report flush from it, never rebuilt from one batch.
  */
 export interface OverflowConfig {
-	/** The clipped box the intersections read against (the track). */
-	host: HTMLElement;
 	/** Membership; unknown members stay unobserved and unmarked. */
 	is: (el: Element) => boolean;
 	/** Reports the marked members; invoked only when the set changes. */
@@ -43,7 +43,6 @@ const stable = (a?: Set<HTMLElement>, b?: Set<HTMLElement>) =>
 
 class OverflowDirective extends AsyncDirective {
 	_slot?: HTMLSlotElement;
-	_host?: HTMLElement;
 	_is?: (el: Element) => boolean;
 	_onOverflow?: (overflowing: Set<HTMLElement>) => void;
 
@@ -131,19 +130,22 @@ class OverflowDirective extends AsyncDirective {
 	}
 
 	update(part: ElementPart, [config]: [OverflowConfig]) {
-		this._host = config.host;
 		this._is = config.is;
 		this._onOverflow = config.onOverflow;
 
 		const slot = part.element as HTMLSlotElement;
 		if (this._slot !== slot) {
+			// the slot swap changes the observed assignment AND the band:
+			// the observer is rebuilt on the new slot's own clipping box
 			this._slot?.removeEventListener('slotchange', this.#onSlotChange);
+			this.#observer?.disconnect();
+			this.#observer = undefined;
 			this._slot = slot;
 			slot.addEventListener('slotchange', this.#onSlotChange);
 		}
 
 		this.#observer ??= new IntersectionObserver(this.#classify, {
-			root: this._host,
+			root: this._slot,
 			threshold: [0, 1],
 		});
 		this.#arm();

@@ -10,14 +10,19 @@ fits, and highlighted when the selected tab is hidden in it.
 
 Breaking:
 
-- The bar wraps to a second row instead of scrolling; the wrapped tabs
-  are pulled out of the layout and offered in the menu. `cosmoz-tabs`
-  (legacy) still scrolls as before.
+- The bar wraps to a second row instead of scrolling; tabs that do not
+  fit are marked (`overflowing`) and offered in the menu — their box
+  keeps its layout slot, the mark only paints it away (`visibility:
+hidden`). `cosmoz-tabs` (legacy) still scrolls as before.
 - The host can shrink in a flex row (`flex: 0 1 auto; min-width: 0`).
   `flex-shrink: 0` on it keeps the old overflow behavior (no menu).
 - `renderTabs` sets `badge` as an attribute, not a property. Menu copies
   follow attributes only — a badge set as a property is not tracked.
 - Writes `overflowing` onto tabs that do not fit (visible in snapshots).
+- The bar does not auto-route children: extra content only reaches the
+  `tabs`/`stats` slots with an explicit `slot=`. Anything assigned to
+  the default slot carries the family's identity (`role`, `tabindex`,
+  `variant`) — keep `cosmoz-tab-next` items there.
 - `role` is owned by the family: a tablist, written to the host when
   absent; an authored `radiogroup` is overridden with a
   `deprecation-warning` event — the radio picker moved to

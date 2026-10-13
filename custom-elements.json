@@ -123,7 +123,7 @@
 				{
 					"name": "role",
 					"type": "String",
-					"description": "'tablist' (default) or 'radiogroup'; a radiogroup reflects role=radio onto its items, which then report aria-checked instead of aria-selected. The role is moved onto the items part (and the overflow menu) and the host is left as role=\"none\", so the heading, stats and trigger stay outside the group. Setting or removing it later is picked up; removing it falls back to 'tablist'"
+					"description": "'tablist' is the default (written on the host itself when absent). An authored `radiogroup` is overridden to `tablist` with a `deprecation-warning` event — a value picker belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input), not in a tab family"
 				},
 				{
 					"name": "more-label",
@@ -139,11 +139,11 @@
 				},
 				{
 					"name": "tabs",
-					"description": "Extra content at the start of the tab bar, outside the overflow area. Non-tab children placed before the first tab are routed here automatically"
+					"description": "Extra content at the start of the tab bar, outside the overflow area; assigned explicitly (slot=\"tabs\")"
 				},
 				{
 					"name": "stats",
-					"description": "Extra content at the end of the tab bar, outside the overflow area. Non-tab children placed after the first tab are routed here automatically"
+					"description": "Extra content at the end of the tab bar, outside the overflow area; assigned explicitly (slot=\"stats\")"
 				}
 			],
 			"cssProperties": []
@@ -180,7 +180,7 @@
 				{
 					"name": "role",
 					"type": "String",
-					"description": "'tab' (default) or 'radio'; normally reflected by the container rather than set here"
+					"description": "'tab' (default, written when absent); the container also writes it on its members"
 				}
 			],
 			"events": [],
