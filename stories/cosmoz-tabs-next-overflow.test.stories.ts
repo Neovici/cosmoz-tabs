@@ -318,8 +318,6 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			fire = (el: HTMLElement, key: string, type = 'keydown') =>
 				el.dispatchEvent(new KeyboardEvent(type, { key, bubbles: true }));
 
-		await pump(2);
-
 		await step('an arrow walks the focus and picks nothing', async () => {
 			overview.focus();
 			fire(overview, 'ArrowRight');
