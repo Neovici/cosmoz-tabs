@@ -47,10 +47,10 @@ const Tab = (host: CosmozTabNextElement) => {
 
 	// The pick is the activation, shared by the keys (Enter on keydown,
 	// Space on keyup, like a <button>; Space keydown only prevents the
-	// page scroll) and the tap. An href row navigates through an empty
-	// anchor joined for the click and removed in the same task: contents
-	// styled (no box, no flex gap), cancelable, and its path carries the
-	// link. A plain row bubbles instead.
+	// page scroll) and the tap. An href row navigates through a
+	// detached anchor - a created element, clicked, thrown away: the
+	// click's default action runs on every engine and pointer type, the
+	// row stays untouched and emits nothing. A plain row bubbles.
 	const pick = () => {
 		const href = host.getAttribute('href');
 		if (!href) {
@@ -59,10 +59,7 @@ const Tab = (host: CosmozTabNextElement) => {
 		}
 		const a = document.createElement('a');
 		a.href = href;
-		a.style.display = 'contents';
-		host.append(a);
 		a.click();
-		a.remove();
 	};
 
 	// The element claims tab semantics, so it picks like a native
@@ -97,25 +94,22 @@ const Tab = (host: CosmozTabNextElement) => {
 		};
 	}, []);
 
-	// Taps pick like the keys: the row takes the activation itself - the
-	// rendered link's default action proved pointer-type dependent
-	// (dead on touch) - and the anchor is joined only for the click.
-	// The pick's own click (the anchor at the path's head) is skipped
-	// here to stay single.
+	// Taps pick like the keys: the row takes the activation itself (the
+	// old rendered link's default action proved pointer-type dependent,
+	// dead on touch) - a plain click on an href row picks, the pick's
+	// navigation is idempotent when a forwarded click re-enters it.
 	useLayoutEffect(() => {
 		const onTap = (e: MouseEvent) => {
 			if (
 				e.defaultPrevented ||
 				e.button !== 0 ||
-				host.hasAttribute('disabled') ||
-				e.composedPath()[0] instanceof HTMLAnchorElement
+				host.hasAttribute('disabled')
 			) {
 				return;
 			}
 			if (!host.getAttribute('href')) {
 				return; // plain rows: clicks bubble, the app owns them
 			}
-			e.preventDefault();
 			pick();
 		};
 		host.addEventListener('click', onTap);
