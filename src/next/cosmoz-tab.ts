@@ -1,8 +1,6 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
-import { component, useLayoutEffect, useRef } from '@pionjs/pion';
+import { component, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { ref } from 'lit-html/directives/ref.js';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -40,20 +38,37 @@ export class TabNextBase extends HTMLElement {
  * @slot icon
  */
 const Tab = (host: CosmozTabNextElement) => {
-	const { active, badge, href } = host,
-		anchor = useRef<HTMLAnchorElement>();
+	const { active, badge } = host;
 
 	useLayoutEffect(() => {
 		// the state attribute follows the selection
 		host.setAttribute('aria-selected', active ? 'true' : 'false');
 	}, [active]);
 
+	// The pick is the activation, shared by the keys (Enter on keydown,
+	// Space on keyup, like a <button>; Space keydown only prevents the
+	// page scroll) and the tap. An href row navigates through an empty
+	// anchor joined for the click and removed in the same task: contents
+	// styled (no box, no flex gap), cancelable, and its path carries the
+	// link. A plain row bubbles instead.
+	const pick = () => {
+		const href = host.getAttribute('href');
+		if (!href) {
+			host.click();
+			return;
+		}
+		const a = document.createElement('a');
+		a.href = href;
+		a.style.display = 'contents';
+		host.append(a);
+		a.click();
+		a.remove();
+	};
+
 	// The element claims tab semantics, so it picks like a native
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
-	// keydown only prevents the page scroll. The pick is the rendered
-	// link's click: href tabs navigate, the plain ones just bubble.
+	// keydown only prevents the page scroll.
 	useLayoutEffect(() => {
-		const pick = () => (anchor.current ?? host).click();
 		const onKey = (e: KeyboardEvent) => {
 			if (e.target !== host || host.hasAttribute('disabled')) {
 				return;
@@ -82,14 +97,35 @@ const Tab = (host: CosmozTabNextElement) => {
 		};
 	}, []);
 
+	// Taps pick like the keys: the row takes the activation itself - the
+	// rendered link's default action proved pointer-type dependent
+	// (dead on touch) - and the anchor is joined only for the click.
+	// The pick's own click (the anchor at the path's head) is skipped
+	// here to stay single.
+	useLayoutEffect(() => {
+		const onTap = (e: MouseEvent) => {
+			if (
+				e.defaultPrevented ||
+				e.button !== 0 ||
+				host.hasAttribute('disabled') ||
+				e.composedPath()[0] instanceof HTMLAnchorElement
+			) {
+				return;
+			}
+			if (!host.getAttribute('href')) {
+				return; // plain rows: clicks bubble, the app owns them
+			}
+			e.preventDefault();
+			pick();
+		};
+		host.addEventListener('click', onTap);
+		return () => host.removeEventListener('click', onTap);
+	}, []);
+
 	return html`
-		<a ${ref(anchor)} part="link" href=${ifDefined(href)}>
-			<slot id="iconSlot" name="icon"></slot>
-			<slot id="contentSlot"></slot>
-			${badge
-				? html`<span class="badge" part="badge">${badge}</span>`
-				: nothing}
-		</a>
+		<slot id="iconSlot" name="icon"></slot>
+		<slot id="contentSlot"></slot>
+		${badge ? html`<span class="badge" part="badge">${badge}</span>` : nothing}
 	`;
 };
 

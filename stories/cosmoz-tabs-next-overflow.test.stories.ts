@@ -360,6 +360,29 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			document.removeEventListener('click', cancel, { capture: true });
 			expect(href).toBe('#!/somewhere');
 		});
+
+		await step('a tap on the row picks too', async () => {
+			// the tap's pick is the joined anchor; its click carries the
+			// evidence (and is canceled, as the keys' pick is above)
+			let href = '';
+			const cancel = (e: MouseEvent) => {
+				const link = (e.composedPath() as HTMLElement[]).find(
+					(el) => el.tagName === 'A',
+				);
+				if (!link) {
+					return;
+				}
+				e.preventDefault();
+				href = link.getAttribute('href') ?? '';
+			};
+			document.addEventListener('click', cancel, { capture: true });
+			history.dispatchEvent(
+				new MouseEvent('click', { bubbles: true, composed: true }),
+			);
+			document.removeEventListener('click', cancel, { capture: true });
+			expect(href).toBe('#!/somewhere');
+			expect(history.hasAttribute('active')).toBe(false);
+		});
 	},
 };
 
