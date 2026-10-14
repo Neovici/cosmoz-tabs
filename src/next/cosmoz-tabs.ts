@@ -214,10 +214,9 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	const copies = useCopies(tabs, overflowing, version);
 
-	// The container roves, the item picks: the walk focuses a shown
-	// member and its own click picks it (selection follows focus, one
-	// pick path for pointer, Enter/Space and arrows). An overflowed view
-	// stays out — the menu's walk is the dropdown's business.
+	// The walk only moves the focus; Enter/Space pick (through the
+	// item's link: href tabs navigate, plain tabs bubble). An overflowed
+	// view stays out — the menu's walk is the dropdown's business.
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if (!ROVED.has(e.key)) {
@@ -234,7 +233,6 @@ const Tabs = (host: CosmozTabsNextElement) => {
 			if (!to || to === target) {
 				return;
 			}
-			to.click();
 			to.focus();
 		};
 		host.addEventListener('keydown', onKey);

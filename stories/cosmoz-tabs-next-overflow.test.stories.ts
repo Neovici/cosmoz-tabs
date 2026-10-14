@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, pump, retained, sr } from './overflow-helpers';
+import { box, next, pump, retained, settle, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
@@ -295,6 +295,75 @@ export const RemovedTabsAreNotRetained: Story = {
 		await step('and so are the menu copies of them', async () =>
 			expect(await retained(cloneRefs)).toBe(0),
 		);
+	},
+};
+
+export const TheWalkFocusesAndTheKeysPick: Story = {
+	render: () => html`
+		<div class="box" style="width: 360px; overflow: hidden;">
+			<cosmoz-tabs-next variant="underline" compact-width>
+				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
+				<cosmoz-tab-next name="rows">Invoice rows</cosmoz-tab-next>
+				<cosmoz-tab-next name="history" href="#!/somewhere"
+					>History</cosmoz-tab-next
+				>
+			</cosmoz-tabs-next>
+		</div>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const bar = next(canvasElement),
+			overview = bar.querySelector('[name="overview"]') as HTMLElement,
+			rows = bar.querySelector('[name="rows"]') as HTMLElement,
+			history = bar.querySelector('[name="history"]') as HTMLElement,
+			fire = (el: HTMLElement, key: string, type = 'keydown') =>
+				el.dispatchEvent(new KeyboardEvent(type, { key, bubbles: true }));
+
+		await step('an arrow walks the focus and picks nothing', async () => {
+			overview.focus();
+			fire(overview, 'ArrowRight');
+			await settle(2);
+			expect(document.activeElement).toBe(rows);
+			expect(rows.hasAttribute('active')).toBe(false);
+		});
+
+		await step('Enter picks the focused tab', async () => {
+			let picks = 0;
+			rows.addEventListener('click', () => picks++);
+			fire(rows, 'Enter');
+			await settle(2);
+			expect(picks).toBe(1);
+		});
+
+		await step('a Space keyup picks too', async () => {
+			let picks = 0;
+			rows.addEventListener('click', () => picks++);
+			fire(rows, ' ', 'keydown');
+			fire(rows, ' ', 'keyup');
+			await settle(2);
+			expect(picks).toBe(1);
+		});
+
+		await step('a link tab picks through its link', async () => {
+			// the pick navigates for real; the storybook page must stay on
+			// its own story - cancel the default, keep the pick's evidence
+			let href = '';
+			const cancel = (e: MouseEvent) => {
+				e.preventDefault();
+				const link = (e.composedPath() as HTMLElement[]).find(
+					(el) => el.tagName === 'A',
+				);
+				href = link?.getAttribute('href') ?? '';
+			};
+			document.addEventListener('click', cancel, {
+				capture: true,
+				once: true,
+			});
+			history.focus();
+			fire(history, 'Enter');
+			await settle(2);
+			document.removeEventListener('click', cancel, { capture: true });
+			expect(href).toBe('#!/somewhere');
+		});
 	},
 };
 
