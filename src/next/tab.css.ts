@@ -115,6 +115,10 @@ export const nextTabStyles = css`
 		flex: auto;
 	}
 
+	:host([menu]) #contentSlot::slotted(*) {
+		flex: 0 0 auto;
+	}
+
 	/* Untitled UI badge, size sm: a counter pill that steps up a surface
 	   while the tab is hot, and the segmented variant's square-ish one. */
 	.badge {
