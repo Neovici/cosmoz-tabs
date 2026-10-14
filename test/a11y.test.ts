@@ -71,7 +71,7 @@ const barFocused = (bar: HTMLElement): HTMLElement | null => {
 const press = (el: HTMLElement, key: string) =>
 	el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-describe("the bar's walk", () => {
+describe('the bar\'s walk', () => {
 	it('walks the focus and picks only on Enter', async () => {
 		const { tab, focused } = mountKeys();
 		await vi.waitFor(() =>
@@ -119,6 +119,24 @@ describe("the bar's walk", () => {
 		expect(focused()).toBe(tab('rows'));
 	});
 
+	it('a link tab navigates when its keyboard pick lands', async () => {
+		const { tab } = mountStatic(
+			nextFixture(
+				'420px',
+				html`<cosmoz-tab-next name="links" href="#!/somewhere-thing"
+					>Links</cosmoz-tab-next
+				>`,
+			),
+		);
+		const links = tab('links') as HTMLElement;
+		expect(links.getAttribute('href')).toBe('#!/somewhere-thing');
+
+		// the pick is the link's click; the browser's default follows it
+		await pump(2);
+		await links.focus();
+		await userEvent.keyboard('{Enter}');
+		await vi.waitFor(() => expect(location.hash).toBe('#!/somewhere-thing'));
+	});
 	it('keys aimed outside the band are no walk', async () => {
 		const { bar, tab } = mountKeys();
 		await vi.waitFor(() =>
@@ -136,7 +154,7 @@ describe("the bar's walk", () => {
 	});
 });
 
-describe("the bar's stop", () => {
+describe('the bar\'s stop', () => {
 	it('the stop follows a light-dom selection swap', async () => {
 		const { bar, tab } = mountKeys();
 		await vi.waitFor(() =>
