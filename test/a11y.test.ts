@@ -71,63 +71,52 @@ const barFocused = (bar: HTMLElement): HTMLElement | null => {
 const press = (el: HTMLElement, key: string) =>
 	el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-describe('the bar\'s walk', () => {
-	it('arrows walk among the shown members and pick', async () => {
+describe("the bar's walk", () => {
+	it('walks the focus and picks only on Enter', async () => {
 		const { tab, focused } = mountKeys();
 		await vi.waitFor(() =>
 			expect(tab('overview').hasAttribute('active')).toBe(true),
 		);
 
+		// the walk moves the focus, not the selection
 		await tab('overview').focus();
 		await userEvent.keyboard('{ArrowRight}');
-		await vi.waitFor(() =>
-			expect(tab('rows').hasAttribute('active')).toBe(true),
-		);
-		expect(focused()).toBe(tab('rows'));
-		expect(tab('rows').getAttribute('tabindex')).toBe('0');
-		await vi.waitFor(() =>
-			expect(tab('overview').getAttribute('tabindex')).toBe('-1'),
-		);
+		await vi.waitFor(() => expect(focused()).toBe(tab('rows')));
+		expect(tab('rows').hasAttribute('active')).toBe(false);
+		expect(tab('rows').getAttribute('tabindex')).toBe('-1');
+		expect(tab('overview').getAttribute('tabindex')).toBe('0');
 
 		// the walk skips the hidden and the disabled
 		await userEvent.keyboard('{ArrowRight}');
-		await vi.waitFor(() =>
-			expect(tab('history').hasAttribute('active')).toBe(true),
-		);
-		expect(focused()).toBe(tab('history'));
+		await vi.waitFor(() => expect(focused()).toBe(tab('history')));
+		expect(tab('history').hasAttribute('active')).toBe(false);
 		expect(tab('settings').hasAttribute('active')).toBe(false);
 
 		// the band clamps - no wrap
 		await userEvent.keyboard('{ArrowRight}');
 		expect(focused()).toBe(tab('history'));
-		expect(tab('history').hasAttribute('active')).toBe(true);
 
 		await userEvent.keyboard('{ArrowLeft}');
+		await vi.waitFor(() => expect(focused()).toBe(tab('rows')));
+
+		// Home and End walk the band's edges
+		await userEvent.keyboard('{Home}');
+		await vi.waitFor(() => expect(focused()).toBe(tab('overview')));
+		expect(tab('rows').hasAttribute('active')).toBe(false);
+		expect(tab('settings').hasAttribute('active')).toBe(false);
+
+		await userEvent.keyboard('{End}');
+		await vi.waitFor(() => expect(focused()).toBe(tab('history')));
+		expect(tab('history').hasAttribute('active')).toBe(false);
+
+		// the picks are explicit: the focused tab's pick moves the selection
+		tab('rows').focus();
+		await userEvent.keyboard('{Enter}');
 		await vi.waitFor(() =>
 			expect(tab('rows').hasAttribute('active')).toBe(true),
 		);
+		expect(tab('rows').getAttribute('tabindex')).toBe('0');
 		expect(focused()).toBe(tab('rows'));
-	});
-
-	it('Home and End walk the band\'s edges', async () => {
-		const { tab, focused } = mountKeys();
-		await vi.waitFor(() =>
-			expect(tab('overview').hasAttribute('active')).toBe(true),
-		);
-
-		await tab('rows').focus();
-		await userEvent.keyboard('{Home}');
-		await vi.waitFor(() =>
-			expect(tab('overview').hasAttribute('active')).toBe(true),
-		);
-		expect(focused()).toBe(tab('overview'));
-
-		await userEvent.keyboard('{End}');
-		await vi.waitFor(() =>
-			expect(tab('history').hasAttribute('active')).toBe(true),
-		);
-		expect(focused()).toBe(tab('history'));
-		expect(tab('settings').hasAttribute('active')).toBe(false);
 	});
 
 	it('keys aimed outside the band are no walk', async () => {
@@ -140,14 +129,14 @@ describe('the bar\'s walk', () => {
 		// composed keydown from the bar's flank delivers to the bar's
 		// host listener (the real trigger case is covered with the menu)
 		press(bar(), 'ArrowRight');
-		// the walk would have moved the pick synchronously; nothing did
+		// the pick follows the focus; the untouched walk kept both
 		expect(tab('rows').hasAttribute('active')).toBe(false);
 		expect(tab('overview').hasAttribute('active')).toBe(true);
 		expect(tab('rows').getAttribute('tabindex')).toBe('-1');
 	});
 });
 
-describe('the bar\'s stop', () => {
+describe("the bar's stop", () => {
 	it('the stop follows a light-dom selection swap', async () => {
 		const { bar, tab } = mountKeys();
 		await vi.waitFor(() =>
@@ -225,13 +214,14 @@ describe('the bar\'s stop', () => {
 		const members = [...bar.querySelectorAll('cosmoz-tab-next')];
 		expect(members.indexOf(stop)).toBeLessThan(members.indexOf(tab(name)));
 
-		// the stop is the walk's home base
+		// the stop is the walk's home base; a walk from it moves the
+		// focus and picks nothing - the selection is the menu pick's
 		await stop.focus();
 		await userEvent.keyboard('{Home}');
 		await vi.waitFor(() =>
-			expect(tab('overview').hasAttribute('active')).toBe(true),
+			expect(document.activeElement).toBe(tab('overview')),
 		);
-		expect(document.activeElement).toBe(tab('overview'));
+		expect(tab('attachments').hasAttribute('active')).toBe(true);
 	});
 
 	it('a real key on the trigger walks nothing', async () => {
