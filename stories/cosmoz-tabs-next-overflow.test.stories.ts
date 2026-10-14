@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, pump, retained, settle, sr } from './overflow-helpers';
+import { box, next, retained, settle, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
@@ -31,7 +31,6 @@ export const NonTabChildrenAreNeverTreatedAsTabs: Story = {
 			heading = bar.querySelector('.heading') as HTMLElement,
 			stats = bar.querySelector('.stats') as HTMLElement;
 
-		await pump(2);
 		await waitFor(() =>
 			expect(
 				bar.querySelectorAll('cosmoz-tab-next[overflowing]').length,
@@ -78,7 +77,6 @@ export const AnExplicitSlotIsNeverReassigned: Story = {
 		const bar = next(canvasElement),
 			pinned = bar.querySelector('.pinned') as HTMLElement;
 
-		await pump(2);
 		await waitFor(() =>
 			expect(
 				bar.querySelectorAll('cosmoz-tab-next[overflowing]').length,
@@ -194,7 +192,6 @@ export const CopiesFollowTheirOriginals: Story = {
 					-1,
 				) as HTMLElement;
 
-		await pump(2);
 		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
 		/** wait out the overflow set settling: two stable reads a frame apart. */
@@ -258,7 +255,6 @@ export const RemovedTabsAreNotRetained: Story = {
 			copies = () =>
 				sr(bar).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next');
 
-		await pump(2);
 		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
 		/** keep only weak refs from here. */

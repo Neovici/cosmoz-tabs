@@ -207,7 +207,6 @@ describe('the bar\'s stop', () => {
 			[...sr(bar).querySelectorAll('.menu > cosmoz-tab-next')] as HTMLElement[];
 		const trigger = () => sr(bar).querySelector('.more-button') as HTMLElement;
 
-		await pump(2);
 		await vi.waitFor(() => expect(copies().length).toBeGreaterThan(0));
 
 		// a real pick: open the menu, click the deepest row
