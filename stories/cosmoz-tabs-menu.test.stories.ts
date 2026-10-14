@@ -4,7 +4,7 @@ import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
 import { renderTabs } from '../src/next/use-tabs';
-import { next, nextFixture, pump, sr, trigger } from './overflow-helpers';
+import { next, nextFixture, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu',
@@ -36,7 +36,6 @@ export const AnOpenMenuKeepsFocusWhenATabChanges: Story = {
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
 
-		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		await open(tabs);
 
@@ -86,7 +85,6 @@ export const TheMoreLabelIsTranslatedAndOverridable: Story = {
 		const tabs = next(canvasElement),
 			label = () => trigger(tabs).textContent?.trim();
 
-		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 
 		await step('defaults to a label without the call site asking', async () => {
@@ -139,7 +137,6 @@ export const DisabledRowsAreOutOfTheTabOrder: Story = {
 	render: withDisabled,
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
-		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 
 		const off = () => copies(tabs).find((c) => c.hasAttribute('disabled'));
@@ -196,7 +193,6 @@ export const ForwardedClicksKeepTheirMouseSemantics: Story = {
 	render: bar,
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
-		await pump(2);
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 
 		const row = copies(tabs).at(-1) as HTMLElement;
@@ -250,7 +246,6 @@ export const AMarkIsRemovedWhenATabLeavesTheBar: Story = {
 	render: bar,
 	play: async ({ canvasElement, step }) => {
 		const tabs = next(canvasElement);
-		await pump(2);
 		await waitFor(() =>
 			expect(
 				tabs.querySelectorAll('cosmoz-tab-next[overflowing]').length,
@@ -312,9 +307,6 @@ export const AWideTabIsReclassifiedOnResize: Story = {
 
 		await step('room for it brings it back', async () => {
 			boxEl.style.width = '500px';
-			// the re-entry's crossing rides a compositor frame; a runner
-			// produces none idle - poke it
-			await pump();
 			await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(false));
 		});
 	},
