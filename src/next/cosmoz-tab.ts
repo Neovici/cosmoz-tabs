@@ -1,7 +1,8 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
-import { component, useEffect, useLayoutEffect } from '@pionjs/pion';
+import { component, useEffect, useLayoutEffect, useRef } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ref } from 'lit-html/directives/ref.js';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -39,7 +40,8 @@ export class TabNextBase extends HTMLElement {
  * @slot icon
  */
 const Tab = (host: CosmozTabNextElement) => {
-	const { active, badge, href } = host;
+	const { active, badge, href } = host,
+		anchor = useRef<HTMLAnchorElement>();
 
 	useLayoutEffect(() => {
 		// the state attribute follows the selection
@@ -48,15 +50,17 @@ const Tab = (host: CosmozTabNextElement) => {
 
 	// The element claims tab semantics, so it picks like a native
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
-	// keydown only prevents the page scroll.
+	// keydown only prevents the page scroll. The pick is the rendered
+	// link's click: href tabs navigate, the plain ones just bubble.
 	useEffect(() => {
+		const pick = () => (anchor.current ?? host).click();
 		const onKey = (e: KeyboardEvent) => {
 			if (e.target !== host || host.hasAttribute('disabled')) {
 				return;
 			}
 			if (e.key === 'Enter' && !e.repeat) {
 				e.preventDefault();
-				host.click();
+				pick();
 			}
 			if (e.key === ' ') {
 				e.preventDefault();
@@ -67,7 +71,7 @@ const Tab = (host: CosmozTabNextElement) => {
 				return;
 			}
 			if (e.key === ' ') {
-				host.click();
+				pick();
 			}
 		};
 		host.addEventListener('keydown', onKey);
@@ -79,7 +83,7 @@ const Tab = (host: CosmozTabNextElement) => {
 	}, []);
 
 	return html`
-		<a part="link" href=${ifDefined(href)}>
+		<a ${ref(anchor)} part="link" href=${ifDefined(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
 			${badge
