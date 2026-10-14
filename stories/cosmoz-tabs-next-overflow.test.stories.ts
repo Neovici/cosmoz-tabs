@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, pump, retained, sr } from './overflow-helpers';
+import { box, next, pump, retained, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
