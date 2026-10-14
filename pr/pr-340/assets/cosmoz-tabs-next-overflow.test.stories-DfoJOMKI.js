@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CvAwp-te.js";import{t as r}from"./next-BipUMood.js";import{c as i,i as a,l as o,n as s,o as c,s as l,t as u}from"./overflow-helpers-C2D4vxMX.js";var d,f,p,m,h,g,_,v,y,b,x,S;function C(){return(C=e((()=>{n(),r(),s(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Tabs overflow (next)`},m={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DPaJSe63.js";import{t as r}from"./next-iWciqeAn.js";import{c as i,i as a,n as o,o as s,s as c,t as l}from"./overflow-helpers-D4gz0kdB.js";var u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),o(),{expect:u,waitFor:d}=__STORYBOOK_MODULE_TEST__,f={title:`Tests/Tabs overflow (next)`},p={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading" slot="tabs">Orders</div>
@@ -9,7 +9,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <div class="stats" slot="stats">1-20 of 87</div>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.heading`),o=n.querySelector(`.stats`);await c(2),await f(()=>d(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`the component leaves the consumer markup alone`,async()=>{d(r.getAttribute(`slot`)).toBe(`tabs`),d(o.getAttribute(`slot`)).toBe(`stats`)}),await t(`they are never marked, clipped or copied`,async()=>{d(r.hasAttribute(`overflowing`)).toBe(!1),d(o.hasAttribute(`overflowing`)).toBe(!1),d(i(n).querySelectorAll(`.menu > :not(cosmoz-tab-next)`).length).toBe(0)}),await t(`they stay visible however narrow the bar gets`,async()=>{u(e).style.width=`120px`,await f(()=>d(o.getBoundingClientRect().width).toBeGreaterThan(0)),d(r.getBoundingClientRect().width).toBeGreaterThan(0)})}},h={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.heading`),o=n.querySelector(`.stats`);await s(2),await d(()=>u(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`the component leaves the consumer markup alone`,async()=>{u(r.getAttribute(`slot`)).toBe(`tabs`),u(o.getAttribute(`slot`)).toBe(`stats`)}),await t(`they are never marked, clipped or copied`,async()=>{u(r.hasAttribute(`overflowing`)).toBe(!1),u(o.hasAttribute(`overflowing`)).toBe(!1),u(i(n).querySelectorAll(`.menu > :not(cosmoz-tab-next)`).length).toBe(0)}),await t(`they stay visible however narrow the bar gets`,async()=>{l(e).style.width=`120px`,await d(()=>u(o.getBoundingClientRect().width).toBeGreaterThan(0)),u(r.getBoundingClientRect().width).toBeGreaterThan(0)})}},m={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
@@ -19,7 +19,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <div class="pinned" slot="tabs">Orders</div>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.pinned`);await c(2),await f(()=>d(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`the consumer keeps the slot they asked for`,async()=>{d(r.getAttribute(`slot`)).toBe(`tabs`)}),await t(`and keeps it across re-renders`,async()=>{n.setAttribute(`variant`,`brand`),u(e).style.width=`200px`,await f(()=>d(r.getAttribute(`slot`)).toBe(`tabs`))})}},g={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`.pinned`);await s(2),await d(()=>u(n.querySelectorAll(`cosmoz-tab-next[overflowing]`).length).toBeGreaterThan(0)),await t(`the consumer keeps the slot they asked for`,async()=>{u(r.getAttribute(`slot`)).toBe(`tabs`)}),await t(`and keeps it across re-renders`,async()=>{n.setAttribute(`variant`,`brand`),l(e).style.width=`200px`,await d(()=>u(r.getAttribute(`slot`)).toBe(`tabs`))})}},h={render:()=>t`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
@@ -29,27 +29,27 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>n.querySelectorAll(`cosmoz-tab-next[overflowing]`),o=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await t(`every overflowing tab gets a copy in the menu`,async()=>{await f(()=>d(r().length).toBeGreaterThan(0)),await f(()=>d(o().length).toBe(r().length))}),await t(`a copy keeps the badge and is a vertical tab`,async()=>{let e=i(n).querySelector(`.menu`);d(e.getAttribute(`role`)).toBe(`tablist`),d(e.getAttribute(`aria-orientation`)).toBe(`vertical`),[...o()].forEach(e=>d(e.getAttribute(`role`)).toBe(`tab`)),[...o()].forEach(e=>{let t=n.querySelector(`cosmoz-tab-next[name="${e.getAttribute(`name`)}"]`);d(e.getAttribute(`badge`)).toBe(t?.getAttribute(`badge`)??null)})}),await t(`activating a copy forwards to the original tab`,async()=>{let e=[...n.querySelectorAll(`cosmoz-tab-next`)].at(-1),t=0,r=0;e.addEventListener(`click`,()=>t++),n.parentElement.addEventListener(`click`,()=>r++),[...o()].at(-1).click(),await f(()=>d(t).toBe(1)),d(r).toBe(1)})}},_=`flex: 0 0 90px; width: 90px; overflow: hidden;`,v={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>n.querySelectorAll(`cosmoz-tab-next[overflowing]`),o=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await t(`every overflowing tab gets a copy in the menu`,async()=>{await d(()=>u(r().length).toBeGreaterThan(0)),await d(()=>u(o().length).toBe(r().length))}),await t(`a copy keeps the badge and is a vertical tab`,async()=>{let e=i(n).querySelector(`.menu`);u(e.getAttribute(`role`)).toBe(`tablist`),u(e.getAttribute(`aria-orientation`)).toBe(`vertical`),[...o()].forEach(e=>u(e.getAttribute(`role`)).toBe(`tab`)),[...o()].forEach(e=>{let t=n.querySelector(`cosmoz-tab-next[name="${e.getAttribute(`name`)}"]`);u(e.getAttribute(`badge`)).toBe(t?.getAttribute(`badge`)??null)})}),await t(`activating a copy forwards to the original tab`,async()=>{let e=[...n.querySelectorAll(`cosmoz-tab-next`)].at(-1),t=0,r=0;e.addEventListener(`click`,()=>t++),n.parentElement.addEventListener(`click`,()=>r++),[...o()].at(-1).click(),await d(()=>u(t).toBe(1)),u(r).toBe(1)})}},g=`flex: 0 0 90px; width: 90px; overflow: hidden;`,_={render:()=>t`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
-                <cosmoz-tab-next name="overview" style=${_} active
+                <cosmoz-tab-next name="overview" style=${g} active
                     >Overview</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="rows" style=${_}
+                <cosmoz-tab-next name="rows" style=${g}
                     >Invoice rows</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="accounting" style=${_}
+                <cosmoz-tab-next name="accounting" style=${g}
                     >Accounting</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="history" style=${_}
+                <cosmoz-tab-next name="history" style=${g}
                     >History</cosmoz-tab-next
                 >
-                <cosmoz-tab-next name="attachments" style=${_}
+                <cosmoz-tab-next name="attachments" style=${g}
                     >Attachments</cosmoz-tab-next
                 >
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`),o=()=>[...n.querySelectorAll(`cosmoz-tab-next`)].at(-1);await c(2),await f(()=>d(r().length).toBeGreaterThan(0)),await t(`wait for the overflow set to stop moving`,async()=>{let e=-1;await f(()=>{let t=r().length;return new Promise(n=>{requestAnimationFrame(()=>{d(r().length).toBe(t),e=t,n()})})}),d(e).toBeGreaterThan(0)}),await t(`a relabelled tab relabels its copy`,async()=>{o().textContent=`Files`,await f(()=>d([...r()].at(-1)?.textContent?.trim()).toBe(`Files`))}),await t(`a badge added later reaches the copy`,async()=>{o().setAttribute(`badge`,`7`),await f(()=>d([...r()].at(-1)?.getAttribute(`badge`)).toBe(`7`))}),await t(`selecting a tab marks the right copy`,async()=>{o().setAttribute(`active`,``),await f(()=>d([...r()].at(-1)?.hasAttribute(`active`)).toBe(!0))})}},y={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`),o=()=>[...n.querySelectorAll(`cosmoz-tab-next`)].at(-1);await s(2),await d(()=>u(r().length).toBeGreaterThan(0)),await t(`wait for the overflow set to stop moving`,async()=>{let e=-1;await d(()=>{let t=r().length;return new Promise(n=>{requestAnimationFrame(()=>{u(r().length).toBe(t),e=t,n()})})}),u(e).toBeGreaterThan(0)}),await t(`a relabelled tab relabels its copy`,async()=>{o().textContent=`Files`,await d(()=>u([...r()].at(-1)?.textContent?.trim()).toBe(`Files`))}),await t(`a badge added later reaches the copy`,async()=>{o().setAttribute(`badge`,`7`),await d(()=>u([...r()].at(-1)?.getAttribute(`badge`)).toBe(`7`))}),await t(`selecting a tab marks the right copy`,async()=>{o().setAttribute(`active`,``),await d(()=>u([...r()].at(-1)?.hasAttribute(`active`)).toBe(!0))})}},v={render:()=>t`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
@@ -59,45 +59,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await c(2),await f(()=>d(r().length).toBeGreaterThan(0));let o=[],s=[];await t(`drop every tab but the first, bar stays mounted`,async()=>{let e=[...n.querySelectorAll(`cosmoz-tab-next`)].slice(1);o=e.map(e=>new WeakRef(e)),s=[...r()].map(e=>new WeakRef(e)),e.forEach(e=>e.remove()),d(o.length).toBeGreaterThan(0),d(s.length).toBeGreaterThan(0),await f(()=>d([...r()].some(t=>e.includes(t.parentElement.querySelector(`[name="${t.getAttribute(`name`)}"]`)))).toBe(!1))}),await t(`the removed tabs are collectable`,async()=>d(await l(o)).toBe(0)),await t(`and so are the menu copies of them`,async()=>d(await l(s)).toBe(0))}},b={render:()=>t`
-        <div class="box" style="width: 240px; overflow: hidden;">
-            <cosmoz-tabs-next variant="underline" compact-width>
-                <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-                <cosmoz-tab-next name="rows">
-                    <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="2"
-                            stroke-width="1.5"
-                        /></svg
-                    >Invoice rows</cosmoz-tab-next
-                >
-                <cosmoz-tab-next name="accounting"
-                    ><svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle cx="12" cy="12" r="9" stroke-width="1.5" /></svg
-                    >Accounting</cosmoz-tab-next
-                >
-                <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-            </cosmoz-tabs-next>
-        </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await c(2),await f(()=>d(r().length).toBeGreaterThan(0)),await o(n).click(),await c(2),await t(`the copied icon keeps its natural size`,async()=>{[...r()].forEach(e=>{let t=e.querySelector(`svg`);t&&d(t.getBoundingClientRect().width,`${e.getAttribute(`name`)}'s icon`).toBeLessThanOrEqual(20)})}),await t(`and the label sits beside it, not at the row edge`,async()=>{[...r()].forEach(e=>{let t=e.querySelector(`svg`),n=[...e.childNodes].find(e=>e.nodeType===Node.TEXT_NODE);if(!t||!n)return;let r=document.createRange();r.selectNodeContents(n);let i=r.getBoundingClientRect();d(i.left-t.getBoundingClientRect().right,`${e.getAttribute(`name`)}'s label gap`).toBeLessThan(14)})})}},x={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=()=>i(n).querySelectorAll(`.menu > cosmoz-tab-next`);await s(2),await d(()=>u(r().length).toBeGreaterThan(0));let o=[],l=[];await t(`drop every tab but the first, bar stays mounted`,async()=>{let e=[...n.querySelectorAll(`cosmoz-tab-next`)].slice(1);o=e.map(e=>new WeakRef(e)),l=[...r()].map(e=>new WeakRef(e)),e.forEach(e=>e.remove()),u(o.length).toBeGreaterThan(0),u(l.length).toBeGreaterThan(0),await d(()=>u([...r()].some(t=>e.includes(t.parentElement.querySelector(`[name="${t.getAttribute(`name`)}"]`)))).toBe(!1))}),await t(`the removed tabs are collectable`,async()=>u(await c(o)).toBe(0)),await t(`and so are the menu copies of them`,async()=>u(await c(l)).toBe(0))}},y={render:()=>t`
         <div
             class="box"
             style="width: 420px; display: flex; align-items: center; gap: 8px;"
@@ -111,7 +73,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next name="attachments">Attachments</cosmoz-tab-next>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=u(e);await t(`the bar shrinks into the row instead of spilling`,async()=>{await f(()=>d(n.getBoundingClientRect().right).toBeLessThanOrEqual(r.getBoundingClientRect().right+1))}),await t(`and hands the tabs that no longer fit to the menu`,async()=>{await f(()=>d(i(n).querySelectorAll(`.menu > cosmoz-tab-next`).length).toBeGreaterThan(0)),d(i(n).querySelector(`.more`)?.hasAttribute(`hidden`)).toBe(!1)})}},S=[`NonTabChildrenAreNeverTreatedAsTabs`,`AnExplicitSlotIsNeverReassigned`,`NextCopiesOverflowingTabsIntoTheMenu`,`CopiesFollowTheirOriginals`,`RemovedTabsAreNotRetained`,`TheMenuRowHugsItsContent`,`OverflowsWhenTheBarIsAFlexItem`],m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=l(e);await t(`the bar shrinks into the row instead of spilling`,async()=>{await d(()=>u(n.getBoundingClientRect().right).toBeLessThanOrEqual(r.getBoundingClientRect().right+1))}),await t(`and hands the tabs that no longer fit to the menu`,async()=>{await d(()=>u(i(n).querySelectorAll(`.menu > cosmoz-tab-next`).length).toBeGreaterThan(0)),u(i(n).querySelector(`.more`)?.hasAttribute(`hidden`)).toBe(!1)})}},b=[`NonTabChildrenAreNeverTreatedAsTabs`,`AnExplicitSlotIsNeverReassigned`,`NextCopiesOverflowingTabsIntoTheMenu`,`CopiesFollowTheirOriginals`,`RemovedTabsAreNotRetained`,`OverflowsWhenTheBarIsAFlexItem`],p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
@@ -149,7 +111,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       expect(heading.getBoundingClientRect().width).toBeGreaterThan(0);
     });
   }
-}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
@@ -178,7 +140,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       await waitFor(() => expect(pinned.getAttribute('slot')).toBe('tabs'));
     });
   }
-}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
@@ -224,7 +186,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       expect(delegated).toBe(1);
     });
   }
-}`,...g.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+}`,...h.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
@@ -286,7 +248,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       await waitFor(() => expect([...copies()].at(-1)?.hasAttribute('active')).toBe(true));
     });
   }
-}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div class="box" style="width: 240px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
@@ -323,84 +285,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     await step('the removed tabs are collectable', async () => expect(await retained(refs)).toBe(0));
     await step('and so are the menu copies of them', async () => expect(await retained(cloneRefs)).toBe(0));
   }
-}`,...y.parameters?.docs?.source},description:{story:`removed tabs must not be retained by overflow state.
-keeping the bar mounted exposes those leaks.`,...y.parameters?.docs?.description}}},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
-  render: () => html\`
-        <div class="box" style="width: 240px; overflow: hidden;">
-            <cosmoz-tabs-next variant="underline" compact-width>
-                <cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
-                <cosmoz-tab-next name="rows">
-                    <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="2"
-                            stroke-width="1.5"
-                        /></svg
-                    >Invoice rows</cosmoz-tab-next
-                >
-                <cosmoz-tab-next name="accounting"
-                    ><svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle cx="12" cy="12" r="9" stroke-width="1.5" /></svg
-                    >Accounting</cosmoz-tab-next
-                >
-                <cosmoz-tab-next name="history">History</cosmoz-tab-next>
-            </cosmoz-tabs-next>
-        </div>
-    \`,
-  play: async ({
-    canvasElement,
-    step
-  }) => {
-    const bar = next(canvasElement),
-      copies = () => sr(bar).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next');
-    await pump(2);
-    await waitFor(() => expect(copies().length).toBeGreaterThan(0));
-    await trigger(bar).click();
-    await pump(2);
-
-    /**
-     * A bare (slot-less) icon and a text label both land on the
-     * content slot. The bar's slotted-label spread (flex: auto) may
-     * grow the icon into a stretched menu row's free space and park
-     * the label at the row's far edge.
-     */
-    await step('the copied icon keeps its natural size', async () => {
-      [...copies()].forEach(copy => {
-        const svg = copy.querySelector('svg') as SVGGraphicsElement;
-        if (!svg) return;
-        expect(svg.getBoundingClientRect().width, \`\${copy.getAttribute('name')}'s icon\`).toBeLessThanOrEqual(20);
-      });
-    });
-    await step('and the label sits beside it, not at the row edge', async () => {
-      [...copies()].forEach(copy => {
-        const svg = copy.querySelector('svg') as SVGGraphicsElement;
-        const text = [...copy.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
-        if (!svg || !text) return;
-        const range = document.createRange();
-        range.selectNodeContents(text);
-        const label = range.getBoundingClientRect();
-        expect(label.left - svg.getBoundingClientRect().right, \`\${copy.getAttribute('name')}'s label gap\`).toBeLessThan(14);
-      });
-    });
-  }
-}`,...b.parameters?.docs?.source}}},x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
+}`,...v.parameters?.docs?.source},description:{story:`removed tabs must not be retained by overflow state.
+keeping the bar mounted exposes those leaks.`,...v.parameters?.docs?.description}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div
             class="box"
@@ -435,4 +321,4 @@ keeping the bar mounted exposes those leaks.`,...y.parameters?.docs?.description
       expect(sr(bar).querySelector('.more')?.hasAttribute('hidden')).toBe(false);
     });
   }
-}`,...x.parameters?.docs?.source}}}})))()}C();export{h as AnExplicitSlotIsNeverReassigned,v as CopiesFollowTheirOriginals,g as NextCopiesOverflowingTabsIntoTheMenu,m as NonTabChildrenAreNeverTreatedAsTabs,x as OverflowsWhenTheBarIsAFlexItem,y as RemovedTabsAreNotRetained,b as TheMenuRowHugsItsContent,S as __namedExportsOrder,p as default};
+}`,...y.parameters?.docs?.source}}}})))()}x();export{m as AnExplicitSlotIsNeverReassigned,_ as CopiesFollowTheirOriginals,h as NextCopiesOverflowingTabsIntoTheMenu,p as NonTabChildrenAreNeverTreatedAsTabs,y as OverflowsWhenTheBarIsAFlexItem,v as RemovedTabsAreNotRetained,b as __namedExportsOrder,f as default};
