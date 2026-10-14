@@ -1,3 +1,9 @@
+## 11.0.1
+
+### Patch Changes
+
+- e797681: fix(next): keep the icon and its label together in the More menu
+
 ## 11.0.0
 
 ### Major Changes
