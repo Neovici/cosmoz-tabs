@@ -6,6 +6,7 @@ import {
 	html,
 	useCallback,
 	useEffect,
+	useLayoutEffect,
 	useMemo,
 	useRef,
 	useState,
@@ -217,7 +218,7 @@ const Tabs = (host: CosmozTabsNextElement) => {
 	// The walk only moves the focus; Enter/Space pick (through the
 	// item's link: href tabs navigate, plain tabs bubble). An overflowed
 	// view stays out — the menu's walk is the dropdown's business.
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if (!ROVED.has(e.key)) {
 				return;

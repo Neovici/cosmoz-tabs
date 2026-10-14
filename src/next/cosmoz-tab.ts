@@ -1,5 +1,5 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
-import { component, useEffect, useLayoutEffect, useRef } from '@pionjs/pion';
+import { component, useLayoutEffect, useRef } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { ref } from 'lit-html/directives/ref.js';
@@ -52,7 +52,7 @@ const Tab = (host: CosmozTabNextElement) => {
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
 	// keydown only prevents the page scroll. The pick is the rendered
 	// link's click: href tabs navigate, the plain ones just bubble.
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const pick = () => (anchor.current ?? host).click();
 		const onKey = (e: KeyboardEvent) => {
 			if (e.target !== host || host.hasAttribute('disabled')) {
