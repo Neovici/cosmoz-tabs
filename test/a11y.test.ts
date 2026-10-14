@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import '../src/next';
 import { renderTabs, useTabs, type RenderTab } from '../src/next/use-tabs';
-import { nextFixture, pump } from '../stories/overflow-helpers';
+import { nextFixture, settle } from '../stories/overflow-helpers';
 
 const walkModel: RenderTab[] = [
 	{ name: 'overview', title: 'Overview' },
@@ -132,7 +132,7 @@ describe('the bar\'s walk', () => {
 		expect(links.getAttribute('href')).toBe('#!/somewhere-thing');
 
 		// the pick is the link's click; the browser's default follows it
-		await pump(2);
+		await settle(2);
 		await links.focus();
 		await userEvent.keyboard('{Enter}');
 		await vi.waitFor(() => expect(location.hash).toBe('#!/somewhere-thing'));

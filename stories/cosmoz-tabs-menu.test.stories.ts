@@ -4,7 +4,7 @@ import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
 import { renderTabs } from '../src/next/use-tabs';
-import { next, nextFixture, pump, sr, trigger } from './overflow-helpers';
+import { next, nextFixture, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu',
@@ -307,9 +307,6 @@ export const AWideTabIsReclassifiedOnResize: Story = {
 
 		await step('room for it brings it back', async () => {
 			boxEl.style.width = '500px';
-			// the re-entry's crossing rides a compositor frame; a runner
-			// produces none idle - poke it
-			await pump();
 			await waitFor(() => expect(b.hasAttribute('overflowing')).toBe(false));
 		});
 	},
