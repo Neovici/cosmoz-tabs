@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-BBig1c9M.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as ee,y as w}from"./if-defined-CdMIJQz5.js";import{m as te,t as ne}from"./untitled-CX-yt9ll.js";import{r as re,t as ie}from"./use-hash-param-8uNkeIOV.js";var T;function E(){return(E=e((()=>{x(),T=_`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-DPaJSe63.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as ee,y as w}from"./if-defined-BYXVUlch.js";import{m as te,t as ne}from"./untitled-BI8O54nN.js";import{r as re,t as ie}from"./use-hash-param-EZqnnCF8.js";var T;function E(){return(E=e((()=>{x(),T=_`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -110,6 +110,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	#contentSlot::slotted(*) {
 		flex: auto;
+	}
+
+	:host([menu]) #contentSlot::slotted(*) {
+		flex: 0 0 auto;
 	}
 
 	/* Untitled UI badge, size sm: a counter pill that steps up a surface
