@@ -4,7 +4,7 @@ import { expect, waitFor } from 'storybook/test';
 import { userEvent as driverUserEvent } from 'vitest/browser';
 
 import '../src/next';
-import { next, nextFixture, sr, trigger } from './overflow-helpers';
+import { more, next, nextFixture, sr, trigger } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Overflow menu trigger',
@@ -70,9 +70,8 @@ export const SpacePicksOnKeyUpLikeANativeButton: Story = {
 
 		await waitFor(() => expect(copies(tabs).length).toBeGreaterThan(0));
 		sr(tabs).querySelector<HTMLButtonElement>('.more-button')?.click();
-		// let the open settle before interacting
-		await new Promise((r) => requestAnimationFrame(r));
-		await new Promise((r) => requestAnimationFrame(r));
+		// the open makes the rows focusable - the popover must be open
+		await waitFor(() => expect(more(tabs).hasAttribute('opened')).toBe(true));
 
 		const row = copies(tabs)[1] as HTMLElement,
 			seen: string[] = [];
