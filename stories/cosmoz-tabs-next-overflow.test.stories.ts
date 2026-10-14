@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { expect, waitFor } from 'storybook/test';
 
 import '../src/next';
-import { box, next, retained, settle, sr } from './overflow-helpers';
+import { box, next, retained, sr } from './overflow-helpers';
 
 const meta: Meta = {
 	title: 'Tests/Tabs overflow (next)',
@@ -314,10 +314,13 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			fire = (el: HTMLElement, key: string, type = 'keydown') =>
 				el.dispatchEvent(new KeyboardEvent(type, { key, bubbles: true }));
 
+		// the bar's commit carries the key listeners and the flat-tree
+		// membership the walk reads; the walk and the pick run synchronously
+		await waitFor(() => expect(overview.assignedSlot).toBeTruthy());
+
 		await step('an arrow walks the focus and picks nothing', async () => {
 			overview.focus();
 			fire(overview, 'ArrowRight');
-			await settle(2);
 			expect(document.activeElement).toBe(rows);
 			expect(rows.hasAttribute('active')).toBe(false);
 		});
@@ -326,7 +329,6 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			let picks = 0;
 			rows.addEventListener('click', () => picks++);
 			fire(rows, 'Enter');
-			await settle(2);
 			expect(picks).toBe(1);
 		});
 
@@ -335,7 +337,6 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			rows.addEventListener('click', () => picks++);
 			fire(rows, ' ', 'keydown');
 			fire(rows, ' ', 'keyup');
-			await settle(2);
 			expect(picks).toBe(1);
 		});
 
@@ -356,7 +357,6 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			});
 			history.focus();
 			fire(history, 'Enter');
-			await settle(2);
 			document.removeEventListener('click', cancel, { capture: true });
 			expect(href).toBe('#!/somewhere');
 		});

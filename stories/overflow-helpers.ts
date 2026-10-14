@@ -3,13 +3,6 @@ import { html } from 'lit-html';
 export const box = (root: HTMLElement) =>
 	root.querySelector('.box') as HTMLElement;
 
-/** wait a few frames for observer reports and rerenders. */
-export const settle = async (frames = 4) => {
-	for (let i = 0; i < frames; i++) {
-		await new Promise(requestAnimationFrame);
-	}
-};
-
 export const next = (root: HTMLElement) =>
 	root.querySelector('cosmoz-tabs-next') as HTMLElement;
 
