@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-WMjsx7xW.js";import{t as r}from"./next-Bp_KgwrM.js";import{c as i,i as a,l as o,n as s,o as c,s as l,t as u}from"./overflow-helpers-BuZEZ6Ty.js";var d,f,p,m,h,g,_,v,y,b,x,S;function C(){return(C=e((()=>{n(),r(),s(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Tabs overflow (next)`},m={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-LJ3zOmwL.js";import{t as r}from"./next-CZfC2cAk.js";import{c as i,i as a,l as o,n as s,o as c,s as l,t as u}from"./overflow-helpers-ln_FEgkJ.js";var d,f,p,m,h,g,_,v,y,b,x,S;function C(){return(C=e((()=>{n(),r(),s(),{expect:d,waitFor:f}=__STORYBOOK_MODULE_TEST__,p={title:`Tests/Tabs overflow (next)`},m={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading" slot="tabs">Orders</div>
@@ -69,7 +69,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 >
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`[name="overview"]`),o=n.querySelector(`[name="rows"]`),s=n.querySelector(`[name="history"]`),l=(e,t,n=`keydown`)=>e.dispatchEvent(new KeyboardEvent(n,{key:t,bubbles:!0}));await c(2),await t(`an arrow walks the focus and picks nothing`,async()=>{r.focus(),l(r,`ArrowRight`),await i(2),d(document.activeElement).toBe(o),d(o.hasAttribute(`active`)).toBe(!1)}),await t(`Enter picks the focused tab`,async()=>{let e=0;o.addEventListener(`click`,()=>e++),l(o,`Enter`),await i(2),d(e).toBe(1)}),await t(`a Space keyup picks too`,async()=>{let e=0;o.addEventListener(`click`,()=>e++),l(o,` `,`keydown`),l(o,` `,`keyup`),await i(2),d(e).toBe(1)}),await t(`a link tab picks through its link`,async()=>{let e=``,t=t=>{t.preventDefault(),e=t.composedPath().find(e=>e.tagName===`A`)?.getAttribute(`href`)??``};document.addEventListener(`click`,t,{capture:!0,once:!0}),s.focus(),l(s,`Enter`),await i(2),document.removeEventListener(`click`,t,{capture:!0}),d(e).toBe(`#!/somewhere`)})}},x={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=a(e),r=n.querySelector(`[name="overview"]`),o=n.querySelector(`[name="rows"]`),s=n.querySelector(`[name="history"]`),c=(e,t,n=`keydown`)=>e.dispatchEvent(new KeyboardEvent(n,{key:t,bubbles:!0}));await t(`an arrow walks the focus and picks nothing`,async()=>{r.focus(),c(r,`ArrowRight`),await i(2),d(document.activeElement).toBe(o),d(o.hasAttribute(`active`)).toBe(!1)}),await t(`Enter picks the focused tab`,async()=>{let e=0;o.addEventListener(`click`,()=>e++),c(o,`Enter`),await i(2),d(e).toBe(1)}),await t(`a Space keyup picks too`,async()=>{let e=0;o.addEventListener(`click`,()=>e++),c(o,` `,`keydown`),c(o,` `,`keyup`),await i(2),d(e).toBe(1)}),await t(`a link tab picks through its link`,async()=>{let e=``,t=t=>{t.preventDefault(),e=t.composedPath().find(e=>e.tagName===`A`)?.getAttribute(`href`)??``};document.addEventListener(`click`,t,{capture:!0,once:!0}),s.focus(),c(s,`Enter`),await i(2),document.removeEventListener(`click`,t,{capture:!0}),d(e).toBe(`#!/somewhere`)})}},x={render:()=>t`
         <div
             class="box"
             style="width: 420px; display: flex; align-items: center; gap: 8px;"
@@ -320,7 +320,6 @@ keeping the bar mounted exposes those leaks.`,...y.parameters?.docs?.description
         key,
         bubbles: true
       }));
-    await pump(2);
     await step('an arrow walks the focus and picks nothing', async () => {
       overview.focus();
       fire(overview, 'ArrowRight');
