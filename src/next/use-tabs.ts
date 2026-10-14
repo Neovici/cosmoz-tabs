@@ -1,6 +1,6 @@
 import { useHashParam } from '@neovici/cosmoz-router/use-hash-param';
 import { invoke } from '@neovici/cosmoz-utils/function';
-import { html, useCallback, useMemo, useRef } from '@pionjs/pion';
+import { html, useCallback, useMemo, useRef, useState } from '@pionjs/pion';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { when } from 'lit-html/directives/when.js';
 import type { TabsSize, TabsVariant } from './styles';
@@ -12,6 +12,8 @@ export interface Tab {
 	hidden?: boolean;
 	disabled?: boolean;
 	fallback?: boolean;
+	/** `false` keeps a click on this tab from being remembered by `persist`. */
+	persist?: boolean;
 }
 
 export interface RenderTab extends Tab {
@@ -25,6 +27,11 @@ export interface RenderTab extends Tab {
 export interface Options {
 	hashParam?: string;
 	onActivate?: (name: string) => void;
+	/**
+	 * localStorage key. The clicked tab is stored under it, and is the tab
+	 * shown when the hash names none (before `fallback`).
+	 */
+	persist?: string;
 }
 
 export interface Result<T extends Tab> {
@@ -55,6 +62,23 @@ const valid = <T extends Tab>(tabs: T[]): T | undefined =>
 		.sort((a, b) => Number(b.fallback ?? false) - Number(a.fallback ?? false))
 		.find(isValid);
 
+// localStorage throws where storage is blocked; persistence is optional then
+const read = (key?: string) => {
+	try {
+		return key ? localStorage.getItem(key) : null;
+	} catch {
+		return null;
+	}
+};
+
+const write = (key: string, value: string) => {
+	try {
+		localStorage.setItem(key, value);
+	} catch {
+		// see read
+	}
+};
+
 const choose = <T extends Tab>(tabs: T[], name?: string): T | undefined => {
 	const tab = name ? tabs.find((t) => t.name === name) : undefined;
 	return tab && isValid(tab) ? tab : valid(tabs);
@@ -62,11 +86,15 @@ const choose = <T extends Tab>(tabs: T[], name?: string): T | undefined => {
 
 export const useTabs = <T extends Tab>(
 	tabs: T[],
-	{ hashParam, onActivate }: Options = {},
+	{ hashParam, onActivate, persist }: Options = {},
 ): Result<T> => {
 	const [name, activate] = useHashParam(hashParam),
+		[stored, setStored] = useState(() => read(persist)),
 		ref = useRef<string[]>([]),
-		active = useMemo(() => choose(tabs, name ?? undefined), [tabs, name]) as T,
+		active = useMemo(
+			() => choose(tabs, name ?? stored ?? undefined),
+			[tabs, name, stored],
+		) as T,
 		activated = useMemo(() => {
 			const current = active?.name;
 			return (ref.current = [
@@ -92,10 +120,17 @@ export const useTabs = <T extends Tab>(
 				if (!tabName) {
 					return;
 				}
+				if (
+					persist &&
+					tabs.find((t) => t.name === tabName)?.persist !== false
+				) {
+					write(persist, tabName);
+					setStored(tabName);
+				}
 				onActivate?.(tabName);
 				activate(tabName);
 			},
-			[activate, onActivate],
+			[activate, onActivate, persist, tabs],
 		),
 	};
 };

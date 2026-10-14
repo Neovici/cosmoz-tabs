@@ -115,6 +115,11 @@ For the next family the container reflects `variant`/`size`/`compact-width` onto
 boundary); when both `renderTabs(...)` and the container set them, the container wins. Slot
 an icon with the icon template's `slot` option: `${receiptIcon({ slot: 'icon' })}`.
 
+To remember the tab a user picks, pass a localStorage key:
+`useTabs(tabs, { hashParam: 'tab', persist: 'my-view-tab' })`. A click stores the
+tab, and the stored tab is shown whenever the hash names none, ahead of `fallback`.
+Mark a tab `persist: false` to keep clicks on it from being remembered.
+
 ### Overflow menu (`cosmoz-tabs-next` only)
 
 Tabs that do not fit in the bar move into a "More" dropdown at its end.
