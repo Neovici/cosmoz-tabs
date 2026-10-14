@@ -298,6 +298,96 @@ export const RemovedTabsAreNotRetained: Story = {
 	},
 };
 
+export const TheMenuRowHugsItsContent: Story = {
+	render: () => html`
+		<div class="box" style="width: 240px; overflow: hidden;">
+			<cosmoz-tabs-next variant="underline" compact-width>
+				<cosmoz-tab-next name="overview" active>Overview</cosmoz-tab-next>
+				<cosmoz-tab-next name="rows">
+					<svg
+						width="18"
+						height="18"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect
+							x="3"
+							y="3"
+							width="18"
+							height="18"
+							rx="2"
+							stroke-width="1.5"
+						/></svg
+					>Invoice rows</cosmoz-tab-next
+				>
+				<cosmoz-tab-next name="accounting"
+					><svg
+						width="18"
+						height="18"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<circle cx="12" cy="12" r="9" stroke-width="1.5" /></svg
+					>Accounting</cosmoz-tab-next
+				>
+				<cosmoz-tab-next name="history">History</cosmoz-tab-next>
+			</cosmoz-tabs-next>
+		</div>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const bar = next(canvasElement),
+			copies = () =>
+				sr(bar).querySelectorAll<HTMLElement>('.menu > cosmoz-tab-next');
+
+		await pump(2);
+		await waitFor(() => expect(copies().length).toBeGreaterThan(0));
+
+		await trigger(bar).click();
+		await pump(2);
+
+		/**
+		 * A bare (slot-less) icon and a text label both land on the
+		 * content slot. The bar's slotted-label spread (flex: auto) may
+		 * grow the icon into a stretched menu row's free space and park
+		 * the label at the row's far edge.
+		 */
+		await step('the copied icon keeps its natural size', async () => {
+			[...copies()].forEach((copy) => {
+				const svg = copy.querySelector('svg') as SVGGraphicsElement;
+				if (!svg) return;
+				expect(
+					svg.getBoundingClientRect().width,
+					`${copy.getAttribute('name')}'s icon`,
+				).toBeLessThanOrEqual(20);
+			});
+		});
+
+		await step(
+			'and the label sits beside it, not at the row edge',
+			async () => {
+				[...copies()].forEach((copy) => {
+					const svg = copy.querySelector('svg') as SVGGraphicsElement;
+					const text = [...copy.childNodes].find(
+						(n) => n.nodeType === Node.TEXT_NODE,
+					);
+					if (!svg || !text) return;
+					const range = document.createRange();
+					range.selectNodeContents(text);
+					const label = range.getBoundingClientRect();
+					expect(
+						label.left - svg.getBoundingClientRect().right,
+						`${copy.getAttribute('name')}'s label gap`,
+					).toBeLessThan(14);
+				});
+			},
+		);
+	},
+};
+
 export const OverflowsWhenTheBarIsAFlexItem: Story = {
 	render: () => html`
 		<div
