@@ -26,14 +26,14 @@ export const nextTabStyles = css`
 		   face, so both stay in sync by construction). */
 		--_color: var(--cz-color-text-quaternary);
 		--_icon-color: var(--cz-color-fg-quaternary);
-		--_hover-color: var(--cz-color-text-brand);
+		--_hover-color: var(--cz-color-text-secondary);
 		--_hover-background: transparent;
-		--_hover-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-		--_hover-icon-color: var(--cz-color-fg-brand-secondary);
-		--_active-color: var(--cz-color-text-brand);
+		--_hover-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+		--_hover-icon-color: var(--cz-color-fg-secondary);
+		--_active-color: var(--cz-color-text-primary);
 		--_active-background: transparent;
-		--_active-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-		--_active-icon-color: var(--cz-color-fg-brand-secondary);
+		--_active-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
+		--_active-icon-color: var(--cz-color-fg-secondary);
 	}
 
 	:host(:hover) {
@@ -57,7 +57,7 @@ export const nextTabStyles = css`
 	}
 
 	:host(:focus-visible) {
-		outline: 2px solid var(--cz-color-fg-brand);
+		outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 		outline-offset: -2px;
 	}
 
@@ -88,10 +88,19 @@ export const nextTabStyles = css`
 		--_hover-background: var(--cz-color-bg-primary-hover);
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-quaternary);
-		--_active-color: var(--cz-color-text-on-brand);
-		--_active-background: var(--cz-color-bg-brand-solid);
+		--_active-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_active-shadow: none;
-		--_active-icon-color: var(--cz-color-text-on-brand);
+		--_active-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
 	}
 
 	a {
@@ -165,14 +174,32 @@ export const nextTabStyles = css`
 	:host([variant='brand']) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 		border-radius: var(--cz-radius-md);
-		--_hover-color: var(--cz-color-text-on-brand);
-		--_hover-background: var(--cz-color-bg-brand-solid);
+		--_hover-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_hover-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_hover-shadow: none;
-		--_hover-icon-color: var(--cz-color-text-on-brand);
-		--_active-color: var(--cz-color-text-on-brand);
-		--_active-background: var(--cz-color-bg-brand-solid);
+		--_hover-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_active-shadow: none;
-		--_active-icon-color: var(--cz-color-text-on-brand);
+		--_active-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
 	}
 
 	:host([variant='segmented']) {

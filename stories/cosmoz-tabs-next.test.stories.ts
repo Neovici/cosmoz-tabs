@@ -153,6 +153,48 @@ export const BrandActiveStyling: Story = {
 	},
 };
 
+export const NeutralSelection: Story = {
+	render: () => html`
+		<div
+			style=${[
+				'--cz-color-text-primary: rgb(1, 2, 3)',
+				'--cz-color-bg-action-solid: rgb(4, 5, 6)',
+				'--cz-color-text-brand: rgb(9, 9, 9)',
+				'--cz-color-bg-brand-solid: rgb(9, 9, 9)',
+			].join(';')}
+		>
+			<cosmoz-tabs-next variant="underline">
+				<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			</cosmoz-tabs-next>
+			<cosmoz-tabs-next variant="brand">
+				<cosmoz-tab-next active>Overview</cosmoz-tab-next>
+			</cosmoz-tabs-next>
+		</div>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const active = (variant: string) =>
+			canvasElement.querySelector(
+				`cosmoz-tabs-next[variant=${variant}] cosmoz-tab-next[active]`,
+			) as HTMLElement;
+
+		await step('the underline tab is selected in primary text', async () => {
+			await waitFor(() =>
+				expect(getComputedStyle(active('underline')).color).toBe(
+					'rgb(1, 2, 3)',
+				),
+			);
+		});
+
+		await step('the brand tab is filled with the action token', async () => {
+			await waitFor(() =>
+				expect(getComputedStyle(active('brand')).backgroundColor).toBe(
+					'rgb(4, 5, 6)',
+				),
+			);
+		});
+	},
+};
+
 export const SegmentedActiveStyling: Story = {
 	render: () => fixture('segmented'),
 	play: async ({ canvasElement, step }) => {

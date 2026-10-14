@@ -141,19 +141,23 @@ export const nextTabsStyles = css`
 		transform: rotate(180deg);
 	}
 
-	.more-button:hover,
+	.more-button:hover {
+		color: var(--cz-color-text-secondary);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+	}
+
 	.more[data-active] .more-button {
-		color: var(--cz-color-text-brand);
-		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
+		color: var(--cz-color-text-primary);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		color: var(--cz-color-fg-brand-secondary);
+		color: var(--cz-color-fg-secondary);
 	}
 
 	.more-button:focus-visible {
-		outline: 2px solid var(--cz-color-fg-brand);
+		outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 		outline-offset: -2px;
 	}
 
@@ -164,14 +168,17 @@ export const nextTabsStyles = css`
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		color: var(--cz-color-text-on-brand);
-		background-color: var(--cz-color-bg-brand-solid);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
+		background-color: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		box-shadow: none;
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
 	:host([variant='brand']) .more[data-active] .more-button svg {
-		color: var(--cz-color-text-on-brand);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 	}
 
 	:host([variant='segmented']) .more-button {
