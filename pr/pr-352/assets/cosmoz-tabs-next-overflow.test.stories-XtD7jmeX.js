@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-Cwg8VNdM.js";import{t as r}from"./next-_oRSVFla.js";import{i,n as a,o,s,t as c}from"./overflow-helpers-Bb5muihJ.js";var l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),a(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next)`},f={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-B8-gjK8h.js";import{t as r}from"./next-BLn3r2ad.js";import{i,n as a,o,s,t as c}from"./overflow-helpers-CDvimR3o.js";var l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),a(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next)`},f={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading" slot="tabs">Orders</div>
@@ -69,7 +69,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 >
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=i(e),r=n.querySelector(`[name="overview"]`),a=n.querySelector(`[name="rows"]`),o=n.querySelector(`[name="history"]`),s=(e,t,n=`keydown`)=>e.dispatchEvent(new KeyboardEvent(n,{key:t,bubbles:!0}));await u(()=>l(r.assignedSlot).toBeTruthy()),await t(`an arrow walks the focus and picks nothing`,async()=>{r.focus(),s(r,`ArrowRight`),l(document.activeElement).toBe(a),l(a.hasAttribute(`active`)).toBe(!1),s(a,`ArrowRight`),l(document.activeElement).toBe(o),l(o.hasAttribute(`active`)).toBe(!1)}),await t(`Enter picks the focused tab`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),s(a,`Enter`),l(e).toBe(1)}),await t(`a Space keyup picks too`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),s(a,` `,`keydown`),s(a,` `,`keyup`),l(e).toBe(1)}),await t(`a plain-row tap is owned by the app, not double-picked`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),a.dispatchEvent(new MouseEvent(`click`,{bubbles:!0,composed:!0})),l(e).toBe(1)})}},y={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=i(e),r=n.querySelector(`[name="overview"]`),a=n.querySelector(`[name="rows"]`),o=n.querySelector(`[name="history"]`),s=(e,t,n=`keydown`)=>e.dispatchEvent(new KeyboardEvent(n,{key:t,bubbles:!0}));await u(()=>l(r.assignedSlot).toBeTruthy()),await t(`an arrow walks the focus and picks nothing`,async()=>{r.focus(),s(r,`ArrowRight`),l(document.activeElement).toBe(a),l(a.hasAttribute(`active`)).toBe(!1),s(a,`ArrowRight`),l(document.activeElement).toBe(o),l(o.hasAttribute(`active`)).toBe(!1)}),await t(`Enter picks the focused tab`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),s(a,`Enter`),l(e).toBe(1)}),await t(`a Space keyup picks too`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),s(a,` `,`keydown`),s(a,` `,`keyup`),l(e).toBe(1)}),await t(`an href row renders its link for the browser`,async()=>{let e=o.shadowRoot?.querySelector(`a[part="link"]`);l(e?.getAttribute(`href`)).toBe(`#!/somewhere`)}),await t(`a plain-row tap is owned by the app, not double-picked`,async()=>{let e=0;a.addEventListener(`click`,()=>e++),a.dispatchEvent(new MouseEvent(`click`,{bubbles:!0,composed:!0})),l(e).toBe(1)})}},y={render:()=>t`
         <div
             class="box"
             style="width: 420px; display: flex; align-items: center; gap: 8px;"
@@ -341,6 +341,12 @@ keeping the bar mounted exposes those leaks.`,..._.parameters?.docs?.description
       fire(rows, ' ', 'keydown');
       fire(rows, ' ', 'keyup');
       expect(picks).toBe(1);
+    });
+    await step('an href row renders its link for the browser', async () => {
+      // the link stays an affordance shell (middle-click, copy-link):
+      // it projects the href, navigation itself goes through the pick
+      const link = history.shadowRoot?.querySelector('a[part="link"]');
+      expect(link?.getAttribute('href')).toBe('#!/somewhere');
     });
     await step('a plain-row tap is owned by the app, not double-picked', async () => {
       // the tap entry handles href rows only; a plain row's click
