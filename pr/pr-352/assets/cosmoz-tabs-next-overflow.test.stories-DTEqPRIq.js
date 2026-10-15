@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-B8-gjK8h.js";import{t as r}from"./next-BLn3r2ad.js";import{i,n as a,o,s,t as c}from"./overflow-helpers-CDvimR3o.js";var l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),a(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next)`},f={render:()=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BhIK9XNQ.js";import{t as r}from"./next-DN356_rT.js";import{i,n as a,o,s,t as c}from"./overflow-helpers-DfJdxZfk.js";var l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{n(),r(),a(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,d={title:`Tests/Tabs overflow (next)`},f={render:()=>t`
         <div class="box" style="width: 260px; overflow: hidden;">
             <cosmoz-tabs-next variant="underline">
                 <div class="heading" slot="tabs">Orders</div>
@@ -343,17 +343,10 @@ keeping the bar mounted exposes those leaks.`,..._.parameters?.docs?.description
       expect(picks).toBe(1);
     });
     await step('an href row renders its link for the browser', async () => {
-      // the link stays an affordance shell (middle-click, copy-link):
-      // it projects the href, navigation itself goes through the pick
       const link = history.shadowRoot?.querySelector('a[part="link"]');
       expect(link?.getAttribute('href')).toBe('#!/somewhere');
     });
     await step('a plain-row tap is owned by the app, not double-picked', async () => {
-      // the tap entry handles href rows only; a plain row's click
-      // bubbles to the app and must not re-emit a pick from the row.
-      // An href row's pick navigates through a detached anchor, which
-      // this harness cannot host (the navigation is verified in vivo,
-      // see the PR notes).
       let picks = 0;
       rows.addEventListener('click', () => picks++);
       rows.dispatchEvent(new MouseEvent('click', {
