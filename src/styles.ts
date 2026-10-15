@@ -45,7 +45,7 @@ const item = css`
 `;
 
 const itemFocus = css`
-	outline: 2px solid var(--cz-color-fg-brand);
+	outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 	outline-offset: -2px;
 `;
 
@@ -55,9 +55,14 @@ const itemDisabled = css`
 	pointer-events: none;
 `;
 
+const hoverUnderline = css`
+	color: var(--cz-color-text-secondary);
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+`;
+
 const activeUnderline = css`
-	color: var(--cz-color-text-brand);
-	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
+	color: var(--cz-color-text-primary);
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 `;
 
 const icon = css`
@@ -68,7 +73,7 @@ const icon = css`
 `;
 
 const iconActive = css`
-	color: var(--cz-color-fg-brand-secondary);
+	color: var(--cz-color-fg-secondary);
 `;
 
 const brandBar = css`
@@ -82,8 +87,11 @@ const brandItem = css`
 `;
 
 const brandActive = css`
-	color: var(--cz-color-text-on-brand);
-	background-color: var(--cz-color-bg-brand-solid);
+	color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
+	background-color: var(
+		--cz-color-bg-action-solid,
+		var(--cz-color-bg-brand-solid)
+	);
 	box-shadow: none;
 `;
 
@@ -198,7 +206,10 @@ export const legacyStyles = css`
 		${icon}
 	}
 
-	.tab:hover,
+	.tab:hover {
+		${hoverUnderline}
+	}
+
 	.tab[aria-selected='true'] {
 		${activeUnderline}
 	}
@@ -258,7 +269,7 @@ export const legacyStyles = css`
 
 	:host([variant='brand']) .tab:hover svg,
 	:host([variant='brand']) .tab[aria-selected='true'] svg {
-		color: var(--cz-color-text-on-brand);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 	}
 
 	:host([variant='segmented']) .tabs {
@@ -347,7 +358,10 @@ export const nextTabStyles = css`
 		${spreadItem}
 	}
 
-	:host(:hover),
+	:host(:hover) {
+		${hoverUnderline}
+	}
+
 	:host([active]) {
 		${activeUnderline}
 	}
@@ -411,7 +425,7 @@ export const nextTabStyles = css`
 
 	:host([variant='brand']:hover) #iconSlot::slotted(svg),
 	:host([variant='brand'][active]) #iconSlot::slotted(svg) {
-		color: var(--cz-color-text-on-brand);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 	}
 
 	:host([variant='segmented']) {
