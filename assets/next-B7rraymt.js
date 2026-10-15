@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-bGja0AAP.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as w,y as T}from"./if-defined-g5Y8cW1r.js";import{m as ee,t as te}from"./untitled-C0xq2L6c.js";import{r as ne,t as re}from"./use-hash-param-gyBWoLj1.js";var E,D;function O(){return(O=e((()=>{o(),p(),b(),E=new WeakMap,D=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=E.get(t);n===void 0&&(n=new WeakMap,E.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?E.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var k;function A(){return(A=e((()=>{x(),k=_`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-BbB6-yyY.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as w,y as T}from"./if-defined-B_BG-50F.js";import{m as ee,t as te}from"./untitled-BI_c_ODp.js";import{r as ne,t as re}from"./use-hash-param-Qa2S0vzi.js";var E,D;function O(){return(O=e((()=>{o(),p(),b(),E=new WeakMap,D=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=E.get(t);n===void 0&&(n=new WeakMap,E.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?E.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var k;function A(){return(A=e((()=>{x(),k=_`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -23,14 +23,14 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		   face, so both stay in sync by construction). */
 		--_color: var(--cz-color-text-quaternary);
 		--_icon-color: var(--cz-color-fg-quaternary);
-		--_hover-color: var(--cz-color-text-brand);
+		--_hover-color: var(--cz-color-text-secondary);
 		--_hover-background: transparent;
-		--_hover-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-		--_hover-icon-color: var(--cz-color-fg-brand-secondary);
-		--_active-color: var(--cz-color-text-brand);
+		--_hover-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+		--_hover-icon-color: var(--cz-color-fg-secondary);
+		--_active-color: var(--cz-color-text-primary);
 		--_active-background: transparent;
-		--_active-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
-		--_active-icon-color: var(--cz-color-fg-brand-secondary);
+		--_active-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
+		--_active-icon-color: var(--cz-color-fg-secondary);
 	}
 
 	:host(:hover) {
@@ -54,7 +54,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	:host(:focus-visible) {
-		outline: 2px solid var(--cz-color-fg-brand);
+		outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 		outline-offset: -2px;
 	}
 
@@ -85,10 +85,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		--_hover-background: var(--cz-color-bg-primary-hover);
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-quaternary);
-		--_active-color: var(--cz-color-text-on-brand);
-		--_active-background: var(--cz-color-bg-brand-solid);
+		--_active-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_active-shadow: none;
-		--_active-icon-color: var(--cz-color-text-on-brand);
+		--_active-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
 	}
 
 	a {
@@ -162,14 +171,32 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([variant='brand']) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 		border-radius: var(--cz-radius-md);
-		--_hover-color: var(--cz-color-text-on-brand);
-		--_hover-background: var(--cz-color-bg-brand-solid);
+		--_hover-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_hover-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_hover-shadow: none;
-		--_hover-icon-color: var(--cz-color-text-on-brand);
-		--_active-color: var(--cz-color-text-on-brand);
-		--_active-background: var(--cz-color-bg-brand-solid);
+		--_hover-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
+		--_active-background: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		--_active-shadow: none;
-		--_active-icon-color: var(--cz-color-text-on-brand);
+		--_active-icon-color: var(
+			--cz-color-text-on-action,
+			var(--cz-color-text-on-brand)
+		);
 	}
 
 	:host([variant='segmented']) {
@@ -436,19 +463,23 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		transform: rotate(180deg);
 	}
 
-	.more-button:hover,
+	.more-button:hover {
+		color: var(--cz-color-text-secondary);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+	}
+
 	.more[data-active] .more-button {
-		color: var(--cz-color-text-brand);
-		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-brand);
+		color: var(--cz-color-text-primary);
+		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 	}
 
 	.more-button:hover svg,
 	.more[data-active] .more-button svg {
-		color: var(--cz-color-fg-brand-secondary);
+		color: var(--cz-color-fg-secondary);
 	}
 
 	.more-button:focus-visible {
-		outline: 2px solid var(--cz-color-fg-brand);
+		outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 		outline-offset: -2px;
 	}
 
@@ -459,14 +490,17 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	:host([variant='brand']) .more-button:hover,
 	:host([variant='brand']) .more[data-active] .more-button {
-		color: var(--cz-color-text-on-brand);
-		background-color: var(--cz-color-bg-brand-solid);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
+		background-color: var(
+			--cz-color-bg-action-solid,
+			var(--cz-color-bg-brand-solid)
+		);
 		box-shadow: none;
 	}
 
 	:host([variant='brand']) .more-button:hover svg,
 	:host([variant='brand']) .more[data-active] .more-button svg {
-		color: var(--cz-color-text-on-brand);
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 	}
 
 	:host([variant='segmented']) .more-button {
