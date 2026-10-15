@@ -343,14 +343,14 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			expect(picks).toBe(1);
 		});
 
+		await step('an href row renders its link for the browser', async () => {
+			const link = history.shadowRoot?.querySelector('a[part="link"]');
+			expect(link?.getAttribute('href')).toBe('#!/somewhere');
+		});
+
 		await step(
 			'a plain-row tap is owned by the app, not double-picked',
 			async () => {
-				// the tap entry handles href rows only; a plain row's click
-				// bubbles to the app and must not re-emit a pick from the row.
-				// An href row's pick navigates through a detached anchor, which
-				// this harness cannot host (the navigation is verified in vivo,
-				// see the PR notes).
 				let picks = 0;
 				rows.addEventListener('click', () => picks++);
 				rows.dispatchEvent(

@@ -94,6 +94,12 @@ export const nextTabStyles = css`
 		--_active-icon-color: var(--cz-color-text-on-brand);
 	}
 
+	a {
+		display: contents;
+		color: inherit;
+		text-decoration: none;
+	}
+
 	#iconSlot::slotted(*) {
 		flex-shrink: 0;
 	}

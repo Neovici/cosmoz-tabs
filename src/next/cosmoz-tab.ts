@@ -1,6 +1,7 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -38,21 +39,14 @@ export class TabNextBase extends HTMLElement {
  * @slot icon
  */
 const Tab = (host: CosmozTabNextElement) => {
-	const { active, badge } = host;
+	const { active, badge, href } = host;
 
 	useLayoutEffect(() => {
 		// the state attribute follows the selection
 		host.setAttribute('aria-selected', active ? 'true' : 'false');
 	}, [active]);
 
-	// The pick is the activation, shared by the keys (Enter on keydown,
-	// Space on keyup, like a <button>; Space keydown only prevents the
-	// page scroll) and the tap. An href row navigates through a
-	// detached anchor - a created element, clicked, thrown away: the
-	// click's default action runs on every engine and pointer type, the
-	// row stays untouched and emits nothing. A plain row bubbles.
 	const pick = () => {
-		const href = host.getAttribute('href');
 		if (!href) {
 			host.click();
 			return;
@@ -94,10 +88,6 @@ const Tab = (host: CosmozTabNextElement) => {
 		};
 	}, []);
 
-	// Taps pick like the keys: the row takes the activation itself (the
-	// old rendered link's default action proved pointer-type dependent,
-	// dead on touch) - a plain click on an href row picks, the pick's
-	// navigation is idempotent when a forwarded click re-enters it.
 	useLayoutEffect(() => {
 		const onTap = (e: MouseEvent) => {
 			if (
@@ -107,9 +97,7 @@ const Tab = (host: CosmozTabNextElement) => {
 			) {
 				return;
 			}
-			if (!host.getAttribute('href')) {
-				return; // plain rows: clicks bubble, the app owns them
-			}
+			if (!href) return;
 			pick();
 		};
 		host.addEventListener('click', onTap);
@@ -117,9 +105,13 @@ const Tab = (host: CosmozTabNextElement) => {
 	}, []);
 
 	return html`
-		<slot id="iconSlot" name="icon"></slot>
-		<slot id="contentSlot"></slot>
-		${badge ? html`<span class="badge" part="badge">${badge}</span>` : nothing}
+		<a part="link" href=${ifDefined(href)}>
+			<slot id="iconSlot" name="icon"></slot>
+			<slot id="contentSlot"></slot>
+			${badge
+				? html`<span class="badge" part="badge">${badge}</span>`
+				: nothing}
+		</a>
 	`;
 };
 
