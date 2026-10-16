@@ -225,9 +225,6 @@ export const nextTabsStyles = css`
 		font-weight: var(--cz-font-weight-semibold);
 	}
 
-	:host {
-		box-shadow: none;
-	}
 	:host([variant='segmented']),
 	:host([variant='segmented'][size='sm']) {
 		border-radius: var(--cz-radius-full);
@@ -238,8 +235,8 @@ export const nextTabsStyles = css`
 				var(--cz-color-border-glass, var(--cz-color-border-primary));
 		backdrop-filter: var(--cz-backdrop-filter-glass, none);
 	}
-	.more-button,
-	:host([variant]) .more-button {
+	:host([variant='brand']) .more-button,
+	:host([variant='segmented']) .more-button {
 		border-radius: var(--cz-radius-full);
 		padding-inline: calc(var(--cz-spacing) * 3);
 	}

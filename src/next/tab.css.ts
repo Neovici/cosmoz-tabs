@@ -228,7 +228,8 @@ export const nextTabStyles = css`
 		padding-inline: calc(var(--cz-spacing) * 2);
 	}
 
-	:host(:not([menu])) {
+	:host([variant='brand']:not([menu])),
+	:host([variant='segmented']:not([menu])) {
 		border-radius: var(--cz-radius-full);
 		padding-inline: calc(var(--cz-spacing) * 3);
 		--_hover-background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
@@ -244,7 +245,8 @@ export const nextTabStyles = css`
 			inset 0 0 0 1px
 				var(--cz-color-border-glass, var(--cz-color-border-primary));
 	}
-	:host([active]:not([menu])) {
+	:host([variant='brand'][active]:not([menu])),
+	:host([variant='segmented'][active]:not([menu])) {
 		background-image: var(--cz-glass-sheen, none);
 	}
 	@media (prefers-reduced-motion: reduce) {
