@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-P6YiW3KU.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as w,y as T}from"./if-defined-Dlw0TyAR.js";import{m as ee,t as te}from"./untitled-DJUP0XA8.js";import{r as ne,t as re}from"./use-hash-param-857ACOK2.js";var E,D;function O(){return(O=e((()=>{o(),p(),b(),E=new WeakMap,D=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=E.get(t);n===void 0&&(n=new WeakMap,E.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?E.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var k;function A(){return(A=e((()=>{x(),k=_`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,u as o}from"./iframe-DsiKxqIR.js";import{C as s,D as c,T as l,_ as u,a as d,c as f,d as p,f as m,h,i as g,j as _,n as v,o as y,p as b,s as x,t as S,u as C,x as w,y as T}from"./if-defined-BBfex2gf.js";import{m as ee,t as te}from"./untitled-DM507fyI.js";import{r as ne,t as re}from"./use-hash-param-Ob7qccwX.js";var E,D;function O(){return(O=e((()=>{o(),p(),b(),E=new WeakMap,D=m(class extends C{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=E.get(t);n===void 0&&(n=new WeakMap,E.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?E.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var k;function A(){return(A=e((()=>{x(),k=_`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -229,22 +229,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([variant='segmented']:not([menu])) {
 		border-radius: var(--cz-radius-full);
 		padding-inline: calc(var(--cz-spacing) * 3);
-		--_hover-background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		--_hover-background: var(--cz-color-bg-tertiary);
 		--_hover-shadow: none;
 		--_active-color: var(--cz-color-text-primary);
 		--_active-icon-color: var(--cz-color-fg-primary);
-		--_active-background: var(
-			--cz-color-bg-glass-hover,
-			var(--cz-color-bg-secondary-hover)
-		);
-		--_active-shadow:
-			var(--cz-shadow-glass, var(--cz-shadow-xs)),
-			inset 0 0 0 1px
-				var(--cz-color-border-glass, var(--cz-color-border-primary));
+		--_active-background: var(--cz-color-bg-secondary-hover);
+		--_active-shadow: none;
+	}
+	:host([variant='segmented']:not([menu])) {
+		--_active-background: var(--cz-color-bg-primary);
 	}
 	:host([variant='brand'][active]:not([menu])),
 	:host([variant='segmented'][active]:not([menu])) {
-		background-image: var(--cz-glass-sheen, none);
+		background-image: none;
 	}
 	@media (prefers-reduced-motion: reduce) {
 		:host {
@@ -584,12 +581,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([variant='segmented']),
 	:host([variant='segmented'][size='sm']) {
 		border-radius: var(--cz-radius-full);
-		background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
-		box-shadow:
-			var(--cz-shadow-glass, var(--cz-shadow-xs)),
-			inset 0 0 0 1px
-				var(--cz-color-border-glass, var(--cz-color-border-primary));
-		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+		background: var(--cz-color-bg-tertiary);
+		box-shadow: none;
 	}
 	:host([variant='brand']) .more-button,
 	:host([variant='segmented']) .more-button {
@@ -598,27 +591,21 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 	.more-button:hover,
 	:host([variant]) .more-button:hover {
-		background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		background: var(--cz-color-bg-tertiary);
 		color: var(--cz-color-text-primary);
 		box-shadow: none;
 	}
 	.more[data-active] .more-button,
 	:host([variant]) .more[data-active] .more-button {
-		background:
-			var(--cz-glass-sheen, none),
-			var(--cz-color-bg-glass-hover, var(--cz-color-bg-secondary-hover));
+		background: var(--cz-color-bg-secondary-hover);
 		color: var(--cz-color-text-primary);
-		box-shadow:
-			var(--cz-shadow-glass, var(--cz-shadow-xs)),
-			inset 0 0 0 1px
-				var(--cz-color-border-glass, var(--cz-color-border-primary));
+		box-shadow: none;
 	}
 	.menu {
-		background: var(--cz-color-bg-glass-panel, var(--cz-color-bg-secondary));
-		border-color: var(--cz-color-border-glass, var(--cz-color-border-primary));
+		background: var(--cz-color-bg-secondary);
+		border-color: var(--cz-color-border-primary);
 		border-radius: var(--cz-radius-3xl);
-		box-shadow: var(--cz-shadow-glass-panel, var(--cz-shadow-lg));
-		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+		box-shadow: var(--cz-shadow-lg);
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.more-button,

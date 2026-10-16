@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-P6YiW3KU.js";import{c as r,s as i}from"./if-defined-Dlw0TyAR.js";import{l as a,r as o,t as s}from"./untitled-DJUP0XA8.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-x_-bMrKJ.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-DsiKxqIR.js";import{c as r,s as i}from"./if-defined-BBfex2gf.js";import{l as a,r as o,t as s}from"./untitled-DM507fyI.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-CDDHHwW5.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
@@ -12,7 +12,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
         </cosmoz-tabs-next>
     `,play:async({canvasElement:e,step:t})=>{let n=_(e);await t(`the family is a tablist regardless of authored role: a value picker is the input package's radiogroup`,async()=>{await m(()=>{p(n.getAttribute(`role`)).toBeNull(),p(n.shadowRoot.querySelector(`[role="tablist"]`)).not.toBeNull()})}),await t(`each item is a tab reporting aria-selected`,async()=>{await m(()=>{let e=n.querySelectorAll(`cosmoz-tab-next`);p(e.length).toBe(3),e.forEach(e=>p(e.getAttribute(`role`)).toBe(`tab`))});let e=n.querySelector(`cosmoz-tab-next[active]`);p(e.getAttribute(`aria-selected`)).toBe(`true`),p(e.hasAttribute(`aria-checked`)).toBe(!1)})}},b={render:()=>g(`brand`),play:async({canvasElement:e,step:t})=>{let n=_(e);await t(`each child receives variant="brand"`,async()=>{await m(()=>{let e=n.querySelectorAll(`cosmoz-tab-next`);p(e.length).toBe(3),e.forEach(e=>p(e.getAttribute(`variant`)).toBe(`brand`))})}),await t(`changing the container variant updates children`,async()=>{n.setAttribute(`variant`,`underline`),await m(()=>n.querySelectorAll(`cosmoz-tab-next`).forEach(e=>p(e.getAttribute(`variant`)).toBe(`underline`)))})}},x={render:()=>g(`brand`),play:async({canvasElement:e})=>{let t=_(e),n;await m(()=>{n=t.querySelector(`cosmoz-tab-next[active]`),p(n).not.toBeNull()}),await m(()=>p(n.getAttribute(`variant`)).toBe(`brand`)),await m(()=>p(getComputedStyle(n).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`))}},S={render:()=>t`
         <div
-            style=${[`--cz-color-text-primary: rgb(1, 2, 3)`,`--cz-color-bg-glass-hover: rgb(4, 5, 6)`,`--cz-color-bg-action-solid: rgb(7, 8, 9)`,`--cz-color-text-brand: rgb(9, 9, 9)`,`--cz-color-bg-brand-solid: rgb(9, 9, 9)`].join(`;`)}
+            style=${[`--cz-color-text-primary: rgb(1, 2, 3)`,`--cz-color-bg-secondary-hover: rgb(4, 5, 6)`,`--cz-color-bg-action-solid: rgb(7, 8, 9)`,`--cz-color-text-brand: rgb(9, 9, 9)`,`--cz-color-bg-brand-solid: rgb(9, 9, 9)`].join(`;`)}
         >
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next active>Overview</cosmoz-tab-next>
@@ -21,7 +21,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=t=>e.querySelector(`cosmoz-tabs-next[variant=${t}] cosmoz-tab-next[active]`);await t(`the underline tab is selected in primary text`,async()=>{await m(()=>p(getComputedStyle(n(`underline`)).color).toBe(`rgb(1, 2, 3)`))}),await t(`the brand tab is filled with the glass token`,async()=>{await m(()=>p(getComputedStyle(n(`brand`)).backgroundColor).toBe(`rgb(4, 5, 6)`))})}},C={render:()=>g(`segmented`),play:async({canvasElement:e,step:t})=>{let n=_(e),r;await t(`the variant reaches the children`,async()=>{await m(()=>{r=n.querySelector(`cosmoz-tab-next[active]`),p(r?.getAttribute(`variant`)).toBe(`segmented`)})}),await t(`the track is filled and the active tab is raised`,async()=>{await m(()=>{p(getComputedStyle(n).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).boxShadow).not.toBe(`none`)})})}},w={render:()=>g(),play:async({canvasElement:e})=>{let t=_(e).querySelector(`cosmoz-tab-next`);await m(()=>p(getComputedStyle(t).flexGrow).toBe(`1`)),p(t.hasAttribute(`compact-width`)).toBe(!1)}},T={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=t=>e.querySelector(`cosmoz-tabs-next[variant=${t}] cosmoz-tab-next[active]`);await t(`the underline tab is selected in primary text`,async()=>{await m(()=>p(getComputedStyle(n(`underline`)).color).toBe(`rgb(1, 2, 3)`))}),await t(`the brand tab uses the flat neutral fill`,async()=>{await m(()=>p(getComputedStyle(n(`brand`)).backgroundColor).toBe(`rgb(4, 5, 6)`))})}},C={render:()=>g(`segmented`),play:async({canvasElement:e,step:t})=>{let n=_(e),r;await t(`the variant reaches the children`,async()=>{await m(()=>{r=n.querySelector(`cosmoz-tab-next[active]`),p(r?.getAttribute(`variant`)).toBe(`segmented`)})}),await t(`the active tab has a distinct flat fill`,async()=>{await m(()=>{p(getComputedStyle(n).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).backgroundColor).not.toBe(getComputedStyle(n).backgroundColor)})})}},w={render:()=>g(),play:async({canvasElement:e})=>{let t=_(e).querySelector(`cosmoz-tab-next`);await m(()=>p(getComputedStyle(t).flexGrow).toBe(`1`)),p(t.hasAttribute(`compact-width`)).toBe(!1)}},T={render:()=>t`
         <cosmoz-tabs-next variant="brand" compact-width>
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
@@ -139,7 +139,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
 }`,...x.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div
-            style=\${['--cz-color-text-primary: rgb(1, 2, 3)', '--cz-color-bg-glass-hover: rgb(4, 5, 6)', '--cz-color-bg-action-solid: rgb(7, 8, 9)', '--cz-color-text-brand: rgb(9, 9, 9)', '--cz-color-bg-brand-solid: rgb(9, 9, 9)'].join(';')}
+            style=\${['--cz-color-text-primary: rgb(1, 2, 3)', '--cz-color-bg-secondary-hover: rgb(4, 5, 6)', '--cz-color-bg-action-solid: rgb(7, 8, 9)', '--cz-color-text-brand: rgb(9, 9, 9)', '--cz-color-bg-brand-solid: rgb(9, 9, 9)'].join(';')}
         >
             <cosmoz-tabs-next variant="underline">
                 <cosmoz-tab-next active>Overview</cosmoz-tab-next>
@@ -157,7 +157,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     await step('the underline tab is selected in primary text', async () => {
       await waitFor(() => expect(getComputedStyle(active('underline')).color).toBe('rgb(1, 2, 3)'));
     });
-    await step('the brand tab is filled with the glass token', async () => {
+    await step('the brand tab uses the flat neutral fill', async () => {
       await waitFor(() => expect(getComputedStyle(active('brand')).backgroundColor).toBe('rgb(4, 5, 6)'));
     });
   }
@@ -175,11 +175,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
         expect(active?.getAttribute('variant')).toBe('segmented');
       });
     });
-    await step('the track is filled and the active tab is raised', async () => {
+    await step('the active tab has a distinct flat fill', async () => {
       await waitFor(() => {
         expect(getComputedStyle(container).backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
         expect(getComputedStyle(active).backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
-        expect(getComputedStyle(active).boxShadow).not.toBe('none');
+        expect(getComputedStyle(active).backgroundColor).not.toBe(getComputedStyle(container).backgroundColor);
       });
     });
   }

@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}from"./iframe-P6YiW3KU.js";import{t as i}from"./cosmoz-tab-card-2NS-Sexk.js";import{C as a,D as o,O as s,T as c,a as l,c as u,j as d,k as f,n as p,o as m,s as h,t as g,x as _,y as v}from"./if-defined-Dlw0TyAR.js";import{n as y,r as b,t as x}from"./use-hash-param-857ACOK2.js";var S;function C(){return(C=e((()=>{h(),S=f(class extends s{update(){return this.state.host}})})))()}var w,T,E;function D(){return(D=e((()=>{h(),C(),w=/([A-Z])/gu,T=(e,t,n)=>{e[t]=n,e.dispatchEvent(new CustomEvent(t.replace(w,`-$1`).toLowerCase()+`-changed`,{detail:{value:n}}))},E=(e,t,n=[t])=>{let r=S();o(()=>{T(r,e,t)},n)}})))()}var O;function k(){return(k=e((()=>{D(),h(),O=e=>(o(()=>{e.dispatchEvent(new CustomEvent(`cosmoz-tab-alter`,{bubbles:!0,composed:!0}))},[e.hidden,e.disabled,e.heading,e.badge,e.icon]),E(`isSelected`,e.isSelected),{onSlot:a(({target:t})=>e.toggleAttribute(`has-cards`,t.assignedElements().some(e=>e.matches(`cosmoz-tab-card, [has-cards]`))),[])})})))()}var A,j;function M(){return(M=e((()=>{l(),h(),i(),k(),A=d`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}from"./iframe-DsiKxqIR.js";import{t as i}from"./cosmoz-tab-card-C_BLMTbE.js";import{C as a,D as o,O as s,T as c,a as l,c as u,j as d,k as f,n as p,o as m,s as h,t as g,x as _,y as v}from"./if-defined-BBfex2gf.js";import{n as y,r as b,t as x}from"./use-hash-param-Ob7qccwX.js";var S;function C(){return(C=e((()=>{h(),S=f(class extends s{update(){return this.state.host}})})))()}var w,T,E;function D(){return(D=e((()=>{h(),C(),w=/([A-Z])/gu,T=(e,t,n)=>{e[t]=n,e.dispatchEvent(new CustomEvent(t.replace(w,`-$1`).toLowerCase()+`-changed`,{detail:{value:n}}))},E=(e,t,n=[t])=>{let r=S();o(()=>{T(r,e,t)},n)}})))()}var O;function k(){return(k=e((()=>{D(),h(),O=e=>(o(()=>{e.dispatchEvent(new CustomEvent(`cosmoz-tab-alter`,{bubbles:!0,composed:!0}))},[e.hidden,e.disabled,e.heading,e.badge,e.icon]),E(`isSelected`,e.isSelected),{onSlot:a(({target:t})=>e.toggleAttribute(`has-cards`,t.assignedElements().some(e=>e.matches(`cosmoz-tab-card, [has-cards]`))),[])})})))()}var A,j;function M(){return(M=e((()=>{l(),h(),i(),k(),A=d`
 	:host {
 		display: flex;
 		position: relative;
@@ -42,7 +42,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}f
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: none;
+	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
 	overflow-x: auto;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: auto;
@@ -53,8 +53,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}f
 	align-items: center;
 	justify-content: center;
 	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 3);
-	border-radius: var(--cz-radius-full);
+	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
 	color: var(--cz-color-text-quaternary);
 	text-decoration: none;
 	white-space: nowrap;
@@ -73,16 +72,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}f
 	pointer-events: none;
 `,ne=d`
 	color: var(--cz-color-text-secondary);
-	background: var(--cz-color-bg-glass, var(--cz-color-bg-primary-hover));
-	box-shadow: none;
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
 `,re=d`
 	color: var(--cz-color-text-primary);
-	background:
-		var(--cz-glass-sheen, none),
-		var(--cz-color-bg-glass-hover, var(--cz-color-bg-tertiary));
-	box-shadow:
-		var(--cz-shadow-glass, var(--cz-shadow-xs)),
-		inset 0 0 0 1px var(--cz-color-border-glass, var(--cz-color-border-primary));
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 `,ie=d`
 	width: 16px;
 	height: 16px;
@@ -107,19 +100,15 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,o as n,u as r}f
 	gap: calc(var(--cz-spacing) * 1);
 	padding: calc(var(--cz-spacing) * 1);
 	border-radius: var(--cz-radius-full);
-	background-color: var(--cz-color-bg-glass, var(--cz-color-bg-secondary));
-	box-shadow:
-		var(--cz-shadow-glass, var(--cz-shadow-xs)),
-		inset 0 0 0 1px
-			var(--cz-color-border-glass, var(--cz-color-border-secondary));
-	backdrop-filter: var(--cz-backdrop-filter-glass, none);
+	background-color: var(--cz-color-bg-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 `,B=d`
 	padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 	border-radius: var(--cz-radius-full);
 `,V=d`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary);
-	box-shadow: var(--cz-shadow-sm);
+	box-shadow: none;
 `,H=d`
 	color: var(--cz-color-fg-secondary-hover);
 `,U=d`
