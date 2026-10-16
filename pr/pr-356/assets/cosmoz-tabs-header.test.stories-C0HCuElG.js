@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-CpoaKQEw.js";import{c as r,s as i}from"./if-defined-DzYxVZzQ.js";import{i as a,n as o,r as s,t as c}from"./cosmoz-tabs-71Pur6Jz.js";var l,u,d,f,p;function m(){return(m=e((()=>{i(),n(),o(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.define(`custom-header-tabs`,r(e=>c(e,e=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-P6YiW3KU.js";import{c as r,s as i}from"./if-defined-Dlw0TyAR.js";import{i as a,n as o,r as s,t as c}from"./cosmoz-tabs-BdZC7UVp.js";var l,u,d,f,p;function m(){return(m=e((()=>{i(),n(),o(),s(),{expect:l,waitFor:u}=__STORYBOOK_MODULE_TEST__,customElements.define(`custom-header-tabs`,r(e=>c(e,e=>t`
                     <header>
                         <slot name="heading"></slot>
                         <nav role="tablist">${e}</nav>
