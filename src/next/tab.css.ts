@@ -232,22 +232,19 @@ export const nextTabStyles = css`
 	:host([variant='segmented']:not([menu])) {
 		border-radius: var(--cz-radius-full);
 		padding-inline: calc(var(--cz-spacing) * 3);
-		--_hover-background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		--_hover-background: var(--cz-color-bg-tertiary);
 		--_hover-shadow: none;
 		--_active-color: var(--cz-color-text-primary);
 		--_active-icon-color: var(--cz-color-fg-primary);
-		--_active-background: var(
-			--cz-color-bg-glass-hover,
-			var(--cz-color-bg-secondary-hover)
-		);
-		--_active-shadow:
-			var(--cz-shadow-glass, var(--cz-shadow-xs)),
-			inset 0 0 0 1px
-				var(--cz-color-border-glass, var(--cz-color-border-primary));
+		--_active-background: var(--cz-color-bg-secondary-hover);
+		--_active-shadow: none;
+	}
+	:host([variant='segmented']:not([menu])) {
+		--_active-background: var(--cz-color-bg-primary);
 	}
 	:host([variant='brand'][active]:not([menu])),
 	:host([variant='segmented'][active]:not([menu])) {
-		background-image: var(--cz-glass-sheen, none);
+		background-image: none;
 	}
 	@media (prefers-reduced-motion: reduce) {
 		:host {

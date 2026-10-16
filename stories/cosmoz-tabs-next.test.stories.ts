@@ -158,7 +158,7 @@ export const NeutralSelection: Story = {
 		<div
 			style=${[
 				'--cz-color-text-primary: rgb(1, 2, 3)',
-				'--cz-color-bg-glass-hover: rgb(4, 5, 6)',
+				'--cz-color-bg-secondary-hover: rgb(4, 5, 6)',
 				'--cz-color-bg-action-solid: rgb(7, 8, 9)',
 				'--cz-color-text-brand: rgb(9, 9, 9)',
 				'--cz-color-bg-brand-solid: rgb(9, 9, 9)',
@@ -186,7 +186,7 @@ export const NeutralSelection: Story = {
 			);
 		});
 
-		await step('the brand tab is filled with the glass token', async () => {
+		await step('the brand tab uses the flat neutral fill', async () => {
 			await waitFor(() =>
 				expect(getComputedStyle(active('brand')).backgroundColor).toBe(
 					'rgb(4, 5, 6)',
@@ -211,7 +211,7 @@ export const SegmentedActiveStyling: Story = {
 			});
 		});
 
-		await step('the track is filled and the active tab is raised', async () => {
+		await step('the active tab has a distinct flat fill', async () => {
 			await waitFor(() => {
 				expect(getComputedStyle(container).backgroundColor).not.toBe(
 					'rgba(0, 0, 0, 0)',
@@ -219,7 +219,9 @@ export const SegmentedActiveStyling: Story = {
 				expect(getComputedStyle(active).backgroundColor).not.toBe(
 					'rgba(0, 0, 0, 0)',
 				);
-				expect(getComputedStyle(active).boxShadow).not.toBe('none');
+				expect(getComputedStyle(active).backgroundColor).not.toBe(
+					getComputedStyle(container).backgroundColor,
+				);
 			});
 		});
 	},

@@ -258,11 +258,11 @@ export const VariantSegmentedActiveStyling: Story = {
 			expect(getComputedStyle(bar).boxShadow).toContain('inset');
 		});
 
-		await step('the active tab is a raised pill', () => {
+		await step('the active tab has a distinct flat fill', () => {
 			expect(getComputedStyle(active).backgroundColor).not.toBe(
 				'rgba(0, 0, 0, 0)',
 			);
-			// a drop shadow, not the underline's inset one
+			// Selection uses a fill rather than the underline variant's rule.
 			expect(getComputedStyle(active).boxShadow).not.toContain('inset');
 		});
 	},

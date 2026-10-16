@@ -19,7 +19,7 @@ const bar = css`
 	font-size: var(--cz-text-sm);
 	line-height: var(--cz-text-sm-line-height);
 	font-weight: var(--cz-font-weight-semibold);
-	box-shadow: none;
+	box-shadow: inset 0 -1px 0 0 var(--cz-color-border-secondary);
 	overflow-x: auto;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: auto;
@@ -32,8 +32,7 @@ const item = css`
 	align-items: center;
 	justify-content: center;
 	gap: calc(var(--cz-spacing) * 1);
-	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 3);
-	border-radius: var(--cz-radius-full);
+	padding: calc(var(--cz-spacing) * 2.5) calc(var(--cz-spacing) * 0.5);
 	color: var(--cz-color-text-quaternary);
 	text-decoration: none;
 	white-space: nowrap;
@@ -58,18 +57,12 @@ const itemDisabled = css`
 
 const hoverUnderline = css`
 	color: var(--cz-color-text-secondary);
-	background: var(--cz-color-bg-glass, var(--cz-color-bg-primary-hover));
-	box-shadow: none;
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
 `;
 
 const activeUnderline = css`
 	color: var(--cz-color-text-primary);
-	background:
-		var(--cz-glass-sheen, none),
-		var(--cz-color-bg-glass-hover, var(--cz-color-bg-tertiary));
-	box-shadow:
-		var(--cz-shadow-glass, var(--cz-shadow-xs)),
-		inset 0 0 0 1px var(--cz-color-border-glass, var(--cz-color-border-primary));
+	box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 `;
 
 const icon = css`
@@ -107,12 +100,8 @@ const segmentedBar = css`
 	gap: calc(var(--cz-spacing) * 1);
 	padding: calc(var(--cz-spacing) * 1);
 	border-radius: var(--cz-radius-full);
-	background-color: var(--cz-color-bg-glass, var(--cz-color-bg-secondary));
-	box-shadow:
-		var(--cz-shadow-glass, var(--cz-shadow-xs)),
-		inset 0 0 0 1px
-			var(--cz-color-border-glass, var(--cz-color-border-secondary));
-	backdrop-filter: var(--cz-backdrop-filter-glass, none);
+	background-color: var(--cz-color-bg-secondary);
+	box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
 `;
 
 const segmentedItem = css`
@@ -123,7 +112,7 @@ const segmentedItem = css`
 const segmentedActive = css`
 	color: var(--cz-color-text-secondary);
 	background-color: var(--cz-color-bg-primary);
-	box-shadow: var(--cz-shadow-sm);
+	box-shadow: none;
 `;
 
 const segmentedIconActive = css`
