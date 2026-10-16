@@ -227,4 +227,36 @@ export const nextTabStyles = css`
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		padding-inline: calc(var(--cz-spacing) * 2);
 	}
+
+	:host(:not([menu])) {
+		border-radius: var(--cz-radius-full);
+		padding-inline: calc(var(--cz-spacing) * 3);
+		--_hover-background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		--_hover-shadow: none;
+		--_active-color: var(--cz-color-text-primary);
+		--_active-icon-color: var(--cz-color-fg-primary);
+		--_active-background: var(
+			--cz-color-bg-glass-hover,
+			var(--cz-color-bg-secondary-hover)
+		);
+		--_active-shadow:
+			var(--cz-shadow-glass, var(--cz-shadow-xs)),
+			inset 0 0 0 1px
+				var(--cz-color-border-glass, var(--cz-color-border-primary));
+	}
+	:host([active]:not([menu])) {
+		background-image: var(--cz-glass-sheen, none);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:host {
+			transition: none;
+		}
+	}
+	@media (forced-colors: active) {
+		:host([active]) {
+			--_active-background: Highlight;
+			--_active-color: HighlightText;
+			--_active-icon-color: HighlightText;
+		}
+	}
 `;

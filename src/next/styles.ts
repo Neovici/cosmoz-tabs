@@ -224,4 +224,53 @@ export const nextTabsStyles = css`
 		line-height: var(--cz-text-sm-line-height);
 		font-weight: var(--cz-font-weight-semibold);
 	}
+
+	:host {
+		box-shadow: none;
+	}
+	:host([variant='segmented']),
+	:host([variant='segmented'][size='sm']) {
+		border-radius: var(--cz-radius-full);
+		background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		box-shadow:
+			var(--cz-shadow-glass, var(--cz-shadow-xs)),
+			inset 0 0 0 1px
+				var(--cz-color-border-glass, var(--cz-color-border-primary));
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+	}
+	.more-button,
+	:host([variant]) .more-button {
+		border-radius: var(--cz-radius-full);
+		padding-inline: calc(var(--cz-spacing) * 3);
+	}
+	.more-button:hover,
+	:host([variant]) .more-button:hover {
+		background: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		color: var(--cz-color-text-primary);
+		box-shadow: none;
+	}
+	.more[data-active] .more-button,
+	:host([variant]) .more[data-active] .more-button {
+		background:
+			var(--cz-glass-sheen, none),
+			var(--cz-color-bg-glass-hover, var(--cz-color-bg-secondary-hover));
+		color: var(--cz-color-text-primary);
+		box-shadow:
+			var(--cz-shadow-glass, var(--cz-shadow-xs)),
+			inset 0 0 0 1px
+				var(--cz-color-border-glass, var(--cz-color-border-primary));
+	}
+	.menu {
+		background: var(--cz-color-bg-glass-panel, var(--cz-color-bg-secondary));
+		border-color: var(--cz-color-border-glass, var(--cz-color-border-primary));
+		border-radius: var(--cz-radius-3xl);
+		box-shadow: var(--cz-shadow-glass-panel, var(--cz-shadow-lg));
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.more-button,
+		.more-button svg {
+			transition: none;
+		}
+	}
 `;
