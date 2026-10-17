@@ -14,6 +14,7 @@ export const nextTabsStyles = css`
 	   trigger and the stats; the identity (font stack, paddings, the
 	   underline's bottom rule) lives here. */
 	:host {
+		margin-block: var(--cosmoz-tabs-margin-block, 0);
 		display: flex;
 		align-items: flex-start;
 		gap: var(--_gap);

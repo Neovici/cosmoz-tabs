@@ -46,6 +46,10 @@ just needs to load it once for the `--cz-*` token values:
 import '@neovici/cosmoz-tokens';
 ```
 
+Set `--cosmoz-tabs-margin-block` on an ancestor to add space above and below
+tab bars across shadow boundaries. It defaults to `0` and works with both tab
+families. Override it to `0px` inside toolbars that already provide spacing.
+
 ## Usage
 
 ### Legacy family (`cosmoz-tabs`)

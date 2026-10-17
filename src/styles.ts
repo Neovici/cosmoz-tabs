@@ -189,6 +189,7 @@ export const legacyStyles = css`
 	}
 
 	.tabs {
+		margin-block: var(--cosmoz-tabs-margin-block, 0);
 		${bar}
 		flex: none;
 	}
