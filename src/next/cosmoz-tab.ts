@@ -1,8 +1,7 @@
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
-import { component, useLayoutEffect, useRef } from '@pionjs/pion';
+import { component, useLayoutEffect } from '@pionjs/pion';
 import { html, nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { ref } from 'lit-html/directives/ref.js';
 import { nextTabStyles } from './tab.css';
 
 export interface CosmozTabNextElement extends HTMLElement {
@@ -40,20 +39,27 @@ export class TabNextBase extends HTMLElement {
  * @slot icon
  */
 const Tab = (host: CosmozTabNextElement) => {
-	const { active, badge, href } = host,
-		anchor = useRef<HTMLAnchorElement>();
+	const { active, badge, href } = host;
 
 	useLayoutEffect(() => {
 		// the state attribute follows the selection
 		host.setAttribute('aria-selected', active ? 'true' : 'false');
 	}, [active]);
 
+	const pick = () => {
+		if (!href) {
+			host.click();
+			return;
+		}
+		const a = document.createElement('a');
+		a.href = href;
+		a.click();
+	};
+
 	// The element claims tab semantics, so it picks like a native
 	// button: Enter on keydown, Space on keyup (as <button> does); Space
-	// keydown only prevents the page scroll. The pick is the rendered
-	// link's click: href tabs navigate, the plain ones just bubble.
+	// keydown only prevents the page scroll.
 	useLayoutEffect(() => {
-		const pick = () => (anchor.current ?? host).click();
 		const onKey = (e: KeyboardEvent) => {
 			if (e.target !== host || host.hasAttribute('disabled')) {
 				return;
@@ -82,8 +88,24 @@ const Tab = (host: CosmozTabNextElement) => {
 		};
 	}, []);
 
+	useLayoutEffect(() => {
+		const onTap = (e: MouseEvent) => {
+			if (
+				e.defaultPrevented ||
+				e.button !== 0 ||
+				host.hasAttribute('disabled')
+			) {
+				return;
+			}
+			if (!href) return;
+			pick();
+		};
+		host.addEventListener('click', onTap);
+		return () => host.removeEventListener('click', onTap);
+	}, []);
+
 	return html`
-		<a ${ref(anchor)} part="link" href=${ifDefined(href)}>
+		<a part="link" href=${ifDefined(href)}>
 			<slot id="iconSlot" name="icon"></slot>
 			<slot id="contentSlot"></slot>
 			${badge

@@ -323,6 +323,9 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			fire(overview, 'ArrowRight');
 			expect(document.activeElement).toBe(rows);
 			expect(rows.hasAttribute('active')).toBe(false);
+			fire(rows, 'ArrowRight');
+			expect(document.activeElement).toBe(history);
+			expect(history.hasAttribute('active')).toBe(false);
 		});
 
 		await step('Enter picks the focused tab', async () => {
@@ -340,26 +343,22 @@ export const TheWalkFocusesAndTheKeysPick: Story = {
 			expect(picks).toBe(1);
 		});
 
-		await step('a link tab picks through its link', async () => {
-			// the pick navigates for real; the storybook page must stay on
-			// its own story - cancel the default, keep the pick's evidence
-			let href = '';
-			const cancel = (e: MouseEvent) => {
-				e.preventDefault();
-				const link = (e.composedPath() as HTMLElement[]).find(
-					(el) => el.tagName === 'A',
-				);
-				href = link?.getAttribute('href') ?? '';
-			};
-			document.addEventListener('click', cancel, {
-				capture: true,
-				once: true,
-			});
-			history.focus();
-			fire(history, 'Enter');
-			document.removeEventListener('click', cancel, { capture: true });
-			expect(href).toBe('#!/somewhere');
+		await step('an href row renders its link for the browser', async () => {
+			const link = history.shadowRoot?.querySelector('a[part="link"]');
+			expect(link?.getAttribute('href')).toBe('#!/somewhere');
 		});
+
+		await step(
+			'a plain-row tap is owned by the app, not double-picked',
+			async () => {
+				let picks = 0;
+				rows.addEventListener('click', () => picks++);
+				rows.dispatchEvent(
+					new MouseEvent('click', { bubbles: true, composed: true }),
+				);
+				expect(picks).toBe(1);
+			},
+		);
 	},
 };
 
