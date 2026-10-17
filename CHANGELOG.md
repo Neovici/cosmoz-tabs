@@ -1,3 +1,9 @@
+## 11.3.0
+
+### Minor Changes
+
+- ab763f1: Render the overflow trigger with `cosmoz-button`, preserving each tab variant's appearance, keyboard focus styling and the exported `more-button` part.
+
 ## 11.2.0
 
 ### Minor Changes
