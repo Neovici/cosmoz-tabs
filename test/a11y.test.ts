@@ -257,7 +257,7 @@ describe('the bar\'s stop', () => {
 		const trigger = sr(bar).querySelector('.more-button') as HTMLElement;
 		await trigger.focus();
 		await userEvent.keyboard('{ArrowRight}');
-		expect(barFocused(bar)).toBe(trigger);
+		expect(barFocused(bar)).toBe(trigger.shadowRoot!.querySelector('button'));
 		expect(tab('rows').hasAttribute('active')).toBe(false);
 		expect(tab('overview').hasAttribute('active')).toBe(true);
 	});

@@ -1,5 +1,4 @@
 import { css } from '@pionjs/pion';
-
 export type TabsVariant = 'brand' | 'underline' | 'segmented';
 
 /**
@@ -101,7 +100,8 @@ export const nextTabsStyles = css`
 	}
 
 	/* the button borrows the item's face */
-	.more-button {
+	cosmoz-button.more-button::part(button),
+	.more-button:not(cosmoz-button) {
 		position: relative;
 		display: inline-flex;
 		box-sizing: border-box;
@@ -123,6 +123,13 @@ export const nextTabsStyles = css`
 		border: 0;
 		font: inherit;
 		appearance: none;
+
+		height: auto;
+	}
+	cosmoz-button.more-button {
+		position: relative;
+		display: inline-flex;
+		flex: 0 0 auto;
 	}
 
 	.more-button .chevron {
@@ -141,12 +148,14 @@ export const nextTabsStyles = css`
 		transform: rotate(180deg);
 	}
 
-	.more-button:hover {
+	cosmoz-button.more-button::part(button):hover,
+	.more-button:hover:not(cosmoz-button) {
 		color: var(--cz-color-text-secondary);
 		box-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
 	}
 
-	.more[data-active] .more-button {
+	.more[data-active] cosmoz-button.more-button::part(button),
+	.more[data-active] .more-button:not(cosmoz-button) {
 		color: var(--cz-color-text-primary);
 		box-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
 	}
@@ -156,18 +165,26 @@ export const nextTabsStyles = css`
 		color: var(--cz-color-fg-secondary);
 	}
 
-	.more-button:focus-visible {
+	cosmoz-button.more-button::part(button):focus-visible,
+	.more-button:focus-visible:not(cosmoz-button) {
 		outline: 2px solid var(--cz-color-focus-ring, var(--cz-color-fg-brand));
 		outline-offset: -2px;
 	}
 
-	:host([variant='brand']) .more-button {
+	:host([variant='brand']) cosmoz-button.more-button::part(button),
+	:host([variant='brand']) .more-button:not(cosmoz-button) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 		border-radius: var(--cz-radius-md);
+
+		height: auto;
 	}
 
-	:host([variant='brand']) .more-button:hover,
-	:host([variant='brand']) .more[data-active] .more-button {
+	:host([variant='brand']) cosmoz-button.more-button::part(button):hover,
+	:host([variant='brand']) .more-button:hover:not(cosmoz-button),
+	:host([variant='brand'])
+		.more[data-active]
+		cosmoz-button.more-button::part(button),
+	:host([variant='brand']) .more[data-active] .more-button:not(cosmoz-button) {
 		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 		background-color: var(
 			--cz-color-bg-action-solid,
@@ -181,13 +198,22 @@ export const nextTabsStyles = css`
 		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
 	}
 
-	:host([variant='segmented']) .more-button {
+	:host([variant='segmented']) cosmoz-button.more-button::part(button),
+	:host([variant='segmented']) .more-button:not(cosmoz-button) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
 		border-radius: var(--cz-radius-sm);
+
+		height: auto;
 	}
 
-	:host([variant='segmented']) .more-button:hover,
-	:host([variant='segmented']) .more[data-active] .more-button {
+	:host([variant='segmented']) cosmoz-button.more-button::part(button):hover,
+	:host([variant='segmented']) .more-button:hover:not(cosmoz-button),
+	:host([variant='segmented'])
+		.more[data-active]
+		cosmoz-button.more-button::part(button),
+	:host([variant='segmented'])
+		.more[data-active]
+		.more-button:not(cosmoz-button) {
 		color: var(--cz-color-text-secondary);
 		background-color: var(--cz-color-bg-primary);
 		box-shadow: var(--cz-shadow-sm);
@@ -198,12 +224,20 @@ export const nextTabsStyles = css`
 		color: var(--cz-color-fg-secondary-hover);
 	}
 
-	:host([size='sm']) .more-button {
+	:host([size='sm']) cosmoz-button.more-button::part(button),
+	:host([size='sm']) .more-button:not(cosmoz-button) {
 		padding-block: calc(var(--cz-spacing) * 1.5);
+
+		height: auto;
 	}
 
-	:host([size='sm']:is([variant='brand'], [variant='segmented'])) .more-button {
+	:host([size='sm']:is([variant='brand'], [variant='segmented']))
+		cosmoz-button.more-button::part(button),
+	:host([size='sm']:is([variant='brand'], [variant='segmented']))
+		.more-button:not(cosmoz-button) {
 		padding-inline: calc(var(--cz-spacing) * 2);
+
+		height: auto;
 	}
 
 	.menu {

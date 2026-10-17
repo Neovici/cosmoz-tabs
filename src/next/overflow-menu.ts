@@ -1,3 +1,4 @@
+import '@neovici/cosmoz-button';
 import '@neovici/cosmoz-dropdown/cosmoz-dropdown-next';
 import { chevronDownIcon } from '@neovici/cosmoz-icons/untitled';
 import { t } from 'i18next';
@@ -42,9 +43,10 @@ export const renderOverflowMenu = ({
 		?hidden=${!overflows}
 		?data-active=${active}
 	>
-		<button
+		<cosmoz-button
+			variant="tertiary"
 			class="more-button"
-			part="more-button"
+			exportparts="button:more-button"
 			slot="button"
 			type="button"
 			aria-expanded="false"
@@ -55,7 +57,7 @@ export const renderOverflowMenu = ({
 			<span class="chevron" aria-hidden="true"
 				>${chevronDownIcon({ width: '16', height: '16' })}</span
 			>
-		</button>
+		</cosmoz-button>
 		<div
 			id="more-menu"
 			class="menu"
