@@ -402,3 +402,60 @@ export const RenderTabsRendersTheIconIntoTheIconSlot: Story = {
 		});
 	},
 };
+
+export const SmallSegmentedToolbarHeight: Story = {
+	render: () => html`
+		<div style="display:flex; align-items:center; gap:8px; width:600px">
+			<cosmoz-tabs-next variant="segmented" size="sm" compact-width>
+				<cosmoz-tab-next active
+					>${receiptIcon({ slot: 'icon' })}Overview</cosmoz-tab-next
+				>
+				<cosmoz-tab-next badge="12">Activity</cosmoz-tab-next>
+				<cosmoz-tab-next>Settings</cosmoz-tab-next>
+				<cosmoz-tab-next>History</cosmoz-tab-next>
+			</cosmoz-tabs-next>
+			<div data-control style="width:32px; height:32px; flex:none"></div>
+		</div>
+	`,
+	play: async ({ canvasElement, step }) => {
+		const bar = getContainer(canvasElement);
+		const control = canvasElement.querySelector<HTMLElement>('[data-control]')!;
+		const tabs = [...bar.querySelectorAll<HTMLElement>('cosmoz-tab-next')];
+		const center = (el: HTMLElement) => {
+			const rect = el.getBoundingClientRect();
+			return rect.y + rect.height / 2;
+		};
+		await step('icons and badges fit the standard toolbar height', async () => {
+			await waitFor(() => {
+				expect(bar.offsetHeight).toBe(32);
+				expect(center(bar)).toBe(center(control));
+				for (const tab of tabs) {
+					expect(tab.offsetHeight).toBe(26);
+					expect(tab.hasAttribute('overflowing')).toBe(false);
+				}
+			});
+		});
+		await step(
+			'overflow keeps the same height and recovers when expanded',
+			async () => {
+				bar.style.maxWidth = '180px';
+				await waitFor(() => {
+					expect(tabs.some((tab) => tab.hasAttribute('overflowing'))).toBe(
+						true,
+					);
+					const more = bar.shadowRoot!.querySelector<HTMLElement>('.more')!;
+					expect(more.hidden).toBe(false);
+					expect(more.getBoundingClientRect().height).toBe(26);
+					expect(bar.offsetHeight).toBe(32);
+				});
+				bar.style.removeProperty('max-width');
+				await waitFor(() => {
+					expect(tabs.every((tab) => !tab.hasAttribute('overflowing'))).toBe(
+						true,
+					);
+					expect(bar.offsetHeight).toBe(32);
+				});
+			},
+		);
+	},
+};
