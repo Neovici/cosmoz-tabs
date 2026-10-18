@@ -1,3 +1,9 @@
+## 11.3.1
+
+### Patch Changes
+
+- fb4c645: Align small segmented tabs, badges and overflow triggers to the standard toolbar height.
+
 ## 11.3.0
 
 ### Minor Changes
