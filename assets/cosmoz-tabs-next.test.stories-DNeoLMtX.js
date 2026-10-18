@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-BkovdZOD.js";import{c as r,s as i}from"./if-defined-Nj0VA47J.js";import{l as a,r as o,t as s}from"./untitled-9Dvm_Efl.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-jdkc8IDc.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A;function j(){return(j=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./iframe-2hAI2dUc.js";import{c as r,s as i}from"./if-defined-8hjRRL7n.js";import{l as a,r as o,t as s}from"./untitled-DPwGscbJ.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-C_S1oZIE.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j;function M(){return(M=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
@@ -46,7 +46,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
     `,play:async({canvasElement:e,step:t})=>{let[n,r,i,a]=[...e.querySelectorAll(`cosmoz-tabs-next`)],o=e=>e.querySelector(`cosmoz-tab-next`);await t(`the size reaches the children`,async()=>{await m(()=>p(o(r).getAttribute(`size`)).toBe(`sm`)),p(o(n).hasAttribute(`size`)).toBe(!1)}),await t(`sm is shorter and narrower than the default`,async()=>{await m(()=>{p(r.offsetHeight).toBeLessThan(n.offsetHeight),p(r.offsetWidth).toBeLessThan(n.offsetWidth)})}),await t(`sm underline is shorter without getting wider`,async()=>{await m(()=>{p(a.offsetHeight).toBeLessThan(i.offsetHeight),p(a.offsetWidth).toBe(i.offsetWidth)})})}},D=[{name:`overview`,title:`Overview`,icon:o,render:()=>t`<div>overview panel</div>`},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:()=>t`<div>rows panel</div>`},{name:`plain`,title:`No icon`,render:()=>t`<div>plain panel</div>`}],O=()=>{let e=c(D);return t`
         <cosmoz-tabs-next id="icon-tabs">${l(e)}</cosmoz-tabs-next>
         ${d(e,e=>e.isActive?t`<div id="panel">${e.render()}</div>`:null)}
-    `},customElements.get(`cosmoz-tabs-next-icon-tabs-test`)||customElements.define(`cosmoz-tabs-next-icon-tabs-test`,r(O)),k={render:()=>t`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>`,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`cosmoz-tabs-next-icon-tabs-test`);await t(`the icon lands in the icon slot before the label`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);await m(()=>{let[t,n,r]=[...e.querySelectorAll(`cosmoz-tab-next`)];p(t.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(n.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(r.shadowRoot.querySelector(`#iconSlot`).assignedElements()).toEqual([])})}),await t(`the label still renders alongside the icon`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tab-next[name="overview"]`);await m(()=>p(e.textContent).toContain(`Overview`))}),await t(`selection and panels keep working`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);e.querySelector(`cosmoz-tab-next[name="rows"]`).click(),await m(()=>p(e.querySelector(`cosmoz-tab-next[name="rows"]`).hasAttribute(`active`)).toBe(!0)),await m(()=>p(n.shadowRoot.querySelector(`#panel`).textContent).toContain(`rows panel`))})}},A=[`RolesAndActive`,`RadiogroupIsATablist`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`NeutralSelection`,`SegmentedActiveStyling`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`,`RenderTabsRendersTheIconIntoTheIconSlot`],v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+    `},customElements.get(`cosmoz-tabs-next-icon-tabs-test`)||customElements.define(`cosmoz-tabs-next-icon-tabs-test`,r(O)),k={render:()=>t`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>`,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`cosmoz-tabs-next-icon-tabs-test`);await t(`the icon lands in the icon slot before the label`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);await m(()=>{let[t,n,r]=[...e.querySelectorAll(`cosmoz-tab-next`)];p(t.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(n.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(r.shadowRoot.querySelector(`#iconSlot`).assignedElements()).toEqual([])})}),await t(`the label still renders alongside the icon`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tab-next[name="overview"]`);await m(()=>p(e.textContent).toContain(`Overview`))}),await t(`selection and panels keep working`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);e.querySelector(`cosmoz-tab-next[name="rows"]`).click(),await m(()=>p(e.querySelector(`cosmoz-tab-next[name="rows"]`).hasAttribute(`active`)).toBe(!0)),await m(()=>p(n.shadowRoot.querySelector(`#panel`).textContent).toContain(`rows panel`))})}},A={render:()=>t`
+        <div style="display:flex; align-items:center; gap:8px; width:600px">
+            <cosmoz-tabs-next variant="segmented" size="sm" compact-width>
+                <cosmoz-tab-next active
+                    >${o({slot:`icon`})}Overview</cosmoz-tab-next
+                >
+                <cosmoz-tab-next badge="12">Activity</cosmoz-tab-next>
+                <cosmoz-tab-next>Settings</cosmoz-tab-next>
+                <cosmoz-tab-next>History</cosmoz-tab-next>
+            </cosmoz-tabs-next>
+            <div data-control style="width:32px; height:32px; flex:none"></div>
+        </div>
+    `,play:async({canvasElement:e,step:t})=>{let n=_(e),r=e.querySelector(`[data-control]`),i=[...n.querySelectorAll(`cosmoz-tab-next`)],a=e=>{let t=e.getBoundingClientRect();return t.y+t.height/2};await t(`icons and badges fit the standard toolbar height`,async()=>{await m(()=>{p(n.offsetHeight).toBe(32),p(a(n)).toBe(a(r));for(let e of i)p(e.offsetHeight).toBe(26),p(e.hasAttribute(`overflowing`)).toBe(!1)})}),await t(`overflow keeps the same height and recovers when expanded`,async()=>{n.style.maxWidth=`180px`,await m(()=>{p(i.some(e=>e.hasAttribute(`overflowing`))).toBe(!0);let e=n.shadowRoot.querySelector(`.more`);p(e.hidden).toBe(!1),p(e.getBoundingClientRect().height).toBe(26),p(n.offsetHeight).toBe(32)}),n.style.removeProperty(`max-width`),await m(()=>{p(i.every(e=>!e.hasAttribute(`overflowing`))).toBe(!0),p(n.offsetHeight).toBe(32)})})}},j=[`RolesAndActive`,`RadiogroupIsATablist`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`NeutralSelection`,`SegmentedActiveStyling`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`,`RenderTabsRendersTheIconIntoTheIconSlot`,`SmallSegmentedToolbarHeight`],v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
   play: async ({
     canvasElement,
@@ -290,4 +302,57 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{l as t,u as n}from"./i
       await waitFor(() => expect((container.shadowRoot.querySelector('#panel') as HTMLElement).textContent).toContain('rows panel'));
     });
   }
-}`,...k.parameters?.docs?.source}}}})))()}j();export{x as BrandActiveStyling,T as CompactWidthSizesToContent,S as NeutralSelection,y as RadiogroupIsATablist,b as ReflectsVariantToChildren,k as RenderTabsRendersTheIconIntoTheIconSlot,v as RolesAndActive,C as SegmentedActiveStyling,E as SizeReachesChildrenAndShrinksTheBox,w as SpreadByDefault,A as __namedExportsOrder,h as default};
+}`,...k.parameters?.docs?.source}}},A.parameters={...A.parameters,docs:{...A.parameters?.docs,source:{originalSource:`{
+  render: () => html\`
+        <div style="display:flex; align-items:center; gap:8px; width:600px">
+            <cosmoz-tabs-next variant="segmented" size="sm" compact-width>
+                <cosmoz-tab-next active
+                    >\${receiptIcon({
+    slot: 'icon'
+  })}Overview</cosmoz-tab-next
+                >
+                <cosmoz-tab-next badge="12">Activity</cosmoz-tab-next>
+                <cosmoz-tab-next>Settings</cosmoz-tab-next>
+                <cosmoz-tab-next>History</cosmoz-tab-next>
+            </cosmoz-tabs-next>
+            <div data-control style="width:32px; height:32px; flex:none"></div>
+        </div>
+    \`,
+  play: async ({
+    canvasElement,
+    step
+  }) => {
+    const bar = getContainer(canvasElement);
+    const control = canvasElement.querySelector<HTMLElement>('[data-control]')!;
+    const tabs = [...bar.querySelectorAll<HTMLElement>('cosmoz-tab-next')];
+    const center = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.y + rect.height / 2;
+    };
+    await step('icons and badges fit the standard toolbar height', async () => {
+      await waitFor(() => {
+        expect(bar.offsetHeight).toBe(32);
+        expect(center(bar)).toBe(center(control));
+        for (const tab of tabs) {
+          expect(tab.offsetHeight).toBe(26);
+          expect(tab.hasAttribute('overflowing')).toBe(false);
+        }
+      });
+    });
+    await step('overflow keeps the same height and recovers when expanded', async () => {
+      bar.style.maxWidth = '180px';
+      await waitFor(() => {
+        expect(tabs.some(tab => tab.hasAttribute('overflowing'))).toBe(true);
+        const more = bar.shadowRoot!.querySelector<HTMLElement>('.more')!;
+        expect(more.hidden).toBe(false);
+        expect(more.getBoundingClientRect().height).toBe(26);
+        expect(bar.offsetHeight).toBe(32);
+      });
+      bar.style.removeProperty('max-width');
+      await waitFor(() => {
+        expect(tabs.every(tab => !tab.hasAttribute('overflowing'))).toBe(true);
+        expect(bar.offsetHeight).toBe(32);
+      });
+    });
+  }
+}`,...A.parameters?.docs?.source}}}})))()}M();export{x as BrandActiveStyling,T as CompactWidthSizesToContent,S as NeutralSelection,y as RadiogroupIsATablist,b as ReflectsVariantToChildren,k as RenderTabsRendersTheIconIntoTheIconSlot,v as RolesAndActive,C as SegmentedActiveStyling,E as SizeReachesChildrenAndShrinksTheBox,A as SmallSegmentedToolbarHeight,w as SpreadByDefault,j as __namedExportsOrder,h as default};
