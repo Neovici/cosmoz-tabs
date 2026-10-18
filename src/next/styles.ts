@@ -4,8 +4,8 @@ export type TabsVariant = 'brand' | 'underline' | 'segmented';
 /**
  * The default size is the unnamed one - omit the attribute to get it. `sm`
  * trims the item's box on both axes so a control that sits beside a heading
- * does not out-weigh it; the type is left alone, so the labels stay as
- * readable as they were.
+ * does not out-weigh it. Small segmented controls also use compact text
+ * to align their frame with standard toolbar controls.
  */
 export type TabsSize = 'sm';
 
@@ -85,8 +85,14 @@ export const nextTabsStyles = css`
 	/* The track's own ring is what stacks onto the item's padding, so the
 	   compact size has to thin that too or the height barely moves. */
 	:host([variant='segmented'][size='sm']) {
+		font-size: var(--cz-text-xs);
+		line-height: var(--cz-text-xs-line-height);
 		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-md);
+	}
+
+	:host([variant='segmented'][size='sm']) slot:not([name]) {
+		max-height: calc(var(--cz-control-height-md) - var(--cz-spacing) * 1.5);
 	}
 
 	.more {
@@ -238,6 +244,14 @@ export const nextTabsStyles = css`
 		padding-inline: calc(var(--cz-spacing) * 2);
 
 		height: auto;
+	}
+
+	:host([variant='segmented'][size='sm'])
+		cosmoz-button.more-button::part(button),
+	:host([variant='segmented'][size='sm']) .more-button:not(cosmoz-button) {
+		font-size: var(--cz-text-xs);
+		line-height: var(--cz-text-xs-line-height);
+		padding-block: var(--cz-spacing);
 	}
 
 	.menu {

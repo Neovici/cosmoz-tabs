@@ -224,6 +224,16 @@ export const nextTabStyles = css`
 		padding-block: calc(var(--cz-spacing) * 1.5);
 	}
 
+	:host([size='sm'][variant='segmented']) {
+		font-size: var(--cz-text-xs);
+		line-height: var(--cz-text-xs-line-height);
+		padding-block: var(--cz-spacing);
+	}
+
+	:host([size='sm'][variant='segmented']) .badge {
+		padding-block: 0;
+	}
+
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		padding-inline: calc(var(--cz-spacing) * 2);
 	}
