@@ -197,6 +197,62 @@ export const legacyStyles = css`
 		display: none;
 	}
 
+	/* The band: a wrapping row clipped to its first line (useOverflow caps it
+	   at the tallest tab); the tabs that wrap past it are in the menu. */
+	.band {
+		display: flex;
+		flex: 1 1 0;
+		flex-wrap: wrap;
+		gap: inherit;
+		min-width: 0;
+		overflow: clip;
+	}
+
+	:host([compact-width]) .band {
+		flex: 0 1 auto;
+	}
+
+	.tab[overflowing] {
+		visibility: hidden;
+	}
+
+	.menu-tab {
+		${item}
+		justify-content: flex-start;
+		gap: calc(var(--cz-spacing) * 2);
+		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		border-radius: var(--cz-radius-sm);
+	}
+
+	.menu-tab:hover {
+		color: var(--cz-color-text-secondary);
+		background-color: var(--cz-color-bg-primary-hover);
+	}
+
+	.menu-tab[aria-selected='true'] {
+		${brandActive}
+	}
+
+	.menu-tab svg {
+		${icon}
+	}
+
+	.menu-tab[aria-selected='true'] svg {
+		color: var(--cz-color-text-on-action, var(--cz-color-text-on-brand));
+	}
+
+	.menu-tab:focus-visible {
+		${itemFocus}
+	}
+
+	.menu-tab[disabled] {
+		${itemDisabled}
+	}
+
+	.menu-tab[hidden] {
+		display: none !important;
+	}
+
 	.tab {
 		${item}
 		${spreadItem}
@@ -236,7 +292,9 @@ export const legacyStyles = css`
 	}
 
 	:host(:not([variant='segmented'])) .tab:hover .badge,
-	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge {
+	:host(:not([variant='segmented'])) .tab[aria-selected='true'] .badge,
+	:host(:not([variant='segmented'])) .menu-tab:hover .badge,
+	:host(:not([variant='segmented'])) .menu-tab[aria-selected='true'] .badge {
 		${badgeHot}
 	}
 
@@ -278,7 +336,9 @@ export const legacyStyles = css`
 
 	/* The track hugs its tabs when they are not spread. */
 	:host([variant='segmented'][compact-width]) .tabs {
+		box-sizing: border-box;
 		width: max-content;
+		max-width: 100%;
 	}
 
 	:host([variant='segmented']) .tab {

@@ -23,7 +23,12 @@ import {
 	tabStops,
 	type CopyPair,
 } from './projection';
-import { nextTabsStyles, type TabsSize, type TabsVariant } from './styles';
+import {
+	nextTabsStyles,
+	overflowMenuStyles,
+	type TabsSize,
+	type TabsVariant,
+} from './styles';
 
 export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
@@ -268,6 +273,6 @@ customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
 		observedAttributes: ['variant', 'size', 'compact-width', 'more-label'],
-		styleSheets: [normalize, nextTabsStyles],
+		styleSheets: [normalize, nextTabsStyles, overflowMenuStyles],
 	}),
 );

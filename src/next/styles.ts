@@ -94,7 +94,10 @@ export const nextTabsStyles = css`
 	:host([variant='segmented'][size='sm']) slot:not([name]) {
 		max-height: calc(var(--cz-control-height-md) - var(--cz-spacing) * 1.5);
 	}
+`;
 
+/** The overflow trigger and its menu; shared with the legacy bar. */
+export const overflowMenuStyles = css`
 	.more {
 		flex: 0 0 auto;
 		display: inline-flex;

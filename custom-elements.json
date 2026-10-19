@@ -34,6 +34,11 @@
 					"name": "compact-width",
 					"type": "Boolean",
 					"description": "Tabs spread to fill the width by default; add the compact-width attribute to size them to their content"
+				},
+				{
+					"name": "more-label",
+					"type": "String",
+					"description": "Label of the overflow menu trigger shown when the tabs do not fit the bar; defaults to a translated 'More'. Also settable as the `moreLabel` property"
 				}
 			],
 			"events": [],
