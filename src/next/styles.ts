@@ -36,7 +36,7 @@ export const nextTabsStyles = css`
 	/* Untitled UI's "button border" tabs: a track holding a raised, selected pill. */
 	:host([variant='segmented']) {
 		--_gap: calc(var(--cz-spacing) * 1);
-		padding: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-lg);
 		background-color: var(--cz-color-bg-secondary);
 		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
@@ -46,8 +46,9 @@ export const nextTabsStyles = css`
 	   observer reads against. One row's box is exact per size/variant (the
 	   item's box is fully token-derived), so the clip is a constant the
 	   intersections read against. The wrapping, clipping track is the
-	   default slot: brand and segmented item boxes sit a touch shorter:
-	   37px; sm trims all variants to 33px */
+	   default slot: brand item boxes sit a touch shorter: 37px, segmented
+	   ones 33px (cosmoz-toggle-group's box); sm trims all variants to 33px
+	   and segmented to 26px */
 	slot:not([name]) {
 		display: flex;
 		flex-wrap: wrap;
@@ -65,9 +66,12 @@ export const nextTabsStyles = css`
 		min-width: 0;
 	}
 
-	:host([variant='brand']) slot:not([name]),
-	:host([variant='segmented']) slot:not([name]) {
+	:host([variant='brand']) slot:not([name]) {
 		max-height: 37px;
+	}
+
+	:host([variant='segmented']) slot:not([name]) {
+		max-height: 33px;
 	}
 
 	:host([size='sm']) slot:not([name]) {
@@ -82,12 +86,9 @@ export const nextTabsStyles = css`
 		max-width: 100%;
 	}
 
-	/* The track's own ring is what stacks onto the item's padding, so the
-	   compact size has to thin that too or the height barely moves. */
 	:host([variant='segmented'][size='sm']) {
 		font-size: var(--cz-text-xs);
 		line-height: var(--cz-text-xs-line-height);
-		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-md);
 	}
 
@@ -206,7 +207,7 @@ export const nextTabsStyles = css`
 
 	:host([variant='segmented']) cosmoz-button.more-button::part(button),
 	:host([variant='segmented']) .more-button:not(cosmoz-button) {
-		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 
 		height: auto;
