@@ -1,3 +1,14 @@
+## 11.4.0
+
+### Minor Changes
+
+- c6891b0: `useTabs` (next) returns `select(name)`, which selects a tab the way a click does: it calls `onActivate` and then activates the tab. Use it to select a tab from elsewhere, such as a breadcrumb link. `activate` still only updates the active tab.
+- f36aaf8: The default `segmented` size is now 39px high instead of 45px, the same box as `cosmoz-toggle-group` from `@neovici/cosmoz-input`. Its item padding and track ring are trimmed to match. `size="sm"` stays at 32px, which matches the toggle group's new `size="sm"`. With this, a view switch and a value picker of the same size look the same.
+
+### Patch Changes
+
+- 78bfde8: Use the `overflow` directive and `overflowStyle` stylesheet from `@neovici/cosmoz-utils@6.27.0` in `cosmoz-tabs-next`; `src/next/overflow.ts` is deleted.
+
 ## 11.3.1
 
 ### Patch Changes
