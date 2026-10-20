@@ -2,6 +2,10 @@ import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { assignedRef } from '@neovici/cosmoz-utils/directives/assigned-ref';
 import { forwardAttributes } from '@neovici/cosmoz-utils/directives/forward-attributes';
 import {
+	overflow,
+	overflowStyle,
+} from '@neovici/cosmoz-utils/directives/overflow';
+import {
 	component,
 	html,
 	useCallback,
@@ -11,7 +15,6 @@ import {
 	useRef,
 	useState,
 } from '@pionjs/pion';
-import { overflow } from './overflow';
 import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
@@ -244,10 +247,10 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		<slot name="tabs"></slot>
 		<div class="group" role="tablist">
 			<slot
+				class="cz-overflow-band"
 				${assignedRef(assigned)}
 				${forwardAttributes(project(host))}
 				${overflow({
-					is: (el) => el.matches(TAB),
 					onOverflow: setOverflowing,
 				})}
 				@slotchange=${onSlotChange}
@@ -268,6 +271,6 @@ customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
 		observedAttributes: ['variant', 'size', 'compact-width', 'more-label'],
-		styleSheets: [normalize, nextTabsStyles],
+		styleSheets: [normalize, nextTabsStyles, overflowStyle],
 	}),
 );
