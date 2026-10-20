@@ -88,3 +88,38 @@ export const InvalidHashFallsBack: Story = {
 		window.location.hash = '';
 	},
 };
+
+const selected: string[] = [];
+
+const SelectDemo = () => {
+	const model = useTabs(tabs, {
+		hashParam: 'stab',
+		onActivate: (name) => selected.push(name),
+	});
+	return html`<cosmoz-tabs-next>${renderTabs(model)}</cosmoz-tabs-next>
+		<button @click=${() => model.select('tab2')}>Select tab2</button>`;
+};
+
+if (!customElements.get('cosmoz-tabs-next-select-test')) {
+	customElements.define('cosmoz-tabs-next-select-test', component(SelectDemo));
+}
+
+export const SelectActivatesAndNotifies: Story = {
+	render: () =>
+		html`<cosmoz-tabs-next-select-test></cosmoz-tabs-next-select-test>`,
+	play: async ({ canvasElement }) => {
+		window.location.hash = '';
+		selected.length = 0;
+		const demo = canvasElement.querySelector(
+			'cosmoz-tabs-next-select-test',
+		) as HTMLElement;
+		await waitFor(() => expect(activeName(demo)).toBe('tab0'));
+
+		demo.shadowRoot!.querySelector('button')!.click();
+		await waitFor(() => expect(activeName(demo)).toBe('tab2'));
+		expect(window.location.hash).toContain('stab=tab2');
+		expect(selected).toEqual(['tab2']);
+
+		window.location.hash = '';
+	},
+};

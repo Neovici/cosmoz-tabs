@@ -32,6 +32,8 @@ export interface Result<T extends Tab> {
 	active: T;
 	activated: string[];
 	activate: (name: string) => void;
+	/** Select a tab as a click would: notify `onActivate`, then activate it. */
+	select: (name: string) => void;
 	onActivate: (e: Event) => void;
 }
 
@@ -75,11 +77,20 @@ export const useTabs = <T extends Tab>(
 			].filter(Boolean) as string[]);
 		}, [active]);
 
+	const select = useCallback(
+		(tabName: string) => {
+			onActivate?.(tabName);
+			activate(tabName);
+		},
+		[activate, onActivate],
+	);
+
 	return {
 		tabs,
 		active,
 		activated,
 		activate,
+		select,
 		onActivate: useCallback(
 			(e: Event) => {
 				const me = e as MouseEvent;
@@ -89,13 +100,11 @@ export const useTabs = <T extends Tab>(
 				const tabName = (e.currentTarget as Element | null)?.getAttribute(
 					'name',
 				);
-				if (!tabName) {
-					return;
+				if (tabName) {
+					select(tabName);
 				}
-				onActivate?.(tabName);
-				activate(tabName);
 			},
-			[activate, onActivate],
+			[select],
 		),
 	};
 };
