@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-2hAI2dUc.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-8hjRRL7n.js";import{m as ee,t as te}from"./untitled-DPwGscbJ.js";import{r as ne,t as re}from"./use-hash-param-DxOezzgF.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-avMOQqxp.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-AtsyA9uW.js";import{m as ee,t as te}from"./untitled-CATU2KUu.js";import{r as ne,t as re}from"./use-hash-param-CM3J2Eip.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -66,10 +66,6 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	:host([hidden]) {
 		display: none !important;
-	}
-
-	:host([overflowing]) {
-		visibility: hidden;
 	}
 
 	/* The menu copy: the same element with the menu row's box and face. */
@@ -240,7 +236,18 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			<slot id="contentSlot"></slot>
 			${r?n`<span class="badge" part="badge">${r}</span>`:i}
 		</a>
-	`},customElements.define(`cosmoz-tab-next`,m(oe,{baseElement:j,observedAttributes:[`active`,`badge`,`href`],styleSheets:[x,ie]}))})))()}var ce,M;function N(){return(N=e((()=>{s(),h(),ce=class extends T{_slot;_ref;#e=()=>{this._slot&&this._ref&&(this._ref.current=this._slot.assignedElements({flatten:!0}))};#t=()=>this.#e();update(e,[t]){this._ref=t;let n=e.element;this._slot!==n&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=n,n.addEventListener(`slotchange`,this.#t)),this.#e()}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}render(e){return t}},M=g(ce)})))()}var P;function F(){return(F=e((()=>{P=(e,...t)=>typeof e==`function`?e(...t):e})))()}var le,ue,de,I;function L(){return(L=e((()=>{s(),h(),F(),le=(e,t,n)=>{n==null?e.removeAttribute(t):e.setAttribute(t,n)},ue=(e,t)=>{for(let[n,r]of Object.entries(e))le(t,n,P(r,t))},de=class extends T{_slot;_attrs;#e=()=>{if(!this._slot||!this._attrs)return;let e=this._slot.assignedElements({flatten:!0});for(let t of e)ue(this._attrs,t)};#t=()=>this.#e();render(e){return t}update(e,[n]){this._attrs=n;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=r,r.addEventListener(`slotchange`,this.#t)),this.#e(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}},I=g(de)})))()}var R,z,B,V;function H(){return(H=e((()=>{s(),h(),R=(e,t)=>e.assignedElements({flatten:!0}).filter(t),z=(e,t)=>e!=null&&t!=null&&e.size===t.size&&[...t].every(t=>e.has(t)),B=class extends T{_slot;_is;_onOverflow;#e=new Map;#t;#n;#r=e=>{e.forEach(e=>{let t=e.target;this.#e.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),this.#a()};#i=e=>{this.#n?.unobserve(e),this.#n?.observe(e)};#a=()=>{if(!this._slot||!this._is)return;let e=R(this._slot,this._is);e.forEach(e=>{let t=this.#e.get(e)===!0;t!==e.hasAttribute(`overflowing`)&&(t?e.setAttribute(`overflowing`,``):e.removeAttribute(`overflowing`))}),this.#e.forEach((t,n)=>{e.includes(n)||(this.#e.delete(n),this.#n?.unobserve(n),n.hasAttribute(`overflowing`)&&n.removeAttribute(`overflowing`))});let t=new Set(e.filter(e=>this.#e.get(e)===!0));z(this.#t,t)||(this.#t=t,this._onOverflow?.(t))};#o=()=>this.#s();#s=()=>{if(this.#n&&this._slot&&this._is){for(let e of R(this._slot,this._is))this.#i(e);this.#a()}};render(e){return t}update(e,[n]){this._is=n.is,this._onOverflow=n.onOverflow;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#o),this.#n?.disconnect(),this.#n=void 0,this._slot=r,r.addEventListener(`slotchange`,this.#o)),this.#n??=new IntersectionObserver(this.#r,{root:this._slot,threshold:[0,1]}),this.#s(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#o),this._slot=void 0,this.#n?.disconnect(),this.#n=void 0,this.#e.clear(),this.#t=void 0}},V=g(B)})))()}var fe;function U(){return(U=e((()=>{p(),C(),s(),fe=y`
+	`},customElements.define(`cosmoz-tab-next`,m(oe,{baseElement:j,observedAttributes:[`active`,`badge`,`href`],styleSheets:[x,ie]}))})))()}var ce,M;function N(){return(N=e((()=>{s(),h(),ce=class extends T{_slot;_ref;#e=()=>{this._slot&&this._ref&&(this._ref.current=this._slot.assignedElements({flatten:!0}))};#t=()=>this.#e();update(e,[t]){this._ref=t;let n=e.element;this._slot!==n&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=n,n.addEventListener(`slotchange`,this.#t)),this.#e()}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}render(e){return t}},M=g(ce)})))()}var P;function F(){return(F=e((()=>{P=(e,...t)=>typeof e==`function`?e(...t):e})))()}var le,ue,de,I;function L(){return(L=e((()=>{s(),h(),F(),le=(e,t,n)=>{n==null?e.removeAttribute(t):e.setAttribute(t,n)},ue=(e,t)=>{for(let[n,r]of Object.entries(e))le(t,n,P(r,t))},de=class extends T{_slot;_attrs;#e=()=>{if(!this._slot||!this._attrs)return;let e=this._slot.assignedElements({flatten:!0});for(let t of e)ue(this._attrs,t)};#t=()=>this.#e();render(e){return t}update(e,[n]){this._attrs=n;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=r,r.addEventListener(`slotchange`,this.#t)),this.#e(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#t),this._slot=void 0}},I=g(de)})))()}var R;function z(){return(z=e((()=>{R=(...e)=>{let t=new CSSStyleSheet;return t.replaceSync(e.join(``)),t}})))()}var B,V,H,fe,pe;function me(){return(me=e((()=>{C(),s(),h(),z(),B=R(y`
+	slot.cz-overflow-band {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		overflow: clip;
+	}
+
+	::slotted([overflowing]) {
+		visibility: hidden;
+	}
+`),V=e=>e.assignedElements({flatten:!0}),H=(e,t)=>e!=null&&t!=null&&e.size===t.size&&[...t].every(t=>e.has(t)),fe=class extends T{_slot;_onOverflow;#e=new Map;#t;#n;#r=e=>{e.forEach(e=>{let t=e.target;this.#e.set(t,e.boundingClientRect.height>0&&e.intersectionRect.height===0)}),this.#a()};#i=e=>{this.#n?.unobserve(e),this.#n?.observe(e)};#a=()=>{if(!this._slot)return;let e=V(this._slot);e.forEach(e=>{let t=this.#e.get(e)===!0;t!==e.hasAttribute(`overflowing`)&&(t?e.setAttribute(`overflowing`,``):e.removeAttribute(`overflowing`))}),this.#e.forEach((t,n)=>{e.includes(n)||(this.#e.delete(n),this.#n?.unobserve(n),n.hasAttribute(`overflowing`)&&n.removeAttribute(`overflowing`))});let t=new Set(e.filter(e=>this.#e.get(e)===!0));H(this.#t,t)||(this.#t=t,this._onOverflow?.(t))};#o=()=>this.#s();#s=()=>{if(this.#n&&this._slot){for(let e of V(this._slot))this.#i(e);this.#a()}};render(e){return t}update(e,[n]){this._onOverflow=n.onOverflow;let r=e.element;return this._slot!==r&&(this._slot?.removeEventListener(`slotchange`,this.#o),this.#n?.disconnect(),this.#n=void 0,this._slot=r,r.addEventListener(`slotchange`,this.#o)),this.#n??=new IntersectionObserver(this.#r,{root:this._slot,threshold:[0,1]}),this.#s(),t}disconnected(){this._slot?.removeEventListener(`slotchange`,this.#o),this._slot=void 0,this.#n?.disconnect(),this.#n=void 0,this.#e.clear(),this.#t=void 0}},pe=g(fe)})))()}var he;function U(){return(U=e((()=>{p(),C(),s(),he=y`
 	:host {
 		display: flex;
 		flex-direction: column;
@@ -259,7 +266,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			<slot name="heading"></slot>
 			<slot name="description"></slot>
 			<slot></slot>
-		`,{styleSheets:[x,fe]}))})))()}var W;function G(){return(G=e((()=>{C(),W=u(y`
+		`,{styleSheets:[x,he]}))})))()}var W;function G(){return(G=e((()=>{C(),W=u(y`
 	.cosmoz-tooltip-popover {
 		position: fixed;
 		inset: unset;
@@ -321,10 +328,10 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			transition: none;
 		}
 	}
-`)})))()}var K,pe;function me(){return(me=e((()=>{C(),s(),U(),G(),K=(e,t,r)=>o(n`<cosmoz-tooltip-content>
+`)})))()}var K,ge;function _e(){return(_e=e((()=>{C(),s(),U(),G(),K=(e,t,r)=>o(n`<cosmoz-tooltip-content>
 			${v(t,()=>n`<strong slot="heading">${t}</strong>`)}
 			${v(r,()=>n`<p slot="description">${r}</p>`)}
-		</cosmoz-tooltip-content>`,e),pe=(e,t)=>{let{for:n,heading:r,description:i,placement:a=`top`,delay:o=300,disabled:s=!1}=t,c=_(),u=!!(r||i)&&!s;l(()=>{if(!n||!u)return;let t=e.getRootNode(),l=t.adoptedStyleSheets??[];l.includes(W)||(t.adoptedStyleSheets=[...l,W]);let d=document.createElement(`div`);d.setAttribute(`popover`,`manual`),d.setAttribute(`role`,`tooltip`),d.classList.add(`cosmoz-tooltip-popover`),e.after(d),c.current=d,K(d,r,i);let f=`[name="${n}"]`,p=`--tooltip-anchor-${n}`,m,h=e=>{s||(clearTimeout(m),e.style.anchorName=p,d.style.positionAnchor=p,d.style.positionArea=a,m=window.setTimeout(()=>d.showPopover(),o))},g=()=>{clearTimeout(m),d.hidePopover()},_=e=>{let t=e.target.closest?.(f);t&&h(t)},v=e=>{let t=e.target.closest?.(f);if(!t)return;let n=e.relatedTarget;n&&t.contains(n)||g()},y=e=>{let t=e.target.closest?.(f);t&&h(t)},b=e=>{e.target.closest?.(f)&&g()};return t.addEventListener(`pointerover`,_),t.addEventListener(`pointerout`,v),t.addEventListener(`focusin`,y),t.addEventListener(`focusout`,b),()=>{clearTimeout(m),t.removeEventListener(`pointerover`,_),t.removeEventListener(`pointerout`,v),t.removeEventListener(`focusin`,y),t.removeEventListener(`focusout`,b),d.hidePopover(),d.remove(),c.current=void 0}},[n,a,o,u]),l(()=>{n&&c.current&&K(c.current,r,i)},[r,i,n]),l(()=>{s&&c.current&&c.current.hidePopover()},[s])}})))()}var he;function ge(){return(ge=e((()=>{C(),he=e=>{let[t,n]=D(!1);return l(()=>{let t=e.current;if(!t)return;let r=()=>{n(t.assignedElements().length>0)};return r(),t.addEventListener(`slotchange`,r),()=>t.removeEventListener(`slotchange`,r)},[e.current]),t}})))()}var _e,ve;function ye(){return(ye=e((()=>{p(),C(),s(),A(),U(),G(),me(),ge(),_e=y`
+		</cosmoz-tooltip-content>`,e),ge=(e,t)=>{let{for:n,heading:r,description:i,placement:a=`top`,delay:o=300,disabled:s=!1}=t,c=_(),u=!!(r||i)&&!s;l(()=>{if(!n||!u)return;let t=e.getRootNode(),l=t.adoptedStyleSheets??[];l.includes(W)||(t.adoptedStyleSheets=[...l,W]);let d=document.createElement(`div`);d.setAttribute(`popover`,`manual`),d.setAttribute(`role`,`tooltip`),d.classList.add(`cosmoz-tooltip-popover`),e.after(d),c.current=d,K(d,r,i);let f=`[name="${n}"]`,p=`--tooltip-anchor-${n}`,m,h=e=>{s||(clearTimeout(m),e.style.anchorName=p,d.style.positionAnchor=p,d.style.positionArea=a,m=window.setTimeout(()=>d.showPopover(),o))},g=()=>{clearTimeout(m),d.hidePopover()},_=e=>{let t=e.target.closest?.(f);t&&h(t)},v=e=>{let t=e.target.closest?.(f);if(!t)return;let n=e.relatedTarget;n&&t.contains(n)||g()},y=e=>{let t=e.target.closest?.(f);t&&h(t)},b=e=>{e.target.closest?.(f)&&g()};return t.addEventListener(`pointerover`,_),t.addEventListener(`pointerout`,v),t.addEventListener(`focusin`,y),t.addEventListener(`focusout`,b),()=>{clearTimeout(m),t.removeEventListener(`pointerover`,_),t.removeEventListener(`pointerout`,v),t.removeEventListener(`focusin`,y),t.removeEventListener(`focusout`,b),d.hidePopover(),d.remove(),c.current=void 0}},[n,a,o,u]),l(()=>{n&&c.current&&K(c.current,r,i)},[r,i,n]),l(()=>{s&&c.current&&c.current.hidePopover()},[s])}})))()}var ve;function ye(){return(ye=e((()=>{C(),ve=e=>{let[t,n]=D(!1);return l(()=>{let t=e.current;if(!t)return;let r=()=>{n(t.assignedElements().length>0)};return r(),t.addEventListener(`slotchange`,r),()=>t.removeEventListener(`slotchange`,r)},[e.current]),t}})))()}var be,xe;function Se(){return(Se=e((()=>{p(),C(),s(),A(),U(),G(),_e(),ye(),be=y`
 	:host {
 		display: inline-block;
 		anchor-name: --tooltip-anchor;
@@ -338,7 +345,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	.cosmoz-tooltip-popover {
 		position-anchor: --tooltip-anchor;
 	}
-`,ve=e=>{let{heading:t,description:r,for:a,placement:o=`top`,delay:s=300,disabled:u=!1}=e,d=_(),f=_(),p=_(),m=he(p),h=!!(t||r||m)&&!u,g=c(()=>{h&&(clearTimeout(f.current),f.current=window.setTimeout(()=>{d.current?.showPopover()},s))},[s,h]);l(()=>{u&&(clearTimeout(f.current),d.current?.hidePopover())},[u]);let y=c(()=>{clearTimeout(f.current),d.current?.hidePopover()},[]);return l(()=>{if(a)return;let t=t=>{let n=t.relatedTarget;n&&e.contains(n)||y()};return e.addEventListener(`pointerover`,g),e.addEventListener(`pointerout`,t),()=>{e.removeEventListener(`pointerover`,g),e.removeEventListener(`pointerout`,t)}},[a,g,y]),pe(e,{for:a,heading:t,description:r,placement:o,delay:s,disabled:u}),a?i:h?n`
+`,xe=e=>{let{heading:t,description:r,for:a,placement:o=`top`,delay:s=300,disabled:u=!1}=e,d=_(),f=_(),p=_(),m=ve(p),h=!!(t||r||m)&&!u,g=c(()=>{h&&(clearTimeout(f.current),f.current=window.setTimeout(()=>{d.current?.showPopover()},s))},[s,h]);l(()=>{u&&(clearTimeout(f.current),d.current?.hidePopover())},[u]);let y=c(()=>{clearTimeout(f.current),d.current?.hidePopover()},[]);return l(()=>{if(a)return;let t=t=>{let n=t.relatedTarget;n&&e.contains(n)||y()};return e.addEventListener(`pointerover`,g),e.addEventListener(`pointerout`,t),()=>{e.removeEventListener(`pointerover`,g),e.removeEventListener(`pointerout`,t)}},[a,g,y]),ge(e,{for:a,heading:t,description:r,placement:o,delay:s,disabled:u}),a?i:h?n`
 		<slot @focusin=${g} @focusout=${y}></slot>
 		<div
 			class="cosmoz-tooltip-popover"
@@ -356,15 +363,22 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	`:n`
 			<slot></slot>
 			<slot name="content" ${k(p)} hidden></slot>
-		`},customElements.define(`cosmoz-tooltip`,m(ve,{styleSheets:[x,W,_e],observedAttributes:[`heading`,`description`,`for`,`placement`,`delay`,`disabled`]}))})))()}function be(){return(be=e((()=>{ye()})))()}var xe;function Se(){return(Se=e((()=>{C(),xe=y`
+		`},customElements.define(`cosmoz-tooltip`,m(xe,{styleSheets:[x,W,be],observedAttributes:[`heading`,`description`,`for`,`placement`,`delay`,`disabled`]}))})))()}function Ce(){return(Ce=e((()=>{Se()})))()}var q,we;function Te(){return(Te=e((()=>{q=(e,t)=>{e.type=`submit`,e.hidden=!0,e.disabled=!!(t.disabled||t.formDisabled),e.name=t.name??``,e.value=t.value??``;for(let n of[`form`,`formaction`,`formenctype`,`formmethod`,`formnovalidate`,`formtarget`])t.hasAttribute(n)?e.setAttribute(n,t.getAttribute(n)):e.removeAttribute(n)},we=class extends HTMLElement{static formAssociated=!0;#e=this.attachInternals();#t;get form(){return this.#e.form}syncFormButton(){if(!this.isConnected||this.type!==`submit`||this.href!=null){this.#t?.remove(),this.#t=void 0;return}this.#t?q(this.#t,this):(this.#t=document.createElement(`button`),q(this.#t,this),this.append(this.#t))}formAssociatedCallback(){this.syncFormButton()}formDisabledCallback(e){this.formDisabled=e,this.syncFormButton()}connectedCallback(){this.addEventListener(`click`,this.#n),this.syncFormButton()}disconnectedCallback(){this.removeEventListener(`click`,this.#n),this.#t?.remove(),this.#t=void 0}#n=e=>{this.#t&&e.composedPath().includes(this.#t)||setTimeout(()=>{if(e.defaultPrevented||!this.isConnected||this.disabled||this.formDisabled||this.href!=null)return;let t=this.form;t&&(this.type===`reset`?t.reset():this.type===`submit`&&(this.syncFormButton(),this.#t&&t.requestSubmit(this.#t)))},0)}}})))()}var Ee;function De(){return(De=e((()=>{C(),Ee=y`
 	:host {
 		display: inline-flex;
 
-		--_wash: light-dark(rgb(10 13 18 / 0.05), rgb(255 255 255 / 0.07));
-		--_wash-strong: light-dark(rgb(10 13 18 / 0.08), rgb(255 255 255 / 0.11));
-		--_hairline: light-dark(rgb(10 13 18 / 0.12), rgb(255 255 255 / 0.1));
-		--_sheen: linear-gradient(rgb(255 255 255 / 0.12), rgb(255 255 255 / 0));
-		--_lift: 0 1px 2px light-dark(rgb(10 13 18 / 0.08), rgb(0 0 0 / 0.4));
+		--_wash: var(--cz-color-bg-glass, var(--cz-color-bg-tertiary));
+		--_wash-strong: var(
+			--cz-color-bg-glass-hover,
+			var(--cz-color-bg-secondary-hover)
+		);
+		--_hairline: var(--cz-color-border-glass, var(--cz-color-border-primary));
+		--_sheen: var(--cz-glass-action-sheen, var(--cz-action-sheen, none));
+		--_lift: var(--cz-shadow-xs);
+		--_pressed-bg: var(
+			--cz-color-bg-glass-action-pressed,
+			var(--cz-color-bg-action-solid-hover)
+		);
 	}
 
 	:host([full-width]) {
@@ -389,14 +403,14 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		gap: 6px;
 		width: 100%;
 		height: var(--cz-control-height-md);
-		padding: 0 12px;
-		border: none;
+		padding: 0 14px;
+		border: 1px solid transparent;
 		border-radius: var(--cz-radius-md);
 		font-family: var(--cz-font-body);
-		font-size: 0.8125rem;
-		font-weight: var(--cz-font-weight-medium);
-		line-height: 1;
-		letter-spacing: -0.006em;
+		font-size: calc((var(--cz-text-sm) + var(--cz-text-xs)) / 2);
+		font-weight: var(--cz-font-weight-regular);
+		line-height: 1.25;
+		letter-spacing: normal;
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
@@ -409,24 +423,39 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			background-color 120ms ease-out,
 			color 120ms ease-out,
 			box-shadow 120ms ease-out,
-			outline-color 120ms ease-out,
-			transform 80ms ease-out;
+			outline-color 120ms ease-out;
 
-		background: var(--cz-action-sheen, none), var(--cz-color-bg-action-solid);
-		color: var(--cz-color-text-on-action);
-		box-shadow: var(--cz-shadow-action);
+		background:
+			var(
+				--cz-glass-button-action-sheen,
+				var(--cz-glass-action-sheen, var(--cz-action-sheen, none))
+			),
+			var(--cz-color-bg-glass-action, var(--cz-color-bg-action-solid));
+		border-color: var(--cz-color-border-glass-action, transparent);
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+		color: var(--cz-color-text-on-glass-action, var(--cz-color-text-on-action));
+		box-shadow: var(
+			--cz-shadow-glass-button-action,
+			var(--cz-shadow-glass-action, var(--cz-shadow-action))
+		);
 
 		&:hover {
-			background-color: var(--cz-color-bg-action-solid-hover);
-		}
-
-		&:active {
-			transform: scale(0.97);
+			background-color: var(
+				--cz-color-bg-glass-action-hover,
+				var(--cz-color-bg-action-solid-hover)
+			);
 		}
 
 		&:focus-visible {
 			outline-color: var(--cz-color-focus-ring);
 		}
+	}
+
+	::slotted(iron-icon) {
+		pointer-events: none;
+		width: 20px;
+		height: 20px;
+		flex: none;
 	}
 
 	::slotted(svg) {
@@ -447,8 +476,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	:host([size='sm']) .button {
 		height: var(--cz-control-height-sm);
-		padding: 0 10px;
-		border-radius: var(--cz-radius-sm);
+		padding: 0 12px;
 		font-size: var(--cz-text-xs);
 	}
 
@@ -459,13 +487,13 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	:host([size='lg']) .button {
 		height: var(--cz-control-height-lg);
-		padding: 0 14px;
+		padding: 0 16px;
 		font-size: var(--cz-text-sm);
 	}
 
 	:host([size='xl']) .button {
 		height: var(--cz-control-height-xl);
-		padding: 0 16px;
+		padding: 0 18px;
 		gap: 8px;
 		font-size: var(--cz-text-sm);
 	}
@@ -476,6 +504,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	}
 
 	:host([icon-only]) .button {
+		border-radius: var(--cz-radius-full);
 		width: var(--cz-control-height-md);
 		padding: 0;
 	}
@@ -496,45 +525,83 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		margin: 0;
 	}
 
+	/* Preserve the supplied geometry of standalone icons. */
+	:host([icon-only]) ::slotted(svg[width]) {
+		width: auto;
+	}
+
+	:host([icon-only]) ::slotted(svg[height]) {
+		height: auto;
+	}
+
 	/* Variants */
 
 	:host([variant='secondary']) .button {
-		background: light-dark(var(--cz-color-white), var(--cz-color-gray-900));
+		--_pressed-bg: var(
+			--cz-color-bg-glass-pressed,
+			var(--cz-color-bg-secondary-hover)
+		);
+		background:
+			var(--cz-glass-button-sheen, var(--cz-glass-sheen, none)),
+			var(
+				--cz-color-bg-glass-button,
+				var(--cz-color-bg-glass, var(--cz-color-bg-tertiary))
+			);
 		color: var(--cz-color-text-primary);
-		box-shadow:
-			inset 0 0 0 1px var(--_hairline),
-			inset 0 -1px 0 light-dark(rgb(10 13 18 / 0.04), transparent),
-			inset 0 1px 0 light-dark(transparent, rgb(255 255 255 / 0.04)),
-			var(--_lift);
+		border-color: var(
+			--cz-color-border-glass-button,
+			var(--cz-color-border-glass, var(--cz-color-border-primary))
+		);
+		box-shadow: var(
+			--cz-shadow-glass-button,
+			var(--cz-shadow-glass, var(--cz-shadow-xs))
+		);
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
 
 		&:hover {
-			background: light-dark(var(--cz-color-gray-50), var(--cz-color-gray-800));
+			background-color: var(
+				--cz-color-bg-glass-hover,
+				var(--cz-color-bg-secondary-hover)
+			);
 		}
 	}
 
 	:host([variant='tertiary']) .button {
 		background: transparent;
+		border-color: transparent;
+		backdrop-filter: none;
 		color: var(--cz-color-text-secondary);
 		box-shadow: none;
 
 		&:hover {
-			background: var(--_wash);
+			background: var(--cz-color-bg-tertiary);
 			color: var(--cz-color-text-primary);
 		}
 	}
 
+	:host([variant='tertiary']) .button:active {
+		background: var(--cz-color-bg-quaternary);
+		box-shadow: none;
+	}
+
 	:host([variant='destructive']) .button {
-		background: var(--_sheen), var(--cz-color-error-600);
+		--_pressed-bg: var(
+			--cz-color-bg-glass-destructive-pressed,
+			var(--cz-color-bg-error-solid-hover)
+		);
+		background:
+			var(--_sheen),
+			var(--cz-color-bg-glass-destructive, var(--cz-color-bg-error-solid));
 		color: var(--cz-color-white);
 		box-shadow:
-			inset 0 1px 0 rgb(255 255 255 / 0.16),
+			inset 0 1px 0 rgb(255 255 255 / 0.06),
 			inset 0 0 0 1px light-dark(rgb(10 13 18 / 0.2), transparent),
 			var(--_lift);
 
 		&:hover {
-			background-color: light-dark(
-				var(--cz-color-error-700),
-				var(--cz-color-error-500)
+			background-color: var(
+				--cz-color-bg-glass-destructive-hover,
+				var(--cz-color-bg-error-solid-hover)
 			);
 		}
 
@@ -547,6 +614,8 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		height: auto;
 		padding: 0;
 		background: transparent;
+		border-color: transparent;
+		backdrop-filter: none;
 		color: var(--cz-color-text-link);
 		box-shadow: none;
 		border-radius: var(--cz-radius-xs);
@@ -560,19 +629,22 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			color: var(--cz-color-text-link-hover);
 			text-decoration-color: currentColor;
 		}
-
-		&:active {
-			transform: none;
-		}
 	}
 
 	:host([icon-only][variant='secondary']) .button,
 	:host([icon-only][variant='tertiary']) .button {
-		color: var(--cz-color-text-tertiary);
+		color: var(--cz-color-text-primary);
 
 		&:hover {
 			color: var(--cz-color-text-primary);
 		}
+	}
+
+	:host(:not([variant='tertiary']):not([variant='link']))
+		.button:active:not(:disabled) {
+		background-color: var(--_pressed-bg);
+		background-image: none;
+		box-shadow: var(--cz-shadow-glass-pressed, var(--cz-shadow-pressed-3d));
 	}
 
 	/* Toggled (aria-pressed) */
@@ -580,11 +652,11 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([variant='secondary'][aria-pressed='true']) .button {
 		background: var(--_wash-strong);
 		color: var(--cz-color-text-primary);
-		box-shadow: inset 0 0 0 1px var(--_hairline);
+		box-shadow: var(--cz-shadow-glass-pressed, var(--cz-shadow-pressed-3d));
 	}
 
 	:host([variant='tertiary'][aria-pressed='true']) .button {
-		background: var(--_wash-strong);
+		background: var(--cz-color-bg-quaternary);
 		color: var(--cz-color-text-primary);
 	}
 
@@ -592,7 +664,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	:host([variant='primary'][aria-pressed='true']) .button,
 	:host([variant='destructive'][aria-pressed='true']) .button {
 		background-image: none;
-		box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.35);
+		box-shadow: var(--cz-shadow-glass-pressed, var(--cz-shadow-pressed-3d));
 	}
 
 	:host([variant='link'][aria-pressed='true']) .button {
@@ -601,38 +673,51 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	/* Disabled keeps the variant's look, just quieter. */
 
-	:host([disabled]) .button {
-		opacity: 0.45;
+	:host([disabled]) .button,
+	:host(:disabled) .button,
+	.button:disabled {
+		opacity: var(--cz-opacity-disabled, 0.45);
 		cursor: not-allowed;
 		pointer-events: none;
 		box-shadow: none;
 	}
 
-	:host([disabled][variant='secondary']) .button {
-		box-shadow: inset 0 0 0 1px var(--_hairline);
+	@media (forced-colors: active) {
+		:host .button,
+		:host([variant]) .button {
+			border-color: ButtonText;
+			background: ButtonFace;
+			color: ButtonText;
+		}
+		:host([aria-pressed='true']) .button {
+			outline: 2px solid Highlight;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		.button {
 			transition: none;
 		}
-
-		.button:active {
-			transform: none;
-		}
 	}
-`})))()}var Ce,we;function Te(){return(Te=e((()=>{p(),be(),C(),s(),w(),Se(),Ce=[`variant`,`size`,`disabled`,`full-width`,`icon-only`,`tooltip`,`tooltip-placement`,`type`,`value`,`href`,`target`,`rel`,`download`,`aria-expanded`,`aria-label`,`aria-pressed`],we=e=>{let{disabled:t=!1,tooltip:r,tooltipPlacement:a,type:o=`button`,href:s,target:c,rel:u,download:d}=e,f=!!t;l(()=>{let t=t=>{e.disabled&&t.stopImmediatePropagation()};return e.addEventListener(`click`,t,{capture:!0}),()=>e.removeEventListener(`click`,t,{capture:!0})},[e.disabled]);let p=n`
+`})))()}var Oe,ke;function Ae(){return(Ae=e((()=>{p(),Ce(),C(),s(),w(),Te(),De(),Oe=`variant.size.disabled.full-width.icon-only.tooltip.tooltip-placement.type.value.href.target.rel.download.aria-expanded.aria-label.title.aria-pressed.aria-controls.aria-haspopup.aria-description.aria-busy.aria-current.control-role.tabindex.name.form.formaction.formenctype.formmethod.formnovalidate.formtarget`.split(`.`),ke=e=>{let{disabled:t=!1,tooltip:r,tooltipPlacement:a,type:o=`button`,href:s,target:c,rel:u,download:d}=e,f=!!(t||e.formDisabled);l(()=>{e.syncFormButton()}),l(()=>{let t=t=>{(e.disabled||e.formDisabled)&&(t.preventDefault(),t.stopImmediatePropagation())};return e.addEventListener(`click`,t,{capture:!0}),()=>e.removeEventListener(`click`,t,{capture:!0})},[e.disabled,e.formDisabled]),E(()=>{let t=e.shadowRoot?.querySelector(`.button`);t&&`ariaControlsElements`in t&&(t.ariaControlsElements=e.ariaControlsElements)});let p=n`
 		<slot name="prefix"></slot>
 		<slot></slot>
 		<slot name="suffix"></slot>
 	`,m=v(s!=null,()=>n`
 			<a
+				role=${b(e.controlRole)}
+				tabindex=${b(e.getAttribute(`tabindex`)??void 0)}
+				aria-controls=${b(e.getAttribute(`aria-controls`)??void 0)}
+				aria-haspopup=${b(e.getAttribute(`aria-haspopup`)??void 0)}
+				aria-description=${b(e.getAttribute(`aria-description`)??void 0)}
+				aria-busy=${b(e.getAttribute(`aria-busy`)??void 0)}
+				aria-current=${b(e.getAttribute(`aria-current`)??void 0)}
 				href=${s}
 				class="button"
 				part="button"
 				aria-disabled=${f?`true`:i}
 				aria-expanded=${b(e.getAttribute(`aria-expanded`)??void 0)}
-				aria-label=${b(e.getAttribute(`aria-label`)??void 0)}
+				aria-label=${b(e.getAttribute(`aria-label`)??(e.iconOnly&&e.title?e.title:void 0))}
 				target=${b(c)}
 				rel=${b(u)}
 				download=${b(d)}
@@ -640,12 +725,19 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			>
 		`,()=>n`
 			<button
+				role=${b(e.controlRole)}
+				tabindex=${b(e.getAttribute(`tabindex`)??void 0)}
+				aria-controls=${b(e.getAttribute(`aria-controls`)??void 0)}
+				aria-haspopup=${b(e.getAttribute(`aria-haspopup`)??void 0)}
+				aria-description=${b(e.getAttribute(`aria-description`)??void 0)}
+				aria-busy=${b(e.getAttribute(`aria-busy`)??void 0)}
+				aria-current=${b(e.getAttribute(`aria-current`)??void 0)}
 				type=${o}
 				class="button"
 				part="button"
 				?disabled=${f}
 				aria-expanded=${b(e.getAttribute(`aria-expanded`)??void 0)}
-				aria-label=${b(e.getAttribute(`aria-label`)??void 0)}
+				aria-label=${b(e.getAttribute(`aria-label`)??(e.iconOnly&&e.title?e.title:void 0))}
 				aria-pressed=${b(e.getAttribute(`aria-pressed`)??void 0)}
 			>
 				${p}
@@ -656,7 +748,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		?disabled=${f}
 	>
 		${m}
-	</cosmoz-tooltip>`},customElements.define(`cosmoz-button`,m(we,{observedAttributes:Ce,styleSheets:[x,xe],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}function Ee(){return(Ee=e((()=>{Te()})))()}var De;function Oe(){return(Oe=e((()=>{C(),De=e=>{let t=d(()=>({}),[]);return d(()=>Object.assign(t,e),[t,...Object.values(e)])}})))()}var ke,Ae;function je(){return(je=e((()=>{Oe(),C(),ke=e=>{for(let t of e.current??[]){let e=t.matches(`[autofocus]`)?t:t.querySelector(`[autofocus]`);if(e instanceof HTMLElement){e.focus();break}}},Ae=e=>{let{placement:t=`bottom span-right`,disabled:n,passthrough:r,openOnHover:i,openOnFocus:a}=e,o=_(),[s,u]=f(`opened`,!1),d=_(),p=_(),m=De({disabled:n,openOnHover:i}),h=c(()=>{let e=d.current?.[0];return e instanceof HTMLElement?e:void 0},[]),g=c(()=>{m.disabled||(u(!0),o.current?.showPopover?.())},[]),v=c(()=>{u(!1),o.current?.hidePopover?.()},[]),y=c(()=>{o.current?.matches(`:popover-open`)?v():g()},[]),b=c(()=>{clearTimeout(m.closeTimeout)},[]),x=c(e=>{m.disabled||e.target===h()&&(b(),g())},[]),S=c(()=>{m.disabled||(b(),g())},[]),C=c(()=>{clearTimeout(m.closeTimeout),m.closeTimeout=setTimeout(()=>{let t=o.current;m.openOnHover&&(e.matches(`:hover`)||t?.matches(`:hover`))||e.matches(`:focus-within`)||t?.matches(`:focus-within`)||v()},100)},[]),w=c(()=>{let t=document.activeElement;for(;t?.shadowRoot;)t=t.shadowRoot.activeElement;if(t!=null&&t!==document.body&&t.offsetParent!=null)return;let n=h();n&&(e.removeEventListener(`focusin`,x),n.focus(),e.addEventListener(`focusin`,x))},[]),T=c(t=>{let n=t.newState===`open`;u(n),n?ke(p):w(),e.dispatchEvent(new ToggleEvent(`dropdown-toggle`,{newState:t.newState,oldState:t.oldState,composed:!0}))},[]);return l(()=>{let e=o.current;e&&(s?e.showPopover?.():e.hidePopover?.())},[s]),l(()=>{e.toggleAttribute(`opened`,!!s)},[s]),l(()=>{if(a&&!n)return e.addEventListener(`focusin`,x),e.addEventListener(`focusout`,C),()=>{e.removeEventListener(`focusin`,x),e.removeEventListener(`focusout`,C)}},[a,n]),l(()=>{if(i&&!n)return e.addEventListener(`pointerenter`,S),e.addEventListener(`pointerleave`,C),()=>{e.removeEventListener(`pointerenter`,S),e.removeEventListener(`pointerleave`,C)}},[i,n]),{placement:t,disabled:n,passthrough:r,opened:s,triggers:d,content:p,popoverRef:o,handleClick:a?g:y,onToggle:T,close:v,scheduleClose:C,cancelClose:b}}})))()}var Me,Ne,Pe;function Fe(){return(Fe=e((()=>{N(),L(),C(),s(),A(),je(),Me=y`
+	</cosmoz-tooltip>`},customElements.define(`cosmoz-button`,m(ke,{baseElement:we,observedAttributes:Oe,styleSheets:[x,Ee],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}function je(){return(je=e((()=>{Ae()})))()}var Me;function Ne(){return(Ne=e((()=>{C(),Me=e=>{let t=d(()=>({}),[]);return d(()=>Object.assign(t,e),[t,...Object.values(e)])}})))()}var Pe,Fe;function Ie(){return(Ie=e((()=>{Ne(),C(),Pe=e=>{for(let t of e.current??[]){let e=t.matches(`[autofocus]`)?t:t.querySelector(`[autofocus]`);if(e instanceof HTMLElement){e.focus();break}}},Fe=e=>{let{placement:t=`bottom span-right`,disabled:n,passthrough:r,openOnHover:i,openOnFocus:a}=e,o=_(),[s,u]=f(`opened`,!1),d=_(),p=_(),m=Me({disabled:n,openOnHover:i}),h=c(()=>{let e=d.current?.[0];return e instanceof HTMLElement?e:void 0},[]),g=c(()=>{m.disabled||(u(!0),o.current?.showPopover?.())},[]),v=c(()=>{u(!1),o.current?.hidePopover?.()},[]),y=c(()=>{o.current?.matches(`:popover-open`)?v():g()},[]),b=c(()=>{clearTimeout(m.closeTimeout)},[]),x=c(e=>{m.disabled||e.target===h()&&(b(),g())},[]),S=c(()=>{m.disabled||(b(),g())},[]),C=c(()=>{clearTimeout(m.closeTimeout),m.closeTimeout=setTimeout(()=>{let t=o.current;m.openOnHover&&(e.matches(`:hover`)||t?.matches(`:hover`))||e.matches(`:focus-within`)||t?.matches(`:focus-within`)||v()},100)},[]),w=c(()=>{let t=document.activeElement;for(;t?.shadowRoot;)t=t.shadowRoot.activeElement;if(t!=null&&t!==document.body&&t.offsetParent!=null)return;let n=h();n&&(e.removeEventListener(`focusin`,x),n.focus(),e.addEventListener(`focusin`,x))},[]),T=c(t=>{let n=t.newState===`open`;u(n),n?Pe(p):w(),e.dispatchEvent(new ToggleEvent(`dropdown-toggle`,{newState:t.newState,oldState:t.oldState,composed:!0}))},[]);return l(()=>{let e=o.current;e&&(s?e.showPopover?.():e.hidePopover?.())},[s]),l(()=>{e.toggleAttribute(`opened`,!!s)},[s]),l(()=>{if(a&&!n)return e.addEventListener(`focusin`,x),e.addEventListener(`focusout`,C),()=>{e.removeEventListener(`focusin`,x),e.removeEventListener(`focusout`,C)}},[a,n]),l(()=>{if(i&&!n)return e.addEventListener(`pointerenter`,S),e.addEventListener(`pointerleave`,C),()=>{e.removeEventListener(`pointerenter`,S),e.removeEventListener(`pointerleave`,C)}},[i,n]),{placement:t,disabled:n,passthrough:r,opened:s,triggers:d,content:p,popoverRef:o,handleClick:a?g:y,onToggle:T,close:v,scheduleClose:C,cancelClose:b}}})))()}var Le,Re,ze;function Be(){return(Be=e((()=>{N(),L(),C(),s(),A(),Ie(),Le=y`
 	:host {
 		display: inline-block;
 		anchor-name: --dropdown-anchor;
@@ -707,7 +799,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			transition: none;
 		}
 	}
-`,Ne=({placement:e,disabled:t,passthrough:r,opened:i,triggers:a,content:o,popoverRef:s,handleClick:c,onToggle:l,close:u,scheduleClose:d,cancelClose:f})=>n`
+`,Re=({placement:e,disabled:t,passthrough:r,opened:i,triggers:a,content:o,popoverRef:s,handleClick:c,onToggle:l,close:u,scheduleClose:d,cancelClose:f})=>n`
 		<slot
 			name="button"
 			${M(a)}
@@ -725,7 +817,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 				>
 					<slot ${M(o)}></slot>
 				</div>`}
-	`,Pe=e=>Ne(Ae(e)),customElements.define(`cosmoz-dropdown-next`,m(Pe,{styleSheets:[Me],observedAttributes:[`placement`,`disabled`,`passthrough`,`open-on-hover`,`open-on-focus`],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}var Ie,Le,Re,ze;function q(){return(q=e((()=>{Ee(),Fe(),te(),r(),s(),Ie=e=>e.button===0&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey,Le=e=>e?.dispatchEvent(new Event(`select`,{bubbles:!0})),Re=e=>typeof e==`string`&&e?e:a(`More`)||`More`,ze=({items:e,overflows:t,active:r,label:i,onItemClick:a})=>n`
+	`,ze=e=>Re(Fe(e)),customElements.define(`cosmoz-dropdown-next`,m(ze,{styleSheets:[Le],observedAttributes:[`placement`,`disabled`,`passthrough`,`open-on-hover`,`open-on-focus`],shadowRootInit:{mode:`open`,delegatesFocus:!0}}))})))()}var Ve,He,Ue,We;function J(){return(J=e((()=>{je(),Be(),te(),r(),s(),Ve=e=>e.button===0&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey,He=e=>e?.dispatchEvent(new Event(`select`,{bubbles:!0})),Ue=e=>typeof e==`string`&&e?e:a(`More`)||`More`,We=({items:e,overflows:t,active:r,label:i,onItemClick:a})=>n`
 	<cosmoz-dropdown-next
 		class="more"
 		part="more"
@@ -743,7 +835,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			aria-haspopup="true"
 			aria-controls="more-menu"
 		>
-			<span>${Re(i)}</span>
+			<span>${Ue(i)}</span>
 			<span class="chevron" aria-hidden="true"
 				>${ee({width:`16`,height:`16`})}</span
 			>
@@ -759,7 +851,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			${e}
 		</div>
 	</cosmoz-dropdown-next>
-`})))()}var J,Y,Be,Ve,He,Ue,We,Ge,Ke;function qe(){return(qe=e((()=>{q(),J=e=>!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&!e.hasAttribute(`overflowing`),Y=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},Be=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>Y(t,n,e.getAttribute(n))),Y(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),Y(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Ve=e=>{e.forEach(([,e])=>{J(e)&&e.setAttribute(`tabindex`,`0`)})},He=e=>{let t=e.find(e=>e.hasAttribute(`active`));return t==null?null:J(t)?t:[...e.slice(0,e.indexOf(t))].reverse().find(J)??null},Ue=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},We=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),Be(e,t)},Ge=e=>new MouseEvent(`click`,e),Ke=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;t.stopPropagation(),i.dispatchEvent(Ge(t))||t.preventDefault(),Ie(t)&&Le(a)}})))()}var Je;function Ye(){return(Ye=e((()=>{C(),Je=y`
+`})))()}var Y,X,Ge,Ke,qe,Je,Ye,Xe,Ze;function Qe(){return(Qe=e((()=>{J(),Y=e=>!e.hasAttribute(`disabled`)&&!e.hasAttribute(`hidden`)&&!e.hasAttribute(`overflowing`),X=(e,t,n)=>{e.getAttribute(t)!==n&&(n==null?e.removeAttribute(t):e.setAttribute(t,n))},Ge=(e,t)=>{[`active`,`disabled`,`hidden`,`href`,`name`,`badge`,`title`,`role`].forEach(n=>X(t,n,e.getAttribute(n))),X(t,`aria-selected`,t.hasAttribute(`active`)?`true`:`false`),X(t,`aria-disabled`,e.hasAttribute(`disabled`)?`true`:null),t.setAttribute(`tabindex`,`-1`)},Ke=e=>{e.forEach(([,e])=>{Y(e)&&e.setAttribute(`tabindex`,`0`)})},qe=e=>{let t=e.find(e=>e.hasAttribute(`active`));return t==null?null:Y(t)?t:[...e.slice(0,e.indexOf(t))].reverse().find(Y)??null},Je=e=>{let t=e.cloneNode(!0);return[`variant`,`size`,`compact-width`,`overflowing`,`style`].forEach(e=>t.removeAttribute(e)),t.setAttribute(`menu`,``),t},Ye=(e,t)=>{t.innerHTML!==e.innerHTML&&t.replaceChildren(...[...e.childNodes].map(e=>e.cloneNode(!0))),Ge(e,t)},Xe=e=>new MouseEvent(`click`,e),Ze=e=>t=>{let n=t.composedPath(),r=e.find(([,e])=>n.includes(e));if(!r)return;let[i,a]=r;t.stopPropagation(),i.dispatchEvent(Xe(t))||t.preventDefault(),Ve(t)&&He(a)}})))()}var $e;function et(){return(et=e((()=>{C(),$e=y`
 	/* The host is the frame: one nowrap row carrying the track, the overflow
 	   trigger and the stats; the identity (font stack, paddings, the
 	   underline's bottom rule) lives here. */
@@ -799,11 +891,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	   default slot: brand and segmented item boxes sit a touch shorter:
 	   37px; sm trims all variants to 33px */
 	slot:not([name]) {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
 		gap: var(--_gap);
-		overflow: clip;
 		max-height: 41px; /* underline */
 	}
 
@@ -1022,19 +1110,20 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		line-height: var(--cz-text-sm-line-height);
 		font-weight: var(--cz-font-weight-semibold);
 	}
-`})))()}var X,Xe,Z,Ze,Qe,$e,et,tt;function nt(){return(nt=e((()=>{p(),N(),L(),C(),H(),q(),qe(),Ye(),X=`cosmoz-tab-next`,Xe={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},Z=(e,t)=>{let[n,r]=D(0);return l(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,Xe)),()=>t.disconnect()},[t]),n},Ze=(e,t,n)=>{let r=Z(e,n),i=_();return i.current??=new Map,d(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Ue(e);return n.set(e,t),We(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),Ve(a);let s=He(r);return r.forEach(e=>Y(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},Qe=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),$e=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),et=(e,t,n)=>{let r=e.filter(J);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},tt=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=D(0),[i,a]=D(()=>new Set),o=_(),s=c(()=>(o.current??[]).filter(e=>e.matches(X)),[]),l=()=>r(e=>e+1),u=Ze(s,i,t);return E(()=>{let t=e=>{if(!$e.has(e.key))return;let t=s(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=et(t,n,e.key);r&&r!==n&&r.focus()};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
+`})))()}var tt,nt,rt,Z,it,at,ot,st;function ct(){return(ct=e((()=>{p(),N(),L(),me(),C(),J(),Qe(),et(),tt=`cosmoz-tab-next`,nt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},rt=(e,t)=>{let[n,r]=D(0);return l(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,nt)),()=>t.disconnect()},[t]),n},Z=(e,t,n)=>{let r=rt(e,n),i=_();return i.current??=new Map,d(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Je(e);return n.set(e,t),Ye(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),Ke(a);let s=qe(r);return r.forEach(e=>X(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},it=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),at=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),ot=(e,t,n)=>{let r=e.filter(Y);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},st=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=D(0),[i,a]=D(()=>new Set),o=_(),s=c(()=>(o.current??[]).filter(e=>e.matches(tt)),[]),l=()=>r(e=>e+1),u=Z(s,i,t);return E(()=>{let t=e=>{if(!at.has(e.key))return;let t=s(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=ot(t,n,e.key);r&&r!==n&&r.focus()};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
 		<slot name="tabs"></slot>
 		<div class="group" role="tablist">
 			<slot
+				class="cz-overflow-band"
 				${M(o)}
-				${I(Qe(e))}
-				${V({is:e=>e.matches(X),onOverflow:a})}
+				${I(it(e))}
+				${pe({onOverflow:a})}
 				@slotchange=${l}
 			></slot>
 		</div>
-		${ze({items:u.map(([,e])=>e),overflows:u.length>0,active:u.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:Ke(u)})}
+		${We({items:u.map(([,e])=>e),overflows:u.length>0,active:u.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:Ze(u)})}
 		<slot name="stats"></slot>
-	`},customElements.define(`cosmoz-tabs-next`,m(tt,{observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[x,Je]}))})))()}var Q,rt,it,at,ot,st;function $(){return($=e((()=>{re(),F(),C(),w(),Q=e=>!e.hidden&&!e.disabled,rt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),it=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:rt(e)},at=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=ne(t),a=_([]),o=d(()=>it(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:d(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:c(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},ot=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=P(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
+	`},customElements.define(`cosmoz-tabs-next`,m(st,{observedAttributes:[`variant`,`size`,`compact-width`,`more-label`],styleSheets:[x,$e,B]}))})))()}var Q,lt,ut,dt,ft,pt;function $(){return($=e((()=>{re(),F(),C(),w(),Q=e=>!e.hidden&&!e.disabled,lt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),ut=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:lt(e)},dt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=ne(t),a=_([]),o=d(()=>ut(e,r??void 0),[e,r]);return{tabs:e,active:o,activated:d(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),activate:i,onActivate:c(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let r=e.currentTarget?.getAttribute(`name`);r&&(n?.(r),i(r))},[i,n])}},ft=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=P(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
 			name=${e.name}
 			class=${b(i)}
 			variant=${b(a)}
@@ -1047,4 +1136,4 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 			badge=${b(u)}
 			@click=${r}
 			>${v(e.icon,e=>e({slot:`icon`}))}${l}</cosmoz-tab-next
-		>`}),st=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function ct(){return(ct=e((()=>{se(),nt(),$()})))()}export{at as a,ot as i,$ as n,st as r,ct as t};
+		>`}),pt=({tabs:e,active:t,activated:n},r)=>e.filter(e=>n.includes(e.name)).map(e=>r({...e,isActive:t?.name===e.name}))})))()}function mt(){return(mt=e((()=>{se(),ct(),$()})))()}export{dt as a,ft as i,$ as n,pt as r,mt as t};
