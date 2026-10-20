@@ -286,6 +286,13 @@ export const SizeReachesChildrenAndShrinksTheBox: Story = {
 			expect(tabOf(base).hasAttribute('size')).toBe(false);
 		});
 
+		await step('segmented matches cosmoz-toggle-group per size', async () => {
+			await waitFor(() => {
+				expect(base.offsetHeight).toBe(39);
+				expect(small.offsetHeight).toBe(32);
+			});
+		});
+
 		await step('sm is shorter and narrower than the default', async () => {
 			await waitFor(() => {
 				expect(small.offsetHeight).toBeLessThan(base.offsetHeight);

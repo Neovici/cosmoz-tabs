@@ -185,7 +185,7 @@ const rove = (
  * @element cosmoz-tabs-next
  * @attr {('brand'|'underline'|'segmented')} variant
  * @attr {('sm')} size - omit for the default size; sm trims the item's box on
- * both axes, and thins the segmented track's ring to match
+ * both axes (segmented: 39px default, 32px sm, as cosmoz-toggle-group)
  * @attr {boolean} compact-width
  * @attr {string} role - the family is a tablist: the role rides the
  * rendered group around the track's members; an authored `radiogroup` is

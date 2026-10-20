@@ -198,8 +198,9 @@ export const nextTabStyles = css`
 		);
 	}
 
+	/* cosmoz-toggle-group's box, so a view switch and a value picker match */
 	:host([variant='segmented']) {
-		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 		--_hover-color: var(--cz-color-text-secondary);
 		--_hover-background: var(--cz-color-bg-primary);
