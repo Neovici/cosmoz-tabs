@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-Datry4OX.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-BjQiB-aU.js";import{m as ee,t as te}from"./untitled-DiD6MA2y.js";import{r as ne,t as re}from"./use-hash-param-C54q0SiM.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-CWS3wQdO.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-DrUHvtk4.js";import{m as ee,t as te}from"./untitled-CERq1t0Q.js";import{r as ne,t as re}from"./use-hash-param-RXUXFNqs.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -195,8 +195,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		);
 	}
 
+	/* cosmoz-toggle-group's box, so a view switch and a value picker match */
 	:host([variant='segmented']) {
-		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 		--_hover-color: var(--cz-color-text-secondary);
 		--_hover-background: var(--cz-color-bg-primary);
@@ -878,7 +879,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	/* Untitled UI's "button border" tabs: a track holding a raised, selected pill. */
 	:host([variant='segmented']) {
 		--_gap: calc(var(--cz-spacing) * 1);
-		padding: calc(var(--cz-spacing) * 1);
+		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-lg);
 		background-color: var(--cz-color-bg-secondary);
 		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
@@ -888,8 +889,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 	   observer reads against. One row's box is exact per size/variant (the
 	   item's box is fully token-derived), so the clip is a constant the
 	   intersections read against. The wrapping, clipping track is the
-	   default slot: brand and segmented item boxes sit a touch shorter:
-	   37px; sm trims all variants to 33px */
+	   default slot: brand item boxes sit a touch shorter: 37px, segmented
+	   ones 33px (cosmoz-toggle-group's box); sm trims all variants to 33px
+	   and segmented to 26px */
 	slot:not([name]) {
 		gap: var(--_gap);
 		max-height: 41px; /* underline */
@@ -903,9 +905,12 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		min-width: 0;
 	}
 
-	:host([variant='brand']) slot:not([name]),
-	:host([variant='segmented']) slot:not([name]) {
+	:host([variant='brand']) slot:not([name]) {
 		max-height: 37px;
+	}
+
+	:host([variant='segmented']) slot:not([name]) {
+		max-height: 33px;
 	}
 
 	:host([size='sm']) slot:not([name]) {
@@ -920,12 +925,9 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 		max-width: 100%;
 	}
 
-	/* The track's own ring is what stacks onto the item's padding, so the
-	   compact size has to thin that too or the height barely moves. */
 	:host([variant='segmented'][size='sm']) {
 		font-size: var(--cz-text-xs);
 		line-height: var(--cz-text-xs-line-height);
-		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-md);
 	}
 
@@ -1044,7 +1046,7 @@ import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{c as t,l as n,n as r,o
 
 	:host([variant='segmented']) cosmoz-button.more-button::part(button),
 	:host([variant='segmented']) .more-button:not(cosmoz-button) {
-		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
+		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 
 		height: auto;
