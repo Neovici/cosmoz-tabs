@@ -49,11 +49,7 @@ export const nextTabsStyles = css`
 	   default slot: brand and segmented item boxes sit a touch shorter:
 	   37px; sm trims all variants to 33px */
 	slot:not([name]) {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
 		gap: var(--_gap);
-		overflow: clip;
 		max-height: 41px; /* underline */
 	}
 

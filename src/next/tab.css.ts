@@ -71,10 +71,6 @@ export const nextTabStyles = css`
 		display: none !important;
 	}
 
-	:host([overflowing]) {
-		visibility: hidden;
-	}
-
 	/* The menu copy: the same element with the menu row's box and face. */
 	:host([menu]) {
 		flex: 0 0 auto;
