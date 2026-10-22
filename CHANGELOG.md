@@ -1,3 +1,9 @@
+## 11.5.0
+
+### Minor Changes
+
+- 3743f4f: Expose the next tab track as a CSS part and add a label attribute for the rendered tablist. Consumers can retain custom tab layouts, including wrapped rows, while reusing the next family's keyboard interaction.
+
 ## 11.4.0
 
 ### Minor Changes
