@@ -135,6 +135,16 @@ html`<cosmoz-tabs-next .moreLabel=${t('More tabs')}>…</cosmoz-tabs-next>`;
 ```
 
 The menu is styled through the `more`, `more-button` and `menu` parts.
+The `label` attribute names the rendered tablist for assistive technology. The
+`track` part exposes the default slot so consumers can style its border, spacing,
+and maximum height. For example, allow all tabs to wrap instead of moving clipped
+rows into the overflow menu:
+
+```css
+cosmoz-tabs-next::part(track) {
+	max-height: none;
+}
+```
 
 Keyboard behavior is the platform's: the selected tab is the bar's one tab
 stop (a selection hidden in the menu leaves the stop with the shown tab
@@ -206,8 +216,8 @@ Highlights:
 - **`cosmoz-tabs`** — attrs `selected`, `hash-param`, `no-resize`, `variant`, `size`,
   `compact-width`; parts `tabs`, `tab`, `content`; events `tab-first-select`, `tab-select`.
 - **`cosmoz-tab`** — attrs `heading`, `badge`, `disabled`, `hidden`; prop `.icon`.
-- **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`, `role`, `more-label`; parts
-  `more`, `more-button`, `menu`; slots `tabs`, `stats` (assigned explicitly, no auto-routing).
+- **`cosmoz-tabs-next`** — attrs `variant`, `size`, `compact-width`, `role`, `more-label`, `label`; parts
+  `track`, `more`, `more-button`, `menu`; slots `tabs`, `stats` (assigned explicitly, no auto-routing).
   The track is the wrapping, clipping default slot; the host is a nowrap frame — the More
   trigger and the stats never leave the first row. `overflowing`-marked tabs are offered
   in the menu (on by default; see [Overflow menu](#overflow-menu-cosmoz-tabs-next-only)).
