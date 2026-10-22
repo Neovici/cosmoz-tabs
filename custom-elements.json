@@ -126,6 +126,11 @@
 					"description": "the family is a tablist: the role rides the rendered group around the track's members. An authored `radiogroup` is removed with a `deprecation-warning` event — a value picker belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input), not in a tab family"
 				},
 				{
+					"name": "label",
+					"type": "String",
+					"description": "Accessible name of the rendered tablist"
+				},
+				{
 					"name": "more-label",
 					"type": "String",
 					"description": "Label of the overflow menu trigger; defaults to a translated 'More'. Also settable as the `moreLabel` property"

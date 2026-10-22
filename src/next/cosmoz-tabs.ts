@@ -33,6 +33,7 @@ export interface CosmozTabsNextElement extends HTMLElement {
 	size?: TabsSize;
 	compactWidth?: boolean;
 	moreLabel?: string;
+	label?: string;
 }
 
 const TAB = 'cosmoz-tab-next';
@@ -192,6 +193,8 @@ const rove = (
  * removed (with a `deprecation-warning` event) - a value picker
  * belongs in `cosmoz-toggle-group` (@neovici/cosmoz-input)
  * @attr {string} more-label - label of the overflow menu trigger, defaults to a translated `More`
+ * @attr {string} label - accessible name of the tablist
+ * @csspart track - wrapping track containing the tabs
  * @csspart more - overflow menu
  * @csspart more-button - overflow menu trigger
  * @csspart menu - overflow menu popover
@@ -245,8 +248,9 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	return html`
 		<slot name="tabs"></slot>
-		<div class="group" role="tablist">
+		<div class="group" role="tablist" aria-label=${host.label ?? ''}>
 			<slot
+				part="track"
 				class="cz-overflow-band"
 				${assignedRef(assigned)}
 				${forwardAttributes(project(host))}
@@ -270,7 +274,13 @@ const Tabs = (host: CosmozTabsNextElement) => {
 customElements.define(
 	'cosmoz-tabs-next',
 	component(Tabs, {
-		observedAttributes: ['variant', 'size', 'compact-width', 'more-label'],
+		observedAttributes: [
+			'variant',
+			'size',
+			'compact-width',
+			'more-label',
+			'label',
+		],
 		styleSheets: [normalize, nextTabsStyles, overflowStyle],
 	}),
 );
