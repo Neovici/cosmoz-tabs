@@ -22,8 +22,8 @@ export const nextTabStyles = css`
 		outline: 0;
 
 		/* The item's face: hover and active read these; the variants set
-		   their own (for brand and segmented, hover and active share one
-		   face, so both stay in sync by construction). */
+		   their own (for brand, hover and active share one face, so both
+		   stay in sync by construction). */
 		--_color: var(--cz-color-text-quaternary);
 		--_icon-color: var(--cz-color-fg-quaternary);
 		--_hover-color: var(--cz-color-text-secondary);
@@ -206,10 +206,21 @@ export const nextTabStyles = css`
 		--_hover-background: var(--cz-color-bg-primary);
 		--_hover-shadow: var(--cz-shadow-sm);
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
-		--_active-color: var(--cz-color-text-secondary);
-		--_active-background: var(--cz-color-bg-primary);
+		--_active-color: var(--cz-color-text-on-action);
+		--_active-background: var(--cz-color-gray-600);
 		--_active-shadow: var(--cz-shadow-sm);
-		--_active-icon-color: var(--cz-color-fg-secondary-hover);
+		--_active-icon-color: var(--cz-color-text-on-action);
+	}
+
+	/* The picked segment is a solid fill, so the selection reads at a glance */
+	:host([variant='segmented'][active]) {
+		font-weight: var(--cz-font-weight-semibold);
+	}
+
+	:host([variant='segmented'][active]) .badge {
+		--_badge-background: var(--cz-color-gray-500);
+		--_badge-color: var(--cz-color-text-on-action);
+		--_badge-shadow: none;
 	}
 
 	:host([compact-width]) {
