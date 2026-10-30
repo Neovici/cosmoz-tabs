@@ -2,4 +2,4 @@
 '@neovici/cosmoz-tabs': minor
 ---
 
-Give the active segmented tab a solid gray fill with semibold, on-action text (and a matching badge), so the selection reads at a glance.
+Make the active segmented tab stand out: a glazed gray fill with white semibold text in light mode and a raised glass pill in dark mode, on a glass track. Uses the cosmoz-tokens glass material, falling back to the previous surfaces when it is missing.

@@ -38,8 +38,14 @@ export const nextTabsStyles = css`
 		--_gap: calc(var(--cz-spacing) * 1);
 		padding: calc(var(--cz-spacing) * 0.75);
 		border-radius: var(--cz-radius-lg);
-		background-color: var(--cz-color-bg-secondary);
-		box-shadow: inset 0 0 0 1px var(--cz-color-border-secondary);
+		background:
+			var(--cz-glass-sheen, none),
+			var(--cz-color-bg-glass, var(--cz-color-bg-secondary));
+		box-shadow:
+			inset 0 0 0 1px
+				var(--cz-color-border-glass, var(--cz-color-border-secondary)),
+			var(--cz-shadow-glass, 0 0 transparent);
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
 	}
 
 	/* The band: the wrapping, clipping row the members land in and the
