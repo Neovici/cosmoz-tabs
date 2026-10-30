@@ -206,7 +206,7 @@ export const nextTabStyles = css`
 		/* A flat tint, so only the picked segment reads as raised */
 		--_hover-background: light-dark(
 			color-mix(in oklab, var(--cz-color-black) 5%, transparent),
-			color-mix(in oklab, var(--cz-color-white) 6%, transparent)
+			color-mix(in oklab, var(--cz-color-white) 8%, transparent)
 		);
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
