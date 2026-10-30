@@ -246,7 +246,6 @@ export const nextTabStyles = css`
 	:host([variant='segmented'][active]) {
 		font-weight: var(--cz-font-weight-semibold);
 		background-image: var(--cz-glass-sheen, none);
-		backdrop-filter: var(--cz-backdrop-filter-glass, none);
 	}
 
 	:host([variant='segmented'][active]) .badge {

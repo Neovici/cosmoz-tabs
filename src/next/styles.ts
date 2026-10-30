@@ -45,7 +45,6 @@ export const nextTabsStyles = css`
 			inset 0 0 0 1px
 				var(--cz-color-border-glass, var(--cz-color-border-secondary)),
 			var(--cz-shadow-glass, 0 0 transparent);
-		backdrop-filter: var(--cz-backdrop-filter-glass, none);
 	}
 
 	/* The band: the wrapping, clipping row the members land in and the
