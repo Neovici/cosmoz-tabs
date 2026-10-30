@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe-McpO0gkq.js";import{t as r,u as i}from"./untitled-DEuJ7FNX.js";import{n as a}from"./cosmoz-tabs-BTTFNDho.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T,E;function D(){return(D=e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe-CXgloFI3.js";import{t as r,u as i}from"./untitled-D4To61y8.js";import{n as a}from"./cosmoz-tabs-BhCYF7iy.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x,S,C,w,T,E;function D(){return(D=e((()=>{r(),n(),a(),{expect:o,fn:s,waitFor:c}=__STORYBOOK_MODULE_TEST__,l={title:`Tests/Tabs`},u=(e=`underline`)=>t`
     <cosmoz-tabs variant=${e}>
         <cosmoz-tab name="tab0" heading="Tab0" .icon=${i()}
             >1</cosmoz-tab
