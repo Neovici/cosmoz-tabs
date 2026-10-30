@@ -1,1 +1,0 @@
-import{t as e}from"./iframe-DjS2Vidt.js";e();
