@@ -203,8 +203,12 @@ export const nextTabStyles = css`
 		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 		--_hover-color: var(--cz-color-text-secondary);
-		--_hover-background: var(--cz-color-bg-primary);
-		--_hover-shadow: var(--cz-shadow-sm);
+		/* A flat tint, so only the picked segment reads as raised */
+		--_hover-background: light-dark(
+			color-mix(in oklab, var(--cz-color-black) 5%, transparent),
+			color-mix(in oklab, var(--cz-color-white) 6%, transparent)
+		);
+		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
 		--_active-color: light-dark(
 			var(--cz-color-text-on-action),
