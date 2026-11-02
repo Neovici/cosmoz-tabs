@@ -22,8 +22,8 @@ export const nextTabStyles = css`
 		outline: 0;
 
 		/* The item's face: hover and active read these; the variants set
-		   their own (for brand and segmented, hover and active share one
-		   face, so both stay in sync by construction). */
+		   their own (for brand, hover and active share one face, so both
+		   stay in sync by construction). */
 		--_color: var(--cz-color-text-quaternary);
 		--_icon-color: var(--cz-color-fg-quaternary);
 		--_hover-color: var(--cz-color-text-secondary);
@@ -203,13 +203,66 @@ export const nextTabStyles = css`
 		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
 		border-radius: var(--cz-radius-sm);
 		--_hover-color: var(--cz-color-text-secondary);
-		--_hover-background: var(--cz-color-bg-primary);
-		--_hover-shadow: var(--cz-shadow-sm);
+		/* A flat tint, so only the picked segment reads as raised */
+		--_hover-background: light-dark(
+			color-mix(in oklab, var(--cz-color-black) 5%, transparent),
+			color-mix(in oklab, var(--cz-color-white) 8%, transparent)
+		);
+		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
-		--_active-color: var(--cz-color-text-secondary);
-		--_active-background: var(--cz-color-bg-primary);
-		--_active-shadow: var(--cz-shadow-sm);
-		--_active-icon-color: var(--cz-color-fg-secondary-hover);
+		--_active-color: light-dark(
+			var(--cz-color-text-on-action),
+			var(--cz-color-text-primary)
+		);
+		--_active-background: light-dark(
+			var(--cz-color-gray-600),
+			var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
+		);
+		--_active-shadow:
+			inset 0 1px 0
+				light-dark(
+					color-mix(in oklab, var(--cz-color-white) 22%, transparent),
+					color-mix(in oklab, var(--cz-color-white) 3%, transparent)
+				),
+			inset 0 0 0 1px
+				light-dark(
+					color-mix(in oklab, var(--cz-color-black) 18%, transparent),
+					var(--cz-color-border-glass-button, var(--cz-color-border-primary))
+				),
+			0 1px 2px
+				light-dark(
+					color-mix(in oklab, var(--cz-color-black) 12%, transparent),
+					transparent
+				),
+			0 3px 8px
+				light-dark(
+					color-mix(in oklab, var(--cz-color-black) 8%, transparent),
+					transparent
+				);
+		--_active-icon-color: light-dark(
+			var(--cz-color-text-on-action),
+			var(--cz-color-fg-primary)
+		);
+	}
+
+	/* The picked segment: a glazed gray fill in light, a glass pill in dark,
+	   where a solid fill would glare against the smoked track. */
+	:host([variant='segmented'][active]) {
+		font-weight: var(--cz-font-weight-semibold);
+		background-image: var(--cz-glass-sheen, none);
+	}
+
+	:host([variant='segmented'][active]) .badge {
+		--_badge-background: light-dark(
+			var(--cz-color-gray-500),
+			var(--cz-color-bg-primary)
+		);
+		--_badge-color: light-dark(
+			var(--cz-color-text-on-action),
+			var(--cz-color-text-secondary)
+		);
+		--_badge-shadow: inset 0 0 0 1px
+			light-dark(transparent, var(--cz-color-border-primary));
 	}
 
 	:host([compact-width]) {
