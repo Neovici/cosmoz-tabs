@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-Cujov37o.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-WFePZFBN.js";import{m as ee,t as te}from"./untitled-CFNxbr4J.js";import{r as ne,t as re}from"./use-hash-param-CDZSvdoa.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-C7myJrM2.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-DDk9-ZI2.js";import{m as ee,t as te}from"./untitled-BsC7e3ht.js";import{r as ne,t as re}from"./use-hash-param-Be3yK4zC.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -283,6 +283,11 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o
 
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		padding-inline: calc(var(--cz-spacing) * 2);
+	}
+	@media (pointer: coarse) {
+		:host {
+			min-height: 44px;
+		}
 	}
 `})))()}var j,oe;function se(){return(se=e((()=>{p(),C(),s(),w(),A(),ae(),j=class extends HTMLElement{connectedCallback(){this.hasAttribute(`role`)||this.setAttribute(`role`,`tab`),this.hasAttribute(`tabindex`)||this.setAttribute(`tabindex`,`-1`)}},oe=e=>{let{active:t,badge:r,href:a}=e,o=_();return E(()=>{e.setAttribute(`aria-selected`,t?`true`:`false`)},[t]),E(()=>{let t=()=>(o.current??e).click(),n=n=>{n.target!==e||e.hasAttribute(`disabled`)||(n.key===`Enter`&&!n.repeat&&(n.preventDefault(),t()),n.key===` `&&n.preventDefault())},r=n=>{n.target!==e||e.hasAttribute(`disabled`)||n.key===` `&&t()};return e.addEventListener(`keydown`,n),e.addEventListener(`keyup`,r),()=>{e.removeEventListener(`keydown`,n),e.removeEventListener(`keyup`,r)}},[]),n`
 		<a ${k(o)} part="link" href=${b(a)}>
@@ -1169,6 +1174,14 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o
 		font-size: var(--cz-text-sm);
 		line-height: var(--cz-text-sm-line-height);
 		font-weight: var(--cz-font-weight-semibold);
+	}
+	@media (pointer: coarse) {
+		:host slot:not([name]),
+		:host([variant]) slot:not([name]),
+		:host([size]) slot:not([name]),
+		:host([variant][size]) slot:not([name]) {
+			max-height: 44px;
+		}
 	}
 `})))()}var tt,nt,rt,Z,it,at,ot,st;function ct(){return(ct=e((()=>{p(),N(),L(),me(),C(),J(),Qe(),et(),tt=`cosmoz-tab-next`,nt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},rt=(e,t)=>{let[n,r]=D(0);return l(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,nt)),()=>t.disconnect()},[t]),n},Z=(e,t,n)=>{let r=rt(e,n),i=_();return i.current??=new Map,d(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Je(e);return n.set(e,t),Ye(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),Ke(a);let s=qe(r);return r.forEach(e=>X(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},it=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),at=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),ot=(e,t,n)=>{let r=e.filter(Y);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},st=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=D(0),[i,a]=D(()=>new Set),o=_(),s=c(()=>(o.current??[]).filter(e=>e.matches(tt)),[]),l=()=>r(e=>e+1),u=Z(s,i,t);return E(()=>{let t=e=>{if(!at.has(e.key))return;let t=s(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=ot(t,n,e.key);r&&r!==n&&r.focus()};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
 		<slot name="tabs"></slot>
