@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-BaslY-Ki.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-Az5qrDS-.js";import{m as ee,t as te}from"./untitled-Dn63cUnt.js";import{r as ne,t as re}from"./use-hash-param-DArpCNrJ.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe--APLUM0B.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-BpsVHdo3.js";import{m as ee,t as te}from"./untitled-DMg0hOsU.js";import{r as ne,t as re}from"./use-hash-param-CECdsEsW.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -208,34 +208,45 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
 		--_active-color: var(--cz-color-text-primary);
-		--_active-background: light-dark(
-			var(--cz-color-bg-primary),
-			var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
+		--_active-background: var(
+			--cz-color-bg-segment-selected,
+			light-dark(
+				var(--cz-color-bg-primary),
+				var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
+			)
 		);
-		--_active-shadow:
-			inset 0 1px 0
-				light-dark(
-					color-mix(in oklab, var(--cz-color-white) 22%, transparent),
-					color-mix(in oklab, var(--cz-color-white) 3%, transparent)
-				),
+		--_active-shadow: var(
+			--cz-shadow-segment-selected,
+			var(
+				--cz-shadow-segment-selected-highlight,
+				inset 0 1px 0
+					light-dark(
+						color-mix(in oklab, var(--cz-color-white) 22%, transparent),
+						color-mix(in oklab, var(--cz-color-white) 3%, transparent)
+					)
+			),
 			inset 0 0 0 1px
-				light-dark(
-					var(
-						--cz-color-border-control-selected,
-						var(--cz-color-border-primary)
+				var(
+					--cz-color-border-control-selected,
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 18%, transparent),
+						var(--cz-color-border-glass-button, var(--cz-color-border-primary))
+					)
+				),
+			var(
+				--cz-shadow-segment-selected-elevation,
+				0 1px 2px
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 12%, transparent),
+						transparent
 					),
-					var(--cz-color-border-glass-button, var(--cz-color-border-primary))
-				),
-			0 1px 2px
-				light-dark(
-					color-mix(in oklab, var(--cz-color-black) 12%, transparent),
-					transparent
-				),
-			0 3px 8px
-				light-dark(
-					color-mix(in oklab, var(--cz-color-black) 8%, transparent),
-					transparent
-				);
+				0 3px 8px
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 8%, transparent),
+						transparent
+					)
+			)
+		);
 		--_active-icon-color: var(--cz-color-fg-primary);
 	}
 
@@ -243,7 +254,10 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o
 	   where a solid fill would glare against the smoked track. */
 	:host([variant='segmented'][active]) {
 		font-weight: var(--cz-font-weight-semibold);
-		background-image: var(--cz-glass-sheen, none);
+		background-image: var(
+			--cz-segment-selected-sheen,
+			var(--cz-glass-sheen, none)
+		);
 	}
 
 	:host([variant='segmented'][active]) .badge {

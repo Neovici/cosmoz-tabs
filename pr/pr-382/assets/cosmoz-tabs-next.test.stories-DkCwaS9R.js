@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe-BaslY-Ki.js";import{c as r,s as i}from"./if-defined-Az5qrDS-.js";import{l as a,r as o,t as s}from"./untitled-Dn63cUnt.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-Bxovlosr.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j;function M(){return(M=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe--APLUM0B.js";import{c as r,s as i}from"./if-defined-BpsVHdo3.js";import{l as a,r as o,t as s}from"./untitled-DMg0hOsU.js";import{a as c,i as l,n as u,r as d,t as f}from"./next-iNzKTLjR.js";var p,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j,M;function N(){return(N=e((()=>{s(),i(),n(),f(),u(),{expect:p,waitFor:m}=__STORYBOOK_MODULE_TEST__,h={title:`Tests/Tabs (next)`},g=(e=`brand`)=>t`
     <cosmoz-tabs-next variant=${e}>
         <cosmoz-tab-next active>Overview</cosmoz-tab-next>
         <cosmoz-tab-next badge="2">Activity</cosmoz-tab-next>
@@ -21,12 +21,18 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
                 <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             </cosmoz-tabs-next>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=t=>e.querySelector(`cosmoz-tabs-next[variant=${t}] cosmoz-tab-next[active]`);await t(`the underline tab is selected in primary text`,async()=>{await m(()=>p(getComputedStyle(n(`underline`)).color).toBe(`rgb(1, 2, 3)`))}),await t(`the brand tab is filled with the action token`,async()=>{await m(()=>p(getComputedStyle(n(`brand`)).backgroundColor).toBe(`rgb(4, 5, 6)`))})}},C={render:()=>g(`segmented`),play:async({canvasElement:e,step:t})=>{let n=_(e),r;await t(`the variant reaches the children`,async()=>{await m(()=>{r=n.querySelector(`cosmoz-tab-next[active]`),p(r?.getAttribute(`variant`)).toBe(`segmented`)})}),await t(`the track is filled and the active tab is raised`,async()=>{await m(()=>{p(getComputedStyle(n).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).boxShadow).not.toBe(`none`)})})}},w={render:()=>g(),play:async({canvasElement:e})=>{let t=_(e).querySelector(`cosmoz-tab-next`);await m(()=>p(getComputedStyle(t).flexGrow).toBe(`1`)),p(t.hasAttribute(`compact-width`)).toBe(!1)}},T={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=t=>e.querySelector(`cosmoz-tabs-next[variant=${t}] cosmoz-tab-next[active]`);await t(`the underline tab is selected in primary text`,async()=>{await m(()=>p(getComputedStyle(n(`underline`)).color).toBe(`rgb(1, 2, 3)`))}),await t(`the brand tab is filled with the action token`,async()=>{await m(()=>p(getComputedStyle(n(`brand`)).backgroundColor).toBe(`rgb(4, 5, 6)`))})}},C={render:()=>g(`segmented`),play:async({canvasElement:e,step:t})=>{let n=_(e),r;await t(`the variant reaches the children`,async()=>{await m(()=>{r=n.querySelector(`cosmoz-tab-next[active]`),p(r?.getAttribute(`variant`)).toBe(`segmented`)})}),await t(`the track is filled and the active tab is raised`,async()=>{await m(()=>{p(getComputedStyle(n).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).backgroundColor).not.toBe(`rgba(0, 0, 0, 0)`),p(getComputedStyle(r).boxShadow).not.toBe(`none`)})})}},w={render:()=>t`
+        <div
+            style="--cz-color-bg-segment-selected: rgb(12, 34, 56); --cz-shadow-segment-selected: none; --cz-segment-selected-sheen: none"
+        >
+            ${g(`segmented`)}
+        </div>
+    `,play:async({canvasElement:e})=>{let t=_(e);await m(()=>{let e=t.querySelector(`[active]`),n=getComputedStyle(e);p(n.backgroundColor).toBe(`rgb(12, 34, 56)`),p(n.backgroundImage).toBe(`none`),p(n.boxShadow).toBe(`none`),p(getComputedStyle(t.querySelectorAll(`cosmoz-tab-next`)[1]).backgroundColor).toBe(`rgba(0, 0, 0, 0)`)})}},T={render:()=>g(),play:async({canvasElement:e})=>{let t=_(e).querySelector(`cosmoz-tab-next`);await m(()=>p(getComputedStyle(t).flexGrow).toBe(`1`)),p(t.hasAttribute(`compact-width`)).toBe(!1)}},E={render:()=>t`
         <cosmoz-tabs-next variant="brand" compact-width>
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
         </cosmoz-tabs-next>
-    `,play:async({canvasElement:e,step:t})=>{let n=_(e).querySelector(`cosmoz-tab-next`);await t(`container reflects compact-width`,async()=>{await m(()=>p(n.hasAttribute(`compact-width`)).toBe(!0))}),await t(`child opts out of spreading (flex: 0 1 auto)`,async()=>{await m(()=>p(getComputedStyle(n).flexGrow).toBe(`0`))})}},E={render:()=>t`
+    `,play:async({canvasElement:e,step:t})=>{let n=_(e).querySelector(`cosmoz-tab-next`);await t(`container reflects compact-width`,async()=>{await m(()=>p(n.hasAttribute(`compact-width`)).toBe(!0))}),await t(`child opts out of spreading (flex: 0 1 auto)`,async()=>{await m(()=>p(getComputedStyle(n).flexGrow).toBe(`0`))})}},D={render:()=>t`
         <cosmoz-tabs-next variant="segmented" compact-width>
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
@@ -43,10 +49,10 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
             <cosmoz-tab-next>Activity</cosmoz-tab-next>
         </cosmoz-tabs-next>
-    `,play:async({canvasElement:e,step:t})=>{let[n,r,i,a]=[...e.querySelectorAll(`cosmoz-tabs-next`)],o=e=>e.querySelector(`cosmoz-tab-next`);await t(`the size reaches the children`,async()=>{await m(()=>p(o(r).getAttribute(`size`)).toBe(`sm`)),p(o(n).hasAttribute(`size`)).toBe(!1)}),await t(`segmented matches cosmoz-toggle-group per size`,async()=>{await m(()=>{p(n.offsetHeight).toBe(39),p(r.offsetHeight).toBe(32)})}),await t(`sm is shorter and narrower than the default`,async()=>{await m(()=>{p(r.offsetHeight).toBeLessThan(n.offsetHeight),p(r.offsetWidth).toBeLessThan(n.offsetWidth)})}),await t(`sm underline is shorter without getting wider`,async()=>{await m(()=>{p(a.offsetHeight).toBeLessThan(i.offsetHeight),p(a.offsetWidth).toBe(i.offsetWidth)})})}},D=[{name:`overview`,title:`Overview`,icon:o,render:()=>t`<div>overview panel</div>`},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:()=>t`<div>rows panel</div>`},{name:`plain`,title:`No icon`,render:()=>t`<div>plain panel</div>`}],O=()=>{let e=c(D);return t`
+    `,play:async({canvasElement:e,step:t})=>{let[n,r,i,a]=[...e.querySelectorAll(`cosmoz-tabs-next`)],o=e=>e.querySelector(`cosmoz-tab-next`);await t(`the size reaches the children`,async()=>{await m(()=>p(o(r).getAttribute(`size`)).toBe(`sm`)),p(o(n).hasAttribute(`size`)).toBe(!1)}),await t(`segmented matches cosmoz-toggle-group per size`,async()=>{await m(()=>{p(n.offsetHeight).toBe(39),p(r.offsetHeight).toBe(32)})}),await t(`sm is shorter and narrower than the default`,async()=>{await m(()=>{p(r.offsetHeight).toBeLessThan(n.offsetHeight),p(r.offsetWidth).toBeLessThan(n.offsetWidth)})}),await t(`sm underline is shorter without getting wider`,async()=>{await m(()=>{p(a.offsetHeight).toBeLessThan(i.offsetHeight),p(a.offsetWidth).toBe(i.offsetWidth)})})}},O=[{name:`overview`,title:`Overview`,icon:o,render:()=>t`<div>overview panel</div>`},{name:`rows`,title:`Invoice rows`,badge:`5`,icon:a,render:()=>t`<div>rows panel</div>`},{name:`plain`,title:`No icon`,render:()=>t`<div>plain panel</div>`}],k=()=>{let e=c(O);return t`
         <cosmoz-tabs-next id="icon-tabs">${l(e)}</cosmoz-tabs-next>
         ${d(e,e=>e.isActive?t`<div id="panel">${e.render()}</div>`:null)}
-    `},customElements.get(`cosmoz-tabs-next-icon-tabs-test`)||customElements.define(`cosmoz-tabs-next-icon-tabs-test`,r(O)),k={render:()=>t`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>`,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`cosmoz-tabs-next-icon-tabs-test`);await t(`the icon lands in the icon slot before the label`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);await m(()=>{let[t,n,r]=[...e.querySelectorAll(`cosmoz-tab-next`)];p(t.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(n.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(r.shadowRoot.querySelector(`#iconSlot`).assignedElements()).toEqual([])})}),await t(`the label still renders alongside the icon`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tab-next[name="overview"]`);await m(()=>p(e.textContent).toContain(`Overview`))}),await t(`selection and panels keep working`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);e.querySelector(`cosmoz-tab-next[name="rows"]`).click(),await m(()=>p(e.querySelector(`cosmoz-tab-next[name="rows"]`).hasAttribute(`active`)).toBe(!0)),await m(()=>p(n.shadowRoot.querySelector(`#panel`).textContent).toContain(`rows panel`))})}},A={render:()=>t`
+    `},customElements.get(`cosmoz-tabs-next-icon-tabs-test`)||customElements.define(`cosmoz-tabs-next-icon-tabs-test`,r(k)),A={render:()=>t`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>`,play:async({canvasElement:e,step:t})=>{let n=e.querySelector(`cosmoz-tabs-next-icon-tabs-test`);await t(`the icon lands in the icon slot before the label`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);await m(()=>{let[t,n,r]=[...e.querySelectorAll(`cosmoz-tab-next`)];p(t.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(n.shadowRoot.querySelector(`#iconSlot`).assignedElements()[0]?.tagName).toBe(`svg`),p(r.shadowRoot.querySelector(`#iconSlot`).assignedElements()).toEqual([])})}),await t(`the label still renders alongside the icon`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tab-next[name="overview"]`);await m(()=>p(e.textContent).toContain(`Overview`))}),await t(`selection and panels keep working`,async()=>{let e=n.shadowRoot.querySelector(`cosmoz-tabs-next#icon-tabs`);e.querySelector(`cosmoz-tab-next[name="rows"]`).click(),await m(()=>p(e.querySelector(`cosmoz-tab-next[name="rows"]`).hasAttribute(`active`)).toBe(!0)),await m(()=>p(n.shadowRoot.querySelector(`#panel`).textContent).toContain(`rows panel`))})}},j={render:()=>t`
         <div style="display:flex; align-items:center; gap:8px; width:600px">
             <cosmoz-tabs-next variant="segmented" size="sm" compact-width>
                 <cosmoz-tab-next active
@@ -58,7 +64,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
             </cosmoz-tabs-next>
             <div data-control style="width:32px; height:32px; flex:none"></div>
         </div>
-    `,play:async({canvasElement:e,step:t})=>{let n=_(e),r=e.querySelector(`[data-control]`),i=[...n.querySelectorAll(`cosmoz-tab-next`)],a=e=>{let t=e.getBoundingClientRect();return t.y+t.height/2};await t(`icons and badges fit the standard toolbar height`,async()=>{await m(()=>{p(n.offsetHeight).toBe(32),p(a(n)).toBe(a(r));for(let e of i)p(e.offsetHeight).toBe(26),p(e.hasAttribute(`overflowing`)).toBe(!1)})}),await t(`overflow keeps the same height and recovers when expanded`,async()=>{n.style.maxWidth=`180px`,await m(()=>{p(i.some(e=>e.hasAttribute(`overflowing`))).toBe(!0);let e=n.shadowRoot.querySelector(`.more`);p(e.hidden).toBe(!1),p(e.getBoundingClientRect().height).toBe(26),p(n.offsetHeight).toBe(32)}),n.style.removeProperty(`max-width`),await m(()=>{p(i.every(e=>!e.hasAttribute(`overflowing`))).toBe(!0),p(n.offsetHeight).toBe(32)})})}},j=[`RolesAndActive`,`RadiogroupIsATablist`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`NeutralSelection`,`SegmentedActiveStyling`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`,`RenderTabsRendersTheIconIntoTheIconSlot`,`SmallSegmentedToolbarHeight`],v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+    `,play:async({canvasElement:e,step:t})=>{let n=_(e),r=e.querySelector(`[data-control]`),i=[...n.querySelectorAll(`cosmoz-tab-next`)],a=e=>{let t=e.getBoundingClientRect();return t.y+t.height/2};await t(`icons and badges fit the standard toolbar height`,async()=>{await m(()=>{p(n.offsetHeight).toBe(32),p(a(n)).toBe(a(r));for(let e of i)p(e.offsetHeight).toBe(26),p(e.hasAttribute(`overflowing`)).toBe(!1)})}),await t(`overflow keeps the same height and recovers when expanded`,async()=>{n.style.maxWidth=`180px`,await m(()=>{p(i.some(e=>e.hasAttribute(`overflowing`))).toBe(!0);let e=n.shadowRoot.querySelector(`.more`);p(e.hidden).toBe(!1),p(e.getBoundingClientRect().height).toBe(26),p(n.offsetHeight).toBe(32)}),n.style.removeProperty(`max-width`),await m(()=>{p(i.every(e=>!e.hasAttribute(`overflowing`))).toBe(!0),p(n.offsetHeight).toBe(32)})})}},M=[`RolesAndActive`,`RadiogroupIsATablist`,`ReflectsVariantToChildren`,`BrandActiveStyling`,`NeutralSelection`,`SegmentedActiveStyling`,`SegmentedSelectionRecipe`,`SpreadByDefault`,`CompactWidthSizesToContent`,`SizeReachesChildrenAndShrinksTheBox`,`RenderTabsRendersTheIconIntoTheIconSlot`,`SmallSegmentedToolbarHeight`],v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
   play: async ({
     canvasElement,
@@ -196,6 +202,27 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
     });
   }
 }`,...C.parameters?.docs?.source}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
+  render: () => html\`
+        <div
+            style="--cz-color-bg-segment-selected: rgb(12, 34, 56); --cz-shadow-segment-selected: none; --cz-segment-selected-sheen: none"
+        >
+            \${fixture('segmented')}
+        </div>
+    \`,
+  play: async ({
+    canvasElement
+  }) => {
+    const bar = getContainer(canvasElement);
+    await waitFor(() => {
+      const active = bar.querySelector<HTMLElement>('[active]')!;
+      const style = getComputedStyle(active);
+      expect(style.backgroundColor).toBe('rgb(12, 34, 56)');
+      expect(style.backgroundImage).toBe('none');
+      expect(style.boxShadow).toBe('none');
+      expect(getComputedStyle(bar.querySelectorAll('cosmoz-tab-next')[1]).backgroundColor).toBe('rgba(0, 0, 0, 0)');
+    });
+  }
+}`,...w.parameters?.docs?.source}}},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
   render: () => fixture(),
   play: async ({
     canvasElement
@@ -205,7 +232,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
     await waitFor(() => expect(getComputedStyle(tab).flexGrow).toBe('1'));
     expect(tab.hasAttribute('compact-width')).toBe(false);
   }
-}`,...w.parameters?.docs?.source}}},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
+}`,...T.parameters?.docs?.source}}},E.parameters={...E.parameters,docs:{...E.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <cosmoz-tabs-next variant="brand" compact-width>
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
@@ -225,7 +252,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
       await waitFor(() => expect(getComputedStyle(tab).flexGrow).toBe('0'));
     });
   }
-}`,...T.parameters?.docs?.source}}},E.parameters={...E.parameters,docs:{...E.parameters?.docs,source:{originalSource:`{
+}`,...E.parameters?.docs?.source}}},D.parameters={...D.parameters,docs:{...D.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <cosmoz-tabs-next variant="segmented" compact-width>
             <cosmoz-tab-next active>Overview</cosmoz-tab-next>
@@ -273,7 +300,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
       });
     });
   }
-}`,...E.parameters?.docs?.source}}},k.parameters={...k.parameters,docs:{...k.parameters?.docs,source:{originalSource:`{
+}`,...D.parameters?.docs?.source}}},A.parameters={...A.parameters,docs:{...A.parameters?.docs,source:{originalSource:`{
   render: () => html\`<cosmoz-tabs-next-icon-tabs-test></cosmoz-tabs-next-icon-tabs-test>\`,
   play: async ({
     canvasElement,
@@ -308,7 +335,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
       await waitFor(() => expect((container.shadowRoot.querySelector('#panel') as HTMLElement).textContent).toContain('rows panel'));
     });
   }
-}`,...k.parameters?.docs?.source}}},A.parameters={...A.parameters,docs:{...A.parameters?.docs,source:{originalSource:`{
+}`,...A.parameters?.docs?.source}}},j.parameters={...j.parameters,docs:{...j.parameters?.docs,source:{originalSource:`{
   render: () => html\`
         <div style="display:flex; align-items:center; gap:8px; width:600px">
             <cosmoz-tabs-next variant="segmented" size="sm" compact-width>
@@ -361,4 +388,4 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./i
       });
     });
   }
-}`,...A.parameters?.docs?.source}}}})))()}M();export{x as BrandActiveStyling,T as CompactWidthSizesToContent,S as NeutralSelection,y as RadiogroupIsATablist,b as ReflectsVariantToChildren,k as RenderTabsRendersTheIconIntoTheIconSlot,v as RolesAndActive,C as SegmentedActiveStyling,E as SizeReachesChildrenAndShrinksTheBox,A as SmallSegmentedToolbarHeight,w as SpreadByDefault,j as __namedExportsOrder,h as default};
+}`,...j.parameters?.docs?.source}}}})))()}N();export{x as BrandActiveStyling,E as CompactWidthSizesToContent,S as NeutralSelection,y as RadiogroupIsATablist,b as ReflectsVariantToChildren,A as RenderTabsRendersTheIconIntoTheIconSlot,v as RolesAndActive,C as SegmentedActiveStyling,w as SegmentedSelectionRecipe,D as SizeReachesChildrenAndShrinksTheBox,j as SmallSegmentedToolbarHeight,T as SpreadByDefault,M as __namedExportsOrder,h as default};
