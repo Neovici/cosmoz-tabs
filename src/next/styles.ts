@@ -36,8 +36,8 @@ export const nextTabsStyles = css`
 	/* Untitled UI's "button border" tabs: a track holding a raised, selected pill. */
 	:host([variant='segmented']) {
 		--_gap: calc(var(--cz-spacing) * 1);
-		padding: calc(var(--cz-spacing) * 0.75);
-		border-radius: var(--cz-radius-lg);
+		padding: var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75));
+		border-radius: var(--cz-radius-group, var(--cz-radius-lg));
 		background:
 			var(--cz-glass-sheen, none),
 			var(--cz-color-bg-glass, var(--cz-color-bg-secondary));
@@ -90,7 +90,7 @@ export const nextTabsStyles = css`
 	:host([variant='segmented'][size='sm']) {
 		font-size: var(--cz-text-xs);
 		line-height: var(--cz-text-xs-line-height);
-		border-radius: var(--cz-radius-md);
+		border-radius: var(--cz-radius-group, var(--cz-radius-md));
 	}
 
 	:host([variant='segmented'][size='sm']) slot:not([name]) {
@@ -182,7 +182,7 @@ export const nextTabsStyles = css`
 	:host([variant='brand']) cosmoz-button.more-button::part(button),
 	:host([variant='brand']) .more-button:not(cosmoz-button) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-		border-radius: var(--cz-radius-md);
+		border-radius: var(--cz-radius-control, var(--cz-radius-md));
 
 		height: auto;
 	}
@@ -209,7 +209,24 @@ export const nextTabsStyles = css`
 	:host([variant='segmented']) cosmoz-button.more-button::part(button),
 	:host([variant='segmented']) .more-button:not(cosmoz-button) {
 		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
-		border-radius: var(--cz-radius-sm);
+		border-radius: var(
+			--cz-radius-segment,
+			max(
+				0px,
+				calc(
+					var(
+							--cz-radius-group,
+							calc(
+								var(--cz-radius-sm) +
+									var(
+										--cz-spacing-segment-inset,
+										calc(var(--cz-spacing) * 0.75)
+									)
+							)
+						) - var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
+				)
+			)
+		);
 
 		height: auto;
 	}
@@ -267,7 +284,7 @@ export const nextTabsStyles = css`
 		padding: calc(var(--cz-spacing) * 1.5);
 		background-color: var(--cz-color-bg-primary);
 		border: 1px solid var(--cz-color-border-secondary);
-		border-radius: var(--cz-radius-md);
+		border-radius: var(--cz-radius-surface, var(--cz-radius-md));
 		box-shadow: var(--cz-shadow-lg);
 		font-family: var(--cz-font-body);
 		font-size: var(--cz-text-sm);
