@@ -1,3 +1,9 @@
+## 11.6.1
+
+### Patch Changes
+
+- f90b933: Keep mobile touch targets at least 44px while retaining desktop dimensions.
+
 ## 11.6.0
 
 ### Minor Changes
