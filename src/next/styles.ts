@@ -282,4 +282,17 @@ export const nextTabsStyles = css`
 			max-height: 44px;
 		}
 	}
+
+	/* Opt-in scrolling keeps every tab in the keyboard navigation band. */
+	:host([scrollable]) slot.scroll-band {
+		display: flex;
+		flex-wrap: nowrap;
+		max-height: none;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: none;
+	}
+	:host([scrollable]) ::slotted(cosmoz-tab-next) {
+		flex: 0 0 auto;
+	}
 `;

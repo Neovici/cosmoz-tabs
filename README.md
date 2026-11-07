@@ -268,3 +268,16 @@ The callback receives the rendered controls. Forward any additional named slots
 in the custom header, and observe `selected`, `hash-param`, `no-resize`, `variant`
 and `compact-width` when exposing those attributes on your component. Omitting
 the callback preserves the standard header.
+
+### Scrollable tabs
+
+Add `scrollable` to `cosmoz-tabs-next` to keep tabs in a horizontal scroll
+row instead of the More menu. The active tab scrolls into view on selection
+and resize, while arrow keys, Home and End reach every enabled tab.
+
+```html
+<cosmoz-tabs-next variant="segmented" compact-width scrollable>
+	<cosmoz-tab-next>Overview</cosmoz-tab-next>
+	<cosmoz-tab-next active>Automation</cosmoz-tab-next>
+</cosmoz-tabs-next>
+```
