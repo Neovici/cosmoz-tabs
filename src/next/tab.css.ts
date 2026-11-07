@@ -211,34 +211,45 @@ export const nextTabStyles = css`
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
 		--_active-color: var(--cz-color-text-primary);
-		--_active-background: light-dark(
-			var(--cz-color-bg-primary),
-			var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
+		--_active-background: var(
+			--cz-color-bg-segment-selected,
+			light-dark(
+				var(--cz-color-bg-primary),
+				var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
+			)
 		);
-		--_active-shadow:
-			inset 0 1px 0
-				light-dark(
-					color-mix(in oklab, var(--cz-color-white) 22%, transparent),
-					color-mix(in oklab, var(--cz-color-white) 3%, transparent)
-				),
+		--_active-shadow: var(
+			--cz-shadow-segment-selected,
+			var(
+				--cz-shadow-segment-selected-highlight,
+				inset 0 1px 0
+					light-dark(
+						color-mix(in oklab, var(--cz-color-white) 22%, transparent),
+						color-mix(in oklab, var(--cz-color-white) 3%, transparent)
+					)
+			),
 			inset 0 0 0 1px
-				light-dark(
-					var(
-						--cz-color-border-control-selected,
-						var(--cz-color-border-primary)
+				var(
+					--cz-color-border-control-selected,
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 18%, transparent),
+						var(--cz-color-border-glass-button, var(--cz-color-border-primary))
+					)
+				),
+			var(
+				--cz-shadow-segment-selected-elevation,
+				0 1px 2px
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 12%, transparent),
+						transparent
 					),
-					var(--cz-color-border-glass-button, var(--cz-color-border-primary))
-				),
-			0 1px 2px
-				light-dark(
-					color-mix(in oklab, var(--cz-color-black) 12%, transparent),
-					transparent
-				),
-			0 3px 8px
-				light-dark(
-					color-mix(in oklab, var(--cz-color-black) 8%, transparent),
-					transparent
-				);
+				0 3px 8px
+					light-dark(
+						color-mix(in oklab, var(--cz-color-black) 8%, transparent),
+						transparent
+					)
+			)
+		);
 		--_active-icon-color: var(--cz-color-fg-primary);
 	}
 
@@ -246,7 +257,10 @@ export const nextTabStyles = css`
 	   where a solid fill would glare against the smoked track. */
 	:host([variant='segmented'][active]) {
 		font-weight: var(--cz-font-weight-semibold);
-		background-image: var(--cz-glass-sheen, none);
+		background-image: var(
+			--cz-segment-selected-sheen,
+			var(--cz-glass-sheen, none)
+		);
 	}
 
 	:host([variant='segmented'][active]) .badge {

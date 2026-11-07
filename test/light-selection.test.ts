@@ -8,7 +8,7 @@ const selectedTab = async () => {
 	const bar = document.createElement('cosmoz-tabs-next');
 	bar.setAttribute('variant', 'segmented');
 	bar.style.cssText =
-		'color-scheme: light; --cz-color-bg-primary: rgb(250, 250, 250); --cz-color-text-primary: rgb(30, 30, 30);';
+		'color-scheme: light; --cz-color-bg-segment-selected: rgb(250, 250, 250); --cz-color-bg-primary: rgb(240, 240, 240); --cz-color-text-primary: rgb(30, 30, 30);';
 	const tab = document.createElement('cosmoz-tab-next');
 	tab.setAttribute('active', '');
 	tab.setAttribute('badge', '2');
