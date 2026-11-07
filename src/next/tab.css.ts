@@ -210,12 +210,9 @@ export const nextTabStyles = css`
 		);
 		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary-hover);
-		--_active-color: light-dark(
-			var(--cz-color-text-on-action),
-			var(--cz-color-text-primary)
-		);
+		--_active-color: var(--cz-color-text-primary);
 		--_active-background: light-dark(
-			var(--cz-color-gray-600),
+			var(--cz-color-bg-primary),
 			var(--cz-color-bg-glass-button, var(--cz-color-bg-primary))
 		);
 		--_active-shadow:
@@ -226,7 +223,10 @@ export const nextTabStyles = css`
 				),
 			inset 0 0 0 1px
 				light-dark(
-					color-mix(in oklab, var(--cz-color-black) 18%, transparent),
+					var(
+						--cz-color-border-control-selected,
+						var(--cz-color-border-primary)
+					),
 					var(--cz-color-border-glass-button, var(--cz-color-border-primary))
 				),
 			0 1px 2px
@@ -239,13 +239,10 @@ export const nextTabStyles = css`
 					color-mix(in oklab, var(--cz-color-black) 8%, transparent),
 					transparent
 				);
-		--_active-icon-color: light-dark(
-			var(--cz-color-text-on-action),
-			var(--cz-color-fg-primary)
-		);
+		--_active-icon-color: var(--cz-color-fg-primary);
 	}
 
-	/* The picked segment: a glazed gray fill in light, a glass pill in dark,
+	/* The picked segment: a raised white fill in light, a glass pill in dark,
 	   where a solid fill would glare against the smoked track. */
 	:host([variant='segmented'][active]) {
 		font-weight: var(--cz-font-weight-semibold);
@@ -254,15 +251,26 @@ export const nextTabStyles = css`
 
 	:host([variant='segmented'][active]) .badge {
 		--_badge-background: light-dark(
-			var(--cz-color-gray-500),
+			var(--cz-color-bg-secondary),
 			var(--cz-color-bg-primary)
 		);
 		--_badge-color: light-dark(
-			var(--cz-color-text-on-action),
+			var(--cz-color-text-primary),
 			var(--cz-color-text-secondary)
 		);
 		--_badge-shadow: inset 0 0 0 1px
 			light-dark(transparent, var(--cz-color-border-primary));
+	}
+
+	@media (forced-colors: active) {
+		:host([variant='segmented'][active]) {
+			outline: 1px solid Highlight;
+			outline-offset: -1px;
+		}
+		:host([variant='segmented']:focus-visible) {
+			outline: 2px solid Highlight;
+			outline-offset: -2px;
+		}
 	}
 
 	:host([compact-width]) {
