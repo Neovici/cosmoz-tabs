@@ -274,4 +274,12 @@ export const nextTabsStyles = css`
 		line-height: var(--cz-text-sm-line-height);
 		font-weight: var(--cz-font-weight-semibold);
 	}
+	@media (pointer: coarse) {
+		:host slot:not([name]),
+		:host([variant]) slot:not([name]),
+		:host([size]) slot:not([name]),
+		:host([variant][size]) slot:not([name]) {
+			max-height: 44px;
+		}
+	}
 `;

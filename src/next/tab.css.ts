@@ -287,4 +287,9 @@ export const nextTabStyles = css`
 	:host([size='sm']:is([variant='brand'], [variant='segmented'])) {
 		padding-inline: calc(var(--cz-spacing) * 2);
 	}
+	@media (pointer: coarse) {
+		:host {
+			min-height: 44px;
+		}
+	}
 `;
