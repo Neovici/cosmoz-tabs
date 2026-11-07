@@ -224,6 +224,30 @@ export const SegmentedActiveStyling: Story = {
 	},
 };
 
+export const SegmentedSelectionRecipe: Story = {
+	render: () => html`
+		<div
+			style="--cz-color-bg-segment-selected: rgb(12, 34, 56); --cz-shadow-segment-selected: none; --cz-segment-selected-sheen: none"
+		>
+			${fixture('segmented')}
+		</div>
+	`,
+	play: async ({ canvasElement }) => {
+		const bar = getContainer(canvasElement);
+		await waitFor(() => {
+			const active = bar.querySelector<HTMLElement>('[active]')!;
+			const style = getComputedStyle(active);
+			expect(style.backgroundColor).toBe('rgb(12, 34, 56)');
+			expect(style.backgroundImage).toBe('none');
+			expect(style.boxShadow).toBe('none');
+			expect(
+				getComputedStyle(bar.querySelectorAll('cosmoz-tab-next')[1])
+					.backgroundColor,
+			).toBe('rgba(0, 0, 0, 0)');
+		});
+	},
+};
+
 export const SpreadByDefault: Story = {
 	render: () => fixture(),
 	play: async ({ canvasElement }) => {
