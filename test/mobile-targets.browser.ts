@@ -40,12 +40,11 @@ for (const variant of ['segmented', 'brand', 'underline']) {
 }
 
 for (const variant of ['segmented', 'underline']) {
-	it(`${variant} scrolls the selected tab into view on selection and resize`, async () => {
+	it(`${variant} replaces an overflowing row with the selected-tab dropdown`, async () => {
 		const bar = document.createElement('cosmoz-tabs-next');
 		bar.setAttribute('variant', variant);
-		bar.setAttribute('scrollable', '');
-		bar.style.boxSizing = 'border-box';
-		bar.style.width = '320px';
+		bar.setAttribute('collapse-on-overflow', '');
+		bar.style.cssText = 'width:320px;box-sizing:border-box';
 		for (const name of [
 			'To do',
 			'In orbit',
@@ -61,39 +60,51 @@ for (const variant of ['segmented', 'underline']) {
 		const last = bar.lastElementChild as HTMLElement;
 		last.setAttribute('active', '');
 		document.body.append(bar);
-		const track = () =>
-			bar.shadowRoot?.querySelector<HTMLElement>('slot:not([name])');
-		const visible = (tab: HTMLElement) => {
-			const band = track()?.getBoundingClientRect();
-			const rect = tab.getBoundingClientRect();
-			return (
-				!!band &&
-				rect.width > 0 &&
-				rect.left >= band.left - 1 &&
-				rect.right <= band.right + 1
-			);
-		};
-		await expect.poll(() => visible(last)).toBe(true);
-		expect(track()!.scrollWidth).toBeGreaterThan(track()!.clientWidth);
+		const trigger = () =>
+			bar.shadowRoot?.querySelector<HTMLElement>('.more-button');
+		await expect.poll(() => trigger()?.textContent?.trim()).toBe('Matching');
+		expect(
+			Array.from(bar.children).every(
+				(tab) => !tab.checkVisibility({ visibilityProperty: true }),
+			),
+		).toBe(true);
+		expect(
+			Array.from(
+				bar.shadowRoot!.querySelectorAll('.menu cosmoz-tab-next'),
+				(tab) => tab.textContent?.trim(),
+			),
+		).toEqual(['To do', 'In orbit', 'Backlog', 'Automation', 'Matching']);
+		last.removeAttribute('active');
+		first.setAttribute('active', '');
+		await expect.poll(() => trigger()?.textContent?.trim()).toBe('To do');
+		bar.style.width = '1000px';
+		await expect
+			.poll(() =>
+				Array.from(bar.children).every((tab) =>
+					tab.checkVisibility({ visibilityProperty: true }),
+				),
+			)
+			.toBe(true);
 		expect(bar.shadowRoot!.querySelector<HTMLElement>('.more')!.hidden).toBe(
 			true,
 		);
-		expect(last.hasAttribute('overflowing')).toBe(false);
-		last.removeAttribute('active');
-		first.setAttribute('active', '');
-		await expect.poll(() => visible(first)).toBe(true);
-		first.removeAttribute('active');
-		last.setAttribute('active', '');
-		await expect.poll(() => visible(last)).toBe(true);
+		last.focus();
 		bar.style.width = '240px';
 		await expect
-			.poll(() => track()!.clientWidth < 240 && visible(last))
+			.poll(
+				() =>
+					!bar.shadowRoot!.querySelector<HTMLElement>('.more')!.hidden &&
+					trigger()?.textContent?.trim() === 'To do',
+			)
 			.toBe(true);
-		last.focus();
-		last.dispatchEvent(
-			new KeyboardEvent('keydown', { key: 'Home', bubbles: true }),
+		expect(bar.shadowRoot!.activeElement).toBe(trigger());
+		const longName =
+			'Very long invoice approval and verification destination for a narrow panel';
+		first.textContent = longName;
+		await expect.poll(() => trigger()?.textContent?.trim()).toBe(longName);
+		expect(bar.scrollWidth).toBeLessThanOrEqual(240);
+		expect(trigger()!.getBoundingClientRect().right).toBeLessThanOrEqual(
+			bar.getBoundingClientRect().right + 1,
 		);
-		await expect.poll(() => visible(first)).toBe(true);
-		expect(document.activeElement).toBe(first);
 	});
 }

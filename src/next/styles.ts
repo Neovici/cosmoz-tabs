@@ -283,16 +283,39 @@ export const nextTabsStyles = css`
 		}
 	}
 
-	/* Opt-in scrolling keeps every tab in the keyboard navigation band. */
-	:host([scrollable]) slot.scroll-band {
-		display: flex;
-		flex-wrap: nowrap;
-		max-height: none;
-		overflow-x: auto;
-		overflow-y: hidden;
-		scrollbar-width: none;
+	/* Keep the full row measurable while the dropdown takes its place.
+	   The trigger is out of flow so it cannot make the row overflow itself. */
+	:host([collapse-on-overflow]) {
+		position: relative;
+		--_collapse-inset: calc(var(--cz-spacing) * 3);
 	}
-	:host([scrollable]) ::slotted(cosmoz-tab-next) {
+	:host([collapse-on-overflow][variant='segmented']) {
+		--_collapse-inset: calc(var(--cz-spacing) * 0.75);
+	}
+	:host([collapse-on-overflow]) ::slotted(cosmoz-tab-next) {
 		flex: 0 0 auto;
+	}
+	:host([collapse-on-overflow]) .group[data-collapsed] {
+		visibility: hidden;
+	}
+	:host([collapse-on-overflow][data-collapsed]) {
+		background: none;
+		box-shadow: none;
+	}
+	:host([collapse-on-overflow]) .more {
+		position: absolute;
+		inset-inline: var(--_collapse-inset);
+		inline-size: fit-content;
+		max-inline-size: calc(100% - var(--_collapse-inset) * 2);
+	}
+	:host([collapse-on-overflow]) .more-button,
+	:host([collapse-on-overflow]) .more-button::part(button) {
+		min-inline-size: 0;
+		max-inline-size: 100%;
+	}
+	:host([collapse-on-overflow]) .more-button > span:not(.chevron) {
+		min-inline-size: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 `;

@@ -15,7 +15,6 @@ import {
 	useRef,
 	useState,
 } from '@pionjs/pion';
-import { nothing } from 'lit-html';
 import { renderOverflowMenu } from './overflow-menu';
 import {
 	copyOf,
@@ -33,7 +32,7 @@ export interface CosmozTabsNextElement extends HTMLElement {
 	variant?: TabsVariant;
 	size?: TabsSize;
 	compactWidth?: boolean;
-	scrollable?: boolean;
+	collapseOnOverflow?: boolean;
 	moreLabel?: string;
 	label?: string;
 }
@@ -74,9 +73,10 @@ const useCopies = (
 	tabs: () => HTMLElement[],
 	overflowing: Set<HTMLElement>,
 	version: number,
-	revision: number,
+	collapsed: boolean,
 ) => {
-	const cache = useRef<Map<HTMLElement, HTMLElement>>();
+	const revision = useRevision(tabs, version),
+		cache = useRef<Map<HTMLElement, HTMLElement>>();
 
 	cache.current ??= new Map();
 
@@ -84,7 +84,7 @@ const useCopies = (
 		const cached = cache.current as Map<HTMLElement, HTMLElement>,
 			members = tabs(),
 			copies = members
-				.filter((tab) => overflowing.has(tab))
+				.filter((tab) => collapsed || overflowing.has(tab))
 				.map((tab) => {
 					const clone = cached.get(tab) ?? copyOf(tab);
 					cached.set(tab, clone);
@@ -103,13 +103,13 @@ const useCopies = (
 
 		// the bar's own stop: the selection's reachable representative -
 		// the walk's home base even when the selection hides in the menu
-		const stop = stopOf(members);
+		const stop = collapsed ? null : stopOf(members);
 		members.forEach((member) =>
 			reflect(member, 'tabindex', member === stop ? '0' : '-1'),
 		);
 
 		return copies;
-	}, [overflowing, version, revision]);
+	}, [overflowing, version, revision, collapsed]);
 };
 
 /**
@@ -189,7 +189,7 @@ const rove = (
  * @attr {('brand'|'underline'|'segmented')} variant
  * @attr {('sm')} size - omit for the default size; sm trims the item's box on
  * both axes (segmented: 39px default, 32px sm, as cosmoz-toggle-group)
- * @attr {boolean} scrollable - scroll the tab row instead of using an overflow menu
+ * @attr {boolean} collapse-on-overflow - replace the whole row with a current-tab dropdown when tabs do not fit
  * @attr {boolean} compact-width
  * @attr {string} role - the family is a tablist: the role rides the
  * rendered group around the track's members; an authored `radiogroup` is
@@ -222,32 +222,59 @@ const Tabs = (host: CosmozTabsNextElement) => {
 		),
 		onSlotChange = () => setVersion((v) => v + 1);
 
-	const revision = useRevision(tabs, version);
-	const scrollable = host.hasAttribute('scrollable');
-	const copies = useCopies(tabs, overflowing, version, revision);
+	const collapsed =
+		host.hasAttribute('collapse-on-overflow') && overflowing.size > 0;
+	const copies = useCopies(tabs, overflowing, version, collapsed);
+	const current = tabs().find(
+		(tab) => tab.hasAttribute('active') && !tab.hidden,
+	);
+
+	const focusedTab = useRef<HTMLElement>();
+	const collapseOnOverflow = host.hasAttribute('collapse-on-overflow');
 	useLayoutEffect(() => {
-		if (!scrollable) return;
-		const track =
-			host.shadowRoot?.querySelector<HTMLElement>('slot:not([name])');
-		const reveal = () => {
-			const active = tabs().find(
-				(tab) => tab.hasAttribute('active') && shown(tab),
-			);
-			if (!active || !track) return;
-			const item = active.getBoundingClientRect();
-			const band = track.getBoundingClientRect();
-			let delta = 0;
-			if (item.left < band.left) delta = item.left - band.left;
-			else if (item.right > band.right) delta = item.right - band.right;
-			// Scroll only the tab track, never the surrounding document.
-			track.scrollBy({ left: delta, behavior: 'instant' });
+		if (!collapseOnOverflow) return;
+		const remember = (event: FocusEvent) => {
+			// Hiding an inert row can blur to body before overflow is reported.
+			if (event.target !== document.body) {
+				focusedTab.current = tabs().find((tab) =>
+					event.composedPath().includes(tab),
+				);
+			}
 		};
-		reveal();
-		const observer = new ResizeObserver(reveal);
-		observer.observe(host);
-		tabs().forEach((tab) => observer.observe(tab));
-		return () => observer.disconnect();
-	}, [scrollable, version, revision]);
+		const clear = () => {
+			focusedTab.current = undefined;
+		};
+		const pointer = (event: PointerEvent) => {
+			if (!tabs().some((tab) => event.composedPath().includes(tab))) clear();
+		};
+		document.addEventListener('focusin', remember, true);
+		document.addEventListener('pointerdown', pointer, true);
+		return () => {
+			document.removeEventListener('focusin', remember, true);
+			document.removeEventListener('pointerdown', pointer, true);
+		};
+	}, [collapseOnOverflow]);
+
+	useLayoutEffect(() => {
+		host.toggleAttribute('data-collapsed', collapsed);
+		if (!host.hasAttribute('collapse-on-overflow')) return;
+		const dropdown = host.shadowRoot?.querySelector<HTMLElement>('.more');
+		if (collapsed) {
+			if (focusedTab.current) {
+				dropdown?.querySelector<HTMLElement>('.more-button')?.focus();
+			}
+			return;
+		}
+		if (
+			dropdown?.hasAttribute('opened') ||
+			dropdown?.matches(':focus-within')
+		) {
+			current?.focus();
+		}
+		dropdown
+			?.querySelector('.menu')
+			?.dispatchEvent(new Event('select', { bubbles: true }));
+	}, [collapsed]);
 
 	// The walk only moves the focus; Enter/Space pick (through the
 	// item's link: href tabs navigate, plain tabs bubble). An overflowed
@@ -276,25 +303,32 @@ const Tabs = (host: CosmozTabsNextElement) => {
 
 	return html`
 		<slot name="tabs"></slot>
-		<div class="group" role="tablist" aria-label=${host.label ?? ''}>
+		<div
+			class="group"
+			role="tablist"
+			aria-label=${host.label ?? ''}
+			?data-collapsed=${collapsed}
+			?inert=${collapsed}
+			aria-hidden=${collapsed ? 'true' : 'false'}
+		>
 			<slot
 				part="track"
-				class=${scrollable ? 'scroll-band' : 'cz-overflow-band'}
+				class="cz-overflow-band"
 				${assignedRef(assigned)}
 				${forwardAttributes(project(host))}
-				${scrollable
-					? nothing
-					: overflow({
-							onOverflow: setOverflowing,
-						})}
+				${overflow({
+					onOverflow: setOverflowing,
+				})}
 				@slotchange=${onSlotChange}
 			></slot>
 		</div>
 		${renderOverflowMenu({
 			items: copies.map(([, clone]) => clone),
-			overflows: !scrollable && copies.length > 0,
+			overflows: copies.length > 0,
 			active: copies.some(([tab]) => tab.hasAttribute('active') && !tab.hidden),
-			label: host.moreLabel,
+			label: collapsed
+				? current?.textContent?.trim() || host.moreLabel
+				: host.moreLabel,
 			onItemClick: forward(copies),
 		})}
 		<slot name="stats"></slot>
@@ -308,7 +342,7 @@ customElements.define(
 			'variant',
 			'size',
 			'compact-width',
-			'scrollable',
+			'collapse-on-overflow',
 			'more-label',
 			'label',
 		],

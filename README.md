@@ -269,14 +269,14 @@ in the custom header, and observe `selected`, `hash-param`, `no-resize`, `varian
 and `compact-width` when exposing those attributes on your component. Omitting
 the callback preserves the standard header.
 
-### Scrollable tabs
+### Responsive tab dropdown
 
-Add `scrollable` to `cosmoz-tabs-next` to keep tabs in a horizontal scroll
-row instead of the More menu. The active tab scrolls into view on selection
-and resize, while arrow keys, Home and End reach every enabled tab.
+Add `collapse-on-overflow` to `cosmoz-tabs-next` to show ordinary tabs while
+they fit, and replace the entire row with a dropdown when space runs out.
+The trigger names the selected tab and the dropdown lists every tab.
 
 ```html
-<cosmoz-tabs-next variant="segmented" compact-width scrollable>
+<cosmoz-tabs-next variant="segmented" compact-width collapse-on-overflow>
 	<cosmoz-tab-next>Overview</cosmoz-tab-next>
 	<cosmoz-tab-next active>Automation</cosmoz-tab-next>
 </cosmoz-tabs-next>

@@ -2,4 +2,4 @@
 '@neovici/cosmoz-tabs': minor
 ---
 
-Add an opt-in scrollable tab row that keeps the active tab visible on selection and resize, with keyboard access to every tab.
+Add an opt-in responsive dropdown that replaces the whole tab row when tabs do not fit and names the selected tab in its trigger.
