@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe-CL-Y83S1.js";import{t as r}from"./next-CR-r1UhJ.js";import{i,n as a,r as o,s}from"./overflow-helpers-FYoDRM-v.js";var c,l,u,d,f,p,m,h,g;function _(){return(_=e((()=>{n(),r(),a(),{expect:c,waitFor:l}=__STORYBOOK_MODULE_TEST__,u={title:`Tests/Tabs overflow (next, hidden tabs)`},d=()=>t`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t,u as n}from"./iframe-Dw26czyo.js";import{t as r}from"./next-wEpabXpS.js";import{i,n as a,r as o,s}from"./overflow-helpers-C4AIrtrC.js";var c,l,u,d,f,p,m,h,g;function _(){return(_=e((()=>{n(),r(),a(),{expect:c,waitFor:l}=__STORYBOOK_MODULE_TEST__,u={title:`Tests/Tabs overflow (next, hidden tabs)`},d=()=>t`
     <div class="box" style="width: 260px; overflow: hidden;">
         <cosmoz-tabs-next variant="underline">
             <cosmoz-tab-next

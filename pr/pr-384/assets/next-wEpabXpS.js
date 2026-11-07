@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-CL-Y83S1.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-CIqxNI8_.js";import{m as ee,t as te}from"./untitled-BrS9lRYm.js";import{r as ne,t as re}from"./use-hash-param-CqpIzY0f.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o as i,r as a,s as o,u as s}from"./iframe-Dw26czyo.js";import{C as c,D as l,N as u,T as d,_ as f,a as p,c as m,d as h,f as g,h as _,i as v,j as y,n as b,o as x,p as S,s as C,t as w,u as T,x as E,y as D}from"./if-defined-cBpwgx3P.js";import{m as ee,t as te}from"./untitled-C_jNk5Xo.js";import{r as ne,t as re}from"./use-hash-param-Cf-wt2Ei.js";var O,k;function A(){return(A=e((()=>{s(),h(),S(),O=new WeakMap,k=g(class extends T{render(e){return i}update(e,[t]){let n=t!==this.G;return n&&this.rt(void 0),(n||this.lt!==this.ct)&&(this.G=t,this.ht=e.options?.host,this.rt(this.ct=e.element)),i}rt(e){if(this.G!==void 0){if(this.isConnected||(e=void 0),typeof this.G==`function`){let t=this.ht??globalThis,n=O.get(t);n===void 0&&(n=new WeakMap,O.set(t,n)),n.get(this.G)!==void 0&&this.G.call(this.ht,void 0),n.set(this.G,e),e!==void 0&&this.G.call(this.ht,e)}else this.G.value=e}}get lt(){return typeof this.G==`function`?O.get(this.ht??globalThis)?.get(this.G):this.G?.value}disconnected(){this.lt===this.ct&&this.rt(void 0)}reconnected(){this.rt(this.ct)}})})))()}var ie;function ae(){return(ae=e((()=>{C(),ie=y`
 	:host {
 		position: relative;
 		display: inline-flex;
@@ -1184,33 +1184,63 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{c as t,l as n,n as r,o
 		}
 	}
 
-	/* Opt-in scrolling keeps every tab in the keyboard navigation band. */
-	:host([scrollable]) slot.scroll-band {
-		display: flex;
-		flex-wrap: nowrap;
-		max-height: none;
-		overflow-x: auto;
-		overflow-y: hidden;
-		scrollbar-width: none;
+	/* Keep the full row measurable while the dropdown takes its place.
+	   The trigger is out of flow so it cannot make the row overflow itself. */
+	:host([collapse-on-overflow]) {
+		position: relative;
+		--_collapse-inset: calc(var(--cz-spacing) * 3);
 	}
-	:host([scrollable]) ::slotted(cosmoz-tab-next) {
+	:host([collapse-on-overflow][variant='segmented']) {
+		--_collapse-inset: calc(var(--cz-spacing) * 0.75);
+	}
+	:host([collapse-on-overflow]) ::slotted(cosmoz-tab-next) {
 		flex: 0 0 auto;
 	}
-`})))()}var tt,nt,rt,Z,it,at,ot,st;function ct(){return(ct=e((()=>{p(),N(),L(),me(),C(),s(),J(),Qe(),et(),tt=`cosmoz-tab-next`,nt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},rt=(e,t)=>{let[n,r]=D(0);return l(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,nt)),()=>t.disconnect()},[t]),n},Z=(e,t,n,r)=>{let i=_();return i.current??=new Map,d(()=>{let n=i.current,r=e(),a=r.filter(e=>t.has(e)).map(e=>{let t=n.get(e)??Je(e);return n.set(e,t),Ye(e,t),[e,t]}),o=new Set(a.map(([e])=>e));n.forEach((e,t)=>{o.has(t)||n.delete(t)}),Ke(a);let s=qe(r);return r.forEach(e=>X(e,`tabindex`,e===s?`0`:`-1`)),a},[t,n,r])},it=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),at=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),ot=(e,t,n)=>{let r=e.filter(Y);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},st=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=D(0),[a,o]=D(()=>new Set),s=_(),l=c(()=>(s.current??[]).filter(e=>e.matches(tt)),[]),u=()=>r(e=>e+1),d=rt(l,t),f=e.hasAttribute(`scrollable`),p=Z(l,a,t,d);return E(()=>{if(!f)return;let t=e.shadowRoot?.querySelector(`slot:not([name])`),n=()=>{let e=l().find(e=>e.hasAttribute(`active`)&&Y(e));if(!e||!t)return;let n=e.getBoundingClientRect(),r=t.getBoundingClientRect(),i=0;n.left<r.left?i=n.left-r.left:n.right>r.right&&(i=n.right-r.right),t.scrollBy({left:i,behavior:`instant`})};n();let r=new ResizeObserver(n);return r.observe(e),l().forEach(e=>r.observe(e)),()=>r.disconnect()},[f,t,d]),E(()=>{let t=e=>{if(!at.has(e.key))return;let t=l(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=ot(t,n,e.key);r&&r!==n&&r.focus()};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
+	:host([collapse-on-overflow]) .group[data-collapsed] {
+		visibility: hidden;
+	}
+	:host([collapse-on-overflow][data-collapsed]) {
+		background: none;
+		box-shadow: none;
+	}
+	:host([collapse-on-overflow]) .more {
+		position: absolute;
+		inset-inline: var(--_collapse-inset);
+		inline-size: fit-content;
+		max-inline-size: calc(100% - var(--_collapse-inset) * 2);
+	}
+	:host([collapse-on-overflow]) .more-button,
+	:host([collapse-on-overflow]) .more-button::part(button) {
+		min-inline-size: 0;
+		max-inline-size: 100%;
+	}
+	:host([collapse-on-overflow]) .more-button > span:not(.chevron) {
+		min-inline-size: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+`})))()}var tt,nt,rt,Z,it,at,ot,st;function ct(){return(ct=e((()=>{p(),N(),L(),me(),C(),J(),Qe(),et(),tt=`cosmoz-tab-next`,nt={attributes:!0,attributeFilter:[`active`,`disabled`,`hidden`,`badge`,`href`,`name`,`title`],childList:!0,subtree:!0,characterData:!0},rt=(e,t)=>{let[n,r]=D(0);return l(()=>{let t=new MutationObserver(()=>r(e=>e+1));return e().forEach(e=>t.observe(e,nt)),()=>t.disconnect()},[t]),n},Z=(e,t,n,r)=>{let i=rt(e,n),a=_();return a.current??=new Map,d(()=>{let n=a.current,i=e(),o=i.filter(e=>r||t.has(e)).map(e=>{let t=n.get(e)??Je(e);return n.set(e,t),Ye(e,t),[e,t]}),s=new Set(o.map(([e])=>e));n.forEach((e,t)=>{s.has(t)||n.delete(t)}),Ke(o);let c=r?null:qe(i);return i.forEach(e=>X(e,`tabindex`,e===c?`0`:`-1`)),o},[t,n,i,r])},it=e=>(e.getAttribute(`role`)===`radiogroup`&&(e.removeAttribute(`role`),e.dispatchEvent(new CustomEvent(`deprecation-warning`,{detail:{message:`role=radiogroup is no longer supported: a value picker belongs in cosmoz-toggle-group (@neovici/cosmoz-input); the items are tabs.`}}))),{variant:e.getAttribute(`variant`),size:e.getAttribute(`size`),"compact-width":e.hasAttribute(`compact-width`)?``:null,role:`tab`,"aria-selected":e=>e.hasAttribute(`active`)?`true`:`false`,"aria-disabled":e=>e.hasAttribute(`disabled`)?`true`:null}),at=new Set([`ArrowLeft`,`ArrowRight`,`Home`,`End`]),ot=(e,t,n)=>{let r=e.filter(Y);if(r.length===0)return null;if(n===`Home`)return r[0];if(n===`End`)return r[r.length-1];let i=r.indexOf(t);return i<0?null:r[Math.max(0,Math.min(r.length-1,i+(n===`ArrowLeft`?-1:1)))]},st=e=>{e.getAttribute(`variant`)||e.setAttribute(`variant`,`brand`);let[t,r]=D(0),[i,a]=D(()=>new Set),o=_(),s=c(()=>(o.current??[]).filter(e=>e.matches(tt)),[]),l=()=>r(e=>e+1),u=e.hasAttribute(`collapse-on-overflow`)&&i.size>0,d=Z(s,i,t,u),f=s().find(e=>e.hasAttribute(`active`)&&!e.hidden),p=_(),m=e.hasAttribute(`collapse-on-overflow`);return E(()=>{if(!m)return;let e=e=>{e.target!==document.body&&(p.current=s().find(t=>e.composedPath().includes(t)))},t=()=>{p.current=void 0},n=e=>{s().some(t=>e.composedPath().includes(t))||t()};return document.addEventListener(`focusin`,e,!0),document.addEventListener(`pointerdown`,n,!0),()=>{document.removeEventListener(`focusin`,e,!0),document.removeEventListener(`pointerdown`,n,!0)}},[m]),E(()=>{if(e.toggleAttribute(`data-collapsed`,u),!e.hasAttribute(`collapse-on-overflow`))return;let t=e.shadowRoot?.querySelector(`.more`);u?p.current&&t?.querySelector(`.more-button`)?.focus():((t?.hasAttribute(`opened`)||t?.matches(`:focus-within`))&&f?.focus(),t?.querySelector(`.menu`)?.dispatchEvent(new Event(`select`,{bubbles:!0})))},[u]),E(()=>{let t=e=>{if(!at.has(e.key))return;let t=s(),n=e.target;if(!t.includes(n))return;e.preventDefault();let r=ot(t,n,e.key);r&&r!==n&&r.focus()};return e.addEventListener(`keydown`,t),()=>e.removeEventListener(`keydown`,t)},[]),n`
 		<slot name="tabs"></slot>
-		<div class="group" role="tablist" aria-label=${e.label??``}>
+		<div
+			class="group"
+			role="tablist"
+			aria-label=${e.label??``}
+			?data-collapsed=${u}
+			?inert=${u}
+			aria-hidden=${u?`true`:`false`}
+		>
 			<slot
 				part="track"
-				class=${f?`scroll-band`:`cz-overflow-band`}
-				${M(s)}
+				class="cz-overflow-band"
+				${M(o)}
 				${I(it(e))}
-				${f?i:pe({onOverflow:o})}
-				@slotchange=${u}
+				${pe({onOverflow:a})}
+				@slotchange=${l}
 			></slot>
 		</div>
-		${We({items:p.map(([,e])=>e),overflows:!f&&p.length>0,active:p.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:e.moreLabel,onItemClick:Ze(p)})}
+		${We({items:d.map(([,e])=>e),overflows:d.length>0,active:d.some(([e])=>e.hasAttribute(`active`)&&!e.hidden),label:u&&f?.textContent?.trim()||e.moreLabel,onItemClick:Ze(d)})}
 		<slot name="stats"></slot>
-	`},customElements.define(`cosmoz-tabs-next`,m(st,{observedAttributes:[`variant`,`size`,`compact-width`,`scrollable`,`more-label`,`label`],styleSheets:[x,$e,B]}))})))()}var Q,lt,ut,dt,ft,pt;function $(){return($=e((()=>{re(),F(),C(),w(),Q=e=>!e.hidden&&!e.disabled,lt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),ut=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:lt(e)},dt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=ne(t),a=_([]),o=d(()=>ut(e,r??void 0),[e,r]),s=d(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),l=c(e=>{n?.(e),i(e)},[i,n]);return{tabs:e,active:o,activated:s,activate:i,select:l,onActivate:c(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let n=e.currentTarget?.getAttribute(`name`);n&&l(n)},[l])}},ft=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=P(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
+	`},customElements.define(`cosmoz-tabs-next`,m(st,{observedAttributes:[`variant`,`size`,`compact-width`,`collapse-on-overflow`,`more-label`,`label`],styleSheets:[x,$e,B]}))})))()}var Q,lt,ut,dt,ft,pt;function $(){return($=e((()=>{re(),F(),C(),w(),Q=e=>!e.hidden&&!e.disabled,lt=e=>e.slice().sort((e,t)=>Number(t.fallback??!1)-Number(e.fallback??!1)).find(Q),ut=(e,t)=>{let n=t?e.find(e=>e.name===t):void 0;return n&&Q(n)?n:lt(e)},dt=(e,{hashParam:t,onActivate:n}={})=>{let[r,i]=ne(t),a=_([]),o=d(()=>ut(e,r??void 0),[e,r]),s=d(()=>{let e=o?.name;return a.current=[...(a.current??[]).filter(t=>t!==e),e].filter(Boolean)},[o]),l=c(e=>{n?.(e),i(e)},[i,n]);return{tabs:e,active:o,activated:s,activate:i,select:l,onActivate:c(e=>{let t=e;if(t.button!==0||t.metaKey||t.ctrlKey)return;let n=e.currentTarget?.getAttribute(`name`);n&&l(n)},[l])}},ft=({tabs:e,active:t,onActivate:r,className:i,variant:a,size:o,compactWidth:s})=>e.map(e=>{let c=P(e.title),l=e.content??c,u=e.badge||void 0;return n`<cosmoz-tab-next
 			name=${e.name}
 			class=${b(i)}
 			variant=${b(a)}
