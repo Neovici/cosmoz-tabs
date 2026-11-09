@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t}from"./iframe-DEO4X4vz.js";import{D as n,a as r,c as i,i as a,j as o,o as s,s as c,y as l}from"./if-defined-DpeNekKu.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
+import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t}from"./iframe-DalgUcQ-.js";import{D as n,a as r,c as i,i as a,j as o,o as s,s as c,y as l}from"./if-defined-DpI6udwD.js";var u,d;function f(){return(f=e((()=>{u={duration:250},d=e=>(t,n,r)=>{let i=`max`+e.charAt(0).toUpperCase()+e.slice(1);Object.assign(t.style,{[i]:``,display:``,overflow:`hidden`});let{[e]:a}=t.getBoundingClientRect(),o=[0,a],[s,c]=n?o:o.slice().reverse(),l=t.animate([{[i]:`${s}px`},{[i]:`${c}px`}],{...u,...r});l.onfinish=()=>Object.assign(t.style,{[i]:``,display:n?``:`none`,overflow:n?``:`visible`})}})))()}var p,m;function h(){return(h=e((()=>{f(),p=(e,t)=>{Object.assign(e.style,{display:t?``:`none`})},m=class extends HTMLElement{static get observedAttributes(){return[`opened`]}toggle=d(`height`);constructor(){super();let e=new CSSStyleSheet;e.replaceSync(`
       :host { display: block; }
 		`);let t=this.attachShadow({mode:`open`});t.appendChild(document.createElement(`slot`)),t.adoptedStyleSheets=[e]}connectedCallback(){p(this,this.getAttribute(`opened`)!=null)}attributeChangedCallback(e,t,n){if(e===`opened`){let e=n!=null;return this.isConnected?this.toggle(this,e):p(this,e)}}},customElements.define(`cosmoz-collapse`,m)})))()}function g(){return(g=e((()=>{h()})))()}var _,v,y;function b(){return(b=e((()=>{g(),r(),c(),_=()=>t`
 	<svg
@@ -47,7 +47,7 @@ import{n as e}from"./rolldown-runtime-BCiCTKAo.js";import{l as t}from"./iframe-D
 			var(--cosmoz-tab-card-border-color, var(--cz-color-border-secondary));
 		border-radius: var(
 			--cosmoz-tab-card-border-radius,
-			var(--cz-radius-surface, var(--cz-radius-xl))
+			var(--cz-radius-card, var(--cz-radius-xl))
 		);
 		box-shadow: var(--cosmoz-tab-card-shadow, var(--cz-shadow-xs));
 		margin: var(--cosmoz-tab-card-margin, calc(var(--cz-spacing) * 2));
