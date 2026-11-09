@@ -77,7 +77,7 @@ export const nextTabStyles = css`
 		justify-content: flex-start;
 		gap: calc(var(--cz-spacing) * 2);
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-		border-radius: var(--cz-radius-sm);
+		border-radius: var(--cz-radius-control, var(--cz-radius-sm));
 		box-shadow: none;
 		--_color: var(--cz-color-text-quaternary);
 		--_hover-color: var(--cz-color-text-secondary);
@@ -160,7 +160,7 @@ export const nextTabStyles = css`
 
 	:host([variant='segmented']) .badge {
 		--_badge-padding-inline: calc(var(--cz-spacing) * 1.5);
-		--_badge-radius: var(--cz-radius-sm);
+		--_badge-radius: var(--cz-radius-compact, var(--cz-radius-sm));
 		--_badge-background: var(--cz-color-bg-primary);
 		--_badge-color: var(--cz-color-text-secondary);
 		--_badge-shadow:
@@ -169,7 +169,7 @@ export const nextTabStyles = css`
 
 	:host([variant='brand']) {
 		padding: calc(var(--cz-spacing) * 2) calc(var(--cz-spacing) * 2.5);
-		border-radius: var(--cz-radius-md);
+		border-radius: var(--cz-radius-control, var(--cz-radius-md));
 		--_hover-color: var(
 			--cz-color-text-on-action,
 			var(--cz-color-text-on-brand)
@@ -201,7 +201,18 @@ export const nextTabStyles = css`
 	/* cosmoz-toggle-group's box, so a view switch and a value picker match */
 	:host([variant='segmented']) {
 		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
-		border-radius: var(--cz-radius-sm);
+		border-radius: max(
+			0px,
+			calc(
+				var(
+						--cz-radius-control-group,
+						calc(
+							var(--cz-radius-sm) +
+								var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
+						)
+					) - var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
+			)
+		);
 		--_hover-color: var(--cz-color-text-secondary);
 		/* A flat tint, so only the picked segment reads as raised */
 		--_hover-background: light-dark(
