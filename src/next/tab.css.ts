@@ -160,7 +160,7 @@ export const nextTabStyles = css`
 
 	:host([variant='segmented']) .badge {
 		--_badge-padding-inline: calc(var(--cz-spacing) * 1.5);
-		--_badge-radius: var(--cz-radius-item, var(--cz-radius-sm));
+		--_badge-radius: var(--cz-radius-compact, var(--cz-radius-sm));
 		--_badge-background: var(--cz-color-bg-primary);
 		--_badge-color: var(--cz-color-text-secondary);
 		--_badge-shadow:
@@ -201,22 +201,16 @@ export const nextTabStyles = css`
 	/* cosmoz-toggle-group's box, so a view switch and a value picker match */
 	:host([variant='segmented']) {
 		padding: calc(var(--cz-spacing) * 1.5) calc(var(--cz-spacing) * 2);
-		border-radius: var(
-			--cz-radius-segment,
-			max(
-				0px,
-				calc(
-					var(
-							--cz-radius-group,
-							calc(
-								var(--cz-radius-sm) +
-									var(
-										--cz-spacing-segment-inset,
-										calc(var(--cz-spacing) * 0.75)
-									)
-							)
-						) - var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
-				)
+		border-radius: max(
+			0px,
+			calc(
+				var(
+						--cz-radius-control-group,
+						calc(
+							var(--cz-radius-sm) +
+								var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
+						)
+					) - var(--cz-spacing-segment-inset, calc(var(--cz-spacing) * 0.75))
 			)
 		);
 		--_hover-color: var(--cz-color-text-secondary);

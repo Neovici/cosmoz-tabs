@@ -98,7 +98,7 @@ const styles = css`
 			var(--cosmoz-tab-card-border-color, var(--cz-color-border-secondary));
 		border-radius: var(
 			--cosmoz-tab-card-border-radius,
-			var(--cz-radius-surface, var(--cz-radius-xl))
+			var(--cz-radius-card, var(--cz-radius-xl))
 		);
 		box-shadow: var(--cosmoz-tab-card-shadow, var(--cz-shadow-xs));
 		margin: var(--cosmoz-tab-card-margin, calc(var(--cz-spacing) * 2));
