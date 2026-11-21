@@ -15,10 +15,10 @@ export const nextTabStyles = css`
 		white-space: nowrap;
 		cursor: pointer;
 		flex: 1 1 0;
-		transition:
-			color 0.1s linear,
-			background-color 0.1s linear,
-			box-shadow 0.1s linear;
+		/* A state change snaps: even the ink's fade repaints the bar's
+		   backdrop every frame. Only the indicator fades, inside the
+		   item's paint containment (see its rule below). */
+		contain: paint;
 		outline: 0;
 
 		/* The item's face: hover and active read these; the variants set
@@ -28,12 +28,15 @@ export const nextTabStyles = css`
 		--_icon-color: var(--cz-color-fg-quaternary);
 		--_hover-color: var(--cz-color-text-secondary);
 		--_hover-background: transparent;
-		--_hover-shadow: inset 0 -2px 0 0 var(--cz-color-border-primary);
+		--_hover-shadow: none;
 		--_hover-icon-color: var(--cz-color-fg-secondary);
 		--_active-color: var(--cz-color-text-primary);
 		--_active-background: transparent;
-		--_active-shadow: inset 0 -2px 0 0 var(--cz-color-fg-primary);
+		--_active-shadow: none;
 		--_active-icon-color: var(--cz-color-fg-secondary);
+		/* the underline face: its own pseudo-element, so the fade is an
+		   opacity change rather than a fill/shadow repaint */
+		--_indicator-color: var(--cz-color-border-primary);
 	}
 
 	:host(:hover) {
@@ -50,10 +53,31 @@ export const nextTabStyles = css`
 		color: var(--_active-color);
 		background-color: var(--_active-background);
 		box-shadow: var(--_active-shadow);
+		--_indicator-color: var(--cz-color-fg-primary);
 	}
 
 	:host([active]) #iconSlot::slotted(svg) {
 		color: var(--_active-icon-color);
+	}
+
+	/* The underline: the only variant with a rule under the label. Brand,
+	   segmented and the menu copy carry their face on the host instead. */
+	:host(:not([variant='brand'], [variant='segmented'], [menu]))::after {
+		content: '';
+		position: absolute;
+		inset-inline: 0;
+		inset-block-end: 0;
+		block-size: 2px;
+		background-color: var(--_indicator-color);
+		opacity: 0;
+		transition: opacity 0.1s linear;
+		/* href tabs navigate through the anchor: a click on the rule must pass */
+		pointer-events: none;
+	}
+
+	:host(:hover:not([variant='brand'], [variant='segmented'], [menu]))::after,
+	:host([active]:not([variant='brand'], [variant='segmented'], [menu]))::after {
+		opacity: 1;
 	}
 
 	:host(:focus-visible) {
@@ -290,6 +314,12 @@ export const nextTabStyles = css`
 	@media (pointer: coarse) {
 		:host {
 			min-height: 44px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:host::after {
+			transition: none;
 		}
 	}
 `;

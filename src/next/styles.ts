@@ -107,7 +107,8 @@ export const nextTabsStyles = css`
 		display: none;
 	}
 
-	/* the button borrows the item's face */
+	/* the button borrows the item's face; its states snap like the item's
+	   (a fade here would repaint the bar's backdrop every frame) */
 	cosmoz-button.more-button::part(button),
 	.more-button:not(cosmoz-button) {
 		position: relative;
@@ -121,10 +122,9 @@ export const nextTabsStyles = css`
 		text-decoration: none;
 		white-space: nowrap;
 		cursor: pointer;
-		transition:
-			color 0.1s linear,
-			background-color 0.1s linear,
-			box-shadow 0.1s linear;
+		/* no fade: the trigger's face shares the item's paint budget, and
+		   cosmoz-button's own transition would keep the fade alive */
+		transition: none;
 		outline: 0;
 		flex: 0 0 auto;
 		background: none;
